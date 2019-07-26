@@ -1,0 +1,416 @@
+﻿<div class="pages">
+    <div data-page="trabalhar" class="page">
+        <div class="navbar background-creait">
+            <div class="navbar-inner margin-bottom-20">
+                <div class="left"><a onclick="creait.redirect('endereco');" class="back link"> <i class="f7-icons icone-voltar" style="margin-right: 10px;">angle-left</i></a></div>
+                <div class="center">Trabalhe Conosco</div>
+            </div>
+        </div>
+        <div class="page-content text-center">
+            <div class="page-content" id="app-cover">
+                <!--<div class="margin-bottom-40" style="margin-top: 50px;"><img class="logo" src="" style="width: 240px;" /></div>-->
+                <div style="margin-top: 50px;">
+
+                    <formtrabalhar id="trabalhar">
+
+
+                        <div class="list-block margin-bottom-40">
+
+                            <div class="calendario_foto" style=" background-color:var(--textbox-color-hover)">
+                                <div class="filefotodescricao">
+
+                                    <div>
+                                        FOTO DE<br />ROSTO
+                                    </div>
+                                    <i class="icon-user">
+
+                                    </i>
+                                    <input type="hidden" name="photo">
+                                    <input required type="hidden" name="photo_itype">
+                                </div>
+                                <input type="file" name="photo_file" class="filefoto" />
+                            </div>
+
+                            <div class="calendario_foto" style=" background-color:var(--textbox-color-hover)">
+                                <div class="filefotodescricao">
+
+                                    <div>
+                                        ANTECEDENTES<br />CRIMINAIS
+                                    </div>
+                                    <i class="icon-shield">
+
+                                    </i>
+                                    <input type="hidden" name="antecedentes">
+                                    <input required type="hidden" name="antecedentes_itype">
+                                </div>
+                                <input type="file" name="antecedentes_file" class="filefoto" />
+                            </div>
+                            <div class="calendario_foto" style=" background-color:var(--textbox-color-hover)">
+                                <div class="filefotodescricao">
+                                    <div>
+                                        CERTIFICADO<br />PROFISSIONAL
+                                    </div>
+
+                                    <i class="icon-trophy">
+
+                                    </i>
+                                    <input type="hidden" name="certificado">
+                                    <input required type="hidden" name="certificado_itype">
+                                </div>
+                                <input type="file" name="certificado_file" class="filefoto" />
+                            </div>
+                            <div class="calendario_foto" style=" background-color:var(--textbox-color-hover)">
+                                <div class="filefotodescricao">
+                                    <div>
+                                        COMPROVANTE DE<br />ENDEREÇO
+                                    </div>
+
+                                    <i class="icon-map2">
+
+                                    </i>
+
+                                    <input type="hidden" name="comprovante">
+                                    <input required type="hidden" name="comprovante_itype">
+                                </div>
+                                <input type="file" name="comprovante_file" class="filefoto" />
+                            </div>
+                            <div class="calendario_foto" style=" background-color:var(--textbox-color-hover)">
+                                <div class="filefotodescricao">
+                                    <div>
+                                        FOTO DO<br />RG ou CNH
+                                    </div>
+                                    <i class="icon-profile">
+
+                                    </i>
+                                    <input type="hidden" name="rg_image">
+                                    <input required type="hidden" name="rg_image_itype">
+                                </div>
+                                <input type="file" name="rg_image_file" class="filefoto" />
+                            </div>
+
+                            <div style="clear:both"></div>
+                            <h5 style="    background-color: var(--primary-color);
+    color: var(--primary-font-color);
+    padding: 10px;
+    margin: 20px 0px 0px 0px;">
+                                Dados Pessoais
+                            </h5>
+                            <ul class="no-border" style="padding-top:20px">
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" type="text" name="nome" placeholder="Nome">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" type="email" name="email" placeholder="E-mail">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" type="tel" mask="tel" name="phone" placeholder="Telefone">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" required type="text" mask="999.999.999-99" name="cpf" placeholder="cpf">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" required type="text" name="rg" placeholder="rg">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div style="margin-top: 8px;
+    margin-bottom: 4px;">
+                                        <a class="item-link smart-select smart-select-init" data-picker-close-text="▼" data-open-in="picker" style="background-color: var(--textbox-color);
+    color: var(--textbox-font-color);
+    border-radius: var(--border-radius-textbox); text-align:left; margin:0px 15px">
+                                            <select name="especialidade_id">
+                                                <option></option>
+                                                {{#each tipos}}
+                                                <option value="{{id}}" periodo="{{periodo}}" {{js "this.id == ../produto.tipo_id ? 'selected' : ''"}}>{{nome}}</option>
+                                                {{/each}}
+                                            </select>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title" style="font-size:10px; line-height: 20px;">Qual a sua especialidade?</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" required type="password" name="password" maxlength="10" placeholder="password">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </li>
+                            </ul>
+
+                            <h5 style="    background-color: var(--primary-color);
+    color: var(--primary-font-color);
+    padding: 10px;
+    margin: 20px 0px 0px 0px;">
+                                Dados Bancários
+                            </h5>
+                            <div style="clear:both"></div>
+                            <ul class="no-border" style="padding-top:20px">
+                                <li>
+                                    <div style="
+    margin-bottom:4px;">
+                                        <a class="item-link smart-select smart-select-init" data-searchbar="true" data-searchbar-placeholder="PROCURAR" data-picker-close-text="▼" data-open-in="popup" style="background-color: var(--textbox-color);
+    color: var(--textbox-font-color);
+    border-radius: var(--border-radius-textbox); text-align:left; margin:0px 15px">
+                                            <select name="BankCode">
+                                                <option value=""></option>
+                                                <option value="001">Banco do Brasil</option>
+                                                <option value="003">Banco da Amazônia</option>
+                                                <option value="004">Banco do Nordeste</option>
+                                                <option value="021">Banestes</option>
+                                                <option value="025">Banco Alfa</option>
+                                                <option value="027">Besc</option>
+                                                <option value="029">Banerj</option>
+                                                <option value="031">Banco Beg</option>
+                                                <option value="033">Banco Santander Banespa</option>
+                                                <option value="036">Banco Bem</option>
+                                                <option value="037">Banpará</option>
+                                                <option value="038">Banestado</option>
+                                                <option value="039">BEP</option>
+                                                <option value="040">Banco Cargill</option>
+                                                <option value="041">Banrisul</option>
+                                                <option value="044">BVA</option>
+                                                <option value="045">Banco Opportunity</option>
+                                                <option value="047">Banese</option>
+                                                <option value="062">Hipercard</option>
+                                                <option value="063">Ibibank</option>
+                                                <option value="065">Lemon Bank</option>
+                                                <option value="066">Banco Morgan Stanley Dean Witter</option>
+                                                <option value="069">BPN Brasil</option>
+                                                <option value="070">Banco de Brasília – BRB</option>
+                                                <option value="072">Banco Rural</option>
+                                                <option value="073">Banco Popular</option>
+                                                <option value="074">Banco J. Safra</option>
+                                                <option value="075">Banco CR2</option>
+                                                <option value="076">Banco KDB</option>
+                                                <option value="096">Banco BMF</option>
+                                                <option value="104">Caixa Econômica Federal</option>
+                                                <option value="107">Banco BBM</option>
+                                                <option value="116">Banco Único</option>
+                                                <option value="151">Nossa Caixa</option>
+                                                <option value="175">Banco Finasa</option>
+                                                <option value="184">Banco Itaú BBA</option>
+                                                <option value="204">American Express Bank</option>
+                                                <option value="208">Banco Pactual</option>
+                                                <option value="212">Banco Matone</option>
+                                                <option value="213">Banco Arbi</option>
+                                                <option value="214">Banco Dibens</option>
+                                                <option value="217">Banco Joh Deere</option>
+                                                <option value="218">Banco Bonsucesso</option>
+                                                <option value="222">Banco Calyon Brasil</option>
+                                                <option value="224">Banco Fibra</option>
+                                                <option value="225">Banco Brascan</option>
+                                                <option value="229">Banco Cruzeiro</option>
+                                                <option value="230">Unicard</option>
+                                                <option value="233">Banco GE Capital</option>
+                                                <option value="237">Bradesco</option>
+                                                <option value="241">Banco Clássico</option>
+                                                <option value="243">Banco Stock Máxima</option>
+                                                <option value="246">Banco ABC Brasil</option>
+                                                <option value="248">Banco Boavista Interatlântico</option>
+                                                <option value="249">Investcred Unibanco</option>
+                                                <option value="250">Banco Schahin</option>
+                                                <option value="252">Fininvest</option>
+                                                <option value="254">Paraná Banco</option>
+                                                <option value="263">Banco Cacique</option>
+                                                <option value="265">Banco Fator</option>
+                                                <option value="266">Banco Cédula</option>
+                                                <option value="300">Banco de la Nación Argentina</option>
+                                                <option value="318">Banco BMG</option>
+                                                <option value="320">Banco Industrial e Comercial</option>
+                                                <option value="356">ABN Amro Real</option>
+                                                <option value="341">Itau</option>
+                                                <option value="347">Sudameris</option>
+                                                <option value="351">Banco Santander</option>
+                                                <option value="353">Banco Santander Brasil</option>
+                                                <option value="366">Banco Societe Generale Brasil</option>
+                                                <option value="370">Banco WestLB</option>
+                                                <option value="376">JP Morgan</option>
+                                                <option value="389">Banco Mercantil do Brasil</option>
+                                                <option value="394">Banco Mercantil de Crédito</option>
+                                                <option value="399">HSBC</option>
+                                                <option value="409">Unibanco</option>
+                                                <option value="412">Banco Capital</option>
+                                                <option value="422">Banco Safra</option>
+                                                <option value="453">Banco Rural</option>
+                                                <option value="456">Banco Tokyo Mitsubishi UFJ</option>
+                                                <option value="464">Banco Sumitomo Mitsui Brasileiro</option>
+                                                <option value="477">Citibank</option>
+                                                <option value="479">Itaubank (antigo Bank Boston)</option>
+                                                <option value="487">Deutsche Bank</option>
+                                                <option value="488">Banco Morgan Guaranty</option>
+                                                <option value="492">Banco NMB Postbank</option>
+                                                <option value="494">Banco la República Oriental del Uruguay</option>
+                                                <option value="495">Banco La Provincia de Buenos Aires</option>
+                                                <option value="505">Banco Credit Suisse</option>
+                                                <option value="600">Banco Luso Brasileiro</option>
+                                                <option value="604">Banco Industrial</option>
+                                                <option value="610">Banco VR</option>
+                                                <option value="611">Banco Paulista</option>
+                                                <option value="612">Banco Guanabara</option>
+                                                <option value="613">Banco Pecunia</option>
+                                                <option value="623">Banco Panamericano</option>
+                                                <option value="626">Banco Ficsa</option>
+                                                <option value="630">Banco Intercap</option>
+                                                <option value="633">Banco Rendimento</option>
+                                                <option value="634">Banco Triângulo</option>
+                                                <option value="637">Banco Sofisa</option>
+                                                <option value="638">Banco Prosper</option>
+                                                <option value="643">Banco Pine</option>
+                                                <option value="652">Itaú Holding Financeira</option>
+                                                <option value="653">Banco Indusval</option>
+                                                <option value="654">Banco A.J. Renner</option>
+                                                <option value="655">Banco Votorantim</option>
+                                                <option value="707">Banco Daycoval</option>
+                                                <option value="719">Banif</option>
+                                                <option value="721">Banco Credibel</option>
+                                                <option value="734">Banco Gerdau</option>
+                                                <option value="735">Banco Pottencial</option>
+                                                <option value="738">Banco Morada</option>
+                                                <option value="739">Banco Galvão de Negócios</option>
+                                                <option value="740">Banco Barclays</option>
+                                                <option value="741">BRP</option>
+                                                <option value="743">Banco Semear</option>
+                                                <option value="745">Banco Citibank</option>
+                                                <option value="746">Banco Modal</option>
+                                                <option value="747">Banco Rabobank International</option>
+                                                <option value="748">Banco Cooperativo Sicredi</option>
+                                                <option value="749">Banco Simples</option>
+                                                <option value="751">Dresdner Bank</option>
+                                                <option value="752">BNP Paribas</option>
+                                                <option value="753">Banco Comercial Uruguai</option>
+                                                <option value="755">Banco Merrill Lynch</option>
+                                                <option value="756">Banco Cooperativo do Brasil</option>
+                                                <option value="757">KEB</option>
+                                                <optgroup>INTERNACIONAIS</optgroup>
+                                                <option value="077">NATIONAL COMMERCIAL BANK</option>
+                                            </select>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title" style="font-size:10px; line-height: 20px;">Qual o seu banco?</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" type="text" name="Agencia" placeholder="Agência">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" type="text" name="Conta" placeholder="Conta">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input onKeyPress="if (this.value.length == 14 || event.keyCode < 48 || event.keyCode > 57) { return false; } debugger;" type="number" inputmode="numeric" pattern="[0-9]*" class="input-index" name="cpf" value="" id="cpf" placeholder="CPF ou CNPJ">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div style="padding: 0px 20px 20px 20px;
+    width: 311px;
+    margin: 0 auto;">
+                            <div style="margin-bottom:20px;">
+                                <span style="cursor:pointer;color:var(--primary-color); margin-left:10px" class="link external" target="_blank"  href="#" onclick="window.open('{{js "biblioteca.get('conduta')"}}', '_system');">
+                                    Manual de conduta
+                                </span>
+                            </div>
+                            <div style="margin-bottom:20px;">
+                                <span style="cursor:pointer;color:var(--primary-color); margin-left:10px" class="link external" target="_blank"  href="#" onclick="window.open('{{js "biblioteca.get('politica_trabalhar')"}}', '_system');">
+                                    Politica de privacidade
+                                </span>
+                            </div>
+
+                            <div>
+                                <input id="aceite" type="checkbox" /><span style="cursor:pointer; color:var(--primary-color); margin-left:10px" class="link external" target="_blank" href="#" onclick="window.open('{{js "biblioteca.get('termo_uso_trabalhar')"}}', '_system');">Li e concordo com os termos de uso</span>
+                                <style>
+                                    input[type=checkbox] {
+                                        -ms-transform: scale(2);
+                                        -moz-transform: scale(2);
+                                        -webkit-transform: scale(2);
+                                        -o-transform: scale(2);
+                                        padding: 10px;
+                                    }
+                                </style>
+                            </div>
+                        </div>
+                        <div class="row btn-form-group margin-bottom-10 margin-top-10">
+                            <div class="col-100">
+                                <div id="btn_trabalhar" class="buton">Salvar</div>
+                            </div>
+                            <!--<div class="col-50">
+                                <div href="restaurants.html" class="buton-facebook">Facebook</div>
+                            </div>-->
+                        </div>
+                    </formtrabalhar>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

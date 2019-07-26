@@ -1,0 +1,149 @@
+{
+  "telefone": "(11) 94169-9879",
+  "celular": "+551194169-9879",
+  "lat": -7.121215299999,
+  "lng": -34.826907300000,
+  "endereco": "Rua Juíz Amaro Bezerra,   - João Pessoa",
+  "delivery": true,
+  "balcao": false,
+  "correios": false,
+  "versao": 17,
+  "id": 77,
+  "nome": "Kanpai Sushi Temaki e Cia.",
+  "external_id": null,
+  "tipos": [
+    {
+      "id": 981,
+      "nome": "Combinados ",
+      "background": null,
+      "background_itype": null,
+      "ativo": true,
+      "buscavel": true,
+      "external_id": 0,
+      "ordem": null,
+      "produto": [
+        {
+          "id": 18430,
+          "nome": "Só Salmão - 16 unidades",
+          "agenda_id": null,
+          "estrela": "<i class='icon-star-full estrelas activestar'></i><i class='icon-star-full estrelas activestar'></i><i class='icon-star-full estrelas activestar'></i><i class='icon-star-full estrelas activestar'></i><i class='icon-star-full estrelas activestar'></i>",
+          "icone": "",
+          "preco": 28.90,
+          "redirect": "montagem",
+          "descricao": "16 und - 10 hossomaki salmão, 6 niguiri salmão ",
+          "administrador_id": null,
+          "observacao": null,
+          "valor": null,
+          "destaque": 9999,
+          "duracao": null,
+          "estoque": "Estoque ilimitado",
+          "external_id": null,
+          "unidade": null,
+          "periodo": null,
+          "caracteristicas": [],
+          "caracteristica_ids": "",
+          "montagem": [
+            {
+              "id": 6524,
+              "nome": "Complementos",
+              "ordem": null,
+              "max": 5,
+              "min": 0,
+              "preco": 100.00,
+              "external_id": null,
+              "complemento": null
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "grupo_do_pagamento": [
+    {
+      "pagamento": [
+        {
+          "bandeira": null,
+          "compra": [],
+          "id": 281,
+          "nome": "Cartão de Crédito",
+          "taxa": 2.00,
+          "grupo_do_pagamento_id": 88,
+          "bandeira_id": null,
+          "place_id": 143499885722093,
+          "transacao": 4,
+          "external_id": null,
+          "icone": null,
+          "icone_itype": null
+        }
+      ],
+      "id": 88,
+      "nome": "Pague Online",
+      "place_id": 143499885722093,
+      "app": null
+    },
+    {
+      "pagamento": [
+        {
+          "bandeira": null,
+          "compra": [],
+          "id": 277,
+          "nome": "Dinheiro",
+          "taxa": null,
+          "grupo_do_pagamento_id": 89,
+          "bandeira_id": null,
+          "place_id": 143499885722093,
+          "transacao": 1,
+          "external_id": null,
+          "icone": null,
+          "icone_itype": null
+        },
+        {
+          "bandeira": null,
+          "compra": [],
+          "id": 278,
+          "nome": "Cartão de Crédito",
+          "taxa": 2.00,
+          "grupo_do_pagamento_id": 89,
+          "bandeira_id": null,
+          "place_id": 143499885722093,
+          "transacao": 2,
+          "external_id": null,
+          "icone": null,
+          "icone_itype": null
+        },
+        {
+          "bandeira": null,
+          "compra": [],
+          "id": 279,
+          "nome": "Cartão de Débito",
+          "taxa": 0.00,
+          "grupo_do_pagamento_id": 89,
+          "bandeira_id": null,
+          "place_id": 143499885722093,
+          "transacao": 3,
+          "external_id": null,
+          "icone": null,
+          "icone_itype": null
+        },
+        {
+          "bandeira": null,
+          "compra": [],
+          "id": 280,
+          "nome": "Vale Refeição",
+          "taxa": 0.00,
+          "grupo_do_pagamento_id": 89,
+          "bandeira_id": null,
+          "place_id": 143499885722093,
+          "transacao": 5,
+          "external_id": null,
+          "icone": null,
+          "icone_itype": null
+        }
+      ],
+      "id": 89,
+      "nome": "Pague na Entrega",
+      "place_id": 143499885722093,
+      "app": null
+    }
+  ]
+}

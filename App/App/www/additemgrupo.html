@@ -1,0 +1,40 @@
+﻿<div class="pages">
+    <div data-page="additemgrupo" class="page">
+        <div class="navbar background-creait">
+            <div class="navbar-inner margin-bottom-20">
+                <div class="left"><a class="back link" onclick="creait.redirect('grupo')"> <i class="f7-icons icone-voltar" style="margin-right: 10px;">chevron_left</i></a></div>
+                <div class="center">Adicionar Item</div>
+            </div>
+        </div>
+        <div class="page-content text-center">
+            <div class="page-content" id="app-cover" style="overflow: hidden;">
+
+                <div style="margin-top: 50px;">
+                    <div class="list-block">
+                        <ul>
+                            {{#each meusitens}}
+                            <li>
+                                <label class="label-checkbox item-content">
+                                    <!-- Checked by default -->
+                                    <input type="checkbox" name="itens" class="itens" value="{{id}}">
+                                    <div class="item-media">
+                                        <i class="icon icon-form-checkbox"></i>
+                                    </div>
+                                    <div class="item-inner">
+                                        <div class="item-title">{{nome}}</div>
+                                    </div>
+                                </label>
+                            </li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                    <div class="row btn-form-group margin-bottom-10 margin-top-40">
+                        <div class="col-100">
+                            <div id="btn_cadastra_item_grupo" class="buton">Cadastrar</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,294 @@
+﻿<div class="pages">
+    <div data-page="mesa" class="page navbar-fixed">
+
+
+        <div class="imagem-background no-searchbar" style="background-color:var(--textbox-color)">
+
+            {{#js_if "this.mesa.status == 'S'"}}
+            {{#js_if "controller.login.get().perfil_id == 5"}}
+            <div onclick="creait.redirect('mesas')" class="contafechada">
+                MESA EM CONTA
+            </div>
+            {{else}}
+            <div class="contafechada">
+                CONTA FECHADA
+            </div>
+            {{/js_if}}
+            <style>
+                .contafechada {
+                    text-align: center;
+                    font-weight: 700;
+                    font-size: 20px;
+                    cursor: pointer;
+                    background-color: #f44336;
+                    color: white;
+                    padding: 4px;
+                }
+            </style>
+            {{/js_if}}
+
+
+            <div class="background-creait">
+
+                <span class="icon-spoon-knife" style="float:left; font-size: 26px;  padding: 12px;"></span>
+                <span id="pedido" style="line-height: 17px; margin-top: 11px; float:left; font-weight: 700;
+    font-size: 20px; ">
+                    {{mesa.nome}}
+                </span>
+
+                {{#js_if "controller.login.get().perfil_id == 5"}}
+                <a href="#" class="link open-panel" style="margin-top:3px;
+    float: right;
+">
+                    <img src="icons/garcom.svg" style="    width: 30px;
+    margin-right: 5px;
+    margin-top: -1px;" />
+
+                    <span style="float:right; margin-top: -1px;float: right;text-align: right;line-height: 15px;">
+                        <div style="font-size:10px">GARÇOM</div>
+                        <div class="nomegarcom" style="font-size:14px">
+                        </div>
+                    </span>
+                </a>
+
+                {{/js_if}}
+                {{#js_if "controller.login.get().perfil_id == 3"}}
+                <div onclick="creait.post('notificacao', { descricao: 'Mesa 1', titulo: 'Chamando Garçom' }, function (a) { myApp.alert('Em instantes um garçom irá lhe atender', 'Aguarde'); creait.loader(false); })" style="padding: 0px 0px 0px 8px; margin-top:-2px;cursor:pointer;
+    float: right;    margin: 10px;
+">
+                    <img src="icons/garcom.svg" class="animated pulse" style="width:30px;" />
+
+                    <span style="float:right; margin-top: 3px;float: right;text-align: right;line-height: 15px;">
+                        <div style="font-size:15px">Chamar</div>
+                        <div style="font-size:12px">Garçom</div>
+                    </span>
+                </div>
+                {{/js_if}}
+            </div>
+
+            <div class="list-block">
+                <div class="list-group">
+                    <div class="list-block list-block-search searchbar-found" style="height: calc(100% -
+                    {{#js_if "controller.login.get().perfil_id == 5"}}
+                     169px
+                     {{else}}
+                     132px
+                     {{/js_if}});
+    overflow: auto;
+    position: absolute; width: 100%;">
+                        <ul>
+                            <div class="comanda_numero">LISTA DE PRODUTOS</div>
+                            {{#each mesa.produtos}}
+                            <li class="produto_mesa" produto_id="{{id}}" style="padding:10px;border-bottom: 1px dotted var(--textbox-color-hover);">
+
+
+                                <div style="float:left; cursor:pointer" onclick="if (controller.login.get().perfil_id == 3) { return false; } $(this).closest('.produto_mesa').toggleClass('hover'); $('#selecionado').css('display', $('li.hover').length == 0 ? 'none' : 'block'); ">
+                                    <div style="    font-size: 9px;
+    font-weight: 700;
+    margin-left: 5px;
+
+">
+                                        {{js "new Date(this.horario).getHours()+':'+((new Date(this.horario).getMinutes()+'').length == 1 ? '0'+new Date(this.horario).getMinutes() : new Date(this.horario).getMinutes())"}} - {{garcom}}
+                                        {{js "(this.lugar == '' || this.lugar == null || controller.login.get().perfil_id == 3) ? '' : ' - REFERÊNCIA: '+this.lugar+'<br>'"}}
+                                    </div>
+                                    <div class="item-title fonte_cinza" style="font-weight: bold; margin-left: 5px;    font-size: 14px; font-weight:700">
+                                        {{js_if "controller.login.get().perfil_id == 3"}}
+                                        {{js "this.balanca == true ? 1 : this.quantidade"}}x
+                                        {{/js_if}}{{nome}}
+
+                                        <div class="item-title fonte_cinza" style="margin-left: 5px; white-space: normal;font-size: 10px;">
+                                            {{#each montagem}}
+                                            {{#js_if "this.complemento.length > 0"}}
+                                            {{#each complemento}}
+                                            <span status="{{status}}" style="cursor:pointer" {{../nome}}='{{js "JSON.stringify(this)"}}'> ● {{nome}}<span formatMoney>{{preco}}</span></span>
+                                            {{/each}}
+                                            {{/js_if}}
+                                            {{/each}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <span style="float:right">
+                                    {{#js_if "this.desconto < 0"}}
+                                    <div style="text-align:center; font-size:12px" formatMoney>{{js "this.desconto"}}</div>
+                                    {{/js_if}}
+                                    <div class="link-deeporange" style="text-align:center;font-weight: 700; font-size:16px" formatMoney>{{js "this.preco * this.quantidade"}}</div>
+
+                                    {{#js_if "controller.login.get().perfil_id == 5"}}
+                                    {{#js_if "this.balanca != true"}}
+                                    <div style="clear:both"></div>
+                                    <i class="f7-icons remover" pedido_id='{{id}}' style="font-size: 18px;margin:0px">delete_round_fill</i>
+                                    <span style="font-size: 18px;
+    text-align: center;
+    padding: 0px 5px;">{{quantidade}}</span>
+                                    <i class="f7-icons adicionar" pedido_id='{{id}}' style="margin-left: 0px; margin-right: 0px; font-size:22px">add_round_fill</i>
+                                    {{else}}
+
+                                    <span class="buton unidade" pedido_id='{{id}}' style="    padding: 7px 10px 6px;
+    float: right;
+    line-height: 17px; font-size:12px">
+                                        <span style="font-size: 16px;
+    text-align: center;
+    padding: 0px;" class="quantidade_carrinho">{{js "this.quantidade"}}</span>
+                                        <span>{{this.unidade}}</span>
+                                    </span>
+                                    {{/js_if}}
+                                    {{/js_if}}
+                                </span>
+                                <div style="clear:both"></div>
+                            </li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </div>
+                <div style="clear:both"></div>
+            </div>
+            <div class="fontextra mesatotal" style="position:fixed; bottom:0px; width:100%; font-size: 12px;padding: 0px; text-align:center">
+
+
+                <div style="clear:both"></div>
+                {{#js_if "this.mesa.status == 'S'"}}
+                {{#js_if "controller.login.get().perfil_id == 5"}}
+                <div id="fechar_conta" class="buton" style="border-radius:0px; background-color:#009688">
+                    <i class="icon-lock"></i>
+                    REABRIR
+                </div>
+                {{else}}
+                <div class="buton" style="border-radius:0px; background-color:#009688">
+                    <span class="icon-coin-dollar">
+
+                    </span>
+                    AGUARDANDO PAGAMENTO
+                </div>
+                {{/js_if}}
+                {{/js_if}}
+                {{#js_if "this.mesa.status != 'S'"}}
+
+                <style>
+                    .calculos {
+                        border-right: 0.5px solid rgba(0, 0, 0, 0.30);
+                        border-top: 0.5px solid rgba(0, 0, 0, 0.30);
+                        background-color: var(--secondary-color);
+                        color: var(--secondary-font-color);
+                        width: calc(33.33% - 0.5px);
+                        float: left;
+                        padding: 5px 0px;
+                        line-height: 12px;
+                        height: 27px;
+                    }
+
+                    .valordestaque {
+                        font-weight: 700;
+                        letter-spacing: 1px;
+                        font-size: 14px;
+                    }
+                </style>
+                <div style="height:100px;
+                    {{#js_if "controller.login.get().perfil_id == 5"}}
+                     height: 63px;
+                     {{else}}
+                     height:37px;
+                     {{/js_if}}
+    text-align: center;">
+
+                    {{#js_if "controller.login.get().perfil_id == 5"}}
+                    <div class="calculos" style="">
+
+                        <div style="font-size:10px;  ">SUBTOTAL</div>    <span formatMoney="R$ 0,00" class="valordestaque">
+                            {{mesa.subtotal}}
+                        </span>
+                    </div>
+                    <div id="servico" class="calculos" style="cursor:pointer">
+                        <div style="font-size:10px;   line-height: 15px;">{{mesa.servico}}% SERVIÇO</div>
+
+                        <span formatMoney="R$ 0,00" class="valordestaque">{{js "this.mesa.subtotal * this.mesa.servico / 100"}}</span>
+                    </div>
+                    <div id="desconto" class="calculos" style="cursor:pointer;">
+                        <div style="font-size:10px;   ">DESCONTO</div>
+
+                        <span formatMoney="R$ 0,00" class="valordestaque">{{mesa.desconto}}</span>
+                    </div>
+                    {{else}}
+
+                    {{/js_if}}
+                    <div id="qtd_pessoas" class="calculos" style=" cursor:pointer;width:calc(50% - 0.5px);background-color:var(--font-light-color) !important">
+                        <div style="font-size:10px;">{{mesa.lugares}} PESSOA(S)</div>
+                        <span id="valor_parcial" formatMoney="R$ 0,00" class="valordestaque">
+                            {{mesa.total}}
+                        </span>
+                    </div>
+
+                    <div id="total" class="calculos" style="width:calc(50% - 0.5px);background-color:var(--font-light-color) !important">
+
+
+                        {{#js_if "controller.login.get().perfil_id == 5"}}
+                        <div style="font-size:10px; line-height: 15px;">TOTAL</div>
+                        {{else}}
+                        <div style="font-size:10px; line-height: 15px;">TOTAL {{js "this.mesa.servico == 0 ? '' : '+ ' + this.mesa.servico+'%'"}}</div>
+                        {{/js_if}}
+
+                        <span formatMoney="R$ 0,00" class="valordestaque">
+                            {{mesa.total}}
+                        </span>
+
+                    </div>
+                </div>
+
+                <div id="pedirmais" class="buton" style="border-radius:0px;border-radius: 0px;
+    width: calc(50% - 0.5px);    font-size: 12px;
+    line-height: 24px;
+    float: left; border-right: 0.5px solid rgba(0, 0, 0, 0.30)">
+                    <div class="pulse animated infinite">
+                        <span class="icon-plus" style="margin-right: 3px;"></span>
+                        PEDIR MAIS
+                    </div>
+                </div>
+                <div id="selecionado" style="border-radius:0px;border-radius: 0px;
+position:absolute; display:none;    
+    line-height: 24px;
+    float: left; width:100%; bottom:0px">
+                    <div id="transferir" class="buton" style="float:left; width:33.33%;font-size: 10px; background-color:#FF9800">
+                        <span class="icon-shuffle">
+
+                        </span>
+                        Transferir
+                    </div>
+                    <div id="desconto_item" class="buton" style="float:left; width:33.33%; background-color:#009688;font-size: 10px;">
+                        <span class="icon-coin-dollar">
+
+                        </span>
+                        Desconto
+                    </div>
+                    <div id="excluir_item" class="buton" style="float:left; width:33.33%; background-color:#F44336;font-size: 10px;">
+                        <span class="icon-cross">
+
+                        </span>
+                        Excluir
+                    </div>
+                </div>
+                {{#js_if "controller.login.get().perfil_id == 3"}}
+                <div id="fechar_conta_notificar" onclick="creait.post('notificacao', { descricao: 'Mesa 1', titulo: 'Chamando Garçom' }, function (a) { myApp.alert('Em instantes um garçom irá trazer a conta', 'CONTA FINALIZADA'); controller.login.set(null); creait.redirect('entrar'); });" class="buton" style="border-radius:0px;border-radius: 0px;
+     width:  calc(50% - 0.5px);    font-size: 12px;
+    line-height: 24px;
+    float: left; border-right: 0.5px solid rgba(0, 0, 0, 0.30);">
+                    <span class="icon-pencil2"></span>
+                    PEDIR A CONTA
+                </div>
+                {{else}}
+                <div id="fechar_conta" class="buton" style="border-radius:0px;border-radius: 0px;
+     width:  calc(50% - 0.5px);    font-size: 12px;
+    line-height: 24px;
+    float: left; border-right: 0.5px solid rgba(0, 0, 0, 0.30);">
+                    <span class="icon-pencil2">
+                    </span>
+                    FECHAR CONTA
+                </div>
+                {{/js_if}}
+                {{/js_if}}
+            </div>
+
+            </>
+        </div>
+    </div>
+
+
+

@@ -1,0 +1,2054 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ModelAltec" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="MESAS">
+    <Key>
+      <PropertyRef Name="Codigo" />
+      <PropertyRef Name="loja" />
+    </Key>
+    <Property Name="Codigo" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Descricao" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+    <Property Name="loja" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="statusExporta" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Lugares" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="Servico" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Impressora" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+    <Property Name="Pessoas" Type="Double" />
+    <Property Name="StatusIMP" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Vendedor" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Controle" Type="Int32" />
+    <Property Name="ContaImpressa" Type="Int32" />
+    <Property Name="HorarioAbertura" Type="DateTime" Precision="3" />
+    <Property Name="HorarioFechamento" Type="DateTime" Precision="3" />
+    <Property Name="Cliente" Type="Int32" />
+    <Property Name="UltimoConsumo" Type="DateTime" Precision="3" />
+    <Property Name="Caixinha" Type="Double" />
+    <Property Name="Usuariodesconto" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="estacionamento" Type="Double" />
+    <Property Name="carros" Type="Int32" />
+    <Property Name="TabelaServico" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="MOTIVODESC" Type="Int32" />
+    <Property Name="NUM_COUVERT" Type="Int32" />
+    <Property Name="CODPRACA" Type="Int32" />
+    <Property Name="PESSOAS_INICIAL" Type="Int32" />
+    <Property Name="COO" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="SeqECF" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="entrada" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="consumacao" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="couvert" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="valservico" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="usuarioCheckin" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="CODPROMO" Type="Int32" />
+    <Property Name="JUNCAOMESA" Type="Int32" />
+    <Property Name="STATUS_WEB" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="bMesaDividida" Type="Boolean" />
+    <Property Name="IECF" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="COD_PRE_CONTA" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="CONFIRM_PRINTER_TABLE" Type="Boolean" Nullable="false" />
+    <Property Name="MESAS_FINAN_GUID" Type="Guid" />
+    <NavigationProperty Name="LOJA1" Relationship="ModelAltec.FK_Mesas_X_Loja" FromRole="MESAS" ToRole="LOJA" />
+  </EntityType>
+  <EntityContainer Name="altec" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="MESAS" EntityType="Self.MESAS" />
+    <EntitySet Name="CLIENTES" EntityType="ModelAltec.CLIENTES" />
+    <EntitySet Name="COMBINADO" EntityType="ModelAltec.COMBINADO" />
+    <EntitySet Name="DETALHES_PAGAMENTO" EntityType="ModelAltec.DETALHES_PAGAMENTO" />
+    <EntitySet Name="IMPRESSO" EntityType="ModelAltec.IMPRESSO" />
+    <EntitySet Name="ITENSPED" EntityType="ModelAltec.ITENSPED" />
+    <EntitySet Name="ITENSPED_COMBINADO" EntityType="ModelAltec.ITENSPED_COMBINADO" />
+    <EntitySet Name="ITENSPED_COMBINADO_COMPLEMENTO" EntityType="ModelAltec.ITENSPED_COMBINADO_COMPLEMENTO" />
+    <EntitySet Name="ITENSPED_COMPLEMENTO" EntityType="ModelAltec.ITENSPED_COMPLEMENTO" />
+    <EntitySet Name="LOCALIMP" EntityType="ModelAltec.LOCALIMP" />
+    <EntitySet Name="LOJA" EntityType="ModelAltec.LOJA" />
+    <EntitySet Name="PEDIDO" EntityType="ModelAltec.PEDIDO" />
+    <EntitySet Name="PedidoMesa" EntityType="ModelAltec.PedidoMesa" />
+    <EntitySet Name="PEDIDOMESA_COMBINADO" EntityType="ModelAltec.PEDIDOMESA_COMBINADO" />
+    <EntitySet Name="PEDIDOMESA_COMBINADO_COMPLEMENTO" EntityType="ModelAltec.PEDIDOMESA_COMBINADO_COMPLEMENTO" />
+    <EntitySet Name="PEDIDOMESA_COMPLEMENTO" EntityType="ModelAltec.PEDIDOMESA_COMPLEMENTO" />
+    <EntitySet Name="PEDIDOMESAB" EntityType="ModelAltec.PEDIDOMESAB" />
+    <EntitySet Name="PEDIDOMESAB_COMBINADO" EntityType="ModelAltec.PEDIDOMESAB_COMBINADO" />
+    <EntitySet Name="PEDIDOMESAB_COMBINADO_COMPLEMENTO" EntityType="ModelAltec.PEDIDOMESAB_COMBINADO_COMPLEMENTO" />
+    <EntitySet Name="PEDIDOMESAB_COMPLEMENTO" EntityType="ModelAltec.PEDIDOMESAB_COMPLEMENTO" />
+    <EntitySet Name="PREPEDIDOMESA_COMBINADO" EntityType="ModelAltec.PREPEDIDOMESA_COMBINADO" />
+    <EntitySet Name="PREPEDIDOMESA_COMPLEMENTO" EntityType="ModelAltec.PREPEDIDOMESA_COMPLEMENTO" />
+    <EntitySet Name="Produto" EntityType="ModelAltec.Produto" />
+    <EntitySet Name="PREPEDIDOMESA" EntityType="ModelAltec.PREPEDIDOMESA" />
+    <EntitySet Name="PREPEDIDOMESA_COMBINADO_COMPLEMENTO" EntityType="ModelAltec.PREPEDIDOMESA_COMBINADO_COMPLEMENTO" />
+    <EntitySet Name="TBCONTA" EntityType="ModelAltec.TBCONTA" />
+    <AssociationSet Name="fk_localImp_impresso" Association="ModelAltec.fk_localImp_impresso">
+      <End Role="IMPRESSO" EntitySet="IMPRESSO" />
+      <End Role="LOCALIMP" EntitySet="LOCALIMP" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ITENSPED_COMBINADO_ITENSPED" Association="ModelAltec.FK_ITENSPED_COMBINADO_ITENSPED">
+      <End Role="ITENSPED" EntitySet="ITENSPED" />
+      <End Role="ITENSPED_COMBINADO" EntitySet="ITENSPED_COMBINADO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ITENSPED_COMPLEMENTO_ITENSPED" Association="ModelAltec.FK_ITENSPED_COMPLEMENTO_ITENSPED">
+      <End Role="ITENSPED" EntitySet="ITENSPED" />
+      <End Role="ITENSPED_COMPLEMENTO" EntitySet="ITENSPED_COMPLEMENTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_itensPed_PEDIDO" Association="ModelAltec.FK_itensPed_PEDIDO">
+      <End Role="PEDIDO" EntitySet="PEDIDO" />
+      <End Role="ITENSPED" EntitySet="ITENSPED" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ITENSPED_COMBINADO_COMPLEMENTO_ITENSPED_COMBINADO" Association="ModelAltec.FK_ITENSPED_COMBINADO_COMPLEMENTO_ITENSPED_COMBINADO">
+      <End Role="ITENSPED_COMBINADO" EntitySet="ITENSPED_COMBINADO" />
+      <End Role="ITENSPED_COMBINADO_COMPLEMENTO" EntitySet="ITENSPED_COMBINADO_COMPLEMENTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ITENSPED_COMBINADO_PRODUTO" Association="ModelAltec.FK_ITENSPED_COMBINADO_PRODUTO">
+      <End Role="Produto" EntitySet="Produto" />
+      <End Role="ITENSPED_COMBINADO" EntitySet="ITENSPED_COMBINADO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ITENSPED_COMBINADO_COMPLEMENTO_LOJA" Association="ModelAltec.FK_ITENSPED_COMBINADO_COMPLEMENTO_LOJA">
+      <End Role="LOJA" EntitySet="LOJA" />
+      <End Role="ITENSPED_COMBINADO_COMPLEMENTO" EntitySet="ITENSPED_COMBINADO_COMPLEMENTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ITENSPED_COMBINADO_COMPLEMENTO_PRODUTO" Association="ModelAltec.FK_ITENSPED_COMBINADO_COMPLEMENTO_PRODUTO">
+      <End Role="Produto" EntitySet="Produto" />
+      <End Role="ITENSPED_COMBINADO_COMPLEMENTO" EntitySet="ITENSPED_COMBINADO_COMPLEMENTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ITENSPED_COMPLEMENTO_LOJA" Association="ModelAltec.FK_ITENSPED_COMPLEMENTO_LOJA">
+      <End Role="LOJA" EntitySet="LOJA" />
+      <End Role="ITENSPED_COMPLEMENTO" EntitySet="ITENSPED_COMPLEMENTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ITENSPED_COMPLEMENTO_PRODUTO" Association="ModelAltec.FK_ITENSPED_COMPLEMENTO_PRODUTO">
+      <End Role="Produto" EntitySet="Produto" />
+      <End Role="ITENSPED_COMPLEMENTO" EntitySet="ITENSPED_COMPLEMENTO" />
+    </AssociationSet>
+    <AssociationSet Name="fk_localImp_produto" Association="ModelAltec.fk_localImp_produto">
+      <End Role="Produto" EntitySet="Produto" />
+      <End Role="LOCALIMP" EntitySet="LOCALIMP" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Mesas_X_Loja" Association="ModelAltec.FK_Mesas_X_Loja">
+      <End Role="LOJA" EntitySet="LOJA" />
+      <End Role="MESAS" EntitySet="MESAS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PEDIDOMESA_COMBINADO_COMPLEMENTO_LOJA" Association="ModelAltec.FK_PEDIDOMESA_COMBINADO_COMPLEMENTO_LOJA">
+      <End Role="LOJA" EntitySet="LOJA" />
+      <End Role="PEDIDOMESA_COMBINADO_COMPLEMENTO" EntitySet="PEDIDOMESA_COMBINADO_COMPLEMENTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PEDIDOMESA_COMPLEMENTO_LOJA" Association="ModelAltec.FK_PEDIDOMESA_COMPLEMENTO_LOJA">
+      <End Role="LOJA" EntitySet="LOJA" />
+      <End Role="PEDIDOMESA_COMPLEMENTO" EntitySet="PEDIDOMESA_COMPLEMENTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PEDIDOMESAB_COMBINADO_COMPLEMENTO_LOJA" Association="ModelAltec.FK_PEDIDOMESAB_COMBINADO_COMPLEMENTO_LOJA">
+      <End Role="LOJA" EntitySet="LOJA" />
+      <End Role="PEDIDOMESAB_COMBINADO_COMPLEMENTO" EntitySet="PEDIDOMESAB_COMBINADO_COMPLEMENTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PEDIDOMESAB_COMPLEMENTO_LOJA" Association="ModelAltec.FK_PEDIDOMESAB_COMPLEMENTO_LOJA">
+      <End Role="LOJA" EntitySet="LOJA" />
+      <End Role="PEDIDOMESAB_COMPLEMENTO" EntitySet="PEDIDOMESAB_COMPLEMENTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProdutoEstoque_X_Loja" Association="ModelAltec.FK_ProdutoEstoque_X_Loja">
+      <End Role="LOJA" EntitySet="LOJA" />
+      <End Role="Produto" EntitySet="Produto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PEDIDOMESA_COMBINADO_PEDIDOMESA" Association="ModelAltec.FK_PEDIDOMESA_COMBINADO_PEDIDOMESA">
+      <End Role="PedidoMesa" EntitySet="PedidoMesa" />
+      <End Role="PEDIDOMESA_COMBINADO" EntitySet="PEDIDOMESA_COMBINADO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PEDIDOMESA_COMPLEMENTO_PEDIDOMESA" Association="ModelAltec.FK_PEDIDOMESA_COMPLEMENTO_PEDIDOMESA">
+      <End Role="PedidoMesa" EntitySet="PedidoMesa" />
+      <End Role="PEDIDOMESA_COMPLEMENTO" EntitySet="PEDIDOMESA_COMPLEMENTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PEDIDOMESA_COMBINADO_COMPLEMENTO_PEDIDOMESA_COMBINADO" Association="ModelAltec.FK_PEDIDOMESA_COMBINADO_COMPLEMENTO_PEDIDOMESA_COMBINADO">
+      <End Role="PEDIDOMESA_COMBINADO" EntitySet="PEDIDOMESA_COMBINADO" />
+      <End Role="PEDIDOMESA_COMBINADO_COMPLEMENTO" EntitySet="PEDIDOMESA_COMBINADO_COMPLEMENTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PEDIDOMESA_COMBINADO_PRODUTO" Association="ModelAltec.FK_PEDIDOMESA_COMBINADO_PRODUTO">
+      <End Role="Produto" EntitySet="Produto" />
+      <End Role="PEDIDOMESA_COMBINADO" EntitySet="PEDIDOMESA_COMBINADO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PEDIDOMESA_COMBINADO_COMPLEMENTO_PRODUTO" Association="ModelAltec.FK_PEDIDOMESA_COMBINADO_COMPLEMENTO_PRODUTO">
+      <End Role="Produto" EntitySet="Produto" />
+      <End Role="PEDIDOMESA_COMBINADO_COMPLEMENTO" EntitySet="PEDIDOMESA_COMBINADO_COMPLEMENTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PEDIDOMESA_COMPLEMENTO_PRODUTO" Association="ModelAltec.FK_PEDIDOMESA_COMPLEMENTO_PRODUTO">
+      <End Role="Produto" EntitySet="Produto" />
+      <End Role="PEDIDOMESA_COMPLEMENTO" EntitySet="PEDIDOMESA_COMPLEMENTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PEDIDOMESAB_COMBINADO_PEDIDOMESAB" Association="ModelAltec.FK_PEDIDOMESAB_COMBINADO_PEDIDOMESAB">
+      <End Role="PEDIDOMESAB" EntitySet="PEDIDOMESAB" />
+      <End Role="PEDIDOMESAB_COMBINADO" EntitySet="PEDIDOMESAB_COMBINADO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PEDIDOMESAB_COMPLEMENTO_PEDIDOMESAB" Association="ModelAltec.FK_PEDIDOMESAB_COMPLEMENTO_PEDIDOMESAB">
+      <End Role="PEDIDOMESAB" EntitySet="PEDIDOMESAB" />
+      <End Role="PEDIDOMESAB_COMPLEMENTO" EntitySet="PEDIDOMESAB_COMPLEMENTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PedidoMesaB_produto_Loja" Association="ModelAltec.FK_PedidoMesaB_produto_Loja">
+      <End Role="Produto" EntitySet="Produto" />
+      <End Role="PEDIDOMESAB" EntitySet="PEDIDOMESAB" />
+    </AssociationSet>
+    <AssociationSet Name="PedidoMesaB_PRODUTO" Association="ModelAltec.PedidoMesaB_PRODUTO">
+      <End Role="Produto" EntitySet="Produto" />
+      <End Role="PEDIDOMESAB" EntitySet="PEDIDOMESAB" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PEDIDOMESAB_COMBINADO_COMPLEMENTO_PEDIDOMESAB_COMBINADO" Association="ModelAltec.FK_PEDIDOMESAB_COMBINADO_COMPLEMENTO_PEDIDOMESAB_COMBINADO">
+      <End Role="PEDIDOMESAB_COMBINADO" EntitySet="PEDIDOMESAB_COMBINADO" />
+      <End Role="PEDIDOMESAB_COMBINADO_COMPLEMENTO" EntitySet="PEDIDOMESAB_COMBINADO_COMPLEMENTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PEDIDOMESAB_COMBINADO_PRODUTO" Association="ModelAltec.FK_PEDIDOMESAB_COMBINADO_PRODUTO">
+      <End Role="Produto" EntitySet="Produto" />
+      <End Role="PEDIDOMESAB_COMBINADO" EntitySet="PEDIDOMESAB_COMBINADO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PEDIDOMESAB_COMBINADO_COMPLEMENTO_PRODUTO" Association="ModelAltec.FK_PEDIDOMESAB_COMBINADO_COMPLEMENTO_PRODUTO">
+      <End Role="Produto" EntitySet="Produto" />
+      <End Role="PEDIDOMESAB_COMBINADO_COMPLEMENTO" EntitySet="PEDIDOMESAB_COMBINADO_COMPLEMENTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PEDIDOMESAB_COMPLEMENTO_PRODUTO" Association="ModelAltec.FK_PEDIDOMESAB_COMPLEMENTO_PRODUTO">
+      <End Role="Produto" EntitySet="Produto" />
+      <End Role="PEDIDOMESAB_COMPLEMENTO" EntitySet="PEDIDOMESAB_COMPLEMENTO" />
+    </AssociationSet>
+    <FunctionImport Name="CREAIT_CATEGORIA" ReturnType="Collection(ModelAltec.CREAIT_CATEGORIA_Result)">
+      <Parameter Name="LOJA_GUID" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="CREAIT_FILIAL" ReturnType="Collection(ModelAltec.CREAIT_FILIAL_Result)">
+      <Parameter Name="LOJA_GUID" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="CREAIT_MESA" ReturnType="Collection(ModelAltec.CREAIT_MESA_Result)">
+      <Parameter Name="MESA_ID" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CREAIT_MESAS" ReturnType="Collection(ModelAltec.CREAIT_MESAS_Result)">
+      <Parameter Name="LOJA_GUID" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="CREAIT_Mesas_Update">
+      <Parameter Name="Codigo" Mode="In" Type="String" />
+      <Parameter Name="UltimoConsumo" Mode="In" Type="DateTime" />
+      <Parameter Name="Vendedor" Mode="In" Type="String" />
+      <Parameter Name="Status" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CREAIT_OBSERVACAO" ReturnType="Collection(ModelAltec.CREAIT_OBSERVACAO_Result)">
+      <Parameter Name="COD_GRUPO" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="creait_pedido_delivery" ReturnType="Collection(ModelAltec.creait_pedido_delivery_Result)" />
+    <FunctionImport Name="CREAIT_PedidoMesaAgrupaLancamentos">
+      <Parameter Name="MESA" Mode="In" Type="String" />
+      <Parameter Name="SESSIONID" Mode="In" Type="String" />
+      <Parameter Name="VENDEDOR" Mode="In" Type="String" />
+      <Parameter Name="LUGAR" Mode="In" Type="String" />
+      <Parameter Name="PRINTER_TABLE_ID" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CREAIT_PERGUNTA" ReturnType="Collection(ModelAltec.CREAIT_PERGUNTA_Result)">
+      <Parameter Name="PRODUCT_GUID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="CREAIT_PRACAS" ReturnType="Collection(ModelAltec.CREAIT_PRACAS_Result)" />
+    <FunctionImport Name="CREAIT_PREPEDIDOMESA_COMPLEMENTO_Insert">
+      <Parameter Name="IdPedidomesa" Mode="In" Type="String" />
+      <Parameter Name="QtdeComplementoProduto" Mode="In" Type="Double" />
+      <Parameter Name="IdLoja" Mode="In" Type="String" />
+      <Parameter Name="IdComplementoProduto" Mode="In" Type="Int32" />
+      <Parameter Name="ObsComplemento" Mode="In" Type="String" />
+      <Parameter Name="ST" Mode="In" Type="String" />
+      <Parameter Name="ValorComplemento" Mode="In" Type="Double" />
+      <Parameter Name="IdPedOrigem" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="CREAIT_PREPEDIDOMESA_Insert">
+      <Parameter Name="Codigomesa" Mode="In" Type="String" />
+      <Parameter Name="Venderdor" Mode="In" Type="String" />
+      <Parameter Name="codProduto" Mode="In" Type="String" />
+      <Parameter Name="Produto" Mode="In" Type="String" />
+      <Parameter Name="Quantidade" Mode="In" Type="String" />
+      <Parameter Name="Horario" Mode="In" Type="DateTime" />
+      <Parameter Name="Lugar" Mode="In" Type="String" />
+      <Parameter Name="Manual" Mode="In" Type="String" />
+      <Parameter Name="versaoAplicativo" Mode="In" Type="String" />
+      <Parameter Name="Observacao" Mode="In" Type="String" />
+      <Parameter Name="ID" Mode="In" Type="Guid" />
+      <Parameter Name="sessionId" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CREAIT_PREPEDIDOMESA_Update">
+      <Parameter Name="Codigomesa" Mode="In" Type="String" />
+      <Parameter Name="Venderdor" Mode="In" Type="String" />
+      <Parameter Name="codProduto" Mode="In" Type="String" />
+      <Parameter Name="Produto" Mode="In" Type="String" />
+      <Parameter Name="Quantidade" Mode="In" Type="String" />
+      <Parameter Name="Horario" Mode="In" Type="DateTime" />
+      <Parameter Name="Lugar" Mode="In" Type="String" />
+      <Parameter Name="Manual" Mode="In" Type="String" />
+      <Parameter Name="versaoAplicativo" Mode="In" Type="String" />
+      <Parameter Name="Observacao" Mode="In" Type="String" />
+      <Parameter Name="ID" Mode="In" Type="Guid" />
+      <Parameter Name="sessionId" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CREAIT_PRODUTO" ReturnType="Collection(ModelAltec.CREAIT_PRODUTO_Result)">
+      <Parameter Name="LOJA_GUID" Mode="In" Type="Guid" />
+      <Parameter Name="GRUPO" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="CREAIT_RESPOSTA" ReturnType="Collection(ModelAltec.CREAIT_RESPOSTA_Result)">
+      <Parameter Name="PERGUNTA_GUID" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="CREAIT_TbConta_Insert" ReturnType="Collection(ModelAltec.CREAIT_TbConta_Insert_Result)">
+      <Parameter Name="CodigoMesa" Mode="In" Type="String" />
+      <Parameter Name="CodVendedor" Mode="In" Type="String" />
+      <Parameter Name="NomeVendedor" Mode="In" Type="String" />
+      <Parameter Name="Horario" Mode="In" Type="DateTime" />
+      <Parameter Name="Status" Mode="In" Type="String" />
+      <Parameter Name="Loja" Mode="In" Type="String" />
+      <Parameter Name="printer_mesa_id" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CREAIT_VENDEDOR" ReturnType="Collection(ModelAltec.CREAIT_VENDEDOR_Result)" />
+    <EntitySet Name="DESBLOQUEIO_MESA" EntityType="ModelAltec.DESBLOQUEIO_MESA" />
+    <EntitySet Name="USUARIO" EntityType="ModelAltec.USUARIO" />
+    <AssociationSet Name="fk_ItensPed_Usuario" Association="ModelAltec.fk_ItensPed_Usuario">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="ITENSPED" EntitySet="ITENSPED" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USUARIO_LOJA" Association="ModelAltec.FK_USUARIO_LOJA">
+      <End Role="LOJA" EntitySet="LOJA" />
+      <End Role="USUARIO" EntitySet="USUARIO" />
+    </AssociationSet>
+    <EntitySet Name="ACESSO" EntityType="ModelAltec.ACESSO" />
+    <AssociationSet Name="fk_usuario_acesso" Association="ModelAltec.fk_usuario_acesso">
+      <End Role="ACESSO" EntitySet="ACESSO" />
+      <End Role="USUARIO" EntitySet="USUARIO" />
+    </AssociationSet>
+    <FunctionImport Name="CREAIT_CONSUMO_MESA" ReturnType="Collection(ModelAltec.CREAIT_CONSUMO_MESA_Result)">
+      <Parameter Name="LOJA_GUID" Mode="In" Type="Guid" />
+      <Parameter Name="CODIGOMESA" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <EntityType Name="CLIENTES">
+    <Key>
+      <PropertyRef Name="CodCli" />
+      <PropertyRef Name="loja" />
+    </Key>
+    <Property Name="CodCli" Type="Int32" Nullable="false" />
+    <Property Name="NomeCli" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="Endereco" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Bairro" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="Complemento" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CEP" Type="String" MaxLength="9" FixedLength="false" Unicode="true" />
+    <Property Name="Cidade" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Estado" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="Telefone" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Ramal" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Nascimento" Type="DateTime" Precision="3" />
+    <Property Name="Referencia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DataCadastro" Type="DateTime" Precision="3" />
+    <Property Name="taxa" Type="Int32" />
+    <Property Name="Guia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="status" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Numero" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="loja" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="ultimacompra" Type="DateTime" Precision="3" />
+    <Property Name="numerocompra" Type="Int32" />
+    <Property Name="sEstadoCivil" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="sObs" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="sCpf" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="sNumCartao" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="CODPROMO" Type="Int32" />
+    <Property Name="COD_ORIGEM" Type="Int32" />
+    <Property Name="INATIVO" Type="Boolean" />
+    <Property Name="PERFIL" Type="Int32" />
+    <Property Name="Status_Cliente" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Reativacao_Cliente" Type="DateTime" Precision="0" />
+    <Property Name="Inativacao_Cliente" Type="DateTime" Precision="0" />
+    <Property Name="tipo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="sexo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="rg" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="LIMITE" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="TELEFONE2" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="basebonus" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="OCORRENCIAS" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="STATUS_WEB" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="ID_DOCUMENTO" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
+    <Property Name="IE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="CodArea" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+    <Property Name="TIPO_CARTAO" Type="Int32" />
+    <Property Name="CLIENTE_GUID" Type="Guid" />
+    <Property Name="CLIENTE_MIGRATION" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="COMBINADO">
+    <Key>
+      <PropertyRef Name="CombPai" />
+      <PropertyRef Name="CombFilho" />
+      <PropertyRef Name="loja" />
+    </Key>
+    <Property Name="CombPai" Type="Int32" Nullable="false" />
+    <Property Name="CombFilho" Type="Int32" Nullable="false" />
+    <Property Name="bCombo" Type="Boolean" />
+    <Property Name="loja" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="status" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="STATUS_WEB" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Status_CE" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+  </EntityType>
+  <EntityType Name="DETALHES_PAGAMENTO">
+    <Key>
+      <PropertyRef Name="PEDIDO" />
+      <PropertyRef Name="CODFORMAPG" />
+    </Key>
+    <Property Name="PEDIDO" Type="Int32" Nullable="false" />
+    <Property Name="CODFORMAPG" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="TIPO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="VALOR" Type="Double" />
+    <Property Name="LOJA" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="IMPRESSO">
+    <Key>
+      <PropertyRef Name="CodImpressora" />
+      <PropertyRef Name="loja" />
+    </Key>
+    <Property Name="CodImpressora" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="loja" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="status" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Descricao" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Normal" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Condensado" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Expandido" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Sublinhado" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+    <Property Name="Vermelho" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+    <Property Name="Preto" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+    <Property Name="CorteParcial" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+    <Property Name="CorteTotal" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+    <Property Name="Avancapapel" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+    <Property Name="ImpReserva" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NumeroEspacoColaConta" Type="Int32" />
+    <Property Name="NumeroEspacoConta" Type="Int32" />
+    <Property Name="NumeroEspacoProducao" Type="Int32" />
+    <Property Name="icolexpandido" Type="Int32" />
+    <Property Name="STATUS_WEB" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="SiglaImpressora" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="LOCALIMP" Relationship="ModelAltec.fk_localImp_impresso" FromRole="IMPRESSO" ToRole="LOCALIMP" />
+    <Property Name="TipoImpressora" Type="Int32" />
+  </EntityType>
+  <EntityType Name="ITENSPED">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Loja" />
+    </Key>
+    <Property Name="ID" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Excluir" Type="Boolean" />
+    <Property Name="Numero" Type="Int32" Nullable="false" />
+    <Property Name="CodProduto" Type="Int32" Nullable="false" />
+    <Property Name="DescriProduto" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Horario" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Preferencia" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Qtde" Type="Decimal" Precision="10" Scale="3" />
+    <Property Name="Unitario" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="TotalItem" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Impressora" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Montagem" Type="Int32" />
+    <Property Name="Aliquota" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+    <Property Name="Comanda" Type="Int32" />
+    <Property Name="Loja" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="StatusImp" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Data" Type="DateTime" Precision="3" />
+    <Property Name="iCodGrupo" Type="Int32" />
+    <Property Name="aCod" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="iCombinado" Type="Int32" />
+    <Property Name="sUsuarioPedido" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="bComplemento" Type="Boolean" />
+    <Property Name="ST" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="bCombinado" Type="Boolean" />
+    <Property Name="CANCELUSER" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="cancelDataHorario" Type="DateTime" Precision="3" />
+    <Property Name="cancelMotivo" Type="String" MaxLength="520" FixedLength="false" Unicode="true" />
+    <Property Name="VERSAOLANCAMENTO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="ITENSPED_FINAN_GUID" Type="Guid" />
+    <Property Name="ITENSPED_MOV_GUID" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="ITENSPED_COMBINADO" Relationship="ModelAltec.FK_ITENSPED_COMBINADO_ITENSPED" FromRole="ITENSPED" ToRole="ITENSPED_COMBINADO" />
+    <NavigationProperty Name="ITENSPED_COMPLEMENTO" Relationship="ModelAltec.FK_ITENSPED_COMPLEMENTO_ITENSPED" FromRole="ITENSPED" ToRole="ITENSPED_COMPLEMENTO" />
+    <NavigationProperty Name="PEDIDO" Relationship="ModelAltec.FK_itensPed_PEDIDO" FromRole="ITENSPED" ToRole="PEDIDO" />
+    <Property Name="DescontoItem" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="USUARIO" Relationship="ModelAltec.fk_ItensPed_Usuario" FromRole="ITENSPED" ToRole="USUARIO" />
+  </EntityType>
+  <EntityType Name="ITENSPED_COMBINADO">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="ID_LOJA" />
+    </Key>
+    <Property Name="ID" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ID_ITENSPED" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ID_PRODUTO_FILHO" Type="Int32" />
+    <Property Name="ID_LOJA" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="QTDE_PRODUTO_FILHO" Type="Double" />
+    <Property Name="OBS_PRODUTO_FILHO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="AUTOINC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ST" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="QTDE_ORIGINAL" Type="Double" />
+    <Property Name="ITENSPED_MOV_GUID" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="ITENSPED" Relationship="ModelAltec.FK_ITENSPED_COMBINADO_ITENSPED" FromRole="ITENSPED_COMBINADO" ToRole="ITENSPED" />
+    <NavigationProperty Name="ITENSPED_COMBINADO_COMPLEMENTO" Relationship="ModelAltec.FK_ITENSPED_COMBINADO_COMPLEMENTO_ITENSPED_COMBINADO" FromRole="ITENSPED_COMBINADO" ToRole="ITENSPED_COMBINADO_COMPLEMENTO" />
+    <NavigationProperty Name="Produto" Relationship="ModelAltec.FK_ITENSPED_COMBINADO_PRODUTO" FromRole="ITENSPED_COMBINADO" ToRole="Produto" />
+    <Property Name="valor_combinado" Type="Decimal" Precision="19" Scale="4" />
+  </EntityType>
+  <EntityType Name="ITENSPED_COMBINADO_COMPLEMENTO">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="ID_LOJA" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_ITENSPED_COMBINADO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ID_COMBINADO_COMP_PRODUTO" Type="Int32" />
+    <Property Name="ID_LOJA" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="QTDE_COMPLEMENTO" Type="Double" />
+    <Property Name="OBS_COMPLEMENTO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ST" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="valor_complemento" Type="Double" />
+    <Property Name="ITENSPED_MOV_GUID" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="ITENSPED_COMBINADO" Relationship="ModelAltec.FK_ITENSPED_COMBINADO_COMPLEMENTO_ITENSPED_COMBINADO" FromRole="ITENSPED_COMBINADO_COMPLEMENTO" ToRole="ITENSPED_COMBINADO" />
+    <NavigationProperty Name="LOJA" Relationship="ModelAltec.FK_ITENSPED_COMBINADO_COMPLEMENTO_LOJA" FromRole="ITENSPED_COMBINADO_COMPLEMENTO" ToRole="LOJA" />
+    <NavigationProperty Name="Produto" Relationship="ModelAltec.FK_ITENSPED_COMBINADO_COMPLEMENTO_PRODUTO" FromRole="ITENSPED_COMBINADO_COMPLEMENTO" ToRole="Produto" />
+  </EntityType>
+  <EntityType Name="ITENSPED_COMPLEMENTO">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="ID_LOJA" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_ITENSPED" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="QTDE_COMPLEMENTO_PRODUTO" Type="Double" />
+    <Property Name="ID_LOJA" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="ID_COMPLEMENTO_PRODUTO" Type="Int32" />
+    <Property Name="OBS_COMPLEMENTO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ST" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="valor_complemento" Type="Double" />
+    <Property Name="ITENSPED_MOV_GUID" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="ITENSPED" Relationship="ModelAltec.FK_ITENSPED_COMPLEMENTO_ITENSPED" FromRole="ITENSPED_COMPLEMENTO" ToRole="ITENSPED" />
+    <NavigationProperty Name="LOJA" Relationship="ModelAltec.FK_ITENSPED_COMPLEMENTO_LOJA" FromRole="ITENSPED_COMPLEMENTO" ToRole="LOJA" />
+    <NavigationProperty Name="Produto" Relationship="ModelAltec.FK_ITENSPED_COMPLEMENTO_PRODUTO" FromRole="ITENSPED_COMPLEMENTO" ToRole="Produto" />
+  </EntityType>
+  <EntityType Name="LOCALIMP">
+    <Key>
+      <PropertyRef Name="loja" />
+      <PropertyRef Name="codProduto" />
+      <PropertyRef Name="local" />
+      <PropertyRef Name="codImpressora" />
+    </Key>
+    <Property Name="loja" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="codProduto" Type="Int32" Nullable="false" />
+    <Property Name="local" Type="Int32" Nullable="false" />
+    <Property Name="codImpressora" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="status" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="qtdProducao" Type="Int32" />
+    <Property Name="STATUS_WEB" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="CodTroca" Type="Int32" />
+    <Property Name="bImpExclu" Type="Boolean" />
+    <NavigationProperty Name="IMPRESSO" Relationship="ModelAltec.fk_localImp_impresso" FromRole="LOCALIMP" ToRole="IMPRESSO" />
+    <NavigationProperty Name="Produto" Relationship="ModelAltec.fk_localImp_produto" FromRole="LOCALIMP" ToRole="Produto" />
+  </EntityType>
+  <EntityType Name="LOJA">
+    <Key>
+      <PropertyRef Name="Sigla" />
+    </Key>
+    <Property Name="Sigla" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="Nome" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="Telefone" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="endereco" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="bairro" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="CaminhoExporta" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="Gerente" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Fantasia" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="uf" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+    <Property Name="EmailCentral" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Cnpj" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Ie" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="cep" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="ativo" Type="Boolean" />
+    <Property Name="CODIGOPLANO" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="portaremota" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="ipremoto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="codmunicipio" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TextoExtratoSmile" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+    <Property Name="CodParcSmile" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="CodEnvSmile" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="fValorServDelivery" Type="Double" />
+    <Property Name="CODCONVENIO" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="INTEGRA_SEM_CAIXA" Type="Boolean" />
+    <Property Name="ECENTRAL" Type="Boolean" />
+    <Property Name="CONTAPADRAO" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="CIDADE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NUMENDERECO" Type="Int32" />
+    <Property Name="COMPLEMENTOENDERECO" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="NOMECONTATO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IM" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="cofins" Type="Double" />
+    <Property Name="pis" Type="Double" />
+    <Property Name="CPF" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+    <Property Name="SUFRAMA" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+    <Property Name="IND_PERFIL" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="IND_ATIV" Type="Int16" Nullable="false" />
+    <Property Name="COMPLEMENTO" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="FAX" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+    <Property Name="REGIMETRIB" Type="Int32" />
+    <Property Name="COD_INC_TRIB" Type="Int32" Nullable="false" />
+    <Property Name="COD_TIPO_CONT" Type="Int32" Nullable="false" />
+    <Property Name="IND_REG_CUM" Type="Int32" />
+    <Property Name="tipo_regime" Type="Int32" />
+    <Property Name="STATUS_EXPORTA" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="IND_APRO_CRED" Type="Int32" />
+    <Property Name="codpais" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="IPVanrooy" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="NomeBancoRemoto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="STATUS_WEB" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="LOGIN" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="SENHA" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="IDFRN" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="EXPORTA_CARDAPIO" Type="Boolean" />
+    <Property Name="Status_CE" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="EXPORTA_KIIK_CARDAPIO" Type="Boolean" />
+    <Property Name="CLOUD_EXTERNAL_CODE" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="LOJA_GUID" Type="Guid" />
+    <Property Name="DeAcordo_Gorjeta" Type="Boolean" />
+    <Property Name="TipoAliquota" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="TipoGorjeta" Type="Int32" />
+    <Property Name="CFOPGorjeta" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="CST_ICMSGorjeta" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="ALIQ_ICMSGorjeta" Type="Decimal" Precision="19" Scale="2" />
+    <Property Name="CST_PISGorjeta" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="CST_COFINSGorjeta" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="NCMGorjeta" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="CESTGorjeta" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="PercGorjeta" Type="Decimal" Precision="19" Scale="2" />
+    <Property Name="Descr_PreConta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Descr_CupomFiscal" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CST_IPIGorjeta" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="LOJA_EMPRESA_GUID" Type="Guid" />
+    <Property Name="LOJA_MIGRATION" Type="DateTime" Precision="3" />
+    <Property Name="ISS_QNGorjeta" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="LOJA_LOGOTIPONFE" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="ITENSPED_COMBINADO_COMPLEMENTO" Relationship="ModelAltec.FK_ITENSPED_COMBINADO_COMPLEMENTO_LOJA" FromRole="LOJA" ToRole="ITENSPED_COMBINADO_COMPLEMENTO" />
+    <NavigationProperty Name="ITENSPED_COMPLEMENTO" Relationship="ModelAltec.FK_ITENSPED_COMPLEMENTO_LOJA" FromRole="LOJA" ToRole="ITENSPED_COMPLEMENTO" />
+    <NavigationProperty Name="MESAS" Relationship="ModelAltec.FK_Mesas_X_Loja" FromRole="LOJA" ToRole="MESAS" />
+    <NavigationProperty Name="PEDIDOMESA_COMBINADO_COMPLEMENTO" Relationship="ModelAltec.FK_PEDIDOMESA_COMBINADO_COMPLEMENTO_LOJA" FromRole="LOJA" ToRole="PEDIDOMESA_COMBINADO_COMPLEMENTO" />
+    <NavigationProperty Name="PEDIDOMESA_COMPLEMENTO" Relationship="ModelAltec.FK_PEDIDOMESA_COMPLEMENTO_LOJA" FromRole="LOJA" ToRole="PEDIDOMESA_COMPLEMENTO" />
+    <NavigationProperty Name="PEDIDOMESAB_COMBINADO_COMPLEMENTO" Relationship="ModelAltec.FK_PEDIDOMESAB_COMBINADO_COMPLEMENTO_LOJA" FromRole="LOJA" ToRole="PEDIDOMESAB_COMBINADO_COMPLEMENTO" />
+    <NavigationProperty Name="PEDIDOMESAB_COMPLEMENTO" Relationship="ModelAltec.FK_PEDIDOMESAB_COMPLEMENTO_LOJA" FromRole="LOJA" ToRole="PEDIDOMESAB_COMPLEMENTO" />
+    <NavigationProperty Name="Produto" Relationship="ModelAltec.FK_ProdutoEstoque_X_Loja" FromRole="LOJA" ToRole="Produto" />
+    <NavigationProperty Name="USUARIO" Relationship="ModelAltec.FK_USUARIO_LOJA" FromRole="LOJA" ToRole="USUARIO" />
+  </EntityType>
+  <EntityType Name="PEDIDO">
+    <Key>
+      <PropertyRef Name="Numero" />
+      <PropertyRef Name="loja" />
+    </Key>
+    <Property Name="Numero" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="TotalPedido" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Observacao" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="NomeCli" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="Expedidor" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Horario" Type="DateTime" Precision="3" />
+    <Property Name="HorarioImpresso" Type="DateTime" Precision="3" />
+    <Property Name="HoraExpedido" Type="DateTime" Precision="3" />
+    <Property Name="Data" Type="DateTime" Precision="3" />
+    <Property Name="UsuarioPedido" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="CodCli" Type="Int32" />
+    <Property Name="Taxa" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Form_Pag" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Pagamento" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Troco" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="NumeroCV" Type="Int32" />
+    <Property Name="Servico" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="UsuarioExpedido" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Desconto" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="UsuarioDesconto" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="NumeroImpressao" Type="Int32" />
+    <Property Name="HorarioRecebido" Type="DateTime" Precision="3" />
+    <Property Name="UsuarioRecebimento" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Endereço" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="Telefone" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Ref" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="Guia" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="UsuarioDesc" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="ValorDesc" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="ultimacompra" Type="DateTime" Precision="3" />
+    <Property Name="totpedido" Type="Int32" />
+    <Property Name="sUsuServ" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="fRepique" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Dinheiro" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Cheque" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Cartao" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Ticket" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Assinados" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Vale" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="sObsPedido" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="dTempoEntrega" Type="DateTime" Precision="3" />
+    <Property Name="sMotivoDesc" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="bTempoEsgotado" Type="Boolean" />
+    <Property Name="loja" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="CodPromocional" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Bairro" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="dPrazoEntrega" Type="DateTime" Precision="3" />
+    <Property Name="codExpedidor" Type="Int32" />
+    <Property Name="SNUMCUPOM" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="SNUMSERIEFISCAL" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="SDATAFISCAL" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="STATUS_LIDO" Type="Boolean" />
+    <Property Name="minutoentrega" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="dataentrega" Type="DateTime" Precision="3" />
+    <Property Name="bRecManual" Type="Boolean" />
+    <Property Name="iCupomManual" Type="Int32" />
+    <Property Name="nSerie" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="SubSerie" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="bPrimeiroPedido" Type="Boolean" />
+    <Property Name="NRORESTAURANTEWEB" Type="Int32" />
+    <Property Name="ST" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="DATARW" Type="DateTime" Precision="3" />
+    <Property Name="CodPagto" Type="Int32" />
+    <Property Name="CONTROLECONTA" Type="Int32" />
+    <Property Name="ddatahoraimpfiscal" Type="DateTime" Precision="3" />
+    <Property Name="ccf" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="bBaixaCC" Type="Boolean" />
+    <Property Name="ID_DOCUMENTO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="NroIntegradorWeb" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IECF" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CIDADE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PEDIDO_SAT_XML_SALE" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="PEDIDO_SAT_ACCESSKEY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PEDIDO_SAT_ACCESSPROTOCOL" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="PEDIDO_GUID" Type="Guid" Nullable="false" />
+    <Property Name="PEDIDO_FINAN_GUID" Type="Guid" />
+    <Property Name="CHAVEACESSO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PROTOCOLOACESSO" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ITENSPED" Relationship="ModelAltec.FK_itensPed_PEDIDO" FromRole="PEDIDO" ToRole="ITENSPED" />
+  </EntityType>
+  <EntityType Name="PedidoMesa">
+    <Key>
+      <PropertyRef Name="loja" />
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="AUTOINCREMENT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CodigoMesa" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="Vendedor" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="CodProduto" Type="Int32" />
+    <Property Name="Produto" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="Qtde" Type="Double" Nullable="false" />
+    <Property Name="Horario" Type="DateTime" Precision="3" />
+    <Property Name="Lugar" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="Manual" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Desconto" Type="Double" />
+    <Property Name="Substituto" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="Pref1" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Pref2" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Pref3" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Pref4" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Pref5" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Pref6" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Pref7" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Pref8" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Pref9" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Pref10" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Pref11" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Pref12" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Pref13" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Pref14" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Pref15" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Pref16" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Pref17" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Pref18" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Pref19" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Pref20" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Comanda" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Usuario" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Usuariodesconto" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Impressora" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="spool" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Estacionamento" Type="Double" />
+    <Property Name="carros" Type="Int32" />
+    <Property Name="Combinado" Type="Int32" />
+    <Property Name="unit" Type="Double" Nullable="false" />
+    <Property Name="bComplemento" Type="Boolean" />
+    <Property Name="loja" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="local" Type="Int32" Nullable="false" />
+    <Property Name="juntacartao" Type="Int32" />
+    <Property Name="mesaorigem" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="st" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="userbaixa" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="bJuncaoTemDesconto" Type="Boolean" />
+    <Property Name="fDescontoJuncao" Type="Double" />
+    <Property Name="bDescPromo" Type="Boolean" />
+    <Property Name="NomeDispositivo" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="ID" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="bEspera" Type="Boolean" />
+    <Property Name="bComp" Type="Boolean" />
+    <Property Name="MesaLugar" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+    <Property Name="JuncaoMesaLugar" Type="Int32" />
+    <Property Name="ID_COMANDA_VENDEDOR" Type="Int32" />
+    <Property Name="CancelUser" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Cancelmotivo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CancelDataHorario" Type="DateTime" Precision="3" />
+    <Property Name="ID_PED_ORIGEM" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="VERSAOLANCAMENTO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="ID_SPOOLER" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="bItemEmEspera" Type="Boolean" />
+    <Property Name="COODIV" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="PRINTER_TABLE_ID" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="PEDIDOMESA_FINAN_GUID" Type="Guid" />
+    <Property Name="PEDIDOMESA_MOV_GUID" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="PEDIDOMESA_COMBINADO" Relationship="ModelAltec.FK_PEDIDOMESA_COMBINADO_PEDIDOMESA" FromRole="PedidoMesa" ToRole="PEDIDOMESA_COMBINADO" />
+    <NavigationProperty Name="PEDIDOMESA_COMPLEMENTO" Relationship="ModelAltec.FK_PEDIDOMESA_COMPLEMENTO_PEDIDOMESA" FromRole="PedidoMesa" ToRole="PEDIDOMESA_COMPLEMENTO" />
+    <Property Name="DescontoItem" Type="Decimal" Precision="19" Scale="4" />
+  </EntityType>
+  <EntityType Name="PEDIDOMESA_COMBINADO">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="ID_LOJA" />
+    </Key>
+    <Property Name="ID" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ID_PEDIDOMESA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ID_PRODUTO_FILHO" Type="Int32" />
+    <Property Name="ID_LOJA" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="QTDE_PRODUTO_FILHO" Type="Double" />
+    <Property Name="OBS_PRODUTO_FILHO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="AUTOINC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ST" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="ID_PED_ORIGEM" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PEDIDOMESA_MOV_GUID" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="PedidoMesa" Relationship="ModelAltec.FK_PEDIDOMESA_COMBINADO_PEDIDOMESA" FromRole="PEDIDOMESA_COMBINADO" ToRole="PedidoMesa" />
+    <NavigationProperty Name="PEDIDOMESA_COMBINADO_COMPLEMENTO" Relationship="ModelAltec.FK_PEDIDOMESA_COMBINADO_COMPLEMENTO_PEDIDOMESA_COMBINADO" FromRole="PEDIDOMESA_COMBINADO" ToRole="PEDIDOMESA_COMBINADO_COMPLEMENTO" />
+    <NavigationProperty Name="Produto" Relationship="ModelAltec.FK_PEDIDOMESA_COMBINADO_PRODUTO" FromRole="PEDIDOMESA_COMBINADO" ToRole="Produto" />
+    <Property Name="valor_combinado" Type="Decimal" Precision="19" Scale="4" />
+  </EntityType>
+  <EntityType Name="PEDIDOMESA_COMBINADO_COMPLEMENTO">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="ID_LOJA" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_PEDIDOMESA_COMBINADO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ID_COMBINADO_COMP_PRODUTO" Type="Int32" />
+    <Property Name="ID_LOJA" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="QTDE_COMPLEMENTO" Type="Double" />
+    <Property Name="OBS_COMPLEMENTO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ST" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="valor_complemento" Type="Double" />
+    <Property Name="ID_PED_ORIGEM" Type="Int32" />
+    <Property Name="PEDIDOMESA_MOV_GUID" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="LOJA" Relationship="ModelAltec.FK_PEDIDOMESA_COMBINADO_COMPLEMENTO_LOJA" FromRole="PEDIDOMESA_COMBINADO_COMPLEMENTO" ToRole="LOJA" />
+    <NavigationProperty Name="PEDIDOMESA_COMBINADO" Relationship="ModelAltec.FK_PEDIDOMESA_COMBINADO_COMPLEMENTO_PEDIDOMESA_COMBINADO" FromRole="PEDIDOMESA_COMBINADO_COMPLEMENTO" ToRole="PEDIDOMESA_COMBINADO" />
+    <NavigationProperty Name="Produto" Relationship="ModelAltec.FK_PEDIDOMESA_COMBINADO_COMPLEMENTO_PRODUTO" FromRole="PEDIDOMESA_COMBINADO_COMPLEMENTO" ToRole="Produto" />
+  </EntityType>
+  <EntityType Name="PEDIDOMESA_COMPLEMENTO">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="ID_LOJA" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_PEDIDOMESA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="QTDE_COMPLEMENTO_PRODUTO" Type="Double" />
+    <Property Name="ID_LOJA" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="ID_COMPLEMENTO_PRODUTO" Type="Int32" />
+    <Property Name="OBS_COMPLEMENTO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ST" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="valor_complemento" Type="Double" />
+    <Property Name="ID_PED_ORIGEM" Type="Int32" />
+    <Property Name="PEDIDOMESA_MOV_GUID" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="LOJA" Relationship="ModelAltec.FK_PEDIDOMESA_COMPLEMENTO_LOJA" FromRole="PEDIDOMESA_COMPLEMENTO" ToRole="LOJA" />
+    <NavigationProperty Name="PedidoMesa" Relationship="ModelAltec.FK_PEDIDOMESA_COMPLEMENTO_PEDIDOMESA" FromRole="PEDIDOMESA_COMPLEMENTO" ToRole="PedidoMesa" />
+    <NavigationProperty Name="Produto" Relationship="ModelAltec.FK_PEDIDOMESA_COMPLEMENTO_PRODUTO" FromRole="PEDIDOMESA_COMPLEMENTO" ToRole="Produto" />
+  </EntityType>
+  <EntityType Name="PEDIDOMESAB">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="loja" />
+    </Key>
+    <Property Name="ID" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="controle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CodProduto" Type="Int32" Nullable="false" />
+    <Property Name="Produto" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Qtde" Type="Double" Nullable="false" />
+    <Property Name="Pref1" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Usuario" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Impressora" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Comanda" Type="Int32" Nullable="false" />
+    <Property Name="CODBALCAO" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="VENDEDOR" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="HORARIO" Type="DateTime" Precision="3" />
+    <Property Name="Combinado" Type="Int32" />
+    <Property Name="Terminal" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="bComplemento" Type="Boolean" />
+    <Property Name="unit" Type="Double" Nullable="false" />
+    <Property Name="loja" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="local" Type="Int32" Nullable="false" />
+    <Property Name="sStatusImp" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="st" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="bEspera" Type="Boolean" />
+    <Property Name="bComp" Type="Boolean" />
+    <Property Name="canceluser" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Cancelmotivo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CancelDataHorario" Type="DateTime" Precision="3" />
+    <Property Name="bCombinado" Type="Boolean" />
+    <Property Name="VERSAOLANCAMENTO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="ID_SPOOLER" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Cliente_espera" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IECF" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="NroIntegradorWeb" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PEDIDOMESAB_FINAN_GUID" Type="Guid" />
+    <Property Name="PEDIDOMESAB_MOV_GUID" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="PEDIDOMESAB_COMBINADO" Relationship="ModelAltec.FK_PEDIDOMESAB_COMBINADO_PEDIDOMESAB" FromRole="PEDIDOMESAB" ToRole="PEDIDOMESAB_COMBINADO" />
+    <NavigationProperty Name="PEDIDOMESAB_COMPLEMENTO" Relationship="ModelAltec.FK_PEDIDOMESAB_COMPLEMENTO_PEDIDOMESAB" FromRole="PEDIDOMESAB" ToRole="PEDIDOMESAB_COMPLEMENTO" />
+    <NavigationProperty Name="Produto1" Relationship="ModelAltec.FK_PedidoMesaB_produto_Loja" FromRole="PEDIDOMESAB" ToRole="Produto" />
+    <NavigationProperty Name="Produto2" Relationship="ModelAltec.PedidoMesaB_PRODUTO" FromRole="PEDIDOMESAB" ToRole="Produto" />
+    <Property Name="DescontoItem" Type="Decimal" Precision="19" Scale="4" />
+  </EntityType>
+  <EntityType Name="PEDIDOMESAB_COMBINADO">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="ID_LOJA" />
+    </Key>
+    <Property Name="ID" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ID_PEDIDOMESAB" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ID_PRODUTO_FILHO" Type="Int32" />
+    <Property Name="ID_LOJA" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="QTDE_PRODUTO_FILHO" Type="Double" />
+    <Property Name="OBS_PRODUTO_FILHO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="AUTOINC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ST" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="horario" Type="DateTime" Precision="3" />
+    <Property Name="PEDIDOMESAB_MOV_GUID" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="PEDIDOMESAB" Relationship="ModelAltec.FK_PEDIDOMESAB_COMBINADO_PEDIDOMESAB" FromRole="PEDIDOMESAB_COMBINADO" ToRole="PEDIDOMESAB" />
+    <NavigationProperty Name="PEDIDOMESAB_COMBINADO_COMPLEMENTO" Relationship="ModelAltec.FK_PEDIDOMESAB_COMBINADO_COMPLEMENTO_PEDIDOMESAB_COMBINADO" FromRole="PEDIDOMESAB_COMBINADO" ToRole="PEDIDOMESAB_COMBINADO_COMPLEMENTO" />
+    <NavigationProperty Name="Produto" Relationship="ModelAltec.FK_PEDIDOMESAB_COMBINADO_PRODUTO" FromRole="PEDIDOMESAB_COMBINADO" ToRole="Produto" />
+    <Property Name="valor_combinado" Type="Decimal" Precision="19" Scale="4" />
+  </EntityType>
+  <EntityType Name="PEDIDOMESAB_COMBINADO_COMPLEMENTO">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="ID_LOJA" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_PEDIDOMESAB_COMBINADO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ID_COMBINADO_COMP_PRODUTO" Type="Int32" />
+    <Property Name="ID_LOJA" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="QTDE_COMPLEMENTO" Type="Double" />
+    <Property Name="OBS_COMPLEMENTO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ST" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="valor_complemento" Type="Double" />
+    <Property Name="PEDIDOMESAB_MOV_GUID" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="LOJA" Relationship="ModelAltec.FK_PEDIDOMESAB_COMBINADO_COMPLEMENTO_LOJA" FromRole="PEDIDOMESAB_COMBINADO_COMPLEMENTO" ToRole="LOJA" />
+    <NavigationProperty Name="PEDIDOMESAB_COMBINADO" Relationship="ModelAltec.FK_PEDIDOMESAB_COMBINADO_COMPLEMENTO_PEDIDOMESAB_COMBINADO" FromRole="PEDIDOMESAB_COMBINADO_COMPLEMENTO" ToRole="PEDIDOMESAB_COMBINADO" />
+    <NavigationProperty Name="Produto" Relationship="ModelAltec.FK_PEDIDOMESAB_COMBINADO_COMPLEMENTO_PRODUTO" FromRole="PEDIDOMESAB_COMBINADO_COMPLEMENTO" ToRole="Produto" />
+  </EntityType>
+  <EntityType Name="PEDIDOMESAB_COMPLEMENTO">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="ID_LOJA" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_PEDIDOMESAB" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="QTDE_COMPLEMENTO_PRODUTO" Type="Double" />
+    <Property Name="ID_LOJA" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="ID_COMPLEMENTO_PRODUTO" Type="Int32" />
+    <Property Name="OBS_COMPLEMENTO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ST" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="valor_complemento" Type="Double" />
+    <Property Name="PEDIDOMESAB_MOV_GUID" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="LOJA" Relationship="ModelAltec.FK_PEDIDOMESAB_COMPLEMENTO_LOJA" FromRole="PEDIDOMESAB_COMPLEMENTO" ToRole="LOJA" />
+    <NavigationProperty Name="PEDIDOMESAB" Relationship="ModelAltec.FK_PEDIDOMESAB_COMPLEMENTO_PEDIDOMESAB" FromRole="PEDIDOMESAB_COMPLEMENTO" ToRole="PEDIDOMESAB" />
+    <NavigationProperty Name="Produto" Relationship="ModelAltec.FK_PEDIDOMESAB_COMPLEMENTO_PRODUTO" FromRole="PEDIDOMESAB_COMPLEMENTO" ToRole="Produto" />
+  </EntityType>
+  <EntityType Name="PREPEDIDOMESA_COMBINADO">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="ID_PREDIDOMESA" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="ID_PRODUTO_FILHO" Type="Int32" />
+    <Property Name="ID_LOJA" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="QTDE_PRODUTO_FILHO" Type="Double" />
+    <Property Name="OBS_PRODUTO_FILHO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ST" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="ID_PED_ORIGEM" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="COR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="horario" Type="DateTime" Precision="3" />
+    <Property Name="OrdemSelecao" Type="Byte" />
+  </EntityType>
+  <EntityType Name="PREPEDIDOMESA_COMPLEMENTO">
+    <Key>
+      <PropertyRef Name="PK" />
+    </Key>
+    <Property Name="PK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_PEDIDOMESA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="QTDE_COMPLEMENTO_PRODUTO" Type="Double" />
+    <Property Name="ID_LOJA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ID_COMPLEMENTO_PRODUTO" Type="Int32" />
+    <Property Name="OBS_COMPLEMENTO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ST" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="valor_complemento" Type="Double" />
+    <Property Name="ID_PED_ORIGEM" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Produto">
+    <Key>
+      <PropertyRef Name="CodProduto" />
+      <PropertyRef Name="loja" />
+    </Key>
+    <Property Name="CodProduto" Type="Int32" Nullable="false" />
+    <Property Name="loja" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="status" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="DescriProduto" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Grupo" Type="Int32" Nullable="false" />
+    <Property Name="Local1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Local2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PrecoVenda" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="Tributado" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="CodCNO" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="Comanda" Type="Int32" />
+    <Property Name="Observacao" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="CobraServico" Type="Boolean" />
+    <Property Name="Pocket" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="LOCAL3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CodigoDeBarras" Type="String" Nullable="false" MaxLength="13" FixedLength="false" Unicode="true" />
+    <Property Name="bCombinado" Type="Boolean" />
+    <Property Name="iCombinado" Type="Int32" />
+    <Property Name="Vetado" Type="Boolean" />
+    <Property Name="Preco_Compra" Type="Double" />
+    <Property Name="IPI" Type="Double" />
+    <Property Name="CODFISCAL" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="ICMS" Type="Double" />
+    <Property Name="setorpadrao" Type="Int32" Nullable="false" />
+    <Property Name="PE" Type="Boolean" />
+    <Property Name="PV" Type="Boolean" />
+    <Property Name="maxCombFilho" Type="Int32" Nullable="false" />
+    <Property Name="codCct" Type="Int32" />
+    <Property Name="bVendaAntecipada" Type="Boolean" />
+    <Property Name="PT" Type="Boolean" />
+    <Property Name="consig" Type="Boolean" />
+    <Property Name="CODMATRIZ" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+    <Property Name="bProdutoEspecial" Type="Boolean" />
+    <Property Name="bProdutoBanlanca" Type="Boolean" />
+    <Property Name="iSetorSaida" Type="Int32" />
+    <Property Name="bProdutoBalanca" Type="Boolean" />
+    <Property Name="IAT" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="IPPT" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="controleconta" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+    <Property Name="EAN13" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+    <Property Name="COD_KDS" Type="Int32" />
+    <Property Name="minimo" Type="Double" />
+    <Property Name="maximo" Type="Double" />
+    <Property Name="ID_ALTEC_GRUPO_COMPROD" Type="Int32" />
+    <Property Name="TipoSaida" Type="Int32" />
+    <Property Name="CompProd" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Comp" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="TipoPreco" Type="Int32" />
+    <Property Name="STATUS_WEB" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="MotivoDesc" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="COD_ANT_ITEM" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="UNC" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="ID_TIPO_ITEM" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+    <Property Name="DT_CADASTRO" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="TIPO_ITEM" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+    <Property Name="IND_PROP" Type="Int32" Nullable="false" />
+    <Property Name="COD_PART" Type="Int32" />
+    <Property Name="TXT_COMPL" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="Qtde_Anterior" Type="Double" />
+    <Property Name="Data" Type="DateTime" Precision="3" />
+    <Property Name="CST_PIS" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="VALOR_PIS" Type="Double" />
+    <Property Name="ALIQ_PERC_PIS" Type="Double" />
+    <Property Name="CST_COFINS" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="VALOR_COFINS" Type="Double" />
+    <Property Name="ALIQ_PERC_COFINS" Type="Double" />
+    <Property Name="CST_IPI" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="ALIQ_PERC_IPI" Type="Double" />
+    <Property Name="NAT_REC_PIS" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="NAT_REC_COFINS" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="COD_CONT" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="ContaContabil" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="sNumSerieFiscal" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="CompE1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="UNIDADECONSUMO" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+    <Property Name="ID_NCM" Type="Int32" Nullable="false" />
+    <Property Name="COD_EX" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="COD_GENERO" Type="Int32" />
+    <Property Name="COD_SERVICO" Type="Int32" />
+    <Property Name="NAT_REC" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="COD_CONT_COFINS" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="ID_MySwissChoco" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Name="Class_MySwissChoco" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="bComboQtdeFrac" Type="Boolean" />
+    <Property Name="COMP_P2" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="COD_ORIGEM" Type="Int32" />
+    <Property Name="Qtde_Original" Type="Double" />
+    <Property Name="Status_VR" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Status_CE" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="PRODUTO_KIIK" Type="Boolean" />
+    <Property Name="COD_CEST" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="PRODUCT_GUID" Type="Guid" />
+    <Property Name="PRODUCT_FORCED_QUESTION" Type="Boolean" Nullable="false" />
+    <Property Name="PRODUTO_MIGRATION" Type="DateTime" Precision="3" />
+    <Property Name="indicador_escala" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="cnpj_fabricante" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="cod_beneficio" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="ExibirTotem" Type="Boolean" />
+    <Property Name="ImagemTotem" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ITENSPED_COMBINADO" Relationship="ModelAltec.FK_ITENSPED_COMBINADO_PRODUTO" FromRole="Produto" ToRole="ITENSPED_COMBINADO" />
+    <NavigationProperty Name="ITENSPED_COMBINADO_COMPLEMENTO" Relationship="ModelAltec.FK_ITENSPED_COMBINADO_COMPLEMENTO_PRODUTO" FromRole="Produto" ToRole="ITENSPED_COMBINADO_COMPLEMENTO" />
+    <NavigationProperty Name="ITENSPED_COMPLEMENTO" Relationship="ModelAltec.FK_ITENSPED_COMPLEMENTO_PRODUTO" FromRole="Produto" ToRole="ITENSPED_COMPLEMENTO" />
+    <NavigationProperty Name="LOCALIMP" Relationship="ModelAltec.fk_localImp_produto" FromRole="Produto" ToRole="LOCALIMP" />
+    <NavigationProperty Name="LOJA1" Relationship="ModelAltec.FK_ProdutoEstoque_X_Loja" FromRole="Produto" ToRole="LOJA" />
+    <NavigationProperty Name="PEDIDOMESA_COMBINADO" Relationship="ModelAltec.FK_PEDIDOMESA_COMBINADO_PRODUTO" FromRole="Produto" ToRole="PEDIDOMESA_COMBINADO" />
+    <NavigationProperty Name="PEDIDOMESA_COMBINADO_COMPLEMENTO" Relationship="ModelAltec.FK_PEDIDOMESA_COMBINADO_COMPLEMENTO_PRODUTO" FromRole="Produto" ToRole="PEDIDOMESA_COMBINADO_COMPLEMENTO" />
+    <NavigationProperty Name="PEDIDOMESA_COMPLEMENTO" Relationship="ModelAltec.FK_PEDIDOMESA_COMPLEMENTO_PRODUTO" FromRole="Produto" ToRole="PEDIDOMESA_COMPLEMENTO" />
+    <NavigationProperty Name="PEDIDOMESAB" Relationship="ModelAltec.FK_PedidoMesaB_produto_Loja" FromRole="Produto" ToRole="PEDIDOMESAB" />
+    <NavigationProperty Name="PEDIDOMESAB1" Relationship="ModelAltec.PedidoMesaB_PRODUTO" FromRole="Produto" ToRole="PEDIDOMESAB" />
+    <NavigationProperty Name="PEDIDOMESAB_COMBINADO" Relationship="ModelAltec.FK_PEDIDOMESAB_COMBINADO_PRODUTO" FromRole="Produto" ToRole="PEDIDOMESAB_COMBINADO" />
+    <NavigationProperty Name="PEDIDOMESAB_COMBINADO_COMPLEMENTO" Relationship="ModelAltec.FK_PEDIDOMESAB_COMBINADO_COMPLEMENTO_PRODUTO" FromRole="Produto" ToRole="PEDIDOMESAB_COMBINADO_COMPLEMENTO" />
+    <NavigationProperty Name="PEDIDOMESAB_COMPLEMENTO" Relationship="ModelAltec.FK_PEDIDOMESAB_COMPLEMENTO_PRODUTO" FromRole="Produto" ToRole="PEDIDOMESAB_COMPLEMENTO" />
+  </EntityType>
+  <EntityType Name="PREPEDIDOMESA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="codigomesa" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="venderdor" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="codProduto" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Produto" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="quantidade" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="horario" Type="DateTime" Precision="3" />
+    <Property Name="lugar" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MANUAL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="versaoAplicativo" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="OBSERVACAO" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="sessionId" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="PREPEDIDOMESA_COMBINADO_COMPLEMENTO">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="ID_LOJA" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_PEDIDOMESA_COMBINADO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ID_COMBINADO_COMP_PRODUTO" Type="Int32" />
+    <Property Name="ID_LOJA" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="QTDE_COMPLEMENTO" Type="Double" />
+    <Property Name="OBS_COMPLEMENTO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ST" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="valor_complemento" Type="Double" />
+    <Property Name="ID_PED_ORIGEM" Type="Int32" />
+  </EntityType>
+  <EntityType Name="TBCONTA">
+    <Key>
+      <PropertyRef Name="loja" />
+    </Key>
+    <Property Name="CodigoMesa" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="CodVendedor" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="NomeVendedor" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Horario" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="loja" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="PRINTER_TABLE_ID" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="fk_localImp_impresso">
+    <End Type="ModelAltec.IMPRESSO" Role="IMPRESSO" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="ModelAltec.LOCALIMP" Role="LOCALIMP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IMPRESSO">
+        <PropertyRef Name="CodImpressora" />
+        <PropertyRef Name="loja" />
+      </Principal>
+      <Dependent Role="LOCALIMP">
+        <PropertyRef Name="codImpressora" />
+        <PropertyRef Name="loja" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ITENSPED_COMBINADO_ITENSPED">
+    <End Type="ModelAltec.ITENSPED" Role="ITENSPED" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="ModelAltec.ITENSPED_COMBINADO" Role="ITENSPED_COMBINADO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ITENSPED">
+        <PropertyRef Name="ID" />
+        <PropertyRef Name="Loja" />
+      </Principal>
+      <Dependent Role="ITENSPED_COMBINADO">
+        <PropertyRef Name="ID_ITENSPED" />
+        <PropertyRef Name="ID_LOJA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ITENSPED_COMPLEMENTO_ITENSPED">
+    <End Type="ModelAltec.ITENSPED" Role="ITENSPED" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="ModelAltec.ITENSPED_COMPLEMENTO" Role="ITENSPED_COMPLEMENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ITENSPED">
+        <PropertyRef Name="ID" />
+        <PropertyRef Name="Loja" />
+      </Principal>
+      <Dependent Role="ITENSPED_COMPLEMENTO">
+        <PropertyRef Name="ID_ITENSPED" />
+        <PropertyRef Name="ID_LOJA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_itensPed_PEDIDO">
+    <End Type="ModelAltec.PEDIDO" Role="PEDIDO" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="ModelAltec.ITENSPED" Role="ITENSPED" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PEDIDO">
+        <PropertyRef Name="Numero" />
+        <PropertyRef Name="loja" />
+      </Principal>
+      <Dependent Role="ITENSPED">
+        <PropertyRef Name="Numero" />
+        <PropertyRef Name="Loja" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ITENSPED_COMBINADO_COMPLEMENTO_ITENSPED_COMBINADO">
+    <End Type="ModelAltec.ITENSPED_COMBINADO" Role="ITENSPED_COMBINADO" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="ModelAltec.ITENSPED_COMBINADO_COMPLEMENTO" Role="ITENSPED_COMBINADO_COMPLEMENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ITENSPED_COMBINADO">
+        <PropertyRef Name="ID" />
+        <PropertyRef Name="ID_LOJA" />
+      </Principal>
+      <Dependent Role="ITENSPED_COMBINADO_COMPLEMENTO">
+        <PropertyRef Name="ID_ITENSPED_COMBINADO" />
+        <PropertyRef Name="ID_LOJA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ITENSPED_COMBINADO_PRODUTO">
+    <End Type="ModelAltec.Produto" Role="Produto" Multiplicity="0..1" />
+    <End Type="ModelAltec.ITENSPED_COMBINADO" Role="ITENSPED_COMBINADO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Produto">
+        <PropertyRef Name="CodProduto" />
+        <PropertyRef Name="loja" />
+      </Principal>
+      <Dependent Role="ITENSPED_COMBINADO">
+        <PropertyRef Name="ID_PRODUTO_FILHO" />
+        <PropertyRef Name="ID_LOJA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ITENSPED_COMBINADO_COMPLEMENTO_LOJA">
+    <End Type="ModelAltec.LOJA" Role="LOJA" Multiplicity="1" />
+    <End Type="ModelAltec.ITENSPED_COMBINADO_COMPLEMENTO" Role="ITENSPED_COMBINADO_COMPLEMENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOJA">
+        <PropertyRef Name="Sigla" />
+      </Principal>
+      <Dependent Role="ITENSPED_COMBINADO_COMPLEMENTO">
+        <PropertyRef Name="ID_LOJA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ITENSPED_COMBINADO_COMPLEMENTO_PRODUTO">
+    <End Type="ModelAltec.Produto" Role="Produto" Multiplicity="0..1" />
+    <End Type="ModelAltec.ITENSPED_COMBINADO_COMPLEMENTO" Role="ITENSPED_COMBINADO_COMPLEMENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Produto">
+        <PropertyRef Name="CodProduto" />
+        <PropertyRef Name="loja" />
+      </Principal>
+      <Dependent Role="ITENSPED_COMBINADO_COMPLEMENTO">
+        <PropertyRef Name="ID_COMBINADO_COMP_PRODUTO" />
+        <PropertyRef Name="ID_LOJA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ITENSPED_COMPLEMENTO_LOJA">
+    <End Type="ModelAltec.LOJA" Role="LOJA" Multiplicity="1" />
+    <End Type="ModelAltec.ITENSPED_COMPLEMENTO" Role="ITENSPED_COMPLEMENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOJA">
+        <PropertyRef Name="Sigla" />
+      </Principal>
+      <Dependent Role="ITENSPED_COMPLEMENTO">
+        <PropertyRef Name="ID_LOJA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ITENSPED_COMPLEMENTO_PRODUTO">
+    <End Type="ModelAltec.Produto" Role="Produto" Multiplicity="0..1" />
+    <End Type="ModelAltec.ITENSPED_COMPLEMENTO" Role="ITENSPED_COMPLEMENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Produto">
+        <PropertyRef Name="CodProduto" />
+        <PropertyRef Name="loja" />
+      </Principal>
+      <Dependent Role="ITENSPED_COMPLEMENTO">
+        <PropertyRef Name="ID_COMPLEMENTO_PRODUTO" />
+        <PropertyRef Name="ID_LOJA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_localImp_produto">
+    <End Type="ModelAltec.Produto" Role="Produto" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="ModelAltec.LOCALIMP" Role="LOCALIMP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Produto">
+        <PropertyRef Name="CodProduto" />
+        <PropertyRef Name="loja" />
+      </Principal>
+      <Dependent Role="LOCALIMP">
+        <PropertyRef Name="codProduto" />
+        <PropertyRef Name="loja" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Mesas_X_Loja">
+    <End Type="ModelAltec.LOJA" Role="LOJA" Multiplicity="1" />
+    <End Type="ModelAltec.MESAS" Role="MESAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOJA">
+        <PropertyRef Name="Sigla" />
+      </Principal>
+      <Dependent Role="MESAS">
+        <PropertyRef Name="loja" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PEDIDOMESA_COMBINADO_COMPLEMENTO_LOJA">
+    <End Type="ModelAltec.LOJA" Role="LOJA" Multiplicity="1" />
+    <End Type="ModelAltec.PEDIDOMESA_COMBINADO_COMPLEMENTO" Role="PEDIDOMESA_COMBINADO_COMPLEMENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOJA">
+        <PropertyRef Name="Sigla" />
+      </Principal>
+      <Dependent Role="PEDIDOMESA_COMBINADO_COMPLEMENTO">
+        <PropertyRef Name="ID_LOJA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PEDIDOMESA_COMPLEMENTO_LOJA">
+    <End Type="ModelAltec.LOJA" Role="LOJA" Multiplicity="1" />
+    <End Type="ModelAltec.PEDIDOMESA_COMPLEMENTO" Role="PEDIDOMESA_COMPLEMENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOJA">
+        <PropertyRef Name="Sigla" />
+      </Principal>
+      <Dependent Role="PEDIDOMESA_COMPLEMENTO">
+        <PropertyRef Name="ID_LOJA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PEDIDOMESAB_COMBINADO_COMPLEMENTO_LOJA">
+    <End Type="ModelAltec.LOJA" Role="LOJA" Multiplicity="1" />
+    <End Type="ModelAltec.PEDIDOMESAB_COMBINADO_COMPLEMENTO" Role="PEDIDOMESAB_COMBINADO_COMPLEMENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOJA">
+        <PropertyRef Name="Sigla" />
+      </Principal>
+      <Dependent Role="PEDIDOMESAB_COMBINADO_COMPLEMENTO">
+        <PropertyRef Name="ID_LOJA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PEDIDOMESAB_COMPLEMENTO_LOJA">
+    <End Type="ModelAltec.LOJA" Role="LOJA" Multiplicity="1" />
+    <End Type="ModelAltec.PEDIDOMESAB_COMPLEMENTO" Role="PEDIDOMESAB_COMPLEMENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOJA">
+        <PropertyRef Name="Sigla" />
+      </Principal>
+      <Dependent Role="PEDIDOMESAB_COMPLEMENTO">
+        <PropertyRef Name="ID_LOJA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProdutoEstoque_X_Loja">
+    <End Type="ModelAltec.LOJA" Role="LOJA" Multiplicity="1" />
+    <End Type="ModelAltec.Produto" Role="Produto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOJA">
+        <PropertyRef Name="Sigla" />
+      </Principal>
+      <Dependent Role="Produto">
+        <PropertyRef Name="loja" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PEDIDOMESA_COMBINADO_PEDIDOMESA">
+    <End Type="ModelAltec.PedidoMesa" Role="PedidoMesa" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="ModelAltec.PEDIDOMESA_COMBINADO" Role="PEDIDOMESA_COMBINADO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PedidoMesa">
+        <PropertyRef Name="loja" />
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PEDIDOMESA_COMBINADO">
+        <PropertyRef Name="ID_LOJA" />
+        <PropertyRef Name="ID_PEDIDOMESA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PEDIDOMESA_COMPLEMENTO_PEDIDOMESA">
+    <End Type="ModelAltec.PedidoMesa" Role="PedidoMesa" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="ModelAltec.PEDIDOMESA_COMPLEMENTO" Role="PEDIDOMESA_COMPLEMENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PedidoMesa">
+        <PropertyRef Name="loja" />
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PEDIDOMESA_COMPLEMENTO">
+        <PropertyRef Name="ID_LOJA" />
+        <PropertyRef Name="ID_PEDIDOMESA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PEDIDOMESA_COMBINADO_COMPLEMENTO_PEDIDOMESA_COMBINADO">
+    <End Type="ModelAltec.PEDIDOMESA_COMBINADO" Role="PEDIDOMESA_COMBINADO" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="ModelAltec.PEDIDOMESA_COMBINADO_COMPLEMENTO" Role="PEDIDOMESA_COMBINADO_COMPLEMENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PEDIDOMESA_COMBINADO">
+        <PropertyRef Name="ID" />
+        <PropertyRef Name="ID_LOJA" />
+      </Principal>
+      <Dependent Role="PEDIDOMESA_COMBINADO_COMPLEMENTO">
+        <PropertyRef Name="ID_PEDIDOMESA_COMBINADO" />
+        <PropertyRef Name="ID_LOJA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PEDIDOMESA_COMBINADO_PRODUTO">
+    <End Type="ModelAltec.Produto" Role="Produto" Multiplicity="0..1" />
+    <End Type="ModelAltec.PEDIDOMESA_COMBINADO" Role="PEDIDOMESA_COMBINADO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Produto">
+        <PropertyRef Name="CodProduto" />
+        <PropertyRef Name="loja" />
+      </Principal>
+      <Dependent Role="PEDIDOMESA_COMBINADO">
+        <PropertyRef Name="ID_PRODUTO_FILHO" />
+        <PropertyRef Name="ID_LOJA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PEDIDOMESA_COMBINADO_COMPLEMENTO_PRODUTO">
+    <End Type="ModelAltec.Produto" Role="Produto" Multiplicity="0..1" />
+    <End Type="ModelAltec.PEDIDOMESA_COMBINADO_COMPLEMENTO" Role="PEDIDOMESA_COMBINADO_COMPLEMENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Produto">
+        <PropertyRef Name="CodProduto" />
+        <PropertyRef Name="loja" />
+      </Principal>
+      <Dependent Role="PEDIDOMESA_COMBINADO_COMPLEMENTO">
+        <PropertyRef Name="ID_COMBINADO_COMP_PRODUTO" />
+        <PropertyRef Name="ID_LOJA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PEDIDOMESA_COMPLEMENTO_PRODUTO">
+    <End Type="ModelAltec.Produto" Role="Produto" Multiplicity="0..1" />
+    <End Type="ModelAltec.PEDIDOMESA_COMPLEMENTO" Role="PEDIDOMESA_COMPLEMENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Produto">
+        <PropertyRef Name="CodProduto" />
+        <PropertyRef Name="loja" />
+      </Principal>
+      <Dependent Role="PEDIDOMESA_COMPLEMENTO">
+        <PropertyRef Name="ID_COMPLEMENTO_PRODUTO" />
+        <PropertyRef Name="ID_LOJA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PEDIDOMESAB_COMBINADO_PEDIDOMESAB">
+    <End Type="ModelAltec.PEDIDOMESAB" Role="PEDIDOMESAB" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="ModelAltec.PEDIDOMESAB_COMBINADO" Role="PEDIDOMESAB_COMBINADO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PEDIDOMESAB">
+        <PropertyRef Name="ID" />
+        <PropertyRef Name="loja" />
+      </Principal>
+      <Dependent Role="PEDIDOMESAB_COMBINADO">
+        <PropertyRef Name="ID_PEDIDOMESAB" />
+        <PropertyRef Name="ID_LOJA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PEDIDOMESAB_COMPLEMENTO_PEDIDOMESAB">
+    <End Type="ModelAltec.PEDIDOMESAB" Role="PEDIDOMESAB" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="ModelAltec.PEDIDOMESAB_COMPLEMENTO" Role="PEDIDOMESAB_COMPLEMENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PEDIDOMESAB">
+        <PropertyRef Name="ID" />
+        <PropertyRef Name="loja" />
+      </Principal>
+      <Dependent Role="PEDIDOMESAB_COMPLEMENTO">
+        <PropertyRef Name="ID_PEDIDOMESAB" />
+        <PropertyRef Name="ID_LOJA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PedidoMesaB_produto_Loja">
+    <End Type="ModelAltec.Produto" Role="Produto" Multiplicity="1" />
+    <End Type="ModelAltec.PEDIDOMESAB" Role="PEDIDOMESAB" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Produto">
+        <PropertyRef Name="CodProduto" />
+        <PropertyRef Name="loja" />
+      </Principal>
+      <Dependent Role="PEDIDOMESAB">
+        <PropertyRef Name="CodProduto" />
+        <PropertyRef Name="loja" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PedidoMesaB_PRODUTO">
+    <End Type="ModelAltec.Produto" Role="Produto" Multiplicity="1" />
+    <End Type="ModelAltec.PEDIDOMESAB" Role="PEDIDOMESAB" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Produto">
+        <PropertyRef Name="CodProduto" />
+        <PropertyRef Name="loja" />
+      </Principal>
+      <Dependent Role="PEDIDOMESAB">
+        <PropertyRef Name="CodProduto" />
+        <PropertyRef Name="loja" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PEDIDOMESAB_COMBINADO_COMPLEMENTO_PEDIDOMESAB_COMBINADO">
+    <End Type="ModelAltec.PEDIDOMESAB_COMBINADO" Role="PEDIDOMESAB_COMBINADO" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="ModelAltec.PEDIDOMESAB_COMBINADO_COMPLEMENTO" Role="PEDIDOMESAB_COMBINADO_COMPLEMENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PEDIDOMESAB_COMBINADO">
+        <PropertyRef Name="ID" />
+        <PropertyRef Name="ID_LOJA" />
+      </Principal>
+      <Dependent Role="PEDIDOMESAB_COMBINADO_COMPLEMENTO">
+        <PropertyRef Name="ID_PEDIDOMESAB_COMBINADO" />
+        <PropertyRef Name="ID_LOJA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PEDIDOMESAB_COMBINADO_PRODUTO">
+    <End Type="ModelAltec.Produto" Role="Produto" Multiplicity="0..1" />
+    <End Type="ModelAltec.PEDIDOMESAB_COMBINADO" Role="PEDIDOMESAB_COMBINADO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Produto">
+        <PropertyRef Name="CodProduto" />
+        <PropertyRef Name="loja" />
+      </Principal>
+      <Dependent Role="PEDIDOMESAB_COMBINADO">
+        <PropertyRef Name="ID_PRODUTO_FILHO" />
+        <PropertyRef Name="ID_LOJA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PEDIDOMESAB_COMBINADO_COMPLEMENTO_PRODUTO">
+    <End Type="ModelAltec.Produto" Role="Produto" Multiplicity="0..1" />
+    <End Type="ModelAltec.PEDIDOMESAB_COMBINADO_COMPLEMENTO" Role="PEDIDOMESAB_COMBINADO_COMPLEMENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Produto">
+        <PropertyRef Name="CodProduto" />
+        <PropertyRef Name="loja" />
+      </Principal>
+      <Dependent Role="PEDIDOMESAB_COMBINADO_COMPLEMENTO">
+        <PropertyRef Name="ID_COMBINADO_COMP_PRODUTO" />
+        <PropertyRef Name="ID_LOJA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PEDIDOMESAB_COMPLEMENTO_PRODUTO">
+    <End Type="ModelAltec.Produto" Role="Produto" Multiplicity="0..1" />
+    <End Type="ModelAltec.PEDIDOMESAB_COMPLEMENTO" Role="PEDIDOMESAB_COMPLEMENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Produto">
+        <PropertyRef Name="CodProduto" />
+        <PropertyRef Name="loja" />
+      </Principal>
+      <Dependent Role="PEDIDOMESAB_COMPLEMENTO">
+        <PropertyRef Name="ID_COMPLEMENTO_PRODUTO" />
+        <PropertyRef Name="ID_LOJA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="CREAIT_CATEGORIA_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="DESCRICAO" Nullable="false" MaxLength="20" />
+    <Property Type="Int32" Name="BACKGROUND" Nullable="true" />
+    <Property Type="Int32" Name="BACKGROUD_ITYPE" Nullable="true" />
+    <Property Type="Boolean" Name="ATIVO" Nullable="true" />
+    <Property Type="Boolean" Name="BUSCAVEL" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="CREAIT_FILIAL_Result">
+    <Property Type="String" Name="ID" Nullable="false" MaxLength="6" />
+    <Property Type="String" Name="NOME" Nullable="false" MaxLength="60" />
+    <Property Type="String" Name="TELEFONE" Nullable="true" MaxLength="14" />
+    <Property Type="Int32" Name="LAT" Nullable="true" />
+    <Property Type="Int32" Name="LNG" Nullable="true" />
+    <Property Type="String" Name="ENDERECO" Nullable="false" MaxLength="60" />
+    <Property Type="Int32" Name="DELIVERY" Nullable="false" />
+    <Property Type="Int32" Name="BALCAO" Nullable="false" />
+    <Property Type="Int32" Name="CORREIOS" Nullable="false" />
+    <Property Type="Int32" Name="VERSAO" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="CREAIT_MESA_Result">
+    <Property Type="String" Name="Codigo" Nullable="false" MaxLength="6" />
+    <Property Type="String" Name="Descricao" Nullable="true" MaxLength="160" />
+    <Property Type="String" Name="loja" Nullable="false" MaxLength="6" />
+    <Property Type="String" Name="statusExporta" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="Status" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="Lugares" Nullable="true" MaxLength="2" />
+    <Property Type="String" Name="Servico" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="Impressora" Nullable="true" MaxLength="160" />
+    <Property Type="Double" Name="Pessoas" Nullable="true" />
+    <Property Type="String" Name="StatusIMP" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="Vendedor" Nullable="true" MaxLength="20" />
+    <Property Type="Int32" Name="Controle" Nullable="true" />
+    <Property Type="Int32" Name="ContaImpressa" Nullable="true" />
+    <Property Type="DateTime" Name="HorarioAbertura" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="HorarioFechamento" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="Cliente" Nullable="true" />
+    <Property Type="DateTime" Name="UltimoConsumo" Nullable="true" Precision="23" />
+    <Property Type="Double" Name="Caixinha" Nullable="true" />
+    <Property Type="String" Name="Usuariodesconto" Nullable="true" MaxLength="30" />
+    <Property Type="Double" Name="estacionamento" Nullable="true" />
+    <Property Type="Int32" Name="carros" Nullable="true" />
+    <Property Type="String" Name="TabelaServico" Nullable="true" MaxLength="20" />
+    <Property Type="Int32" Name="MOTIVODESC" Nullable="true" />
+    <Property Type="Int32" Name="NUM_COUVERT" Nullable="true" />
+    <Property Type="Int32" Name="CODPRACA" Nullable="true" />
+    <Property Type="Int32" Name="PESSOAS_INICIAL" Nullable="true" />
+    <Property Type="String" Name="COO" Nullable="true" MaxLength="6" />
+    <Property Type="String" Name="SeqECF" Nullable="true" MaxLength="2" />
+    <Property Type="Decimal" Name="entrada" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="consumacao" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="couvert" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="valservico" Nullable="true" Precision="19" />
+    <Property Type="String" Name="usuarioCheckin" Nullable="true" MaxLength="30" />
+    <Property Type="Int32" Name="CODPROMO" Nullable="true" />
+    <Property Type="Int32" Name="JUNCAOMESA" Nullable="true" />
+    <Property Type="String" Name="STATUS_WEB" Nullable="true" MaxLength="1" />
+    <Property Type="Boolean" Name="bMesaDividida" Nullable="true" />
+    <Property Type="String" Name="IECF" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="COD_PRE_CONTA" Nullable="true" MaxLength="200" />
+    <Property Type="Boolean" Name="CONFIRM_PRINTER_TABLE" Nullable="false" />
+    <Property Type="Guid" Name="MESAS_FINAN_GUID" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="CREAIT_MESAS_Result">
+    <Property Type="String" Name="CODIGO" Nullable="false" MaxLength="6" />
+    <Property Type="String" Name="Descricao" Nullable="true" MaxLength="160" />
+    <Property Type="String" Name="STATUS" Nullable="false" MaxLength="1" />
+  </ComplexType>
+  <ComplexType Name="CREAIT_OBSERVACAO_Result">
+    <Property Type="String" Name="COD_TROCA" Nullable="false" MaxLength="6" />
+    <Property Type="String" Name="DescriProduto" Nullable="true" MaxLength="150" />
+    <Property Type="Decimal" Name="PrecoVenda" Nullable="true" Precision="19" />
+    <Property Type="String" Name="TIPO" Nullable="true" MaxLength="11" />
+  </ComplexType>
+  <ComplexType Name="creait_pedido_delivery_Result">
+    <Property Type="Int32" Name="pedido_numero" Nullable="false" />
+    <Property Type="String" Name="pedido_status" Nullable="true" MaxLength="20" />
+    <Property Type="DateTime" Name="pedido_entrada" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="pedido_finalizado" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="pedido_entregue" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="pedido_preparo" Nullable="true" Precision="23" />
+    <Property Type="Decimal" Name="pedido_total" Nullable="true" Precision="19" />
+    <Property Type="String" Name="pedido_cliente" Nullable="false" MaxLength="60" />
+    <Property Type="Decimal" Name="pedido_troco" Nullable="true" Precision="19" />
+    <Property Type="String" Name="pedido_endereco" Nullable="true" MaxLength="80" />
+    <Property Type="String" Name="pedido_telefone" Nullable="false" MaxLength="20" />
+    <Property Type="Decimal" Name="pedido_dinheiro" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="pedido_cheque" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="pedido_cartao" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="pedido_ticket" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="pedido_vale" Nullable="true" Precision="19" />
+    <Property Type="String" Name="produto_observacao" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="produto_nome" Nullable="true" MaxLength="200" />
+    <Property Type="Decimal" Name="produto_quantidade" Nullable="true" Precision="10" Scale="3" />
+    <Property Type="Decimal" Name="produto_unitario" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="produto_total" Nullable="true" Precision="19" />
+    <Property Type="String" Name="complemento_nome" Nullable="true" MaxLength="150" />
+    <Property Type="Decimal" Name="complemento_preco" Nullable="true" Precision="19" />
+  </ComplexType>
+  <ComplexType Name="CREAIT_PERGUNTA_Result">
+    <Property Type="Guid" Name="ID" Nullable="true" />
+    <Property Type="String" Name="NOME" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="FQN_TYPE" Nullable="false" MaxLength="1" />
+    <Property Type="Int32" Name="ORDEM" Nullable="true" />
+    <Property Type="Int32" Name="MAX" Nullable="true" />
+    <Property Type="Int32" Name="MIN" Nullable="true" />
+    <Property Type="Int32" Name="PRECO" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="CREAIT_PRACAS_Result">
+    <Property Type="String" Name="CodImpressora" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Descricao" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="CREAIT_PRODUTO_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="NOME" Nullable="true" MaxLength="150" />
+    <Property Type="Int32" Name="AGENDAS_ID" Nullable="true" />
+    <Property Type="Int32" Name="ICONE" Nullable="true" />
+    <Property Type="Int32" Name="ICONE_ITYPE" Nullable="true" />
+    <Property Type="Decimal" Name="PRECO" Nullable="false" Precision="19" />
+    <Property Type="Int32" Name="REDIRECT" Nullable="true" />
+    <Property Type="String" Name="DESCRICAO" Nullable="true" MaxLength="150" />
+    <Property Type="Decimal" Name="VALOR" Nullable="false" Precision="19" />
+    <Property Type="Int32" Name="DESTAQUE" Nullable="true" />
+    <Property Type="Int32" Name="DURACAO" Nullable="true" />
+    <Property Type="Int32" Name="ESTOQUE" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="CREAIT_RESPOSTA_Result">
+    <Property Type="Int32" Name="ID" Nullable="true" />
+    <Property Type="Decimal" Name="PRECO" Nullable="true" Precision="19" />
+    <Property Type="Guid" Name="PRODUCT_ID" Nullable="true" />
+    <Property Type="String" Name="NOME" Nullable="true" MaxLength="150" />
+    <Property Type="Int32" Name="ICONE" Nullable="true" />
+    <Property Type="Int32" Name="ICONE_ITYPE" Nullable="true" />
+    <Property Type="Int32" Name="REDIRECT" Nullable="true" />
+    <Property Type="Decimal" Name="VALOR" Nullable="true" Precision="19" />
+    <Property Type="Int32" Name="SELECIONADO" Nullable="true" />
+    <Property Type="Int32" Name="DESCONTO" Nullable="true" />
+    <Property Type="Int32" Name="TYPE" Nullable="true" />
+    <Property Type="Int32" Name="ESTOQUE" Nullable="true" />
+    <Property Type="String" Name="DESCRICAO" Nullable="true" MaxLength="150" />
+  </ComplexType>
+  <ComplexType Name="CREAIT_TbConta_Insert_Result">
+    <Property Type="String" Name="CodigoMesa" Nullable="true" MaxLength="6" />
+    <Property Type="String" Name="CodVendedor" Nullable="true" MaxLength="6" />
+    <Property Type="String" Name="NomeVendedor" Nullable="true" MaxLength="20" />
+    <Property Type="DateTime" Name="Horario" Nullable="true" Precision="23" />
+    <Property Type="String" Name="Status" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="loja" Nullable="false" MaxLength="6" />
+    <Property Type="String" Name="PRINTER_TABLE_ID" Nullable="true" MaxLength="12" />
+  </ComplexType>
+  <ComplexType Name="CREAIT_VENDEDOR_Result">
+    <Property Type="Int32" Name="CODIGO" Nullable="true" />
+    <Property Type="String" Name="NOME" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="SENHA" Nullable="true" MaxLength="32" />
+  </ComplexType>
+  <EntityType Name="DESBLOQUEIO_MESA">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="LOJA" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CODMESA" Type="Int32" Nullable="false" />
+    <Property Name="DATA" Type="DateTime" Precision="3" />
+    <Property Name="HORARIO" Type="DateTime" Precision="3" />
+    <Property Name="USUARIO_CAIXA" Type="String" MaxLength="35" FixedLength="false" Unicode="true" />
+    <Property Name="VENDEDOR" Type="String" MaxLength="35" FixedLength="false" Unicode="true" />
+    <Property Name="USUARIO_PERMISSAO" Type="String" MaxLength="35" FixedLength="false" Unicode="true" />
+    <Property Name="QTDE_PRODUTOS" Type="Int32" />
+    <Property Name="TOTAL_PRODUTOS" Type="Double" />
+    <Property Name="OPERACAO" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="LOJA" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="PERMISSAO" Type="Boolean" />
+    <Property Name="STATUS_EXPORTA" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="STATUS_WEB" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="STATUSKIIK" Type="Boolean" />
+    <Property Name="DESBLOQUEIOMESA_GUID" Type="Guid" />
+    <Property Name="DESBLOQUEIOMESA_FINAN_GUID" Type="Guid" />
+  </EntityType>
+  <EntityType Name="USUARIO">
+    <Key>
+      <PropertyRef Name="Codigo" />
+      <PropertyRef Name="loja" />
+    </Key>
+    <Property Name="Codigo" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="loja" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="status" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Prioridade" Type="Int32" Nullable="false" />
+    <Property Name="Senha" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Enabled" Type="Boolean" />
+    <Property Name="FundoCX" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="codacesso" Type="Int32" Nullable="false" />
+    <Property Name="ULTIMA_ALTERACAO_SENHA" Type="DateTime" Precision="3" />
+    <Property Name="STATUS_WEB" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="IMG_DIGITAL" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="ID_BIOMETRICO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CodBarAcesso" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="BEXCLUIR" Type="Boolean" />
+    <Property Name="BTRANSFERIR" Type="Boolean" />
+    <Property Name="BDESCONTO" Type="Boolean" />
+    <Property Name="BSERVICO" Type="Boolean" />
+    <Property Name="USUARIO_GUID" Type="Guid" />
+    <Property Name="USUARIO_MIGRATION" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="ITENSPED" Relationship="ModelAltec.fk_ItensPed_Usuario" FromRole="USUARIO" ToRole="ITENSPED" />
+    <NavigationProperty Name="LOJA1" Relationship="ModelAltec.FK_USUARIO_LOJA" FromRole="USUARIO" ToRole="LOJA" />
+    <NavigationProperty Name="ACESSO" Relationship="ModelAltec.fk_usuario_acesso" FromRole="USUARIO" ToRole="ACESSO" />
+  </EntityType>
+  <Association Name="fk_ItensPed_Usuario">
+    <End Type="ModelAltec.USUARIO" Role="USUARIO" Multiplicity="0..1" />
+    <End Type="ModelAltec.ITENSPED" Role="ITENSPED" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="Codigo" />
+        <PropertyRef Name="loja" />
+      </Principal>
+      <Dependent Role="ITENSPED">
+        <PropertyRef Name="sUsuarioPedido" />
+        <PropertyRef Name="Loja" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USUARIO_LOJA">
+    <End Type="ModelAltec.LOJA" Role="LOJA" Multiplicity="1" />
+    <End Type="ModelAltec.USUARIO" Role="USUARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOJA">
+        <PropertyRef Name="Sigla" />
+      </Principal>
+      <Dependent Role="USUARIO">
+        <PropertyRef Name="loja" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ACESSO">
+    <Key>
+      <PropertyRef Name="CodAcesso" />
+      <PropertyRef Name="LOJA" />
+    </Key>
+    <Property Name="CodAcesso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DescriAcesso" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="AcessaGerencial" Type="Boolean" Nullable="false" />
+    <Property Name="AcessaCaixa" Type="Boolean" Nullable="false" />
+    <Property Name="ExcluProd" Type="Boolean" Nullable="false" />
+    <Property Name="TransfProd" Type="Boolean" Nullable="false" />
+    <Property Name="LancaProd" Type="Boolean" Nullable="false" />
+    <Property Name="CadCli" Type="Boolean" Nullable="false" />
+    <Property Name="LibCartao" Type="Boolean" Nullable="false" />
+    <Property Name="BaixaConta" Type="Boolean" Nullable="false" />
+    <Property Name="TiraServico" Type="Boolean" Nullable="false" />
+    <Property Name="DaDesconto" Type="Boolean" Nullable="false" />
+    <Property Name="FechaCasa" Type="Boolean" Nullable="false" />
+    <Property Name="CadUsuario" Type="Boolean" Nullable="false" />
+    <Property Name="CadProduto" Type="Boolean" Nullable="false" />
+    <Property Name="CadVendedor" Type="Boolean" Nullable="false" />
+    <Property Name="CadMesa" Type="Boolean" Nullable="false" />
+    <Property Name="Relatorios" Type="Boolean" Nullable="false" />
+    <Property Name="FechaOperador" Type="Boolean" Nullable="false" />
+    <Property Name="VerMesas" Type="Boolean" Nullable="false" />
+    <Property Name="ServicoRepique" Type="Boolean" Nullable="false" />
+    <Property Name="ImprimeConta" Type="Boolean" Nullable="false" />
+    <Property Name="DesbloqueiaMesa" Type="Boolean" Nullable="false" />
+    <Property Name="EfetuaEstorno" Type="Boolean" Nullable="false" />
+    <Property Name="EfetuaDebito" Type="Boolean" Nullable="false" />
+    <Property Name="EfetuaCredito" Type="Boolean" Nullable="false" />
+    <Property Name="Detalhes" Type="Boolean" Nullable="false" />
+    <Property Name="Extrato" Type="Boolean" Nullable="false" />
+    <Property Name="Cadastros" Type="Boolean" Nullable="false" />
+    <Property Name="FazBackup" Type="Boolean" Nullable="false" />
+    <Property Name="CadAliquota" Type="Boolean" Nullable="false" />
+    <Property Name="CadRecebDesc" Type="Boolean" Nullable="false" />
+    <Property Name="CadImpressora" Type="Boolean" Nullable="false" />
+    <Property Name="CadGrupoProduto" Type="Boolean" Nullable="false" />
+    <Property Name="CadCombinado" Type="Boolean" Nullable="false" />
+    <Property Name="CadCompTroca" Type="Boolean" Nullable="false" />
+    <Property Name="CadMotoqueiro" Type="Boolean" Nullable="false" />
+    <Property Name="CadLoja" Type="Boolean" Nullable="false" />
+    <Property Name="RelAcumuladoDiaDia" Type="Boolean" Nullable="false" />
+    <Property Name="RelAuditoriaContaConta" Type="Boolean" Nullable="false" />
+    <Property Name="RelAtendimentoClienteHora" Type="Boolean" Nullable="false" />
+    <Property Name="RelSaldoDebitoCli" Type="Boolean" Nullable="false" />
+    <Property Name="RelEstatisticaContaCorr" Type="Boolean" Nullable="false" />
+    <Property Name="RelCardapio" Type="Boolean" Nullable="false" />
+    <Property Name="RelDescontos" Type="Boolean" Nullable="false" />
+    <Property Name="RelFaturamentoDataOp" Type="Boolean" Nullable="false" />
+    <Property Name="RelProdutosExcluidos" Type="Boolean" Nullable="false" />
+    <Property Name="RelProdutosTransf" Type="Boolean" Nullable="false" />
+    <Property Name="RelProdutosVendidos" Type="Boolean" Nullable="false" />
+    <Property Name="RelVendasGrupoProd" Type="Boolean" Nullable="false" />
+    <Property Name="RelVendasVendedor" Type="Boolean" Nullable="false" />
+    <Property Name="RelServicoRepique" Type="Boolean" Nullable="false" />
+    <Property Name="AcessaContaCorrente" Type="Boolean" Nullable="false" />
+    <Property Name="RelOcorrencia" Type="Boolean" Nullable="false" />
+    <Property Name="RelVendaPorMotoqueiro" Type="Boolean" Nullable="false" />
+    <Property Name="RelResumoGeral" Type="Boolean" Nullable="false" />
+    <Property Name="RelRepiqueTaxa" Type="Boolean" Nullable="false" />
+    <Property Name="RelFaturamentoMultiLoja" Type="Boolean" Nullable="false" />
+    <Property Name="RelVendasPorGrupoMultiLoja" Type="Boolean" Nullable="false" />
+    <Property Name="RelProdutosVendidosMultiLoja" Type="Boolean" Nullable="false" />
+    <Property Name="STATUS" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="AcessaCadastroProduto" Type="Boolean" Nullable="false" />
+    <Property Name="CadTroca" Type="Boolean" Nullable="false" />
+    <Property Name="AltDescProd" Type="Boolean" Nullable="false" />
+    <Property Name="AltGrpoProd" Type="Boolean" Nullable="false" />
+    <Property Name="AltCmdaProd" Type="Boolean" Nullable="false" />
+    <Property Name="AltPcktProd" Type="Boolean" Nullable="false" />
+    <Property Name="AltImprProd" Type="Boolean" Nullable="false" />
+    <Property Name="AltPrcoProd" Type="Boolean" Nullable="false" />
+    <Property Name="AltSrvcProd" Type="Boolean" Nullable="false" />
+    <Property Name="AltTrbtProd" Type="Boolean" Nullable="false" />
+    <Property Name="AltAliqProd" Type="Boolean" Nullable="false" />
+    <Property Name="AltCdBrProd" Type="Boolean" Nullable="false" />
+    <Property Name="AltCombProd" Type="Boolean" Nullable="false" />
+    <Property Name="AltNCmbProd" Type="Boolean" Nullable="false" />
+    <Property Name="AltVtdoProd" Type="Boolean" Nullable="false" />
+    <Property Name="AltVAntProd" Type="Boolean" Nullable="false" />
+    <Property Name="AltCCstProd" Type="Boolean" Nullable="false" />
+    <Property Name="InsertProd" Type="Boolean" Nullable="false" />
+    <Property Name="DelProd" Type="Boolean" Nullable="false" />
+    <Property Name="AltCodProd" Type="Boolean" Nullable="false" />
+    <Property Name="Sangria" Type="Boolean" Nullable="false" />
+    <Property Name="Estacionamento" Type="Boolean" Nullable="false" />
+    <Property Name="Fidelidade" Type="Boolean" Nullable="false" />
+    <Property Name="Producao" Type="Boolean" Nullable="false" />
+    <Property Name="TranfContaCorrente" Type="Boolean" Nullable="false" />
+    <Property Name="Taxa" Type="Boolean" Nullable="false" />
+    <Property Name="VerTaxaRepique" Type="Boolean" Nullable="false" />
+    <Property Name="Ocorrencias" Type="Boolean" Nullable="false" />
+    <Property Name="Expedir" Type="Boolean" Nullable="false" />
+    <Property Name="AbrePedido" Type="Boolean" Nullable="false" />
+    <Property Name="FundoCaixa" Type="Boolean" Nullable="false" />
+    <Property Name="AcessaImpressoras" Type="Boolean" Nullable="false" />
+    <Property Name="CancelaCupom" Type="Boolean" Nullable="false" />
+    <Property Name="LeituraX" Type="Boolean" Nullable="false" />
+    <Property Name="ReducZ" Type="Boolean" Nullable="false" />
+    <Property Name="TransfPraca" Type="Boolean" />
+    <Property Name="ValorVerMesa" Type="Boolean" Nullable="false" />
+    <Property Name="Gaveta" Type="Boolean" Nullable="false" />
+    <Property Name="ManutencaoPtos" Type="Boolean" />
+    <Property Name="GERAPTOMANUAL" Type="Boolean" />
+    <Property Name="COD_AGENTE" Type="Boolean" />
+    <Property Name="BREIMPRIMECONTA" Type="Boolean" />
+    <Property Name="BALTERAPESSOAS" Type="Boolean" />
+    <Property Name="LOJA" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="DIAS_VALIDADE" Type="Int32" />
+    <Property Name="VERBTNAGENDADOS" Type="Boolean" />
+    <Property Name="VerPedAgendadosImpressos" Type="Boolean" />
+    <Property Name="restaurarPedAgendados" Type="Boolean" />
+    <Property Name="VerPedidosAgendados" Type="Boolean" />
+    <Property Name="altEntrada" Type="Boolean" />
+    <Property Name="altconsumacao" Type="Boolean" />
+    <Property Name="acessaContaConrrente" Type="Boolean" />
+    <Property Name="acessaImpressora" Type="Boolean" />
+    <Property Name="aliqprod" Type="Boolean" />
+    <Property Name="aliquota" Type="Boolean" />
+    <Property Name="altcmdarpod" Type="Boolean" />
+    <Property Name="AltCouvert" Type="Boolean" />
+    <Property Name="altprco" Type="Boolean" />
+    <Property Name="altsrvc" Type="Boolean" />
+    <Property Name="alttribtprod" Type="Boolean" />
+    <Property Name="altvtdo" Type="Boolean" />
+    <Property Name="balterpessoas" Type="Boolean" />
+    <Property Name="cdbrprod" Type="Boolean" />
+    <Property Name="cmdarpod" Type="Boolean" />
+    <Property Name="CodProd" Type="Boolean" />
+    <Property Name="combprod" Type="Boolean" />
+    <Property Name="consumacao" Type="Boolean" />
+    <Property Name="couvert" Type="Boolean" />
+    <Property Name="descprod" Type="Boolean" />
+    <Property Name="entrada" Type="Boolean" />
+    <Property Name="grpoprod" Type="Boolean" />
+    <Property Name="imprprod" Type="Boolean" />
+    <Property Name="ncmbprod" Type="Boolean" />
+    <Property Name="Ocorrencia" Type="Boolean" />
+    <Property Name="pcktprod" Type="Boolean" />
+    <Property Name="prco" Type="Boolean" />
+    <Property Name="relAtrendimentoClienteHora" Type="Boolean" />
+    <Property Name="relOcorrencias" Type="Boolean" />
+    <Property Name="srvc" Type="Boolean" />
+    <Property Name="tribtprod" Type="Boolean" />
+    <Property Name="vantprod" Type="Boolean" />
+    <Property Name="vtdo" Type="Boolean" />
+    <Property Name="AltNomeCC" Type="Boolean" />
+    <Property Name="AltCPFCC" Type="Boolean" />
+    <Property Name="AltCNPJCC" Type="Boolean" />
+    <Property Name="ABRIRGAVETA" Type="Boolean" />
+    <Property Name="DataFechamentoImp" Type="Boolean" />
+    <Property Name="STATUS_WEB" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="CONTROLE_SPED" Type="Boolean" />
+    <Property Name="CONFIG_PROMO" Type="Boolean" />
+    <Property Name="REL_PROMO" Type="Boolean" />
+    <Property Name="CON_PROMO" Type="Boolean" />
+    <Property Name="LOTE_PROMO" Type="Boolean" />
+    <Property Name="EDICAO_PROMO" Type="Boolean" />
+    <Property Name="ACESSO_PROMO" Type="Boolean" />
+    <Property Name="bConsulMesaAllVend" Type="Boolean" />
+    <Property Name="bTransfVend" Type="Boolean" />
+    <Property Name="AltProdEspcProd" Type="Boolean" />
+    <Property Name="AltBalancProd" Type="Boolean" />
+    <Property Name="AltGpProducaoProd" Type="Boolean" />
+    <Property Name="AltKDSProd" Type="Boolean" />
+    <Property Name="AltEAN13Prod" Type="Boolean" />
+    <Property Name="AltCSTPISProd" Type="Boolean" />
+    <Property Name="AltVLPISProd" Type="Boolean" />
+    <Property Name="AltALQPISProd" Type="Boolean" />
+    <Property Name="AltCONTPISProd" Type="Boolean" />
+    <Property Name="AltDIFPISProd" Type="Boolean" />
+    <Property Name="AltCSTCOFINSProd" Type="Boolean" />
+    <Property Name="AltVLCOFINSProd" Type="Boolean" />
+    <Property Name="AltALQCOFINSProd" Type="Boolean" />
+    <Property Name="AltCONTCOFINSProd" Type="Boolean" />
+    <Property Name="AltDIFCOFINSProd" Type="Boolean" />
+    <Property Name="EditaProd" Type="Boolean" />
+    <Property Name="excluistatusn" Type="Boolean" />
+    <Property Name="exclustatusn" Type="Boolean" />
+    <Property Name="REEINPRIMIRESPECIFICOTEF" Type="Boolean" />
+    <Property Name="INTEGRACAO_ACOM_FINAN" Type="Boolean" Nullable="false" />
+    <Property Name="INTEGRACAO_ACOM_VENDA" Type="Boolean" Nullable="false" />
+    <Property Name="FINCONF_FECHAMENTO" Type="Boolean" Nullable="false" />
+    <Property Name="MESA" Type="Boolean" Nullable="false" />
+    <Property Name="RelZ" Type="Boolean" Nullable="false" />
+    <Property Name="OBSERVACAO" Type="Boolean" Nullable="false" />
+    <Property Name="ExportaXML_SAT" Type="Boolean" Nullable="false" />
+    <Property Name="CANCELRAPIDDO" Type="Boolean" />
+    <Property Name="ABRE_DIA" Type="Boolean" />
+    <Property Name="ACESSO_GUID" Type="Guid" />
+    <Property Name="ACESSO_MIGRATION" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="USUARIO" Relationship="ModelAltec.fk_usuario_acesso" FromRole="ACESSO" ToRole="USUARIO" />
+  </EntityType>
+  <Association Name="fk_usuario_acesso">
+    <End Type="ModelAltec.ACESSO" Role="ACESSO" Multiplicity="1" />
+    <End Type="ModelAltec.USUARIO" Role="USUARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ACESSO">
+        <PropertyRef Name="CodAcesso" />
+        <PropertyRef Name="LOJA" />
+      </Principal>
+      <Dependent Role="USUARIO">
+        <PropertyRef Name="codacesso" />
+        <PropertyRef Name="loja" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="CREAIT_CONSUMO_MESA_Result">
+    <Property Type="Int32" Name="AUTOINCREMENT" Nullable="false" />
+    <Property Type="String" Name="P_IDENT_MESA" Nullable="true" MaxLength="6" />
+    <Property Type="String" Name="P_VENDEDOR" Nullable="true" MaxLength="6" />
+    <Property Type="String" Name="P_NOME_VENDEDOR" Nullable="true" MaxLength="20" />
+    <Property Type="Boolean" Name="P_BALANCA" Nullable="true" />
+    <Property Type="Int32" Name="P_CODIGO_PRODUTO" Nullable="true" />
+    <Property Type="String" Name="P_UNIDADE" Nullable="true" MaxLength="2" />
+    <Property Type="String" Name="P_DESCR_PRODUTO" Nullable="false" MaxLength="40" />
+    <Property Type="Double" Name="P_QTD" Nullable="false" />
+    <Property Type="Double" Name="P_UNIT" Nullable="false" />
+    <Property Type="Double" Name="P_DESC" Nullable="true" />
+    <Property Type="DateTime" Name="P_HORARIO" Nullable="true" Precision="23" />
+    <Property Type="String" Name="P_LUGAR" Nullable="true" MaxLength="6" />
+    <Property Type="String" Name="P_CANCELADO" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="P_OBSERVACAO" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="PCOMPL_CODIGO_PRODUTO" Nullable="true" />
+    <Property Type="String" Name="PCOMPL_DESCR_PRODUTO" Nullable="true" MaxLength="150" />
+    <Property Type="Double" Name="PCOMPL_QUANTIDADE" Nullable="true" />
+    <Property Type="Double" Name="PCOMPL_VALOR" Nullable="true" />
+    <Property Type="String" Name="PCOMPL_CANCELADO" Nullable="true" MaxLength="1" />
+    <Property Type="Int32" Name="PCOMPL_ID" Nullable="true" />
+    <Property Type="Int32" Name="PCOMB_CODIGO_PRODUTO" Nullable="true" />
+    <Property Type="String" Name="PCOMB_DESCR_PRODUTO" Nullable="true" MaxLength="150" />
+    <Property Type="Double" Name="PCOMB_QUANTIDADE" Nullable="true" />
+    <Property Type="String" Name="PCOMB_CANCELADO" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="PCOMB_ID" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="PCOMB_COMPL_CODIGO_PRODUTO" Nullable="true" />
+    <Property Type="String" Name="PCOMB_COMPL_PRODUTO_NOME" Nullable="true" MaxLength="150" />
+    <Property Type="Double" Name="PCOMB_COMPL_QUANTIDADE" Nullable="true" />
+    <Property Type="Double" Name="PCOMB_COMPL_VALOR" Nullable="true" />
+    <Property Type="String" Name="PCOMB_COMPL_CANCELADO" Nullable="true" MaxLength="1" />
+    <Property Type="Int32" Name="PCOMB_COMPL_ID" Nullable="true" />
+    <Property Type="String" Name="ID_GROUP" Nullable="false" MaxLength="100" />
+  </ComplexType>
+</Schema>

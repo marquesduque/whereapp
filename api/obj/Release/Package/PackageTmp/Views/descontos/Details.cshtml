@@ -1,0 +1,106 @@
+﻿@model api.Models.desconto
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>desconto</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.valor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.valor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.inicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.inicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fim)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fim)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.segunda)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.segunda)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.terca)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.terca)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.quarta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quarta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.quinta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quinta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sexta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sexta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sabado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sabado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.domingo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.domingo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nome)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

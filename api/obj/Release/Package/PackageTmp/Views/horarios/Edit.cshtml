@@ -1,0 +1,199 @@
+﻿@model api.Models.horario
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<section class="content-header">
+    <h1>
+        <a href="@Url.Action("Index", new { agenda_id = Request.QueryString["agenda_id"], filial_id = Request.QueryString["filial_id"] })" class="btn btn-warning"><i class="fa fa-angle-left fa-lg" style="margin-right: 10px"></i>Voltar</a>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("index")" base_library="api.Models.horario.library_bc_1">Listar</a></li>
+        <li class="active" base_library="api.Models.horario.library_bc_edit">Editar</li>
+    </ol>
+</section>
+
+
+
+<section class="content">
+    <div class="col-md-12">
+        <div class="alert alert-info col-md-12" role="alert">
+            <i class="glyphicon glyphicon-pencil" style="margin-right: 10px"></i><b base_library="api.Models.horario.library_code">Editando Código:</b> <span class="editid">@Model.id</span>
+        </div>
+    </div>
+    <div style="clear: both"></div>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken();
+    @Html.ValidationSummary(true)
+        <div class="alert alert-danger" role="alert" base_library="api.Models.horario.library_error_register">
+            Registro não gravado, verificar erro criticado
+        </div>
+
+
+        <fieldset>
+		
+            <div class="col-md-12 bar">
+                <label class="col-md-6" base_library="api.Models.horario.library_title"><i class="fa fa-list-alt" style="margin-right: 10px"></i>Dados Pessoais</label>
+            </div>
+        @Html.HiddenFor(model => model.id)
+
+       
+                @Html.HiddenFor(model => model.agenda_id)
+         
+  
+
+       
+                <div class="form-group col-md-6">
+					<label class="control-label" base_library="api.Models.horario.cliente_id" >cliente_id</label>
+					<select class="form-control select2" source="#cliente_id" data-placeholder="" style="width: 100%;">
+                        <option value="null">Selecione um item</option>
+						@foreach (var item in new api.Models.db().pessoa.Where(c=> c.perfil_id == 2))
+                        {
+							<option value="@item.id">@(item.nome)</option>
+						}
+					</select>
+					@Html.HiddenFor(model => model.cliente_id)
+					@Html.ValidationMessageFor(model => model.cliente_id)
+				</div>
+         
+            
+       
+<div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.horario.horario1" >horario1</label>
+				
+				<div style="clear: both"></div>
+									@Html.TextBoxFor(model => model.horario1, "{0:dd/MM/yyyy}", new { placeholder = "", @class = "form-control", mask = "{\"value\":\"99/99/9999\", \"placeholder\":\"dd/mm/yyyy\"}", maxLength = "10" })
+				                @Html.ValidationMessageFor(model => model.horario1)
+            </div>
+
+
+            <div class="form-group col-md-6">
+                @Html.LabelFor(model => model.hora_date, "Hora Agendamento", new { @class = "control-label" })
+                <div style="clear: both"></div>
+                @Html.TextBoxFor(model => model.hora_date, "{0:HH:mm}", new { placeholder = "", @class = "form-control", type = "time", maxLength = "10" })
+                @Html.ValidationMessageFor(model => model.hora_date)
+            </div>
+         
+  
+
+
+            
+       
+<div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.horario.duracao" >duracao</label>
+				
+				<div style="clear: both"></div>
+									@Html.TextBoxFor(model => model.duracao, new { placeholder = "", @class = "form-control", maxLength = "150", type="number", min="1" })
+				                @Html.ValidationMessageFor(model => model.duracao)
+            </div>
+
+         
+  
+
+
+            
+       
+                <div class="form-group col-md-6">
+					<label class="control-label" base_library="api.Models.horario.compra_id" >compra_id</label>
+					<select class="form-control select2" source="#compra_id" data-placeholder="" style="width: 100%;">
+                        <option value="null">Selecione um item</option>
+						@foreach (var item in new api.Models.db().compra)
+						{
+							<option value="@item.id">@item.id</option>
+						}
+					</select>
+					@Html.HiddenFor(model => model.compra_id)
+					@Html.ValidationMessageFor(model => model.compra_id)
+				</div>
+         
+  
+            
+       
+<div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.horario.desitencia" >desitencia</label>
+				
+				<div style="clear: both"></div>
+									@Html.TextBoxFor(model => model.desistencia, "{0:dd/MM/yyyy}", new { placeholder = "", @class = "form-control", mask = "{\"value\":\"99/99/9999\", \"placeholder\":\"dd/mm/yyyy\"}", maxLength = "10" })
+				                @Html.ValidationMessageFor(model => model.desistencia)
+            </div>
+
+         
+  
+
+
+            
+       
+<div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.horario.motivo" >motivo</label>
+				
+				<div style="clear: both"></div>
+									@Html.TextBoxFor(model => model.motivo, new { placeholder = "", @class = "form-control", maxLength = "150" })
+				                @Html.ValidationMessageFor(model => model.motivo)
+            </div>
+
+            @*Latitude e Longitude*@
+            @Html.HiddenFor(model => model.lat)
+            @Html.ValidationMessageFor(model => model.lat)
+
+            @Html.HiddenFor(model => model.lng)
+            @Html.ValidationMessageFor(model => model.lng)
+
+            <div class="form-group col-md-12">
+                @Html.LabelFor(model => model.address, "Buscar Endereço", new { @class = "control-label" })
+                <div style="clear: both"></div>
+                @Html.TextBoxFor(model => model.address, new { placeholder = "Buscar endereço", @class = "form-control", maxLength = "150", type = "text", id = "pac-input", })
+                @Html.ValidationMessageFor(model => model.address)
+            </div>
+
+            <div class="form-group col-md-4">
+                <label class="control-label" base_library="api.Models.filial.endereco">endereco</label>
+                <div style="clear: both"></div>
+                @Html.TextBoxFor(model => model.endereco, new { placeholder = "", @class = "form-control", maxLength = "150", type = "text", Readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.endereco)
+            </div>
+            <div class="form-group col-md-2">
+                <label class="control-label" base_library="api.Models.filial.numero">numero</label>
+
+                <div style="clear: both"></div>
+                @Html.TextBoxFor(model => model.numero, new { placeholder = "", @class = "form-control", maxLength = "150", Readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.numero)
+            </div>
+
+
+
+            <div class="form-group col-md-2">
+                <label class="control-label" base_library="api.Models.filial.cidade">cidade</label>
+
+                <div style="clear: both"></div>
+                @Html.TextBoxFor(model => model.cidade, new { placeholder = "", @class = "form-control", maxLength = "150", Readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.cidade)
+            </div>
+
+            <div class="form-group col-md-2">
+                <label class="control-label" base_library="api.Models.filial.pais">País</label>
+
+                <div style="clear: both"></div>
+                @Html.TextBoxFor(model => model.pais, new { placeholder = "", @class = "form-control", maxLength = "150", Readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.pais)
+            </div>
+
+		
+            <div class="form-group col-md-12 btn-gallery">
+                <a base_library="api.Models.horario.library_delete" onclick="delete_item('@(Url.Action("Delete"))?id=@(Model.id)')" class="btn btn-danger"><i class="fa fa-trash"></i>Excluir</a>
+                <a base_library="api.Models.horario.library_edit" onclick="$(this).closest('form').submit()" class="btn btn-success pull-right"><i class="glyphicon glyphicon-pencil"></i>Editar</a>
+            </div>
+
+    </fieldset>
+}
+</section>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIoBAvqfno0lFGhuzuuwqX0KmXRdr-10o&libraries=places&callback=initSearch"
+        async defer></script>
+<script src="~/Scripts/admin/horario.js"></script>
+}

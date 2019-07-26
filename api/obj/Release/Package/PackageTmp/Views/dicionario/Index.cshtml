@@ -1,0 +1,73 @@
+﻿
+@model Site.Models.Find<api.Controllers.dicionarioController.find>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        <a href="@Url.Action("Create")" class="btn btn-info" base_library="api.Models.dictionary.library_create"><i class="glyphicon glyphicon-plus" style="margin-right:10px"></i>Criar Novo</a>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#" base_library="api.Models.dictionary.library_bc_1"><i class="fa fa-newspaper-o"></i>Listar</a></li>
+        <li class="active"><a href="@Url.Action("index")" base_library="api.Models.dictionary.library_bc_list">Index</a></li>
+    </ol>
+</section>
+
+<section class="content">
+
+
+
+
+
+     <form ajax="@Url.Action("Find")" table="tbl">
+
+    <div class="table-default scroll">
+        <div class="filter-table" base_library="api.Models.dictionary.library_filter"><i class="glyphicon glyphicon-filter"></i>filtros</div>
+		
+            <div class="filter-table" base_library="api.Models.sample.library_report" onclick="fnExcelReport()" style="margin-left:83px; width:110px">
+                <i class="fa fa-file-excel-o"></i>Relatório
+            </div>
+<table  id="tbl"> 
+    <tr>
+        <td base_library="api.Models.dictionary.name">
+            @Html.DisplayNameFor(model => model.Filter.name)
+        </td>
+        <td base_library="api.Models.dictionary.tag">
+            @Html.DisplayNameFor(model => model.Filter.tag)
+        </td>
+        <td base_library="api.Models.dictionary.page">
+            @Html.DisplayNameFor(model => model.Filter.page)
+        </td>
+        <td base_library="api.Models.dictionary.language">
+            @Html.DisplayNameFor(model => model.Filter.language)
+        </td>
+        <td base_library="api.Models.dictionary.place_id">
+            @Html.DisplayNameFor(model => model.Filter.place_id)
+        </td>
+    </tr>
+</table>
+</div>
+</form>
+</section>
+
+		<script template="tbl" type="text/template" redirect="@Url.Action("edit")"> 
+
+    <tr class="tblrow" pk="id">
+        <td column="name">
+        </td>
+        <td column="tag">
+        </td>
+        <td column="page">
+        </td>
+        <td column="language">
+        </td>
+        <td column="place_id">
+        </td>
+       
+    </tr>
+
+
+</script>

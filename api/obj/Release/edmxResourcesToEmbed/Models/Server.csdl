@@ -1,0 +1,1815 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="serverModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="serverEntities" annotation:LazyLoadingEnabled="false">
+    <FunctionImport Name="alterar_place_id">
+      <Parameter Name="place_id_antigo" Mode="In" Type="Int64" />
+      <Parameter Name="place_id_novo" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="busca_filial_proxima" ReturnType="Collection(serverModel.busca_filial_proxima_Result)">
+      <Parameter Name="lat" Mode="In" Type="Decimal" />
+      <Parameter Name="lng" Mode="In" Type="Decimal" />
+      <Parameter Name="place_id" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="clear_altec">
+      <Parameter Name="place_id" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="criar_aplicativo" ReturnType="Collection(Int32)">
+      <Parameter Name="place_id" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="fila_de_entrega" ReturnType="Collection(serverModel.fila_de_entrega_Result)">
+      <Parameter Name="place_id" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="FindEstoque" ReturnType="Collection(serverModel.FindEstoque_Result)">
+      <Parameter Name="vendedor_id" Mode="In" Type="Int32" />
+      <Parameter Name="data_entrada" Mode="In" Type="DateTime" />
+      <Parameter Name="data2" Mode="In" Type="DateTime" />
+      <Parameter Name="lote" Mode="In" Type="Int64" />
+      <Parameter Name="place_id" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(serverModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(serverModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <FunctionImport Name="trigger_place_id" ReturnType="Collection(String)" />
+    <FunctionImport Name="buscar_cascata_produto" ReturnType="Collection(serverModel.buscar_cascata_produto_Result)">
+      <Parameter Name="tipo_id" Mode="In" Type="Int32" />
+      <Parameter Name="filial_id" Mode="In" Type="Int32" />
+      <Parameter Name="place_id" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <EntitySet Name="acesso" EntityType="serverModel.acesso" />
+    <EntitySet Name="agenda" EntityType="serverModel.agenda" />
+    <EntitySet Name="bandeira" EntityType="serverModel.bandeira" />
+    <EntitySet Name="biblioteca_de_palavra" EntityType="serverModel.biblioteca_de_palavra" />
+    <EntitySet Name="caracteristica" EntityType="serverModel.caracteristica" />
+    <EntitySet Name="cartao" EntityType="serverModel.cartao" />
+    <EntitySet Name="complemento" EntityType="serverModel.complemento" />
+    <EntitySet Name="compra" EntityType="serverModel.compra" />
+    <EntitySet Name="cor" EntityType="serverModel.cor" />
+    <EntitySet Name="desconto" EntityType="serverModel.desconto" />
+    <EntitySet Name="endereco" EntityType="serverModel.endereco" />
+    <EntitySet Name="estoque" EntityType="serverModel.estoque" />
+    <EntitySet Name="filial" EntityType="serverModel.filial" />
+    <EntitySet Name="filial_produto" EntityType="serverModel.filial_produto" />
+    <EntitySet Name="grupo_do_pagamento" EntityType="serverModel.grupo_do_pagamento" />
+    <EntitySet Name="horario" EntityType="serverModel.horario" />
+    <EntitySet Name="mensagens" EntityType="serverModel.mensagens" />
+    <EntitySet Name="montagem" EntityType="serverModel.montagem" />
+    <EntitySet Name="pagamento" EntityType="serverModel.pagamento" />
+    <EntitySet Name="pedido" EntityType="serverModel.pedido" />
+    <EntitySet Name="perfil" EntityType="serverModel.perfil" />
+    <EntitySet Name="pergunta" EntityType="serverModel.pergunta" />
+    <EntitySet Name="pessoa" EntityType="serverModel.pessoa" />
+    <EntitySet Name="pontos" EntityType="serverModel.pontos" />
+    <EntitySet Name="produto" EntityType="serverModel.produto" />
+    <EntitySet Name="produto_caracteristica" EntityType="serverModel.produto_caracteristica" />
+    <EntitySet Name="resgate" EntityType="serverModel.resgate" />
+    <EntitySet Name="resposta" EntityType="serverModel.resposta" />
+    <EntitySet Name="status_da_compra" EntityType="serverModel.status_da_compra" />
+    <EntitySet Name="status_usuario" EntityType="serverModel.status_usuario" />
+    <EntitySet Name="sysdiagrams" EntityType="serverModel.sysdiagrams" />
+    <EntitySet Name="tipo" EntityType="serverModel.tipo" />
+    <EntitySet Name="tipo_de_preparo" EntityType="serverModel.tipo_de_preparo" />
+    <AssociationSet Name="FK_acesso_perfil" Association="serverModel.FK_acesso_perfil">
+      <End Role="perfil" EntitySet="perfil" />
+      <End Role="acesso" EntitySet="acesso" />
+    </AssociationSet>
+    <AssociationSet Name="FK_agenda_pessoa" Association="serverModel.FK_agenda_pessoa">
+      <End Role="pessoa" EntitySet="pessoa" />
+      <End Role="agenda" EntitySet="agenda" />
+    </AssociationSet>
+    <AssociationSet Name="FK_horario_agenda" Association="serverModel.FK_horario_agenda">
+      <End Role="agenda" EntitySet="agenda" />
+      <End Role="horario" EntitySet="horario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_produto_agenda" Association="serverModel.FK_produto_agenda">
+      <End Role="agenda" EntitySet="agenda" />
+      <End Role="produto" EntitySet="produto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_pagamento_bandeira" Association="serverModel.FK_pagamento_bandeira">
+      <End Role="bandeira" EntitySet="bandeira" />
+      <End Role="pagamento" EntitySet="pagamento" />
+    </AssociationSet>
+    <AssociationSet Name="FK_produto_caracteristica_caracteristica" Association="serverModel.FK_produto_caracteristica_caracteristica">
+      <End Role="caracteristica" EntitySet="caracteristica" />
+      <End Role="produto_caracteristica" EntitySet="produto_caracteristica" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cartao_pessoa" Association="serverModel.FK_cartao_pessoa">
+      <End Role="pessoa" EntitySet="pessoa" />
+      <End Role="cartao" EntitySet="cartao" />
+    </AssociationSet>
+    <AssociationSet Name="FK_compra_cartao" Association="serverModel.FK_compra_cartao">
+      <End Role="cartao" EntitySet="cartao" />
+      <End Role="compra" EntitySet="compra" />
+    </AssociationSet>
+    <AssociationSet Name="FK_complemento_montagem" Association="serverModel.FK_complemento_montagem">
+      <End Role="montagem" EntitySet="montagem" />
+      <End Role="complemento" EntitySet="complemento" />
+    </AssociationSet>
+    <AssociationSet Name="FK_complemento_produto" Association="serverModel.FK_complemento_produto">
+      <End Role="produto" EntitySet="produto" />
+      <End Role="complemento" EntitySet="complemento" />
+    </AssociationSet>
+    <AssociationSet Name="FK_compra_filial" Association="serverModel.FK_compra_filial">
+      <End Role="filial" EntitySet="filial" />
+      <End Role="compra" EntitySet="compra" />
+    </AssociationSet>
+    <AssociationSet Name="FK_compra_pagamento" Association="serverModel.FK_compra_pagamento">
+      <End Role="pagamento" EntitySet="pagamento" />
+      <End Role="compra" EntitySet="compra" />
+    </AssociationSet>
+    <AssociationSet Name="FK_compra_pessoa" Association="serverModel.FK_compra_pessoa">
+      <End Role="pessoa" EntitySet="pessoa" />
+      <End Role="compra" EntitySet="compra" />
+    </AssociationSet>
+    <AssociationSet Name="FK_compra_pessoa1" Association="serverModel.FK_compra_pessoa1">
+      <End Role="pessoa" EntitySet="pessoa" />
+      <End Role="compra" EntitySet="compra" />
+    </AssociationSet>
+    <AssociationSet Name="FK_compra_status_da_compra" Association="serverModel.FK_compra_status_da_compra">
+      <End Role="status_da_compra" EntitySet="status_da_compra" />
+      <End Role="compra" EntitySet="compra" />
+    </AssociationSet>
+    <AssociationSet Name="FK_horario_compra" Association="serverModel.FK_horario_compra">
+      <End Role="compra" EntitySet="compra" />
+      <End Role="horario" EntitySet="horario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_pedido_compra" Association="serverModel.FK_pedido_compra">
+      <End Role="compra" EntitySet="compra" />
+      <End Role="pedido" EntitySet="pedido" />
+    </AssociationSet>
+    <AssociationSet Name="FK_filial_cor" Association="serverModel.FK_filial_cor">
+      <End Role="cor" EntitySet="cor" />
+      <End Role="filial" EntitySet="filial" />
+    </AssociationSet>
+    <AssociationSet Name="FK_produto_desconto" Association="serverModel.FK_produto_desconto">
+      <End Role="desconto" EntitySet="desconto" />
+      <End Role="produto" EntitySet="produto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_endereco_pessoa" Association="serverModel.FK_endereco_pessoa">
+      <End Role="pessoa" EntitySet="pessoa" />
+      <End Role="endereco" EntitySet="endereco" />
+    </AssociationSet>
+    <AssociationSet Name="FK_estoque_pessoa" Association="serverModel.FK_estoque_pessoa">
+      <End Role="pessoa" EntitySet="pessoa" />
+      <End Role="estoque" EntitySet="estoque" />
+    </AssociationSet>
+    <AssociationSet Name="FK_estoque_produto" Association="serverModel.FK_estoque_produto">
+      <End Role="produto" EntitySet="produto" />
+      <End Role="estoque" EntitySet="estoque" />
+    </AssociationSet>
+    <AssociationSet Name="FK_filial_filial" Association="serverModel.FK_filial_filial">
+      <End Role="filial" EntitySet="filial" />
+      <End Role="filial1" EntitySet="filial" />
+    </AssociationSet>
+    <AssociationSet Name="FK_filial_pessoa" Association="serverModel.FK_filial_pessoa">
+      <End Role="pessoa" EntitySet="pessoa" />
+      <End Role="filial" EntitySet="filial" />
+    </AssociationSet>
+    <AssociationSet Name="FK_filial_produto_filial" Association="serverModel.FK_filial_produto_filial">
+      <End Role="filial" EntitySet="filial" />
+      <End Role="filial_produto" EntitySet="filial_produto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_pessoa_filial" Association="serverModel.FK_pessoa_filial">
+      <End Role="filial" EntitySet="filial" />
+      <End Role="pessoa" EntitySet="pessoa" />
+    </AssociationSet>
+    <AssociationSet Name="FK_pontos_filial" Association="serverModel.FK_pontos_filial">
+      <End Role="filial" EntitySet="filial" />
+      <End Role="pontos" EntitySet="pontos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_filial_produto_produto" Association="serverModel.FK_filial_produto_produto">
+      <End Role="produto" EntitySet="produto" />
+      <End Role="filial_produto" EntitySet="filial_produto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_pagamento_grupo_do_pagamento" Association="serverModel.FK_pagamento_grupo_do_pagamento">
+      <End Role="grupo_do_pagamento" EntitySet="grupo_do_pagamento" />
+      <End Role="pagamento" EntitySet="pagamento" />
+    </AssociationSet>
+    <AssociationSet Name="FK_horario_pessoa" Association="serverModel.FK_horario_pessoa">
+      <End Role="pessoa" EntitySet="pessoa" />
+      <End Role="horario" EntitySet="horario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mensagens_horario" Association="serverModel.FK_mensagens_horario">
+      <End Role="horario" EntitySet="horario" />
+      <End Role="mensagens" EntitySet="mensagens" />
+    </AssociationSet>
+    <AssociationSet Name="FK_pedido_horario" Association="serverModel.FK_pedido_horario">
+      <End Role="horario" EntitySet="horario" />
+      <End Role="pedido" EntitySet="pedido" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mensagens_pessoa" Association="serverModel.FK_mensagens_pessoa">
+      <End Role="pessoa" EntitySet="pessoa" />
+      <End Role="mensagens" EntitySet="mensagens" />
+    </AssociationSet>
+    <AssociationSet Name="FK_montagem_montagem" Association="serverModel.FK_montagem_montagem">
+      <End Role="montagem" EntitySet="montagem" />
+      <End Role="montagem1" EntitySet="montagem" />
+    </AssociationSet>
+    <AssociationSet Name="FK_montagem_produto" Association="serverModel.FK_montagem_produto">
+      <End Role="produto" EntitySet="produto" />
+      <End Role="montagem" EntitySet="montagem" />
+    </AssociationSet>
+    <AssociationSet Name="FK_pedido_montagem" Association="serverModel.FK_pedido_montagem">
+      <End Role="montagem" EntitySet="montagem" />
+      <End Role="pedido" EntitySet="pedido" />
+    </AssociationSet>
+    <AssociationSet Name="FK_pedido_pedido" Association="serverModel.FK_pedido_pedido">
+      <End Role="pedido" EntitySet="pedido" />
+      <End Role="pedido1" EntitySet="pedido" />
+    </AssociationSet>
+    <AssociationSet Name="FK_pedido_produto" Association="serverModel.FK_pedido_produto">
+      <End Role="produto" EntitySet="produto" />
+      <End Role="pedido" EntitySet="pedido" />
+    </AssociationSet>
+    <AssociationSet Name="FK_usuario_perfil" Association="serverModel.FK_usuario_perfil">
+      <End Role="perfil" EntitySet="perfil" />
+      <End Role="pessoa" EntitySet="pessoa" />
+    </AssociationSet>
+    <AssociationSet Name="FK_pergunta_tipo" Association="serverModel.FK_pergunta_tipo">
+      <End Role="tipo" EntitySet="tipo" />
+      <End Role="pergunta" EntitySet="pergunta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_resposta_pergunta" Association="serverModel.FK_resposta_pergunta">
+      <End Role="pergunta" EntitySet="pergunta" />
+      <End Role="resposta" EntitySet="resposta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_pessoa_pessoa" Association="serverModel.FK_pessoa_pessoa">
+      <End Role="pessoa" EntitySet="pessoa" />
+      <End Role="pessoa1" EntitySet="pessoa" />
+    </AssociationSet>
+    <AssociationSet Name="FK_pessoa_tipo" Association="serverModel.FK_pessoa_tipo">
+      <End Role="tipo" EntitySet="tipo" />
+      <End Role="pessoa" EntitySet="pessoa" />
+    </AssociationSet>
+    <AssociationSet Name="FK_pontos_pessoa" Association="serverModel.FK_pontos_pessoa">
+      <End Role="pessoa" EntitySet="pessoa" />
+      <End Role="pontos" EntitySet="pontos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_produto_pessoa" Association="serverModel.FK_produto_pessoa">
+      <End Role="pessoa" EntitySet="pessoa" />
+      <End Role="produto" EntitySet="produto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_resposta_pessoa" Association="serverModel.FK_resposta_pessoa">
+      <End Role="pessoa" EntitySet="pessoa" />
+      <End Role="resposta" EntitySet="resposta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_resposta_pessoa1" Association="serverModel.FK_resposta_pessoa1">
+      <End Role="pessoa" EntitySet="pessoa" />
+      <End Role="resposta" EntitySet="resposta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_user_status_usuario" Association="serverModel.FK_user_status_usuario">
+      <End Role="status_usuario" EntitySet="status_usuario" />
+      <End Role="pessoa" EntitySet="pessoa" />
+    </AssociationSet>
+    <AssociationSet Name="FK_resgate_pontos" Association="serverModel.FK_resgate_pontos">
+      <End Role="pontos" EntitySet="pontos" />
+      <End Role="resgate" EntitySet="resgate" />
+    </AssociationSet>
+    <AssociationSet Name="FK_produto_caracteristica_produto1" Association="serverModel.FK_produto_caracteristica_produto1">
+      <End Role="produto" EntitySet="produto" />
+      <End Role="produto_caracteristica" EntitySet="produto_caracteristica" />
+    </AssociationSet>
+    <AssociationSet Name="FK_produto_tipo" Association="serverModel.FK_produto_tipo">
+      <End Role="tipo" EntitySet="tipo" />
+      <End Role="produto" EntitySet="produto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_produto_tipo_de_preparo" Association="serverModel.FK_produto_tipo_de_preparo">
+      <End Role="tipo_de_preparo" EntitySet="tipo_de_preparo" />
+      <End Role="produto" EntitySet="produto" />
+    </AssociationSet>
+    <EntitySet Name="promocao" EntityType="serverModel.promocao" />
+    <AssociationSet Name="FK_promocao_compra" Association="serverModel.FK_promocao_compra">
+      <End Role="compra" EntitySet="compra" />
+      <End Role="promocao" EntitySet="promocao" />
+    </AssociationSet>
+    <AssociationSet Name="FK_promocao_pessoa" Association="serverModel.FK_promocao_pessoa">
+      <End Role="pessoa" EntitySet="pessoa" />
+      <End Role="promocao" EntitySet="promocao" />
+    </AssociationSet>
+    <AssociationSet Name="FK_promocao_produto" Association="serverModel.FK_promocao_produto">
+      <End Role="produto" EntitySet="produto" />
+      <End Role="promocao" EntitySet="promocao" />
+    </AssociationSet>
+  </EntityContainer>
+  <ComplexType Name="busca_filial_proxima_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="Int32" Name="matriz_id" Nullable="true" />
+    <Property Type="String" Name="nome" Nullable="true" MaxLength="250" />
+    <Property Type="Decimal" Name="lat" Nullable="true" Precision="20" Scale="12" />
+    <Property Type="Decimal" Name="lng" Nullable="true" Precision="20" Scale="12" />
+    <Property Type="String" Name="endereco" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="numero" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="complemento" Nullable="true" MaxLength="850" />
+    <Property Type="String" Name="cidade" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="administrador_id" Nullable="true" />
+    <Property Type="String" Name="telefone" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="celular" Nullable="true" MaxLength="50" />
+    <Property Type="Binary" Name="logo" Nullable="true" MaxLength="Max" />
+    <Property Type="Binary" Name="background" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="pais" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="logo_itype" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="background_itype" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="distancia" Nullable="true" />
+    <Property Type="Double" Name="real_distance" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="fila_de_entrega_Result">
+    <Property Type="Double" Name="distancia" Nullable="true" />
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="DateTime" Name="recebido" Nullable="true" Precision="23" />
+    <Property Type="String" Name="endereco" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="numero" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="complemento" Nullable="true" MaxLength="850" />
+    <Property Type="String" Name="cidade" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="cep" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="quantidade" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="FindEstoque_Result">
+    <Property Type="String" Name="Nome_Vendedor" Nullable="true" MaxLength="500" />
+    <Property Type="DateTime" Name="Data_Entrada" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="Estoque" Nullable="true" />
+    <Property Type="Int64" Name="Lote" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="buscar_cascata_produto_Result">
+    <Property Type="Int32" Name="produto_id" Nullable="false" />
+    <Property Type="String" Name="produto_nome" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="icone" Nullable="true" MaxLength="34" />
+    <Property Type="Decimal" Name="produto_preco" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="String" Name="produto_descricao" Nullable="true" MaxLength="5000" />
+    <Property Type="String" Name="produto_observacao" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="produto_estoque" Nullable="true" />
+    <Property Type="String" Name="produto_periodo" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="produto_duracao" Nullable="true" />
+    <Property Type="Int32" Name="produto_destaque" Nullable="true" />
+    <Property Type="Int32" Name="produto_administrador_id" Nullable="true" />
+    <Property Type="Int32" Name="produto_agenda_id" Nullable="true" />
+    <Property Type="Int32" Name="produto_external_id" Nullable="true" />
+    <Property Type="String" Name="produto_unidade" Nullable="true" MaxLength="10" />
+    <Property Type="Int32" Name="produto_estrela" Nullable="true" />
+    <Property Type="Int32" Name="montagem_id" Nullable="true" />
+    <Property Type="String" Name="montagem_nome" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="montagem_ordem" Nullable="true" />
+    <Property Type="Decimal" Name="montagem_preco" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Int32" Name="montagem_max" Nullable="true" />
+    <Property Type="Int32" Name="montagem_min" Nullable="true" />
+    <Property Type="Int32" Name="complemento_id" Nullable="true" />
+    <Property Type="Decimal" Name="complemento_preco" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Int32" Name="complemento_product_id" Nullable="true" />
+    <Property Type="Int32" Name="complemento_external_id" Nullable="true" />
+    <Property Type="Int32" Name="complemento_produto_id" Nullable="true" />
+    <Property Type="String" Name="complemento_nome" Nullable="true" MaxLength="250" />
+    <Property Type="Decimal" Name="complemento_produto_preco" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="String" Name="complemento_icone" Nullable="true" MaxLength="34" />
+    <Property Type="Int32" Name="complemento_estoque" Nullable="true" />
+    <Property Type="String" Name="complemento_descricao" Nullable="true" MaxLength="5000" />
+  </ComplexType>
+  <EntityType Name="acesso">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="create" Type="Boolean" />
+    <Property Name="edit" Type="Boolean" />
+    <Property Name="delete" Type="Boolean" />
+    <Property Name="list" Type="Boolean" />
+    <Property Name="perfil_id" Type="Int32" />
+    <Property Name="url" Type="String" MaxLength="350" FixedLength="false" Unicode="false" />
+    <Property Name="name" Type="String" MaxLength="350" FixedLength="false" Unicode="false" />
+    <Property Name="icon" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="group" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="order" Type="Int32" />
+    <Property Name="place_id" Type="Int64" />
+    <NavigationProperty Name="perfil" Relationship="serverModel.FK_acesso_perfil" FromRole="acesso" ToRole="perfil" />
+  </EntityType>
+  <EntityType Name="agenda">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nome" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="descricao" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="ativo" Type="Boolean" />
+    <Property Name="place_id" Type="Int64" />
+    <Property Name="seg_inicio" Type="Time" Precision="0" />
+    <Property Name="seg_fim" Type="Time" Precision="0" />
+    <Property Name="ter_inicio" Type="Time" Precision="0" />
+    <Property Name="ter_fim" Type="Time" Precision="0" />
+    <Property Name="qua_inicio" Type="Time" Precision="0" />
+    <Property Name="qua_fim" Type="Time" Precision="0" />
+    <Property Name="qui_inicio" Type="Time" Precision="0" />
+    <Property Name="qui_fim" Type="Time" Precision="0" />
+    <Property Name="sex_inicio" Type="Time" Precision="0" />
+    <Property Name="sex_fim" Type="Time" Precision="0" />
+    <Property Name="sab_inicio" Type="Time" Precision="0" />
+    <Property Name="sab_fim" Type="Time" Precision="0" />
+    <Property Name="dom_inicio" Type="Time" Precision="0" />
+    <Property Name="dom_fim" Type="Time" Precision="0" />
+    <Property Name="administrador_id" Type="Int32" />
+    <NavigationProperty Name="pessoa" Relationship="serverModel.FK_agenda_pessoa" FromRole="agenda" ToRole="pessoa" />
+    <NavigationProperty Name="horario" Relationship="serverModel.FK_horario_agenda" FromRole="agenda" ToRole="horario" />
+    <NavigationProperty Name="produto" Relationship="serverModel.FK_produto_agenda" FromRole="agenda" ToRole="produto" />
+  </EntityType>
+  <EntityType Name="bandeira">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="nome" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="place_id" Type="Int64" />
+    <NavigationProperty Name="pagamento" Relationship="serverModel.FK_pagamento_bandeira" FromRole="bandeira" ToRole="pagamento" />
+  </EntityType>
+  <EntityType Name="biblioteca_de_palavra">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="url" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="col" Type="Boolean" />
+    <Property Name="col_description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="size" Type="Int32" />
+    <Property Name="place_id" Type="Int64" />
+    <Property Name="edit" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="caracteristica">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nome" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="place_id" Type="Int64" />
+    <Property Name="tipo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="produto_caracteristica" Relationship="serverModel.FK_produto_caracteristica_caracteristica" FromRole="caracteristica" ToRole="produto_caracteristica" />
+  </EntityType>
+  <EntityType Name="cartao">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="numero" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="nome" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="expiracao" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cvv" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="hash" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="pessoa_id" Type="Int32" />
+    <Property Name="documento" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="pagarme_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="bandeira" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="place_id" Type="Int64" />
+    <NavigationProperty Name="pessoa" Relationship="serverModel.FK_cartao_pessoa" FromRole="cartao" ToRole="pessoa" />
+    <NavigationProperty Name="compra" Relationship="serverModel.FK_compra_cartao" FromRole="cartao" ToRole="compra" />
+  </EntityType>
+  <EntityType Name="complemento">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="montagem_id" Type="Int32" />
+    <Property Name="product_id" Type="Int32" />
+    <Property Name="preco" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="icone" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="icone_itype" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="place_id" Type="Int64" />
+    <Property Name="external_id" Type="Int32" />
+    <NavigationProperty Name="montagem" Relationship="serverModel.FK_complemento_montagem" FromRole="complemento" ToRole="montagem" />
+    <NavigationProperty Name="produto" Relationship="serverModel.FK_complemento_produto" FromRole="complemento" ToRole="produto" />
+  </EntityType>
+  <EntityType Name="compra">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="pagamento" Type="DateTime" Precision="3" />
+    <Property Name="total" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="desconto" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="pagamento_id" Type="Int32" />
+    <Property Name="preparo" Type="DateTime" Precision="3" />
+    <Property Name="entregue" Type="DateTime" Precision="3" />
+    <Property Name="finalizado" Type="DateTime" Precision="3" />
+    <Property Name="status_da_compra_id" Type="Int32" />
+    <Property Name="filial_id" Type="Int32" />
+    <Property Name="pago" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="recebido" Type="DateTime" Precision="3" />
+    <Property Name="ativo" Type="Boolean" />
+    <Property Name="cancelamento" Type="DateTime" Precision="3" />
+    <Property Name="pagarme_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="pagarme_status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="place_id" Type="Int64" />
+    <Property Name="balcao" Type="Boolean" />
+    <Property Name="delivery" Type="Boolean" />
+    <Property Name="codigo_servicos" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="valor_frete" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="cartao_id" Type="Int32" />
+    <Property Name="cpf" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="boleto_barcode" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="boleto_url" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="comprador_id" Type="Int32" />
+    <Property Name="tipo_frete" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="vendedor_id" Type="Int32" />
+    <Property Name="comissao_vendedor" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="external_id" Type="Int64" />
+    <Property Name="frete" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="observacao" Type="String" MaxLength="450" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="cartao" Relationship="serverModel.FK_compra_cartao" FromRole="compra" ToRole="cartao" />
+    <NavigationProperty Name="filial" Relationship="serverModel.FK_compra_filial" FromRole="compra" ToRole="filial" />
+    <NavigationProperty Name="pagamento1" Relationship="serverModel.FK_compra_pagamento" FromRole="compra" ToRole="pagamento" />
+    <NavigationProperty Name="pessoa" Relationship="serverModel.FK_compra_pessoa" FromRole="compra" ToRole="pessoa" />
+    <NavigationProperty Name="pessoa1" Relationship="serverModel.FK_compra_pessoa1" FromRole="compra" ToRole="pessoa" />
+    <NavigationProperty Name="status_da_compra" Relationship="serverModel.FK_compra_status_da_compra" FromRole="compra" ToRole="status_da_compra" />
+    <NavigationProperty Name="horario" Relationship="serverModel.FK_horario_compra" FromRole="compra" ToRole="horario" />
+    <NavigationProperty Name="pedido" Relationship="serverModel.FK_pedido_compra" FromRole="compra" ToRole="pedido" />
+    <NavigationProperty Name="promocao" Relationship="serverModel.FK_promocao_compra" FromRole="compra" ToRole="promocao" />
+  </EntityType>
+  <EntityType Name="cor">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="place_id" Type="Int64" />
+    <NavigationProperty Name="filial" Relationship="serverModel.FK_filial_cor" FromRole="cor" ToRole="filial" />
+  </EntityType>
+  <EntityType Name="desconto">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="valor" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="inicio" Type="DateTime" Precision="3" />
+    <Property Name="fim" Type="DateTime" Precision="3" />
+    <Property Name="segunda" Type="Boolean" />
+    <Property Name="terca" Type="Boolean" />
+    <Property Name="quarta" Type="Boolean" />
+    <Property Name="quinta" Type="Boolean" />
+    <Property Name="sexta" Type="Boolean" />
+    <Property Name="sabado" Type="Boolean" />
+    <Property Name="domingo" Type="Boolean" />
+    <Property Name="nome" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="place_id" Type="Int64" />
+    <NavigationProperty Name="produto" Relationship="serverModel.FK_produto_desconto" FromRole="desconto" ToRole="produto" />
+  </EntityType>
+  <EntityType Name="endereco">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cep" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="street" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="number" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="complement" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="city" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="district" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="state" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="country" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="lat" Type="Decimal" Precision="20" Scale="12" />
+    <Property Name="lng" Type="Decimal" Precision="20" Scale="12" />
+    <Property Name="ultimo_pedido" Type="DateTime" Precision="3" />
+    <Property Name="pessoa_id" Type="Int32" />
+    <Property Name="active" Type="Boolean" />
+    <Property Name="place_id" Type="Int64" />
+    <NavigationProperty Name="pessoa" Relationship="serverModel.FK_endereco_pessoa" FromRole="endereco" ToRole="pessoa" />
+  </EntityType>
+  <EntityType Name="estoque">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="produto_id" Type="Int32" />
+    <Property Name="data_saida" Type="DateTime" Precision="3" />
+    <Property Name="estoque1" Type="Int32" />
+    <Property Name="ativo" Type="Boolean" />
+    <Property Name="data_entrada" Type="DateTime" Precision="3" />
+    <Property Name="data_processamento" Type="DateTime" Precision="3" />
+    <Property Name="pessoa_id" Type="Int32" />
+    <Property Name="place_id" Type="Int64" />
+    <Property Name="lote" Type="Int64" />
+    <NavigationProperty Name="pessoa" Relationship="serverModel.FK_estoque_pessoa" FromRole="estoque" ToRole="pessoa" />
+    <NavigationProperty Name="produto" Relationship="serverModel.FK_estoque_produto" FromRole="estoque" ToRole="produto" />
+  </EntityType>
+  <EntityType Name="filial">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="matriz_id" Type="Int32" />
+    <Property Name="nome" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="lat" Type="Decimal" Precision="20" Scale="12" />
+    <Property Name="lng" Type="Decimal" Precision="20" Scale="12" />
+    <Property Name="endereco" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="numero" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="complemento" Type="String" MaxLength="850" FixedLength="false" Unicode="false" />
+    <Property Name="cidade" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="administrador_id" Type="Int32" />
+    <Property Name="telefone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="celular" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="logo" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="background" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="pais" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="logo_itype" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="background_itype" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="distancia" Type="Int32" />
+    <Property Name="valor_resgate_minimo" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="resgate_minimo" Type="Int32" />
+    <Property Name="Agencia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AgenciaDv" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Conta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ContaDv" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BankCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DocumentNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LegalName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cor_id" Type="Int32" />
+    <Property Name="loader" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="background_image_local" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="tipo_estabelecimento" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="place_id" Type="Int64" />
+    <Property Name="delivery" Type="Boolean" />
+    <Property Name="balcao" Type="Boolean" />
+    <Property Name="versao" Type="Int32" />
+    <Property Name="tempoentrega" Type="Int32" />
+    <Property Name="codigo_contrato" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="senha_contrato" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tipo_embalagem" Type="Int32" />
+    <Property Name="mao_propria" Type="Boolean" />
+    <Property Name="valor_declarado" Type="Decimal" Precision="18" Scale="3" />
+    <Property Name="aviso_recebimento" Type="Boolean" />
+    <Property Name="cep" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="taxa_cartao" Type="Int32" />
+    <Property Name="taxa_boleto" Type="Int32" />
+    <Property Name="correios" Type="Boolean" />
+    <Property Name="entrega_distancia_maxima" Type="Int32" />
+    <Property Name="entrega_distancia_gratis" Type="Int32" />
+    <Property Name="entraga_valor_km" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="entraga_cep_bloqueado" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+    <Property Name="connection_string" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+    <Property Name="external_id" Type="Guid" />
+    <Property Name="seg1" Type="Time" Precision="7" />
+    <Property Name="seg2" Type="Time" Precision="7" />
+    <Property Name="seg3" Type="Time" Precision="7" />
+    <Property Name="seg4" Type="Time" Precision="7" />
+    <Property Name="ter1" Type="Time" Precision="7" />
+    <Property Name="ter2" Type="Time" Precision="7" />
+    <Property Name="ter3" Type="Time" Precision="7" />
+    <Property Name="ter4" Type="Time" Precision="7" />
+    <Property Name="qua1" Type="Time" Precision="7" />
+    <Property Name="qua2" Type="Time" Precision="7" />
+    <Property Name="qua3" Type="Time" Precision="7" />
+    <Property Name="qua4" Type="Time" Precision="7" />
+    <Property Name="qui1" Type="Time" Precision="7" />
+    <Property Name="qui2" Type="Time" Precision="7" />
+    <Property Name="qui3" Type="Time" Precision="7" />
+    <Property Name="qui4" Type="Time" Precision="7" />
+    <Property Name="sex1" Type="Time" Precision="7" />
+    <Property Name="sex2" Type="Time" Precision="7" />
+    <Property Name="sex3" Type="Time" Precision="7" />
+    <Property Name="sex4" Type="Time" Precision="7" />
+    <Property Name="sab1" Type="Time" Precision="7" />
+    <Property Name="sab2" Type="Time" Precision="7" />
+    <Property Name="sab3" Type="Time" Precision="7" />
+    <Property Name="sab4" Type="Time" Precision="7" />
+    <Property Name="dom1" Type="Time" Precision="7" />
+    <Property Name="dom2" Type="Time" Precision="7" />
+    <Property Name="dom3" Type="Time" Precision="7" />
+    <Property Name="dom4" Type="Time" Precision="7" />
+    <Property Name="aberto" Type="Boolean" />
+    <Property Name="data_fechado" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="minimo" Type="Decimal" Precision="18" Scale="2" />
+    <NavigationProperty Name="compra" Relationship="serverModel.FK_compra_filial" FromRole="filial" ToRole="compra" />
+    <NavigationProperty Name="cor" Relationship="serverModel.FK_filial_cor" FromRole="filial" ToRole="cor" />
+    <NavigationProperty Name="filial1" Relationship="serverModel.FK_filial_filial" FromRole="filial" ToRole="filial1" />
+    <NavigationProperty Name="filial2" Relationship="serverModel.FK_filial_filial" FromRole="filial1" ToRole="filial" />
+    <NavigationProperty Name="pessoa" Relationship="serverModel.FK_filial_pessoa" FromRole="filial" ToRole="pessoa" />
+    <NavigationProperty Name="filial_produto" Relationship="serverModel.FK_filial_produto_filial" FromRole="filial" ToRole="filial_produto" />
+    <NavigationProperty Name="pessoa1" Relationship="serverModel.FK_pessoa_filial" FromRole="filial" ToRole="pessoa" />
+    <NavigationProperty Name="pontos" Relationship="serverModel.FK_pontos_filial" FromRole="filial" ToRole="pontos" />
+    <Property Name="estado" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="filial_produto">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="produto_id" Type="Int32" />
+    <Property Name="filial_id" Type="Int32" />
+    <Property Name="place_id" Type="Int64" />
+    <NavigationProperty Name="filial" Relationship="serverModel.FK_filial_produto_filial" FromRole="filial_produto" ToRole="filial" />
+    <NavigationProperty Name="produto" Relationship="serverModel.FK_filial_produto_produto" FromRole="filial_produto" ToRole="produto" />
+  </EntityType>
+  <EntityType Name="grupo_do_pagamento">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nome" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="place_id" Type="Int64" />
+    <Property Name="app" Type="Boolean" />
+    <NavigationProperty Name="pagamento" Relationship="serverModel.FK_pagamento_grupo_do_pagamento" FromRole="grupo_do_pagamento" ToRole="pagamento" />
+  </EntityType>
+  <EntityType Name="horario">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="agenda_id" Type="Int32" />
+    <Property Name="cliente_id" Type="Int32" />
+    <Property Name="horario1" Type="DateTime" Precision="3" />
+    <Property Name="duracao" Type="Int32" />
+    <Property Name="ativo" Type="Boolean" />
+    <Property Name="desistencia" Type="DateTime" Precision="3" />
+    <Property Name="motivo" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="lat" Type="Decimal" Precision="20" Scale="12" />
+    <Property Name="lng" Type="Decimal" Precision="20" Scale="12" />
+    <Property Name="endereco" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="numero" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="complemento" Type="String" MaxLength="850" FixedLength="false" Unicode="false" />
+    <Property Name="cidade" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="pais" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="cep" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="place_id" Type="Int64" />
+    <Property Name="compra_id" Type="Int32" />
+    <Property Name="avaliacao" Type="Int32" />
+    <Property Name="bairro" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="inicio" Type="DateTime" Precision="3" />
+    <Property Name="fim" Type="DateTime" Precision="3" />
+    <Property Name="termino" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="agenda" Relationship="serverModel.FK_horario_agenda" FromRole="horario" ToRole="agenda" />
+    <NavigationProperty Name="compra" Relationship="serverModel.FK_horario_compra" FromRole="horario" ToRole="compra" />
+    <NavigationProperty Name="pessoa" Relationship="serverModel.FK_horario_pessoa" FromRole="horario" ToRole="pessoa" />
+    <NavigationProperty Name="mensagens" Relationship="serverModel.FK_mensagens_horario" FromRole="horario" ToRole="mensagens" />
+    <NavigationProperty Name="pedido" Relationship="serverModel.FK_pedido_horario" FromRole="horario" ToRole="pedido" />
+  </EntityType>
+  <EntityType Name="mensagens">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="horario_id" Type="Int32" />
+    <Property Name="atendente_id" Type="Int32" />
+    <Property Name="mensagem" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="documento" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="perfil_da_mensagem" Type="Int32" />
+    <Property Name="documento_itype" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="place_id" Type="Int64" />
+    <NavigationProperty Name="horario" Relationship="serverModel.FK_mensagens_horario" FromRole="mensagens" ToRole="horario" />
+    <NavigationProperty Name="pessoa" Relationship="serverModel.FK_mensagens_pessoa" FromRole="mensagens" ToRole="pessoa" />
+  </EntityType>
+  <EntityType Name="montagem">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nome" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="preco" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="ordem" Type="Int32" />
+    <Property Name="icone" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="proximo_id" Type="Int32" />
+    <Property Name="icone_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="max" Type="Int32" />
+    <Property Name="min" Type="Int32" />
+    <Property Name="produto_id" Type="Int32" />
+    <Property Name="ativo" Type="Boolean" />
+    <Property Name="place_id" Type="Int64" />
+    <Property Name="external_id" Type="Guid" />
+    <NavigationProperty Name="complemento" Relationship="serverModel.FK_complemento_montagem" FromRole="montagem" ToRole="complemento" />
+    <NavigationProperty Name="montagem1" Relationship="serverModel.FK_montagem_montagem" FromRole="montagem" ToRole="montagem1" />
+    <NavigationProperty Name="montagem2" Relationship="serverModel.FK_montagem_montagem" FromRole="montagem1" ToRole="montagem" />
+    <NavigationProperty Name="produto" Relationship="serverModel.FK_montagem_produto" FromRole="montagem" ToRole="produto" />
+    <NavigationProperty Name="pedido" Relationship="serverModel.FK_pedido_montagem" FromRole="montagem" ToRole="pedido" />
+  </EntityType>
+  <EntityType Name="pagamento">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nome" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="taxa" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="grupo_do_pagamento_id" Type="Int32" />
+    <Property Name="bandeira_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="place_id" Type="Int64" />
+    <Property Name="transacao" Type="Int32" />
+    <Property Name="external_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="icone" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="icone_itype" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="bandeira" Relationship="serverModel.FK_pagamento_bandeira" FromRole="pagamento" ToRole="bandeira" />
+    <NavigationProperty Name="compra" Relationship="serverModel.FK_compra_pagamento" FromRole="pagamento" ToRole="compra" />
+    <NavigationProperty Name="grupo_do_pagamento" Relationship="serverModel.FK_pagamento_grupo_do_pagamento" FromRole="pagamento" ToRole="grupo_do_pagamento" />
+  </EntityType>
+  <EntityType Name="pedido">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="produto_id" Type="Int32" />
+    <Property Name="preco" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="desconto" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="complemento_de" Type="Int32" />
+    <Property Name="montagem_id" Type="Int32" />
+    <Property Name="compra_id" Type="Int32" />
+    <Property Name="observacao" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="place_id" Type="Int64" />
+    <Property Name="horario_id" Type="Int32" />
+    <Property Name="comanda" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="recebido" Type="DateTime" Precision="3" />
+    <Property Name="preparo" Type="DateTime" Precision="3" />
+    <Property Name="finalizado" Type="DateTime" Precision="3" />
+    <Property Name="entregue" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="compra" Relationship="serverModel.FK_pedido_compra" FromRole="pedido" ToRole="compra" />
+    <NavigationProperty Name="horario" Relationship="serverModel.FK_pedido_horario" FromRole="pedido" ToRole="horario" />
+    <NavigationProperty Name="montagem" Relationship="serverModel.FK_pedido_montagem" FromRole="pedido" ToRole="montagem" />
+    <NavigationProperty Name="pedido1" Relationship="serverModel.FK_pedido_pedido" FromRole="pedido" ToRole="pedido1" />
+    <NavigationProperty Name="pedido2" Relationship="serverModel.FK_pedido_pedido" FromRole="pedido1" ToRole="pedido" />
+    <NavigationProperty Name="produto" Relationship="serverModel.FK_pedido_produto" FromRole="pedido" ToRole="produto" />
+  </EntityType>
+  <EntityType Name="perfil">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="place_id" Type="Int64" />
+    <NavigationProperty Name="acesso" Relationship="serverModel.FK_acesso_perfil" FromRole="perfil" ToRole="acesso" />
+    <NavigationProperty Name="pessoa" Relationship="serverModel.FK_usuario_perfil" FromRole="perfil" ToRole="pessoa" />
+  </EntityType>
+  <EntityType Name="pergunta">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nome" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+    <Property Name="descricao" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+    <Property Name="tipo_id" Type="Int32" />
+    <Property Name="grupo" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+    <Property Name="ordem" Type="Int32" />
+    <Property Name="tipo_controle" Type="Int32" />
+    <Property Name="place_id" Type="Int64" />
+    <NavigationProperty Name="tipo" Relationship="serverModel.FK_pergunta_tipo" FromRole="pergunta" ToRole="tipo" />
+    <NavigationProperty Name="resposta" Relationship="serverModel.FK_resposta_pergunta" FromRole="pergunta" ToRole="resposta" />
+  </EntityType>
+  <EntityType Name="pessoa">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nome" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="birthday" Type="DateTime" Precision="3" />
+    <Property Name="facebook" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="cpf" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="rg" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="perfil_id" Type="Int32" />
+    <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="phone_optional" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="mobile_optional" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="rating" Type="Int32" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="description" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="active" Type="Boolean" />
+    <Property Name="charge" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="email_change" Type="DateTime" Precision="3" />
+    <Property Name="status_usuario_id" Type="Int32" />
+    <Property Name="photo_itype" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="push_id" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="push_arn" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="credit" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="cnpj" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="razao_social" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="vendedor_id" Type="Int32" />
+    <Property Name="place_id" Type="Int64" />
+    <Property Name="Agencia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AgenciaDv" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Conta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ContaDv" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BankCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DocumentNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LegalName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="comissao" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="pagarme_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="created" Type="DateTime" Precision="3" />
+    <Property Name="external_id" Type="Int32" />
+    <Property Name="filial_id" Type="Int32" />
+    <Property Name="cpf_image" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="cpf_image_itype" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="rg_image" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="rg_image_itype" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="comprovante" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="comprovante_itype" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="genero" Type="Boolean" />
+    <Property Name="antecedentes" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="antecedentes_itype" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="certificado" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="certificado_itype" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BankToken" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+    <Property Name="especialidade_id" Type="Int32" />
+    <NavigationProperty Name="agenda" Relationship="serverModel.FK_agenda_pessoa" FromRole="pessoa" ToRole="agenda" />
+    <NavigationProperty Name="cartao" Relationship="serverModel.FK_cartao_pessoa" FromRole="pessoa" ToRole="cartao" />
+    <NavigationProperty Name="compra" Relationship="serverModel.FK_compra_pessoa" FromRole="pessoa" ToRole="compra" />
+    <NavigationProperty Name="compra1" Relationship="serverModel.FK_compra_pessoa1" FromRole="pessoa" ToRole="compra" />
+    <NavigationProperty Name="endereco" Relationship="serverModel.FK_endereco_pessoa" FromRole="pessoa" ToRole="endereco" />
+    <NavigationProperty Name="estoque" Relationship="serverModel.FK_estoque_pessoa" FromRole="pessoa" ToRole="estoque" />
+    <NavigationProperty Name="filial" Relationship="serverModel.FK_filial_pessoa" FromRole="pessoa" ToRole="filial" />
+    <NavigationProperty Name="filial1" Relationship="serverModel.FK_pessoa_filial" FromRole="pessoa" ToRole="filial" />
+    <NavigationProperty Name="horario" Relationship="serverModel.FK_horario_pessoa" FromRole="pessoa" ToRole="horario" />
+    <NavigationProperty Name="mensagens" Relationship="serverModel.FK_mensagens_pessoa" FromRole="pessoa" ToRole="mensagens" />
+    <NavigationProperty Name="perfil" Relationship="serverModel.FK_usuario_perfil" FromRole="pessoa" ToRole="perfil" />
+    <NavigationProperty Name="pessoa1" Relationship="serverModel.FK_pessoa_pessoa" FromRole="pessoa" ToRole="pessoa1" />
+    <NavigationProperty Name="pessoa2" Relationship="serverModel.FK_pessoa_pessoa" FromRole="pessoa1" ToRole="pessoa" />
+    <NavigationProperty Name="tipo" Relationship="serverModel.FK_pessoa_tipo" FromRole="pessoa" ToRole="tipo" />
+    <NavigationProperty Name="pontos" Relationship="serverModel.FK_pontos_pessoa" FromRole="pessoa" ToRole="pontos" />
+    <NavigationProperty Name="produto" Relationship="serverModel.FK_produto_pessoa" FromRole="pessoa" ToRole="produto" />
+    <NavigationProperty Name="resposta" Relationship="serverModel.FK_resposta_pessoa" FromRole="pessoa" ToRole="resposta" />
+    <NavigationProperty Name="resposta1" Relationship="serverModel.FK_resposta_pessoa1" FromRole="pessoa" ToRole="resposta" />
+    <NavigationProperty Name="status_usuario" Relationship="serverModel.FK_user_status_usuario" FromRole="pessoa" ToRole="status_usuario" />
+    <NavigationProperty Name="promocao" Relationship="serverModel.FK_promocao_pessoa" FromRole="pessoa" ToRole="promocao" />
+  </EntityType>
+  <EntityType Name="pontos">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="filial_id" Type="Int32" />
+    <Property Name="pessoa_id" Type="Int32" />
+    <Property Name="quantidade" Type="Int32" />
+    <Property Name="criacao" Type="DateTime" Precision="3" />
+    <Property Name="place_id" Type="Int64" />
+    <NavigationProperty Name="filial" Relationship="serverModel.FK_pontos_filial" FromRole="pontos" ToRole="filial" />
+    <NavigationProperty Name="pessoa" Relationship="serverModel.FK_pontos_pessoa" FromRole="pontos" ToRole="pessoa" />
+    <NavigationProperty Name="resgate" Relationship="serverModel.FK_resgate_pontos" FromRole="pontos" ToRole="resgate" />
+  </EntityType>
+  <EntityType Name="produto">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nome" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="preco" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="descricao" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+    <Property Name="icone" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="desconto_id" Type="Int32" />
+    <Property Name="tipo_id" Type="Int32" />
+    <Property Name="status" Type="Boolean" />
+    <Property Name="duracao" Type="Int32" />
+    <Property Name="icone_itype" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="buscavel" Type="Boolean" />
+    <Property Name="estoque" Type="Int32" />
+    <Property Name="comissao" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="codigo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="place_id" Type="Int64" />
+    <Property Name="valorcompra" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="porcentagemlucro" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="valor_revenda" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="peso" Type="Decimal" Precision="18" Scale="3" />
+    <Property Name="comprimento" Type="Decimal" Precision="18" Scale="3" />
+    <Property Name="altura" Type="Decimal" Precision="18" Scale="3" />
+    <Property Name="largura" Type="Decimal" Precision="18" Scale="3" />
+    <Property Name="diametro" Type="Decimal" Precision="18" Scale="3" />
+    <Property Name="comissao_vendedor" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="destaque" Type="Int32" />
+    <Property Name="observacao" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+    <Property Name="external_id" Type="Int32" />
+    <Property Name="data_entrada" Type="DateTime" Precision="3" />
+    <Property Name="tipo_de_preparo_id" Type="Int32" />
+    <Property Name="agenda_id" Type="Int32" />
+    <Property Name="administrador_id" Type="Int32" />
+    <Property Name="avaliacao" Type="Int32" />
+    <Property Name="avaliacao_quantidade" Type="Int32" />
+    <Property Name="unidade" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="periodo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="agenda" Relationship="serverModel.FK_produto_agenda" FromRole="produto" ToRole="agenda" />
+    <NavigationProperty Name="complemento" Relationship="serverModel.FK_complemento_produto" FromRole="produto" ToRole="complemento" />
+    <NavigationProperty Name="desconto" Relationship="serverModel.FK_produto_desconto" FromRole="produto" ToRole="desconto" />
+    <NavigationProperty Name="estoque1" Relationship="serverModel.FK_estoque_produto" FromRole="produto" ToRole="estoque" />
+    <NavigationProperty Name="filial_produto" Relationship="serverModel.FK_filial_produto_produto" FromRole="produto" ToRole="filial_produto" />
+    <NavigationProperty Name="montagem" Relationship="serverModel.FK_montagem_produto" FromRole="produto" ToRole="montagem" />
+    <NavigationProperty Name="pedido" Relationship="serverModel.FK_pedido_produto" FromRole="produto" ToRole="pedido" />
+    <NavigationProperty Name="pessoa" Relationship="serverModel.FK_produto_pessoa" FromRole="produto" ToRole="pessoa" />
+    <NavigationProperty Name="produto_caracteristica" Relationship="serverModel.FK_produto_caracteristica_produto1" FromRole="produto" ToRole="produto_caracteristica" />
+    <NavigationProperty Name="tipo" Relationship="serverModel.FK_produto_tipo" FromRole="produto" ToRole="tipo" />
+    <NavigationProperty Name="tipo_de_preparo" Relationship="serverModel.FK_produto_tipo_de_preparo" FromRole="produto" ToRole="tipo_de_preparo" />
+    <NavigationProperty Name="promocao" Relationship="serverModel.FK_promocao_produto" FromRole="produto" ToRole="promocao" />
+  </EntityType>
+  <EntityType Name="produto_caracteristica">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="caracteristica_id" Type="Int32" />
+    <Property Name="place_id" Type="Int64" />
+    <Property Name="produto_id" Type="Int32" />
+    <NavigationProperty Name="caracteristica" Relationship="serverModel.FK_produto_caracteristica_caracteristica" FromRole="produto_caracteristica" ToRole="caracteristica" />
+    <NavigationProperty Name="produto" Relationship="serverModel.FK_produto_caracteristica_produto1" FromRole="produto_caracteristica" ToRole="produto" />
+  </EntityType>
+  <EntityType Name="resgate">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="pontos_id" Type="Int32" />
+    <Property Name="criacao" Type="DateTime" Precision="3" />
+    <Property Name="quantidade" Type="Int32" />
+    <Property Name="place_id" Type="Int64" />
+    <NavigationProperty Name="pontos" Relationship="serverModel.FK_resgate_pontos" FromRole="resgate" ToRole="pontos" />
+  </EntityType>
+  <EntityType Name="resposta">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="criacao" Type="DateTime" Precision="3" />
+    <Property Name="valor" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+    <Property Name="pergunta_id" Type="Int32" />
+    <Property Name="autor_id" Type="Int32" />
+    <Property Name="pessoa_id" Type="Int32" />
+    <Property Name="nome" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="place_id" Type="Int64" />
+    <NavigationProperty Name="pergunta" Relationship="serverModel.FK_resposta_pergunta" FromRole="resposta" ToRole="pergunta" />
+    <NavigationProperty Name="pessoa" Relationship="serverModel.FK_resposta_pessoa" FromRole="resposta" ToRole="pessoa" />
+    <NavigationProperty Name="pessoa1" Relationship="serverModel.FK_resposta_pessoa1" FromRole="resposta" ToRole="pessoa" />
+  </EntityType>
+  <EntityType Name="status_da_compra">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nome" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="place_id" Type="Int64" />
+    <NavigationProperty Name="compra" Relationship="serverModel.FK_compra_status_da_compra" FromRole="status_da_compra" ToRole="compra" />
+  </EntityType>
+  <EntityType Name="status_usuario">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="place_id" Type="Int64" />
+    <NavigationProperty Name="pessoa" Relationship="serverModel.FK_user_status_usuario" FromRole="status_usuario" ToRole="pessoa" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="place_id" Type="Int64" />
+  </EntityType>
+  <EntityType Name="tipo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nome" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="icone" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="icone_itype" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="background" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="background_itype" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="descricao" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="buscavel" Type="Boolean" />
+    <Property Name="ativo" Type="Boolean" />
+    <Property Name="place_id" Type="Int64" />
+    <Property Name="external_id" Type="Int32" />
+    <Property Name="ordem" Type="Int32" />
+    <Property Name="periodo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="pergunta" Relationship="serverModel.FK_pergunta_tipo" FromRole="tipo" ToRole="pergunta" />
+    <NavigationProperty Name="pessoa" Relationship="serverModel.FK_pessoa_tipo" FromRole="tipo" ToRole="pessoa" />
+    <NavigationProperty Name="produto" Relationship="serverModel.FK_produto_tipo" FromRole="tipo" ToRole="produto" />
+  </EntityType>
+  <EntityType Name="tipo_de_preparo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nome" Type="String" MaxLength="450" FixedLength="false" Unicode="false" />
+    <Property Name="ativo" Type="Boolean" />
+    <Property Name="place_id" Type="Int64" />
+    <NavigationProperty Name="produto" Relationship="serverModel.FK_produto_tipo_de_preparo" FromRole="tipo_de_preparo" ToRole="produto" />
+  </EntityType>
+  <Association Name="FK_acesso_perfil">
+    <End Type="serverModel.perfil" Role="perfil" Multiplicity="0..1" />
+    <End Type="serverModel.acesso" Role="acesso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="perfil">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="acesso">
+        <PropertyRef Name="perfil_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_agenda_pessoa">
+    <End Type="serverModel.pessoa" Role="pessoa" Multiplicity="0..1" />
+    <End Type="serverModel.agenda" Role="agenda" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pessoa">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="agenda">
+        <PropertyRef Name="administrador_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_horario_agenda">
+    <End Type="serverModel.agenda" Role="agenda" Multiplicity="0..1" />
+    <End Type="serverModel.horario" Role="horario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="agenda">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="horario">
+        <PropertyRef Name="agenda_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_produto_agenda">
+    <End Type="serverModel.agenda" Role="agenda" Multiplicity="0..1" />
+    <End Type="serverModel.produto" Role="produto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="agenda">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="produto">
+        <PropertyRef Name="agenda_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_pagamento_bandeira">
+    <End Type="serverModel.bandeira" Role="bandeira" Multiplicity="0..1" />
+    <End Type="serverModel.pagamento" Role="pagamento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="bandeira">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="pagamento">
+        <PropertyRef Name="bandeira_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_produto_caracteristica_caracteristica">
+    <End Type="serverModel.caracteristica" Role="caracteristica" Multiplicity="0..1" />
+    <End Type="serverModel.produto_caracteristica" Role="produto_caracteristica" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="caracteristica">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="produto_caracteristica">
+        <PropertyRef Name="caracteristica_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_cartao_pessoa">
+    <End Type="serverModel.pessoa" Role="pessoa" Multiplicity="0..1" />
+    <End Type="serverModel.cartao" Role="cartao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pessoa">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="cartao">
+        <PropertyRef Name="pessoa_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_compra_cartao">
+    <End Type="serverModel.cartao" Role="cartao" Multiplicity="0..1" />
+    <End Type="serverModel.compra" Role="compra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cartao">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="compra">
+        <PropertyRef Name="cartao_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_complemento_montagem">
+    <End Type="serverModel.montagem" Role="montagem" Multiplicity="0..1" />
+    <End Type="serverModel.complemento" Role="complemento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="montagem">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="complemento">
+        <PropertyRef Name="montagem_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_complemento_produto">
+    <End Type="serverModel.produto" Role="produto" Multiplicity="0..1" />
+    <End Type="serverModel.complemento" Role="complemento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="produto">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="complemento">
+        <PropertyRef Name="product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_compra_filial">
+    <End Type="serverModel.filial" Role="filial" Multiplicity="0..1" />
+    <End Type="serverModel.compra" Role="compra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="filial">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="compra">
+        <PropertyRef Name="filial_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_compra_pagamento">
+    <End Type="serverModel.pagamento" Role="pagamento" Multiplicity="0..1" />
+    <End Type="serverModel.compra" Role="compra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pagamento">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="compra">
+        <PropertyRef Name="pagamento_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_compra_pessoa">
+    <End Type="serverModel.pessoa" Role="pessoa" Multiplicity="0..1" />
+    <End Type="serverModel.compra" Role="compra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pessoa">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="compra">
+        <PropertyRef Name="comprador_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_compra_pessoa1">
+    <End Type="serverModel.pessoa" Role="pessoa" Multiplicity="0..1" />
+    <End Type="serverModel.compra" Role="compra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pessoa">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="compra">
+        <PropertyRef Name="vendedor_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_compra_status_da_compra">
+    <End Type="serverModel.status_da_compra" Role="status_da_compra" Multiplicity="0..1" />
+    <End Type="serverModel.compra" Role="compra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="status_da_compra">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="compra">
+        <PropertyRef Name="status_da_compra_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_horario_compra">
+    <End Type="serverModel.compra" Role="compra" Multiplicity="0..1" />
+    <End Type="serverModel.horario" Role="horario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="compra">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="horario">
+        <PropertyRef Name="compra_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_pedido_compra">
+    <End Type="serverModel.compra" Role="compra" Multiplicity="0..1" />
+    <End Type="serverModel.pedido" Role="pedido" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="compra">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="pedido">
+        <PropertyRef Name="compra_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_filial_cor">
+    <End Type="serverModel.cor" Role="cor" Multiplicity="0..1" />
+    <End Type="serverModel.filial" Role="filial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cor">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="filial">
+        <PropertyRef Name="cor_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_produto_desconto">
+    <End Type="serverModel.desconto" Role="desconto" Multiplicity="0..1" />
+    <End Type="serverModel.produto" Role="produto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="desconto">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="produto">
+        <PropertyRef Name="desconto_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_endereco_pessoa">
+    <End Type="serverModel.pessoa" Role="pessoa" Multiplicity="0..1" />
+    <End Type="serverModel.endereco" Role="endereco" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pessoa">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="endereco">
+        <PropertyRef Name="pessoa_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_estoque_pessoa">
+    <End Type="serverModel.pessoa" Role="pessoa" Multiplicity="0..1" />
+    <End Type="serverModel.estoque" Role="estoque" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pessoa">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="estoque">
+        <PropertyRef Name="pessoa_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_estoque_produto">
+    <End Type="serverModel.produto" Role="produto" Multiplicity="0..1" />
+    <End Type="serverModel.estoque" Role="estoque" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="produto">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="estoque">
+        <PropertyRef Name="produto_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_filial_filial">
+    <End Type="serverModel.filial" Role="filial" Multiplicity="0..1" />
+    <End Type="serverModel.filial" Role="filial1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="filial">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="filial1">
+        <PropertyRef Name="matriz_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_filial_pessoa">
+    <End Type="serverModel.pessoa" Role="pessoa" Multiplicity="0..1" />
+    <End Type="serverModel.filial" Role="filial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pessoa">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="filial">
+        <PropertyRef Name="administrador_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_filial_produto_filial">
+    <End Type="serverModel.filial" Role="filial" Multiplicity="0..1" />
+    <End Type="serverModel.filial_produto" Role="filial_produto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="filial">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="filial_produto">
+        <PropertyRef Name="filial_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_pessoa_filial">
+    <End Type="serverModel.filial" Role="filial" Multiplicity="0..1" />
+    <End Type="serverModel.pessoa" Role="pessoa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="filial">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="pessoa">
+        <PropertyRef Name="filial_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_pontos_filial">
+    <End Type="serverModel.filial" Role="filial" Multiplicity="0..1" />
+    <End Type="serverModel.pontos" Role="pontos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="filial">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="pontos">
+        <PropertyRef Name="filial_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_filial_produto_produto">
+    <End Type="serverModel.produto" Role="produto" Multiplicity="0..1" />
+    <End Type="serverModel.filial_produto" Role="filial_produto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="produto">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="filial_produto">
+        <PropertyRef Name="produto_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_pagamento_grupo_do_pagamento">
+    <End Type="serverModel.grupo_do_pagamento" Role="grupo_do_pagamento" Multiplicity="0..1" />
+    <End Type="serverModel.pagamento" Role="pagamento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="grupo_do_pagamento">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="pagamento">
+        <PropertyRef Name="grupo_do_pagamento_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_horario_pessoa">
+    <End Type="serverModel.pessoa" Role="pessoa" Multiplicity="0..1" />
+    <End Type="serverModel.horario" Role="horario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pessoa">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="horario">
+        <PropertyRef Name="cliente_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mensagens_horario">
+    <End Type="serverModel.horario" Role="horario" Multiplicity="0..1" />
+    <End Type="serverModel.mensagens" Role="mensagens" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="horario">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="mensagens">
+        <PropertyRef Name="horario_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_pedido_horario">
+    <End Type="serverModel.horario" Role="horario" Multiplicity="0..1" />
+    <End Type="serverModel.pedido" Role="pedido" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="horario">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="pedido">
+        <PropertyRef Name="horario_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mensagens_pessoa">
+    <End Type="serverModel.pessoa" Role="pessoa" Multiplicity="0..1" />
+    <End Type="serverModel.mensagens" Role="mensagens" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pessoa">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="mensagens">
+        <PropertyRef Name="atendente_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_montagem_montagem">
+    <End Type="serverModel.montagem" Role="montagem" Multiplicity="0..1" />
+    <End Type="serverModel.montagem" Role="montagem1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="montagem">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="montagem1">
+        <PropertyRef Name="proximo_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_montagem_produto">
+    <End Type="serverModel.produto" Role="produto" Multiplicity="0..1" />
+    <End Type="serverModel.montagem" Role="montagem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="produto">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="montagem">
+        <PropertyRef Name="produto_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_pedido_montagem">
+    <End Type="serverModel.montagem" Role="montagem" Multiplicity="0..1" />
+    <End Type="serverModel.pedido" Role="pedido" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="montagem">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="pedido">
+        <PropertyRef Name="montagem_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_pedido_pedido">
+    <End Type="serverModel.pedido" Role="pedido" Multiplicity="0..1" />
+    <End Type="serverModel.pedido" Role="pedido1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pedido">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="pedido1">
+        <PropertyRef Name="complemento_de" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_pedido_produto">
+    <End Type="serverModel.produto" Role="produto" Multiplicity="0..1" />
+    <End Type="serverModel.pedido" Role="pedido" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="produto">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="pedido">
+        <PropertyRef Name="produto_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_usuario_perfil">
+    <End Type="serverModel.perfil" Role="perfil" Multiplicity="0..1" />
+    <End Type="serverModel.pessoa" Role="pessoa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="perfil">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="pessoa">
+        <PropertyRef Name="perfil_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_pergunta_tipo">
+    <End Type="serverModel.tipo" Role="tipo" Multiplicity="0..1" />
+    <End Type="serverModel.pergunta" Role="pergunta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipo">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="pergunta">
+        <PropertyRef Name="tipo_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_resposta_pergunta">
+    <End Type="serverModel.pergunta" Role="pergunta" Multiplicity="0..1" />
+    <End Type="serverModel.resposta" Role="resposta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pergunta">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="resposta">
+        <PropertyRef Name="pergunta_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_pessoa_pessoa">
+    <End Type="serverModel.pessoa" Role="pessoa" Multiplicity="0..1" />
+    <End Type="serverModel.pessoa" Role="pessoa1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pessoa">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="pessoa1">
+        <PropertyRef Name="vendedor_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_pessoa_tipo">
+    <End Type="serverModel.tipo" Role="tipo" Multiplicity="0..1" />
+    <End Type="serverModel.pessoa" Role="pessoa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipo">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="pessoa">
+        <PropertyRef Name="especialidade_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_pontos_pessoa">
+    <End Type="serverModel.pessoa" Role="pessoa" Multiplicity="0..1" />
+    <End Type="serverModel.pontos" Role="pontos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pessoa">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="pontos">
+        <PropertyRef Name="pessoa_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_produto_pessoa">
+    <End Type="serverModel.pessoa" Role="pessoa" Multiplicity="0..1" />
+    <End Type="serverModel.produto" Role="produto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pessoa">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="produto">
+        <PropertyRef Name="administrador_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_resposta_pessoa">
+    <End Type="serverModel.pessoa" Role="pessoa" Multiplicity="0..1" />
+    <End Type="serverModel.resposta" Role="resposta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pessoa">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="resposta">
+        <PropertyRef Name="autor_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_resposta_pessoa1">
+    <End Type="serverModel.pessoa" Role="pessoa" Multiplicity="0..1" />
+    <End Type="serverModel.resposta" Role="resposta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pessoa">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="resposta">
+        <PropertyRef Name="pessoa_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_user_status_usuario">
+    <End Type="serverModel.status_usuario" Role="status_usuario" Multiplicity="0..1" />
+    <End Type="serverModel.pessoa" Role="pessoa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="status_usuario">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="pessoa">
+        <PropertyRef Name="status_usuario_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_resgate_pontos">
+    <End Type="serverModel.pontos" Role="pontos" Multiplicity="0..1" />
+    <End Type="serverModel.resgate" Role="resgate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pontos">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="resgate">
+        <PropertyRef Name="pontos_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_produto_caracteristica_produto1">
+    <End Type="serverModel.produto" Role="produto" Multiplicity="0..1" />
+    <End Type="serverModel.produto_caracteristica" Role="produto_caracteristica" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="produto">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="produto_caracteristica">
+        <PropertyRef Name="produto_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_produto_tipo">
+    <End Type="serverModel.tipo" Role="tipo" Multiplicity="0..1" />
+    <End Type="serverModel.produto" Role="produto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipo">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="produto">
+        <PropertyRef Name="tipo_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_produto_tipo_de_preparo">
+    <End Type="serverModel.tipo_de_preparo" Role="tipo_de_preparo" Multiplicity="0..1" />
+    <End Type="serverModel.produto" Role="produto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipo_de_preparo">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="produto">
+        <PropertyRef Name="tipo_de_preparo_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="promocao">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="pessoa_id" Type="Int32" />
+    <Property Name="valor" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="validade" Type="DateTime" Precision="3" />
+    <Property Name="nome" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+    <Property Name="automatico" Type="Boolean" />
+    <Property Name="compra_id" Type="Int32" />
+    <Property Name="codigo" Type="Int32" />
+    <Property Name="place_id" Type="Int64" />
+    <Property Name="utilizacao" Type="DateTime" Precision="3" />
+    <Property Name="ativo" Type="Boolean" />
+    <Property Name="seg" Type="Boolean" />
+    <Property Name="ter" Type="Boolean" />
+    <Property Name="qua" Type="Boolean" />
+    <Property Name="qui" Type="Boolean" />
+    <Property Name="sex" Type="Boolean" />
+    <Property Name="sab" Type="Boolean" />
+    <Property Name="dom" Type="Boolean" />
+    <Property Name="produto_id" Type="Int32" />
+    <NavigationProperty Name="compra" Relationship="serverModel.FK_promocao_compra" FromRole="promocao" ToRole="compra" />
+    <NavigationProperty Name="pessoa" Relationship="serverModel.FK_promocao_pessoa" FromRole="promocao" ToRole="pessoa" />
+    <NavigationProperty Name="produto" Relationship="serverModel.FK_promocao_produto" FromRole="promocao" ToRole="produto" />
+    <Property Name="quantidade" Type="Int32" />
+  </EntityType>
+  <Association Name="FK_promocao_compra">
+    <End Type="serverModel.compra" Role="compra" Multiplicity="0..1" />
+    <End Type="serverModel.promocao" Role="promocao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="compra">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="promocao">
+        <PropertyRef Name="compra_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_promocao_pessoa">
+    <End Type="serverModel.pessoa" Role="pessoa" Multiplicity="0..1" />
+    <End Type="serverModel.promocao" Role="promocao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pessoa">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="promocao">
+        <PropertyRef Name="pessoa_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_promocao_produto">
+    <End Type="serverModel.produto" Role="produto" Multiplicity="0..1" />
+    <End Type="serverModel.promocao" Role="promocao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="produto">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="promocao">
+        <PropertyRef Name="produto_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

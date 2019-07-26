@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9af8b8671ff843e893e3e6028c483e5b" Name="Diagram1" ZoomLevel="63">
+        <EntityTypeShape EntityType="serverModel.acesso" Width="1.5" PointX="3" PointY="45" />
+        <EntityTypeShape EntityType="serverModel.agenda" Width="1.5" PointX="5.25" PointY="57.875" />
+        <EntityTypeShape EntityType="serverModel.bandeira" Width="1.5" PointX="6" PointY="24" />
+        <EntityTypeShape EntityType="serverModel.biblioteca_de_palavra" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="serverModel.caracteristica" Width="1.5" PointX="10.5" PointY="56.25" />
+        <EntityTypeShape EntityType="serverModel.cartao" Width="1.5" PointX="5.25" PointY="48.75" />
+        <EntityTypeShape EntityType="serverModel.complemento" Width="1.5" PointX="15" PointY="54.25" />
+        <EntityTypeShape EntityType="serverModel.compra" Width="1.5" PointX="10.5" PointY="35.5" />
+        <EntityTypeShape EntityType="serverModel.cor" Width="1.5" PointX="6" PointY="35.875" />
+        <EntityTypeShape EntityType="serverModel.desconto" Width="1.5" PointX="8.25" PointY="53.75" />
+        <EntityTypeShape EntityType="serverModel.endereco" Width="1.5" PointX="5.25" PointY="53" />
+        <EntityTypeShape EntityType="serverModel.estoque" Width="1.5" PointX="15.75" PointY="42.625" />
+        <EntityTypeShape EntityType="serverModel.filial" Width="1.5" PointX="8.25" PointY="27.5" />
+        <EntityTypeShape EntityType="serverModel.filial_produto" Width="1.5" PointX="12.75" PointY="39.25" />
+        <EntityTypeShape EntityType="serverModel.grupo_do_pagamento" Width="1.5" PointX="6" PointY="21.25" />
+        <EntityTypeShape EntityType="serverModel.horario" Width="1.5" PointX="12.75" PointY="43.125" />
+        <EntityTypeShape EntityType="serverModel.mensagens" Width="1.5" PointX="15" PointY="38.875" />
+        <EntityTypeShape EntityType="serverModel.montagem" Width="1.5" PointX="12.75" PointY="61.5" />
+        <EntityTypeShape EntityType="serverModel.pagamento" Width="1.5" PointX="8.25" PointY="21.75" />
+        <EntityTypeShape EntityType="serverModel.pedido" Width="1.5" PointX="15" PointY="48.375" />
+        <EntityTypeShape EntityType="serverModel.perfil" Width="1.5" PointX="0.75" PointY="39.75" />
+        <EntityTypeShape EntityType="serverModel.pergunta" Width="1.5" PointX="3" PointY="50.875" />
+        <EntityTypeShape EntityType="serverModel.pessoa" Width="1.5" PointX="3" PointY="29.25" />
+        <EntityTypeShape EntityType="serverModel.pontos" Width="1.5" PointX="13.5" PointY="35.375" />
+        <EntityTypeShape EntityType="serverModel.produto" Width="1.5" PointX="10.5" PointY="45.375" />
+        <EntityTypeShape EntityType="serverModel.produto_caracteristica" Width="1.5" PointX="12.75" PointY="51.125" />
+        <EntityTypeShape EntityType="serverModel.resgate" Width="1.5" PointX="15.75" PointY="35.625" />
+        <EntityTypeShape EntityType="serverModel.resposta" Width="1.5" PointX="5.25" PointY="40" />
+        <EntityTypeShape EntityType="serverModel.status_da_compra" Width="1.5" PointX="8.25" PointY="47.625" />
+        <EntityTypeShape EntityType="serverModel.status_usuario" Width="1.5" PointX="0.75" PointY="31.125" />
+        <EntityTypeShape EntityType="serverModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="serverModel.tipo" Width="1.5" PointX="0.75" PointY="34.625" />
+        <EntityTypeShape EntityType="serverModel.tipo_de_preparo" Width="1.5" PointX="8.25" PointY="51" />
+        <AssociationConnector Association="serverModel.FK_acesso_perfil" />
+        <AssociationConnector Association="serverModel.FK_agenda_pessoa" />
+        <AssociationConnector Association="serverModel.FK_horario_agenda" />
+        <AssociationConnector Association="serverModel.FK_produto_agenda" />
+        <AssociationConnector Association="serverModel.FK_pagamento_bandeira" />
+        <AssociationConnector Association="serverModel.FK_produto_caracteristica_caracteristica" />
+        <AssociationConnector Association="serverModel.FK_cartao_pessoa" />
+        <AssociationConnector Association="serverModel.FK_compra_cartao" />
+        <AssociationConnector Association="serverModel.FK_complemento_montagem" />
+        <AssociationConnector Association="serverModel.FK_complemento_produto" />
+        <AssociationConnector Association="serverModel.FK_compra_filial" />
+        <AssociationConnector Association="serverModel.FK_compra_pagamento" />
+        <AssociationConnector Association="serverModel.FK_compra_pessoa" />
+        <AssociationConnector Association="serverModel.FK_compra_pessoa1" />
+        <AssociationConnector Association="serverModel.FK_compra_status_da_compra" />
+        <AssociationConnector Association="serverModel.FK_horario_compra" />
+        <AssociationConnector Association="serverModel.FK_pedido_compra" />
+        <AssociationConnector Association="serverModel.FK_filial_cor" />
+        <AssociationConnector Association="serverModel.FK_produto_desconto" />
+        <AssociationConnector Association="serverModel.FK_endereco_pessoa" />
+        <AssociationConnector Association="serverModel.FK_estoque_pessoa" />
+        <AssociationConnector Association="serverModel.FK_estoque_produto" />
+        <AssociationConnector Association="serverModel.FK_filial_filial" />
+        <AssociationConnector Association="serverModel.FK_filial_pessoa" />
+        <AssociationConnector Association="serverModel.FK_filial_produto_filial" />
+        <AssociationConnector Association="serverModel.FK_pessoa_filial" />
+        <AssociationConnector Association="serverModel.FK_pontos_filial" />
+        <AssociationConnector Association="serverModel.FK_filial_produto_produto" />
+        <AssociationConnector Association="serverModel.FK_pagamento_grupo_do_pagamento" />
+        <AssociationConnector Association="serverModel.FK_horario_pessoa" />
+        <AssociationConnector Association="serverModel.FK_mensagens_horario" />
+        <AssociationConnector Association="serverModel.FK_pedido_horario" />
+        <AssociationConnector Association="serverModel.FK_mensagens_pessoa" />
+        <AssociationConnector Association="serverModel.FK_montagem_montagem" />
+        <AssociationConnector Association="serverModel.FK_montagem_produto" />
+        <AssociationConnector Association="serverModel.FK_pedido_montagem" />
+        <AssociationConnector Association="serverModel.FK_pedido_pedido" />
+        <AssociationConnector Association="serverModel.FK_pedido_produto" />
+        <AssociationConnector Association="serverModel.FK_usuario_perfil" />
+        <AssociationConnector Association="serverModel.FK_pergunta_tipo" />
+        <AssociationConnector Association="serverModel.FK_resposta_pergunta" />
+        <AssociationConnector Association="serverModel.FK_pessoa_pessoa" />
+        <AssociationConnector Association="serverModel.FK_pessoa_tipo" />
+        <AssociationConnector Association="serverModel.FK_pontos_pessoa" />
+        <AssociationConnector Association="serverModel.FK_produto_pessoa" />
+        <AssociationConnector Association="serverModel.FK_resposta_pessoa" />
+        <AssociationConnector Association="serverModel.FK_resposta_pessoa1" />
+        <AssociationConnector Association="serverModel.FK_user_status_usuario" />
+        <AssociationConnector Association="serverModel.FK_resgate_pontos" />
+        <AssociationConnector Association="serverModel.FK_produto_caracteristica_produto1" />
+        <AssociationConnector Association="serverModel.FK_produto_tipo" />
+        <AssociationConnector Association="serverModel.FK_produto_tipo_de_preparo" />
+        <EntityTypeShape EntityType="serverModel.promocao" Width="1.5" PointX="18.75" PointY="39.75" />
+        <AssociationConnector Association="serverModel.FK_promocao_compra" />
+        <AssociationConnector Association="serverModel.FK_promocao_pessoa" />
+        <AssociationConnector Association="serverModel.FK_promocao_produto" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,68 @@
+﻿
+@model List<string>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>whatsapp</title>
+    <script>
+        function enviar() {
+            $('#btnEnviar').hide();
+
+            var whats = $('.whatsitem');
+            var popup = window.open(whats.find('.whatsapp').attr('href'));
+
+            close();
+            function close() {
+                
+                try {
+                    if (popup.location.href.indexOf('/fechar') != -1) {
+
+                        $(whats[0]).remove();
+                        popup.close();
+                        enviar();
+
+
+                    }
+                    else {
+                        setTimeout(function () {
+                            close();
+                        }, 1)
+                    }
+                }
+                catch (ex) {
+                    setTimeout(function () {
+                        close();
+                    }, 1)
+                }
+            }
+        }
+    </script>
+</head>
+<body style="font-family:Arial">
+    <div id="btnEnviar" onclick="enviar()" style="margin:20px; padding:20px;background-color:green; color:white; max-width:200px; float:right; text-align:center; cursor:pointer">INICIAR DISPARO</div>
+    @foreach (var item in Model)
+    {
+        var tel = "55" + item.Replace("-", "").Replace(" ", "").Replace(")", "").Replace("(", "").Replace(".", "");
+
+        if (tel.Length == 13)
+        {
+            <div class="whatsitem" style="padding:10px; border-bottom:1px solid gray">
+
+                <a class="whatsapp" target="_blank" href=https://api.whatsapp.com/send?phone=@(tel)&text=@(System.Web.HttpUtility.UrlEncode("Olá, meu nome é Marco, hoje GRANDE parte do seu LUCRO vai para o ifood e PedidosJá? Aumente seus lucros com um aplicativo delivery próprio, por apenas R$ 199 reais por mês você poderá vender seus produtos online, sem taxas, pelo seu próprio aplicativo, com a sua logo, com a sua marca. Acesse: http://creapp.com.br").Replace("+", "%20")) ;>
+                    @tel Enviar
+                </a>
+
+                <div style="clear:both"></div>
+            </div>
+                <div style="clear:both"></div>
+        }
+    }
+</body>
+</html>

@@ -1,0 +1,98 @@
+﻿<div class="pages">
+    <div data-page="forma_pagamento" class="page">
+        <div class="navbar background-creait">
+            <div class="navbar-inner margin-bottom-20">
+                <div class="left"><a class="back link" id="voltar_fp"> <i class="f7-icons icone-voltar" style="margin-right: 10px;">chevron_left</i></a></div>
+                <div class="center">Forma de Pagamento</div>
+            </div>
+        </div>
+        <div class="list-block" id="" style="text-align: center; margin-top: 50px;">
+            <div style="width: 100%; height: 100px; text-align: center; display: flex; align-items: center; justify-content: center;">
+                <div id="pagar_cc_fp" style="height: 100px; width: 33.33%; justify-content: center; align-items: center; display: flex; float: left;">
+                    <div id="pagar_cc1_fp" style="width: 90%; border-radius: 9px; border: 1px solid #bfbdbd;"><i class="icon f7-icons">card</i><br /><span>Crédito</span></div>
+                </div>
+                <div id="pagar_b_fp" style="height: 100px; width: 33.33%; justify-content: center; align-items: center; display: flex; float: left;">
+                    <div id="pagar_b1_fp" style="width: 90%; border-radius: 9px; border: 1px solid #bfbdbd;"><i class="icon f7-icons">barcode</i><br /><span>Boleto</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="page-content text-center" style="width: 100%; height: calc(100% - 150px)">
+            <div style="width: 100%; height: auto; overflow: auto; display: none;" id="pagamento_cc_fp">
+                <formcc>
+                    <div class="list-block">
+                        <ul>
+                            <input type="hidden" id="bandeira_fp" name="bandeira" />
+                            <input type="hidden" id="tipo" name="tipo" value="credito" />
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner no-margin">
+                                        <div class="item-input">
+                                            <input class="input-index" type="text" name="nome" id="nome_cc_fp" placeholder="Nome Impresso no Cartão" maxlength="16">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner no-margin">
+                                        <div class="item-input">
+                                            <input class="input-index" type="tel" name="documento" id="cpf_cc_fp" mask="cpf" placeholder="CPF">
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner no-margin">
+                                        <div class="item-input">
+                                            <input class="input-index" type="tel" name="data_nascimento" id="data_nasc_cc_fp" placeholder="Data de Nascimento" mask="data">
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-media" style="display: none;"><img src="" id="img_bandeira_fp" /></div>
+                                    <div class="item-inner no-margin">
+                                        <div class="item-input">
+                                            <input class="input-index" type="tel" name="numero" id="num_cartao_fp" placeholder="Numero do Cartão" maxlength="16">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner no-margin">
+                                        <div class="item-input">
+                                            <input class="input-index" type="tel" name="cvv" id="cvv_fp" placeholder="CVV" maxlength="3" style="width: 20%; float: left;">
+                                            <input class="input-index" type="tel" name="expiracao" id="exp_date_fp" mask="exp_date" placeholder="Data Validade" style="width: 78%; float: right;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div style="width: 100%; height: 50px; background-color: darkred;position: absolute; left: 0; bottom: 0;">
+                        <button id="finalizar_cc_fp" style="border: none; color: #FFFFFF; width: 100%; height: 100%; background-color: rgb(162, 10, 10);">Finalizar compra</button>
+                    </div>
+                </formcc>
+            </div>
+
+            <div id="pagamento_b_fp" style="width: 100%; height: auto; overflow: auto; display: none;">
+                <div style="height: calc(100% - 50px); width: 100%; display: flex; align-items: center; justify-content: center;margin-top: 80px; text-align: center;">
+                    <formb style="display: none;">
+                        <input type="hidden" id="tipo" name="tipo" value="boleto" />
+                    </formb>
+                    <div style="height: auto; width: 70%;">
+                        <span>Um e-mail será enviado à você com o link para imprimir o boleto. <br /><b>Lembre-se ele tem validade de 3 dias.</b></span>
+                    </div>
+                </div>
+                <div style="width: 100%; height: 50px; background-color: darkred; position: absolute; bottom: 0;">
+                    <button id="finalizar_b_fp" style="border: none; color: #FFFFFF; width: 100%; height: 100%; background-color: rgb(162, 10, 10);">Finalizar compra</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

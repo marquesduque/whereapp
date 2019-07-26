@@ -1,0 +1,65 @@
+﻿@model api.Models.retirada
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<section class="content-header">
+    <h1>
+        <a href="@Url.Action("Index")" class="btn btn-warning"><i class="fa fa-angle-left fa-lg" style="margin-right: 10px"></i>Voltar</a>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("index")" base_library="api.Models.retirada.library_bc_1">Listar</a></li>
+        <li class="active" base_library="api.Models.retirada.library_bc_edit">Editar</li>
+    </ol>
+</section>
+
+
+<section class="content">
+    <div class="col-md-12">
+        <div class="alert alert-info col-md-12" role="alert">
+            <i class="fa fa-pencil" style="margin-right: 10px"></i><b base_library="api.Models.retirada.library_code">Editando Código:</b> <span class="editid">@Model.id</span>
+        </div>
+    </div>
+    <div style="clear: both"></div>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken();
+    @Html.ValidationSummary(true)
+        <div class="alert alert-danger" role="alert" base_library="api.Models.retirada.library_error_register">
+            Registro não gravado, verificar erro criticado
+        </div>
+
+
+        <fieldset>
+		
+            <div class="col-md-12 bar">
+                <label class="col-md-6" base_library="api.Models.retirada.library_title"><i class="fa fa-list-alt" style="margin-right: 10px"></i>Dados Pessoais</label>
+            </div>
+        @Html.HiddenFor(model => model.id)
+
+
+            
+       
+<div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.retirada.nome" >nome</label>
+				
+				<div style="clear: both"></div>
+									@Html.TextBoxFor(model => model.nome, new { placeholder = "", @class = "form-control", maxLength = "150" })
+				                @Html.ValidationMessageFor(model => model.nome)
+            </div>
+
+         
+  
+
+        
+		
+            <div class="form-group col-md-12 btn-gallery">
+                <a base_library="api.Models.retirada.library_delete" onclick="delete_item('@(Url.Action("Delete"))?id=@(Model.id)')" class="btn btn-danger"><i class="fa fa-trash"></i>Excluir</a>
+                <a base_library="api.Models.retirada.library_edit" onclick="$(this).closest('form').submit()" class="btn btn-success pull-right"><i class="fa fa-pencil"></i>Editar</a>
+            </div>
+
+    </fieldset>
+}
+</section>
+

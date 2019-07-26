@@ -1,0 +1,98 @@
+﻿<div class="pages">
+    <div data-page="forma_pagamento" class="page">
+        <div class="navbar background-creait">
+            <div class="navbar-inner margin-bottom-20">
+                <div class="left"><a class="back link" onclick="creait.redirect('detalhe_padrinho')"> <i class="f7-icons icone-voltar" style="margin-right: 10px;">chevron_left</i></a></div>
+                <div class="center">Detalhes do Apadrinhamento</div>
+            </div>
+        </div>
+        <div class="page-content text-center" style="width: 100%; height: 100%; margin-top: 50px; height: calc(100% - 50px);">
+            <div style="height: calc(100% - 65px); overflow: auto;">
+                <div style="width: 100%; height: auto; overflow: hidden; display: block;" id="pagamento_cc_fp">
+                    <div class="list-block">
+                        <formcc>
+                            <ul style="margin-top: 15px; margin-bottom: 25px;">
+                                <li style="font-weight: bold;">Valor e Dia da Cobrança</li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" type="number" name="valor" id="valor_mensal" placeholder="Valor Mensal">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" type="number" name="dia_cobranca" id="dia_da_cobranca" placeholder="Dia da cobrança Mensal">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <ul>
+                                <input type="hidden" id="bandeira_fp" name="bandeira" />
+                                <input type="hidden" id="tipo" name="tipo" value="plano" />
+                                <li style="font-weight: bold;">Dados do Cartão</li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" type="text" name="nome" id="nome_cc_fp" placeholder="Nome Impresso no Cartão">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" type="tel" name="documento" id="cpf_cc_fp" mask="cpf" placeholder="CPF">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" type="tel" name="data_nascimento" id="data_nasc_cc_fp" placeholder="Data de Nascimento" mask="data">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-media" style="display: none;"><img src="" id="img_bandeira_fp" /></div>
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" type="tel" name="numero" id="num_cartao_fp" placeholder="Numero do Cartão" maxlength="16">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" type="tel" name="cvv" id="cvv_fp" placeholder="CVV" maxlength="3" style="width: 20%; float: left;">
+                                                <input class="input-index" type="tel" name="expiracao" id="exp_date_fp" mask="exp_date" placeholder="Data Validade" style="width: 78%; float: right;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </formcc>
+                    </div>
+                </div>
+            </div>
+            <div style="width: 100%; height: 50px; background-color: darkred; position: absolute; bottom: 0;">
+                <button id="finalizar_cc_fp" style="border: none; color: #FFFFFF; width: 100%; height: 100%; background-color: rgb(162, 10, 10);">Finalizar Apadrinhamento</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,302 @@
+﻿
+@model Site.Models.Find<api.Controllers.descontosController.find>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<section class="content-header">
+    <h1>
+        <a href="@Url.Action("Index","Produtos")" class="btn btn-warning"><i class="fa fa-angle-left fa-lg" style="margin-right: 10px"></i>Voltar</a>
+        <a href="@Url.Action("Create")" class="btn btn-info" base_library="api.Models.desconto.library_create"><i class="fa fa-plus" style="margin-right:10px"></i>Criar Novo</a>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#" base_library="api.Models.desconto.library_bc_1"><i class="fa fa-newspaper-o"></i>Listar</a></li>
+        <li class="active"><a href="@Url.Action("index")" base_library="api.Models.desconto.library_bc_list">Index</a></li>
+    </ol>
+</section>
+
+<section class="content">
+
+
+
+
+
+     <form ajax="@Url.Action("Find")" table="tbl">
+        <input type="hidden" id="Page" name="Page" value="0" />
+
+		<div class="box box-default">
+			<div class="box-header with-border">
+
+
+                @*<div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.desconto.valor" >valor</label>
+            
+									@Html.TextBoxFor(model => model.Filter.valor, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.desconto.inicio" >inicio</label>
+            
+									@Html.TextBoxFor(model => model.Filter.inicio, "{0:dd/MM/yyyy}", new { placeholder = "", @class = "form-control", mask = "{\"value\":\"99/99/9999\", \"placeholder\":\"dd/mm/yyyy\"}", maxLength = "10", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.desconto.fim" >fim</label>
+            
+									@Html.TextBoxFor(model => model.Filter.fim, "{0:dd/MM/yyyy}", new { placeholder = "", @class = "form-control", mask = "{\"value\":\"99/99/9999\", \"placeholder\":\"dd/mm/yyyy\"}", maxLength = "10", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.desconto.segunda" >segunda</label>
+            
+									<div style="height: 34px; line-height: 30px;">
+						<label style="min-width: 45px;">
+							<input type="checkbox" value="true" name="item_segunda" class="minimal-green">
+							Sim
+
+						</label>
+						<label style="min-width: 45px;">
+							<input type="checkbox" value="false" name="item_segunda" class="minimal">
+							Não
+
+						</label>
+						@Html.HiddenFor(model => model.Filter.segunda, new { icheck = "item_segunda" })
+					</div>
+                            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.desconto.terca" >terca</label>
+            
+									<div style="height: 34px; line-height: 30px;">
+						<label style="min-width: 45px;">
+							<input type="checkbox" value="true" name="item_terca" class="minimal-green">
+							Sim
+
+						</label>
+						<label style="min-width: 45px;">
+							<input type="checkbox" value="false" name="item_terca" class="minimal">
+							Não
+
+						</label>
+						@Html.HiddenFor(model => model.Filter.terca, new { icheck = "item_terca" })
+					</div>
+                            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.desconto.quarta" >quarta</label>
+            
+									<div style="height: 34px; line-height: 30px;">
+						<label style="min-width: 45px;">
+							<input type="checkbox" value="true" name="item_quarta" class="minimal-green">
+							Sim
+
+						</label>
+						<label style="min-width: 45px;">
+							<input type="checkbox" value="false" name="item_quarta" class="minimal">
+							Não
+
+						</label>
+						@Html.HiddenFor(model => model.Filter.quarta, new { icheck = "item_quarta" })
+					</div>
+                            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.desconto.quinta" >quinta</label>
+            
+									<div style="height: 34px; line-height: 30px;">
+						<label style="min-width: 45px;">
+							<input type="checkbox" value="true" name="item_quinta" class="minimal-green">
+							Sim
+
+						</label>
+						<label style="min-width: 45px;">
+							<input type="checkbox" value="false" name="item_quinta" class="minimal">
+							Não
+
+						</label>
+						@Html.HiddenFor(model => model.Filter.quinta, new { icheck = "item_quinta" })
+					</div>
+                            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.desconto.sexta" >sexta</label>
+            
+									<div style="height: 34px; line-height: 30px;">
+						<label style="min-width: 45px;">
+							<input type="checkbox" value="true" name="item_sexta" class="minimal-green">
+							Sim
+
+						</label>
+						<label style="min-width: 45px;">
+							<input type="checkbox" value="false" name="item_sexta" class="minimal">
+							Não
+
+						</label>
+						@Html.HiddenFor(model => model.Filter.sexta, new { icheck = "item_sexta" })
+					</div>
+                            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.desconto.sabado" >sabado</label>
+            
+									<div style="height: 34px; line-height: 30px;">
+						<label style="min-width: 45px;">
+							<input type="checkbox" value="true" name="item_sabado" class="minimal-green">
+							Sim
+
+						</label>
+						<label style="min-width: 45px;">
+							<input type="checkbox" value="false" name="item_sabado" class="minimal">
+							Não
+
+						</label>
+						@Html.HiddenFor(model => model.Filter.sabado, new { icheck = "item_sabado" })
+					</div>
+                            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.desconto.domingo" >domingo</label>
+            
+									<div style="height: 34px; line-height: 30px;">
+						<label style="min-width: 45px;">
+							<input type="checkbox" value="true" name="item_domingo" class="minimal-green">
+							Sim
+
+						</label>
+						<label style="min-width: 45px;">
+							<input type="checkbox" value="false" name="item_domingo" class="minimal">
+							Não
+
+						</label>
+						@Html.HiddenFor(model => model.Filter.domingo, new { icheck = "item_domingo" })
+					</div>
+                            
+   </div>*@
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.desconto.nome" >nome</label>
+            
+									@Html.TextBoxFor(model => model.Filter.nome, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </div>
+
+		<div class="box-tools pull-right">
+			<button class="btn btn-box-tool" data-widget="collapse">Pesquisa Avançada<i style="margin-left: 10px" class="fa fa-plus-square fa-minus"></i></button>
+		</div>
+	</div>
+	<div class="box-body" style="display:none">
+	</div>
+	<div class="form-group" style="border-top: 1px solid #f4f4f4; padding: 10px">
+		<button href="#" class="btn btn-warning pull-right" type="button" name="btnProcurar" onclick="$('.tblrow').remove(); $('#Page').val('0'); $('[ajax]').submit();"><i class="fa fa-search" style="margin-right: 10px"></i>Procurar</button>
+		<div style="clear: both"></div>
+	</div>
+</div>
+    <div class="table-default scroll">
+        <div class="filter-table" base_library="api.Models.desconto.library_filter"><i class="fa fa-filter"></i>filtros</div>
+		
+            <div class="filter-table" base_library="api.Models.sample.library_report" onclick="fnExcelReport()" style="margin-left:83px; width:110px">
+                <i class="fa fa-file-excel-o"></i>Relatório
+            </div>
+<table  id="tbl"> 
+    <tr>
+        <td base_library="api.Models.desconto.nome">
+            @Html.DisplayNameFor(model => model.Filter.nome)
+        </td>
+        <td base_library="api.Models.desconto.valor">
+            @Html.DisplayNameFor(model => model.Filter.valor)
+        </td>
+        <td base_library="api.Models.desconto.inicio">
+            @Html.DisplayNameFor(model => model.Filter.inicio)
+        </td>
+        <td base_library="api.Models.desconto.fim">
+            @Html.DisplayNameFor(model => model.Filter.fim)
+        </td>
+        <td base_library="api.Models.desconto.segunda">
+            @Html.DisplayNameFor(model => model.Filter.segunda)
+        </td>
+        <td base_library="api.Models.desconto.terca">
+            @Html.DisplayNameFor(model => model.Filter.terca)
+        </td>
+        <td base_library="api.Models.desconto.quarta">
+            @Html.DisplayNameFor(model => model.Filter.quarta)
+        </td>
+        <td base_library="api.Models.desconto.quinta">
+            @Html.DisplayNameFor(model => model.Filter.quinta)
+        </td>
+        <td base_library="api.Models.desconto.sexta">
+            @Html.DisplayNameFor(model => model.Filter.sexta)
+        </td>
+        <td base_library="api.Models.desconto.sabado">
+            @Html.DisplayNameFor(model => model.Filter.sabado)
+        </td>
+        <td base_library="api.Models.desconto.domingo">
+            @Html.DisplayNameFor(model => model.Filter.domingo)
+        </td>
+        
+    </tr>
+</table>
+</div>
+</form>
+</section>
+
+		<script template="tbl" type="text/template" redirect="@Url.Action("edit")"> 
+
+    <tr class="tblrow" pk="id">
+        <td column="nome">
+        </td>
+        <td column="valor">
+        </td>
+        <td column="inicio">
+        </td>
+        <td column="fim">
+        </td>
+        <td column="segunda">
+        </td>
+        <td column="terca">
+        </td>
+        <td column="quarta">
+        </td>
+        <td column="quinta">
+        </td>
+        <td column="sexta">
+        </td>
+        <td column="sabado">
+        </td>
+        <td column="domingo">
+        </td>
+        
+       
+    </tr>
+
+
+</script>

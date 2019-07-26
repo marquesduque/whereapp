@@ -1,0 +1,247 @@
+﻿@model api.Models.desconto
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<section class="content-header">
+    <h1>
+        <a href="@Url.Action("Index")" class="btn btn-info"><i class="fa fa-angle-left fa-lg" style="margin-right: 10px"></i>Voltar</a>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("index")" base_library="api.Models.desconto.library_bc_1">Listar</a></li>
+        <li class="active" base_library="api.Models.desconto.library_bc_create">Criar</li>
+    </ol>
+</section>
+
+<section class="content">
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+
+	      @Html.ValidationSummary(true)
+        <div class="alert alert-danger" role="alert" base_library="api.Models.desconto.library_error_register">
+            Registro não gravado, verificar erro criticado
+        </div>
+
+        <fieldset>
+
+            <div class="col-md-12 bar">
+                <label class="col-md-6" base_library="api.Models.desconto.library_title"><i class="fa fa-list-alt" style="margin-right: 10px"></i>Dados Pessoais</label>
+            </div>
+    
+    <div>
+   
+        <div class="form-group col-md-6">
+            <label class="control-label" base_library="api.Models.desconto.nome">nome</label>
+
+            <div style="clear: both"></div>
+            @Html.TextBoxFor(model => model.nome, new { placeholder = "", @class = "form-control", maxLength = "150" })
+            @Html.ValidationMessageFor(model => model.nome)
+        </div>
+
+            
+            <div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.desconto.valor" >valor</label>
+				
+				<div style="clear: both"></div>
+									@Html.TextBoxFor(model => model.valor, new { placeholder = "", @class = "form-control", maxLength = "150", money ="true" })
+				                @Html.ValidationMessageFor(model => model.valor)
+            </div>
+   
+
+            
+            <div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.desconto.inicio" >inicio</label>
+				
+				<div style="clear: both"></div>
+									@Html.TextBoxFor(model => model.inicio, "{0:dd/MM/yyyya}", new { placeholder = "", @class = "form-control", mask = "{\"value\":\"99/99/9999\", \"placeholder\":\"dd/mm/yyyy\"}", maxLength = "10" })
+				                @Html.ValidationMessageFor(model => model.inicio)
+            </div>
+   
+
+            
+            <div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.desconto.fim" >fim</label>
+				
+				<div style="clear: both"></div>
+									@Html.TextBoxFor(model => model.fim, "{0:dd/MM/yyyya}", new { placeholder = "", @class = "form-control", mask = "{\"value\":\"99/99/9999\", \"placeholder\":\"dd/mm/yyyy\"}", maxLength = "10" })
+				                @Html.ValidationMessageFor(model => model.fim)
+            </div>
+   
+
+            
+            <div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.desconto.segunda" >segunda</label>
+				
+				<div style="clear: both"></div>
+									<div class="col-md-12 row" style="line-height: 29px">
+						<label>
+							<input type="radio" value="true" name="item_segunda" class="minimal-green">
+							Sim
+
+						</label>
+						<label>
+							<input type="radio" value="false" name="item_segunda" class="minimal">
+							Não
+
+						</label>
+					</div>
+					<div style="clear: both"></div>
+					@Html.HiddenFor(model => model.segunda, new { icheck = "item_segunda" })
+                                @Html.ValidationMessageFor(model => model.segunda)
+            </div>
+   
+
+            
+            <div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.desconto.terca" >terca</label>
+				
+				<div style="clear: both"></div>
+									<div class="col-md-12 row" style="line-height: 29px">
+						<label>
+							<input type="radio" value="true" name="item_terca" class="minimal-green">
+							Sim
+
+						</label>
+						<label>
+							<input type="radio" value="false" name="item_terca" class="minimal">
+							Não
+
+						</label>
+					</div>
+					<div style="clear: both"></div>
+					@Html.HiddenFor(model => model.terca, new { icheck = "item_terca" })
+                                @Html.ValidationMessageFor(model => model.terca)
+            </div>
+   
+
+            
+            <div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.desconto.quarta" >quarta</label>
+				
+				<div style="clear: both"></div>
+									<div class="col-md-12 row" style="line-height: 29px">
+						<label>
+							<input type="radio" value="true" name="item_quarta" class="minimal-green">
+							Sim
+
+						</label>
+						<label>
+							<input type="radio" value="false" name="item_quarta" class="minimal">
+							Não
+
+						</label>
+					</div>
+					<div style="clear: both"></div>
+					@Html.HiddenFor(model => model.quarta, new { icheck = "item_quarta" })
+                                @Html.ValidationMessageFor(model => model.quarta)
+            </div>
+   
+
+            
+            <div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.desconto.quinta" >quinta</label>
+				
+				<div style="clear: both"></div>
+									<div class="col-md-12 row" style="line-height: 29px">
+						<label>
+							<input type="radio" value="true" name="item_quinta" class="minimal-green">
+							Sim
+
+						</label>
+						<label>
+							<input type="radio" value="false" name="item_quinta" class="minimal">
+							Não
+
+						</label>
+					</div>
+					<div style="clear: both"></div>
+					@Html.HiddenFor(model => model.quinta, new { icheck = "item_quinta" })
+                                @Html.ValidationMessageFor(model => model.quinta)
+            </div>
+   
+
+            
+            <div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.desconto.sexta" >sexta</label>
+				
+				<div style="clear: both"></div>
+									<div class="col-md-12 row" style="line-height: 29px">
+						<label>
+							<input type="radio" value="true" name="item_sexta" class="minimal-green">
+							Sim
+
+						</label>
+						<label>
+							<input type="radio" value="false" name="item_sexta" class="minimal">
+							Não
+
+						</label>
+					</div>
+					<div style="clear: both"></div>
+					@Html.HiddenFor(model => model.sexta, new { icheck = "item_sexta" })
+                                @Html.ValidationMessageFor(model => model.sexta)
+            </div>
+   
+
+            
+            <div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.desconto.sabado" >sabado</label>
+				
+				<div style="clear: both"></div>
+									<div class="col-md-12 row" style="line-height: 29px">
+						<label>
+							<input type="radio" value="true" name="item_sabado" class="minimal-green">
+							Sim
+
+						</label>
+						<label>
+							<input type="radio" value="false" name="item_sabado" class="minimal">
+							Não
+
+						</label>
+					</div>
+					<div style="clear: both"></div>
+					@Html.HiddenFor(model => model.sabado, new { icheck = "item_sabado" })
+                                @Html.ValidationMessageFor(model => model.sabado)
+            </div>
+   
+
+            
+            <div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.desconto.domingo" >domingo</label>
+				
+				<div style="clear: both"></div>
+									<div class="col-md-12 row" style="line-height: 29px">
+						<label>
+							<input type="radio" value="true" name="item_domingo" class="minimal-green">
+							Sim
+
+						</label>
+						<label>
+							<input type="radio" value="false" name="item_domingo" class="minimal">
+							Não
+
+						</label>
+					</div>
+					<div style="clear: both"></div>
+					@Html.HiddenFor(model => model.domingo, new { icheck = "item_domingo" })
+                                @Html.ValidationMessageFor(model => model.domingo)
+            </div>
+   
+
+            
+            
+   
+
+        
+            <div class="form-group col-md-12 btn-gallery">
+                <a class="btn btn-success pull-right" onclick="$(this).closest('form').submit()" base_library="api.Models.desconto.library_save"><i class="fa fa-check"></i>Salvar</a>
+            </div>
+    </div>
+	</fieldset>
+}
+
+</section>
+

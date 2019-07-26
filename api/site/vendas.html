@@ -1,0 +1,46 @@
+﻿<div class="pages">
+    <div data-page="vendas" class="page">
+        <div class="navbar background-creait">
+            <div class="navbar-inner margin-bottom-20">
+                <div class="left"><a onclick="creait.redirect('home');" class="back link"> <i class="f7-icons icone-voltar" style="margin-right: 10px;">chevron_left</i></a></div>
+                <!--<div class="center">Vendas</div>-->
+            </div>
+        </div>
+        <div class="page-content text-center">
+            <div class="page-content" id="app-cover">
+                <div style="margin-top: 50px;">
+                    <div style="width: 100%; height: 100px; margin-bottom: 10px;">
+                        <div style="float: left"><h1>Vendas</h1></div>
+                        <!--<div style="float: right; margin-right: 5px; margin-top: 5px;"><button style="width: 125px; height: 50px; background-color: #1fdc60; border-radius: 7px; font-weight: bold;" onclick="creait.redirect('responsavel_adicionar');">Adicionar</button></div>-->
+                    </div>
+                    <div class="data-table card">
+                        <table style="width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th class="label-cell">Código</th>
+                                    <th class="label-cell">Valor Total</th>
+                                    <th class="label-only">Retirada?</th>
+                                    <th class="label-only">Forma de Pagamento</th>
+                                    <th class="label-only">Comprador</th>
+                                    <th class="label-only">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each vendas}}
+                                <tr onclick='creait.redirect("responsavel_adicionar"); controller.responsavel_adicionar.set({{js "JSON.stringify(this)"}})'>
+                                    <td class="label-cell">{{id}}</td>
+                                    <td class="label-cell" formatMoney>{{total}}</td>
+                                    <td class="label-only">{{balcao_delivery}}</td>
+                                    <td class="label-cell">{{forma_pagamento}}</td>
+                                    <td class="label-cell">{{comprador}}</td>
+                                    <td class="label-only">{{status}}</td>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

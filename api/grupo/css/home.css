@@ -1,0 +1,172 @@
+﻿html, form, body {
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    font-family: Circular, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-image: url('../../images/bg.png');
+    background-size: cover;
+}
+
+.plan1 {
+    width: 40%;
+    float: left;
+}
+
+.plan2 {
+    width: 60%;
+    float: left;
+}
+
+@media only screen and (max-width: 1100px) {
+
+    ul {
+        columns: 2;
+        -webkit-columns: 2;
+        -moz-columns: 2;
+    }
+    .plan1 {
+        width: 100%;
+        float: left;
+    }
+
+    .cards {
+        min-height: initial !important;
+    }
+
+    .plan1 .cards {
+        margin-bottom: 0px !important;
+    }
+
+    .plan2 {
+        width: 100%;
+        float: left;
+    }
+}
+
+.mobile {
+    background-color: black;
+    border-radius: 15px;
+    width: 380px;
+    height: calc(100% - 140px);
+    padding: 0px 20px 100px 20px;
+    float: left;
+    margin: 20px;
+}
+
+.list-content.cards:hover {
+    transition-timing-function: ease-out;
+    transition-duration: .2s;
+    transform: translateY(-5px);
+    -webkit-box-shadow: 0 14px 32px 0 rgba(0,0,0,.2);
+    box-shadow: 0 14px 32px 0 rgba(0,0,0,.2);
+}
+
+.list-content {
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    transition-timing-function: ease-out;
+    transition-duration: .15s;
+    transform: translateY(0);
+    -webkit-box-shadow: 0 0 8px rgba(0,0,0,.2);
+    box-shadow: 0 0 8px rgba(0,0,0,.2);
+    background-color: #ffffffb0;
+    padding: 20px 32px;
+    width: calc(100% - 80px);
+    margin: 24px auto;
+}
+
+h4 {
+    font-size: 2vw;
+    font-weight: 900;
+    margin: 0px 0 0;
+}
+
+h3 {
+    font-weight: 400;
+    margin: 0;
+    font-size: 1.2vw;
+}
+
+.small {
+    margin: 0;
+    font-size: 12px;
+    color: #919496;
+    font-weight: 400;
+    font-size: 12px;
+}
+
+li {
+    text-align: left;
+    padding: 2px 0px;
+    padding-left: 10px;
+    font-size: 1vw;
+}
+
+ul {
+    /*list-style-image:url('../../images/plan-checklist.svg');
+            list-style:*/
+}
+
+.planp {
+    color: #e17c05;
+}
+.features {
+    text-decoration:none;
+    color: black;
+}@media only screen and (max-width: 850px) {
+    iframe {
+        position: absolute;
+        z-index: 9999;
+        left: 0px;
+        top: 0px;
+    }
+
+    body {
+        overflow: hidden;
+    }
+}
+.premium {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 99999;
+    background-color: red;
+}
+.btn-green {
+    color: #e17c05 !important;
+    padding: 10px;
+    font-size: 1vw;
+    bottom: 20px;
+    width: calc(100% - 85px);
+    margin-top: 20px;
+    width: 100%;
+    position: absolute;
+    left: -15px;
+    bottom: 45px;
+    line-height:20px;
+}
+.btn-green div{
+    padding:0px 14px;
+    font-size:0.9vw;
+                }
+    .btn-green a {
+        margin: 5px;
+        background-color: #25d366;
+        border-radius: 50px;
+        width: calc(100% - 60px);
+        color: white;
+        text-decoration: none;
+        position: absolute;
+        clear: both;
+        left: 20px;
+        padding: 10px;
+    }
+.btn-green  img{
+    width: 30px;
+    float: left
+}

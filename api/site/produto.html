@@ -1,0 +1,46 @@
+﻿<div class="pages">
+    <div data-page="produto" class="page">
+        <div class="navbar background-creait">
+            <div class="navbar-inner margin-bottom-20">
+                <div class="left"><a onclick="creait.redirect('home');" class="back link"> <i class="f7-icons icone-voltar" style="margin-right: 10px;">chevron_left</i></a></div>
+                <!--<div class="center">Produtos</div>-->
+            </div>
+        </div>
+        <div class="page-content text-center">
+            <div class="page-content" id="app-cover">
+                <div style="margin-top: 50px;">
+                    <div style="width: 100%; height: 100px; margin-bottom: 10px;">
+                        <div style="float: left"><h1>Produtos</h1></div>
+                        <div style="float: right; margin-right: 5px; margin-top: 5px;"><button style="width: 125px; height: 50px; background-color: #1fdc60; border-radius: 7px; font-weight: bold;" onclick="creait.redirect('produto_adicionar');">Adicionar</button></div>
+                    </div>
+                    <div class="data-table card">
+                        <table style="width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th class="label-cell">Código</th>
+                                    <th class="label-cell">Nome</th>
+                                    <th class="label-only">Descrição</th>
+                                    <th class="label-only">Valor</th>
+                                    <th class="label-only"> Estoque</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each meusitens}}
+                                <tr onclick='creait.redirect("produto_adicionar"); controller.produto_adicionar.set({{js "JSON.stringify(this)"}})'>
+                                    <td><img width="70px" src="http://whereapp.creait.com.br/api/getPhoto?id={{id}}&tabela=item"/></td>
+                                    <td class="label-cell">{{id}}</td>
+                                    <td class="label-cell">{{nome}}</td>
+                                    <td class="label-only">{{descricao}}</td>
+                                    <td class="label-cell" formatMoney>{{valor}}</td>
+                                    <td class="label-cell">{{estoque}}</td>
+                                </tr> 
+                                {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,88 @@
+﻿<div class="pages">
+    <div data-page="produto" class="page navbar-fixed">
+        <div class="navbar background-creait">
+            <div class="navbar-inner">
+                <div class="left">
+                    <a href="categoria.html" class="link"> <i class="f7-icons" style="font-size:25px;font-weight: 900;">angle-left</i></a>
+                </div>
+                <div class="center">Atendimento</div>
+                <div class="right">
+                    <!-- Right link contains only icon - additional "icon-only" class-->
+                    <a href="#" class="link icon-only open-panel">
+                        <i class="f7-icons size-50" style="margin-right:0px">person_fill</i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!--  -->
+        <div class="page-content imagem-background" style="height: calc(100% - 52px); padding-top:0px;margin-top: 50px;">
+            <formproduto>
+                <input type="hidden" name="administrador_id" value="{{js "controller.login.get().id"}}" />
+                <input type="hidden" name="id" value="{{id}}" />
+                <div class="list-block">
+                    <ul>
+                        <li>
+
+                            <div onclick="creait.redirect('perfil')" style="padding: 10px; text-align: center; line-height: 37px; cursor: pointer; background-color: rgba(255, 255, 255, 0.86);">
+                                <div style="font-size: 12px">
+                                    ALTERAR IMAGEM
+                                </div>
+                                <i class="f7-icons" style="margin-right: 0px; font-size: 40px;">person_fill</i>
+                            </div>
+                        </li>
+                        <li style="color: var(--textbox-font-color); background-color: var(--textbox-color);">
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-input row">
+                                        <div class="col-100">
+                                            <input type="text" style="text-align: center" name="nome" value="" placeholder="Nome">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-input row">
+                                        <div class="col-100">
+                                            <input type="text" style="text-align: center" name="graduacao" value="" placeholder="Graduação">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-input row">
+                                        <div class="col-100">
+                                            <input type="text" style="text-align: center" name="especialidade" value="" placeholder="Especialização">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-input row">
+                                        <div class="col-100">
+                                            <input type="tel" mask="money" inputmode="numeric" pattern="[0-9]*" name="troco" placeholder="R$ 0,00 VALOR HORA" style="text-align: center">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div id="btn_produto" class="buton" style="margin-bottom:10px">Salvar</div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+
+
+                </div>
+            </formproduto>
+        </div>
+        <!--  -->
+
+    </div>
+</div>

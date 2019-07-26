@@ -1,0 +1,157 @@
+﻿<div class="pages" redirect="categoria">
+    <div data-page="adicionar" class="page">
+
+        <div id="btn_edit" class="navbar background-creait">
+            <div class="navbar-inner">
+                <div class="left" style="padding-left:10px">
+                    Agendar Consulta
+                </div>
+                <div class="right">
+                    <!-- Right link contains only icon - additional "icon-only" class-->
+                    <a href="#" class="link icon-only open-panel">
+                        <i class="f7-icons size-50" style="margin-right:0px">person_fill</i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-content no-searchbar imagem-background adicionar_{{js "controller.login.get() != null ? controller.login.get().perfil_id : 0"}}" style="padding-top: 0px !important">
+
+
+            <div class="list-block addblock">
+
+
+
+                <ul>
+                    <li class="{{js "biblioteca.get('css_produto')"}}">
+
+                        {{#js_if "icone != ''"}}
+                        <div style="background-image: url({{icone}});" class="background_produto">
+                            <div style="float:left; width:auto; padding:10px" id="fechar" onclick="creait.redirect('{{redirect_adicionar}}','id={{redirect_id}}')" class="link closeadd"><i class="icon-circle-left" id="circulo-fechar"></i></div>
+                            {{#js_if "controller.login.get() == null || (controller.login.get() != null && controller.login.get().perfil_id != 6)"}}
+                            <div onclick="creait.redirect('categoria')" class="link fechar_adicionar"><span class="icon-cancel-circle"></span></div>
+                            {{/js_if}}
+
+                        </div>
+                        {{#js_if}}
+                        <div class="content_adicionar">
+                            <div class="titulo-produto" style="font-size:18px;" montagem_name_{{@index}}="{{nome}}">
+                                {{nome}}
+                            </div>
+                            <div class="content_estrela" style="margin-left:14px">
+                                {{estrela}}
+                            </div>
+                        </div>
+                        <div style="clear:both"></div>
+                        <div class="agrupamento" style="font-weight: 100;font-size: 12px; padding:0px 0px 0px 10px">
+                            {{agrupamento}}
+                        </div>
+                        <!--<li>
+        <div class="fb-share-button" data-href="http://solucare.creapp.com.br/app/#!categoria.html" data-layout="button" data-size="large" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fsolucare.creapp.com.br%2Fapp%2F%23%21categoria.html&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Compartilhar</a></div>
+    </li>-->
+                        <div style="padding:10px; display:{{js "biblioteca.get('observacao', 'block')"}}">
+                            <textarea id="observacao" placeholder="Observação" style="top: 8px; position: relative; height: 53px;font-size: 12px; margin: 0px 0px 0px 0px; color:var(--textbox-font-color); background-color:var(--textbox-color)" class="ta-Adicionar"></textarea>
+
+                        </div>
+                    </li>
+                    <li style="height: 70px;
+    padding: 10px 20px;">
+
+
+                        <div style="    line-height: 22px;
+    width: 155px;
+    float: right;
+    text-align: right;">
+                            <div class="precounitario" style="font-size: 10px;">
+                                {{#js_if "this.agenda_id != null"}}
+                                {{#js_if "this.duracao != null || this.duracao != 0"}}
+                                VALOR DA CONSULTA
+                                {{/js_if}}
+                                {{else}}
+                                Preço {{js "this.unidade == null ? '    unitário' : this.unidade"}}:
+                                {{/js_if}}<span formatMoney>{{preco}}</span>
+                                <br />
+                                {{#js_if "this.estoque != null"}}
+                                Estoque: {{estoque}}
+                                {{/js_if}}
+                            </div>
+                            <div style="font-size: 25px" id="total">
+                                {{total}}
+                            </div>
+                        </div>
+
+                        {{#js_if "this.agenda_id == null"}}
+
+                        {{#js_if "this.unidade == null || this.unidade == ''"}}
+                        <span id="menos" style="float:left; line-height: 60px;">
+                            <i id="remover" class="f7-icons remover" style="margin:0px">delete_round_fill</i>
+                            <span style="font-size: 20px;
+    text-align: center;
+    padding: 0px 5px;" id="quantidade">{{quantidade}}</span>
+                            <i id="adicionar" class="f7-icons adicionar" style="margin-left: 0px; margin-right: 0px;">add_round_fill</i>
+                        </span>
+                        {{else}}
+                        <span id="unidade" class="buton animated pulse" style="    padding: 7px 10px 4px;
+    float: left;
+    line-height: 17px;">
+                            <span style="font-size: 20px;
+    text-align: center;
+    padding: 0px;" id="quantidade">{{quantidade}}</span>
+                            <span style="font-size:12px;">{{this.unidade}}</span>
+                            <div style="font-size:10px">PESO</div>
+                        </span>
+                        {{/js_if}}
+                        {{/js_if}}
+
+                    </li>
+                    {{#js_if "this.agenda_id != null"}}
+                    <li style="padding:0px 10px">
+                        <div class="liagenda">
+                            <img src="icons/time.svg" style="width: 72px;
+    position: absolute;
+    left: -6px;
+    top: -19px;" />
+                            <input type="text" placeholder="Select date" readonly="readonly" id="demo-calendar-disabled" value="Amanha" />
+
+                        </div>
+
+                        <div class="lstperiodo" style="padding-top: 10px; float:right; display:none; width:100%">
+                            {{#each periodo}}
+                            <div class="tag_periodo {{js "@index == 0 ? 'active' : ''"}}" periodo="{{this}}" >{{js "parseInt(this, 10) / 60"}} hora(s)<div></div></div>
+                            {{/each}}
+                        </div>
+                     
+                        <div style="clear:both"></div>
+                        <div id="tag_hora" style="padding-top: 10px;"></div>
+
+                    </li>
+                    {{/js_if}}
+
+                </ul>
+                {{#js_if "controller.login.get() != null"}}
+                {{#js_if "controller.login.get().perfil_id == 5"}}
+                <div class="comanda">
+                    <span class="icon-profile">
+                    </span>
+                    <input name="comanda" id="comanda" value="" style="width: calc(100% - 35px); text-align: left;" placeholder="REFERÊNCIA" type="number" inputmode="numeric" pattern="[0-9]*" />
+                </div>
+                <div style="clear:both"></div>
+                {{/js_if}}
+                {{/js_if}}
+
+                {{#js_if "controller.login.get() == null || controller.login.get().perfil_id != 6 || (controller.login.get().perfil_id == 6 && this.administrador_id == controller.login.get().id)"}}
+                <div style="padding:10px">
+                    <div id="btn_adicionar" class="buton">
+                        <img style="width: 30px;
+        margin-right: 5px;
+        margin-left: -100px;
+        margin-top: -5px" src="icons/animated/{{cor_tema}}/add.svg" />
+                        <span style="position:absolute">{{js "biblioteca.get('adicionar', 'Adicionar')"}}</span>
+                    </div>
+                </div>
+                {{/js_if}}
+            </div>
+
+        </div>
+    </div><!--  -->
+</div>

@@ -1,0 +1,83 @@
+﻿
+@model Site.Models.Find<api.Controllers.tiposController.find>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        <a href="@Url.Action("Create")" class="btn btn-info" base_library="api.Models.tipo.library_create"><i class="fa fa-cubes" style="margin-right:10px"></i>Adicionar Nova Categoria</a>
+    </h1>
+
+</section>
+
+<section class="content">
+
+
+
+
+
+    <form ajax="@Url.Action("Find")" table="tbl">
+        <input type="hidden" id="Page" name="Page" value="0" />
+
+        <div class="box box-default" style="display:none">
+            <div class="box-header with-border">
+
+
+                <div class="form-group col-md-6">
+                    <label class="control-label" style="width:100%" base_library="api.Models.tipo.nome">Nome</label>
+
+                    @Html.TextBoxFor(model => model.Filter.nome, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+                <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse">Pesquisa Avançada<i style="margin-left: 10px" class="fa fa-plus-square fa-minus"></i></button>
+                </div>
+            </div>
+            <div class="box-body" style="display:none">
+            </div>
+            <div class="form-group" style="border-top: 1px solid #f4f4f4; padding: 10px">
+                <button href="#" class="btn btn-warning pull-right" type="button" name="btnProcurar" onclick="$('.tblrow').remove(); $('#Page').val('0'); $('[ajax]').submit();"><i class="fa fa-search" style="margin-right: 10px"></i>Procurar</button>
+                <div style="clear: both"></div>
+            </div>
+        </div>
+        <div class="table-default scroll">
+     
+
+            <table id="tbl">
+                <tr>
+                    <td base_library="api.Models.tipo.nome">
+                        Categorias
+                    </td>
+                    <td base_library="api.Models.tipo.ativo">
+                        Ativo
+                    </td>
+                </tr>
+            </table>
+            <style>
+                .img_produto {
+                    width: 150px;
+                    height: 50px;
+                    float: left;
+                    margin-right: 10px;
+                    background-size: cover;
+                    background-position:center;
+                }
+            </style>
+        </div>
+    </form>
+</section>
+
+<script template="tbl" type="text/template" redirect="@Url.Action("edit")">
+
+    <tr class="tblrow" pk="id">
+        <td column="nome"></td>
+        <td column="buscavel"></td>
+
+    </tr>
+
+
+</script>

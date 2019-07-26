@@ -1,0 +1,85 @@
+﻿@model List<api.Models.fila_de_entrega_Result>
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    [item] {
+        display: none;
+    }
+</style>
+@{
+    var list = Model.GroupBy(c => c.id).Select(c => c.ToList()).ToList();
+
+    for (int i = 0; i < list.Count(); i++)
+    {
+        <div item="@list[i][0].id" style="font-size:12px">
+            <form ajax="/compras/AtualizarStatus" callback="completar">
+                <div style="background-color:gray; color:white; padding:5px; font-size:11px ;font-weight:bold; border-radius:2px" compra_id="@list[i][0].id">@list[i][0].id - @list[i][0].recebido</div>
+                <div style="padding:5px">
+                    @list[i][0].endereco, @list[i][0].numero
+                    (@list[i][0].complemento) -
+                    @list[i][0].cidade
+
+                    <input type="hidden" class="flag" name="id_flag" value="1">
+                    <input type="hidden" name="id_compra" value="@list[i][0].id">
+                    <input style="color:#000;" type="hidden" name="status_compra" value="6">
+                </div>
+            </form>
+        </div>
+
+    }
+}
+
+<section class="content">
+    <div id="content">
+
+    </div>
+    <div style="clear:both"></div>
+</section>
+
+
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            var list = $('[item]');
+            var html;
+            var quantidade = 5;
+            
+            for (var i = 0; i < list.length; i++) {
+                if (i % 5 == 0) {
+                    if (html != null) {
+                        $('#content').append('<div class="col-md-6"><div class="thumbnail" style="width:100%; padding:10px""><a style="color:green; margin:10px; font-size:21px; float:right; cursor:pointer" onclick="finalizar(this)" class="glyphicon glyphicon-check"></a><a class="glyphicon glyphicon-print" onclick="imprimir(this)" style="color:#ffa500; margin:10px; font-size:20px; float:right; cursor:pointer"></a><div style="clear:both; height:10px"></div>' + html.html() + '</div></div>');
+                    }
+                    html = $('<div></div>');
+                }
+                $(html).append('<div>' + list[i].innerHTML + '</div>')
+            }
+            if (html.children().length != quantidade) {
+                $('#content').append('<div class="col-md-6"><div class="thumbnail" style="width:100%; padding:10px""><a style="color:green; margin:10px; font-size:21px; float:right; cursor:pointer" onclick="finalizar(this)" class="glyphicon glyphicon-check"></a><a class="glyphicon glyphicon-print" onclick="imprimir(this)" style="color:#ffa500; margin:10px; font-size:20px; float:right; cursor:pointer"></a><div style="clear:both; height:10px"></div>' + html.html() + '</div></div>');
+            }
+            bind_ajax();
+        });
+        function imprimir(control) {
+            
+            var conteudo = control.parentNode.parentNode,
+                tela_impressao = window.open('about:blank');
+
+            tela_impressao.document.write(conteudo.innerHTML);
+            tela_impressao.window.print();
+            tela_impressao.window.close();
+        }
+        function finalizar(control) {
+            
+            confirm("Tem certeza que deseja enviar este item para entrega?", function () {
+                $(control.parentNode.parentNode).find('form').submit();
+            });
+        }
+        function completar(json) {
+            $('[compra_id="' + json.id + '"]').closest('.thumbnail').parent().remove();
+        }
+    </script>
+}

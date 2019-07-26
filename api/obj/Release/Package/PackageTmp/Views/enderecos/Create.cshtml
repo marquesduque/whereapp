@@ -1,0 +1,199 @@
+﻿@model api.Models.endereco
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        <a href="@Url.Action("Index")" class="btn btn-info"><i class="glyphicon glyphicon-chevron-left" style="margin-right: 10px"></i>Voltar</a>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("index")" base_library="api.Models.endereco.library_bc_1">Listar</a></li>
+        <li class="active" base_library="api.Models.endereco.library_bc_create">Criar</li>
+    </ol>
+</section>
+
+
+<section class="content">
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+
+	      @Html.ValidationSummary(true)
+        <div class="alert alert-danger" role="alert" base_library="api.Models.endereco.library_error_register">
+            Registro não gravado, verificar erro criticado
+        </div>
+
+        <fieldset>
+
+            <div class="col-md-12 bar">
+                <label class="col-md-6" base_library="api.Models.endereco.library_title"><i class="glyphicon glyphicon-list-alt" style="margin-right: 10px"></i>Dados Pessoais</label>
+            </div>
+    
+    <div>
+
+            
+            <div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.endereco.cep" >cep</label>
+				
+				<div style="clear: both"></div>
+									@Html.TextBoxFor(model => model.cep, new { placeholder = "", @class = "form-control", maxLength = "150" })
+				                @Html.ValidationMessageFor(model => model.cep)
+            </div>
+   
+
+            
+            <div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.endereco.street" >street</label>
+				
+				<div style="clear: both"></div>
+									@Html.TextBoxFor(model => model.street, new { placeholder = "", @class = "form-control", maxLength = "150" })
+				                @Html.ValidationMessageFor(model => model.street)
+            </div>
+   
+
+            
+            <div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.endereco.number" >number</label>
+				
+				<div style="clear: both"></div>
+									@Html.TextBoxFor(model => model.number, new { placeholder = "", @class = "form-control", maxLength = "150" })
+				                @Html.ValidationMessageFor(model => model.number)
+            </div>
+   
+
+            
+            <div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.endereco.complement" >complement</label>
+				
+				<div style="clear: both"></div>
+									@Html.TextBoxFor(model => model.complement, new { placeholder = "", @class = "form-control", maxLength = "150" })
+				                @Html.ValidationMessageFor(model => model.complement)
+            </div>
+   
+
+            
+            <div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.endereco.city" >city</label>
+				
+				<div style="clear: both"></div>
+									@Html.TextBoxFor(model => model.city, new { placeholder = "", @class = "form-control", maxLength = "150" })
+				                @Html.ValidationMessageFor(model => model.city)
+            </div>
+   
+
+            
+            <div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.endereco.district" >district</label>
+				
+				<div style="clear: both"></div>
+									@Html.TextBoxFor(model => model.district, new { placeholder = "", @class = "form-control", maxLength = "150" })
+				                @Html.ValidationMessageFor(model => model.district)
+            </div>
+   
+
+            
+            <div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.endereco.state" >state</label>
+				
+				<div style="clear: both"></div>
+									@Html.TextBoxFor(model => model.state, new { placeholder = "", @class = "form-control", maxLength = "150" })
+				                @Html.ValidationMessageFor(model => model.state)
+            </div>
+   
+
+            
+            <div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.endereco.country" >country</label>
+				
+				<div style="clear: both"></div>
+									@Html.TextBoxFor(model => model.country, new { placeholder = "", @class = "form-control", maxLength = "150" })
+				                @Html.ValidationMessageFor(model => model.country)
+            </div>
+   
+
+            
+            <div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.endereco.lat" >lat</label>
+				
+				<div style="clear: both"></div>
+									@Html.TextBoxFor(model => model.lat, new { placeholder = "", @class = "form-control", maxLength = "150" })
+				                @Html.ValidationMessageFor(model => model.lat)
+            </div>
+   
+
+            
+            <div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.endereco.lng" >lng</label>
+				
+				<div style="clear: both"></div>
+									@Html.TextBoxFor(model => model.lng, new { placeholder = "", @class = "form-control", maxLength = "150" })
+				                @Html.ValidationMessageFor(model => model.lng)
+            </div>
+   
+
+            
+            <div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.endereco.ultimo_pedido" >ultimo_pedido</label>
+				
+				<div style="clear: both"></div>
+									@Html.TextBoxFor(model => model.ultimo_pedido, "{0:dd/MM/yyyya}", new { placeholder = "", @class = "form-control", mask = "{\"value\":\"99/99/9999\", \"placeholder\":\"dd/mm/yyyy\"}", maxLength = "10" })
+				                @Html.ValidationMessageFor(model => model.ultimo_pedido)
+            </div>
+   
+
+
+				<div class="form-group col-md-6">
+					<label class="control-label" base_library="api.Models.endereco.pessoa_id" >pessoa_id</label>
+					<select class="form-control select2" source="#pessoa_id" data-placeholder="" style="width: 100%;">
+                        <option value="null">Selecione um item</option>
+						@foreach (var item in new api.Models.db().pessoa)
+						{
+							<option value="@item.id">@(item.nome)</option>
+						}
+					</select>
+					@Html.HiddenFor(model => model.pessoa_id)
+					@Html.ValidationMessageFor(model => model.pessoa_id)
+				</div>
+
+   
+
+            
+            <div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.endereco.active" >active</label>
+				
+				<div style="clear: both"></div>
+									<div class="col-md-12 row" style="line-height: 29px">
+						<label>
+							<input type="radio" value="true" name="item_active" class="minimal-green">
+							Sim
+
+						</label>
+						<label>
+							<input type="radio" value="false" name="item_active" class="minimal">
+							Não
+
+						</label>
+					</div>
+					<div style="clear: both"></div>
+					@Html.HiddenFor(model => model.active, new { icheck = "item_active" })
+                                @Html.ValidationMessageFor(model => model.active)
+            </div>
+   
+
+        
+            <div class="form-group col-md-12 btn-gallery">
+                <a class="btn btn-success pull-right" onclick="$(this).closest('form').submit()" base_library="api.Models.endereco.library_save"><i class="glyphicon glyphicon-ok"></i>Salvar</a>
+            </div>
+    </div>
+	</fieldset>
+}
+
+</section>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

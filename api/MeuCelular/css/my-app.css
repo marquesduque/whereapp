@@ -1,0 +1,402 @@
+/*==============================================
+[Main stylesheet my-app.css]
+
+Author:			WM_Team
+Version:		1.0
+Created:		20 September 2016
+Last updated:	20 September 2016
+Template:		Comida - Restaurant reservations Responsive App Mobile
+================================================*/
+/*
+[Table of Contents]
+
+01. COVER PAGE
+02. LOGIN & REGISTRE & REMEMBER PASSWORD
+03. LEFT MENU
+04. WALKTHROUGH
+05. RESTAURANTS
+06. DETAIL RESTAURANT
+07. FOOD CATEGORIES
+08. RESERVATION FORM
+09. LISTs
+*/
+
+
+
+/*===============================================*/
+/* 01. COVER PAGE	 						     */
+/*===============================================*/
+
+#app-cover {
+    background-image: url(../img/fornodepizza.jpg);
+    /*background-position: center;*/
+    background-size: cover;
+    color: #FFFFFF;
+    padding: 32px 15px;
+    text-align: center;
+}
+
+.app-cover-content {
+    padding-top: 50px;
+}
+
+/*===============================================*/
+/* 02. LOGIN & REGISTRE & REMEMBER PASSWORD	     */
+/*===============================================*/
+
+.page-top-cover {
+    width: 100%;
+    height: 250px;
+    background-image: url(../img/fornodepizza.jpg);
+    background-size: cover;
+}
+
+.navbar-no-color {
+    background: transparent !important;
+}
+
+.input-icon {
+    margin-bottom: 0px !important;
+}
+
+    .input-icon i:before {
+        font-size: 26px !important;
+    }
+
+.btn-form-group {
+    padding: 0px 15px;
+}
+
+.recover-password {
+    padding: 0px 30px;
+}
+
+.icon-recover i:before {
+    font-size: 70px;
+}
+
+.back-close-icon i:before {
+    font-size: 22px;
+}
+
+
+/*===============================================*/
+/* 03. LEFT MENU	 						     */
+/*===============================================*/
+
+.left-menu-profile i:before {
+    font-size: 18px !important;
+}
+
+.left-menu-profile input[type="text"] {
+    border: 0px;
+    background: #EFEFEF;
+    width: 100%;
+    height: 26px;
+    text-align: center;
+    border-radius: 3px;
+    font-family: "Montserrat" !important;
+}
+
+.left-menu-profile .icon-location i:before {
+    font-size: 10px !important;
+}
+
+.list-menu {
+    margin: 30px 0px !important;
+}
+
+    .list-menu i:before {
+        font-size: 35px !important;
+    }
+
+/*===============================================*/
+/* 04. WALKTHROUGH	 						     */
+/*===============================================*/
+
+.walkthrough-icon {
+    width: 100px;
+    height: 100px;
+    margin: 60px auto 40px;
+}
+
+.walkthrough-item {
+    padding: 0px 15px;
+}
+
+.slick-dots li button::before {
+    font-size: 20px !important
+}
+
+.slick-dots li {
+    margin: 0 3px !important;
+}
+
+/*===============================================*/
+/* 05. RESTAURANTS	 						     */
+/*===============================================*/
+
+.restaurant {
+    margin-bottom: 0px;
+    border-top: 2px solid black;
+}
+
+.restaurant-img {
+    width: 100%;
+    min-height: 130px;
+    background-size: cover;
+}
+
+.restaurant-grid {
+    margin-bottom: 30px;
+}
+
+.link-deeporange {
+    color: #ff5722 !important;
+}
+
+/*===============================================*/
+/* 06. DETAIL RESTAURANT	 				     */
+/*===============================================*/
+
+.tabs-menu {
+    margin: 15px 0px 0px !important;
+}
+
+    .tabs-menu a.active {
+        color: #ff5722 !important;
+    }
+
+.user-reviews-star {
+    margin: 0px !important;
+    padding: 0px !important;
+}
+
+    .user-reviews-star li {
+        display: inline-block;
+        margin-right: 5px;
+    }
+
+.gray-star:before {
+    color: gray !important;
+}
+
+.yellow-star:before {
+    color: #FFC107 !important;
+}
+
+/*===============================================*/
+/* 07. FOOD CATEGORIES		 				     */
+/*===============================================*/
+
+.food-category {
+    border: 1px solid #EFEFEF;
+    padding: 15px;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.icon-category:before {
+    font-size: 60px !important;
+}
+
+/*===============================================*/
+/* 08. RESERVATION FORM							 */
+/*===============================================*/
+
+.reservation-cover {
+    background-image: url(../img/photos/bg-reservation.jpg) !important;
+}
+
+.booking-form ul li {
+    margin-bottom: 15px;
+}
+
+/*===============================================*/
+/* 09. LISTs		 						     */
+/*===============================================*/
+
+.content-background {
+    background: #EFEFEF;
+    color: #6d6d72;
+}
+
+.page-list .item-media i:before {
+    font-size: 24px !important;
+    height: 24px !important;
+}
+
+.no-border::after,
+.no-border::before {
+    background: none !important;
+}
+
+
+/*CODIGO bdo PEDRO COMEÇA AQIO*/
+
+.escudos {
+    position: absolute;
+    z-index: 1;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    background: url('../img/campo.jpg');
+    transition: 1s;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.escudos-cad {
+    position: absolute;
+    z-index: 1;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    background: url('../img/campo.jpg');
+    transition: 1s;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.sair-entrar {
+    position: absolute;
+    bottom: 56px;
+    right: 0;
+    width: 100%;
+    height: 56px;
+}
+
+    .sair-entrar button.sair {
+        /*border: none;
+        border-radius: 5%;
+        background-color: red;
+        padding: 10px;*/
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+
+    .sair-entrar button.entrar {
+        /*border: none;
+        border-radius: 5%;
+        background-color: #20ff20;
+        padding: 10px;*/
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+
+.editar {
+    position: absolute;
+    bottom: 56px;
+    left: 0;
+    width: 50%;
+    height: 56px;
+}
+
+    .editar button.edit {
+        /*border: none;
+        border-radius: 5%;
+        background-color: blue;
+        padding: 10px;*/
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+
+.excluir {
+    outline: none;
+    float: right;
+    background: none;
+    border: none;
+    color: red;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+    .excluir:hover {
+        color: black;
+    }
+
+
+
+.mostra {
+    max-height: 500px !important;
+}
+
+#mudarSenha {
+    -webkit-transition: max-height 2s;
+    -moz-transition: max-height 2s;
+    -ms-transition: max-height 2s;
+    -o-transition: max-height 2s;
+    transition: max-height 2s;
+    max-height: 0;
+}
+
+.senhas {
+    display: block !important;
+}
+
+.rankingJT {
+    width: 100%;
+    height: calc(100% - 65px);
+}
+
+.jogadoresT:nth-child(even) {
+    background-color: rgba(255,255,255,0.5);
+    color: black;
+}
+
+.jogadoresT:nth-child(odd) {
+    background-color: rgba(68, 95, 134, 0.5);
+    color: white;
+}
+
+.jogadoresT {
+    width: 100%;
+    height: 30px;
+}
+
+.jogadoresTS:nth-child(even) {
+    background-color: rgba(255,255,255,0.5);
+    color: black;
+}
+
+.jogadoresTS:nth-child(odd) {
+    background-color: rgba(266,24,13,0.5);
+    color: white;
+}
+
+.jogadoresTS {
+    width: 100%;
+    height: 30px;
+}
+
+
+a.button.close-picker {
+    background: #2196f3;
+}
+
+.progress-bar-atleta {
+    height: 100%;
+    background-color: #F43114;
+    border-radius: 10px;
+    padding-left: 5px;
+}
+
+.dias_semana {
+    width: 20%;
+    margin: 5px;
+    border: 1px solid;
+    border-radius: 5px;
+    text-align: center;
+    display: inline-block;
+}
+
+#tela {
+
+}

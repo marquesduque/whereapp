@@ -1,0 +1,222 @@
+﻿<div class="pages">
+    <div data-page="horario" class="page navbar-fixed">
+        <div class="navbar background-creait">
+            <div class="navbar-inner">
+                <div class="left">
+                    <a href="consulta.html" class="link"><i class="f7-icons icone-voltar">angle-left</i></a>
+                </div>
+                <div class="center titulo_horario" style="line-height: 15px; margin-top: 2px; font-size:14px">
+                    Pedido
+                </div>
+                <div class="right">
+                    <a href="#" class="link icon-only open-panel">
+                        <i class="f7-icons size-50" style="margin-right:0px">person_fill</i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-content imagem-background no-searchbar" style="padding-top: 50px; background-color:var(--textbox-color)">
+
+
+            {{#js_if "controller.login.get().produto_id != null"}}
+            <div style="height:110px">
+                <div style="padding:10px">
+                    <div style="font-size:16px; font-weight:700">
+                        Paciente: {{pessoa.nome}}
+                    </div>
+                    <a class="link external" style="display:block;padding-left: 10px; color:#68656c" href="tel:+55{{js "this.pessoa.phone.replace('(', '').replace(')', '').replace(' ', '').replace('-', '')"}}">
+                        <span class="icon-phone">
+
+                        </span>{{pessoa.phone}}
+                    </a>
+                    <a class="link external" style="display:block;padding-left: 10px; color:#68656c" href="mailto:{{pessoa.email}}">
+                        <span class="icon-mail2">
+
+                        </span>{{pessoa.email}}
+                    </a>
+
+                    <a class="link external" style="display:block;padding-left: 10px; color:#68656c" href="geo:{{lat}},{{lng}}">
+                        <span class="icon-location2">
+
+                        </span>{{endereco}}
+                    </a>
+                </div>
+            </div>
+            {{/js_if}}
+            {{#js_if "controller.login.get().produto_id == null"}}
+            <ul style="padding:0px; margin:0px">
+                {{#each pedido}}
+                <li style="list-style-type: none; text-align:center">
+
+                    {{#js_if "this.produto.icone_itype != null"}}
+                    <div id="bg{{id}}" style="width: 100px !important; margin-right:20px;
+    height: 100px !important;
+
+    border-radius: var(--border-radius-button);
+    background:url('/api/produto?produto_id={{produto.id}}');" class="image_cart">
+                    </div>
+                    {{/js_if}}
+                    <div style="height: 110px;" class="imegem_pequena">
+                        <div class="item-title fonte_cinza" style="font-weight: bold; margin-left: 5px; text-align:left;   font-size: 20px; font-weight:700; padding-top:18px">{{produto.nome}}</div>
+
+
+                        <a class="link external" style="display:block;padding-left: 10px; color:#68656c; text-align:left !important" href="tel:+55{{js "this.produto.pessoa.phone.replace('(', '').replace(')', '').replace(' ', '').replace('-', '')"}}">
+                            <span class="icon-phone">
+
+                            </span>{{produto.pessoa.phone}}
+                        </a>
+
+                        <a class="link external" style="display:block;padding-left: 10px; color:#68656c; text-align:left !important" href="mailto:{{produto.pessoa.email}}">
+                            <span class="icon-mail2">
+
+                            </span>{{produto.pessoa.email}}
+                        </a>
+
+
+
+                    </div>
+
+
+                </li>
+                {{/each}}
+            </ul>
+            {{/js_if}}
+
+            <div style="    height: calc(100% - 266px);
+    position: absolute;
+    width: calc(100%);
+    overflow: auto;">
+                <div onclick="creait.redirect('formulario','id={{pessoa.id}}')" style="    background-color: var(--primary-color);
+    color: var(--primary-font-color);
+    padding: 10px;">
+                    PRONTUÁRIO
+                    {{#js_if "controller.login.get().perfil_id == 2 || (this.desistencia == null && this.inicio != null && this.fim == null && this.tempolimite == false && controller.login.get().perfil_id == 6)"}}
+                    <span style="float:right;margin-right:10px; cursor:pointer"><i class="icon-pencil2"></i>EDITAR</span>
+                    {{/js_if}}
+                </div>
+                <ul>
+
+                    {{#each perguntas}}
+                    <li>{{grupo}}</li>
+                    {{#each perguntas}}
+                    <li style="list-style-type: circle;
+    margin-left: 20px;">
+                        <span style="font-weight:700">{{nome}}</span> :
+                        {{resposta_valor}}
+                    </li>
+                    {{/each}}
+                    {{/each}}
+                </ul>
+            </div>
+
+
+
+            <div class="bg-acompanhamento" style="    position: absolute;
+    bottom: 65px;
+    height: 39px; width:100%">
+
+                <div class="fontextra endereco_acompanhamento" style="width:100%; font-size: 20px;
+    font-weight: 700;">
+                    Total:
+                    <span class="total_acompanhamento" formatMoney>
+                    </span>
+                </div>
+            </div>
+            {{#js_if "this.desistencia == null && this.inicio == null && this.tempolimite == false && controller.login.get().perfil_id == 6"}}
+
+            {{#js_if "new Date(this.horario1) > new Date().addMinutes(60)"}}
+            <div class="cancelar_horario" style="position: fixed;
+    width: 100%;
+    bottom: 0px;
+">
+                <div class="buton_green_g" style="background-color:#607d8b">
+                    <i class="icon-cross"></i>CANCELAR
+
+                </div>
+            </div>
+            {{else}}
+            <div class="iniciar_atendimento" style="position: fixed;
+    width: 100%;
+    bottom: 0px;
+">
+                <div class="buton_softgreen_g">
+                    <i class="icon-youtube"></i>Iniciar Atendimento
+                </div>
+            </div>
+
+            {{/js_if}}
+            {{/js_if}}
+            {{#js_if "this.desistencia == null && this.inicio != null && this.fim == null && this.tempolimite == false && controller.login.get().perfil_id == 6"}}
+            <div class="finalizar_atendimento" style="position: fixed;
+    width: 100%;
+    bottom: 0px;
+">
+                <div class="buton_green_r" style="background-color:#ff9800">
+                    <i class="icon-hour-glass"></i>Finalizar Atendimento
+                </div>
+            </div>
+            {{/js_if}}
+            {{#js_if "this.desistencia == null && this.tempolimite == true || (this.fim != null  && controller.login.get().perfil_id == 6)"}}
+            <div style="position: fixed;
+    width: 100%;
+    bottom: 0px;
+">
+                <div class="buton_green_r" style="background-color:#009688">
+                    Atendimento Concluido
+                </div>
+            </div>
+            {{/js_if}}
+            {{#js_if "this.desistencia != null"}}
+            <div style="position: fixed;
+    width: 100%;
+    bottom: 0px;
+">
+                <div class="buton_green_g" style="background-color:#f44336">
+                    CONSULTA CANCELADA
+                </div>
+            </div>
+            {{/js_if}}
+            {{#js_if "controller.login.get().perfil_id != 6"}}
+            {{#js_if "this.fim == null && this.inicio == null"}}
+            {{#js_if "this.desistencia == null"}}
+            <div id="cancelar_horario" style="position: fixed;
+    width: 100%;
+    bottom: 0px;
+">
+                <div class="buton_green_g" style="background-color:#607d8b">
+                    <i class="icon-cross"></i>CANCELAR
+                </div>
+            </div>
+            {{else}}
+            <div style="position: fixed;
+    width: 100%;
+    bottom: 0px;
+">
+                <div class="buton_green_g" style="background-color:#f44336">
+                    CONSULTA CANCELADA
+                </div>
+            </div>
+            {{/js_if}}
+            {{else}}
+            <div class="avaliar_horario" style="position: fixed;
+    width: 100%;
+    bottom: 0px;
+">
+                <div class="buton_green_g">
+                    <i class="icon-star-full"></i>AVALIAR
+                </div>
+            </div>
+            {{/js_if}}
+            {{/js_if}}
+
+
+
+
+
+        </div>
+    </div>
+</div>
+
+
+

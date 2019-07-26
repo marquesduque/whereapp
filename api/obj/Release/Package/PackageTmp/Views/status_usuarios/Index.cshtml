@@ -1,0 +1,75 @@
+﻿
+@model Site.Models.Find<api.Controllers.status_usuariosController.find>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<section class="content-header">
+    <h1>
+        <a href="@Url.Action("Index","perfils")" class="btn btn-warning" base_library="api.Models.status_usuario.library_create"><i class="fa fa-angle-left fa-lg" style="margin-right:10px"></i>Voltar</a>
+        <a href="@Url.Action("Create")" class="btn btn-info" base_library="api.Models.status_usuario.library_create"><i class="fa fa-plus" style="margin-right:10px"></i>Criar Novo</a>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#" base_library="api.Models.status_usuario.library_bc_1"><i class="fa fa-newspaper-o"></i>Listar</a></li>
+        <li class="active"><a href="@Url.Action("index")" base_library="api.Models.status_usuario.library_bc_list">Index</a></li>
+    </ol>
+</section>
+
+<section class="content">
+
+
+
+
+
+    <form ajax="@Url.Action("Find")" table="tbl">
+        <input type="hidden" id="Page" name="Page" value="0" />
+
+        <div class="box box-default">
+            <div class="box-header with-border">
+
+
+                <div class="form-group col-md-6">
+                    <label class="control-label" style="width:100%" base_library="api.Models.status_usuario.name">name</label>
+
+                    @Html.TextBoxFor(model => model.Filter.name, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+                <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse">Pesquisa Avançada<i style="margin-left: 10px" class="fa fa-plus-square fa-minus"></i></button>
+                </div>
+            </div>
+            <div class="box-body" style="display:none">
+            </div>
+            <div class="form-group" style="border-top: 1px solid #f4f4f4; padding: 10px">
+                <button href="#" class="btn btn-warning pull-right" type="button" name="btnProcurar" onclick="$('.tblrow').remove(); $('#Page').val('0'); $('[ajax]').submit();"><i class="fa fa-search" style="margin-right: 10px"></i>Procurar</button>
+                <div style="clear: both"></div>
+            </div>
+        </div>
+        <div class="table-default scroll">
+            <div class="filter-table" base_library="api.Models.status_usuario.library_filter"><i class="fa fa-filter"></i>filtros</div>
+
+            <div class="filter-table" base_library="api.Models.sample.library_report" onclick="fnExcelReport()" style="margin-left:83px; width:110px">
+                <i class="fa fa-file-excel-o"></i>Relatório
+            </div>
+            <table id="tbl">
+                <tr>
+                    <td base_library="api.Models.status_usuario.name">
+                        @Html.DisplayNameFor(model => model.Filter.name)
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</section>
+
+<script template="tbl" type="text/template" redirect="@Url.Action("edit")">
+
+    <tr class="tblrow" pk="id">
+        <td column="name"></td>
+
+    </tr>
+
+
+</script>

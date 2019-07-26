@@ -1,0 +1,222 @@
+﻿
+@model Site.Models.Find<api.Controllers.pagesController.find>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        <a href="@Url.Action("Create")" class="btn btn-info" base_library="api.Models.page.library_create"><i class="fa fa-plus" style="margin-right:10px"></i>Criar Novo</a>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#" base_library="api.Models.page.library_bc_1"><i class="fa fa-newspaper-o"></i>Listar</a></li>
+        <li class="active"><a href="@Url.Action("index")" base_library="api.Models.page.library_bc_list">Index</a></li>
+    </ol>
+</section>
+
+<section class="content">
+
+
+
+
+     <form ajax="@Url.Action("Find")" table="tbl">
+        <input type="hidden" id="Page" name="Page" value="0" />
+
+    <div class="table-default scroll">
+        <div class="filter-table" base_library="api.Models.page.library_filter"><i class="fa fa-filter"></i>filtros</div>
+
+        <div class="filter-table" base_library="api.Models.sample.library_report" onclick="fnExcelReport()" style="margin-left:83px; width:110px">
+            <i class="fa fa-file-excel-o"></i>Relatório
+        </div>
+<table  id="tbl"> 
+
+    <thead>
+        <tr>
+        
+
+<td>
+            
+										<label style="min-width: 45px;">
+							<input type="checkbox" value="true" name="item_create" class="minimal-green">
+							Sim
+
+						</label>
+						<label style="min-width: 45px;">
+							<input type="checkbox" value="false" name="item_create" class="minimal">
+							Não
+
+						</label>
+					@Html.HiddenFor(model => model.Filter.create, new { icheck = "item_create" })
+                            
+   </td>
+
+
+<td>
+            
+										<label style="min-width: 45px;">
+							<input type="checkbox" value="true" name="item_edit" class="minimal-green">
+							Sim
+
+						</label>
+						<label style="min-width: 45px;">
+							<input type="checkbox" value="false" name="item_edit" class="minimal">
+							Não
+
+						</label>
+					@Html.HiddenFor(model => model.Filter.edit, new { icheck = "item_edit" })
+                            
+   </td>
+
+
+<td>
+            
+										<label style="min-width: 45px;">
+							<input type="checkbox" value="true" name="item_delete" class="minimal-green">
+							Sim
+
+						</label>
+						<label style="min-width: 45px;">
+							<input type="checkbox" value="false" name="item_delete" class="minimal">
+							Não
+
+						</label>
+					@Html.HiddenFor(model => model.Filter.delete, new { icheck = "item_delete" })
+                            
+   </td>
+
+
+<td>
+            
+										<label style="min-width: 45px;">
+							<input type="checkbox" value="true" name="item_list" class="minimal-green">
+							Sim
+
+						</label>
+						<label style="min-width: 45px;">
+							<input type="checkbox" value="false" name="item_list" class="minimal">
+							Não
+
+						</label>
+					@Html.HiddenFor(model => model.Filter.list, new { icheck = "item_list" })
+                            
+   </td>
+
+
+<td>
+					<select class="form-control select2" source="#Filter_perfil_id" data-placeholder="" onchange = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" style="width: 100%;">
+						<option value="null">Todos</option>
+						@foreach (var item in new api.Models.db().perfil)
+						{
+							<option value="@item.id">@(item.name)</option>
+						}
+					</select>
+					@Html.HiddenFor(model => model.Filter.perfil_id)
+					@Html.ValidationMessageFor(model => model.Filter.perfil_id)
+				
+
+   </td>
+
+
+<td>
+            
+									@Html.TextBoxFor(model => model.Filter.url, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </td>
+
+
+<td>
+            
+									@Html.TextBoxFor(model => model.Filter.name, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </td>
+
+
+<td>
+            
+									@Html.TextBoxFor(model => model.Filter.icon, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </td>
+
+
+<td>
+            
+									@Html.TextBoxFor(model => model.Filter.group, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </td>
+
+
+<td>
+            
+									@Html.TextBoxFor(model => model.Filter.order, new { placeholder = "", @class = "form-control", maxLength = "150", type="number", min="1", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </td>
+
+	</tr>
+</thead>
+    <tr>
+        <td base_library="api.Models.page.create">
+            @Html.DisplayNameFor(model => model.Filter.create)
+        </td>
+        <td base_library="api.Models.page.edit">
+            @Html.DisplayNameFor(model => model.Filter.edit)
+        </td>
+        <td base_library="api.Models.page.delete">
+            @Html.DisplayNameFor(model => model.Filter.delete)
+        </td>
+        <td base_library="api.Models.page.list">
+            @Html.DisplayNameFor(model => model.Filter.list)
+        </td>
+        <td base_library="api.Models.page.perfil_id">
+            @Html.DisplayNameFor(model => model.Filter.perfil_id)
+        </td>
+        <td base_library="api.Models.page.url">
+            @Html.DisplayNameFor(model => model.Filter.url)
+        </td>
+        <td base_library="api.Models.page.name">
+            @Html.DisplayNameFor(model => model.Filter.name)
+        </td>
+        <td base_library="api.Models.page.icon">
+            @Html.DisplayNameFor(model => model.Filter.icon)
+        </td>
+        <td base_library="api.Models.page.group">
+            @Html.DisplayNameFor(model => model.Filter.group)
+        </td>
+        <td base_library="api.Models.page.order">
+            @Html.DisplayNameFor(model => model.Filter.order)
+        </td>
+    </tr>
+</table>
+</div>
+</form>
+</section>
+
+		<script template="tbl" type="text/template" redirect="@Url.Action("edit")"> 
+
+    <tr class="tblrow" pk="id">
+        <td column="create">
+        </td>
+        <td column="edit">
+        </td>
+        <td column="delete">
+        </td>
+        <td column="list">
+        </td>
+        <td column="perfil_id">
+        </td>
+        <td column="url">
+        </td>
+        <td column="name">
+        </td>
+        <td column="icon">
+        </td>
+        <td column="group">
+        </td>
+        <td column="order">
+        </td>
+       
+    </tr>
+
+
+</script>

@@ -1,0 +1,43 @@
+﻿@model api.Models.compra_item
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>compra_item</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.compra.pagarme_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.compra.pagarme_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.item.nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.item.nome)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

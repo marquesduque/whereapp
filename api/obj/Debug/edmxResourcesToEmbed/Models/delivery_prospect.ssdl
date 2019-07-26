@@ -1,0 +1,481 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="delivery_prospectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="bank">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="250" />
+    <Property Name="code" Type="int" />
+    <Property Name="sigla" Type="varchar" MaxLength="50" />
+    <Property Name="website" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="billing">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="charges" Type="varchar" MaxLength="50" />
+    <Property Name="installments" Type="varchar" MaxLength="50" />
+    <Property Name="created" Type="datetime" />
+    <Property Name="day" Type="int" />
+    <Property Name="amount" Type="int" />
+    <Property Name="trial_days" Type="int" />
+    <Property Name="invoice_reminder" Type="int" />
+    <Property Name="active" Type="bit" />
+    <Property Name="finish" Type="datetime" />
+    <Property Name="plan_id" Type="int" />
+    <Property Name="place_id" Type="bigint" />
+    <Property Name="pagarme_id" Type="varchar" MaxLength="50" />
+    <Property Name="pagarme_status" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="category">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="8000" />
+  </EntityType>
+  <EntityType Name="category_list">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="place_id" Type="bigint" />
+    <Property Name="category_id" Type="bigint" />
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="config">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="connection" Type="varchar" MaxLength="5000" />
+  </EntityType>
+  <EntityType Name="creait">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="Agencia" Type="varchar" MaxLength="50" />
+    <Property Name="AgenciaDv" Type="varchar" MaxLength="50" />
+    <Property Name="Conta" Type="varchar" MaxLength="50" />
+    <Property Name="ContaDv" Type="varchar" MaxLength="50" />
+    <Property Name="BankCode" Type="varchar" MaxLength="50" />
+    <Property Name="DocumentNumber" Type="varchar" MaxLength="50" />
+    <Property Name="LegalName" Type="varchar" MaxLength="50" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="pagarme_DefaultApiKey" Type="varchar" MaxLength="500" />
+    <Property Name="pagarme_DefaultEncryptionKey" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="dictionary">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="500" />
+    <Property Name="tag" Type="varchar" MaxLength="500" />
+    <Property Name="page" Type="varchar" MaxLength="500" />
+    <Property Name="language" Type="varchar" MaxLength="10" />
+    <Property Name="place_id" Type="bigint" />
+  </EntityType>
+  <EntityType Name="email">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="nome" Type="varchar" MaxLength="8000" />
+    <Property Name="data_id" Type="bigint" />
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="hours">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="tue_1_open" Type="varchar" MaxLength="50" />
+    <Property Name="tue_1_close" Type="varchar" MaxLength="50" />
+    <Property Name="wed_1_open" Type="varchar" MaxLength="50" />
+    <Property Name="wed_1_close" Type="varchar" MaxLength="50" />
+    <Property Name="thu_1_open" Type="varchar" MaxLength="50" />
+    <Property Name="thu_1_close" Type="varchar" MaxLength="50" />
+    <Property Name="fri_1_open" Type="varchar" MaxLength="50" />
+    <Property Name="fri_1_close" Type="varchar" MaxLength="50" />
+    <Property Name="sat_1_open" Type="varchar" MaxLength="50" />
+    <Property Name="sat_1_close" Type="varchar" MaxLength="50" />
+    <Property Name="sun_1_open" Type="varchar" MaxLength="50" />
+    <Property Name="sun_1_close" Type="varchar" MaxLength="50" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="location">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="city" Type="varchar" MaxLength="8000" />
+    <Property Name="country" Type="varchar" MaxLength="8000" />
+    <Property Name="latitude" Type="decimal" Precision="20" Scale="12" />
+    <Property Name="longitude" Type="decimal" Precision="20" Scale="12" />
+    <Property Name="state" Type="varchar" MaxLength="8000" />
+    <Property Name="street" Type="varchar" MaxLength="8000" />
+    <Property Name="zip" Type="varchar" MaxLength="8000" />
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="number" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="notificacoes_enviadas">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="place_id" Type="bigint" />
+    <Property Name="num_notificacoes_enviadas" Type="int" />
+    <Property Name="data_envio" Type="datetime" />
+  </EntityType>
+  <EntityType Name="payments">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="proccess" Type="datetime" />
+    <Property Name="prevision" Type="datetime" />
+    <Property Name="amount" Type="int" />
+    <Property Name="place_id" Type="bigint" />
+    <Property Name="plan_id" Type="int" />
+  </EntityType>
+  <EntityType Name="place">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="8000" />
+    <Property Name="checkins" Type="int" />
+    <Property Name="phone" Type="varchar" MaxLength="8000" />
+    <Property Name="website" Type="varchar" MaxLength="8000" />
+    <Property Name="location_id" Type="bigint" />
+    <Property Name="search" Type="varchar" MaxLength="1000" />
+    <Property Name="picture" Type="varchar" MaxLength="5000" />
+    <Property Name="cover" Type="varchar" MaxLength="5000" />
+    <Property Name="rating_count" Type="int" />
+    <Property Name="about" Type="varchar" MaxLength="8000" />
+    <Property Name="hours_id" Type="int" />
+    <Property Name="user_name" Type="varchar" MaxLength="500" />
+    <Property Name="password" Type="varchar" MaxLength="50" />
+    <Property Name="logo" Type="image" />
+    <Property Name="logo_itype" Type="varchar" MaxLength="50" />
+    <Property Name="specialty" Type="varchar" MaxLength="250" />
+    <Property Name="url" Type="varchar" MaxLength="5000" Nullable="false" />
+    <Property Name="theme" Type="varchar" MaxLength="150" />
+    <Property Name="connection" Type="varchar" MaxLength="5000" />
+    <Property Name="place_id" Type="bigint" />
+    <Property Name="loader" Type="varchar" MaxLength="500" />
+    <Property Name="background_image_local" Type="varchar" MaxLength="500" />
+    <Property Name="balcao" Type="bit" />
+    <Property Name="delivery" Type="bit" />
+    <Property Name="primary_color" Type="varchar" MaxLength="50" />
+    <Property Name="primary_font_color" Type="varchar" MaxLength="50" />
+    <Property Name="secondary_color" Type="varchar" MaxLength="50" />
+    <Property Name="secondary_font_color" Type="varchar" MaxLength="50" />
+    <Property Name="textbox_color" Type="varchar" MaxLength="50" />
+    <Property Name="textbox_font_color" Type="varchar" MaxLength="50" />
+    <Property Name="border_radius_textbox" Type="varchar" MaxLength="50" />
+    <Property Name="border_radius_button" Type="varchar" MaxLength="50" />
+    <Property Name="light_color" Type="varchar" MaxLength="50" />
+    <Property Name="dark_color" Type="varchar" MaxLength="50" />
+    <Property Name="font_color" Type="varchar" MaxLength="50" />
+    <Property Name="card_number" Type="varchar" MaxLength="500" />
+    <Property Name="card_name" Type="varchar" MaxLength="500" />
+    <Property Name="card_date" Type="varchar" MaxLength="50" />
+    <Property Name="card_cvv" Type="varchar" MaxLength="50" />
+    <Property Name="card_hash" Type="varchar" MaxLength="500" />
+    <Property Name="card_document" Type="varchar" MaxLength="100" />
+    <Property Name="pagarme_id" Type="varchar" MaxLength="1000" />
+    <Property Name="card_brand" Type="varchar" MaxLength="50" />
+    <Property Name="pagarme_status" Type="varchar" MaxLength="50" />
+    <Property Name="created" Type="datetime" />
+    <Property Name="whatsapp" Type="int" />
+    <Property Name="whatsapp_message" Type="varchar" MaxLength="8000" />
+    <Property Name="address_required" Type="bit" />
+    <Property Name="frete_produto" Type="bit" />
+    <Property Name="icone" Type="image" />
+    <Property Name="icone_itype" Type="varchar" MaxLength="50" />
+    <Property Name="mesa" Type="bit" />
+    <Property Name="comanda" Type="bit" />
+    <Property Name="border_color" Type="varchar" MaxLength="50" />
+    <Property Name="background" Type="image" />
+    <Property Name="background_itype" Type="varchar" MaxLength="50" />
+    <Property Name="bg_color" Type="varchar" MaxLength="50" />
+    <Property Name="font_light_color" Type="varchar" MaxLength="50" />
+    <Property Name="token_paggi" Type="varchar" MaxLength="1000" />
+  </EntityType>
+  <EntityType Name="plan">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="charges" Type="varchar" MaxLength="50" />
+    <Property Name="installments" Type="varchar" MaxLength="50" />
+    <Property Name="day" Type="int" />
+    <Property Name="amount" Type="int" />
+    <Property Name="trial_days" Type="int" />
+    <Property Name="invoice_reminder" Type="int" />
+    <Property Name="active" Type="bit" />
+    <Property Name="finish" Type="int" />
+    <Property Name="name" Type="varchar" MaxLength="150" />
+    <Property Name="payment_methods" Type="varchar" MaxLength="50" />
+    <Property Name="color" Type="varchar" MaxLength="50" />
+    <Property Name="primary_color" Type="varchar" MaxLength="50" />
+    <Property Name="primary_font_color" Type="varchar" MaxLength="50" />
+    <Property Name="secondary_color" Type="varchar" MaxLength="50" />
+    <Property Name="secondary_font_color" Type="varchar" MaxLength="50" />
+    <Property Name="textbox_color" Type="varchar" MaxLength="50" />
+    <Property Name="textbox_font_color" Type="varchar" MaxLength="50" />
+    <Property Name="border_radius_textbox" Type="varchar" MaxLength="50" />
+    <Property Name="border_radius_button" Type="varchar" MaxLength="50" />
+    <Property Name="light_color" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="themes">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="primary_color" Type="varchar" MaxLength="50" />
+    <Property Name="primary_font_color" Type="varchar" MaxLength="50" />
+    <Property Name="secondary_color" Type="varchar" MaxLength="50" />
+    <Property Name="secondary_font_color" Type="varchar" MaxLength="50" />
+    <Property Name="textbox_color" Type="varchar" MaxLength="50" />
+    <Property Name="textbox_font_color" Type="varchar" MaxLength="50" />
+    <Property Name="border_radius_textbox" Type="varchar" MaxLength="50" />
+    <Property Name="border_radius_button" Type="varchar" MaxLength="50" />
+    <Property Name="light_color" Type="varchar" MaxLength="50" />
+    <Property Name="dark_color" Type="varchar" MaxLength="50" />
+    <Property Name="font_color" Type="varchar" MaxLength="50" />
+    <Property Name="border_color" Type="varchar" MaxLength="50" />
+    <Property Name="bg_color" Type="varchar" MaxLength="50" />
+    <Property Name="font_light_color" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_billing_place">
+    <End Role="place" Type="Self.place" Multiplicity="0..1" />
+    <End Role="billing" Type="Self.billing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="place">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="billing">
+        <PropertyRef Name="place_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_billing_plan">
+    <End Role="plan" Type="Self.plan" Multiplicity="0..1" />
+    <End Role="billing" Type="Self.billing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="plan">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="billing">
+        <PropertyRef Name="plan_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_category_list_category">
+    <End Role="category" Type="Self.category" Multiplicity="0..1" />
+    <End Role="category_list" Type="Self.category_list" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="category">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="category_list">
+        <PropertyRef Name="category_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dictionary_place">
+    <End Role="place" Type="Self.place" Multiplicity="0..1" />
+    <End Role="dictionary" Type="Self.dictionary" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="place">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="dictionary">
+        <PropertyRef Name="place_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_email_place">
+    <End Role="place" Type="Self.place" Multiplicity="0..1" />
+    <End Role="email" Type="Self.email" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="place">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="email">
+        <PropertyRef Name="data_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_notificacoes_enviadas_place">
+    <End Role="place" Type="Self.place" Multiplicity="0..1" />
+    <End Role="notificacoes_enviadas" Type="Self.notificacoes_enviadas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="place">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="notificacoes_enviadas">
+        <PropertyRef Name="place_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_payments_place">
+    <End Role="place" Type="Self.place" Multiplicity="0..1" />
+    <End Role="payments" Type="Self.payments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="place">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="payments">
+        <PropertyRef Name="place_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_place_hours">
+    <End Role="hours" Type="Self.hours" Multiplicity="0..1" />
+    <End Role="place" Type="Self.place" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="hours">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="place">
+        <PropertyRef Name="hours_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_place_location">
+    <End Role="location" Type="Self.location" Multiplicity="0..1" />
+    <End Role="place" Type="Self.place" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="location">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="place">
+        <PropertyRef Name="location_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="clean" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="delete_place" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="place_id" Type="bigint" Mode="In" />
+  </Function>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="insere_tipo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="nome_pessoafew" Type="varchar" Mode="In" />
+    <Parameter Name="email_pessoa" Type="varchar" Mode="In" />
+    <Parameter Name="password" Type="varchar" Mode="In" />
+    <Parameter Name="mobile" Type="varchar" Mode="In" />
+    <Parameter Name="nome_filial" Type="varchar" Mode="In" />
+    <Parameter Name="cor_id" Type="int" Mode="In" />
+    <Parameter Name="loader" Type="varchar" Mode="In" />
+    <Parameter Name="place_id" Type="bigint" Mode="In" />
+  </Function>
+  <Function Name="insert_theme" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="primary_color" Type="varchar" Mode="In" />
+    <Parameter Name="primary_font_color" Type="varchar" Mode="In" />
+    <Parameter Name="secondary_color" Type="varchar" Mode="In" />
+    <Parameter Name="secondary_font_color" Type="varchar" Mode="In" />
+    <Parameter Name="textbox_color" Type="varchar" Mode="In" />
+    <Parameter Name="textbox_font_color" Type="varchar" Mode="In" />
+    <Parameter Name="light_color" Type="varchar" Mode="In" />
+    <Parameter Name="dark_color" Type="varchar" Mode="In" />
+    <Parameter Name="font_color" Type="varchar" Mode="In" />
+    <Parameter Name="border_radius_textbox" Type="varchar" Mode="In" />
+    <Parameter Name="border_radius_button" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="delivery_prospectModelStoreContainer">
+    <EntitySet Name="bank" EntityType="Self.bank" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="billing" EntityType="Self.billing" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="category" EntityType="Self.category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="category_list" EntityType="Self.category_list" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="config" EntityType="Self.config" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="creait" EntityType="Self.creait" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="dictionary" EntityType="Self.dictionary" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="email" EntityType="Self.email" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="hours" EntityType="Self.hours" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="location" EntityType="Self.location" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="notificacoes_enviadas" EntityType="Self.notificacoes_enviadas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="payments" EntityType="Self.payments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="place" EntityType="Self.place" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="plan" EntityType="Self.plan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="themes" EntityType="Self.themes" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_billing_place" Association="Self.FK_billing_place">
+      <End Role="place" EntitySet="place" />
+      <End Role="billing" EntitySet="billing" />
+    </AssociationSet>
+    <AssociationSet Name="FK_billing_plan" Association="Self.FK_billing_plan">
+      <End Role="plan" EntitySet="plan" />
+      <End Role="billing" EntitySet="billing" />
+    </AssociationSet>
+    <AssociationSet Name="FK_category_list_category" Association="Self.FK_category_list_category">
+      <End Role="category" EntitySet="category" />
+      <End Role="category_list" EntitySet="category_list" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dictionary_place" Association="Self.FK_dictionary_place">
+      <End Role="place" EntitySet="place" />
+      <End Role="dictionary" EntitySet="dictionary" />
+    </AssociationSet>
+    <AssociationSet Name="FK_email_place" Association="Self.FK_email_place">
+      <End Role="place" EntitySet="place" />
+      <End Role="email" EntitySet="email" />
+    </AssociationSet>
+    <AssociationSet Name="FK_notificacoes_enviadas_place" Association="Self.FK_notificacoes_enviadas_place">
+      <End Role="place" EntitySet="place" />
+      <End Role="notificacoes_enviadas" EntitySet="notificacoes_enviadas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_payments_place" Association="Self.FK_payments_place">
+      <End Role="place" EntitySet="place" />
+      <End Role="payments" EntitySet="payments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_place_hours" Association="Self.FK_place_hours">
+      <End Role="hours" EntitySet="hours" />
+      <End Role="place" EntitySet="place" />
+    </AssociationSet>
+    <AssociationSet Name="FK_place_location" Association="Self.FK_place_location">
+      <End Role="location" EntitySet="location" />
+      <End Role="place" EntitySet="place" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

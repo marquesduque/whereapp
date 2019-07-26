@@ -1,0 +1,68 @@
+﻿s<div class="pages">
+    <div data-page="doacao" class="page">
+        <div class="navbar background-creait">
+            <div class="navbar-inner margin-bottom-20">
+                <div class="left"><a class="back link" onclick="creait.redirect('categoria')"> <i class="f7-icons icone-voltar" style="margin-right: 10px;">chevron_left</i></a></div>
+                <div class="center">Doações</div>
+                <div class="right"><a class="back link" id="addItemDoacao"><i class="f7-icons icone-voltar" style="margin-right: 10px;">add</i></a></div>
+            </div>
+        </div>
+        <div class="page-content text-center" style="padding: 0; height: calc(100% - 50px); margin-top: 50px;">
+            <div id="app-cover" style="height: 100%;">
+
+
+                <div id="nao_tem_doacao" style="width: 100%; height: 100%; display: none; align-items: center; justify-content: center;">
+                    <div style="width: 60%; text-align: center;">
+                        <span style="">Não há nenhuma doação cadastrada :(</span>
+                    </div>
+                </div>
+
+                <div id="nao_tem_ong" style="width: 100%; height: 100%; display: none; align-items: center; justify-content: center;">
+                    <div style="width: 60%; text-align: center;">
+                        <span style="">Não há nenhuma ONG cadastrada :(</span>
+                    </div>
+                </div>
+
+
+                <div id="adocao" style="width: 100%; display: none;" onclick="">
+                    <div class="list-block list" style="overflow: auto;">
+                        <ul style="height: 100%;">
+                            {{#each adocaos}}
+                            <li class="produtoli grid-item-m adocao" item_id="{{id}}" onclick='creait.redirect("contato_doador"); controller.contato_doador.set({{js "JSON.stringify(this)"}})'>
+                                <div class="item-title-row">
+                                    <div id="bg{{id}}" style="background:url(https://whereapp.creait.com.br/api/getPhoto?id={{id}}&tabela=item)" class="image_cart">
+                                    </div>
+                                    <div class="titulo_produto item-title" style="text-align: left;">
+                                        {{nome}}
+                                    </div>
+                                    <div style="padding: 0px 10px; text-align: left;">
+                                        {{descricao}}
+                                    </div>
+                                </div>
+                                <div style="clear:both"></div>
+                            </li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="doar_ong" style="width: 100%; display: none;">
+                    {{#each ongs}}
+                    <div style="width: 100%; margin: 10px 0;" onclick='creait.redirect("ong"); controller.ong.set({{js "JSON.stringify(this)"}})'>
+                        <div style="border-radius: 10px; background-color: #CCC; margin: 0 10px; padding: 8px;">
+                            <div style="width: 100%; text-align: center; display: flex; align-items: center; position: relative;">
+                                <span style="font-size: 20px; font-weight: 700;">{{nome}}</span>
+                            </div>
+                            <div style="width: 100%;">
+                                <div class="areaTexto" style="text-align: justify; width: 100%;">
+                                    <p><img src="https://whereapp.creait.com.br/api/getPhoto?id={{id}}&tabela=pessoa" width="150px" align="left" style="margin-right: 5px;">{{descricao}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

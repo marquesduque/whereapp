@@ -1,0 +1,220 @@
+﻿
+@model Site.Models.Find<api.Controllers.contratoController.find>
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    
+    
+         <form ajax="@Url.Action("Find")" table="tbl">
+            <input type="hidden" id="Page" name="Page" value="0" />
+    
+    		<div class="box box-default">
+    			<div class="box-header with-border">
+    
+    
+                    <div class="form-group col-md-6">
+    					<label class="control-label" style="width:100%" base_library="api.Models.billing.charges" >charges</label>
+                
+    									@Html.TextBoxFor(model => model.Filter.charges, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+    				            
+       </div>
+    
+    
+    
+                    <div class="form-group col-md-6">
+    					<label class="control-label" style="width:100%" base_library="api.Models.billing.installments" >installments</label>
+                
+    									@Html.TextBoxFor(model => model.Filter.installments, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+    				            
+       </div>
+    
+    
+    
+                    <div class="form-group col-md-6">
+    					<label class="control-label" style="width:100%" base_library="api.Models.billing.created" >created</label>
+                
+    									@Html.TextBoxFor(model => model.Filter.created, "{0:dd/MM/yyyy}", new { placeholder = "", @class = "form-control", mask = "{\"value\":\"99/99/9999\", \"placeholder\":\"dd/mm/yyyy\"}", maxLength = "10", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+    				            
+       </div>
+    
+    
+    
+                    <div class="form-group col-md-6">
+    					<label class="control-label" style="width:100%" base_library="api.Models.billing.day" >day</label>
+                
+    									@Html.TextBoxFor(model => model.Filter.day, new { placeholder = "", @class = "form-control", maxLength = "150", type="number", min="1", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+    				            
+       </div>
+    
+    
+    
+                    <div class="form-group col-md-6">
+    					<label class="control-label" style="width:100%" base_library="api.Models.billing.amount" >amount</label>
+                
+    									@Html.TextBoxFor(model => model.Filter.amount, new { placeholder = "", @class = "form-control", maxLength = "150", type="number", min="1", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+    				            
+       </div>
+    
+    
+    
+                    <div class="form-group col-md-6">
+    					<label class="control-label" style="width:100%" base_library="api.Models.billing.trial_days" >trial_days</label>
+                
+    									@Html.TextBoxFor(model => model.Filter.trial_days, new { placeholder = "", @class = "form-control", maxLength = "150", type="number", min="1", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+    				            
+       </div>
+    
+    
+    
+                    <div class="form-group col-md-6">
+    					<label class="control-label" style="width:100%" base_library="api.Models.billing.invoice_reminder" >invoice_reminder</label>
+                
+    									@Html.TextBoxFor(model => model.Filter.invoice_reminder, new { placeholder = "", @class = "form-control", maxLength = "150", type="number", min="1", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+    				            
+       </div>
+    
+    
+    
+                    <div class="form-group col-md-6">
+    					<label class="control-label" style="width:100%" base_library="api.Models.billing.active" >active</label>
+                
+    									<div style="height: 34px; line-height: 30px;">
+    						<label style="min-width: 45px;">
+    							<input type="checkbox" value="true" name="item_active" class="minimal-green">
+    							Sim
+    
+    						</label>
+    						<label style="min-width: 45px;">
+    							<input type="checkbox" value="false" name="item_active" class="minimal">
+    							Não
+    
+    						</label>
+    						@Html.HiddenFor(model => model.Filter.active, new { icheck = "item_active" })
+    					</div>
+                                
+       </div>
+    
+    
+    
+                    <div class="form-group col-md-6">
+    					<label class="control-label" style="width:100%" base_library="api.Models.billing.finish" >finish</label>
+                
+    									@Html.TextBoxFor(model => model.Filter.finish, "{0:dd/MM/yyyy}", new { placeholder = "", @class = "form-control", mask = "{\"value\":\"99/99/9999\", \"placeholder\":\"dd/mm/yyyy\"}", maxLength = "10", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+    				            
+       </div>
+    
+    
+    
+                    <div class="form-group col-md-6">
+    					<label class="control-label" style="width:100%" base_library="api.Models.billing.plan_id" >plan_id</label>
+                
+    									@Html.TextBoxFor(model => model.Filter.plan_id, new { placeholder = "", @class = "form-control", maxLength = "150", type="number", min="1", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+    				            
+       </div>
+    
+    
+    
+                    <div class="form-group col-md-6">
+    					<label class="control-label" style="width:100%" base_library="api.Models.billing.place_id" >place_id</label>
+                
+    									@Html.TextBoxFor(model => model.Filter.place_id, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+    				            
+       </div>
+    
+    		<div class="box-tools pull-right">
+    			<button class="btn btn-box-tool" data-widget="collapse">Pesquisa Avançada<i style="margin-left: 10px" class="fa fa-plus-square fa-minus"></i></button>
+    		</div>
+    	</div>
+    	<div class="box-body" style="display:none">
+    	</div>
+    	<div class="form-group" style="border-top: 1px solid #f4f4f4; padding: 10px">
+    		<button href="#" class="btn btn-warning pull-right" type="button" name="btnProcurar" onclick="$('.tblrow').remove(); $('#Page').val('0'); $('[ajax]').submit();"><i class="glyphicon glyphicon-search" style="margin-right: 10px"></i>Procurar</button>
+    		<div style="clear: both"></div>
+    	</div>
+    </div>
+        <div class="table-default scroll">
+            <div class="filter-table" base_library="api.Models.billing.library_filter"><i class="glyphicon glyphicon-filter"></i>filtros</div>
+    		
+                <div class="filter-table" base_library="api.Models.sample.library_report" onclick="fnExcelReport()" style="margin-left:83px; width:110px">
+                    <i class="fa fa-file-excel-o"></i>Relatório
+                </div>
+    <table  id="tbl"> 
+        <tr>
+            <td base_library="api.Models.billing.charges">
+                @Html.DisplayNameFor(model => model.Filter.charges)
+            </td>
+            <td base_library="api.Models.billing.installments">
+                @Html.DisplayNameFor(model => model.Filter.installments)
+            </td>
+            <td base_library="api.Models.billing.created">
+                @Html.DisplayNameFor(model => model.Filter.created)
+            </td>
+            <td base_library="api.Models.billing.day">
+                @Html.DisplayNameFor(model => model.Filter.day)
+            </td>
+            <td base_library="api.Models.billing.amount">
+                @Html.DisplayNameFor(model => model.Filter.amount)
+            </td>
+            <td base_library="api.Models.billing.trial_days">
+                @Html.DisplayNameFor(model => model.Filter.trial_days)
+            </td>
+            <td base_library="api.Models.billing.invoice_reminder">
+                @Html.DisplayNameFor(model => model.Filter.invoice_reminder)
+            </td>
+            <td base_library="api.Models.billing.active">
+                @Html.DisplayNameFor(model => model.Filter.active)
+            </td>
+            <td base_library="api.Models.billing.finish">
+                @Html.DisplayNameFor(model => model.Filter.finish)
+            </td>
+            <td base_library="api.Models.billing.plan_id">
+                @Html.DisplayNameFor(model => model.Filter.plan_id)
+            </td>
+            <td base_library="api.Models.billing.place_id">
+                @Html.DisplayNameFor(model => model.Filter.place_id)
+            </td>
+        </tr>
+    </table>
+    </div>
+    </form>
+    </section>
+    
+    		<script template="tbl" type="text/template" redirect="@Url.Action("edit")"> 
+    
+        <tr class="tblrow" pk="id">
+            <td column="charges">
+            </td>
+            <td column="installments">
+            </td>
+            <td column="created">
+            </td>
+            <td column="day">
+            </td>
+            <td column="amount">
+            </td>
+            <td column="trial_days">
+            </td>
+            <td column="invoice_reminder">
+            </td>
+            <td column="active">
+            </td>
+            <td column="finish">
+            </td>
+            <td column="plan_id">
+            </td>
+            <td column="place_id">
+            </td>
+           
+        </tr>
+    
+    
+    </script>
+</body>
+</html>

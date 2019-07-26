@@ -1,0 +1,119 @@
+    /*
+    Flaticon icon font: Flaticon
+    Creation date: 22/06/2016 15:34
+    */
+
+    @font-face {
+  font-family: "Flaticon";
+  src: url("./Flaticon.eot");
+  src: url("./Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("./Flaticon.woff") format("woff"),
+       url("./Flaticon.ttf") format("truetype"),
+       url("./Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("./Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+    .fi:before{
+        display: inline-block;
+  font-family: "Flaticon";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-decoration: inherit;
+  text-rendering: optimizeLegibility;
+  text-transform: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+    }
+
+    .flaticon-badge:before { content: "\f100"; }
+.flaticon-badge-1:before { content: "\f101"; }
+.flaticon-badge-2:before { content: "\f102"; }
+.flaticon-box:before { content: "\f103"; }
+.flaticon-box-1:before { content: "\f104"; }
+.flaticon-box-2:before { content: "\f105"; }
+.flaticon-box-3:before { content: "\f106"; }
+.flaticon-box-4:before { content: "\f107"; }
+.flaticon-conversation:before { content: "\f108"; }
+.flaticon-credit-card:before { content: "\f109"; }
+.flaticon-credit-card-1:before { content: "\f10a"; }
+.flaticon-dollar-symbol:before { content: "\f10b"; }
+.flaticon-exchange:before { content: "\f10c"; }
+.flaticon-laptop:before { content: "\f10d"; }
+.flaticon-laptop-1:before { content: "\f10e"; }
+.flaticon-laptop-2:before { content: "\f10f"; }
+.flaticon-list:before { content: "\f110"; }
+.flaticon-list-1:before { content: "\f111"; }
+.flaticon-monitor:before { content: "\f112"; }
+.flaticon-notepad:before { content: "\f113"; }
+.flaticon-open:before { content: "\f114"; }
+.flaticon-percentage:before { content: "\f115"; }
+.flaticon-piggy-bank:before { content: "\f116"; }
+.flaticon-price-tag:before { content: "\f117"; }
+.flaticon-shopping-bag:before { content: "\f118"; }
+.flaticon-shopping-bag-1:before { content: "\f119"; }
+.flaticon-shopping-basket:before { content: "\f11a"; }
+.flaticon-shopping-basket-1:before { content: "\f11b"; }
+.flaticon-shopping-cart:before { content: "\f11c"; }
+.flaticon-smartphone:before { content: "\f11d"; }
+.flaticon-smartphone-1:before { content: "\f11e"; }
+.flaticon-tablet:before { content: "\f11f"; }
+.flaticon-telephone:before { content: "\f120"; }
+.flaticon-television:before { content: "\f121"; }
+.flaticon-television-1:before { content: "\f122"; }
+.flaticon-truck:before { content: "\f123"; }
+.flaticon-truck-1:before { content: "\f124"; }
+.flaticon-truck-2:before { content: "\f125"; }
+.flaticon-truck-3:before { content: "\f126"; }
+.flaticon-truck-4:before { content: "\f127"; }
+    
+    $font-Flaticon-badge: "\f100";
+    $font-Flaticon-badge-1: "\f101";
+    $font-Flaticon-badge-2: "\f102";
+    $font-Flaticon-box: "\f103";
+    $font-Flaticon-box-1: "\f104";
+    $font-Flaticon-box-2: "\f105";
+    $font-Flaticon-box-3: "\f106";
+    $font-Flaticon-box-4: "\f107";
+    $font-Flaticon-conversation: "\f108";
+    $font-Flaticon-credit-card: "\f109";
+    $font-Flaticon-credit-card-1: "\f10a";
+    $font-Flaticon-dollar-symbol: "\f10b";
+    $font-Flaticon-exchange: "\f10c";
+    $font-Flaticon-laptop: "\f10d";
+    $font-Flaticon-laptop-1: "\f10e";
+    $font-Flaticon-laptop-2: "\f10f";
+    $font-Flaticon-list: "\f110";
+    $font-Flaticon-list-1: "\f111";
+    $font-Flaticon-monitor: "\f112";
+    $font-Flaticon-notepad: "\f113";
+    $font-Flaticon-open: "\f114";
+    $font-Flaticon-percentage: "\f115";
+    $font-Flaticon-piggy-bank: "\f116";
+    $font-Flaticon-price-tag: "\f117";
+    $font-Flaticon-shopping-bag: "\f118";
+    $font-Flaticon-shopping-bag-1: "\f119";
+    $font-Flaticon-shopping-basket: "\f11a";
+    $font-Flaticon-shopping-basket-1: "\f11b";
+    $font-Flaticon-shopping-cart: "\f11c";
+    $font-Flaticon-smartphone: "\f11d";
+    $font-Flaticon-smartphone-1: "\f11e";
+    $font-Flaticon-tablet: "\f11f";
+    $font-Flaticon-telephone: "\f120";
+    $font-Flaticon-television: "\f121";
+    $font-Flaticon-television-1: "\f122";
+    $font-Flaticon-truck: "\f123";
+    $font-Flaticon-truck-1: "\f124";
+    $font-Flaticon-truck-2: "\f125";
+    $font-Flaticon-truck-3: "\f126";
+    $font-Flaticon-truck-4: "\f127";

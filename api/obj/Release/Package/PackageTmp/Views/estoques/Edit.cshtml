@@ -1,0 +1,252 @@
+﻿@model api.Models.estoque
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        <a href="@Url.Action("Index")" class="btn btn-warning"><i class="glyphicon glyphicon-chevron-left" style="margin-right: 10px"></i>Voltar</a>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("index")" base_library="api.Models.estoque.library_bc_1">Listar</a></li>
+        <li class="active" base_library="api.Models.estoque.library_bc_edit">Editar</li>
+    </ol>
+</section>
+
+
+
+<section class="content">
+    <div class="col-md-12">
+        <div class="alert alert-info col-md-12" role="alert">
+            <i class="glyphicon glyphicon-pencil" style="margin-right: 10px"></i><b base_library="api.Models.estoque.library_code">Editando Código:</b> <span class="editid">@Model.lote - <b base_library="api.Models.estoque.library_code">Vendedor:</b>  @Model.pessoa.nome</span>
+        </div>
+    </div>
+    <div style="clear: both"></div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken();
+        @Html.ValidationSummary(true)
+        <div class="alert alert-danger" role="alert" base_library="api.Models.estoque.library_error_register">
+            Registro não gravado, verificar erro criticado
+        </div>
+
+
+        <fieldset>
+            <div>
+                @Html.HiddenFor(C => C.estoque_list)
+                @Html.HiddenFor(C => C.pessoa_id)
+                @Html.HiddenFor(C => C.lote)
+                @Html.HiddenFor(C => C.estorno)
+
+                @*POR ALGUM MOTIVO ESSA PORRA PRECISA PASSAR UM ID*@ 
+                <input type="hidden" name="id" value="1" />
+
+
+
+                <div class="col-md-5">
+
+                    <div class="form-group col-md-6">
+                        <label class="control-label" base_library="api.Models.estoque.produto_id">Produto</label>
+                        <select class="form-control select2" source="#produto_id" data-placeholder="" style="width: 100%;" id="s_produto">
+                            <option value="null">Selecione um item</option>
+                            @foreach (var item in new api.Models.db().produto.Where(c => c.place_id == Model.place_id && c.status == true))
+                            {
+                                <option value="@item.id" quantidade="@item.estoque" preco="@item.preco" codigo="@(item.codigo == null ? item.id.ToString() : item.codigo)">@(item.codigo == null ? item.id.ToString() : item.codigo) - @item.nome Q:@item.estoque</option>
+                            }
+                        </select>
+                        @Html.HiddenFor(model => model.produto_id)
+                        @Html.ValidationMessageFor(model => model.produto_id)
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <label class="control-label" base_library="api.Models.estoque.estoque1">Quantidade</label>
+
+                        <div style="clear: both"></div>
+                        @Html.TextBoxFor(model => model.estoque1, new { placeholder = "", @class = "form-control", maxLength = "150", type = "number", min = "1", @Value = "1" })
+                        @Html.ValidationMessageFor(model => model.estoque1)
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <label class="control-label" base_library="api.Models.estoque.comissao_vendedor">ComissaoVendedor</label>
+
+                        <div style="clear: both"></div>
+                        @Html.TextBoxFor(model => model.comissao_vendedor_estoque, new { placeholder = "", @class = "form-control", maxLength = "150", type = "number", min = "1", @Value = "0" })
+                        @Html.ValidationMessageFor(model => model.comissao_vendedor_estoque)
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <label class="control-label" base_library="api.Models.estoque.desconto_brinde">deconto_brinde</label>
+
+                        <div style="clear: both"></div>
+                        @Html.TextBoxFor(model => model.desconto_brinde, new { placeholder = "", @class = "form-control", maxLength = "150", type = "number", min = "1", @Value = "0" })
+                        @Html.ValidationMessageFor(model => model.desconto_brinde)
+                    </div>
+
+
+                    <div class="form-group col-md-12">
+                        <label class="control-label" base_library="api.Models.estoque.observacao_estoque">observacao_estoque</label>
+
+                        <div style="clear: both"></div>
+                        @Html.TextBoxFor(model => model.observacao_estoque, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                        @Html.ValidationMessageFor(model => model.observacao_estoque)
+                    </div>
+
+
+                    <div class="form-group col-md-12">
+                        <label class="control-label" base_library="api.Models.compra.pagamento_id_estoque">pagamento_id_estoque</label>
+                        <select class="form-control select2" source="#pagamento_id_estoque" data-placeholder="" style="width: 100%;">
+                            <option value="null">Selecione um item</option>
+                            @foreach (var item in new api.Models.db().pagamento.Where(c => c.place_id == api.Models.db.place.place_id))
+                            {
+                                <option value="@item.id">@(item.nome)</option>
+                            }
+                        </select>
+                        @Html.HiddenFor(model => model.pagamento_id_estoque)
+                        @Html.ValidationMessageFor(model => model.pagamento_id_estoque)
+                    </div>
+
+
+                    <div style="clear: both"></div>
+                    <a class="btn btn-success pull-right" onclick="InserirProduto()" base_library="api.Models.estoque.insereproduto"><i class="glyphicon glyphicon-plus"></i>Inserir</a>
+
+                </div>
+
+                <div class="col-md-7">
+                    <div id="sessao_produtos">
+
+
+                        <table id="grid" class=" table-striped table-bordered col-md-12">
+
+                            <thead>
+                            <th>Produto</th>
+                            <th>Valor Revenda</th>
+                            <th>Quantidade</th>
+                            <th>Remover</th>
+                            </thead>
+
+
+                        </table>
+                    </div>
+                </div>
+                <div class="form-group col-md-12 btn-gallery">
+                    <a class="btn btn-success pull-right" onclick="$('#estorno').val(false); confirm('Deseja Realmente editar este lote?',SubmitEditar);" id="btnEditar" base_library="api.Models.estoque.editar" style="margin-right:5px;"><i class="glyphicon glyphicon-ok"></i>Editar</a>
+                    <a class="btn btn-success pull-right" onclick="$('#estorno').val(true);confirm('Deseja Realmente finalizar este lote?',SubmitEditar);" id="btnEstornar" base_library="api.Models.estoque.estornar"><i class="glyphicon glyphicon-ok"></i>Finalizar Estoque</a>
+                    <a class="btn btn-success pull-left" onclick="ImprimirEstoque()" id="btnImprimirEstoque" base_library="api.Models.estoque.ImprimirEstoque"><i class="fa fa-print"></i>Imprimir</a>
+
+                </div>
+            </div>
+        </fieldset>
+    }
+</section>
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/admin/estoque.js"></script>
+    <script>
+
+
+
+    //var produtos = [];
+    ////QUANDO DA ERRO, ELE RETORNA A STRING INTEIRA E JOGA DE NOVO NA TELA, PRO USUÁRIO NÃO PRECISAR DIGITAR TUDO DE NOVO
+    //$(document).ready(function () {
+
+
+    //    if ($('#estoque_list').length != 0) {
+    //        setTimeout(function () {
+
+    //            var a = JSON.parse($('#estoque_list').val())
+    //            for (var i = 0; i < a.length; i++) {
+    //                produtos.push(a[i]);
+    //            }
+    //            $('#grid').html('<thead><th>Produto</th> <th>Valor Revenda</th> <th>Quantidade</th> <th>Vedido</th><th>Remover</th>');
+
+
+    //            var somaEstoques = 0;
+    //            $(produtos).each(function (index, item) {
+
+    //                var html = $("<tr><td>" + item.NomeProduto + "</td><td>R$ " + item.valor_revenda + "</td><td>" + item.estoque1 + "</td><td><input index='" + index + "' type='number' style='width:50px' value='0' onblur='Vendido(this)'></td><td><a onclick=RemoverProduto(" + item.indice + ") class='btn btn-danger'><i class='glyphicon glyphicon-trash'></i></a></td></tr>");
+    //                $('#grid').append(html)
+
+    //                somaEstoques = somaEstoques + item.estoque1;
+    //            });
+
+    //            $('#estoque_list').val(JSON.stringify(produtos))
+
+    //            //PRA SABER SE JA FOI ESTORNADO OU NAO HAHAH
+
+    //            if (somaEstoques == 0) {
+    //                $('#btnEstornar').css('display', 'none');
+    //                $('#btnImprimirEstoque').css('display', 'none');
+    //            }
+
+
+
+
+    //        }, 1000);
+    //    }
+
+
+
+
+
+
+    //});
+
+
+    //function Vendido(element) {
+
+    //    //Função para botao on/off da lista de produtos
+    //    var produto = produtos[$(element).attr('index')]
+
+    //    if (produto.estoque1 <= parseInt($(element).val()) || parseInt($(element).val()) < 0) {
+    //        $(element).val(parseInt(produto.estoque1));
+    //    }
+
+    //    produto.sai_estoque = parseInt($(element).val());
+    //    $('#estoque_list').val(JSON.stringify(produtos))
+
+
+
+    //}
+
+    function ImprimirEstoque() {
+
+
+        $('#grid th:nth-child(4)').hide();
+        $('#grid td:nth-child(4)').hide();
+
+        var content = document.getElementById("sessao_produtos").innerHTML;
+        var mywindow = window.open('', 'Print', 'height=600,width=800');
+
+        mywindow.document.write('<h1>Relatório de Retirada de Produtos</h1>');
+        mywindow.document.write('<h2>Vendedor: @Model.pessoa.nome</h2>');
+        mywindow.document.write('<h3>Lote: @Model.lote</h3>');
+        mywindow.document.write('<h3>Data: @Model.data_entrada</h3>');
+
+
+        mywindow.document.write('<html><head><title>Lote</title>');
+        mywindow.document.write('<head><title>Print</title>');
+        mywindow.document.write('</head><body >');
+        mywindow.document.write(content);
+        mywindow.document.write('</body></html>');
+
+
+
+        mywindow.document.close();
+        mywindow.focus()
+        mywindow.print();
+        mywindow.close();
+        return true;
+
+
+
+    }
+
+
+
+    </script>
+}

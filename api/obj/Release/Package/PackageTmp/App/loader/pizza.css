@@ -1,0 +1,123 @@
+﻿.bord-rand {
+    border: 100px solid #EAEAEA;
+    border-radius: 50%;
+    position: absolute;
+    width: 0px;
+}
+
+.bord-binnen {
+    border: 90px solid #D7D7D7;
+    border-radius: 50%;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.pizzasnede {
+    position: absolute;
+    top: 15px;
+}
+
+.korst {
+    width: 0;
+    height: 0;
+    border-left: 100px solid transparent;
+    border-right: 100px solid transparent;
+    border-bottom: 150px solid #773c21;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.kaas {
+    width: 0;
+    height: 0;
+    border-left: 95px solid transparent;
+    border-right: 95px solid transparent;
+    border-bottom: 142px solid #FF872D;
+    border-radius: 50%;
+    position: absolute;
+    left: 5px;
+}
+
+.salami {
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    position: absolute;
+    border: 20px solid #9C2E0D;
+}
+
+.salami-half {
+    width: 20px;
+    height: 40px;
+    -moz-border-radius: 75px 0 0 75px;
+    border-radius: 75px 0 0 75px;
+    position: absolute;
+    transform: rotate(-34deg);
+    background-color: #9C2E0D;
+}
+
+.een {
+    left: 100px;
+    top: 67px;
+}
+
+.twee {
+    left: 98px;
+    top: 10px;
+}
+
+.drie {
+    left: 45px;
+    top: 82px;
+}
+
+#pizza {
+    position: absolute;
+    transition: transform 1s;
+    transform-origin: 100px 100px;
+    display: block;
+    width: 200px;
+    height: 200px;
+    margin: auto;
+    padding: auto;
+    left: 50%;
+    top: 50%;
+    margin-left: -100px;
+    margin-top: -150px;
+}
+
+    #pizza:hover {
+        position: absolute;
+        transform: rotate(-10deg);
+        transform-origin: 100px 100px;
+    }
+
+    @keyframes vallen {
+        from {
+            transform: translateY(-150%) scale(2);
+        }
+
+        to {
+            transform: none;
+        }
+    }
+
+    .pizzasnede .een {
+        animation: vallen .8s infinite;
+    }
+
+    .pizzasnede .twee {
+    }
+
+    .pizzasnede .drie {
+        animation: vallen 1s infinite;
+    }
+
+    .container {
+        height: 100%;
+    }
+
+    .text {
+        margin-top: 330px;
+    }

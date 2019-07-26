@@ -1,0 +1,133 @@
+﻿
+@model Site.Models.Find<api.Controllers.mensagensController.find>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<section class="content-header">
+    <h1>
+        <a href="@Url.Action("Create")" class="btn btn-info" base_library="api.Models.mensagens.library_create"><i class="fa fa-plus" style="margin-right:10px"></i>Criar Novo</a>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#" base_library="api.Models.mensagens.library_bc_1"><i class="fa fa-newspaper-o"></i>Listar</a></li>
+        <li class="active"><a href="@Url.Action("index")" base_library="api.Models.mensagens.library_bc_list">Index</a></li>
+    </ol>
+</section>
+
+<section class="content">
+
+
+
+
+
+     <form ajax="@Url.Action("Find")" table="tbl">
+        <input type="hidden" id="Page" name="Page" value="0" />
+
+		<div class="box box-default">
+			<div class="box-header with-border">
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.mensagens.horario_id" >horario_id</label>
+					<select class="form-control select2" source="#Filter_horario_id" data-placeholder="" onchange = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" style="width: 100%;">
+						<option value="null">Todos</option>
+						@foreach (var item in new api.Models.db().horario)
+						{
+							<option value="@item.id">@(item.horario1)</option>
+						}
+					</select>
+					@Html.HiddenFor(model => model.Filter.horario_id)
+					@Html.ValidationMessageFor(model => model.Filter.horario_id)
+				
+
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.mensagens.atendente_id" >atendente_id</label>
+					<select class="form-control select2" source="#Filter_atendente_id" data-placeholder="" onchange = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" style="width: 100%;">
+						<option value="null">Todos</option>
+						@foreach (var item in new api.Models.db().pessoa)
+						{
+							<option value="@item.id">@(item.nome)</option>
+						}
+					</select>
+					@Html.HiddenFor(model => model.Filter.atendente_id)
+					@Html.ValidationMessageFor(model => model.Filter.atendente_id)
+				
+
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.mensagens.mensagem" >mensagem</label>
+            
+									@Html.TextBoxFor(model => model.Filter.mensagem, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.mensagens.perfil_da_mensagem" >perfil_da_mensagem</label>
+            
+									@Html.TextBoxFor(model => model.Filter.perfil_da_mensagem, new { placeholder = "", @class = "form-control", maxLength = "150", type="number", min="1", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </div>
+
+		<div class="box-tools pull-right">
+			<button class="btn btn-box-tool" data-widget="collapse">Pesquisa Avançada<i style="margin-left: 10px" class="fa fa-plus-square fa-minus"></i></button>
+		</div>
+	</div>
+	<div class="box-body" style="display:none">
+	</div>
+	<div class="form-group" style="border-top: 1px solid #f4f4f4; padding: 10px">
+		<button href="#" class="btn btn-warning pull-right" type="button" name="btnProcurar" onclick="$('.tblrow').remove(); $('#Page').val('0'); $('[ajax]').submit();"><i class="fa fa-search" style="margin-right: 10px"></i>Procurar</button>
+		<div style="clear: both"></div>
+	</div>
+</div>
+    <div class="table-default scroll">
+        <div class="filter-table" base_library="api.Models.mensagens.library_filter"><i class="fa fa-filter"></i>filtros</div>
+		
+            <div class="filter-table" base_library="api.Models.sample.library_report" onclick="fnExcelReport()" style="margin-left:83px; width:110px">
+                <i class="fa fa-file-excel-o"></i>Relatório
+            </div>
+<table  id="tbl"> 
+    <tr>
+        <td base_library="api.Models.mensagens.horario_id">
+            @Html.DisplayNameFor(model => model.Filter.horario_id)
+        </td>
+        <td base_library="api.Models.mensagens.atendente_id">
+            @Html.DisplayNameFor(model => model.Filter.atendente_id)
+        </td>
+        <td base_library="api.Models.mensagens.mensagem">
+            @Html.DisplayNameFor(model => model.Filter.mensagem)
+        </td>
+        <td base_library="api.Models.mensagens.perfil_da_mensagem">
+            @Html.DisplayNameFor(model => model.Filter.perfil_da_mensagem)
+        </td>
+    </tr>
+</table>
+</div>
+</form>
+</section>
+
+		<script template="tbl" type="text/template" redirect="@Url.Action("edit")"> 
+
+    <tr class="tblrow" pk="id">
+        <td column="horario_id">
+        </td>
+        <td column="atendente_id">
+        </td>
+        <td column="mensagem">
+        </td>
+        <td column="perfil_da_mensagem">
+        </td>
+       
+    </tr>
+
+
+</script>

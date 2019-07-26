@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="maillingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="email">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="nome" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+    <Property Name="data_id" Type="Int64" />
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="place" Relationship="Self.FK_email_place" FromRole="email" ToRole="place" />
+  </EntityType>
+  <EntityType Name="place">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+    <Property Name="checkins" Type="Int32" />
+    <Property Name="phone" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+    <Property Name="website" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+    <Property Name="location_id" Type="Int64" />
+    <Property Name="search" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="picture" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+    <Property Name="cover" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+    <Property Name="rating_count" Type="Int32" />
+    <Property Name="about" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+    <Property Name="hours_id" Type="Int32" />
+    <Property Name="user_name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="logo" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="logo_itype" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="specialty" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="url" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="theme" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="connection" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+    <Property Name="place_id" Type="Int64" />
+    <Property Name="loader" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="background_image_local" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="balcao" Type="Boolean" />
+    <Property Name="delivery" Type="Boolean" />
+    <Property Name="primary_color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="primary_font_color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="secondary_color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="secondary_font_color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="textbox_color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="textbox_font_color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="border_radius_textbox" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="border_radius_button" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="light_color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="dark_color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="font_color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="card_number" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="card_name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="card_date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="card_cvv" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="card_hash" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="card_document" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="pagarme_id" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="card_brand" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="pagarme_status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="created" Type="DateTime" Precision="3" />
+    <Property Name="whatsapp" Type="Int32" />
+    <Property Name="whatsapp_message" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+    <Property Name="address_required" Type="Boolean" />
+    <Property Name="frete_produto" Type="Boolean" />
+    <Property Name="icone" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="icone_itype" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="mesa" Type="Boolean" />
+    <Property Name="comanda" Type="Boolean" />
+    <Property Name="border_color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="background" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="background_itype" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="bg_color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="font_light_color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="token_paggi" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="email" Relationship="Self.FK_email_place" FromRole="place" ToRole="email" />
+  </EntityType>
+  <Association Name="FK_email_place">
+    <End Role="place" Type="Self.place" Multiplicity="0..1" />
+    <End Role="email" Type="Self.email" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="place">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="email">
+        <PropertyRef Name="data_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="maillingEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="email" EntityType="Self.email" />
+    <EntitySet Name="place" EntityType="Self.place" />
+    <AssociationSet Name="FK_email_place" Association="Self.FK_email_place">
+      <End Role="place" EntitySet="place" />
+      <End Role="email" EntitySet="email" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

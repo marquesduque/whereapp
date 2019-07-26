@@ -1,0 +1,102 @@
+﻿<div class="pages">
+    <div data-page="restaurant-search" class="page page-busca">
+        <div class="page-content text-center imagem-background">
+            <div class="text-center back-close-icon"><a href="#" class="back link color"><i class="flaticon-close cor-creait" style=""></i></a></div>
+            <div class="content-block">
+                <div class="margin-bottom-60"><img class="logo" src="" style="width: 245px;" /></div>
+                <div class="text-medium margin-top-10 fonte_branca fontextra" style="font-size:30px">Informe seu CEP</div>
+                <div class="text-medium fonte_branca margin-bottom-20" style="font-size:20px">Verifique se entregamos na sua região.</div>
+                <formBusca>
+
+
+                    <div class="content-block" style="margin-top:0px">
+                        <div id="btn_search_gps" class="buton fontextra">Encontre-me pelo GPS</div>
+                    </div>
+
+                    <div style="margin:20px; clear:both" class="text-white">Ou se preferir digite seu CEP</div>
+
+                    <div class="list-block margin-bottom-15"  style="width:100%; margin:0 auto; text-align:center">
+                        <ul style="margin:0 auto">
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner no-margin">
+                                        <div class="item-input col-md-100">
+                                            <input id="pac-input" type="number" class="text-medium fonte_branca input-confirmarCliente" placeholder="Digite seu CEP">
+                                        </div>
+                                    </div>
+                                    <div id="btn_search" class="input-icon item-media color"><i class="flaticon-search cor-creait" style="font-weight:900;"></i></div>
+                                </div>
+                                <div class="text-sm text-grey" id="enderecos"></div>
+                                <form id="complementar_endereco">
+                                    <div class="list-block" style="margin: 22px 0 !important;">
+                                        <div class="item-content">
+                                            <div class="item-inner">
+
+                                                <div class="row">
+                                                    <div class="col-30">
+                                                        <div class="item-input">
+                                                            <input type="number" id="numero" class="input-confirmarCliente" placeholder="Número">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-70">
+                                                        <div class=" item-input">
+                                                            <input type="text" id="complemento" class="input-confirmarCliente" placeholder="Complemento">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row btn-form-group margin-bottom-10">
+                                        <!--<div class="col-50">
+                                            <a id="btn_voltar" class="button buton-login">Voltar</a>
+                                        </div>-->
+                                        <div class="col-100">
+                                                <div id="btn_confimar" class="buton">Avançar</div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                    <input id="lat" name="lat" type="hidden" value="" />
+                    <input id="lng" name="lng" type="hidden" value="" />
+                    <input id="cidade" name="lng" type="hidden" value="" />
+
+
+                    <!-- MODAL DE ENDEREÇO NAO DISPONIVEL -->
+                    <div class="modal-indisponivel" id="modal_indisponivel" style="display:none; position: relative;top: -33em;">
+                        <div class="text-center" style="text-align: right;"><a href="#" class="link cor-creait" id="btn_voltar"><i class="flaticon-close cor-creait" style="color:#ed0000"></i></a></div>
+                        <div class="text-medium margin-bottom-15 margin-top-10 fonte_branca">Complete o endereço de entrega</div>
+
+                        <form>
+                            <div class="list-block" style="margin: 22px 0 !important;">
+                                <div class="item-content">
+                                    <div class="item-inner">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row btn-form-group margin-bottom-10">
+
+                                <div class="col-100">
+                                    <div class="content-block">
+                                        <div id="btn_confimar" class="buton">Avançar</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+
+
+
+
+
+
+
+                </formBusca>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,415 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Monitoramento" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="ec2" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="acesso" EntityType="Monitoramento.acesso" />
+    <EntitySet Name="biblioteca_de_palavra" EntityType="Monitoramento.biblioteca_de_palavra" />
+    <EntitySet Name="cartao" EntityType="Monitoramento.cartao" />
+    <EntitySet Name="compra" EntityType="Monitoramento.compra" />
+    <EntitySet Name="pagamento" EntityType="Monitoramento.pagamento" />
+    <EntitySet Name="perfil" EntityType="Monitoramento.perfil" />
+    <EntitySet Name="pessoa" EntityType="Monitoramento.pessoa" />
+    <EntitySet Name="status_da_compra" EntityType="Monitoramento.status_da_compra" />
+    <EntitySet Name="status_usuario" EntityType="Monitoramento.status_usuario" />
+    <EntitySet Name="sysdiagrams" EntityType="Monitoramento.sysdiagrams" />
+    <AssociationSet Name="FK_acesso_perfil" Association="Monitoramento.FK_acesso_perfil">
+      <End Role="perfil" EntitySet="perfil" />
+      <End Role="acesso" EntitySet="acesso" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cartao_pessoa" Association="Monitoramento.FK_cartao_pessoa">
+      <End Role="pessoa" EntitySet="pessoa" />
+      <End Role="cartao" EntitySet="cartao" />
+    </AssociationSet>
+    <AssociationSet Name="FK_compra_cartao" Association="Monitoramento.FK_compra_cartao">
+      <End Role="cartao" EntitySet="cartao" />
+      <End Role="compra" EntitySet="compra" />
+    </AssociationSet>
+    <AssociationSet Name="FK_compra_pagamento" Association="Monitoramento.FK_compra_pagamento">
+      <End Role="pagamento" EntitySet="pagamento" />
+      <End Role="compra" EntitySet="compra" />
+    </AssociationSet>
+    <AssociationSet Name="FK_compra_pessoa" Association="Monitoramento.FK_compra_pessoa">
+      <End Role="pessoa" EntitySet="pessoa" />
+      <End Role="compra" EntitySet="compra" />
+    </AssociationSet>
+    <AssociationSet Name="FK_compra_pessoa1" Association="Monitoramento.FK_compra_pessoa1">
+      <End Role="pessoa" EntitySet="pessoa" />
+      <End Role="compra" EntitySet="compra" />
+    </AssociationSet>
+    <AssociationSet Name="FK_compra_status_da_compra" Association="Monitoramento.FK_compra_status_da_compra">
+      <End Role="status_da_compra" EntitySet="status_da_compra" />
+      <End Role="compra" EntitySet="compra" />
+    </AssociationSet>
+    <AssociationSet Name="FK_usuario_perfil" Association="Monitoramento.FK_usuario_perfil">
+      <End Role="perfil" EntitySet="perfil" />
+      <End Role="pessoa" EntitySet="pessoa" />
+    </AssociationSet>
+    <AssociationSet Name="FK_pessoa_pessoa" Association="Monitoramento.FK_pessoa_pessoa">
+      <End Role="pessoa" EntitySet="pessoa" />
+      <End Role="pessoa1" EntitySet="pessoa" />
+    </AssociationSet>
+    <AssociationSet Name="FK_user_status_usuario" Association="Monitoramento.FK_user_status_usuario">
+      <End Role="status_usuario" EntitySet="status_usuario" />
+      <End Role="pessoa" EntitySet="pessoa" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cartao_compra" Association="Monitoramento.FK_cartao_compra">
+      <End Role="compra" EntitySet="compra" />
+      <End Role="cartao" EntitySet="cartao" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="acesso">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="create" Type="Boolean" />
+    <Property Name="edit" Type="Boolean" />
+    <Property Name="delete" Type="Boolean" />
+    <Property Name="list" Type="Boolean" />
+    <Property Name="perfil_id" Type="Int32" />
+    <Property Name="url" Type="String" MaxLength="350" FixedLength="false" Unicode="false" />
+    <Property Name="name" Type="String" MaxLength="350" FixedLength="false" Unicode="false" />
+    <Property Name="icon" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="group" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="order" Type="Int32" />
+    <Property Name="place_id" Type="Int64" />
+    <NavigationProperty Name="perfil" Relationship="Monitoramento.FK_acesso_perfil" FromRole="acesso" ToRole="perfil" />
+  </EntityType>
+  <EntityType Name="biblioteca_de_palavra">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="url" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="col" Type="Boolean" />
+    <Property Name="col_description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="size" Type="Int32" />
+    <Property Name="place_id" Type="Int64" />
+    <Property Name="edit" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="cartao">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="numero" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="nome" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="expiracao" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cvv" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="hash" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="pessoa_id" Type="Int32" />
+    <Property Name="documento" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="pagarme_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="bandeira" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="place_id" Type="Int64" />
+    <NavigationProperty Name="pessoa" Relationship="Monitoramento.FK_cartao_pessoa" FromRole="cartao" ToRole="pessoa" />
+    <NavigationProperty Name="compra" Relationship="Monitoramento.FK_compra_cartao" FromRole="cartao" ToRole="compra" />
+    <Property Name="compra_id" Type="Int32" />
+    <NavigationProperty Name="compra1" Relationship="Monitoramento.FK_cartao_compra" FromRole="cartao" ToRole="compra" />
+  </EntityType>
+  <EntityType Name="compra">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="pagamento" Type="DateTime" Precision="3" />
+    <Property Name="total" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="desconto" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="pagamento_id" Type="Int32" />
+    <Property Name="preparo" Type="DateTime" Precision="3" />
+    <Property Name="entregue" Type="DateTime" Precision="3" />
+    <Property Name="finalizado" Type="DateTime" Precision="3" />
+    <Property Name="status_da_compra_id" Type="Int32" />
+    <Property Name="filial_id" Type="Int32" />
+    <Property Name="pago" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="recebido" Type="DateTime" Precision="3" />
+    <Property Name="ativo" Type="Boolean" />
+    <Property Name="cancelamento" Type="DateTime" Precision="3" />
+    <Property Name="pagarme_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="pagarme_status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="place_id" Type="Int64" />
+    <Property Name="balcao" Type="Boolean" />
+    <Property Name="delivery" Type="Boolean" />
+    <Property Name="codigo_servicos" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="valor_frete" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="cartao_id" Type="Int32" />
+    <Property Name="cpf" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="boleto_barcode" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="boleto_url" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="comprador_id" Type="Int32" />
+    <Property Name="tipo_frete" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="vendedor_id" Type="Int32" />
+    <Property Name="comissao_vendedor" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="external_id" Type="Int64" />
+    <Property Name="frete" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="observacao" Type="String" MaxLength="450" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="cartao" Relationship="Monitoramento.FK_compra_cartao" FromRole="compra" ToRole="cartao" />
+    <NavigationProperty Name="pagamento1" Relationship="Monitoramento.FK_compra_pagamento" FromRole="compra" ToRole="pagamento" />
+    <NavigationProperty Name="pessoa" Relationship="Monitoramento.FK_compra_pessoa" FromRole="compra" ToRole="pessoa" />
+    <NavigationProperty Name="pessoa1" Relationship="Monitoramento.FK_compra_pessoa1" FromRole="compra" ToRole="pessoa" />
+    <NavigationProperty Name="status_da_compra" Relationship="Monitoramento.FK_compra_status_da_compra" FromRole="compra" ToRole="status_da_compra" />
+    <NavigationProperty Name="cartao1" Relationship="Monitoramento.FK_cartao_compra" FromRole="compra" ToRole="cartao" />
+  </EntityType>
+  <EntityType Name="pagamento">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nome" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="taxa" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="grupo_do_pagamento_id" Type="Int32" />
+    <Property Name="bandeira_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="place_id" Type="Int64" />
+    <Property Name="transacao" Type="Int32" />
+    <Property Name="external_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="icone" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="icone_itype" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="compra" Relationship="Monitoramento.FK_compra_pagamento" FromRole="pagamento" ToRole="compra" />
+  </EntityType>
+  <EntityType Name="perfil">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="place_id" Type="Int64" />
+    <NavigationProperty Name="acesso" Relationship="Monitoramento.FK_acesso_perfil" FromRole="perfil" ToRole="acesso" />
+    <NavigationProperty Name="pessoa" Relationship="Monitoramento.FK_usuario_perfil" FromRole="perfil" ToRole="pessoa" />
+  </EntityType>
+  <EntityType Name="pessoa">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nome" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="birthday" Type="DateTime" Precision="3" />
+    <Property Name="facebook" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="cpf" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="rg" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="perfil_id" Type="Int32" />
+    <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="phone_optional" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="mobile_optional" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="rating" Type="Int32" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="description" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="active" Type="Boolean" />
+    <Property Name="charge" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="email_change" Type="DateTime" Precision="3" />
+    <Property Name="status_usuario_id" Type="Int32" />
+    <Property Name="photo_itype" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="push_id" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="push_arn" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="credit" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="cnpj" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="razao_social" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="vendedor_id" Type="Int32" />
+    <Property Name="place_id" Type="Int64" />
+    <Property Name="Agencia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AgenciaDv" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Conta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ContaDv" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BankCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DocumentNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LegalName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="comissao" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="pagarme_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="created" Type="DateTime" Precision="3" />
+    <Property Name="external_id" Type="Int32" />
+    <Property Name="filial_id" Type="Int32" />
+    <Property Name="cpf_image" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="cpf_image_itype" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="rg_image" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="rg_image_itype" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="comprovante" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="comprovante_itype" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="genero" Type="Boolean" />
+    <Property Name="antecedentes" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="antecedentes_itype" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="certificado" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="certificado_itype" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BankToken" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+    <Property Name="especialidade_id" Type="Int32" />
+    <NavigationProperty Name="cartao" Relationship="Monitoramento.FK_cartao_pessoa" FromRole="pessoa" ToRole="cartao" />
+    <NavigationProperty Name="compra" Relationship="Monitoramento.FK_compra_pessoa" FromRole="pessoa" ToRole="compra" />
+    <NavigationProperty Name="compra1" Relationship="Monitoramento.FK_compra_pessoa1" FromRole="pessoa" ToRole="compra" />
+    <NavigationProperty Name="perfil" Relationship="Monitoramento.FK_usuario_perfil" FromRole="pessoa" ToRole="perfil" />
+    <NavigationProperty Name="pessoa1" Relationship="Monitoramento.FK_pessoa_pessoa" FromRole="pessoa" ToRole="pessoa1" />
+    <NavigationProperty Name="pessoa2" Relationship="Monitoramento.FK_pessoa_pessoa" FromRole="pessoa1" ToRole="pessoa" />
+    <NavigationProperty Name="status_usuario" Relationship="Monitoramento.FK_user_status_usuario" FromRole="pessoa" ToRole="status_usuario" />
+    <Property Name="lat" Type="Decimal" Precision="20" Scale="12" />
+    <Property Name="lng" Type="Decimal" Precision="20" Scale="12" />
+    <Property Name="endereco" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="numero" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="complemento" Type="String" MaxLength="850" FixedLength="false" Unicode="false" />
+    <Property Name="cidade" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="pais" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="cep" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="bairro" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="address" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="status_da_compra">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nome" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="place_id" Type="Int64" />
+    <NavigationProperty Name="compra" Relationship="Monitoramento.FK_compra_status_da_compra" FromRole="status_da_compra" ToRole="compra" />
+  </EntityType>
+  <EntityType Name="status_usuario">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="place_id" Type="Int64" />
+    <NavigationProperty Name="pessoa" Relationship="Monitoramento.FK_user_status_usuario" FromRole="status_usuario" ToRole="pessoa" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_acesso_perfil">
+    <End Type="Monitoramento.perfil" Role="perfil" Multiplicity="0..1" />
+    <End Type="Monitoramento.acesso" Role="acesso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="perfil">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="acesso">
+        <PropertyRef Name="perfil_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_cartao_pessoa">
+    <End Type="Monitoramento.pessoa" Role="pessoa" Multiplicity="0..1" />
+    <End Type="Monitoramento.cartao" Role="cartao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pessoa">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="cartao">
+        <PropertyRef Name="pessoa_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_compra_cartao">
+    <End Type="Monitoramento.cartao" Role="cartao" Multiplicity="0..1" />
+    <End Type="Monitoramento.compra" Role="compra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cartao">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="compra">
+        <PropertyRef Name="cartao_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_compra_pagamento">
+    <End Type="Monitoramento.pagamento" Role="pagamento" Multiplicity="0..1" />
+    <End Type="Monitoramento.compra" Role="compra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pagamento">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="compra">
+        <PropertyRef Name="pagamento_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_compra_pessoa">
+    <End Type="Monitoramento.pessoa" Role="pessoa" Multiplicity="0..1" />
+    <End Type="Monitoramento.compra" Role="compra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pessoa">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="compra">
+        <PropertyRef Name="comprador_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_compra_pessoa1">
+    <End Type="Monitoramento.pessoa" Role="pessoa" Multiplicity="0..1" />
+    <End Type="Monitoramento.compra" Role="compra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pessoa">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="compra">
+        <PropertyRef Name="vendedor_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_compra_status_da_compra">
+    <End Type="Monitoramento.status_da_compra" Role="status_da_compra" Multiplicity="0..1" />
+    <End Type="Monitoramento.compra" Role="compra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="status_da_compra">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="compra">
+        <PropertyRef Name="status_da_compra_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_usuario_perfil">
+    <End Type="Monitoramento.perfil" Role="perfil" Multiplicity="0..1" />
+    <End Type="Monitoramento.pessoa" Role="pessoa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="perfil">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="pessoa">
+        <PropertyRef Name="perfil_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_pessoa_pessoa">
+    <End Type="Monitoramento.pessoa" Role="pessoa" Multiplicity="0..1" />
+    <End Type="Monitoramento.pessoa" Role="pessoa1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pessoa">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="pessoa1">
+        <PropertyRef Name="vendedor_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_user_status_usuario">
+    <End Type="Monitoramento.status_usuario" Role="status_usuario" Multiplicity="0..1" />
+    <End Type="Monitoramento.pessoa" Role="pessoa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="status_usuario">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="pessoa">
+        <PropertyRef Name="status_usuario_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_cartao_compra">
+    <End Type="Monitoramento.compra" Role="compra" Multiplicity="0..1" />
+    <End Type="Monitoramento.cartao" Role="cartao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="compra">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="cartao">
+        <PropertyRef Name="compra_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

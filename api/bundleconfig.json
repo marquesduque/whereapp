@@ -1,0 +1,82 @@
+[
+  {
+    "outputFileName": "App/js/my-app.min.js",
+    "inputFiles": [
+      "App/js/my-app.js"
+    ]
+  },
+  {
+    "outputFileName": "App/controllers/bundle.js",
+    "inputFiles": [
+      "App/controllers/confirma_compra.js",
+      "App/controllers/concluir_compra.js",
+      "App/controllers/endereco_entrega.js",
+      "App/controllers/detalhe_padrinho.js",
+      "App/controllers/adesao.js",
+      "App/controllers/addgrupo.js",
+      "App/controllers/addItem.js",
+      "App/controllers/additemgrupo.js",
+      "App/controllers/adicionar.js",
+      "App/controllers/agenda.js",
+      "App/controllers/apadrinhar.js",
+      "App/controllers/avaliacao.js",
+      "App/controllers/bemvindo.js",
+      "App/controllers/cadastrarRastreador.js",
+      "App/controllers/cadastro.js",
+      "App/controllers/carrinho.js",
+      "App/controllers/cartao.js",
+      "App/controllers/categoria.js",
+      "App/controllers/cliente.js",
+      "App/controllers/configuracao.js",
+      "App/controllers/confirmar.js",
+      "App/controllers/confirmarEndereco.js",
+      "App/controllers/confirmarNumero.js",
+      "App/controllers/confirmarPedido.js",
+      "App/controllers/consulta.js",
+      "App/controllers/contato_doador.js",
+      "App/controllers/doacao.js",
+      "App/controllers/endereco.js",
+      "App/controllers/entrar.js",
+      "App/controllers/forma_pagamento.js",
+      "App/controllers/finalizar.js",
+      "App/controllers/grupo.js",
+      "App/controllers/grupo_item.js",
+      "App/controllers/item.js",
+      "App/controllers/itemRastrear.js",
+      "App/controllers/lembrar.js",
+      "App/controllers/login.js",
+      "App/controllers/loja.js",
+      "App/controllers/mapa.js",
+      "App/controllers/notificacao.js",
+      "App/controllers/mesa.js",
+      "App/controllers/mesas.js",
+      "App/controllers/meuItem.js",
+      "App/controllers/ong.js",
+      "App/controllers/padrinho.js",
+      "App/controllers/pagamento.js",
+      "App/controllers/perdido.js",
+      "App/controllers/perfil.js",
+      "App/controllers/premium.js",
+      "App/controllers/produto.js",
+      "App/controllers/qrcode.js",
+      "App/controllers/responsavel_juridico.js",
+      "App/controllers/reservar.js",
+      "App/controllers/root.js",
+      "App/controllers/senha.js",
+      "App/controllers/servico.js",
+      "App/controllers/trabalhar.js"
+    ]
+  },
+  {
+    "outputFileName": "App/js/creait.min.js",
+    "inputFiles": [
+      "App/js/creait.js"
+    ]
+  },
+  {
+    "outputFileName": "www/controllers/bundle.min.js",
+    "inputFiles": [
+      "www/controllers/bundle.js"
+    ]
+  }
+]

@@ -1,0 +1,236 @@
+﻿<#@ template language="C#" HostSpecific="True" #>
+<#@ output extension=".cshtml" #>
+<#@ include file="Imports.include.t4" #>
+
+@model Site.Models.Find<#= "<api.Controllers." + ModelMetadata.EntitySetName + "sController.find>" #>
+<#
+// The following chained if-statement outputs the file header code and markup for a partial view, a view using a layout page, or a regular view.
+if(IsPartialView) {
+#>
+
+<#
+} else if(IsLayoutPageSelected) {
+#>
+
+@{
+    ViewBag.Title = "<#= ViewName#>";
+<#
+if (!String.IsNullOrEmpty(LayoutPageFile)) {
+#>
+    Layout = "<#= LayoutPageFile#>";
+<#
+}
+#>
+}
+
+<section class="content-header">
+    <h1>
+        <a href="@Url.Action("Create")" class="btn btn-info" base_library="<#= ViewDataTypeName #>.library_create"><i class="glyphicon glyphicon-plus" style="margin-right:10px"></i>Criar Novo</a>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#" base_library="<#= ViewDataTypeName #>.library_bc_1"><i class="fa fa-newspaper-o"></i>Listar</a></li>
+        <li class="active"><a href="@Url.Action("index")" base_library="<#= ViewDataTypeName #>.library_bc_list"><#= ViewName #></a></li>
+    </ol>
+</section>
+
+<section class="content">
+
+
+
+<#
+} else {
+#>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title><#= ViewName #></title>
+</head>
+<body>
+<#
+    PushIndent("    ");
+}
+#>
+
+
+     <form ajax="@Url.Action("Find")" table="tbl">
+        <input type="hidden" id="Page" name="Page" value="0" />
+
+		<div class="box box-default">
+			<div class="box-header with-border">
+<#
+foreach (PropertyMetadata property in ModelMetadata.Properties) {
+    if (property.Scaffold && !property.IsPrimaryKey) {
+		if (!property.PropertyName.Contains("_itype") && !property.TypeName.ToString().Contains("Byte")) {
+
+        // This is a temporary work around until core scaffolding provides support for independent associations.
+        if (property.IsAssociation) {
+            continue;
+        }
+#>
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="<#= ViewDataTypeName #>.<#= property.PropertyName #>" ><#= property.PropertyName #></label>
+<#
+        if (property.IsForeignKey) {
+#>
+					<select class="form-control select2" source="#Filter_<#= property.PropertyName #>" data-placeholder="" onchange = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" style="width: 100%;">
+						<option value="null">Todos</option>
+						@foreach (var item in new api.Models.db().<#= property.PropertyName.Replace("_id","") #>.Select(c => new { id = c.id, nome = c.nome }))
+						{
+							<option value="@item.id">@(item.nome)</option>
+						}
+					</select>
+					@Html.HiddenFor(model => model.Filter.<#= property.PropertyName #>)
+					@Html.ValidationMessageFor(model => model.Filter.<#= property.PropertyName #>)
+				
+
+<#
+        } else {
+#>
+            
+				<# 
+				if(property.TypeName == "System.Int32") {
+				#>
+					@Html.TextBoxFor(model => model.Filter.<#= property.PropertyName #>, new { placeholder = "", @class = "form-control", maxLength = "150", type="number", min="1", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				<#
+				}
+				else if(property.TypeName == "System.DateTime")
+                {
+				#>
+					@Html.TextBoxFor(model => model.Filter.<#= property.PropertyName #>, "{0:dd/MM/yyyy}", new { placeholder = "", @class = "form-control", mask = "{\"value\":\"99/99/9999\", \"placeholder\":\"dd/mm/yyyy\"}", maxLength = "10", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				<#
+                }
+				else if(property.TypeName == "System.Boolean")
+                {#>
+					<div style="height: 34px; line-height: 30px;">
+						<label style="min-width: 45px;">
+							<input type="checkbox" value="true" name="item_<#= property.PropertyName #>" class="minimal-green">
+							Sim
+
+						</label>
+						<label style="min-width: 45px;">
+							<input type="checkbox" value="false" name="item_<#= property.PropertyName #>" class="minimal">
+							Não
+
+						</label>
+						@Html.HiddenFor(model => model.Filter.<#= property.PropertyName #>, new { icheck = "item_<#= property.PropertyName #>" })
+					</div>
+                <#}
+				else
+				{
+				#>
+					@Html.TextBoxFor(model => model.Filter.<#= property.PropertyName #>, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				<#
+				}
+				#>
+            
+<#
+        }
+#>
+   </div>
+
+<#
+    }}
+}
+#>
+		<div class="box-tools pull-right">
+			<button class="btn btn-box-tool" data-widget="collapse">Pesquisa Avançada<i style="margin-left: 10px" class="fa fa-plus-square fa-minus"></i></button>
+		</div>
+	</div>
+	<div class="box-body" style="display:none">
+	</div>
+	<div class="form-group" style="border-top: 1px solid #f4f4f4; padding: 10px">
+		<button href="#" class="btn btn-warning pull-right" type="button" name="btnProcurar" onclick="$('.tblrow').remove(); $('#Page').val('0'); $('[ajax]').submit();"><i class="glyphicon glyphicon-search" style="margin-right: 10px"></i>Procurar</button>
+		<div style="clear: both"></div>
+	</div>
+</div>
+    <div class="table-default scroll">
+        <div class="filter-table" base_library="<#= ViewDataTypeName #>.library_filter"><i class="glyphicon glyphicon-filter"></i>filtros</div>
+		
+            <div class="filter-table" base_library="api.Models.sample.library_report" onclick="fnExcelReport()" style="margin-left:83px; width:110px">
+                <i class="fa fa-file-excel-o"></i>Relatório
+            </div>
+<table  id="tbl"> 
+    <tr>
+<#
+IEnumerable<PropertyMetadata> properties = ModelMetadata.Properties;
+foreach (PropertyMetadata property in properties) {
+    if (property.Scaffold && !property.IsPrimaryKey) {
+	
+		if (!property.PropertyName.Contains("_itype") && !property.TypeName.ToString().Contains("Byte")) {
+#>
+<#
+        // This is a temporary work around until core scaffolding provides support for independent associations.
+        if (property.IsAssociation) {
+            continue;
+        }
+#>
+        <td base_library="<#= ViewDataTypeName #>.<#= property.PropertyName #>">
+            @Html.DisplayNameFor(model => model.Filter.<#= GetValueExpression(property) #>)
+        </td>
+<#
+    }}
+}
+#>
+    </tr>
+</table>
+</div>
+</form>
+</section>
+
+		<script template="tbl" type="text/template" redirect="@Url.Action("edit")"> 
+
+    <tr class="tblrow" pk="<#= GetPrimaryKeyName() #>">
+<#
+foreach (PropertyMetadata property in properties) {
+    if (property.Scaffold && !property.IsPrimaryKey) {		
+		if (!property.PropertyName.Contains("_itype") && !property.TypeName.ToString().Contains("Byte")) {
+#>
+<#
+        // This is a temporary work around until core scaffolding provides support for independent associations.
+        if (property.IsAssociation) {
+            continue;
+        }
+#>
+        <td column="<#= GetValueExpression(property) #>">
+        </td>
+<#
+    }}
+}
+
+string pkName = GetPrimaryKeyName();
+if (pkName != null) {
+#>
+       
+<#
+} else {
+#>
+     
+<#
+}
+#>
+    </tr>
+
+
+</script>
+<#
+// The following code closes the tag used in the case of a view using a layout page and the body and html tags in the case of a regular view page
+#>
+<#
+if(!IsPartialView && !IsLayoutPageSelected) {
+    ClearIndent();
+#>
+</body>
+</html>
+<#
+}
+#>
+<#@ include file="ModelMetadataFunctions.cs.include.t4" #>

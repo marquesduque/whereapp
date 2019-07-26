@@ -1,0 +1,81 @@
+﻿<div class="pages" redirect="categoria">
+    <div data-page="ong" class="page">
+        <div class="page-content no-searchbar imagem-background" style="padding-top: 0px !important">
+            <div class="list-block addblock">
+                <ul>
+                    <li class="">
+                        <!---->
+                        <div style="background-image: url(https://whereapp.creait.com.br/api/getPhoto?id={{id}}&tabela=pessoa);" class="background_produto">
+                            <div style="float:left; width:auto; padding:10px" id="fechar" onclick="creait.redirect('doacao')" class="link closeadd"><i class="icon-circle-left" id="circulo-fechar"></i></div>
+                        </div>
+                        <div class="content_adicionar">
+                            <div class="titulo-produto" style="font-size:18px;">
+                                {{nome}}
+                            </div>
+                        </div>
+                        <div style="clear:both"></div>
+                        <div class="agrupamento" style="font-weight: 100;font-size: 12px; padding:0px 0px 0px 10px">
+                            {{descricao}}
+                        </div>
+                        <div style="padding:10px; display:block;">
+                            <input type="hidden" id="valor_real"/>
+                            <ul>
+                                <li onclick="$('#valor').val('');">
+                                    <label class="label-radio item-content">
+                                        <!-- Checked by default -->
+                                        <input type="radio" name="itens" class="itens" value="10" checked="checked">
+                                        <div class="item-media">
+                                            <i class="icon icon-form-radio"></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <div class="item-title"><span formatMoney>10</span></div>
+                                        </div>
+                                    </label>
+                                </li>
+                                <li onclick="$('#valor').val('');">
+                                    <label class="label-radio item-content">
+                                        <!-- Checked by default -->
+                                        <input type="radio" name="itens" class="itens" value="20">
+                                        <div class="item-media">
+                                            <i class="icon icon-form-radio"></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <div class="item-title"><span formatMoney>20</span></div>
+                                        </div>
+                                    </label>
+                                </li>
+                                <li onclick="$('#valor').val('');">
+                                    <label class="label-radio item-content">
+                                        <!-- Checked by default -->
+                                        <input type="radio" name="itens" class="itens" value="50">
+                                        <div class="item-media">
+                                            <i class="icon icon-form-radio"></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <div class="item-title"><span formatMoney>50</span></div>
+                                        </div>
+                                    </label>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" type="number" id="valor_ad" placeholder="Valor da doação" min="10" onclick='$(".itens:checked").prop("checked", false);' onblur="$('#valor_real').val($(this).val())">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+                <div style="padding:10px">
+                    <div id="btn_pagar_ong" class="buton link">
+                        <img style="width: 30px; margin-right: 5px; margin-left: -100px; margin-top: -5px" src="icons/animated/{{cor_tema}}/add.svg" />
+                        <span style="position:absolute">Pagar</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!--  -->
+</div>

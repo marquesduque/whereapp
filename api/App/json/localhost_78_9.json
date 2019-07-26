@@ -1,0 +1,103 @@
+{
+  "telefone": "(11) 94281-4280",
+  "celular": "+551194281-4280",
+  "lat": -23.541655200000,
+  "lng": -46.651732199999,
+  "endereco": "Rua Jaguaribe,   - São Paulo",
+  "delivery": true,
+  "balcao": false,
+  "correios": false,
+  "versao": 9,
+  "id": 78,
+  "nome": "Aquela fominha",
+  "external_id": null,
+  "tipos": [],
+  "grupo_do_pagamento": [
+    {
+      "pagamento": [
+        {
+          "bandeira": null,
+          "compra": [],
+          "id": 286,
+          "nome": "Cartão de Crédito",
+          "taxa": 2.00,
+          "grupo_do_pagamento_id": 90,
+          "bandeira_id": null,
+          "place_id": 2278303365829538,
+          "transacao": 4,
+          "external_id": null,
+          "icone": null,
+          "icone_itype": null
+        }
+      ],
+      "id": 90,
+      "nome": "Pague Online",
+      "place_id": 2278303365829538,
+      "app": null
+    },
+    {
+      "pagamento": [
+        {
+          "bandeira": null,
+          "compra": [],
+          "id": 282,
+          "nome": "Dinheiro",
+          "taxa": null,
+          "grupo_do_pagamento_id": 91,
+          "bandeira_id": null,
+          "place_id": 2278303365829538,
+          "transacao": 1,
+          "external_id": null,
+          "icone": null,
+          "icone_itype": null
+        },
+        {
+          "bandeira": null,
+          "compra": [],
+          "id": 283,
+          "nome": "Cartão de Crédito",
+          "taxa": 2.00,
+          "grupo_do_pagamento_id": 91,
+          "bandeira_id": null,
+          "place_id": 2278303365829538,
+          "transacao": 2,
+          "external_id": null,
+          "icone": null,
+          "icone_itype": null
+        },
+        {
+          "bandeira": null,
+          "compra": [],
+          "id": 284,
+          "nome": "Cartão de Débito",
+          "taxa": 0.00,
+          "grupo_do_pagamento_id": 91,
+          "bandeira_id": null,
+          "place_id": 2278303365829538,
+          "transacao": 3,
+          "external_id": null,
+          "icone": null,
+          "icone_itype": null
+        },
+        {
+          "bandeira": null,
+          "compra": [],
+          "id": 285,
+          "nome": "Vale Refeição",
+          "taxa": 0.00,
+          "grupo_do_pagamento_id": 91,
+          "bandeira_id": null,
+          "place_id": 2278303365829538,
+          "transacao": 5,
+          "external_id": null,
+          "icone": null,
+          "icone_itype": null
+        }
+      ],
+      "id": 91,
+      "nome": "Pague na Entrega",
+      "place_id": 2278303365829538,
+      "app": null
+    }
+  ]
+}

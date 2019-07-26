@@ -1,0 +1,77 @@
+﻿<div class="pages">
+    <div data-page="montagem" class="page navbar-fixed">
+        <div class="navbar background-creait">
+            <div class="navbar-inner" style="display: initial;   ">
+                <a id="voltar" style="float:left; padding:12px; cursor:pointer"> <i class="f7-icons" style="font-size:25px;font-weight: 900;">angle-left</i></a>
+                
+
+                <div class="center" style="line-height: 55px;
+    margin-top: -10px;" id="complemento_nome">
+                    {{nome}}
+                </div>
+            </div>
+        </div>
+        <div class="page-content imagem-background no-searchbar" style="    height: calc(100% - 0px);">
+
+            <div class="tabs-animated-wrap" style="height: calc(100% - 60px) !important;">
+                <!-- Tabs, tabs wrapper -->
+                <div class="tabs">
+                    {{#each this.montagem}}
+                    <div id="tab{{@index}}" class="tab" step="{{@index}}" montagem_nome="{{nome}}" montagem_id="{{id}}">
+                        <div class="list-block media-list" style="height: calc(100% - 36px); ">
+                            <div class="list-block" style="margin:0px;
+">
+                                <div class="row">
+                                    <ul style="width:100%">
+                                        {{#each this.complemento}}
+                                        <li class="produtoli">
+                                            {{#js_if "this.icone != ''"}}
+                                            <div style="background:url({{icone}}); height:70px; width:70px; margin:5px" class="image_cart" for="{{product_id}}">
+                                            </div>
+                                            {{/js_if}}
+
+                                            <span class="icon-checkbox-checked" style="font-size:20px">
+
+                                            </span>
+                                            <label class="label-radio" style="padding:0px">
+                                                <input type="{{type}}" name="rdb_complementos" value="{{product_id}}" id="{{product_id}}" />
+                                                <div class="item-media" max="{{../max}}" style="position: absolute;">
+                                                    <i class="icon icon-form-radio radioMontagem"></i>
+                                                </div>
+
+
+                                                <div style="padding:10px; height:100%" for="{{product_id}}">
+                                               
+                                                        <span class="item-title fonte_cinza" style="font-weight: bold; margin-left: 5px; margin-bottom:5px; font-size:14px">{{nome}}</span>
+                                                        <div class="item-title fonte_cinza" style="min-height:38px; white-space: normal; padding-left:7px">
+                                                        {{descricao}}
+
+                                                            <span class="link-deeporange" style="float:right; width:100%; padding-top:5px; font-size:16px" formatMoney>{{preco_montagem_desconto}}</span>
+                                                        </div>
+                                                </div>
+                                            </label>
+                                        </li>
+                                        {{/each}}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+            <div class="buton" style="bottom: 0px;    
+    position: fixed;
+    left: 0;width: calc(100% - 0px);
+    border-radius: 0px;"  id="avancar">
+
+                        <span id="lbl_proximo" style="line-height: 40px;">Finalizar</span>
+                        <i class="f7-icons" style="font-size:12px; float:right; line-height: 39px;">chevron_right</i>
+
+            </div>
+        </div>
+        <script>
+            creait.resize();
+        </script>
+    </div>
+</div>

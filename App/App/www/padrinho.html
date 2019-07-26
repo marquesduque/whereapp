@@ -1,0 +1,41 @@
+﻿<div class="pages">
+    <div data-page="padrinho" class="page">
+        <div class="navbar background-creait">
+            <div class="navbar-inner margin-bottom-20">
+                <div class="left"><a class="back link" onclick="creait.redirect('categoria')"> <i class="f7-icons icone-voltar" style="margin-right: 10px;">chevron_left</i></a></div>
+                <div class="center">Padrinho</div>
+            </div>
+        </div>
+        <div class="page-content text-center">
+            <div class="page-content" id="app-cover">
+
+                <div style="margin-top: 60px; overflow: auto;">
+                    <div style="text-align: justify; width: 100%;">
+                        <div style="padding: 10px;">
+                            <span>É um fato conhecido de todos que um leitor se distrairá com o conteúdo de texto legível de uma página quando estiver examinando sua diagramação. A vantagem de usar Lorem Ipsum é que ele tem uma distribuição normal de letras, ao contrário de "Conteúdo aqui, conteúdo aqui", fazendo com que ele tenha uma aparência similar a de um texto legível.</span>
+                        </div>
+                    </div>
+                    <div class="list-block list" style="overflow: auto;">
+                        <ul style="">
+                            {{#each itens}}
+                            <li class="produtoli grid-item-m" onclick='creait.redirect("detalhe_padrinho"); controller.detalhe_padrinho.set({{js "JSON.stringify(this)"}})'>
+                                <div class="item-title-row">
+                                    <div id="bg{{id}}" style="background:url(https://whereapp.creait.com.br/api/getPhoto?id={{id}}&tabela=item)" class="image_cart">
+                                    </div>
+                                    <div class="titulo_produto item-title" style="text-align: left;">
+                                        {{nome}}
+                                    </div>
+                                    <div style="padding: 0px 10px; text-align: left;">
+                                        {{descricao}}
+                                    </div>
+                                </div>
+                                <div style="clear:both"></div>
+                            </li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

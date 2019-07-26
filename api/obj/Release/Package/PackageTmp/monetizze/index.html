@@ -1,0 +1,793 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- SITE TITTLE -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CreApp</title>
+
+    <!-- PLUGINS CSS STYLE -->
+    <!-- Bootstrap -->
+    <link href="plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Themefisher Font -->
+    <link href="plugins/themefisher-font/style.css" rel="stylesheet">
+    <!-- Slick Carousel -->
+    <link href="plugins/slick/slick.css" rel="stylesheet">
+    <!-- Slick Carousel Theme -->
+    <link href="plugins/slick/slick-theme.css" rel="stylesheet">
+
+    <!-- CUSTOM CSS -->
+    <link href="css/style.css" rel="stylesheet">
+    <!-- FAVICON -->
+    <link href="images/favicon.png" rel="shortcut icon">
+    <link rel="icon" type="image/png" href="images/fav.png" />
+    <script>
+        function finalizar() {
+            debugger;
+            var valid = true;
+            var emails = $('#txtEmail').val().replace(';', ',').split(",");
+
+            jQuery.each(emails, function () {
+                if (jQuery.trim(this) != '') {
+                    if (!jQuery.trim(this).match(/^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$/i))
+                        valid = false;
+                }
+                else {
+                    valid = false;
+                }
+            });
+            $('.erro').remove();
+            if (valid) {
+
+                var url = "/api/Email?email=" + $('#txtEmail').val();
+                $('#formpromocao').html('Parabêns você ganhou 2 meses grátis. Ative seu prêmio agora mesmo via whatsapp.<br><br><a target="_blank" style="background:#ff698d; color:white" href="https://api.whatsapp.com/send?phone=5511941699879&text=Ol%C3%A1%20Fernando%2C%20gostaria%20de%20ativar%20o%20plano%20Web" class="btn btn-main-rounded">ATIVAR PRÊMIO</a>');
+
+
+                $.post(url,
+                    function (data, status) {
+                    });
+            }
+            else {
+                $('#formpromocao').append('<div class="erro">Email inválido</div>');
+            }
+        }
+    </script>
+</head>
+<body class="body-wrapper">
+
+    <nav class="navbar main-nav fixed-top navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="images/logo.png" alt="logo"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="tf-ion-android-menu"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link scrollTo" href="#home">Olá</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link scrollTo" href="#about">Etapas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link scrollTo" href="#feature">APP</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link scrollTo" href="#pricing">PREÇO</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!--=====================================
+    =            Homepage Banner            =
+    ======================================-->
+    <section class="banner bg-1" id="home">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 align-self-center">
+                    <!-- Contents -->
+                    <div class="content-block">
+                        <h1 style="font-size: 50px;
+    line-height: 50px;">
+                            O seu<br />aplicativo<br /><b>delivery</b>
+                        </h1>
+                        <h5 style="line-height: 30px;">
+                            Venda pelo seu próprio aplicativo<br />Lucre muito mais, sem comissões, pedidos ilimitados.<br />Mais vendas e economia para o seu estabelecimento.
+                        </h5>
+                        <!-- App Badge -->
+                        <div class="app-badge">
+                            <ul class="list-inline">
+                                <li class="list-inline-item">
+                                    <a href="#"><img class="img-fluid" src="images/app-badge/google-play.png" alt="google-play"></a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#"><img class="img-fluid" src="images/app-badge/app-store.png" alt="app-store"></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <!-- App Image -->
+                    <div class="image-block">
+                        <img id="img_topo" class="img-fluid" src="images/novo/1.png" />
+                        <script>
+                            var i = 1;
+                            setInterval(function () {
+                                i++;
+                                if (i > 5) {
+                                    i = 1;
+                                }
+                                $('#img_topo').attr('src', 'images/novo/' + i + '.png');
+                            }, 4000);
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--====  End of Homepage Banner  ====-->
+    <!--===========================
+    =            About            =
+    ============================-->
+    <section class="about section bg-2" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 mr-auto">
+                    <!-- Image Content -->
+                    <div class="image-block">
+                        <img src="images/phones/iphone-feature.png" alt="iphone-feature" class="img-fluid">
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-10 m-md-auto align-self-center ml-auto">
+                    <div class="about-block">
+                        <!-- About 01 -->
+                        <div class="about-item">
+                            <div class="icon">
+                                <i class="tf-ion-ios-paper-outline"></i>
+                            </div>
+                            <div class="content">
+                                <h5>Customização</h5>
+                                <p>Customização completa do seu aplicativo delivery dentro da identidade visual de sua marca e estabelecimento, para facilitar a identificação do público.</p>
+                            </div>
+                        </div>
+                        <!-- About 02 -->
+                        <div class="about-item active">
+                            <div class="icon">
+                                <i class="tf-globe"></i>
+                            </div>
+                            <div class="content">
+                                <h5>Publicação</h5>
+                                <p>Seremos responsáveis pela publicação do seu aplicativo delivery nas lojas de aplicativo do Google (PlayStore) e da Apple (Itunes). Assim, você só precisa se preocupar com a gestão do seu negócio.</p>
+                            </div>
+                        </div>
+                        <!-- About 03 -->
+                        <div class="about-item">
+                            <div class="icon">
+                                <i class="tf-circle-compass"></i>
+                            </div>
+                            <div class="content">
+                                <h5>Garantia & Treinamento</h5>
+                                <p>Com o treinamento e o período de garantia, prezamos pela usabilidade do seu aplicativo, corrigindo possíveis erros e garantindo que você explore todas as funcionalidades da melhor forma.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--====  End of About  ====-->
+    <!--==============================
+    =            Features            =
+    ===============================-->
+    <section class="section feature" id="feature">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-title">
+                        <h2>Recursos Incríveis</h2>
+                        <p>Veja alguns dos recursos que o seu aplicativo delivery pode ter.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row bg-elipse">
+                <div class="col-lg-4 align-self-center text-center text-lg-right">
+                    <!-- Feature Item -->
+                    <div class="feature-item">
+                        <!-- Icon -->
+                        <div class="icon">
+                            <i class="tf-tools-2"></i>
+                        </div>
+                        <!-- Content -->
+                        <div class="content">
+                            <h5>Gestão de loja e cardápio</h5>
+                            <p>Dados da loja, design customizado, horário de funcionamento, método de pagamento, área de entrega e todos os ajustes do seu cardápio em tempo real, sem a interferência de terceiros.</p>
+                        </div>
+                    </div>
+                    <!-- Feature Item -->
+                    <div class="feature-item">
+                        <!-- Icon -->
+                        <div class="icon">
+                            <i class="tf-ion-android-bulb"></i>
+                        </div>
+                        <!-- Content -->
+                        <div class="content">
+                            <h5>GEstão inteligente</h5>
+                            <p>Torne o seu fluxo de preparo (venda > preparo > entrega) muito mais inteligente e dinâmico, assista todo o processo através de painéis interativos KDS</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <!-- Feature Item -->
+                    <div class="feature-item mb-0">
+                        <!-- Icon -->
+                        <div class="icon">
+                            <i class="tf-chat"></i>
+                        </div>
+                        <!-- Content -->
+                        <div class="content">
+                            <h5>Whatsapp CONECTOR</h5>
+                            <p>Botão para iniciar atendimento via whatsapp dentro do seu APP.</p>
+                        </div>
+                    </div>
+                    <div class="app-screen">
+                        <img id="img_recursos" class="img-fluid" src="images/novo/setings/1.png" alt="app-screen">
+
+                        <script>
+                            var a = 1;
+                            setInterval(function () {
+                                a++;
+                                if (a > 5) {
+                                    a = 1;
+                                }
+                                $('#img_recursos').attr('src', 'images/novo/setings/' + a + '.png');
+                            }, 4000);
+                        </script>
+                    </div>
+                    <!-- Feature Item -->
+                    <div class="feature-item">
+                        <!-- Icon -->
+                        <div class="icon">
+                            <i class="tf-hourglass"></i>
+                        </div>
+                        <!-- Content -->
+                        <div class="content">
+                            <h5>Suporte 24/7</h5>
+                            <p>Fale através do whatsapp com nossos consultores</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 text-center text-lg-left align-self-center">
+                    <!-- Feature Item -->
+                    <div class="feature-item">
+                        <!-- Icon -->
+                        <div class="icon">
+                            <i class="tf-mobile"></i>
+                        </div>
+                        <!-- Content -->
+                        <div class="content">
+                            <h5>Pagamento online</h5>
+                            <p>Receba pagamentos online diretamente do seu cliente através da sua operadora de cartão.</p>
+                        </div>
+                    </div>
+                    <!-- Feature Item -->
+                    <div class="feature-item">
+                        <!-- Icon -->
+                        <div class="icon">
+                            <i class="tf-layers"></i>
+                        </div>
+                        <!-- Content -->
+                        <div class="content">
+                            <h5>IOS & android</h5>
+                            <p>Seu aplicativo lançado em até 5 dias úteis.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--====  End of Features  ====-->
+
+
+    <section class="cta-download bg-3 overlay">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-sm-1">
+                    <div class="image-block" style="top: -80px;"><img class="img-fluid" src="images/novo/sorteio.png" alt=""></div>
+                </div>
+                <div class="col-lg-7 col-sm-12">
+
+                    <div class="content">
+                        <div class="title">
+                            <h2 style="color:#ffffff">12 meses grátis</h2>
+                        </div>
+                        <div class="description">
+                            <p style="color:#ffffff">Inscreva seu email e <b style="font-size:20px">CONCORA</b> a 12 meses grátis no plano web</p>
+                        </div>
+                        <form id="formpromocao" style="font-size: 40px;    line-height: 40px;
+    font-weight: 700;
+    color: #FFEB3B;" action="/api/email">
+                            <div class="input-group">
+                                <input id="txtEmail" name="email" type="text" class="form-control main" placeholder="Seu email">
+                                <span class="input-group-addon tf-ion-android-send" onclick="finalizar()" id="btnGroupAddon"></span>
+                            </div>
+                        </form>
+                        <div class="subscription-tag text-right">
+                            <p style="color:#ffffff">inscreva-se para ganhar</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--=================================
+    =            Promo Video            =
+    ==================================-->
+    <section class="section promo-video bg-3 overlay" style="display:none">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <!-- Promo Video -->
+                    <div class="video">
+                        <img class="img-fluid" src="images/backgrounds/promo-video-bg.jpg" alt="video-thumbnail">
+                        <div class="video-button video-box">
+                            <!-- Video Play Button -->
+                            <a href="javascript:void(0)">
+                                <span class="icon" data-video="https://www.youtube.com/embed/g3-VxLQO7do?autoplay=1">
+                                    <i class="tf-ion-ios-play-outline"></i>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--====  End of Promo Video  ====-->
+    <!--===================================
+    =            Pricing Table            =
+    ====================================-->
+    <section class="pricing section bg-shape" id="pricing">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-title">
+                        <h2>Escolha seu plano</h2>
+                        <p>Escolha o plano ideal para o seu negócio, clique em "QUERO MEU DELIVERY" e ative seu plano via <b>Whatsapp</b>.</p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 m-md-auto">
+                    <!-- Pricing Table -->
+                    <div class="pricing-table text-center" style="border: 3px solid #FFC107;">
+                        <!-- Title -->
+                        <div class="title">
+                            <h5>APP</h5>
+                        </div>
+                        <!-- Price Tag -->
+                        <div class="price">
+                            <div style="font-size:14px; text-decoration:line-through;  margin-top:-25px; color:#F44336">
+                                R$199
+                            </div>
+                            <p>R$99</p>
+                        </div>
+                        <!-- Features -->
+                        <ul class="feature-list">
+                            <li>Web APP</li>
+                            <li>App Android</li>
+                            <li>App IOS</li>
+                            <li>KDS</li>
+                            <li>Gerenciamento de vendas</li>
+                            <li>Gerenciamento de produtos</li>
+                            <li>Gerenciamento de clientes</li>
+                            <li>2 Filiais</li>
+                            <li>Suporte 24Hrs</li>
+                            <li>Pagamento online</li>
+                            <li>Pagamento na entrega</li>
+                            <li>Push Notification</li>
+                        </ul>
+                  
+                        <!-- Take Action -->
+                        <div class="action-button">
+                            <a target="_blank" href="https://app.monetizze.com.br/checkout/PNP66868" class="btn btn-main-rounded" style="background-color:#4CAF50; font-size:20px">COMPRAR</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--====  End of Pricing Table  ====-->
+    <!--=============================================
+    =            Call to Action Download            =
+    ==============================================-->
+    <!--====  End of Call to Action Download  ====-->
+    <!--=============================
+    =            Counter            =
+    ==============================-->
+    <section class="section counter bg-gray" style="display:none">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="counter-item">
+                        <!-- Counter Number -->
+                        <h3>29k</h3>
+                        <!-- Counter Name -->
+                        <p>Download</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="counter-item">
+                        <!-- Counter Number -->
+                        <h3>200k</h3>
+                        <!-- Counter Name -->
+                        <p>Active Account</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="counter-item">
+                        <!-- Counter Number -->
+                        <h3>60k</h3>
+                        <!-- Counter Name -->
+                        <p>Happy User</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="counter-item">
+                        <!-- Counter Number -->
+                        <h3>300k<sup>+</sup></h3>
+                        <!-- Counter Name -->
+                        <p>Download</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--====  End of Counter  ====-->
+    <!--==========================
+    =            Team            =
+    ===========================-->
+    <section class="section team bg-shape-two" id="team" style="display:none">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-title">
+                        <h2>Our Creative Team</h2>
+                        <p>Demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee idea of denouncing pleasure and praising</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <!-- Team Member -->
+                    <div class="team-member text-center">
+                        <div class="image">
+                            <img class="img-fluid" src="images/team/member-one.jpg" alt="team-member">
+                        </div>
+                        <div class="name">
+                            <h5>Johnny Depp</h5>
+                        </div>
+                        <div class="position">
+                            <p>Production Designer</p>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="progress" data-percent="85%">
+                                <div class="progress-bar"></div>
+                            </div>
+                            <span>85%</span>
+                        </div>
+                        <ul class="social-icons list-inline">
+                            <li class="list-inline-item">
+                                <a href=""><i class="tf-ion-social-facebook"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href=""><i class="tf-ion-social-twitter"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href=""><i class="tf-ion-social-linkedin"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href=""><i class="tf-ion-social-instagram-outline"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <!-- Team Member -->
+                    <div class="team-member text-center">
+                        <div class="image">
+                            <img class="img-fluid" src="images/team/member-two.jpg" alt="team-member">
+                        </div>
+                        <div class="name">
+                            <h5>cristin milioti</h5>
+                        </div>
+                        <div class="position">
+                            <p>UX Researcher</p>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="progress" data-percent="95%">
+                                <div class="progress-bar"></div>
+                            </div>
+                            <span>95%</span>
+                        </div>
+                        <ul class="social-icons list-inline">
+                            <li class="list-inline-item">
+                                <a href=""><i class="tf-ion-social-facebook"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href=""><i class="tf-ion-social-twitter"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href=""><i class="tf-ion-social-linkedin"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href=""><i class="tf-ion-social-instagram-outline"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <!-- Team Member -->
+                    <div class="team-member text-center">
+                        <div class="image">
+                            <img class="img-fluid" src="images/team/member-three.jpg" alt="team-member">
+                        </div>
+                        <div class="name">
+                            <h5>john doe</h5>
+                        </div>
+                        <div class="position">
+                            <p>Head of Ideas</p>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="progress" data-percent="80%">
+                                <div class="progress-bar"></div>
+                            </div>
+                            <span>80%</span>
+                        </div>
+                        <ul class="social-icons list-inline">
+                            <li class="list-inline-item">
+                                <a href=""><i class="tf-ion-social-facebook"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href=""><i class="tf-ion-social-twitter"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href=""><i class="tf-ion-social-linkedin"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href=""><i class="tf-ion-social-instagram-outline"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <!-- Team Member -->
+                    <div class="team-member text-center">
+                        <div class="image">
+                            <img class="img-fluid" src="images/team/member-four.jpg" alt="team-member">
+                        </div>
+                        <div class="name">
+                            <h5>mario gotze</h5>
+                        </div>
+                        <div class="position">
+                            <p>UX/UI designer</p>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="progress" data-percent="75%">
+                                <div class="progress-bar"></div>
+                            </div>
+                            <span>75%</span>
+                        </div>
+                        <ul class="social-icons list-inline">
+                            <li class="list-inline-item">
+                                <a href=""><i class="tf-ion-social-facebook"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href=""><i class="tf-ion-social-twitter"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href=""><i class="tf-ion-social-linkedin"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href=""><i class="tf-ion-social-instagram-outline"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--====  End of Team  ====-->
+    <!--=================================
+    =            Testimonial            =
+    ==================================-->
+    <section class="section testimonial bg-primary-shape" id="testimonial" style="display:none">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-title">
+                        <h2 class="text-white">Our Happy Customers</h2>
+                        <p class="text-white">Demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee idea of denouncing pleasure and praising</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8 m-auto">
+                    <!-- Testimonial Carosel -->
+                    <div class="testimonial-slider">
+                        <!-- testimonial item -->
+                        <div class="testimonial-item">
+                            <div class="content">
+                                <div class="name">
+                                    <h5>Kris lazy Cistin Miloti</h5>
+                                </div>
+                                <div class="pos-in-com">
+                                    <p>CEO at <span>Themefisher</span></p>
+                                </div>
+                                <div class="speech">
+                                    <p>Explain to you how all this mistaken idea of denouncing tis pleasure and praising pain was born and I will give you a complete praising the account is account the. </p>
+                                </div>
+                                <ul class="rating list-inline">
+                                    <li class="list-inline-item">
+                                        <i class="tf-ion-android-star"></i>
+                                        <i class="tf-ion-android-star"></i>
+                                        <i class="tf-ion-android-star"></i>
+                                        <i class="tf-ion-android-star"></i>
+                                        <i class="tf-ion-android-star"></i>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="image">
+                                <img class="img-fluid" src="images/testimonial/review-person-one.png" alt="testimonial-person">
+                            </div>
+                        </div>
+                        <!-- testimonial item -->
+                        <div class="testimonial-item">
+                            <div class="content">
+                                <div class="name">
+                                    <h5>Kris lazy Cistin Miloti</h5>
+                                </div>
+                                <div class="pos-in-com">
+                                    <p>CEO at<span>Themefisher</span></p>
+                                </div>
+                                <div class="speech">
+                                    <p>Explain to you how all this mistaken idea of denouncing tis pleasure and praising pain was born and I will give you a complete praising the account is account the. </p>
+                                </div>
+                                <div class="rating">
+                                    <ul class="rating list-inline">
+                                        <li class="list-inline-item">
+                                            <i class="tf-ion-android-star"></i>
+                                            <i class="tf-ion-android-star"></i>
+                                            <i class="tf-ion-android-star"></i>
+                                            <i class="tf-ion-android-star"></i>
+                                            <i class="tf-ion-android-star"></i>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="image">
+                                <img class="img-fluid" src="images/testimonial/review-person-one.png" alt="testimonial-person">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--====  End of Testimonial  ====-->
+    <section class="section cta-subscribe" id="contact" style="display:none">
+        <div class="container">
+            <div class="row bg-elipse-red">
+                <div class="col-lg-4">
+                    <div class="image"><img src="images/phones/iphone-banner.png" alt="iphone-app"></div>
+                </div>
+                <div class="col-lg-8 align-self-center">
+                    <div class="content">
+                        <div class="title">
+                            <h2>Subscribe Our Newsletter</h2>
+                        </div>
+                        <div class="description">
+                            <p>Demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee idea of denouncing pleasure and praising</p>
+                        </div>
+                        <form action="#">
+                            <div class="input-group">
+                                <input type="text" class="form-control main" placeholder="Enter your email address">
+                                <span class="input-group-addon tf-ion-android-send" id="btnGroupAddon"></span>
+                            </div>
+                        </form>
+                        <div class="subscription-tag text-right">
+                            <p>Subscribe To Our Newsletter & Stay Updated</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--============================
+    =            Footer            =
+    =============================-->
+    <footer class="footer-main" style="padding-bottom: 145px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 mr-auto">
+                    <div class="footer-logo">
+                        <img src="images/logo.png" alt="footer-logo">
+                    </div>
+                    <div class="copyright">
+                        <p>
+                            @2017 CREAPP  |  Criado por : <a href="https://creait.com.br/" target="_blank">Creait</a>
+                        </p>
+                    </div>
+                </div>
+                <!--<div class="col-lg-6 text-lg-right">
+                    <ul class="social-icons list-inline">
+                        <li class="list-inline-item">
+                            <a href=""><i class="tf-ion-social-facebook"></i></a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href=""><i class="tf-ion-social-twitter"></i></a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href=""><i class="tf-ion-social-linkedin"></i></a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href=""><i class="tf-ion-social-instagram-outline"></i></a>
+                        </li>
+                    </ul>
+                    <ul class="footer-links list-inline">
+                        <li class="list-inline-item">
+                            <a href="#">ABOUT</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#">TEAM</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#">CONTACT</a>
+                        </li>
+                    </ul>
+                </div>-->
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://api.whatsapp.com/send?phone=5511941699879&text=Ol%C3%A1%20Fernando%20" target="_blank" class="talk-bubble tri-right border round btm-left-in"
+       style="    position: fixed;
+    bottom: 0px;
+    background-color: white;
+    color: gray;
+    z-index: 999;
+    border: 8px solid #666 !important;
+    border-radius: 30px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    min-width: 105px;
+    width: calc(100% - 50px);
+    max-width: 410px; text-align:center">
+        <div class="talktext">
+            <img src="images/novo/whats.png" />
+            ...
+            <span>
+                Olá meu nome é Fernando,
+                Precisa de ajuda?
+            </span>
+        </div>
+    </a>
+
+    <!-- JAVASCRIPTS -->
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBI14J_PNWVd-m0gnUBkjmhoQyNyd7nllA" async defer></script>
+    <script src="plugins/jquery/jquery.js"></script>
+    <script src="plugins/popper/popper.min.js"></script>
+    <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="plugins/waypoints/jquery.waypoints.min.js"></script>
+    <script src="plugins/slick/slick.min.js"></script>
+    <script src="plugins/smoothscroll/SmoothScroll.min.js"></script>
+    <script src="js/custom.js"></script>
+
+</body>
+</html>

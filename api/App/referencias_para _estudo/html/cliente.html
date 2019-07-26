@@ -1,0 +1,126 @@
+﻿<div class="pages">
+    <div data-page="confirmarCliente" class="page navbar-fixed">
+        <div class="navbar background-creait">
+            <div class="navbar-inner">
+                <!--<div class="left">
+                    {{#js_if "controller.login.get() != null && controller.login.get().perfil_id == 6"}}
+                    <a href="adicionar.html?id={{js "controller.login.get().produto_id"}}&regiao={{js "controller.filial.get().id"}}" class="link"><i class="f7-icons icone-voltar">angle-left</i></a>
+                    {{else}}
+                    <a href="carrinho.html" class="link"><i class="f7-icons icone-voltar">angle-left</i></a>
+                    {{/js_if}}
+                </div>-->
+                <div class="center" style="margin:0 auto">Informe o Cliente</div>
+            </div>
+        </div>
+        <div class="page-content contacts-content imagem-background no-searchbar">
+            <div style="height: auto;">
+                <div class="list-block">
+                    <ul class="no-border">
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner no-margin">
+                                    <div class="item-input">
+                                        <input class="input-confirmarCliente" style="text-align:center;" id="dados" type="text" name="dados" placeholder="Email, CPF ou Telefone do cliente">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="row btn-form-group margin-bottom-10">
+                    <div class="col-100">
+                        <div id="buscar" class="buton">Buscar</div>
+                    </div>
+                </div>
+            </div>
+            <div class="dadosCli">
+                <formconfir id="conta">
+
+                    <input type="hidden" name="id">
+                    <div class="list-block margin-bottom-40">
+                        <ul class="no-border">
+                        
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner no-margin">
+                                        <div class="item-input">
+                                            <input class="input-confirmarCliente" id="nome" type="text" name="nome" placeholder="Nome">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="pessoaJ">
+                                <div class="item-content">
+                                    <div class="item-inner no-margin">
+                                        <div class="item-input">
+                                            <input class="input-confirmarCliente" id="razao_social" type="text" name="razao_social" placeholder="Razão Social">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner no-margin">
+                                        <div class="item-input">
+                                            <input class="input-confirmarCliente" id="email" type="text" name="email" placeholder="E-mail">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner no-margin">
+                                        <div class="item-input">
+                                            <input class="input-confirmarCliente" id="cpf" type="tel" name="cpf" placeholder="CPF">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="pessoaJ">
+                                <div class="item-content">
+                                    <div class="item-inner no-margin">
+                                        <div class="item-input">
+                                            <input class="input-confirmarCliente" id="cnpj" type="tel" name="cnpj" placeholder="CNPJ">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <!--<li>
+                                <div class="item-content">
+                                    <div class="item-inner no-margin">
+                                        <div class="item-input">
+                                            <input class="input-confirmarCliente" id="rg" type="tel" name="rg" placeholder="RG">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>-->
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner no-margin">
+                                        <div class="item-input">
+                                            <input class="input-confirmarCliente" id="telefone" type="tel" mask="tel" name="phone" placeholder="Telefone">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li id="endereco_cliente" style="text-align: center;
+    padding: 20px 10px;
+    font-size: 14px;
+    font-weight: 700; cursor:pointer">
+                            </li>
+                            <li>
+                                <div class="item-content margin-bottom-10">
+                                    <div class="item-inner no-margin">
+                                        <div class="col-100">
+                                            <div id="proximo" class="buton">Proximo</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </formconfir>
+            </div>
+        </div>
+    </div>
+</div>

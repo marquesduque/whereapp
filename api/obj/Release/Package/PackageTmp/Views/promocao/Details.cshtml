@@ -1,0 +1,387 @@
+﻿@model api.Models.promocao
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>promocao</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.valor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.valor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.validade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.validade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.automatico)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.automatico)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.codigo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.codigo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.place_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.place_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.utilizacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.utilizacao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ativo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ativo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.seg1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.seg1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.seg2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.seg2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.seg3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.seg3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.seg4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.seg4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ter1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ter1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ter2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ter2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ter3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ter3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ter4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ter4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.qua1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.qua1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.qua2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.qua2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.qua3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.qua3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.qua4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.qua4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.qui1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.qui1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.qui2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.qui2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.qui3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.qui3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.qui4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.qui4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sex1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sex1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sex2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sex2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sex3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sex3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sex4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sex4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sab1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sab1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sab2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sab2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sab3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sab3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sab4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sab4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dom1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dom1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dom2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dom2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dom3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dom3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dom4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dom4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.seg)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.seg)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ter)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ter)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.qua)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.qua)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.qui)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.qui)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sex)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sex)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sab)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sab)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.compra.pagarme_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.compra.pagarme_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pessoa.nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pessoa.nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.produto.nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.produto.nome)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

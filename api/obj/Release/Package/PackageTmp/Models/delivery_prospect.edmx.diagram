@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b974a836311d484688c6a1d8e5a8b049" Name="Diagram1" ZoomLevel="72">
+        <EntityTypeShape EntityType="delivery_prospectModel.bank" Width="1.5" PointX="8.75" PointY="6.75" />
+        <EntityTypeShape EntityType="delivery_prospectModel.billing" Width="1.5" PointX="8.25" PointY="10.375" />
+        <EntityTypeShape EntityType="delivery_prospectModel.category" Width="1.5" PointX="8.75" PointY="4" />
+        <EntityTypeShape EntityType="delivery_prospectModel.category_list" Width="1.5" PointX="11" PointY="3.875" />
+        <EntityTypeShape EntityType="delivery_prospectModel.config" Width="1.5" PointX="10.75" PointY="6.75" />
+        <EntityTypeShape EntityType="delivery_prospectModel.creait" Width="1.5" PointX="10.75" PointY="9.75" />
+        <EntityTypeShape EntityType="delivery_prospectModel.dictionary" Width="1.5" PointX="5.25" PointY="20.25" />
+        <EntityTypeShape EntityType="delivery_prospectModel.email" Width="1.5" PointX="5.25" PointY="7" />
+        <EntityTypeShape EntityType="delivery_prospectModel.hours" Width="1.5" PointX="0.75" PointY="10.5" />
+        <EntityTypeShape EntityType="delivery_prospectModel.location" Width="1.5" PointX="0.75" PointY="5.875" />
+        <EntityTypeShape EntityType="delivery_prospectModel.notificacoes_enviadas" Width="1.5" PointX="5.25" PointY="17.5" />
+        <EntityTypeShape EntityType="delivery_prospectModel.payments" Width="1.5" PointX="5.25" PointY="14.375" />
+        <EntityTypeShape EntityType="delivery_prospectModel.place" Width="1.5" PointX="3" PointY="5.375" />
+        <EntityTypeShape EntityType="delivery_prospectModel.plan" Width="1.5" PointX="6" PointY="0.75" />
+        <EntityTypeShape EntityType="delivery_prospectModel.sysdiagrams" Width="1.5" PointX="10.75" PointY="13.75" />
+        <EntityTypeShape EntityType="delivery_prospectModel.themes" Width="1.5" PointX="12.75" PointY="6.75" />
+        <AssociationConnector Association="delivery_prospectModel.FK_billing_place" />
+        <AssociationConnector Association="delivery_prospectModel.FK_billing_plan" />
+        <AssociationConnector Association="delivery_prospectModel.FK_category_list_category" />
+        <AssociationConnector Association="delivery_prospectModel.FK_dictionary_place" />
+        <AssociationConnector Association="delivery_prospectModel.FK_email_place" />
+        <AssociationConnector Association="delivery_prospectModel.FK_place_hours" />
+        <AssociationConnector Association="delivery_prospectModel.FK_place_location" />
+        <AssociationConnector Association="delivery_prospectModel.FK_notificacoes_enviadas_place" />
+        <AssociationConnector Association="delivery_prospectModel.FK_payments_place" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

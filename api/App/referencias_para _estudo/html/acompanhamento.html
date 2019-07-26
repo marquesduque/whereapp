@@ -1,0 +1,145 @@
+﻿<div class="pages">
+    <div data-page="detail-restaurant" class="page navbar-fixed">
+        <div class="navbar background-creait">
+            <div class="navbar-inner">
+                <div class="left">
+                    <a href="#" onclick="creait.redirect('pedido')" class="link"><i class="f7-icons icone-voltar">angle-left</i></a>
+                </div>
+                <div class="center" id="pedido" style="line-height: 15px; margin-top: 2px; font-size:14px">
+                    Pedido
+                </div>
+                <div class="right">
+                    <a href="#" class="link icon-only open-panel">
+                        <i class="f7-icons size-50" style="margin-right:0px">person_fill</i>
+
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-content imagem-background no-searchbar" style="padding-top: 50px; background-color:var(--textbox-color)">
+
+
+            <div class="bg-acompanhamento">
+                {{#js_if "biblioteca.get('acompanhamento') == false"}}
+                <div>
+                    <div class="label_status">AGUARDANDO<br />CONFIRMAÇÃO</div>
+                </div>
+                {{/js_if}}
+                {{#js_if "biblioteca.get('acompanhamento') == true"}}
+                <div class="row text-center" style="padding: 10px 0px;">
+
+                    <div class="col-33">
+                        <div class="label-acompanhamento">CONFIRMADO</div>
+                        <div class="glyph-icon iconecommerce-laptop-1" style="line-height:50px"></div>
+                        <div class="acompanhamento-div">
+                            <div>
+                                <span class="icon-checkmark"></span>
+                                <div class="acompanhamento-line">
+                                </div>
+                            </div>
+                            <div id="pedido_recebido"></div>
+                        </div>
+                    </div>
+                    <div class="col-33">
+                        <div class="label-acompanhamento transportando">TRANSPORTANDO</div>
+                        <div class="glyph-icon iconecommerce-truck-4" style="line-height:50px"></div>
+                        <div class="acompanhamento-div">
+                            <div>
+                                <span class="icon-checkmark"></span>
+                                <div class="acompanhamento-line"></div>
+                            </div>
+                            <div id="saiu_para_entrega"></div>
+                        </div>
+                    </div>
+                    <div class="col-33">
+                        <div class="label-acompanhamento entregue">ENTREGUE</div>
+                        <div class="glyph-icon iconecommerce-box" style="line-height:50px">
+
+                        </div>
+                        <div class="acompanhamento-div">
+                            <div>
+                                <span class="icon-checkmark"></span>
+                            </div>
+                            <div id="pedido_entregue"></div>
+                        </div>
+                    </div>
+                </div>
+                {{/js_if}}
+            </div>
+            <div class="list-block">
+                <div class="list-group">
+
+                    <div class="fontextra endereco_acompanhamento" style="width:100%" id="endereco"></div>
+
+
+                </div>
+            </div>
+
+            <div class="list-block">
+                <div class="list-group">
+                    <div class="list-block list-block-search searchbar-found" style="height: calc(100% - 265px);
+    overflow: auto;
+    position: absolute; width: 100%;">
+                        <ul>
+                            {{#each pedido}}
+                            <li style="border-bottom: 1px solid var(--textbox-color-hover);">
+                                {{#if horario.agenda_id}}
+                                <div style="font-size:14px; font-weight:700; padding:10px; text-align:center; background-color:var(--primary-color);color:var(--primary-font-color)">
+                                    <span class="icon-alarm" style="    font-size: 18px;
+    position: absolute;
+    margin-left: -25px;
+    margin-top: 1px"></span>{{this.horario.hora_date}}
+                                </div>
+                                {{/if}}
+                                {{#js_if "this.produto.icone_itype != null"}}
+                                <div id="bg{{id}}" style="background:url('/api/produto?produto_id={{produto.id}}'); width:95px !important; height:95px !important; margin-right:10px" class="image_cart">
+                                </div>
+                                {{/js_if}}
+                                <div style="padding:10px">
+
+                                    <div class="item-title fonte_cinza" style="font-weight: bold; margin-left: 5px;    font-size: 14px; font-weight:700">{{produto.nome}}</div>
+                                    <div class="item-title fonte_cinza" style="margin-left: 5px; white-space: normal;font-size: 10px; ">
+                                        {{#js_if "this.StringPedidos == null"}}
+                                        {{produto.descricao}}
+                                        {{else}}
+                                        {{StringPedidos}}
+                                        {{/js_if}}
+                                    </div>
+                                </div>
+                                <div style="padding:0px 10px;">
+                                    <span class="link-deeporange" style="float: right;
+
+    font-weight: 700;
+    font-size: 16px;margin-bottom: 5px;" formatMoney>{{preco}}</span>
+                                </div>
+                                <div style="clear:both"></div>
+                            </li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </div>
+                <div style="clear:both"></div>
+            </div>
+            <div class="fontextra endereco_acompanhamento" style="background-color: var(--secondary-color);
+    color: var(--secondary-font-color); position:fixed; bottom:44px; width:100%; font-size: 20px;
+    font-weight: 700;">
+                TOTAL: <span id="total_acompanhamento" formatMoney>
+                </span>
+            </div>
+            <div id="repetir_pedido" style="position: fixed;
+    width: 100%;
+    bottom: 0px;
+">
+                <div class="buton" style="border-radius:0px">
+                    <i class="icon-cart"></i>
+                    Repetir Pedido
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+

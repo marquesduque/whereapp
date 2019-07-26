@@ -1,0 +1,291 @@
+[data-page="detail-restaurant"] .icon-clock2 {
+    font-size: 15vw;
+    color: #ffd800;
+}
+
+[data-page="detail-restaurant"] .icon-truck {
+    font-size: 15vw;
+    color: #ffd800;
+}
+
+[data-page="detail-restaurant"] .icon-box-remove {
+    font-size: 15vw;
+    color: #ffd800;
+}
+
+/*===============================================*/
+/*CORES PARA SEREM MUDADAS   					 */
+/*===============================================*/
+
+.line_acompanhamento {
+    background-color: #ffffff99;
+    margin-bottom: 2px;
+}
+
+.panel_carrinho {
+}
+
+[class*=" iconecommerce-"]:before {
+    font-size: 50px;
+}
+
+.link-deeporange {
+    color: white !important;
+}
+
+.ta-Adicionar {
+    border-radius: 5px !important;
+    padding-left: 10px !important;
+    background-color: #f3f3f3 !important;
+    color: #000 !important;
+    border: 1px #c3c3c3 solid !important;
+}
+
+    .ta-Adicionar::-webkit-input-placeholder {
+        color: #000 !important;
+        font-weight: 700;
+    }
+
+.text-white {
+    color: white !important;
+}
+
+.boladd {
+    font-size: 15px;
+    width: 25px;
+    background-color: #ffffff;
+    border-radius: 30px;
+    height: 25px;
+    line-height: 26px;
+    color: black;
+    font-size: 12px;
+}
+
+.fonte_cinza {
+    color: white !important;
+}
+
+.background-creait {
+    background-color: #542c2c !important
+}
+
+.background-pedido {
+    margin-bottom: 5px;
+    border-bottom: 1px #ffffff2b solid;
+}
+
+.background-pagamento {
+    background-color: #00000087 !important;
+    border-radius: 5px;
+}
+
+
+.border-gold {
+    border-top: 5px solid #ed0000;
+    border-bottom: 5px solid #ed0000;
+    margin-bottom: 5px;
+}
+
+.imagem-background {
+    background: url(../../img/background.jpg) !important;
+}
+
+.background-preto {
+    background-color: #000 !important;
+}
+
+.background-amarelo {
+    background-color: #ffd800;
+}
+
+
+.cor-creait {
+    color: #ffd800 !important;
+}
+
+
+.fonte_branca {
+    color: #fff !important;
+}
+
+
+.input-delivery {
+    border: 2px solid #ad2800 !important;
+    padding-left: 10px !important;
+}
+
+
+    .input-delivery::-webkit-input-placeholder {
+        color: #fff !important;
+        font-weight: 700;
+    }
+
+.input-index {
+    padding: 20px 10px !important;
+    background-color: rgba(0, 0, 0, 0.46) !important;
+    color: #fff !important;
+    border-radius: 5px !important;
+}
+
+
+    .input-index::-webkit-input-placeholder {
+        color: #fff !important;
+        font-weight: 700;
+    }
+
+.buton-black {
+    font-size: 25px;
+    font-weight: bold;
+    color: #fff !important;
+}
+
+.input-confirmarCliente {
+    border: 1px solid #00000087 !important;
+    padding: 20px 10px !important;
+    background-color: rgba(0, 0, 0, 0.46) !important;
+    color: #fff !important;
+    border-radius: 5px !important;
+}
+
+    .input-confirmarCliente::-webkit-input-placeholder {
+        color: #fff !important;
+        font-weight: 700;
+    }
+
+.radioEndereco {
+    border-color: #ed0000 !important;
+}
+
+    .radioEndereco:after {
+        background-color: #ed0000 !important;
+    }
+
+
+
+.iconeEndereco i:before {
+    font-size: 30px !important;
+    color: #ad2800;
+}
+
+.radioMontagem {
+    border-color: transparent !important;
+}
+
+    .radioMontagem:after {
+        background-color: transparent !important;
+    }
+
+
+.iconeAcompanhamento i:before {
+    font-size: 30px !important;
+    color: #fff;
+}
+
+.buton {
+    background-color: #542c2c !important;
+    color: #fff !important;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 0px;
+    text-align: center;
+    border-radius: 5px;
+    text-transform: uppercase;
+}
+
+
+.buton-amarelo {
+    background-color: #ffd800 !important;
+    color: #000 !important;
+    font-weight: bold;
+    padding: 10px 0px;
+    text-align: center;
+    border-radius: 5px;
+    text-transform: uppercase;
+}
+
+
+.buton-verde {
+    background-color: #885406 !important;
+    color: #fff !important;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px 0px;
+    text-align: center;
+    border-radius: 10px;
+    text-transform: uppercase;
+}
+
+.buton-facebook {
+    background-color: #3b5998 !important;
+    color: #fff !important;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px 0px;
+    text-align: center;
+    border-radius: 10px;
+    text-transform: uppercase;
+}
+
+.radio-buton {
+    border-color: #ed0000 !important;
+}
+
+    .radio-buton::after {
+        background-color: #ffd800 !important;
+    }
+
+.icone-voltar {
+    font-size: 30px;
+    font-weight: 900;
+    color: #fff;
+}
+
+#left-menu {
+    background: url(../img/background.jpg) !important;
+}
+
+
+/*ICONES DO MENU LATERAL*/
+
+.item-title a {
+    font-weight: bolder;
+    text-transform: uppercase;
+    color: #FFF;
+    font-size: 12px;
+}
+
+.item-title {
+    font-size: 13px;
+}
+
+#app-cover {
+    background: url('../../img/background.jpg');
+}
+
+
+.searchbar input[type=search] {
+    border: 0px !important;
+}
+
+.endereco_acompanhamento {
+    padding: 5px;
+    background-color: #ed0000;
+    text-align: center;
+    color: white
+}
+
+#circulo-fechar {
+    color: #362e2f !important;
+}
+
+.titulo-produto {
+    color: wheat !important;
+}
+
+#menos {
+    color: wheat !important;
+}
+
+.semana-pedido {
+    color: #FFF !important;
+}

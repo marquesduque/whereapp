@@ -1,0 +1,75 @@
+﻿@model api.Models.resposta
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>resposta</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.criacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.criacao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.valor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.valor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.place_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.place_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pergunta.nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pergunta.nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pessoa.nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pessoa.nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pessoa1.nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pessoa1.nome)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

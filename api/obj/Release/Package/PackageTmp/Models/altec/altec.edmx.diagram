@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8ad91783f7ce444f9193d07baeaf5b2e" Name="Diagram1" ZoomLevel="35">
+        <EntityTypeShape EntityType="ModelAltec.MESAS" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelAltec.CLIENTES" Width="1.5" PointX="5.625" PointY="4.875" />
+        <EntityTypeShape EntityType="ModelAltec.COMBINADO" Width="1.5" PointX="7.625" PointY="4.875" />
+        <EntityTypeShape EntityType="ModelAltec.DETALHES_PAGAMENTO" Width="1.5" PointX="7.625" PointY="8.875" />
+        <EntityTypeShape EntityType="ModelAltec.IMPRESSO" Width="1.5" PointX="3" PointY="23.875" />
+        <EntityTypeShape EntityType="ModelAltec.ITENSPED" Width="1.5" PointX="3" PointY="30.75" />
+        <EntityTypeShape EntityType="ModelAltec.ITENSPED_COMBINADO" Width="1.5" PointX="5.25" PointY="53.625" />
+        <EntityTypeShape EntityType="ModelAltec.ITENSPED_COMBINADO_COMPLEMENTO" Width="1.5" PointX="8.25" PointY="31.125" />
+        <EntityTypeShape EntityType="ModelAltec.ITENSPED_COMPLEMENTO" Width="1.5" PointX="8.25" PointY="36.125" />
+        <EntityTypeShape EntityType="ModelAltec.LOCALIMP" Width="1.5" PointX="5.25" PointY="48.875" />
+        <EntityTypeShape EntityType="ModelAltec.LOJA" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ModelAltec.PEDIDO" Width="1.5" PointX="3" PointY="68.25" />
+        <EntityTypeShape EntityType="ModelAltec.PedidoMesa" Width="1.5" PointX="6" PointY="70.125" />
+        <EntityTypeShape EntityType="ModelAltec.PEDIDOMESA_COMBINADO" Width="1.5" PointX="8.25" PointY="53.625" />
+        <EntityTypeShape EntityType="ModelAltec.PEDIDOMESA_COMBINADO_COMPLEMENTO" Width="1.5" PointX="5.25" PointY="27" />
+        <EntityTypeShape EntityType="ModelAltec.PEDIDOMESA_COMPLEMENTO" Width="1.5" PointX="5.25" PointY="32" />
+        <EntityTypeShape EntityType="ModelAltec.PEDIDOMESAB" Width="1.5" PointX="5.25" PointY="60.125" />
+        <EntityTypeShape EntityType="ModelAltec.PEDIDOMESAB_COMBINADO" Width="1.5" PointX="10.5" PointY="57.5" />
+        <EntityTypeShape EntityType="ModelAltec.PEDIDOMESAB_COMBINADO_COMPLEMENTO" Width="1.5" PointX="5.25" PointY="37.125" />
+        <EntityTypeShape EntityType="ModelAltec.PEDIDOMESAB_COMPLEMENTO" Width="1.5" PointX="10.5" PointY="36" />
+        <EntityTypeShape EntityType="ModelAltec.PREPEDIDOMESA_COMBINADO" Width="1.5" PointX="9.625" PointY="4.875" />
+        <EntityTypeShape EntityType="ModelAltec.PREPEDIDOMESA_COMPLEMENTO" Width="1.5" PointX="9.625" PointY="8.875" />
+        <EntityTypeShape EntityType="ModelAltec.Produto" Width="1.5" PointX="3" PointY="44.125" />
+        <EntityTypeShape EntityType="ModelAltec.PREPEDIDOMESA" Width="1.5" PointX="7.625" PointY="12.875" />
+        <EntityTypeShape EntityType="ModelAltec.PREPEDIDOMESA_COMBINADO_COMPLEMENTO" Width="1.5" PointX="9.625" PointY="12.875" />
+        <EntityTypeShape EntityType="ModelAltec.TBCONTA" Width="1.5" PointX="11.625" PointY="4.875" />
+        <AssociationConnector Association="ModelAltec.fk_localImp_impresso" />
+        <AssociationConnector Association="ModelAltec.FK_ITENSPED_COMBINADO_ITENSPED" />
+        <AssociationConnector Association="ModelAltec.FK_ITENSPED_COMPLEMENTO_ITENSPED" />
+        <AssociationConnector Association="ModelAltec.FK_itensPed_PEDIDO" />
+        <AssociationConnector Association="ModelAltec.FK_ITENSPED_COMBINADO_COMPLEMENTO_ITENSPED_COMBINADO" />
+        <AssociationConnector Association="ModelAltec.FK_ITENSPED_COMBINADO_PRODUTO" />
+        <AssociationConnector Association="ModelAltec.FK_ITENSPED_COMBINADO_COMPLEMENTO_LOJA" />
+        <AssociationConnector Association="ModelAltec.FK_ITENSPED_COMBINADO_COMPLEMENTO_PRODUTO" />
+        <AssociationConnector Association="ModelAltec.FK_ITENSPED_COMPLEMENTO_LOJA" />
+        <AssociationConnector Association="ModelAltec.FK_ITENSPED_COMPLEMENTO_PRODUTO" />
+        <AssociationConnector Association="ModelAltec.fk_localImp_produto" />
+        <AssociationConnector Association="ModelAltec.FK_Mesas_X_Loja" />
+        <AssociationConnector Association="ModelAltec.FK_PEDIDOMESA_COMBINADO_COMPLEMENTO_LOJA" />
+        <AssociationConnector Association="ModelAltec.FK_PEDIDOMESA_COMPLEMENTO_LOJA" />
+        <AssociationConnector Association="ModelAltec.FK_PEDIDOMESAB_COMBINADO_COMPLEMENTO_LOJA" />
+        <AssociationConnector Association="ModelAltec.FK_PEDIDOMESAB_COMPLEMENTO_LOJA" />
+        <AssociationConnector Association="ModelAltec.FK_ProdutoEstoque_X_Loja" />
+        <AssociationConnector Association="ModelAltec.FK_PEDIDOMESA_COMBINADO_PEDIDOMESA" />
+        <AssociationConnector Association="ModelAltec.FK_PEDIDOMESA_COMPLEMENTO_PEDIDOMESA" />
+        <AssociationConnector Association="ModelAltec.FK_PEDIDOMESA_COMBINADO_COMPLEMENTO_PEDIDOMESA_COMBINADO" />
+        <AssociationConnector Association="ModelAltec.FK_PEDIDOMESA_COMBINADO_PRODUTO" />
+        <AssociationConnector Association="ModelAltec.FK_PEDIDOMESA_COMBINADO_COMPLEMENTO_PRODUTO" />
+        <AssociationConnector Association="ModelAltec.FK_PEDIDOMESA_COMPLEMENTO_PRODUTO" />
+        <AssociationConnector Association="ModelAltec.FK_PEDIDOMESAB_COMBINADO_PEDIDOMESAB" />
+        <AssociationConnector Association="ModelAltec.FK_PEDIDOMESAB_COMPLEMENTO_PEDIDOMESAB" />
+        <AssociationConnector Association="ModelAltec.FK_PedidoMesaB_produto_Loja" />
+        <AssociationConnector Association="ModelAltec.PedidoMesaB_PRODUTO" />
+        <AssociationConnector Association="ModelAltec.FK_PEDIDOMESAB_COMBINADO_COMPLEMENTO_PEDIDOMESAB_COMBINADO" />
+        <AssociationConnector Association="ModelAltec.FK_PEDIDOMESAB_COMBINADO_PRODUTO" />
+        <AssociationConnector Association="ModelAltec.FK_PEDIDOMESAB_COMBINADO_COMPLEMENTO_PRODUTO" />
+        <AssociationConnector Association="ModelAltec.FK_PEDIDOMESAB_COMPLEMENTO_PRODUTO" />
+        <EntityTypeShape EntityType="ModelAltec.DESBLOQUEIO_MESA" Width="1.5" PointX="12.375" PointY="8.75" />
+        <EntityTypeShape EntityType="ModelAltec.USUARIO" Width="1.5" PointX="3" PointY="6.875" />
+        <AssociationConnector Association="ModelAltec.fk_ItensPed_Usuario" />
+        <AssociationConnector Association="ModelAltec.FK_USUARIO_LOJA" />
+        <EntityTypeShape EntityType="ModelAltec.ACESSO" Width="1.5" PointX="14.375" PointY="2.75" />
+        <AssociationConnector Association="ModelAltec.fk_usuario_acesso" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

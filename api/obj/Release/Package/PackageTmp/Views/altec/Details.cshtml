@@ -1,0 +1,149 @@
+﻿@model api.Models.filial
+
+@{
+    ViewBag.Title = "Altec";
+}
+
+
+<section class="content-header">
+    <h1>
+        <a href="@Url.Action("Index")" class="btn btn-warning"><i class="fa fa-angle-left fa-lg" style="margin-right: 10px"></i>Voltar</a>
+        <a href="@Url.Action("index","agendas", new { filial_id = Model.id, administrador_id = Model.administrador_id })" class="btn btn-danger" base_library="api.models.filial.library_create"><i class="fa fa-plus" style="margin-right:10px"></i>Gerenciar Agendas</a>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("index")" base_library="api.Models.filial.library_bc_1">Listar</a></li>
+        <li class="active" base_library="api.Models.filial.library_bc_edit">Editar</li>
+    </ol>
+</section>
+
+
+<section class="content">
+    <div class="col-md-12">
+        <div class="alert alert-info col-md-12" role="alert">
+            <i class="fa fa-pencil" style="margin-right: 10px"></i><b base_library="api.Models.filial.library_code">Editando Código:</b> <span class="editid">@Model.id</span>
+        </div>
+    </div>
+    <div style="clear: both"></div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken();
+        @Html.ValidationSummary(true)
+        <div class="alert alert-danger" role="alert" base_library="api.Models.filial.library_error_register">
+            Registro não gravado, verificar erro criticado
+        </div>
+
+        <div class="col-md-12 bar">
+            <label class="col-md-6" base_library="api.Models.filial.library_title"><i class="fa fa-list-alt" style="margin-right: 10px"></i>Dados Pessoais</label>
+        </div>
+        @Html.HiddenFor(model => model.id)
+        @Html.HiddenFor(model => model.aberto)
+        @Html.HiddenFor(model => model.versao)
+        @Html.HiddenFor(model => model.place_id)
+        @Html.HiddenFor(model => model.json)
+        <div style="text-align:center">
+            <div class="form-group col-md-12" style="margin:0 auto">
+                <label class="control-label" base_library="api.Models.filial.nome">Conexão</label>
+
+                <div style="clear: both"></div>
+                @Html.TextBoxFor(model => model.connection_string, new { placeholder = "", @class = "form-control", maxLength = "500" })
+                @Html.ValidationMessageFor(model => model.connection_string)
+            </div>
+            <div style="clear:both"></div>
+            <div class="row" style="margin-top:10px">
+                <div class="col-md-4">
+                    <a base_library="api.Models.altec.library_edit" onclick="$('#json').val(''); $(this).closest('form').submit()" class="btn btn-success" style="line-height:40px; width:100%">Conectar</a>
+                </div>
+                <div class="col-md-4">
+                    <a base_library="api.Models.altec.library_edit" onclick="$('#json').val('garcom'); $(this).closest('form').submit()" class="btn btn-warning" style="line-height:40px; width:100%">Importar Garçom</a>
+                </div>
+                <div class="col-md-4">
+                    <a base_library="api.Models.altec.library_edit" onclick="$('#json').val('mesa'); $(this).closest('form').submit()" class="btn btn-danger" style="line-height:40px; width:100%">Importar Mesa</a>
+                </div>
+            </div>
+        </div>
+        <div style="position:absolute; z-index:999999999999;bottom: 30px; display:none;    left: calc(50% - 250px);" class="loaderaltec">
+            <div style="font-size: 18px;
+    font-weight: 700;
+    color: white;
+    padding: 5px 16px;
+    text-align: center;">
+                Aguarde enquanto os dados são sincronizados
+            </div>
+            <div style="background-color: #641766; width: 500px; height:50px;border-radius: 100px;    ">
+                <div class="loader_bar" style="width: 0%;
+    background-color: var(--primary-color)!important;
+    height: 100%;
+    border-radius: 100px;
+    font-size: 25px;
+    font-weight: 700;
+    color: white;
+    padding: 5px 16px;">
+                    0%
+                </div>
+            </div>
+        </div>
+        if (!string.IsNullOrEmpty(Model.json))
+        {
+            <div style="clear:both"></div>
+            <div>
+                <div class="col-md-6">
+                    <a base_library="api.Models.altec.library_edit" onclick="$('#aberto').val('true'); loader_altec(); $(this).closest('form').submit();" class="btn btn-warning pull-right col-md-12" style="margin-top:20px">Importar Tudo</a>
+                </div>
+                <div class="col-md-6">
+                    <a base_library="api.Models.altec.library_edit" onclick="$('#aberto').val('false'); loader_altec(); $(this).closest('form').submit();" class="btn btn-warning pull-right col-md-12" style="margin-top:20px">Importar Montagens</a>
+                </div>
+
+                <div style="clear:both"></div>
+                <div id="json-renderer" style="    padding: 30px;
+    background-color: #ffeed4;
+    width: calc(100% - 10px);
+    margin: 0 auto;"></div>
+            </div>
+
+            @section scripts{
+                <script src="~/Content/json-viewer/jquery.json-viewer.js"></script>
+
+
+
+
+                <script>
+                    function loader_altec() {
+                        var final_versao = ($('#json').val().split('{').length * 3.9);
+                        debugger
+                        setInterval(function () {
+                            $.ajax({
+                                type: "GET",
+                                url: "/api/filiais?versao_id=" + $('[name="id"]').val(),
+                                dataType: 'json',
+                                success: function (result) {
+                                    $('.loaderaltec').show();
+                                    var bar = result.versao * 100 / final_versao;
+
+                                    if (bar <= 100) {
+                                        $('.loader_bar').html(bar.toFixed(2) + '%');
+                                        $('.loader_bar').css('width', bar + '%');
+                                    }
+                                },
+                                error: function (a, b, c) {
+
+                                }
+                            });
+                        }, 2000);
+                    }
+
+                    debugger;
+                    var input = JSON.parse($('#json').val());
+
+                    $('#json-renderer').jsonViewer(input, {
+                        collapsed: true,
+                        withQuotes: false
+                    });
+                </script>
+                <link href="~/Content/json-viewer/jquery.json-viewer.css" rel="stylesheet" />
+            }
+        }
+
+    }
+</section>
+
+

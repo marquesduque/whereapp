@@ -1,0 +1,102 @@
+﻿
+@model Site.Models.Find<api.Controllers.compra_itemController.find>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        <a href="@Url.Action("Create")" class="btn btn-info" base_library="api.Models.compra_item.library_create"><i class="glyphicon glyphicon-plus" style="margin-right:10px"></i>Criar Novo</a>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#" base_library="api.Models.compra_item.library_bc_1"><i class="fa fa-newspaper-o"></i>Listar</a></li>
+        <li class="active"><a href="@Url.Action("index")" base_library="api.Models.compra_item.library_bc_list">Index</a></li>
+    </ol>
+</section>
+
+<section class="content">
+
+    <form ajax="@Url.Action("Find")" table="tbl">
+        <input type="hidden" id="Page" name="Page" value="0" />
+
+        <div class="box box-default">
+            <div class="box-header with-border">
+
+
+                <div class="form-group col-md-6">
+                    <label class="control-label" style="width:100%" base_library="api.Models.compra_item.item_id">item_id</label>
+                    <select class="form-control select2" source="#Filter_item_id" data-placeholder="" onchange="$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" style="width: 100%;">
+                        <option value="null">Todos</option>
+                        @foreach (var item in new api.Models.db().item.Select(c => new { id = c.id, nome = c.nome }))
+                        {
+                            <option value="@item.id">@(item.nome)</option>
+                        }
+                    </select>
+                    @Html.HiddenFor(model => model.Filter.item_id)
+                    @Html.ValidationMessageFor(model => model.Filter.item_id)
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label class="control-label" style="width:100%" base_library="api.Models.compra_item.compra_id">compra_id</label>
+                    <select class="form-control select2" source="#Filter_compra_id" data-placeholder="" onchange="$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" style="width: 100%;">
+                        <option value="null">Todos</option>
+                        @foreach (var item in new api.Models.db().compra.Select(c => new { id = c.id, nome = c.nome }))
+                        {
+                            <option value="@item.id">@(item.nome)</option>
+                        }
+                    </select>
+                    @Html.HiddenFor(model => model.Filter.compra_id)
+                    @Html.ValidationMessageFor(model => model.Filter.compra_id)
+
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label class="control-label" style="width:100%" base_library="api.Models.compra_item.status">status</label>
+
+                    @Html.TextBoxFor(model => model.Filter.status, new { placeholder = "", @class = "form-control", maxLength = "150", type = "number", min = "1", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+                <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse">Pesquisa Avançada<i style="margin-left: 10px" class="fa fa-plus-square fa-minus"></i></button>
+                </div>
+            </div>
+            <div class="box-body" style="display:none">
+            </div>
+            <div class="form-group" style="border-top: 1px solid #f4f4f4; padding: 10px">
+                <button href="#" class="btn btn-warning pull-right" type="button" name="btnProcurar" onclick="$('.tblrow').remove(); $('#Page').val('0'); $('[ajax]').submit();"><i class="glyphicon glyphicon-search" style="margin-right: 10px"></i>Procurar</button>
+                <div style="clear: both"></div>
+            </div>
+        </div>
+        <div class="table-default scroll">
+            <div class="filter-table" base_library="api.Models.compra_item.library_filter"><i class="glyphicon glyphicon-filter"></i>filtros</div>
+
+            <div class="filter-table" base_library="api.Models.sample.library_report" onclick="fnExcelReport()" style="margin-left:83px; width:110px">
+                <i class="fa fa-file-excel-o"></i>Relatório
+            </div>
+            <table id="tbl">
+                <tr>
+                    <td base_library="api.Models.compra_item.item_id">
+                        @Html.DisplayNameFor(model => model.Filter.item_id)
+                    </td>
+                    <td base_library="api.Models.compra_item.compra_id">
+                        @Html.DisplayNameFor(model => model.Filter.compra_id)
+                    </td>
+                    <td base_library="api.Models.compra_item.status">
+                        @Html.DisplayNameFor(model => model.Filter.status)
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</section>
+
+<script template="tbl" type="text/template" redirect="@Url.Action("edit")">
+    <tr class="tblrow" pk="id">
+        <td column="item_id"></td>
+        <td column="compra_id"></td>
+        <td column="status"></td>
+    </tr>
+</script>

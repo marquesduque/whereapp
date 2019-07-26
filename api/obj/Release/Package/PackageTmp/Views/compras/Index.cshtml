@@ -1,0 +1,253 @@
+﻿
+@model Site.Models.Find<api.Controllers.comprasController.find>
+
+    @{
+        ViewBag.Title = "Index";
+    }
+
+    <section class="content-header" style="min-height:70px">
+    
+                <a href="@Url.Action("Create")" class="btn btn-info" base_library="api.Models.compra.library_create"><i class="fa fa-calculator" style="margin-right:10px"></i>NOVA COMPRA</a>
+    
+            @*<div class="col-md-4">
+                <a style="width:100%; margin-top:5px" href="@Url.Action("index", "status_das_compras")" class="btn btn-warning"><i class="fa fa-info-circle" style="margin-right: 10px"></i>Status das compras</a>
+            </div>
+            <div class="col-md-4">
+                <a style="width:100%; margin-top:5px" href="@Url.Action("index","pagamentos")" class="btn btn-danger" base_library="api.Models.compra.library_create"><i class="fa fa-money" style="margin-right:10px"></i>Tipos de Pagamentos</a>
+            </div>*@
+            @*<div class="col-md-6">
+                <a style="width:100%; margin-top:5px" href="@Url.Action("index", "retiradas")" class="btn btn-primary"><i class="fa fa-info-circle" style="margin-right: 10px"></i>Tipos de Retiradas</a>
+            </div>*@
+
+    </section>
+
+    <section class="content">
+
+
+
+
+
+        <form ajax="@Url.Action("Find")" table="tbl">
+            <input type="hidden" id="Page" name="Page" value="0" />
+
+            <div class="box box-default">
+                <div class="box-header with-border">
+
+
+                    <div class="form-group col-md-2">
+                        <label class="control-label" style="width:100%" base_library="api.Models.compra.Id">ID</label>
+
+                        @Html.TextBoxFor(model => model.Filter.id, new { type="number", placeholder = "ID", @class = "form-control", maxLength = "10" })
+
+                    </div>
+
+
+
+                    @*<div class="form-group col-md-2">
+                        <label class="control-label" style="width:100%" base_library="api.Models.compra.pagamento">Pagamento</label>
+
+                        @Html.TextBoxFor(model => model.Filter.pagamento, "{0:dd/MM/yyyy}", new { placeholder = "", @class = "form-control", mask = "{\"value\":\"99/99/9999\", \"placeholder\":\"dd/mm/yyyy\"}", maxLength = "10", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                    </div>*@
+
+
+
+                    @*<div class="form-group col-md-6">
+                                         <label class="control-label" style="width:100%" base_library="api.Models.compra.total" >Total</label>
+
+                                                         @Html.TextBoxFor(model => model.Filter.total, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                        </div>*@
+
+
+
+
+
+                    @*<div class="form-group col-md-6">
+                        <label class="control-label" style="width:100%" base_library="api.Models.compra.retirada_id">Retirada</label>
+                        <select class="form-control select2" source="#Filter_retirada_id" data-placeholder="" onchange="$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" style="width: 100%;">
+                            <option value="null">Todos</option>
+                            @foreach (var item in new api.Models.db().retirada)
+                            {
+                                <option value="@item.id">@(item.nome)</option>
+                            }
+                        </select>
+                        @Html.HiddenFor(model => model.Filter.retirada_id)
+                        @Html.ValidationMessageFor(model => model.Filter.retirada_id)
+
+
+                    </div>*@
+
+
+
+                    <div class="form-group col-md-3">
+                        <label class="control-label" style="width:100%" base_library="api.Models.compra.pagamento_id">Pagamento</label>
+                        <select class="form-control select2" source="#Filter_pagamento_id" data-placeholder="" onchange="$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" style="width: 100%;">
+                            <option value="null">Todos</option>
+                            @foreach (var item in new api.Models.db().pagamento.Where(c=>c.place_id == api.Models.db.place.place_id))
+                            {
+                                <option value="@item.id">@(item.nome)</option>
+                            }
+                        </select>
+                        @Html.HiddenFor(model => model.Filter.pagamento_id)
+                        @Html.ValidationMessageFor(model => model.Filter.pagamento_id)
+
+
+                    </div>
+
+
+
+                    @*<div class="form-group col-md-6">
+                                         <label class="control-label" style="width:100%" base_library="api.Models.compra.agenda" >Agenda</label>
+
+                                                         @Html.TextBoxFor(model => model.Filter.preparo, "{0:dd/MM/yyyy}", new { placeholder = "", @class = "form-control", mask = "{\"value\":\"99/99/9999\", \"placeholder\":\"dd/mm/yyyy\"}", maxLength = "10", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                        </div>*@
+
+
+
+
+
+
+
+
+
+
+                    <div class="form-group col-md-3">
+                        <label class="control-label" style="width:100%" base_library="api.Models.compra.status_da_compra_id">Status</label>
+                        <select class="form-control select2" source="#Filter_status_da_compra_id" data-placeholder="" onchange="$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" style="width: 100%;">
+                            <option value="null">Todos</option>
+                            @foreach (var item in new api.Models.db().status_da_compra)
+                            {
+                                <option value="@item.id">@(item.nome)</option>
+                            }
+                        </select>
+                        @Html.HiddenFor(model => model.Filter.status_da_compra_id)
+                        @Html.ValidationMessageFor(model => model.Filter.status_da_compra_id)
+
+
+                    </div>
+
+
+
+                    <div class="form-group col-md-4">
+                        <label class="control-label" style="width:100%" base_library="api.Models.compra.filial_id">Filial</label>
+                        <select class="form-control select2" source="#Filter_filial_id" data-placeholder="" onchange="$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" style="width: 100%;">
+                            <option value="null">Todas</option>
+                            @foreach (var item in new api.Models.db().filial.Where(c => c.place_id == api.Models.db.place.place_id))
+                            {
+                                <option value="@item.id">@(item.endereco)</option>
+                            }
+                        </select>
+                        @Html.HiddenFor(model => model.Filter.filial_id)
+                        @Html.ValidationMessageFor(model => model.Filter.filial_id)
+
+
+                    </div>
+
+                    <div class="box-tools pull-right">
+                        
+                    </div>
+                </div>
+
+
+
+
+                @*PESQUISA AVANÇADA*@
+                <div class="box-body" style="display:none">
+                    <div class="form-group col-md-6">
+                        <label class="control-label" style="width:100%" base_library="api.Models.compra.entregue">Data de Entregue</label>
+
+                        @Html.TextBoxFor(model => model.Filter.entregue, "{0:dd/MM/yyyy}", new { placeholder = "", @class = "form-control", mask = "{\"value\":\"99/99/9999\", \"placeholder\":\"dd/mm/yyyy\"}", maxLength = "10", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label class="control-label" style="width:100%" base_library="api.Models.compra.finalizado">Data finalizado</label>
+
+                        @Html.TextBoxFor(model => model.Filter.finalizado, "{0:dd/MM/yyyy}", new { placeholder = "", @class = "form-control", mask = "{\"value\":\"99/99/9999\", \"placeholder\":\"dd/mm/yyyy\"}", maxLength = "10", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                    </div>
+
+
+                    <div class="form-group col-md-6">
+                        <label class="control-label" style="width:100%" base_library="api.Models.compra.desconto">Desconto</label>
+
+                        @Html.TextBoxFor(model => model.Filter.desconto, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="form-group" style="border-top: 1px solid #f4f4f4; padding: 10px">
+
+                    <button href="#" class="btn btn-warning pull-right" style="margin-right:10px" type="button" name="btnProcurar" onclick="$('.tblrow').remove(); $('#Page').val('0'); $('[ajax]').submit();"><i class="fa fa-search" style="margin-right: 10px"></i>Procurar</button>
+                    <div style="clear: both"></div>
+                </div>
+            </div>
+            <div class="table-default scroll">
+
+
+                <table id="tbl">
+                    <tr>
+                        <td base_library="api.Models.compra.Id">
+                            ID
+                        </td>
+                        <td base_library="api.Models.compra.comprador">
+                            Comprador
+                        </td>
+                        <td base_library="api.Models.compra.pagamento_id">
+                            Pagamento
+                        </td>
+                        <td base_library="api.Models.compra.recebido">
+                            Recebido
+                        </td>
+                        <td base_library="api.Models.compra.preparo">
+                            Andamento
+                        </td>
+                        <td base_library="api.Models.compra.finalizado">
+                            Finalizado
+                        </td>
+                        <td base_library="api.Models.compra.entregue">
+                            Entregue
+                        </td>
+                        <td base_library="api.Models.compra.cancelamento">
+                            Cancelado
+                        </td>
+                        <td base_library="api.Models.compra.status_da_compra_id">
+                            Staus
+                        </td>
+                        <td base_library="api.Models.compra.total">
+                            Valor
+                        </td>
+                        <td base_library="api.Models.compra.desconto">
+                            Desconto
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </form>
+    </section>
+
+    <script template="tbl" type="text/template" @(1512651845703501 != api.Models.db.place.place_id ? "redirect="+ Url.Action("edit")  : "")>
+
+        <tr class="tblrow" pk="id">
+
+            <td column="id"></td>
+            <td column="comprador"></td>
+            <td column="pagamento_id"></td>
+            <td column="recebido"></td>
+            <td column="preparo"></td>
+            <td column="finalizado"></td>
+            <td column="entregue"></td>
+            <td column="cancelamento"></td>
+            <td column="status_da_compra_id"></td>
+            <td column="total"></td>
+            <td column="desconto"></td>
+
+        </tr>
+
+
+    </script>

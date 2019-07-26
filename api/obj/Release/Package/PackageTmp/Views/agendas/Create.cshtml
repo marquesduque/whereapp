@@ -1,0 +1,174 @@
+﻿@model api.Models.agenda
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        <a href="@Url.Action("Index",new {filial_id = Request.QueryString["filial_id"],administrador_id = Request.QueryString["administrador_id"]})" class="btn btn-warning"><i class="fa fa-angle-left fa-lg" style="margin-right: 10px"></i>Voltar</a>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("index")" base_library="api.Models.agenda.library_bc_1">Listar</a></li>
+        <li class="active" base_library="api.Models.agenda.library_bc_create">Criar</li>
+    </ol>
+</section>
+
+
+<section class="content">
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+
+	      @Html.ValidationSummary(true)
+        <div class="alert alert-danger" role="alert" base_library="api.Models.agenda.library_error_register">
+            Registro não gravado, verificar erro criticado
+        </div>
+
+        <fieldset>
+
+            <div class="col-md-12 bar">
+                <label class="col-md-6" base_library="api.Models.agenda.library_title"><i class="fa fa-list-alt" style="margin-right: 10px"></i>Dados Pessoais</label>
+            </div>
+    
+            <div>
+
+
+                <div class="form-group col-md-6">
+                    <label class="control-label" base_library="api.Models.agenda.nome">Nome</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.nome, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                    @Html.ValidationMessageFor(model => model.nome)
+                </div>
+
+
+                @Html.HiddenFor(model => model.filial_id)
+
+                @Html.HiddenFor(model => model.administrador_id)
+
+
+                <div class="form-group col-md-12">
+                    <label class="control-label" base_library="api.Models.agenda.descricao">Descrição</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextAreaFor(model => model.descricao, new { placeholder = "", @class = "form-control", maxLength = "150", rows = "5" })
+                    @Html.ValidationMessageFor(model => model.descricao)
+                </div>
+
+                <div class="form-group col-md-2">
+                    <label class="control-label" base_library="api.Models.agenda.segunda_inicio">Segunda-Feira - Abertura</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.segunda_inicio, "{0:HH:mm}", new { placeholder = "", @class = "form-control", type = "time", maxLength = "10", rows = "5" })
+                    @Html.ValidationMessageFor(model => model.segunda_inicio)
+                </div>
+                <div class="form-group col-md-2">
+                    <label class="control-label" base_library="api.Models.agenda.segunda_fim">Segunda-Feira - Fechamento</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.segunda_fim, "{0:HH:mm}", new { placeholder = "", @class = "form-control", type = "time", maxLength = "10", rows = "5" })
+                    @Html.ValidationMessageFor(model => model.segunda_fim)
+                </div>
+                <div class="form-group col-md-2">
+                    <label class="control-label" base_library="api.Models.agenda.terca_inicio">Terça-Feira - Abertura</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.terca_inicio, "{0:HH:mm}", new { placeholder = "", @class = "form-control", type = "time", maxLength = "10", rows = "5" })
+                    @Html.ValidationMessageFor(model => model.terca_inicio)
+                </div>
+                <div class="form-group col-md-2">
+                    <label class="control-label" base_library="api.Models.agenda.terca_fim">Terça-Feira - Fechamento</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.terca_fim, "{0:HH:mm}", new { placeholder = "", @class = "form-control", type = "time", maxLength = "10", rows = "5" })
+                    @Html.ValidationMessageFor(model => model.terca_fim)
+                </div>
+                <div class="form-group col-md-2">
+                    <label class="control-label" base_library="api.Models.agenda.quarta_inicio">Quarta-Feira - Abertura</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.quarta_inicio, "{0:HH:mm}", new { placeholder = "", @class = "form-control", type = "time", maxLength = "10", rows = "5" })
+                    @Html.ValidationMessageFor(model => model.quarta_inicio)
+                </div>
+                <div class="form-group col-md-2">
+                    <label class="control-label" base_library="api.Models.agenda.quarta_fim">Quarta-Feira - Fechamento</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.quarta_fim, "{0:HH:mm}", new { placeholder = "", @class = "form-control", type = "time", maxLength = "10", rows = "5" })
+                    @Html.ValidationMessageFor(model => model.quarta_fim)
+                </div>
+                <div class="form-group col-md-2">
+                    <label class="control-label" base_library="api.Models.agenda.quinta_inicio">Quinta-Feira - Abertura</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.quinta_inicio, "{0:HH:mm}", new { placeholder = "", @class = "form-control", type = "time", maxLength = "10", rows = "5" })
+                    @Html.ValidationMessageFor(model => model.quinta_inicio)
+                </div>
+                <div class="form-group col-md-2">
+                    <label class="control-label" base_library="api.Models.agenda.quinta_fim">Quinta-Feira - Fechamento</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.quinta_fim, "{0:HH:mm}", new { placeholder = "", @class = "form-control", type = "time", maxLength = "10", rows = "5" })
+                    @Html.ValidationMessageFor(model => model.quinta_fim)
+                </div>
+                <div class="form-group col-md-2">
+                    <label class="control-label" base_library="api.Models.agenda.sexta_inicio">Sexta-Feira - Abertura</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.sexta_inicio, "{0:HH:mm}", new { placeholder = "", @class = "form-control", type = "time", maxLength = "10", rows = "5" })
+                    @Html.ValidationMessageFor(model => model.sexta_inicio)
+                </div>
+                <div class="form-group col-md-2">
+                    <label class="control-label" base_library="api.Models.agenda.sexta_fim">Sexta-Feira - Fechamento</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.sexta_fim, "{0:HH:mm}", new { placeholder = "", @class = "form-control", type = "time", maxLength = "10", rows = "5" })
+                    @Html.ValidationMessageFor(model => model.sexta_fim)
+                </div>
+                <div class="form-group col-md-2">
+                    <label class="control-label" base_library="api.Models.agenda.sabado_inicio">Sábado - Abertura</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.sabado_inicio, "{0:HH:mm}", new { placeholder = "", @class = "form-control", type = "time", maxLength = "10", rows = "5" })
+                    @Html.ValidationMessageFor(model => model.sabado_inicio)
+                </div>
+                <div class="form-group col-md-2">
+                    <label class="control-label" base_library="api.Models.agenda.sabado_fim">Sábado - Fechamento</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.sabado_fim, "{0:HH:mm}", new { placeholder = "", @class = "form-control", type = "time", maxLength = "10", rows = "5" })
+                    @Html.ValidationMessageFor(model => model.sabado_fim)
+                </div>
+                <div class="form-group col-md-2">
+                    <label class="control-label" base_library="api.Models.agenda.domingo_inicio">Domingo - Abertura</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.domingo_inicio, "{0:HH:mm}", new { placeholder = "", @class = "form-control", type = "time", maxLength = "10", rows = "5" })
+                    @Html.ValidationMessageFor(model => model.domingo_inicio)
+                </div>
+                <div class="form-group col-md-2">
+                    <label class="control-label" base_library="api.Models.agenda.domingo_fim">Domingo - Fechamento</label>
+
+                    <div style="clear: both"></div>
+
+                    @Html.TextBoxFor(model => model.domingo_fim, "{0:HH:mm}", new { placeholder = "", @class = "form-control", type = "time", maxLength = "10" })
+                    @Html.ValidationMessageFor(model => model.domingo_fim)
+
+                </div>
+
+
+                <div class="form-group col-md-12 btn-gallery">
+                    <a class="btn btn-success pull-right" onclick="$(this).closest('form').submit()" base_library="api.Models.agenda.library_save"><i class="fa fa-check"></i>Salvar</a>
+                </div>
+            </div>
+	</fieldset>
+}
+
+</section>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

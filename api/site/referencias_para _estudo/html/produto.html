@@ -1,0 +1,142 @@
+﻿<div class="pages">
+    <div data-page="produto" class="page">
+
+        <!--<div class="navbar background-creait">
+            <div class="navbar-inner">
+                <div class="left">
+                    <a href="categoria.html" class="link"><i class="f7-icons icone-voltar">angle-left</i></a>
+                </div>
+                <div>{{nome}}</div>
+                <div class="right iconmenu">
+                    <a href="#" class="link icon-only open-panel"> <i class="icon icon-bars"></i></a>
+                </div>
+            </div>
+        </div>-->
+
+        <div style="background-image:url({{background_itype}},{{background}}); background-size:cover; height:80px; background-position: center; background-color:var(--primary-color)">
+            <a href="categoria.html" class="link" style="padding:10px; position:absolute; color:var(--primary-font-color)"><span class="icon-circle-left" style="font-size:26px"></span></a>
+            <a href="#" class="link icon-only open-panel icologin" style="right:0px; position:absolute; padding:10px; color:var(--primary-font-color)">
+                <i class="f7-icons size-50" style="font-size:25px;
+    margin-right: 0px;text-shadow: 1px 1px 1px #00000054;">person_fill</i>
+            </a>
+            <div style="background: #00000066;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px black;
+    letter-spacing: 1px; line-height:110px; height:80px; color:white; text-align:center; font-size:20px">
+                - {{nome}} -
+            </div>
+        </div>
+
+
+        <div class="toolbar toolbar-bottom panel_carrinho css3-notification">
+            <div class="toolbar-inner">
+                <div onclick="creait.redirect('carrinho')" class="link" style="width:100%">
+                    <div style="height: 65px;">
+                        <img src="icons/animated/{{cor_tema}}/sale.svg" style="    width: 45px;
+    margin-top: 10px; float:left" />
+
+                        <span class="finalizarcompra" style="float:left">
+                            <span line-height:20px;">{{js "biblioteca.get('label_finalizar_compra')"}}</span><br />
+                            {{#js_if "biblioteca.get('quantidade', true)"}}
+                            {{carrinho_quantidade}}
+                            {{/js_if}} 
+                            {{js "biblioteca.get('label_horas_adicionadas')"}}
+                        </span>
+                        <span class="total" formatMoney>
+                            {{carrinho_total}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <form data-search-list=".list-block-search" data-search-in=".item-title" style="position:initial" class="searchbar searchbar-init">
+            <div class="searchbar-input">
+                <input type="search" placeholder="Buscar">
+                <a href="#" class="searchbar-clear"></a>
+            </div>
+            <a href="#" class="searchbar-cancel">cancelar</a>
+        </form>
+
+        <div class="page-content imagem-background" style="padding-bottom: 0px;    padding-top: 0px;
+    position: relative;
+    height: calc(100% - 130px);
+    color: var(--textbox-color)">
+
+
+            <div class="tabs">
+                <!-- Tab 1, active by default -->
+                <div style="display:block !important;">
+                    <!-- This block will be displayed if nothing found -->
+                    <div class="content-block searchbar-not-found">
+                        <div class="content-block-inner">Oops, não encontrado.</div>
+                    </div>
+
+
+
+
+                    <div class="list-block list-block-search list searchbar-found">
+                        <ul class="grid-m">
+                            <li id="novo_produto" onclick="window.location='/tipos'" style="    width: 100%;
+    border:  var(--textbox-color) dashed 1px;
+    cursor: pointer;
+    background-color: var(--textbox-font-color);
+    color: var(--textbox-color);
+    text-align: center;
+    height: auto !important;
+    padding: 10px;font-size: 24px;">
+                                <b><span class="icon-pencil2" style="margin-right:10px"></span>EDITAR PRODUTOS</b>
+                                <div style=" font-size: 12px">Clique aqui para Incluir, editar ou excluir seus produtos</div>
+                            </li>
+
+                            <style>
+                                [data-page="produto"] [minicurriculo] {
+                                    display: none !important;
+                                }
+                            </style>
+                            {{#each produto}}
+                            <li caracteristicas="{{caracteristica_ids}}" class="produtoli {{js "biblioteca.get('css_produto')"}} grid-item-m" link="{{redirect}}" produto_id="{{id}}" destaque="{{destaque}}"
+                                {{#js_if "this.icone == ''"}}
+                                noimage
+                                {{/js_if}}>
+
+                                {{#js_if "this.icone != ''"}}
+                                <div id="bg{{id}}" style="background:url({{icone}})" class="image_cart">
+                                </div>
+                                {{/js_if}}
+                                <div class="titulo_produto item-title">
+                                    {{nome}}
+                                    <div style="display:none">{{descricao}}</div>
+                                </div>
+                                <div style="padding: 0px 10px;">
+                                    {{descricao}}
+                                </div>
+                                {{#js_if "this.caracteristicas.length > 0"}}
+                                <b style="font-size:10px; color:rgb(244, 67, 54)">NÍVEL DE CUIDADOS ACEITOS</b>
+                                <div style="font-size: 10px">
+                                    {{#each caracteristicas}}
+                                    {{nome}}
+                                    {{/each}}
+                                </div>
+                                {{/js_if}}
+
+                                <span class="link-deeporange produtoli_valor" formatMoney>{{preco}}</span>
+
+                                <div class="content_estrela">
+                                    {{estrela}}
+                                </div>
+                                <div style="clear:both"></div>
+                            </li>
+                            {{/each}}
+                        </ul>
+                        <div style="clear:both"></div>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                creait.resize();
+            </script>
+        </div>
+    </div>

@@ -1,0 +1,165 @@
+﻿<div class="pages">
+    <div data-page="mesa" class="page navbar-fixed">
+
+
+        <div class="imagem-background no-searchbar" style="background-color:var(--textbox-color)">
+
+            {{#js_if "this.mesa.status == 'S'"}}
+            <div onclick="creait.redirect('mesas')" class="contafechada">
+                MESA EM CONTA
+            </div>
+            <style>
+                .contafechada {
+                    text-align: center;
+                    font-weight: 700;
+                    font-size: 20px;
+                    cursor: pointer;
+                    background-color: #f44336;
+                    color: white;
+                    padding: 24px 0px 16px 0px;
+                }
+            </style>
+            {{/js_if}}
+
+            {{#js_if "this.mesa.status != 'S'"}}
+            <div class="pedirmais">
+                <span class="glyph-icon flaticon-cover"></span>
+                PEDIR MAIS +
+            </div>
+            {{/js_if}}
+
+            <div class="background-creait">
+
+                <span class="icon-spoon-knife" style="float:left; font-size: 26px;  padding: 12px;"></span>
+                <span id="pedido" style="line-height: 17px; margin-top: 11px; float:left; font-weight: 700;
+    font-size: 20px; ">
+                    {{nome}}
+                </span>
+
+                {{#js_if "controller.login.get().perfil_id == 5"}}
+                <a href="#" class="link open-panel" style="margin-top:3px;
+    float: right;
+">
+                    <img src="icons/garcom.svg" style="    width: 30px;
+    margin-right: 5px;
+    margin-top: -1px;" />
+
+                    <span style="float:right; margin-top: -1px;float: right;text-align: right;line-height: 15px;">
+                        <div style="font-size:10px">GARÇOM</div>
+                        <div class="nomegarcom" style="font-size:14px">
+                        </div>
+                    </span>
+                </a>
+
+                {{/js_if}}
+                {{#js_if "controller.login.get().perfil_id == 3"}}
+                <div onclick="creait.post('notificacao', { descricao: 'Mesa 1', titulo: 'Chamando Garçom' }, function (a) { myApp.alert('Em instantes um garçom irá lhe atender', 'Aguarde'); creait.loader(false); })" style="padding: 0px 0px 0px 8px; margin-top:-2px;cursor:pointer;
+    float: right;    margin: 10px;
+">
+                    <img src="icons/garcom.svg" style="width:30px;" />
+
+                    <span style="float:right; margin-top: -1px;float: right;text-align: right;line-height: 15px;">
+                        <div style="font-size:15px">Chamar</div>
+                        <div style="font-size:12px">Garçom</div>
+                    </span>
+                </div>
+                {{/js_if}}
+            </div>
+
+            <div class="list-block">
+                <div class="list-group">
+                    <div class="list-block list-block-search searchbar-found" style="height: calc(100% - 213px);
+    overflow: auto;
+    position: absolute; width: 100%;">
+                        <ul>
+                            <div class="comanda_numero">LISTA DE PRODUTOS</div>
+                            {{#each mesa.produtos}}
+                            <li class="produto_mesa" produto_id="{{id}}">
+
+                                <div id="bg{{id}}" style="background:url('/api/produto?produto_id={{id}}'); height: 100px !important; width: 100px !important;" class="image_cart">
+                                    <img src="/api/produto?produto_id={{id}}" onload="$(this.parentNode).show(); $(this).remove()" onerror="$(this.parentNode).hide(); $(this).remove()" />
+                                </div>
+                                <div style="padding:10px">
+
+                                    <div class="item-title fonte_cinza" style="font-weight: bold; margin-left: 5px;    font-size: 14px; font-weight:700">
+                                        {{nome}}
+
+                                    </div>
+                                    <div class="item-title fonte_cinza" style="margin-left: 5px; white-space: normal;font-size: 10px;">
+                                        {{StringPedidos}}
+
+
+                                        <span class="link-deeporange" style="float: right;font-weight: 700; font-size:18px" formatMoney>{{preco}}</span>
+                                    </div>
+                                </div>
+                                <div style="clear:both"></div>
+                            </li>
+                            {{/each}}
+                        </ul>
+                        <ul>
+                            {{#each comandas}}
+                            <div class="comanda_numero">{{label_numero}}</div>
+                            {{#each pedidos}}
+                            <li class="produto_mesa" produto_id="{{produto.id}}">
+
+                                <div id="bg{{id}}" style="background:url('/api/produto?produto_id={{produto.id}}'); height: 100px !important; width: 100px !important;" class="image_cart">
+                                    <img src="/api/produto?produto_id={{produto.id}}" onload="$(this.parentNode).show(); $(this).remove()" onerror="$(this.parentNode).hide(); $(this).remove()" />
+                                </div>
+                                <div style="padding:10px">
+
+                                    <div class="item-title fonte_cinza" style="font-weight: bold; margin-left: 5px;    font-size: 14px; font-weight:700">
+                                        {{produto.nome}}
+
+                                    </div>
+                                    <div class="item-title fonte_cinza" style="margin-left: 5px; white-space: normal;font-size: 10px;">
+                                        {{StringPedidos}}
+
+
+                                        <span class="link-deeporange" style="float: right;font-weight: 700; font-size:18px" formatMoney>{{preco}}</span>
+                                    </div>
+                                </div>
+                                <div style="clear:both"></div>
+                            </li>
+                            {{/each}}
+                            {{/each}}
+                        </ul>
+                    </div>
+                </div>
+                <div style="clear:both"></div>
+            </div>
+            <div class="fontextra endereco_acompanhamento mesatotal" style="position:fixed; bottom:0px; width:100%; font-size: 20px;padding: 0px;
+    font-weight: 700;">
+                <div style="background-color: var(--textbox-color); color: var(--textbox-font-color); padding:10px">
+                    TOTAL: <span formatMoney>
+    {{mesa.total}}
+</span>
+                </div>
+
+                {{#js_if "controller.login.get().perfil_id == 5"}}
+                {{#js_if "this.mesa.status == 'S'"}}
+                <div id="fechar_conta" class="buton" style="border-radius:0px; background-color:#009688">
+                    <i class="icon-lock"></i>
+                    REABRIR CONTA
+                </div>
+                {{/js_if}}
+                {{#js_if "this.mesa.status != 'S'"}}
+                <div id="fechar_conta" class="buton" style="border-radius:0px">
+                    <i class="icon-coin-dollar"></i>
+                    FINALIZAR CONTA
+                </div>
+                {{/js_if}}
+                {{/js_if}}
+                {{#js_if "controller.login.get().perfil_id == 3"}}
+                <div onclick="controller.login.set(null); creait.redirect('entrar');" class="buton" style="border-radius:0px">
+                    <i class="icon-unlocked"></i>
+                    SAIR DA MESA
+                </div>
+                {{/js_if}}
+            </div>
+
+            </>
+        </div>
+</div>
+
+
+

@@ -1,0 +1,155 @@
+﻿@model api.Models.tipo
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        <a href="@Url.Action("Index")" class="btn btn-warning"><i class="fa fa-angle-left fa-lg" style="margin-right: 10px"></i>Voltar</a>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("index")" base_library="api.Models.tipo.library_bc_1">Categorias</a></li>
+        <li class="active" base_library="api.Models.tipo.library_bc_create">Nova</li>
+    </ol>
+</section>
+
+
+<section class="content">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.ValidationSummary(true)
+        <div class="alert alert-danger" role="alert" base_library="api.Models.tipo.library_error_register">
+            Registro não gravado, verificar erro criticado
+        </div>
+
+        <fieldset>
+
+
+            <div>
+
+
+                @*<div class="form-group col-md-6">
+                                <label class="control-label" base_library="api.Models.tipo.icone" >icone</label>
+
+            <div style="clear: both"></div>
+                                <div class="info-box bg-aqua">
+
+                    <span class="info-box-icon">
+
+                    @{
+                        if (Model == null || string.IsNullOrEmpty(Model.icone_itype))
+                        {
+                            <i class="fa fa-image"></i>
+                        }
+                    }
+                    </span>
+                    <div class="info-box-content">
+                        <span>
+                            <label class="control-label" base_library="api.Models.tipo.icone" >icone</label><br />
+                            Upload de imagem <i class="fa fa-cloud-upload"></i>
+                        </span>
+                        <input type="file" source="#icone" class="upload" />
+                        <input type="hidden" id="icone" name="icone" class="upload" />
+                        <input type="hidden" id="icone_itype" name="icone_itype" class="upload" />
+
+                    </div><!-- /.info-box-content -->
+                </div><!-- /.info-box -->
+                            @Html.ValidationMessageFor(model => model.icone)
+        </div>*@
+
+
+                <div class="form-group col-md-10">
+                    <label class="control-label" base_library="api.Models.produto.buscavel">Ativo</label>
+                    <div style="height: 34px; line-height: 30px;">
+                        <label style="min-width: 45px;">
+                            <input type="radio" value="true" name="item_correct" class="minimal-green">
+                            Sim
+
+                        </label>
+                        <label style="min-width: 45px; margin-left:10px">
+                            <input type="radio" value="false" name="item_correct" class="minimal">
+                            Não
+
+                        </label>
+                        @Html.HiddenFor(model => model.buscavel, new { icheck = "item_correct" })
+                    </div>
+                </div>
+
+
+                <div class="form-group col-md-2">
+                    <label class="control-label" base_library="api.Models.produto.duracao">Ordem</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.ordem, new { placeholder = "", @class = "form-control", maxLength = "150", type = "number" })
+                    @Html.ValidationMessageFor(model => model.ordem)
+                </div>
+
+                <div class="form-group col-md-6">
+
+                    <div style="clear: both"></div>
+                    <div class="info-box bg-aqua">
+                        <span class="info-box-icon" style="background-image:@(Model == null || string.IsNullOrEmpty(Model.background_itype) ? "none" : "url(" + Model.background_itype + "," + Convert.ToBase64String(Model.background) + ")")">
+                            @{
+                                if (Model == null || string.IsNullOrEmpty(Model.background_itype))
+                                {
+                                    <i class="fa fa-image"></i>
+                                }
+                            }
+                        </span>
+                        <div class="info-box-content">
+                            <span>
+                                <label class="control-label" base_library="api.Models.tipo.background">Imagem</label><br />
+                                Upload de imagem <i class="fa fa-cloud-upload"></i>
+                            </span>
+                            <input type="file" source="#background" size="200" class="upload" />
+                            <input type="hidden" id="background" name="background" value="@(Model.background == null?"": Convert.ToBase64String(Model.background))" class="upload" />
+                            <input type="hidden" id="background_itype" name="background_itype" value="@(Model.background_itype == null?"": Model.background_itype)" class="upload" />
+
+                        </div><!-- /.info-box-content -->
+                    </div><!-- /.info-box -->
+
+                    @Html.ValidationMessageFor(model => model.background)
+                </div>
+
+
+                <div class="form-group col-md-6">
+                    <label class="control-label" base_library="api.Models.tipo.nome">Nome</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.nome, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                    @Html.ValidationMessageFor(model => model.nome)
+                </div>
+
+                @if (api.Models.db.place.place_id == 1512651845703501)
+                {
+                    <div class="form-group col-md-3">
+                        <label class="control-label" base_library="api.Models.produto.periodo">Periodo</label>
+
+                        <div style="clear: both"></div>
+                        @Html.TextBoxFor(model => model.periodo, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                        @Html.ValidationMessageFor(model => model.periodo)
+                    </div>
+                }
+
+
+
+
+
+
+                <div class="form-group col-md-12 btn-gallery">
+                    <a class="btn btn-success pull-right" onclick="$(this).closest('form').submit()" base_library="api.Models.tipo.library_save"><i class="fa fa-check"></i>Salvar</a>
+                </div>
+            </div>
+        </fieldset>
+                                }
+
+</section>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

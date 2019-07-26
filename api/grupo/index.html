@@ -1,0 +1,187 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags-->
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Security-Policy" content="
+default-src 'self' data: gap:
+    *;
+script-src 'self' 'unsafe-inline' 'unsafe-eval'
+    *;
+style-src 'self' 'unsafe-inline' 'unsafe-eval'
+    *;
+media-src 'self' 'unsafe-inline' 'unsafe-eval'
+    *;
+font-src 'self' 'unsafe-inline' 'unsafe-eval'
+    *;
+">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="creait_licenca" content="yes">
+    <link rel="apple-touch-icon" class="place_picture" href="<%= api.Models.db.place.picture %>" />
+    <link rel="apple-touch-startup-image" class="place_picture" href="<%= api.Models.db.place.picture %>" />
+    <link rel="shortcut icon" sizes="196x196" class="place_picture" href="<%= api.Models.db.place.picture %>">
+    <link rel="shortcut icon" sizes="128x128" class="place_picture" href="<%= api.Models.db.place.picture %>">
+    <meta property="og:url" class="og_url" content="http://<%= HttpContext.Current.Request.Url.DnsSafeHost%>" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" class="og_title" content="Aplicativo <%= api.Models.db.place.name %>" />
+    <meta property="og:description" class="og_description" content="<%= api.Models.db.place.about %>" />
+    <meta property="og:image" class="og_image" content="<%= api.Models.db.place.picture %>" />
+
+    <!-- Your app title -->
+    <title></title>
+    <style id="rootcss">
+    </style>
+
+    <!-- FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700' rel='stylesheet' type='text/css'>
+    <!-- Path to Framework7 Library CSS, Material Theme -->
+    <link rel="stylesheet" href="css/framework7.material.min.css">
+    <!-- Path to Framework7 color related styles, Material Theme -->
+    <link rel="stylesheet" href="css/framework7.material.colors.min.css">
+    <!-- Slick Carousel -->
+    <link rel="stylesheet" type="text/css" href="css/slick.css" />
+    <link rel="stylesheet" type="text/css" href="css/slick-theme.css" />
+    <!-- Path to your custom app styles-->
+    <link rel="stylesheet" href="fonts/food/flaticon.css">
+    <link href="fonts/f7/css/framework7-icons.css" rel="stylesheet" />
+    <link href="fonts/ecommerce/flaticon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/my-app.css">
+    <link href="fonts/icomoon/style.css" rel="stylesheet" />
+    <link href="loader/cube.css" rel="stylesheet" />
+    <link href="loader/pizza.css" rel="stylesheet" />
+    <link href="loader/coffee.css" rel="stylesheet" />
+    <link href="loader/beer.css" rel="stylesheet" />
+    <link href="loader/bol.css" rel="stylesheet" />
+    <link href="loader/connect.css" rel="stylesheet" />
+    <link href="loader/wine.css" rel="stylesheet" />
+    <link href="loader/hamburger.css" rel="stylesheet" />
+    <link href="loader/diamond.css" rel="stylesheet" />
+    <link href="loader/peixe.css" rel="stylesheet" />
+    <link href="css/effect/bonce.css" rel="stylesheet" />
+    <link href="css/tooltip.css" rel="stylesheet" />
+    <link href="css/custom.css" rel="stylesheet" />
+    <link href="" rel="stylesheet" id="tema" />
+    <link href="css/animate.css" rel="stylesheet" />
+</head>
+<body style="background-color: #0a7995; background-size: cover; background-repeat: no-repeat">
+    <div class="fb-root"></div>
+    <div style="display: none">
+        <div class="fb-like" data-href="https://facebook.com/<%= api.Models.db.place.place_id %>" data-layout="button" data-action="recommend" data-size="large" data-show-faces="true" data-share="true"></div>
+
+    </div>
+    <!-- Status bar overlay for fullscreen mode-->
+    <div class="statusbar-overlay"></div>
+    <!-- Panels overlay-->
+    <div class="panel-overlay"></div>
+    <!-- Left panel with reveal effect-->
+    <div class="loader_on">
+        <div class="container" style="width: 100%;">
+            <div loader="altec" style="display: none; text-align: center;">
+                <img class="animated bouncelogo" style="max-width: 200px; max-height: 200px" src="img/monitoramento/logo/azul.png" />
+                <div class="animated bouncelogo" id="loader_message" style="font-size: 20px; font-weight: bold; color: var(--light-color);">
+                    CARREGANDO
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Views -->
+    <div class="views" style="display: none">
+        <!-- Your main view, should have "view-main" class -->
+        <div class="view view-main">
+            <!-- Pages container, because we use fixed navbar and toolbar, it has additional appropriate classes-->
+            <div class="pages" style="">
+                <!-- Page, "data-page" contains page name -->
+                <div data-page="index" class="page navbar-fixed toolbar-fixed">
+                    <!-- Scrollable page content -->
+                    <div class="page-content" id="app-cover" style="background-size: cover">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="scripts/index.js"></script>
+    <!-- Jquery-->
+    <script type="text/javascript" src="js/jquery-1.12.3.min.js"></script>
+    <!-- Slick Carousel -->
+    <script type="text/javascript" src="js/slick.min.js"></script>
+    <!-- Path to Framework7 Library JS-->
+    <script type="text/javascript" src="js/framework7.min.js"></script>
+    <script src="js/jquery.maskedinput.min.js"></script>
+    <script src="js/jquery.maskMoney.js"></script>
+    <script type="text/javascript" src="js/qrcode/src/grid.js"></script>
+    <script type="text/javascript" src="js/qrcode/src/version.js"></script>
+    <script type="text/javascript" src="js/qrcode/src/detector.js"></script>
+    <script type="text/javascript" src="js/qrcode/src/formatinf.js"></script>
+    <script type="text/javascript" src="js/qrcode/src/errorlevel.js"></script>
+    <script type="text/javascript" src="js/qrcode/src/bitmat.js"></script>
+    <script type="text/javascript" src="js/qrcode/src/datablock.js"></script>
+    <script type="text/javascript" src="js/qrcode/src/bmparser.js"></script>
+    <script type="text/javascript" src="js/qrcode/src/datamask.js"></script>
+    <script type="text/javascript" src="js/qrcode/src/rsdecoder.js"></script>
+    <script type="text/javascript" src="js/qrcode/src/gf256poly.js"></script>
+    <script type="text/javascript" src="js/qrcode/src/gf256.js"></script>
+    <script type="text/javascript" src="js/qrcode/src/decoder.js"></script>
+    <script type="text/javascript" src="js/qrcode/src/qrcode.js"></script>
+    <script type="text/javascript" src="js/qrcode/src/findpat.js"></script>
+    <script type="text/javascript" src="js/qrcode/src/alignpat.js"></script>
+    <script type="text/javascript" src="js/qrcode/src/databr.js"></script>
+    <script src="js/card.js"></script>
+    <script src="js/d3.v3.min.js"></script>
+    <script src="js/trianglify-min.js"></script>
+    <script src="biblioteca.js"></script>
+    <!-- Path to your app js-->
+    <script type="text/javascript" src="js/my-app.js"></script>
+    <!--<script type="text/javascript" src="js/creait.min.js"></script>-->
+    <!--<script src="controllers/bundle.js"></script>-->
+    <script src="controllers/cadastro.js"></script>
+    <script src="controllers/responsavel_adicionar.js"></script>
+    <script src="controllers/home.js"></script>
+    <script src="controllers/lembrar.js"></script>
+    <script src="controllers/loginE.js"></script>
+    <script src="controllers/minhaConta.js"></script>
+    <script src="controllers/responsavel.js"></script>
+    <script src="controllers/responsavel_obrigatorio.js"></script>
+    <script src="controllers/vendas.js"></script>
+    <script src="controllers/produto.js"></script>
+    <script src="controllers/produto_adicionar.js"></script>
+    <script src="controllers/root.js"></script>
+
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIoBAvqfno0lFGhuzuuwqX0KmXRdr-10o" async defer></script>
+
+    <script>
+        var alerta = [];
+        var notificacao = [];
+        var notificacao_atual = {};
+        var alerta_atual = {};
+
+
+        if (window.location.href.indexOf("#!") == -1 || window.location.href.split("#!")[1].length == 0) {
+
+            onloadpage(function () {
+                creait.redirect('home');
+            });
+
+        }
+
+        function inIframe() {
+            try {
+                return window.self !== window.top;
+            } catch (e) {
+                return true;
+            }
+        }
+
+    </script>
+
+    <div id="fb-root"></div>
+</body>
+</html>

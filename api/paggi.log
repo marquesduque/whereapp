@@ -1,0 +1,144 @@
+::CHAMADA POST::20/02/2019 15:44:33::https://api.stg.paggi.com/v1/partners/1625cfb4-3113-4890-82b8-2eb32d7f3c28/orders
+::ENVIO::{"capture":false,"ip":"127.0.0.1","recipients":[{"name":"Clark Kent","document":"60276243889","percentage":10,"bank_account":{"branch_number":"00001","branch_digit":"1","bank_code":"077","account_number":"86251","account_digit":"9","document":"60276243889"}}],"external_identifier":"1550188655086075","customer":{"name":"Suporte Paggi 2","email":"suporte@paggi.com","document":"86219425006"},"charges":[{"installments":1,"card":{"cvc":"321","year":"2020","month":"04","number":"5573710095684403","holder":"BRUCE WAYNE","document":"86219425006"},"amount":100}]}
+::RESPOSTA::{"status":"authorized","recipients":[{"name":"Clark Kent","id":"23e2d156-a5c5-4b31-81fa-9c85fd8037cf","document":"60276243889","amount":10}],"inserted_at":"2019-02-20T18:44:44.586952","id":"5274e0a5-4637-4540-9c6f-d7bbc36a4d2a","external_identifier":"1550188655086075","customer":{"name":"Suporte Paggi 2","email":"suporte@paggi.com","document":"86219425006"},"charges":[{"statuses":[{"type":"authorized","reason":"Approved or completed successfully.","inserted_at":"2019-02-20T18:44:45.075923","amount":100}],"installments":1,"inserted_at":"2019-02-20T18:44:44.805130","id":"83cd85d5-8261-4a44-bbb0-dc4d20c6e72e","card_id":"525b2246-d3ff-4862-88fb-23ac0c0673cd","amount":100}]}
+
+::CHAMADA POST::20/02/2019 16:01:43::https://api.paggi.com/v1/partners/a14db62b-5f08-42a1-91df-1111b6980e5e/cards
+::ENVIO::{"cvc":"748","year":"2027","month":"02","number":"5149450594044198","holder":"fernando marques duque","document":"86219425006"}
+::RESPOSTA::{"id":"b0e3ee16-984d-4515-b154-daf12aec50af","brand":"mastercard"}
+
+::CHAMADA POST::20/02/2019 16:02:33::https://api.paggi.com/v1/partners/a14db62b-5f08-42a1-91df-1111b6980e5e/cards
+::ENVIO::{"cvc":"748","year":"2027","month":"02","number":"5149450594044198","holder":"fernando marques duque","document":"34574585889"}
+::RESPOSTA::{"id":"7c5a2072-5d1a-4336-865f-82bc68ffc83e","brand":"mastercard"}
+
+::CHAMADA POST::20/02/2019 16:02:54::https://api.paggi.com/v1/partners/a14db62b-5f08-42a1-91df-1111b6980e5e/orders
+::ENVIO::{"capture":false,"ip":"127.0.0.1","recipients":[{"name":"Clark Kent","document":"60276243889","percentage":10,"bank_account":{"branch_number":"00001","branch_digit":"1","bank_code":"077","account_number":"86251","account_digit":"9","document":"60276243889"}}],"external_identifier":"1550188655086075","customer":{"name":"Suporte Paggi 2","email":"suporte@paggi.com","document":"34574585889"},"charges":[{"installments":1,"card":{"cvc":"748","year":"2027","month":"02","number":"5149450594044198","holder":"fernando marques duque","document":"34574585889"},"amount":100}]}
+::RESPOSTA::{"status":"authorized","recipients":[{"name":"Clark Kent","id":"7e6362d0-8aff-460f-bdab-d6c4f940bbed","document":"60276243889","amount":10}],"inserted_at":"2019-02-20T19:03:04.845362","id":"35c29939-79a9-458c-8f6c-dd1ca02865bf","external_identifier":"1550188655086075","customer":{"name":"Suporte Paggi 2","email":"suporte@paggi.com","document":"34574585889"},"charges":[{"statuses":[{"type":"authorized","reason":"Approved or completed successfully.","inserted_at":"2019-02-20T19:03:05.363167","amount":100}],"installments":1,"inserted_at":"2019-02-20T19:03:04.864761","id":"9f926583-225e-404d-b0c8-0725030f49c8","card_id":"a330321b-55c9-4d16-b233-56182d4f1fd3","amount":100}]}
+
+::CHAMADA POST::26/02/2019 23:31:38::https://api.paggi.com/v1/partners/0c5f067e-a271-4789-bc3e-35520c742eef/cards
+::ENVIO::{"cvc":"748","year":"2027","month":"02","number":"5149450594044198","holder":"Fernando Marques duque","document":"34574585889"}
+::RESPOSTA::{"id":"166e8d5e-0285-47c2-8cc5-a89c1f142267","brand":"mastercard"}
+
+::CHAMADA POST::26/02/2019 23:32:29::https://api.paggi.com/v1/partners/0c5f067e-a271-4789-bc3e-35520c742eef/orders
+::ENVIO::{"capture":true,"ip":"127.0.0.1","external_identifier":"556885891122922","customer":{"name":"Fernando Marques Duque","email":"marquesduque@hotmail.com","document":"34574585889"},"charges":[{"installments":1,"card":{"cvc":"748","year":"2027","month":"02","number":"5149450594044198","holder":"Fernando Marques duque","document":"34574585889"},"amount":1400}]}
+::RESPOSTA::{"status":"captured","inserted_at":"2019-02-27T02:32:30.032349","id":"75cae9da-ce35-41ab-9175-aa3119c49706","external_identifier":"556885891122922","customer":{"name":"Fernando Marques Duque","email":"marquesduque@hotmail.com","document":"34574585889"},"charges":[{"statuses":[{"type":"captured","reason":"Approved or completed successfully.","inserted_at":"2019-02-27T02:32:30.724708","amount":1400}],"installments":1,"inserted_at":"2019-02-27T02:32:30.066403","id":"342e88ca-a72f-46c5-8663-abd9d5d07104","card_id":"79283e6d-30a5-4d90-b212-7c157a556eef","amount":1400}]}
+
+::CHAMADA POST::26/02/2019 23:33:02::https://api.paggi.com/v1/partners/0c5f067e-a271-4789-bc3e-35520c742eef/orders
+::ENVIO::{"capture":true,"ip":"127.0.0.1","external_identifier":"556885891122922","customer":{"name":"Fernando Marques Duque","email":"marquesduque@hotmail.com","document":"34574585889"},"charges":[{"installments":1,"card":{"cvc":"748","year":"2027","month":"02","number":"5149450594044198","holder":"Fernando Marques duque","document":"34574585889"},"amount":1400}]}
+::RESPOSTA::{"status":"captured","inserted_at":"2019-02-27T02:33:03.570527","id":"11c464b3-f921-481c-b48a-6deb7722ca0d","external_identifier":"556885891122922","customer":{"name":"Fernando Marques Duque","email":"marquesduque@hotmail.com","document":"34574585889"},"charges":[{"statuses":[{"type":"captured","reason":"Approved or completed successfully.","inserted_at":"2019-02-27T02:33:04.046768","amount":1400}],"installments":1,"inserted_at":"2019-02-27T02:33:03.584668","id":"91bc05c7-c4bb-42de-b876-5e532559ee47","card_id":"17dc0ef2-0343-402a-b9b4-2ac82ef27537","amount":1400}]}
+
+::CHAMADA POST::26/02/2019 23:33:18::https://api.paggi.com/v1/partners/0c5f067e-a271-4789-bc3e-35520c742eef/orders
+::ENVIO::{"capture":true,"ip":"127.0.0.1","external_identifier":"556885891122922","customer":{"name":"Fernando Marques Duque","email":"marquesduque@hotmail.com","document":"34574585889"},"charges":[{"installments":1,"card":{"cvc":"748","year":"2027","month":"02","number":"5149450594044198","holder":"Fernando Marques duque","document":"34574585889"},"amount":1400}]}
+::RESPOSTA::{"status":"captured","inserted_at":"2019-02-27T02:33:22.334933","id":"ce7f07b2-3822-4133-a259-8cbbea360be9","external_identifier":"556885891122922","customer":{"name":"Fernando Marques Duque","email":"marquesduque@hotmail.com","document":"34574585889"},"charges":[{"statuses":[{"type":"captured","reason":"Approved or completed successfully.","inserted_at":"2019-02-27T02:33:22.775031","amount":1400}],"installments":1,"inserted_at":"2019-02-27T02:33:22.350605","id":"c72718d5-bb5f-42cd-9416-c079b2fc0e78","card_id":"e6a80de9-cd0b-4f85-b861-6fe35fb4e718","amount":1400}]}
+
+::CHAMADA POST::26/02/2019 23:38:59::https://api.paggi.com/v1/partners/0c5f067e-a271-4789-bc3e-35520c742eef/orders
+::ENVIO::{"capture":false,"ip":"127.0.0.1","external_identifier":"556885891122922","customer":{"name":"Fernando Marques Duque","email":"marquesduque@hotmail.com","document":"34574585889"},"charges":[{"installments":1,"card":{"cvc":"748","year":"2027","month":"02","number":"5149450594044198","holder":"Fernando Marques duque","document":"34574585889"},"amount":1400}]}
+::RESPOSTA::{"status":"authorized","inserted_at":"2019-02-27T02:39:00.380402","id":"ac557dcd-4434-462d-b5e1-6d23c5299cf7","external_identifier":"556885891122922","customer":{"name":"Fernando Marques Duque","email":"marquesduque@hotmail.com","document":"34574585889"},"charges":[{"statuses":[{"type":"authorized","reason":"Approved or completed successfully.","inserted_at":"2019-02-27T02:39:00.908292","amount":1400}],"installments":1,"inserted_at":"2019-02-27T02:39:00.469509","id":"577689f9-4b80-4fc1-a108-367d68820a45","card_id":"94e28891-eaeb-45a8-9eba-7adccdf01c30","amount":1400}]}
+
+::CHAMADA POST::26/02/2019 23:55:08::https://api.paggi.com/v1/partners/0c5f067e-a271-4789-bc3e-35520c742eef/cards
+::ENVIO::{"cvc":"321","year":"2027","month":"02","number":"5149450594044198","holder":"Fernando Marques duque","document":"34574585889"}
+::RESPOSTA::{"id":"da53dea9-0d10-4901-ae97-fc43ac0f681c","brand":"mastercard"}
+
+::CHAMADA POST::27/02/2019 10:49:37::https://api.paggi.com/v1/partners/0c5f067e-a271-4789-bc3e-35520c742eef/cards
+::ENVIO::{"cvc":"748","year":"2027","month":"02","number":"5149450594044198","holder":"Fernando Marques duque","document":"34574585889"}
+::RESPOSTA::{"id":"aa3941a9-a598-4180-ac8f-7399a82a08fd","brand":"mastercard"}
+
+::CHAMADA POST::27/02/2019 10:49:47::https://api.paggi.com/v1/partners/0c5f067e-a271-4789-bc3e-35520c742eef/orders
+::ENVIO::{"capture":false,"ip":"127.0.0.1","external_identifier":"556885891122922","customer":{"name":"Fernando Marques Duque","email":"marquesduque@hotmail.com","document":"34574585889"},"charges":[{"installments":1,"card":{"cvc":"748","year":"2027","month":"02","number":"5149450594044198","holder":"Fernando Marques duque","document":"34574585889"},"amount":500}]}
+::RESPOSTA::{"status":"authorized","inserted_at":"2019-02-27T13:49:47.943670","id":"8551a8fe-28ea-400e-8746-db3f99266176","external_identifier":"556885891122922","customer":{"name":"Fernando Marques Duque","email":"marquesduque@hotmail.com","document":"34574585889"},"charges":[{"statuses":[{"type":"authorized","reason":"Approved or completed successfully.","inserted_at":"2019-02-27T13:49:48.470433","amount":500}],"installments":1,"inserted_at":"2019-02-27T13:49:47.957924","id":"e500f479-8ec4-429a-94e8-33cc1cf22cee","card_id":"9a046533-a37e-476c-ad5c-0e241dfa3710","amount":500}]}
+
+::CHAMADA POST::27/02/2019 10:50:02::https://api.paggi.com/v1/partners/0c5f067e-a271-4789-bc3e-35520c742eef/orders
+::ENVIO::{"capture":false,"ip":"127.0.0.1","external_identifier":"556885891122922","customer":{"name":"Fernando Marques Duque","email":"marquesduque@hotmail.com","document":"34574585889"},"charges":[{"installments":1,"card":{"cvc":"748","year":"2027","month":"02","number":"5149450594044198","holder":"Fernando Marques duque","document":"34574585889"},"amount":500}]}
+::RESPOSTA::{"status":"authorized","inserted_at":"2019-02-27T13:50:03.191766","id":"e965d171-d7fd-49c4-9a6e-0459edede1a4","external_identifier":"556885891122922","customer":{"name":"Fernando Marques Duque","email":"marquesduque@hotmail.com","document":"34574585889"},"charges":[{"statuses":[{"type":"authorized","reason":"Approved or completed successfully.","inserted_at":"2019-02-27T13:50:03.784747","amount":500}],"installments":1,"inserted_at":"2019-02-27T13:50:03.209048","id":"afdc6c7d-f2cf-4b83-ad4c-5381c4aac70a","card_id":"151ff80c-7781-4899-8d05-2dea8312a4d6","amount":500}]}
+
+::CHAMADA POST::27/02/2019 10:53:40::https://api.paggi.com/v1/partners/0c5f067e-a271-4789-bc3e-35520c742eef/orders
+::ENVIO::{"capture":false,"ip":"127.0.0.1","external_identifier":"556885891122922","customer":{"name":"Fernando Marques Duque","email":"marquesduque@hotmail.com","document":"34574585889"},"charges":[{"installments":1,"card":{"cvc":"748","year":"2027","month":"02","number":"5149450594044198","holder":"Fernando Marques duque","document":"34574585889"},"amount":500}]}
+::RESPOSTA::{"status":"authorized","inserted_at":"2019-02-27T13:53:41.575463","id":"7f8ad7db-0990-4a72-9f22-eee4564fb05b","external_identifier":"556885891122922","customer":{"name":"Fernando Marques Duque","email":"marquesduque@hotmail.com","document":"34574585889"},"charges":[{"statuses":[{"type":"authorized","reason":"Approved or completed successfully.","inserted_at":"2019-02-27T13:53:42.290116","amount":500}],"installments":1,"inserted_at":"2019-02-27T13:53:41.717161","id":"9ed4f410-ef02-461f-8744-6beea3f2164e","card_id":"5e1ecf4f-3fd2-4ce5-b1c7-943c6541d0d5","amount":500}]}
+
+::CHAMADA POST::27/02/2019 10:53:56::https://api.paggi.com/v1/partners/0c5f067e-a271-4789-bc3e-35520c742eef/orders
+::ENVIO::{"capture":false,"ip":"127.0.0.1","external_identifier":"556885891122922","customer":{"name":"Fernando Marques Duque","email":"marquesduque@hotmail.com","document":"34574585889"},"charges":[{"installments":1,"card":{"cvc":"748","year":"2027","month":"02","number":"5149450594044198","holder":"Fernando Marques duque","document":"34574585889"},"amount":500}]}
+::RESPOSTA::{"status":"authorized","inserted_at":"2019-02-27T13:53:57.132050","id":"714cd264-f2af-443e-a456-eecfe1ccd571","external_identifier":"556885891122922","customer":{"name":"Fernando Marques Duque","email":"marquesduque@hotmail.com","document":"34574585889"},"charges":[{"statuses":[{"type":"authorized","reason":"Approved or completed successfully.","inserted_at":"2019-02-27T13:53:57.619527","amount":500}],"installments":1,"inserted_at":"2019-02-27T13:53:57.146452","id":"22ce8ec1-96a7-4e37-874c-663ce2324754","card_id":"7baa4075-b16e-4a04-bf1b-c2dc5605b3db","amount":500}]}
+
+::CHAMADA POST::27/02/2019 10:54:38::https://api.paggi.com/v1/partners/0c5f067e-a271-4789-bc3e-35520c742eef/orders
+::ENVIO::{"capture":false,"ip":"127.0.0.1","external_identifier":"556885891122922","customer":{"name":"Fernando Marques Duque","email":"marquesduque@hotmail.com","document":"34574585889"},"charges":[{"installments":1,"card":{"cvc":"748","year":"2027","month":"02","number":"5149450594044198","holder":"Fernando Marques duque","document":"34574585889"},"amount":500}]}
+::RESPOSTA::{"status":"authorized","inserted_at":"2019-02-27T13:54:39.332311","id":"8651f3d7-9901-4590-bfc9-8c861ee8a47b","external_identifier":"556885891122922","customer":{"name":"Fernando Marques Duque","email":"marquesduque@hotmail.com","document":"34574585889"},"charges":[{"statuses":[{"type":"authorized","reason":"Approved or completed successfully.","inserted_at":"2019-02-27T13:54:39.833402","amount":500}],"installments":1,"inserted_at":"2019-02-27T13:54:39.358125","id":"7dc705d3-4d9b-4bd6-9ca2-9ad93e2827af","card_id":"a5cf13f8-f3bb-479e-b1b9-f18055624559","amount":500}]}
+
+::CHAMADA POST::27/02/2019 10:54:50::https://api.paggi.com/v1/partners/0c5f067e-a271-4789-bc3e-35520c742eef/orders
+::ENVIO::{"capture":false,"ip":"127.0.0.1","external_identifier":"556885891122922","customer":{"name":"Fernando Marques Duque","email":"marquesduque@hotmail.com","document":"34574585889"},"charges":[{"installments":1,"card":{"cvc":"748","year":"2027","month":"02","number":"5149450594044198","holder":"Fernando Marques duque","document":"34574585889"},"amount":500}]}
+::RESPOSTA::{"status":"authorized","inserted_at":"2019-02-27T13:54:51.065491","id":"2da04199-8e09-4718-aa8d-25c7faff2055","external_identifier":"556885891122922","customer":{"name":"Fernando Marques Duque","email":"marquesduque@hotmail.com","document":"34574585889"},"charges":[{"statuses":[{"type":"authorized","reason":"Approved or completed successfully.","inserted_at":"2019-02-27T13:54:51.557393","amount":500}],"installments":1,"inserted_at":"2019-02-27T13:54:51.079496","id":"b6f75805-02cd-4398-861d-349e68fa8caa","card_id":"bf003f02-afcc-46c0-8c3c-7432e6904bbb","amount":500}]}
+
+::CHAMADA POST::27/02/2019 10:55:25::https://api.paggi.com/v1/partners/0c5f067e-a271-4789-bc3e-35520c742eef/orders
+::ENVIO::{"capture":false,"ip":"127.0.0.1","external_identifier":"556885891122922","customer":{"name":"Fernando Marques Duque","email":"marquesduque@hotmail.com","document":"34574585889"},"charges":[{"installments":1,"card":{"cvc":"748","year":"2027","month":"02","number":"5149450594044198","holder":"Fernando Marques duque","document":"34574585889"},"amount":500}]}
+::RESPOSTA::{"status":"authorized","inserted_at":"2019-02-27T13:55:26.260935","id":"0af409c8-9fe7-4675-aed2-eaa75bcbe18f","external_identifier":"556885891122922","customer":{"name":"Fernando Marques Duque","email":"marquesduque@hotmail.com","document":"34574585889"},"charges":[{"statuses":[{"type":"authorized","reason":"Approved or completed successfully.","inserted_at":"2019-02-27T13:55:26.864359","amount":500}],"installments":1,"inserted_at":"2019-02-27T13:55:26.274737","id":"a7e0cc3c-6d16-4332-b760-acbbfa052622","card_id":"4094d6f1-4eac-4d6d-a487-a3a9d1c9dbe7","amount":500}]}
+
+::CHAMADA POST::27/02/2019 11:00:01::https://api.paggi.com/v1/partners/0c5f067e-a271-4789-bc3e-35520c742eef/orders
+::ENVIO::{"capture":false,"ip":"127.0.0.1","external_identifier":"556885891122922","customer":{"name":"Fernando Marques Duque","email":"marquesduque@hotmail.com","document":"34574585889"},"charges":[{"installments":1,"card":{"cvc":"748","year":"2027","month":"02","number":"5149450594044198","holder":"Fernando Marques duque","document":"34574585889"},"amount":500}]}
+::RESPOSTA::{"status":"authorized","inserted_at":"2019-02-27T14:00:02.280235","id":"2c14b27e-029f-412b-b81d-b833001e2970","external_identifier":"556885891122922","customer":{"name":"Fernando Marques Duque","email":"marquesduque@hotmail.com","document":"34574585889"},"charges":[{"statuses":[{"type":"authorized","reason":"Approved or completed successfully.","inserted_at":"2019-02-27T14:00:02.940502","amount":500}],"installments":1,"inserted_at":"2019-02-27T14:00:02.323504","id":"03af8bb8-92cd-4588-8717-220d30c0c37f","card_id":"39658d39-ce28-45dc-bd5a-113c3575f5b1","amount":500}]}
+
+::CHAMADA POST::27/02/2019 11:08:20::https://api.paggi.com/v1/partners/0c5f067e-a271-4789-bc3e-35520c742eef/cards
+::ENVIO::{"cvc":"321","year":"2019","month":"05","number":"4390270008341694","holder":"Vitor T Vilhena","document":"34574585889"}
+::RESPOSTA::{"id":"3c2e11dd-1ea6-45ae-9de3-75f99949f057","brand":"visa"}
+
+::CHAMADA POST::28/02/2019 01:05:01::https://api.stg.paggi.com/v1/partners/1625cfb4-3113-4890-82b8-2eb32d7f3c28/plans
+::ENVIO::{"name":"Plano 99","price":"9900"}
+::RESPOSTA::{"error":"Unauthorized"}
+
+::CHAMADA POST::28/02/2019 01:06:39::https://api.stg.paggi.com/v1/partners/1625cfb4-3113-4890-82b8-2eb32d7f3c28/plans
+::ENVIO::{"name":"Plano 99","price":"9900"}
+::RESPOSTA::{"error":"Unauthorized"}
+
+::CHAMADA POST::28/02/2019 01:06:52::https://api.stg.paggi.com/v1/partners/1625cfb4-3113-4890-82b8-2eb32d7f3c28/plans
+::ENVIO::{"name":"Plano 99","price":"9900"}
+::RESPOSTA::{"error":"Unauthorized"}
+
+::CHAMADA POST::28/02/2019 01:07:33::https://api.stg.paggi.com/v1/partners/1625cfb4-3113-4890-82b8-2eb32d7f3c28/plans
+::ENVIO::{"name":"Plano 99","price":"9900"}
+::RESPOSTA::{"error":"Unauthorized"}
+
+::CHAMADA POST::28/02/2019 01:07:46::https://api.stg.paggi.com/v1/partners/1625cfb4-3113-4890-82b8-2eb32d7f3c28/plans
+::ENVIO::{"name":"Plano 99","price":"9900"}
+::RESPOSTA::{"error":"Unauthorized"}
+
+::CHAMADA POST::28/02/2019 01:08:42::https://api.stg.paggi.com/v1/partners/1625cfb4-3113-4890-82b8-2eb32d7f3c28/plans
+::ENVIO::{"name":"Plano 99","price":"9900"}
+::RESPOSTA::{"error":"Unauthorized"}
+
+::CHAMADA POST::28/02/2019 01:08:52::https://api.stg.paggi.com/v1/partners/1625cfb4-3113-4890-82b8-2eb32d7f3c28/plans
+::ENVIO::{"name":"Plano 99","price":"9900"}
+::RESPOSTA::{"error":"Unauthorized"}
+
+::CHAMADA POST::28/02/2019 01:10:16::https://api.stg.paggi.com/v1/partners/1625cfb4-3113-4890-82b8-2eb32d7f3c28/plans
+::ENVIO::{"name":"Plano 99","price":"9900"}
+::RESPOSTA::{"error":"Unauthorized"}
+
+::CHAMADA POST::28/02/2019 01:10:31::https://api.stg.paggi.com/v1/partners/1625cfb4-3113-4890-82b8-2eb32d7f3c28/plans
+::ENVIO::{"name":"Plano 99","price":"9900"}
+::RESPOSTA::{"error":"Unauthorized"}
+
+::CHAMADA POST::28/02/2019 02:28:30::https://api.paggi.com/v1/partners/0c5f067e-a271-4789-bc3e-35520c742eef/cards
+::ENVIO::{"cvc":"917","year":"2026","month":"12","number":"4901720702169587","holder":"Gustavo H S Martins","document":"34574585889"}
+::RESPOSTA::{"id":"d06fcdfd-c67d-4f01-b9da-fe19a58c4a8f","brand":"visa"}
+
+::CHAMADA POST::28/02/2019 02:28:38::https://api.paggi.com/v1/partners/0c5f067e-a271-4789-bc3e-35520c742eef/orders
+::ENVIO::{"capture":false,"ip":"127.0.0.1","external_identifier":"556885891122922","customer":{"name":"Gustavo Martins","email":"gustavo.martins@altec.ws","document":"34574585889"},"charges":[{"installments":1,"card":{"cvc":"917","year":"2026","month":"12","number":"4901720702169587","holder":"Gustavo H S Martins","document":"34574585889"},"amount":1300}]}
+::RESPOSTA::{"status":"authorized","inserted_at":"2019-02-28T05:28:39.571131","id":"3248723a-0491-4791-8f86-67bacdca5383","external_identifier":"556885891122922","customer":{"name":"Gustavo Martins","email":"gustavo.martins@altec.ws","document":"34574585889"},"charges":[{"statuses":[{"type":"authorized","reason":"Approved or completed successfully.","inserted_at":"2019-02-28T05:28:40.137530","amount":1300}],"installments":1,"inserted_at":"2019-02-28T05:28:39.586194","id":"f116dbdb-78f5-468f-ae96-af4e01898c64","card_id":"92c1f09c-50be-4b5e-a204-b48d81122027","amount":1300}]}
+
+::CHAMADA POST::28/02/2019 02:29:00::https://api.paggi.com/v1/partners/0c5f067e-a271-4789-bc3e-35520c742eef/orders
+::ENVIO::{"capture":false,"ip":"127.0.0.1","external_identifier":"556885891122922","customer":{"name":"Gustavo Martins","email":"gustavo.martins@altec.ws","document":"34574585889"},"charges":[{"installments":1,"card":{"cvc":"917","year":"2026","month":"12","number":"4901720702169587","holder":"Gustavo H S Martins","document":"34574585889"},"amount":1300}]}
+::RESPOSTA::{"status":"authorized","inserted_at":"2019-02-28T05:29:02.035851","id":"39015e25-d5db-4303-b6e8-9d6ee5a64f6f","external_identifier":"556885891122922","customer":{"name":"Gustavo Martins","email":"gustavo.martins@altec.ws","document":"34574585889"},"charges":[{"statuses":[{"type":"authorized","reason":"Approved or completed successfully.","inserted_at":"2019-02-28T05:29:02.561389","amount":1300}],"installments":1,"inserted_at":"2019-02-28T05:29:02.051057","id":"90d1508c-92f9-4374-ad9f-9ef8634827c9","card_id":"70014f79-90ba-4dc5-af14-a0cd2cf16cf9","amount":1300}]}
+
+::CHAMADA POST::28/02/2019 02:30:17::https://api.paggi.com/v1/partners/0c5f067e-a271-4789-bc3e-35520c742eef/orders
+::ENVIO::{"capture":false,"ip":"127.0.0.1","external_identifier":"556885891122922","customer":{"name":"Gustavo Martins","email":"gustavo.martins@altec.ws","document":"34574585889"},"charges":[{"installments":1,"card":{"cvc":"917","year":"2026","month":"12","number":"4901720702169587","holder":"Gustavo H S Martins","document":"34574585889"},"amount":1300}]}
+::RESPOSTA::{"status":"authorized","inserted_at":"2019-02-28T05:30:18.376702","id":"2bf68f37-f72e-4ac0-82c6-ee73b23a27a6","external_identifier":"556885891122922","customer":{"name":"Gustavo Martins","email":"gustavo.martins@altec.ws","document":"34574585889"},"charges":[{"statuses":[{"type":"authorized","reason":"Approved or completed successfully.","inserted_at":"2019-02-28T05:30:19.049919","amount":1300}],"installments":1,"inserted_at":"2019-02-28T05:30:18.442467","id":"1dd4d6bf-e478-45f3-b40d-78634f8f252e","card_id":"ab4236e3-d513-42a0-a718-8d508cc4ca07","amount":1300}]}
+
+::CHAMADA POST::28/02/2019 02:44:38::https://api.paggi.com/v1/partners/0c5f067e-a271-4789-bc3e-35520c742eef/cards
+::ENVIO::{"cvc":"917","year":"2026","month":"12","number":"4901720702169587","holder":"Gustavo H S Martins","document":"34574585889"}
+::RESPOSTA::{"id":"fb53715b-0374-422a-aac1-7a7fd713790b","brand":"visa"}
+
+::CHAMADA POST::04/03/2019 19:47:56::https://api.paggi.com/v1/partners/0c5f067e-a271-4789-bc3e-35520c742eef/cards
+::ENVIO::{"cvc":"917","year":"2026","month":"12","number":"4901720702169587","holder":"Gustavo H S Martins","document":"28047329839"}
+::RESPOSTA::{"id":"e9fc38d3-7b45-4641-a6e3-309ae0ec24c7","brand":"visa"}
+
+::CHAMADA POST::04/03/2019 19:48:55::https://api.paggi.com/v1/partners/0c5f067e-a271-4789-bc3e-35520c742eef/orders
+::ENVIO::{"capture":false,"ip":"127.0.0.1","external_identifier":"556885891122922","customer":{"name":"Gustavo Martins","email":"gustavo.martins@altec.ws","document":"28047329839"},"charges":[{"installments":1,"card":{"cvc":"917","year":"2026","month":"12","number":"4901720702169587","holder":"Gustavo H S Martins","document":"28047329839"},"amount":500}]}
+::RESPOSTA::{"status":"authorized","inserted_at":"2019-03-04T22:48:57.148816","id":"c5f26d2c-3a8e-4449-bb4d-c09f69bf06d6","external_identifier":"556885891122922","customer":{"name":"Gustavo Martins","email":"gustavo.martins@altec.ws","document":"28047329839"},"charges":[{"statuses":[{"type":"authorized","reason":"Approved or completed successfully.","inserted_at":"2019-03-04T22:48:57.680548","amount":500}],"installments":1,"inserted_at":"2019-03-04T22:48:57.166297","id":"0c98d185-2e18-484d-951e-8ac7ec112a1d","card_id":"e771dd62-2604-411c-9362-5fcc2b1566af","amount":500}]}
+

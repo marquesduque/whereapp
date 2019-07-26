@@ -1,0 +1,71 @@
+#imagem_bg_login {
+    background-color: #3D8EB9;
+    background-position: bottom !important;
+    background-size: 100% auto !important;
+    background-repeat: no-repeat !important;
+}
+
+.logo_grande {
+    background-color: #3d8eb9 !important;
+}
+
+.logo_pequeno {
+    background-color: #3d8eb9 !important;
+}
+
+.menu_lateral {
+    background-color: #3d8eb9 !important;
+}
+
+    .menu_lateral ul li a:hover {
+        background: #1f729f !important;
+    }
+
+.titulo_menu {
+    color: #fff !important;
+    background: #3D8EB9 !important;
+}
+
+.menu_topo {
+    background-color: #3d8eb9 !important;
+}
+
+
+.skin-blue .sidebar-menu > li > .treeview-menu {
+    margin: 0 1px;
+    background: #1f729f !important;
+}
+
+
+
+.menu_topo a:hover {
+    background: #1f729f !important;
+}
+
+.skin-blue .sidebar-menu > li.active > a {
+    background: #1f729f !important;
+}
+
+
+.skin-blue .wrapper, .skin-blue .main-sidebar, .skin-blue .left-side {
+    background-color: #3D8EB9 !important;
+}
+
+
+/*TABLES*/
+
+.table-default tr:first-child td {
+    background-color: #3D8EB9 !important;
+}
+
+.table-default tr:first-child:hover td {
+    background: #3d8eb9 !important;
+}
+
+.table-default tr:hover td {
+    background-color: #3d8eb9 !important;
+}
+
+.filter-table {
+    background: #3D8EB9 !important;
+}

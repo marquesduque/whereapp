@@ -1,0 +1,113 @@
+﻿@model api.Models.cartao
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>cartao</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.numero)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.numero)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.expiracao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.expiracao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cvv)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cvv)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hash)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hash)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.documento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.documento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pagarme_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pagarme_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.bandeira)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bandeira)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.place_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.place_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.compra.pagarme_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.compra.pagarme_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pessoa.nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pessoa.nome)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,185 @@
+﻿@model api.Models.montagem
+
+@{
+    ViewBag.Title = "Create";
+}
+<section class="content-header">
+    <h1>
+        <a href="@Url.Action("Index", new { produto_id = Model.produto_id})" class="btn btn-warning"><i class="fa fa-angle-left fa-lg" style="margin-right: 10px"></i>Voltar</a>
+    </h1>
+
+</section>
+<a href="@Url.Action("edit", "produtos", new { id= Convert.ToInt32(Request.QueryString["produto_id"])})" class="col-md-12">
+    <div class="alert alert-info col-md-12" role="alert">
+        <i class="fa fa-pencil" style="margin-right: 10px"></i>
+        <b>
+            Combo para
+            @(new api.Models.db().produto.Find(Convert.ToInt32(Request.QueryString["produto_id"])).nome
+            )
+        </b>
+    </div>
+</a>
+
+<section class="content">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.ValidationSummary(true)
+        <div class="alert alert-danger" role="alert" base_library="api.Models.montagem.library_error_register">
+            Registro não gravado, verificar erro criticado
+        </div>
+
+        <fieldset style="width:100%;">
+
+
+            <div>
+
+                @*<div class="form-group col-md-12">
+                        <label class="control-label" base_library="api.Models.montagem.icone">icone</label>
+
+                        <div style="clear: both"></div>
+                        <div class="info-box bg-aqua">
+
+                            <span class="info-box-icon">
+
+                                @{
+                                    if (Model == null || string.IsNullOrEmpty(Model.icone_type))
+                                    {
+                                        <i class="fa fa-image"></i>
+                                    }
+                                }
+                            </span>
+                            <div class="info-box-content">
+                                <span>
+                                    <label class="control-label" base_library="api.Models.montagem.icone">icone</label><br />
+                                    Upload de imagem <i class="fa fa-cloud-upload"></i>
+                                </span>
+                                <input type="file" source="#icone" class="upload" />
+                                <input type="hidden" id="icone" name="icone" class="upload" />
+                                <input type="hidden" id="icone_itype" name="icone_itype" class="upload" />
+
+                            </div><!-- /.info-box-content -->
+                        </div><!-- /.info-box -->
+                        @Html.ValidationMessageFor(model => model.icone)
+                    </div>*@
+
+                <div class=" col-md-12" role="alert" style="padding: 20px 8px 8px 8px; margin-top:20px">
+
+                    <div style="padding:0px 20px 20px 20px">
+
+                        <h1 style="FONT-WEIGHT: 700;">Formatar pergunta</h1>
+
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        <label class="control-label" base_library="api.Models.montagem.nome">Qual a pergunta?</label>
+
+                        <div style="clear: both"></div>
+                        @Html.TextBoxFor(model => model.nome, new { placeholder = "Ex. Gostaria de algum complemento?", @class = "form-control", maxLength = "150" })
+                        @Html.ValidationMessageFor(model => model.nome)
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        <label class="control-label" base_library="api.Models.montagem.complementos">
+                            Respostas
+                            <div style="text-transform:uppercase; font-size:10px">Informe os produtos que serão as respostas para a pergunta</div>
+                        </label>
+                        <select multiple="multiple" class="form-control select2" source="#complementos" data-placeholder="" style="width: 100%;">
+                            @foreach (var item in new api.Models.db().produto.Include("montagem").Where(c => c.place_id == api.Models.db.place.place_id).Select(c => new { id = c.id, nome = c.nome }))
+                            {
+                                <option value="@item.id">@(item.nome)</option>
+                            }
+                        </select>
+                        @Html.HiddenFor(model => model.complementos)
+                        @Html.ValidationMessageFor(model => model.complementos)
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label class="control-label" base_library="api.Models.montagem.preco">
+                            % de desconto
+                            <div style="text-transform:uppercase; font-size:10px">Para esta pergunta</div>
+                        </label>
+
+                        <div style="clear: both"></div>
+                        @Html.TextBoxFor(model => model.preco, "{0:#.###,##}", new { placeholder = "", @class = "form-control", maxLength = "150", money = "true" })
+                        @Html.ValidationMessageFor(model => model.preco)
+                    </div>
+
+
+                    <div class="form-group col-md-3">
+                        <label class="control-label" base_library="api.Models.montagem.min">
+                            Qtd. Minima
+                            <div style="text-transform:uppercase; font-size:10px">selecionada pelo clíente</div>
+                        </label>
+
+                        <div style="clear: both"></div>
+                        @Html.TextBoxFor(model => model.min, new { placeholder = "", @class = "form-control", maxLength = "150", type = "number", value = "1" })
+                        @Html.ValidationMessageFor(model => model.min)
+                    </div>
+
+
+                    <div class="form-group col-md-3">
+                        <label class="control-label" base_library="api.Models.montagem.max">Qtd. Máxima</label>
+                        <div style="text-transform:uppercase; font-size:10px">selecionada pelo clíente</div>
+
+                        <div style="clear: both"></div>
+                        @Html.TextBoxFor(model => model.max, new { placeholder = "", @class = "form-control", maxLength = "150", type = "number", value = "1" })
+                        @Html.ValidationMessageFor(model => model.max)
+                    </div>
+
+
+                    <div class="form-group col-md-3">
+                        <label class="control-label" base_library="api.Models.montagem.ordem">
+                            Ordenação
+                            <div style="text-transform:uppercase; font-size:10px">Na lista de perguntas</div>
+                        </label>
+
+                        <div style="clear: both"></div>
+                        @Html.TextBoxFor(model => model.ordem, new { placeholder = "", @class = "form-control", maxLength = "150", type = "number", min = "1" })
+                        @Html.ValidationMessageFor(model => model.ordem)
+                    </div>
+
+
+
+                    @*<div class="form-group col-md-12">
+                        <label class="control-label" base_library="api.Models.montagem.description">description</label>
+
+                        <div style="clear: both"></div>
+                        @Html.TextAreaFor(model => model.description, new { placeholder = "", @class = "form-control", maxLength = "500", rows = "5", cols = "20" })
+                        @Html.ValidationMessageFor(model => model.description)
+                    </div>*@
+
+                    @Html.HiddenFor(model => model.produto_id)
+
+                </div>
+
+
+
+                @*<div class="form-group col-md-6">
+                        <label class="control-label" base_library="api.Models.montagem.proximo_id" >proximo_id</label>
+                        <select class="form-control select2" source="#proximo_id" data-placeholder="" style="width: 100%;">
+                            <option value="null">Selecione um item</option>
+                            @foreach (var item in new api.Models.db().montagem)
+                            {
+                                <option value="@item.id">@(item.nome)</option>
+                            }
+                        </select>
+                        @Html.HiddenFor(model => model.proximo_id)
+                        @Html.ValidationMessageFor(model => model.proximo_id)
+                    </div>*@
+
+
+
+
+
+
+
+                <div class="form-group col-md-12 btn-gallery">
+                    <a class="btn btn-success pull-right" onclick="$(this).closest('form').submit()" base_library="api.Models.montagem.library_save"><i class="fa fa-check"></i>Salvar</a>
+                </div>
+            </div>
+        </fieldset>
+    }
+
+</section>

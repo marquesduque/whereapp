@@ -1,0 +1,281 @@
+:root {
+    --primary-color: #E17477;
+    --primary-font-color: white;
+}
+
+.background-pedido {
+    background-color: var(--primary-color) !important;
+}
+.navbar-inner {
+    border-bottom: 1px var(--primary-color) solid;
+}.loader_on {
+    background: var(--primary-color) !important;
+}
+.panel_carrinho .fonte_branca{
+    color:white !important;
+}
+.line_acompanhamento {
+    border-bottom: 1px solid #eac3c4;
+}
+
+#menu_total .fonte_branca{
+    color:white !important;
+}
+[data-page="detail-restaurant"] .icon-clock2 {
+    font-size: 15vw;
+    color: var(--primary-color)
+}
+[data-page="detail-restaurant"] .icon-truck {
+    font-size: 15vw;
+    color: var(--primary-color)
+}
+[data-page="detail-restaurant"] .icon-box-remove {
+    font-size: 15vw;
+    color: var(--primary-color)
+}
+.buton {
+    background-color: #e38285 !important;
+}
+    /*===============================================*/
+    /*CORES PARA SEREM MUDADAS   					 */
+    /*===============================================*/
+    .background-creait {
+    background-color: var(--primary-color) !important
+}
+
+.background-pagamento {
+    background-color: var(--primary-color)21 !important;
+    margin-bottom: 1px;
+}
+
+
+.border-gold {
+    border-top: 5px solid #013243;
+    border-bottom: 5px solid #013243;
+    margin-bottom: 5px;
+}
+
+.linhaAcompanhamento {
+    margin-top: 40px;
+    border-color: #eac3c4;
+    border-style: dashed;
+}
+
+.buton-black {
+    font-size: 25px;
+    font-weight: bold;
+    color: #000 !important;
+}
+
+.imagem-background {
+    /*background: linear-gradient( rgba(225, 116, 119, 0), rgba(225, 116, 119, 0.23));*/
+}
+
+.background-preto {
+    background-color: #000 !important;
+}
+
+.background-amarelo {
+    background-color: #eac3c4;
+}
+
+
+.cor-creait {
+    color: #e6999b !important;
+}
+
+
+.fonte_branca {
+    color: #771a1c !important;
+}
+
+.fonte_preta {
+    color: #000 !important;
+}
+
+.fonte_cinza {
+    color: #666 !important;
+}
+
+
+.iconesMenu {
+    max-width: 70% !important
+}
+
+
+.input-delivery {
+    border: 2px solid #3D8EB9 !important;
+    padding-left: 10px !important;
+}
+
+
+    .input-delivery::-webkit-input-placeholder {
+        color: #fff !important;
+        font-weight: 700;
+    }
+
+.input-index {
+    background-color: rgb(255, 228, 229) !important;
+    color: var(--primary-color) !important;
+}
+
+    .input-index::-webkit-input-placeholder {
+        color: #fff !important;
+        font-weight: 700;
+    }
+
+
+
+    .input-confirmarCliente::-webkit-input-placeholder {
+        color: #000 !important;
+        font-weight: 700;
+    }
+
+.radioEndereco {
+    border-color: var(--primary-color) !important;
+}
+
+    .radioEndereco:after {
+        background-color: var(--primary-color) !important;
+    }
+
+
+
+.iconeEndereco i:before {
+    font-size: 30px !important;
+    color: var(--primary-color);
+}
+
+.radioMontagem {
+    border-color: transparent !important;
+}
+
+    .radioMontagem:after {
+        background-color: transparent !important;
+    }
+
+
+.iconeAcompanhamento i:before {
+    font-size: 30px !important;
+    color: #fff;
+}
+
+
+
+
+.buton-amarelo {
+    background-color: #e6999b !important;
+    color: #FFF !important;
+    font-weight: bold;
+    padding: 10px 0px;
+    text-align: center;
+    border-radius: 5px;
+    text-transform: uppercase;
+}
+
+.font-preta {
+    color: black;
+}
+
+.buton-verde {
+    background-color: #885406 !important;
+    color: #fff !important;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px 0px;
+    text-align: center;
+    border-radius: 10px;
+    text-transform: uppercase;
+}
+
+.buton-facebook {
+    background-color: #3b5998 !important;
+    color: #fff !important;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px 0px;
+    text-align: center;
+    border-radius: 10px;
+    text-transform: uppercase;
+}
+
+.radio-buton {
+    border-color: #ed0000 !important;
+}
+
+    .radio-buton::after {
+        background-color: #ffd800 !important;
+    }
+
+.icone-voltar {
+    font-size: 30px;
+    font-weight: 900;
+    color: #fff;
+}
+
+
+/*#app-cover{
+    background-color: lightblue;
+}*/
+
+
+
+/*ICONES DO MENU LATERAL*/
+
+.item-title a {
+    font-weight: bolder;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #000;
+    font-size: 12px;
+}
+
+#left-menu {
+    background-color: var(--primary-color) !important;
+}
+.item-title {
+    /*font-size: 13px;*/
+}
+.border_red {
+    background-color: red !important;
+}
+
+.image_cart {
+
+}
+
+#circulo-fechar {
+    color: var(--primary-color) !important;
+}
+
+.titulo-produto {
+    color: var(--primary-color) !important;
+}
+
+#menos {
+    color: #212121 !important;
+}
+
+.semana-pedido {
+    color: #000 !important;
+}
+
+input::-webkit-input-placeholder {
+    color: #e38285;
+}
+
+
+.categoria_menu {
+    background-color: #e38285;
+    font-size: 12px;
+    font-family: Arial;
+    color: white;
+    width: 100%;
+    border-bottom: 1px solid #4e0a0a;
+}
+#menu_total a {
+    font-weight: bolder;
+    text-transform: uppercase;
+    color: white !important;
+    font-size: 12px;
+}

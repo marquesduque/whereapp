@@ -1,0 +1,411 @@
+﻿@model api.Models.place
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>place</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.checkins)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.checkins)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.phone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.website)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.website)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.search)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.search)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.picture)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.picture)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cover)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cover)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.rating_count)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rating_count)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.about)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.about)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.user_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.logo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.logo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.logo_itype)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.logo_itype)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.specialty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.specialty)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.url)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.url)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.theme)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.theme)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.connection)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.connection)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.place_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.place_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.loader)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.loader)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.background_image_local)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.background_image_local)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.balcao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.balcao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.delivery)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.delivery)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.primary_color)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.primary_color)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.primary_font_color)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.primary_font_color)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.secondary_color)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.secondary_color)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.secondary_font_color)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.secondary_font_color)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.textbox_color)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.textbox_color)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.textbox_font_color)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.textbox_font_color)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.border_radius_textbox)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.border_radius_textbox)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.border_radius_button)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.border_radius_button)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.light_color)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.light_color)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dark_color)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dark_color)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.font_color)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.font_color)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.card_number)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.card_number)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.card_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.card_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.card_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.card_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.card_cvv)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.card_cvv)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.card_hash)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.card_hash)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.card_document)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.card_document)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pagarme_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pagarme_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.card_brand)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.card_brand)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pagarme_status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pagarme_status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.created)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.created)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.whatsapp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.whatsapp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.whatsapp_message)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.whatsapp_message)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.address_required)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.address_required)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.frete_produto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.frete_produto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hours.tue_1_open)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hours.tue_1_open)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.location.city)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.location.city)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

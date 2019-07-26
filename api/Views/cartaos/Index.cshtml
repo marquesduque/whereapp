@@ -1,0 +1,207 @@
+﻿
+@model Site.Models.Find<api.Controllers.cartaosController.find>
+
+@{
+                /**/
+
+                ViewBag.Title = "Index";
+                Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        <a href="@Url.Action("Create")" class="btn btn-info" base_library="api.Models.cartao.library_create"><i class="glyphicon glyphicon-plus" style="margin-right:10px"></i>Criar Novo</a>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#" base_library="api.Models.cartao.library_bc_1"><i class="fa fa-newspaper-o"></i>Listar</a></li>
+        <li class="active"><a href="@Url.Action("index")" base_library="api.Models.cartao.library_bc_list">Index</a></li>
+    </ol>
+</section>
+
+<section class="content">
+
+
+
+
+
+    <form ajax="@Url.Action("Find")" table="tbl">
+        <input type="hidden" id="Page" name="Page" value="0" />
+
+        <div class="box box-default">
+            <div class="box-header with-border">
+
+
+                <div class="form-group col-md-6">
+                    <label class="control-label" style="width:100%" base_library="api.Models.cartao.numero">numero</label>
+
+                    @Html.TextBoxFor(model => model.Filter.numero, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                <div class="form-group col-md-6">
+                    <label class="control-label" style="width:100%" base_library="api.Models.cartao.nome">nome</label>
+
+                    @Html.TextBoxFor(model => model.Filter.nome, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                <div class="form-group col-md-6">
+                    <label class="control-label" style="width:100%" base_library="api.Models.cartao.expiracao">expiracao</label>
+
+                    @Html.TextBoxFor(model => model.Filter.expiracao, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                <div class="form-group col-md-6">
+                    <label class="control-label" style="width:100%" base_library="api.Models.cartao.cvv">cvv</label>
+
+                    @Html.TextBoxFor(model => model.Filter.cvv, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                <div class="form-group col-md-6">
+                    <label class="control-label" style="width:100%" base_library="api.Models.cartao.hash">hash</label>
+
+                    @Html.TextBoxFor(model => model.Filter.hash, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+                @Html.HiddenFor(model => model.Filter.pessoa_id)
+
+
+                <div class="form-group col-md-6">
+                    <label class="control-label" style="width:100%" base_library="api.Models.cartao.documento">documento</label>
+
+                    @Html.TextBoxFor(model => model.Filter.documento, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                <div class="form-group col-md-6">
+                    <label class="control-label" style="width:100%" base_library="api.Models.cartao.pagarme_id">pagarme_id</label>
+
+                    @Html.TextBoxFor(model => model.Filter.pagarme_id, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                <div class="form-group col-md-6">
+                    <label class="control-label" style="width:100%" base_library="api.Models.cartao.bandeira">bandeira</label>
+
+                    @Html.TextBoxFor(model => model.Filter.bandeira, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                <div class="form-group col-md-6">
+                    <label class="control-label" style="width:100%" base_library="api.Models.cartao.place_id">place_id</label>
+
+                    @Html.TextBoxFor(model => model.Filter.place_id, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                <div class="form-group col-md-6">
+                    <label class="control-label" style="width:100%" base_library="api.Models.cartao.compra_id">compra_id</label>
+                    <select class="form-control select2" source="#Filter_compra_id" data-placeholder="" onchange="$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" style="width: 100%;">
+                        <option value="null">Todos</option>
+                        @foreach (var item in new api.Models.db().compra.Select(c => new { id = c.id, nome = c.nome }))
+                        {
+                            <option value="@item.id">@(item.nome)</option>
+                        }
+                    </select>
+                    @Html.HiddenFor(model => model.Filter.compra_id)
+                    @Html.ValidationMessageFor(model => model.Filter.compra_id)
+
+
+                </div>
+
+                <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse">Pesquisa Avançada<i style="margin-left: 10px" class="fa fa-plus-square fa-minus"></i></button>
+                </div>
+            </div>
+            <div class="box-body" style="display:none">
+            </div>
+            <div class="form-group" style="border-top: 1px solid #f4f4f4; padding: 10px">
+                <button href="#" class="btn btn-warning pull-right" type="button" name="btnProcurar" onclick="$('.tblrow').remove(); $('#Page').val('0'); $('[ajax]').submit();"><i class="glyphicon glyphicon-search" style="margin-right: 10px"></i>Procurar</button>
+                <div style="clear: both"></div>
+            </div>
+        </div>
+        <div class="table-default scroll">
+            <div class="filter-table" base_library="api.Models.cartao.library_filter"><i class="glyphicon glyphicon-filter"></i>filtros</div>
+
+            <div class="filter-table" base_library="api.Models.sample.library_report" onclick="fnExcelReport()" style="margin-left:83px; width:110px">
+                <i class="fa fa-file-excel-o"></i>Relatório
+            </div>
+            <table id="tbl">
+                <tr>
+                    <td base_library="api.Models.cartao.numero">
+                        @Html.DisplayNameFor(model => model.Filter.numero)
+                    </td>
+                    <td base_library="api.Models.cartao.nome">
+                        @Html.DisplayNameFor(model => model.Filter.nome)
+                    </td>
+                    <td base_library="api.Models.cartao.expiracao">
+                        @Html.DisplayNameFor(model => model.Filter.expiracao)
+                    </td>
+                    <td base_library="api.Models.cartao.cvv">
+                        @Html.DisplayNameFor(model => model.Filter.cvv)
+                    </td>
+                    <td base_library="api.Models.cartao.hash">
+                        @Html.DisplayNameFor(model => model.Filter.hash)
+                    </td>
+                    <td base_library="api.Models.cartao.pessoa_id">
+                        @Html.DisplayNameFor(model => model.Filter.pessoa_id)
+                    </td>
+                    <td base_library="api.Models.cartao.documento">
+                        @Html.DisplayNameFor(model => model.Filter.documento)
+                    </td>
+                    <td base_library="api.Models.cartao.pagarme_id">
+                        @Html.DisplayNameFor(model => model.Filter.pagarme_id)
+                    </td>
+                    <td base_library="api.Models.cartao.bandeira">
+                        @Html.DisplayNameFor(model => model.Filter.bandeira)
+                    </td>
+                    <td base_library="api.Models.cartao.place_id">
+                        @Html.DisplayNameFor(model => model.Filter.place_id)
+                    </td>
+                    <td base_library="api.Models.cartao.compra_id">
+                        @Html.DisplayNameFor(model => model.Filter.compra_id)
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</section>
+
+<script template="tbl" type="text/template" redirect="@Url.Action("edit")">
+
+    <tr class="tblrow" pk="id">
+        <td column="numero"></td>
+        <td column="nome"></td>
+        <td column="expiracao"></td>
+        <td column="cvv"></td>
+        <td column="hash"></td>
+        <td column="pessoa_id"></td>
+        <td column="documento"></td>
+        <td column="pagarme_id"></td>
+        <td column="bandeira"></td>
+        <td column="place_id"></td>
+        <td column="compra_id"></td>
+
+    </tr>
+
+
+</script>

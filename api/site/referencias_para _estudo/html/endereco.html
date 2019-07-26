@@ -1,0 +1,151 @@
+﻿<div class="pages">
+    <div data-page="endereco" class="page background_cover" style="{{js "controller.layout.get().background_image_local == null ? 'color:var(--secondary-font-color);' : ''"}}text-shadow: 0.5px 0.5px 0.5px rgba(43, 0, 0, 0.1); background-image:url('{{js "controller.layout.get().background_image_local"}}')">
+        <style>
+            ::-webkit-scrollbar {
+                display: none;
+            }
+        </style>
+
+
+        <div class="page-content text-center imagem-background no-searchbar">
+            <a id="voltar_endereco_edit" style="    float: left;
+    padding: 10px 15px;
+    position: absolute;
+    left: 0px;
+    font-size: 40px;
+    color: var(--secondary-font-color); cursor:pointer"><i class="icon-cancel-circle" id="circulo-fechar"></i></a>
+
+            <div style="max-width: 200px;
+    margin: 24px auto -12px;">
+                <img src="{{logo}}" />
+            </div>
+
+            <div style="width:100%">
+                <formatte id="sign_up">
+
+                    <input name="active" type="hidden" value="true" />
+                    <input name="id" type="hidden" id="idPerfil" value="true" />
+
+                    <div class="list-block margin-bottom-40" style="position:relative; top:-4px; max-width:500px; margin:0 auto !important; padding:20px">
+                        <ul class="no-border">
+                            <li class="digitar_cep">
+
+                                <div class="endereco_mensagem" style="text-align:center; font-size:16px; font-weight:700; padding-bottom:10px">
+                                    {{#js_if "controller.login.get() != null && (controller.login.get().perfil_id == 6 || controller.login.get().perfil_id == 7)"}}
+                                    ENDEREÇO DO CLIENTE?
+                                    {{else}}
+                                    {{js "biblioteca.get('entrega')"}}
+                                    {{/js_if}}
+                                </div>
+                                <input type="number" onclick="$(this).val('')" inputmode="numeric" pattern="[0-9]*" id="busca_endereco" onKeyPress="if (event.keyCode == 13) { $('#btn_buscar').click(); }" onKeyDown="if(this.value.length==8 && event.keyCode!=8) return false;" class="fonte_branca input-confirmarCliente" placeholder="Digite o CEP" style="text-align:center;  margin: 0 auto;width:100%; height: 40px; margin-bottom: 5px; border-radius:0px">
+
+                                <div id="btn_buscar" class="buton" style="width:100%; margin:0 auto">
+                                    Buscar
+                                </div>
+                                <div id="digitarendereco" style="padding:10px; font-size:12px; cursor:pointer">
+                                    Não sabe o CEP? Digite o endereço.
+                                </div>
+                            </li>
+                            <li class="cep_escolhido">
+                                <div class="buton" style="margin-bottom: 10px;
+    background-color: #FFC107;
+    width: 100px;
+    float: left;
+    font-size: 12px;
+    padding: 5px;" onclick="$('.cep_escolhido').toggle(400); $('.digitar_cep').toggle(400); $('#btn_att_edit').unbind('click');">
+                                    VOLTAR
+                                </div>
+                                <div style="    line-height: 28px;
+    text-align: right;
+    float: right;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;">Complete seu endereco</div>
+                                <div style="clear:both"></div>
+
+                                <div style="width:100%">
+                                    <div class="row">
+                                        <div class="tablet-30 col-100" style="margin-bottom:10px">
+                                            <select id="sel_estado" digitar_cep></select>
+                                            <input type="text" fixo_cep disabled id="estado" onKeyPress="if(event.keyCode == 13) { $('#complementoPerfil').focus(); }" class="fonte_branca input-confirmarCliente" placeholder="Estado">
+                                        </div>
+                                        <div class="tablet-70 col-100" style="margin-bottom:10px">
+                                            <select id="sel_cidade" digitar_cep></select>
+                                            <input type="text" fixo_cep disabled id="cidade" onKeyPress="if(event.keyCode == 13) { $('#complementoPerfil').focus(); }" class="fonte_branca input-confirmarCliente" placeholder="Cidade">
+                                        </div>
+                                        <div class="tablet-70 col-100" style="margin-bottom:10px">
+                                            <input type="text" digitar_cep id="sel_rua" onKeyPress="if(event.keyCode == 13) { $('#complementoPerfil').focus(); }" class="fonte_branca input-confirmarCliente" placeholder="Digite seu endereço">
+                                            <input type="text" fixo_cep disabled id="rua" onKeyPress="if(event.keyCode == 13) { $('#complementoPerfil').focus(); }" class="fonte_branca input-confirmarCliente" placeholder="Digite seu endereço">
+                                        </div>
+                                        <div class="tablet-30 col-100" style="margin-bottom:10px">
+                                            <input type="number" inputmode="numeric" pattern="[0-9]*" maxlength="8" max="99999999" id="numeroPerfil" name="number" onKeyPress="if (event.keyCode == 13) { $('#complementoPerfil').focus(); }" class="fonte_branca input-confirmarCliente" placeholder="N°">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="clear:both"></div>
+
+
+                                <div class="row" id="endereco_table" style="width:100%; padding: 10px 0px 10px 0px; font-size:12px; text-align:center; ">
+
+                                    <div style="width:50%; float:left">
+                                        <div class="endereco_table" style="margin-left:0px">{{js "biblioteca.get('frete')"}}</div>
+                                        <div id="endereco_frete" style="font-size:20px"></div>
+                                    </div>
+
+                                    <!--<div style="width:33.33%; float:left">
+            <div class="endereco_table">Tempo</div>
+            <div id="endereco_tempo"></div>
+        </div>-->
+
+                                    <div style="width:50%; float:left">
+                                        <div class="endereco_table" style="margin-right:0px">{{js "biblioteca.get('distancia', 'Distância')"}}</div>
+                                        <div {{js "biblioteca.get('distancia_descricao', 'id=endereco_distancia')"}} style="font-size:20px">{{js "biblioteca.get('distancia_descricao', '')"}}</div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div id="btn_att_edit" class="buton col-100">
+                                        CONTINUAR
+                                    </div>
+                                    <div id="endereco_message" style="margin:20px; display:none; width:100%">Oops, não realizamos entregas para o endereço informado!</div>
+                                </div>
+                            </li>
+                            <li id="li_endereco" style="display:none">
+                                <div class="buton" style="background-color: #FFC107;
+    width: 100px;
+    float: left;
+    font-size: 12px;
+    padding: 5px;" onclick="$('.digitar_cep').toggle(400); $('#li_endereco').toggle(400); ; $('#btn_att_edit').unbind('click');">
+                                    VOLTAR
+                                </div>
+                                <div style="    line-height: 28px;
+    text-align: right;
+    float: right;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;">Confirme seu endereco</div>
+                                <div style="clear:both"></div>
+                                <ul style="padding:0px" id="list_enderecos"></ul>
+                            </li>
+
+                        </ul>
+                    </div>
+                </formatte>
+            </div>
+            {{#js_if "controller.login.get() == null"}}
+            <div class="text-center margin-bottom-15 margin-top-50 link open-panel" style="font-size:20px; cursor:pointer">
+                <img src="icons/animated/{{cor_tema}}/key.svg" style="    width: 30px;
+    position: absolute;
+    margin-left: -33px;" />
+                Já tenho um cadastro!
+            </div>
+
+            {{#js_if "biblioteca.get('isAgenda') == true"}}
+            <div class="text-center margin-bottom-15 margin-top-50" onclick="creait.redirect('trabalhar')" style="font-size:20px; cursor:pointer">
+                <span class="icon-aid-kit" style="padding: 15px; margin-left: -40px;"></span>
+                Cadastro Profissional
+            </div>
+            {{/js_if}}
+        </div>
+    </div>
+</div>

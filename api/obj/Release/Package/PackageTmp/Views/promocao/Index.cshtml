@@ -1,0 +1,431 @@
+﻿
+@model Site.Models.Find<api.Controllers.promocaoController.find>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        <a href="@Url.Action("Create")" class="btn btn-info" base_library="api.Models.promocao.library_create"><i class="glyphicon glyphicon-plus" style="margin-right:10px"></i>Criar Novo</a>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#" base_library="api.Models.promocao.library_bc_1"><i class="fa fa-newspaper-o"></i>Listar</a></li>
+        <li class="active"><a href="@Url.Action("index")" base_library="api.Models.promocao.library_bc_list">Index</a></li>
+    </ol>
+</section>
+
+<section class="content">
+
+
+
+
+
+     <form ajax="@Url.Action("Find")" table="tbl">
+        <input type="hidden" id="Page" name="Page" value="0" />
+
+		<div class="box box-default">
+			<div class="box-header with-border">
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.promocao.pessoa_id" >pessoa_id</label>
+					<select class="form-control select2" source="#Filter_pessoa_id" data-placeholder="" onchange = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" style="width: 100%;">
+						<option value="null">Todos</option>
+						@foreach (var item in new api.Models.db().pessoa.Where(c => c.place_id == api.Models.db.place.place_id).Select(c => new { id = c.id, nome = c.nome }))
+                        {
+							<option value="@item.id">@(item.nome)</option>
+						}
+					</select>
+					@Html.HiddenFor(model => model.Filter.pessoa_id)
+					@Html.ValidationMessageFor(model => model.Filter.pessoa_id)
+				
+
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.promocao.valor" >valor</label>
+            
+									@Html.TextBoxFor(model => model.Filter.valor, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.promocao.validade" >validade</label>
+            
+									@Html.TextBoxFor(model => model.Filter.validade, "{0:dd/MM/yyyy}", new { placeholder = "", @class = "form-control", mask = "{\"value\":\"99/99/9999\", \"placeholder\":\"dd/mm/yyyy\"}", maxLength = "10", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.promocao.nome" >nome</label>
+            
+									@Html.TextBoxFor(model => model.Filter.nome, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.promocao.automatico" >automatico</label>
+            
+									<div style="height: 34px; line-height: 30px;">
+						<label style="min-width: 45px;">
+							<input type="checkbox" value="true" name="item_automatico" class="minimal-green">
+							Sim
+
+						</label>
+						<label style="min-width: 45px;">
+							<input type="checkbox" value="false" name="item_automatico" class="minimal">
+							Não
+
+						</label>
+						@Html.HiddenFor(model => model.Filter.automatico, new { icheck = "item_automatico" })
+					</div>
+                            
+   </div>
+
+
+
+              
+					@Html.HiddenFor(model => model.Filter.compra_id)
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.promocao.codigo" >codigo</label>
+            
+									@Html.TextBoxFor(model => model.Filter.codigo, new { placeholder = "", @class = "form-control", maxLength = "150", type="number", min="1", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.promocao.place_id" >place_id</label>
+            
+									@Html.TextBoxFor(model => model.Filter.place_id, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.promocao.utilizacao" >utilizacao</label>
+            
+									@Html.TextBoxFor(model => model.Filter.utilizacao, "{0:dd/MM/yyyy}", new { placeholder = "", @class = "form-control", mask = "{\"value\":\"99/99/9999\", \"placeholder\":\"dd/mm/yyyy\"}", maxLength = "10", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.promocao.ativo" >ativo</label>
+            
+									<div style="height: 34px; line-height: 30px;">
+						<label style="min-width: 45px;">
+							<input type="checkbox" value="true" name="item_ativo" class="minimal-green">
+							Sim
+
+						</label>
+						<label style="min-width: 45px;">
+							<input type="checkbox" value="false" name="item_ativo" class="minimal">
+							Não
+
+						</label>
+						@Html.HiddenFor(model => model.Filter.ativo, new { icheck = "item_ativo" })
+					</div>
+                            
+   </div>
+
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.promocao.produto_id" >produto_id</label>
+					<select class="form-control select2" source="#Filter_produto_id" data-placeholder="" onchange = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" style="width: 100%;">
+						<option value="null">Todos</option>
+						@foreach (var item in new api.Models.db().produto.Where(c=>c.place_id == api.Models.db.place.place_id).Select(c => new { id = c.id, nome = c.nome }))
+                        {
+							<option value="@item.id">@(item.nome)</option>
+						}
+					</select>
+					@Html.HiddenFor(model => model.Filter.produto_id)
+					@Html.ValidationMessageFor(model => model.Filter.produto_id)
+				
+
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.promocao.seg" >seg</label>
+            
+									<div style="height: 34px; line-height: 30px;">
+						<label style="min-width: 45px;">
+							<input type="checkbox" value="true" name="item_seg" class="minimal-green">
+							Sim
+
+						</label>
+						<label style="min-width: 45px;">
+							<input type="checkbox" value="false" name="item_seg" class="minimal">
+							Não
+
+						</label>
+						@Html.HiddenFor(model => model.Filter.seg, new { icheck = "item_seg" })
+					</div>
+                            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.promocao.ter" >ter</label>
+            
+									<div style="height: 34px; line-height: 30px;">
+						<label style="min-width: 45px;">
+							<input type="checkbox" value="true" name="item_ter" class="minimal-green">
+							Sim
+
+						</label>
+						<label style="min-width: 45px;">
+							<input type="checkbox" value="false" name="item_ter" class="minimal">
+							Não
+
+						</label>
+						@Html.HiddenFor(model => model.Filter.ter, new { icheck = "item_ter" })
+					</div>
+                            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.promocao.qua" >qua</label>
+            
+									<div style="height: 34px; line-height: 30px;">
+						<label style="min-width: 45px;">
+							<input type="checkbox" value="true" name="item_qua" class="minimal-green">
+							Sim
+
+						</label>
+						<label style="min-width: 45px;">
+							<input type="checkbox" value="false" name="item_qua" class="minimal">
+							Não
+
+						</label>
+						@Html.HiddenFor(model => model.Filter.qua, new { icheck = "item_qua" })
+					</div>
+                            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.promocao.qui" >qui</label>
+            
+									<div style="height: 34px; line-height: 30px;">
+						<label style="min-width: 45px;">
+							<input type="checkbox" value="true" name="item_qui" class="minimal-green">
+							Sim
+
+						</label>
+						<label style="min-width: 45px;">
+							<input type="checkbox" value="false" name="item_qui" class="minimal">
+							Não
+
+						</label>
+						@Html.HiddenFor(model => model.Filter.qui, new { icheck = "item_qui" })
+					</div>
+                            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.promocao.sex" >sex</label>
+            
+									<div style="height: 34px; line-height: 30px;">
+						<label style="min-width: 45px;">
+							<input type="checkbox" value="true" name="item_sex" class="minimal-green">
+							Sim
+
+						</label>
+						<label style="min-width: 45px;">
+							<input type="checkbox" value="false" name="item_sex" class="minimal">
+							Não
+
+						</label>
+						@Html.HiddenFor(model => model.Filter.sex, new { icheck = "item_sex" })
+					</div>
+                            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.promocao.sab" >sab</label>
+            
+									<div style="height: 34px; line-height: 30px;">
+						<label style="min-width: 45px;">
+							<input type="checkbox" value="true" name="item_sab" class="minimal-green">
+							Sim
+
+						</label>
+						<label style="min-width: 45px;">
+							<input type="checkbox" value="false" name="item_sab" class="minimal">
+							Não
+
+						</label>
+						@Html.HiddenFor(model => model.Filter.sab, new { icheck = "item_sab" })
+					</div>
+                            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.promocao.dom" >dom</label>
+            
+									<div style="height: 34px; line-height: 30px;">
+						<label style="min-width: 45px;">
+							<input type="checkbox" value="true" name="item_dom" class="minimal-green">
+							Sim
+
+						</label>
+						<label style="min-width: 45px;">
+							<input type="checkbox" value="false" name="item_dom" class="minimal">
+							Não
+
+						</label>
+						@Html.HiddenFor(model => model.Filter.dom, new { icheck = "item_dom" })
+					</div>
+                            
+   </div>
+
+		<div class="box-tools pull-right">
+			<button class="btn btn-box-tool" data-widget="collapse">Pesquisa Avançada<i style="margin-left: 10px" class="fa fa-plus-square fa-minus"></i></button>
+		</div>
+	</div>
+	<div class="box-body" style="display:none">
+	</div>
+	<div class="form-group" style="border-top: 1px solid #f4f4f4; padding: 10px">
+		<button href="#" class="btn btn-warning pull-right" type="button" name="btnProcurar" onclick="$('.tblrow').remove(); $('#Page').val('0'); $('[ajax]').submit();"><i class="glyphicon glyphicon-search" style="margin-right: 10px"></i>Procurar</button>
+		<div style="clear: both"></div>
+	</div>
+</div>
+    <div class="table-default scroll">
+        <div class="filter-table" base_library="api.Models.promocao.library_filter"><i class="glyphicon glyphicon-filter"></i>filtros</div>
+		
+            <div class="filter-table" base_library="api.Models.sample.library_report" onclick="fnExcelReport()" style="margin-left:83px; width:110px">
+                <i class="fa fa-file-excel-o"></i>Relatório
+            </div>
+<table  id="tbl"> 
+    <tr>
+        <td base_library="api.Models.promocao.pessoa_id">
+            @Html.DisplayNameFor(model => model.Filter.pessoa_id)
+        </td>
+        <td base_library="api.Models.promocao.valor">
+            @Html.DisplayNameFor(model => model.Filter.valor)
+        </td>
+        <td base_library="api.Models.promocao.validade">
+            @Html.DisplayNameFor(model => model.Filter.validade)
+        </td>
+        <td base_library="api.Models.promocao.nome">
+            @Html.DisplayNameFor(model => model.Filter.nome)
+        </td>
+        <td base_library="api.Models.promocao.automatico">
+            @Html.DisplayNameFor(model => model.Filter.automatico)
+        </td>
+        <td base_library="api.Models.promocao.compra_id">
+            @Html.DisplayNameFor(model => model.Filter.compra_id)
+        </td>
+        <td base_library="api.Models.promocao.codigo">
+            @Html.DisplayNameFor(model => model.Filter.codigo)
+        </td>
+        <td base_library="api.Models.promocao.place_id">
+            @Html.DisplayNameFor(model => model.Filter.place_id)
+        </td>
+        <td base_library="api.Models.promocao.utilizacao">
+            @Html.DisplayNameFor(model => model.Filter.utilizacao)
+        </td>
+        <td base_library="api.Models.promocao.ativo">
+            @Html.DisplayNameFor(model => model.Filter.ativo)
+        </td><td base_library="api.Models.promocao.produto_id">
+            @Html.DisplayNameFor(model => model.Filter.produto_id)
+        </td>
+        <td base_library="api.Models.promocao.seg">
+            @Html.DisplayNameFor(model => model.Filter.seg)
+        </td>
+        <td base_library="api.Models.promocao.ter">
+            @Html.DisplayNameFor(model => model.Filter.ter)
+        </td>
+        <td base_library="api.Models.promocao.qua">
+            @Html.DisplayNameFor(model => model.Filter.qua)
+        </td>
+        <td base_library="api.Models.promocao.qui">
+            @Html.DisplayNameFor(model => model.Filter.qui)
+        </td>
+        <td base_library="api.Models.promocao.sex">
+            @Html.DisplayNameFor(model => model.Filter.sex)
+        </td>
+        <td base_library="api.Models.promocao.sab">
+            @Html.DisplayNameFor(model => model.Filter.sab)
+        </td>
+        <td base_library="api.Models.promocao.dom">
+            @Html.DisplayNameFor(model => model.Filter.dom)
+        </td>
+    </tr>
+</table>
+</div>
+</form>
+</section>
+
+		<script template="tbl" type="text/template" redirect="@Url.Action("edit")"> 
+
+    <tr class="tblrow" pk="id">
+        <td column="pessoa_id">
+        </td>
+        <td column="valor">
+        </td>
+        <td column="validade">
+        </td>
+        <td column="nome">
+        </td>
+        <td column="automatico">
+        </td>
+        <td column="compra_id">
+        </td>
+        <td column="codigo">
+        </td>
+        <td column="place_id">
+        </td>
+        <td column="utilizacao">
+        </td>
+        <td column="ativo">
+        </td>        <td column="produto_id">
+        </td>
+        <td column="seg">
+        </td>
+        <td column="ter">
+        </td>
+        <td column="qua">
+        </td>
+        <td column="qui">
+        </td>
+        <td column="sex">
+        </td>
+        <td column="sab">
+        </td>
+        <td column="dom">
+        </td>
+       
+    </tr>
+
+
+</script>

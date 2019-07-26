@@ -1,0 +1,47 @@
+﻿<div class="pages">
+    <div data-page="register" class="page">
+        <div class="navbar background-creait">
+            <div class="navbar-inner margin-bottom-20">
+                <div class="center"><span class="icon-profile" style="margin-right:10px"></span>Prontuário</div>
+                <div class="right"><a  onclick="myApp.mainView.history[myApp.mainView.history.length - 2].indexOf('/') == -1 ? creait.redirect( myApp.mainView.history[myApp.mainView.history.length - 2].replace('.html', '')) : window.location = '/'" class="back link">SALVAR</a></div>
+            </div>
+        </div>
+
+        <div class="page-content text-center">
+            <div class="page-content" id="app-cover" style="    height: calc(100% - 50px);
+    margin-top: 50px;">
+                <div>
+                    {{#each grupos}}
+                    <div style="background-color: var(--textbox-color);color: var(--textbox-font-color); text-align:right;
+    padding: 10px;">{{grupo}}</div>
+                    <div style="padding:0px">
+                        {{#each perguntas}}
+
+                        <div class="content_resposta" pergunta_id="{{id}}" style="float:right; width:100%; padding:10px">
+
+                            <label class="label-checkbox item-content">
+                                <!-- Checked by default -->
+                                <input type="checkbox" name="{{grupo}}{{nome}}" value="checked" {{js "this.resposta_valor == 'Sim' ? 'checked' : ''"}}>
+                                <span class="item-media" style="float: right;
+    line-height: 3px;">
+                                    <i class="icon icon-form-checkbox"></i>
+                                </span>
+                                <span class="item-inner" style="float: right;">
+                                    <div class="item-title" style="float:right; text-align:right; margin-right:10px;width: 100%;
+     font-weight: 700;
+    font-size: 14px;
+">
+                                        {{nome}}
+                                    </div>
+                                </span>
+                            </label>
+                        </div>
+                        <div style="clear:both"></div>
+                        {{/each}}
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

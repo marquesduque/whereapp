@@ -1,0 +1,372 @@
+﻿@model api.Controllers.comprasController.fluxo
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<section class="content-header">
+    <h1>
+        <a href="@Url.Action("Index")" class="btn btn-info"><i class="fa fa-angle-left fa-lg" style="margin-right: 10px"></i>Voltar</a>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("index")" base_library="api.Models.compra.library_bc_1">Compras</a></li>
+        <li class="active" base_library="api.Models.compra.library_bc_create">Criar</li>
+    </ol>
+</section>
+
+<section class="content">
+    <div>
+        @using (Html.BeginForm("Create", "compras", FormMethod.Post, new { id = "form_compra" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            <div class="alert alert-danger" role="alert" base_library="api.Models.compra.library_error_register">
+                Registro não gravado, verificar erro criticado
+            </div>
+
+
+
+            <div style="padding: 0px 8px;">
+
+                    <h1 style="FONT-WEIGHT: 700;">COMPRADOR</h1>
+                    <div>Informe abaixo os dados do comprador</div>
+         
+
+                <div class="form-group col-md-6">
+                    <a class="btn btn-success pull-right" style="    visibility: visible;
+    width: 100%;
+    margin-top: 21px;" href="/pessoas/Create?perfil_id=2&compra_pessoa=1" base_library="api.Models.agenda.CreatePessoa" title="Cadastrar Fornecedor">Primeira Compra</a>
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="control-label" base_library="api.Models.horario.cliente_id">Cliente</label>
+
+                    <select class="form-control select2" source="#horario_cliente_id" id="drop_cliente" data-placeholder="" style="width: 100%;" callback="buscaHorario">
+                        <option value="null" name="cliente">Selecione um item</option>
+                        @foreach (var item in new api.Models.db().pessoa.Where(c => c.place_id == api.Models.db.place.place_id && c.active == true && c.perfil_id == 2).Select(c => new { nome = c.nome, cpf = c.cpf, mobile = c.mobile, id=c.id }))
+                        {
+                            <option name="cliente" value="@item.id">@(item.nome + " - " + item.cpf + " - " + item.mobile)</option>
+                        }
+                    </select>
+                    @Html.HiddenFor(model => model.horario.cliente_id)
+                    @Html.ValidationMessageFor(model => model.horario.cliente_id)
+                </div>
+
+
+                <div class="form-group col-md-12">
+                    @Html.LabelFor(model => model.horario.address, "Buscar Endereço de Entrega", new { @class = "control-label" })
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.horario.address, new { placeholder = "Buscar endereço", @class = "form-control", maxLength = "150", type = "text", id = "pac-input", })
+                    @Html.ValidationMessageFor(model => model.horario.address)
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label class="control-label" base_library="api.Models.filial.endereco">endereco</label>
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.horario.endereco, new { placeholder = "", @class = "form-control", @readonly = "readonly", maxLength = "150", type = "text" })
+                    @Html.ValidationMessageFor(model => model.horario.endereco)
+                </div>
+
+                <div class="form-group col-md-1">
+                    <label class="control-label" base_library="api.Models.filial.numero">numero</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.horario.numero, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                    @Html.ValidationMessageFor(model => model.horario.numero)
+                </div>
+
+
+
+                <div class="form-group col-md-2">
+                    <label class="control-label" base_library="api.Models.filial.cidade">cidade</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.horario.cidade, new { placeholder = "", @class = "form-control", @readonly = "readonly", maxLength = "150" })
+                    @Html.ValidationMessageFor(model => model.horario.cidade)
+                </div>
+
+                <input name="horario.pais" type="hidden" value="Brasil" />
+
+
+
+                <div class="form-group col-md-2">
+                    <label class="control-label" base_library="api.Models.filial.cep">CEP</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.horario.cep, new { placeholder = "", @class = "form-control", maxLength = "150", mask = "{\"value\":\"99999-999\"}", @readonly = "readonly" })
+                    @Html.ValidationMessageFor(model => model.horario.cep)
+                </div>
+
+
+                <div class="form-group col-md-3">
+                    <label class="control-label" base_library="api.Models.filial.complemento">complemento</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.horario.complemento, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                    @Html.ValidationMessageFor(model => model.horario.complemento)
+                </div>
+
+
+                @*DADOS DO HORARIO*@
+                @Html.HiddenFor(model => model.horario.lat)
+                @Html.HiddenFor(model => model.horario.lng)
+                @Html.HiddenFor(model => model.horario.compra_id)
+                @Html.HiddenFor(model => model.horario.NovoEndereco, new { @value = 0 })
+
+            </div>
+
+
+            @Html.HiddenFor(model => model.pedido.StringPedidos)
+            @Html.HiddenFor(model => model.pedido.compra_id)
+
+
+            <div class="alert bg-gray col-md-12" role="alert" style="padding: 20px 8px; margin-top:20px">
+
+                <div style="padding:0px 20px 20px 20px">
+
+                    <h1 style="FONT-WEIGHT: 700;">CARRINHO</h1>
+                    <div>Informe abaixo os produtos da compra</div>
+
+                </div>
+
+
+                <div class="col-md-12">
+                    <div class="col-md-8">
+                        <label class="control-label" base_library="api.Models.pedidos.pedidosgrid">Produtos</label>
+                        <select class="form-control select2" callback="add" id="produto" source="#produto_selecionado" data-placeholder="" style="width: 100%;">
+                            <option value="0">Selecione um item</option>
+                            @foreach (var item in new api.Models.db().produto.Select(c => new { nome = c.nome, id = c.id, preco = c.preco, place_id=c.place_id, status=c.status, buscavel=c.buscavel }).Where(c => c.place_id == api.Models.db.place.place_id && c.status == true && c.buscavel == true))
+                            {
+
+                                <option nome="@item.nome" preco="@item.preco" value="@item.id" name="prodselect">@(item.id + " - " + item.nome)</option>
+
+                                <script type="text/template" produto_id="@item.id">
+                                    @foreach (var montagem in new api.Models.db().montagem.Include("complemento").Include("complemento").Where(c => c.produto_id == item.id).Select(c => new { nome = c.nome, max = c.max, min = c.min, id = c.id, preco = c.preco, complemento = c.complemento }))
+                                    {
+                                        <div>@montagem.nome</div>
+
+                                        <div>
+                                            <select multiple="multiple" class="form-control select2 selectmontagem" max="@montagem.max" min="@montagem.min" callback="soma" source="#montagem_@montagem.id" data-placeholder="" style="width: 100%;">
+                                                @foreach (var complemento in montagem.complemento)
+                                                {
+                                                    var produto = new api.Models.db().produto.Select(c => new { nome = c.nome, preco = c.preco, id = c.id }).Where(c => c.id == complemento.product_id).FirstOrDefault();
+                                                
+                                                    <option montagem_id="@montagem.id" nome="@produto.nome" preco="@(montagem.preco / 100 * produto.preco)" name="complemento" value="@produto.id">@(produto.nome + " - " + (montagem.preco / 100 * produto.preco).Value.ToString("c"))</option>
+                                                 
+                                                }
+                                            </select>
+                                            <input type="hidden" name="montagens" id="montagem_@montagem.id" value="[]" />
+                                        </div>
+
+                                    }
+
+
+                                </script>
+
+                            }
+                        </select>
+
+                        <input type="hidden" id="produto_selecionado" />
+
+
+
+                        <div id="montagem"></div>
+                    </div>
+                    <div class="form-group col-md-2 col-xs-6">
+                        <label class="control-label">Preço</label>
+                        <input id="preco_produto_montagem" type="number" readonly="readonly" class="form-control" />
+                    </div>
+
+                    <div class="form-group col-md-2 col-xs-6">
+                        <label class="control-label">Desconto (%)</label>
+                        <input id="desconto_produto_montagem" type="number" onblur="this.value = (this.value == '' ? 0 : this.value>100? 100:this.value)" min="0" value="0" class="form-control" />
+                    </div>
+
+                    <input type="button" class="btn btn-info" id="adicionar_button" style="    width: 100%;" value="Adicionar" onclick="adicionar_montagem($('#produto_selecionado').val())" />
+                </div>
+                <div>
+                    <table id="grid" style="    margin-top: 10px;" class=" table-striped table-bordered col-md-12">
+                        <thead style="background-color: var(--primary-color); color: var(--primary-font-color);">
+                        <th>Produto</th>
+                        <th>Complementos</th>
+                        <th>Preço</th>
+                        <th>Desconto</th>
+                        <th>Remover</th>
+
+                        </thead>
+
+
+                    </table>
+
+                </div>
+
+
+
+
+            </div>
+
+
+
+
+
+
+
+
+
+            <div>
+
+
+
+                <div class="alert bg-red col-md-12" role="alert" style="padding: 20px 8px; margin-top:20px">
+
+                    <div style="padding:0px 20px 20px 20px">
+
+                        <h1 style="FONT-WEIGHT: 700;">FECHAMENTO DA COMPRA</h1>
+                        <div>Informe abaixo os dados finais da compra</div>
+
+                    </div>
+
+                    <div class="form-group col-md-2">
+                        <label class="control-label" base_library="api.Models.compra.total">Total</label>
+                        <div style="clear: both"></div>
+                        @Html.HiddenFor(model => model.compra.total)
+                        <input type="text" readonly="readonly" class="form-control" id="totaltela" name="totaltela">
+                        @Html.ValidationMessageFor(model => model.compra.total)
+
+                    </div>
+
+
+
+
+                    <div class="form-group col-md-2">
+                        <label class="control-label" base_library="api.Models.compra.desconto">Desconto (%)</label>
+
+                        <div style="clear: both"></div>
+                        @Html.TextBoxFor(model => model.compra.desconto, new { placeholder = "", @class = "form-control", maxLength = "150", money = "money" })
+                        @Html.ValidationMessageFor(model => model.compra.desconto)
+                    </div>
+
+
+                    <div class="form-group col-md-2">
+                        <label class="control-label" base_library="api.Models.compra.troco">Troco</label>
+                        <div style="clear: both"></div>
+                        <input type="text" readonly="readonly" class="form-control" id="troco">
+                    </div>
+
+
+                    <div class="form-group col-md-2">
+                        <label class="control-label" base_library="api.Models.compra.pago">Pagamento</label>
+                        <div style="clear: both"></div>
+                        @Html.TextBoxFor(model => model.compra.pago, new { placeholder = "", @class = "form-control", maxLength = "150", money = "money" })
+                        @Html.ValidationMessageFor(model => model.compra.pago)
+                    </div>
+
+
+                    <div class="form-group col-md-2">
+                        <label class="control-label" base_library="api.Models.compra.frete">Frete</label>
+                        <div style="clear: both"></div>
+                        @Html.TextBoxFor(model => model.compra.frete, new { placeholder = "", @class = "form-control", maxLength = "150", money = "money" })
+                        @Html.ValidationMessageFor(model => model.compra.frete)
+                    </div>
+
+                    <div class="form-group col-md-2">
+                        <label class="control-label" base_library="api.Models.compra.status_da_compra_id">Status da Compra</label>
+                        <select class="form-control select2" id="drop_status" source="#compra_status_da_compra_id" data-placeholder="" style="width: 100%;" value="4">
+                            <option value="null">Selecione um item</option>
+                            @foreach (var item in new api.Models.db().status_da_compra)
+                            {
+                                <option value="@item.id">@(item.nome)</option>
+                            }
+                        </select>
+                        @Html.HiddenFor(model => model.compra.status_da_compra_id)
+                        @Html.ValidationMessageFor(model => model.compra.status_da_compra_id)
+                    </div>
+
+                    <div class="form-group col-md-7">
+                        <label class="control-label" base_library="api.Models.compra.observacao">Observação</label>
+
+                        <div style="clear: both"></div>
+                        @Html.TextBoxFor(model => model.compra.observacao, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                        @Html.ValidationMessageFor(model => model.compra.observacao)
+                    </div>
+
+                    <div class="form-group col-md-2">
+                        <label class="control-label" base_library="api.Models.compra.pagamento_id">Pagamento</label>
+                        <select class="form-control select2" source="#compra_pagamento_id" data-placeholder="" style="width: 100%;">
+                            <option value="null">Selecione um item</option>
+                            @foreach (var item in new api.Models.db().pagamento.Where(c => c.place_id == api.Models.db.place.place_id))
+                            {
+                                <option value="@item.id">@(item.nome)</option>
+                            }
+                        </select>
+                        @Html.HiddenFor(model => model.compra.pagamento_id)
+                        @Html.ValidationMessageFor(model => model.compra.pagamento_id)
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label class="control-label" base_library="api.Models.produto.Entrega">Entrega</label>
+                        <div style="height: 34px; line-height: 30px;">
+                            <label style="min-width: 45px;">
+                                <input type="radio" value="true" name="item_correct" class="minimal-green" checked>
+                                RETIRAR
+
+                            </label>
+                            <label style="min-width: 45px;">
+                                <input type="radio" value="false" name="item_correct" class="minimal">
+                                DELIVERY
+
+                            </label>
+                            @Html.HiddenFor(model => model.compra.balcao, new { icheck = "item_correct" })
+                            @Html.ValidationMessageFor(model => model.compra.balcao)
+                        </div>
+                    </div>
+
+                </div>
+
+
+                    
+
+
+                </div>
+
+
+
+                <div class="form-group col-md-12 btn-gallery">
+                    <a class="btn btn-success pull-right" id="btnSalvar" base_library="api.Models.compra.library_save"><i class="fa fa-check"></i>Finalizar Compra</a>
+                </div>
+                }
+                <div style="clear:both;"></div>
+
+            </div>
+
+
+</section>
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIoBAvqfno0lFGhuzuuwqX0KmXRdr-10o&libraries=places&callback=initSearch"
+            async defer></script>
+    <script src="~/Scripts/admin/compra.js"></script>
+
+    <script>
+
+        $(document).ready(function () {
+
+            setTimeout(function () {
+
+                $('#drop_status').select2("val", "4")
+                $('#drop_cliente').select2("val", @Request.QueryString["cliente_id"]);
+
+            }, 2000);
+
+
+
+        });
+
+
+    </script>
+
+
+
+}
+

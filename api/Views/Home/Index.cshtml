@@ -1,0 +1,93 @@
+﻿@{
+    ViewBag.Title = api.Models.db.place.name;
+    Layout = null;
+}
+
+<html>
+<head>
+    <link href="~/App/css/home.css" rel="stylesheet" />
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="@api.Models.db.place.picture" />
+    <link rel="apple-touch-startup-image" href="@api.Models.db.place.picture" />
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="shortcut icon" sizes="196x196" href="@api.Models.db.place.picture">
+    <link rel="shortcut icon" sizes="128x128" href="@api.Models.db.place.picture">
+
+    <meta property="og:url" content="http://@(api.Models.db.place.url).creapp.com.br" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Aplicativo Delivery @(api.Models.db.place.name)" />
+    <meta property="og:description" content="@(api.Models.db.place.about)" />
+    <meta property="og:image" content="@(api.Models.db.place.picture)" />
+    <style>
+        iframe{
+            zoom: 0.15;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="mobile" color="bege">
+        <div style="background-color: #cdcdcd;
+    width: 40px;
+    height: 10px;
+    border-radius: 20px;
+    margin: 15px auto"></div>
+        <div style="background-color:white; height:100%; width:100%; border: 0.7px solid #4d4c4c;">
+            <iframe src="/app" frameborder="0" style="width:100%; height:100%"></iframe>
+        </div>
+        <div style="background-color: #cdcdcd;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin: 8px auto"></div>
+    </div>
+
+    <div style="width: calc(100% - 470px); float:left; text-align:center;">
+        <h1 style="margin: 22px 0px 0px 0px;
+    font-size: 2.38vw;">
+            Vá de Premium. E aumente suas vendas!
+        </h1>
+        <h3>FAÇA O SEU NEGÓCIO CRESCER COM UMA APP MÓVEL COM A SUA MARCA</h3>
+
+
+        <div class="plan1">
+            <div class="list-content cards" style="min-height: 470px;">
+                <h3>Site Responsivo</h3>
+                <span class="pricing" style="height: 70px;">
+                    <h4>
+                        R$&nbsp;99,90<span class="month">/mês</span>
+                    </h4>
+                    <p class="small"><span>Este plano nao contempla aplicativo</span></p>
+                </span>
+                <div class="features">
+                    <ul class="spotify-premium-list">
+                        <li>PDV Gerenciamento de vendas</li>
+                        <li>Gerenciamento de produtos</li>
+                        <li>Gerenciamento de estoque</li>
+                        <li>Pedidos em tempo real</li>
+                        <li>Roteiro de entregas</li>
+                        <li>Email marketing</li>
+                        <li>Suporte por email</li>
+                    </ul>
+                </div>
+                <div style="clear:both; height:60px"></div>
+
+                <div class="btn-green">
+                    <div>Fale agora com um de nossos consultores para saber mais.</div>
+                    <a target="_blank" href="https://api.whatsapp.com/send?phone=5511961207705&text=Ol%C3%A1%20Marco%2C%20gostaria%20de%20saber%20mais%20sobre%20meu%20aplicativo%20de%20delivery.%20Por%20R%2499%2C90%2Fm%C3%AAs">
+                        <img src="~/App/img/whatsapp.svg" style="width: 35px;
+    float: left;
+    position: absolute;
+    left: 4px;
+    margin-top: -8px;
+    border-radius: 50px;" />Falar Agora
+                    </a>
+                </div>
+            </div>
+        </div>
+</body>
+</html>

@@ -1,0 +1,117 @@
+﻿s<div class="pages">
+     <div data-page="endereco_entrega" class="page">
+         <div class="navbar background-creait">
+             <div class="navbar-inner margin-bottom-20">
+                 <div class="left"><a class="back link" onclick="creait.redirect('carrinho')"> <i class="f7-icons icone-voltar" style="margin-right: 10px;">chevron_left</i></a></div>
+                 <div class="center">Endereço de Entrega</div>
+             </div>
+         </div>
+         <div class="page-content text-center" style="margin-top: 50px; height: calc(100% - 110px);">
+             <div class="list-block">
+                 <ul>
+                     <li>
+                         Escolher Endereço
+                     </li>
+                     <li class="endereco_entrega" valor="0">
+                         <label class="label-radio item-content" style="text-align: center; align-items: center; justify-content: left; display: flex;">
+                             <input type="radio" name="endereco" value="0" checked="checked">
+                             <div class="item-media" style="min-width:0px; margin-bottom:0px">
+                                 <i class="icon icon-form-radio" style="margin-right:0px"></i>
+                             </div>
+                             <div class="item-title" style="margin-left:5px;margin-top: 5px;">Meu Endereço</div>
+                         </label>
+                     </li>
+                     <li class="endereco_entrega" valor="1">
+                         <label class="label-radio item-content" style="text-align: center; align-items: center; justify-content: left; display: flex;">
+                             <input type="radio" name="endereco" value="1">
+                             <div class="item-media" style="min-width:0px; margin-bottom:0px">
+                                 <i class="icon icon-form-radio" style="margin-right:0px"></i>
+                             </div>
+                             <div class="item-title" style="margin-left:5px;margin-top: 5px;">Novo Endereço</div>
+                         </label>
+                     </li>
+                     <li class="endereco_entrega" valor="2">
+                         <label class="label-radio item-content" style="text-align: center; align-items: center; justify-content: left; display: flex;">
+                             <input type="radio" name="endereco" value="2">
+                             <div class="item-media" style="min-width:0px; margin-bottom:0px">
+                                 <i class="icon icon-form-radio" style="margin-right:0px"></i>
+                             </div>
+                             <div class="item-title" style="margin-left:5px;margin-top: 5px;">Retirar na Loja</div>
+                         </label>
+                     </li>
+                 </ul>
+             </div>
+             <div class="list-block" style="display: block;" id="endereco_novo">
+                 <ul>
+                     <li>
+                         <div class="item-content">
+                             <div class="item-inner no-margin">
+                                 <div class="item-input">
+                                     <input class="input-index" id="estado" type="text" readonly name="estado" placeholder="Estado" value="{{js 'controller.login.get().estado'}}" onclick="seleciona_estado(this.id)">
+                                 </div>
+                             </div>
+
+                         </div>
+                     </li>
+                     <li>
+                         <div class="item-content">
+                             <div class="item-inner no-margin">
+                                 <div class="item-input">
+                                     <input class="input-index" type="text" name="cidade" id="cidade" placeholder="Cidade" value="{{js 'controller.login.get().cidade'}}">
+                                 </div>
+                             </div>
+                         </div>
+                     </li>
+                     <li>
+                         <div class="item-content">
+                             <div class="item-inner no-margin">
+                                 <div class="item-input">
+                                     <input class="input-index" type="text" name="bairro" id="bairro" placeholder="Bairro" value="{{js 'controller.login.get().bairro'}}">
+                                 </div>
+                             </div>
+                         </div>
+                     </li>
+                     <li>
+                         <div class="item-content">
+                             <div class="item-inner no-margin">
+                                 <div class="item-input">
+                                     <input class="input-index" type="text" name="rua" id="rua" placeholder="Rua" value="{{js 'controller.login.get().rua'}}">
+                                 </div>
+                             </div>
+                         </div>
+                     </li>
+                     <li>
+                         <div class="item-content">
+                             <div class="item-inner no-margin">
+                                 <div class="item-input">
+                                     <input class="input-index" type="text" name="numero" id="numero" placeholder="Numero" value="{{js 'controller.login.get().numero'}}">
+                                 </div>
+                             </div>
+                         </div>
+                     </li>
+                     <li>
+                         <div class="item-content">
+                             <div class="item-inner no-margin">
+                                 <div class="item-input">
+                                     <input class="input-index" type="text" name="cep" mask="cep" id="cep" placeholder="CEP" value="{{js 'controller.login.get().cep'}}">
+                                 </div>
+                             </div>
+                         </div>
+                     </li>
+                     <li>
+                         <div class="item-content">
+                             <div class="item-inner no-margin">
+                                 <div class="item-input">
+                                     <input class="input-index" type="text" name="complemento" id="complemento_input" placeholder="Complemento" value="{{js 'controller.login.get().complemento == null ? "" : controller.login.get().complemento'}}">
+                                 </div>
+                             </div>
+                         </div>
+                     </li>
+                 </ul>
+             </div>
+         </div>
+         <div style="width: 100%; height: 50px; background-color: darkred; position: absolute; bottom: 0; left: 0;">
+             <button id="ir_forma_pagamento" style="border: none; color: #FFFFFF; width: 100%; height: 100%; background-color: rgb(162, 10, 10);">Forma Pagamento</button>
+         </div>
+     </div>
+</div>

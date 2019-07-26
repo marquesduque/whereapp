@@ -1,0 +1,163 @@
+﻿
+@model Site.Models.Find<api.Controllers.estoquesController.find>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        <a href="@Url.Action("Create")" class="btn btn-info" base_library="api.Models.estoque.library_create"><i class="glyphicon glyphicon-plus" style="margin-right:10px"></i>Criar Lote</a>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#" base_library="api.Models.estoque.library_bc_1"><i class="fa fa-newspaper-o"></i>Listar</a></li>
+        <li class="active"><a href="@Url.Action("index")" base_library="api.Models.estoque.library_bc_list">Index</a></li>
+    </ol>
+</section>
+
+<section class="content">
+    <form ajax="@Url.Action("Find")" table="tbl">
+        <input type="hidden" id="Page" name="Page" value="0" />
+        <div class="box box-default">
+            <div class="box-header with-border">
+
+                <div class="form-group col-md-6">
+                    <label class="control-label" style="width:100%" base_library="api.Models.estoque.produto_id">Produto</label>
+                    <select class="form-control select2" source="#Filter_estoque_list" data-placeholder="" style="width: 100%;">
+                        <option value="null">Todos</option>
+                        @foreach (var item in new api.Models.db().produto.Where(c => c.place_id == api.Models.db.place.place_id))
+                        {
+                            <option value="@item.id">@item.nome - @(item.codigo == null ? item.id.ToString() : item.codigo)</option>
+                        }
+                    </select>
+                    @Html.HiddenFor(model => model.Filter.produto_id)
+                    @Html.ValidationMessageFor(model => model.Filter.produto_id)
+
+                </div>
+                @{
+                    var list = new api.Models.db().pessoa.Where(c => c.perfil_id == 5 && c.place_id == api.Models.db.place.place_id).ToList();
+                }
+
+                @if (list.Count() != 0)
+                {
+                    <div class="form-group col-md-6">
+                        <label class="control-label" base_library="api.Models.estoque.pessoa_id">Vendedor</label>
+                        <select class="form-control select2" source="#Filter_pessoa_id" data-placeholder="" style="width: 100%;" id="s_pessoa">
+                            <option value="null">Selecione um vendedor</option>
+                            @foreach (var item in list)
+                            {
+                                <option value="@item.id">@(item.nome)</option>
+                            }
+                        </select>
+                        @Html.HiddenFor(model => model.Filter.pessoa_id)
+                        @Html.ValidationMessageFor(model => model.Filter.pessoa_id)
+                    </div>
+                }
+
+
+
+
+                <div class="form-group col-md-6">
+                    <label class="control-label" style="width:100%" base_library="api.Models.estoque.dataProvisoria">Data de Entrada</label>
+
+                    @Html.TextBoxFor(model => model.Filter.dataProvisoria, "{0:dd/MM/yyyy}", new { placeholder = "", @class = "form-control", mask = "{\"value\":\"99/99/9999\", \"placeholder\":\"dd/mm/yyyy\"}", maxLength = "10" })
+
+                </div>
+
+
+
+                <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse">Pesquisa Avançada<i style="margin-left: 10px" class="fa fa-plus-square fa-minus"></i></button>
+                </div>
+            </div>
+            <div class="box-body" style="display:none">
+            </div>
+            <div class="form-group" style="border-top: 1px solid #f4f4f4; padding: 10px">
+                @*<button href="#" class="btn btn-primary pull-left" type="button" name="btnInserir" onclick="InsereEstoque();"><i class="glyphicon glyphicon-plus" style="margin-right: 10px"></i>Cadastrar</button>*@
+
+
+                <button href="#" class="btn btn-warning pull-right" type="button" name="btnProcurar" onclick="$('#Filter_flag').val(1);$('.tblrow').remove(); $('#Page').val('0'); $('[ajax]').submit();"><i class="glyphicon glyphicon-search" style="margin-right: 10px"></i>Procurar</button>
+                <div style="clear: both"></div>
+            </div>
+        </div>
+        <div class="table-default scroll">
+            <div class="filter-table" base_library="api.Models.estoque.library_filter"><i class="glyphicon glyphicon-filter"></i>filtros</div>
+
+            <div class="filter-table" base_library="api.Models.sample.library_report" onclick="fnExcelReport()" style="margin-left:83px; width:110px">
+                <i class="fa fa-file-excel-o"></i>Relatório
+            </div>
+            <table id="tbl">
+                <tr>
+                    @*<td base_library="api.Models.estoque.produto_id">
+                        @Html.DisplayNameFor(model => model.Filter.produto_id)
+                        Produto
+                    </td>*@
+
+                    @if (list.Count() != 0)
+                    {
+                        <td base_library="api.Models.estoque.pessoa_id">
+                            @*@Html.DisplayNameFor(model => model.Filter.pessoa_id)*@
+                            Vendedor
+                        </td>
+                    }
+
+
+                    <td base_library="api.Models.estoque.estoque1">
+                        @*@Html.DisplayNameFor(model => model.Filter.estoque1)*@
+                        Quantidade
+                    </td>
+                    <td base_library="api.Models.estoque.data_entrada">
+                        @*@Html.DisplayNameFor(model => model.Filter.data_entrada)*@
+                        Data de Entrada
+                    </td>
+                    <td base_library="api.Models.estoque.lote">
+                        @*@Html.DisplayNameFor(model => model.Filter.lote)*@
+                        Lote
+                    </td>
+
+                </tr>
+            </table>
+        </div>
+    </form>
+</section>
+
+<script template="tbl" type="text/template" redirect="@Url.Action("edit")">
+
+    <tr class="tblrow" pk="lote">
+        @*<td column="produto_id"></td>*@
+        @if (list.Count() != 0)
+        {
+            <td column="pessoa"></td>
+        }
+
+        <td column="quantidade"></td>
+        <td column="data_entrada"></td>
+        <td column="lote"></td>
+
+    </tr>
+
+</script>
+
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        function InsereEstoque() {
+
+            if ($('#s_produto').val() != "null" && $('#Filter_data_entrada').val() != "" && $('#Filter_estoque1').val() != "") {
+                
+                $('#Filter_flag').val(2);
+                $('.tblrow').remove();
+                $('#Page').val('0');
+                $('[ajax]').submit();
+
+            } else {
+
+                alert('Para cadastrar, preencha todos os campso devem estar preenchidos');
+
+            }
+
+        }
+    </script>
+}

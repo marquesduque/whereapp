@@ -1,0 +1,105 @@
+﻿
+@model Site.Models.Find<api.Controllers.produtosController.find>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<section class="content-header">
+    <h1>
+        <a href="/tipos/edit/@Request.QueryString["tipo_id"]" class="btn btn-warning" base_library="api.Models.filial.varcat"><i class="fa fa-angle-left fa-lg" style="margin-right: 10px"></i>Voltar</a>
+        <a href="@Url.Action("Create",new {tipo_id = Request.QueryString["tipo_id"] })" class="btn btn-info" base_library="api.Models.produto.library_create"><i class="fa fa-tag" style="margin-right:10px"></i>Criar Novo Produto</a>
+        @*<a href="@Url.Action("index", "tipos")" class="btn btn-danger"><i class="fa fa-info-circle" style="margin-right: 10px"></i>Tipos de Produtos</a>*@
+        @*<a href="@Url.Action("index", "descontos")" class="btn btn-warning"><i class="fa fa-info-circle" style="margin-right: 10px"></i>Descontos</a>*@
+        @*<a href="@Url.Action("index", "montagens")" class="btn btn-info"><i class="fa fa-info-circle" style="margin-right: 10px"></i>Montagens</a>*@
+
+    </h1>
+</section>
+
+<a class="col-xs-12" href="@Url.Action("edit","tipo", new { id = Request.QueryString["tipo_id"]})">
+    <div class="alert alert-info col-xl-12" role="alert" style="font-size:20px">
+        <i class="fa fa-pencil" style="margin-right: 10px"></i><b>Categoria @(new api.Models.db().tipo.Find(Convert.ToInt32(Request.QueryString["tipo_id"])).nome)</b>
+    </div>
+</a>
+<div style="clear:both"></div>
+<section class="content">
+
+    <form ajax="@Url.Action("Find")" table="tbl">
+        <input type="hidden" id="Page" name="Page" value="0" />
+
+        <div class="box box-default">
+            <div class="box-header with-border">
+
+
+                <div class="form-group col-md-2">
+                    <label class="control-label" style="width:100%" base_library="api.Models.produto.codigo">Código</label>
+
+                    @Html.TextBoxFor(model => model.Filter.codigo, new { placeholder = "", @class = "form-control", maxLength = "150" })
+
+                </div>
+
+
+                <div class="form-group col-md-7">
+                    <label class="control-label" style="width:100%" base_library="api.Models.produto.name">Nome</label>
+
+                    @Html.TextBoxFor(model => model.Filter.nome, new { placeholder = "", @class = "form-control", maxLength = "150" })
+
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label class="control-label" style="width:100%" base_library="api.Models.produto.preco">Preço</label>
+
+                    @Html.TextBoxFor(model => model.Filter.preco, new { placeholder = "", @class = "form-control", maxLength = "150" })
+
+                </div>
+
+
+              <input type="hidden" id="tipo_id" name="tipo_id" value="@Request.QueryString["tipo_id"]" />
+
+            </div>
+
+            <div class="box-body" style="display:none">
+            </div>
+            <div class="form-group" style="border-top: 1px solid #f4f4f4; padding: 10px">
+                <button href="#" class="btn btn-warning pull-right" type="button" name="btnProcurar" onclick="$('.tblrow').remove(); $('#Page').val('0'); $('[ajax]').submit();"><i class="fa fa-search" style="margin-right: 10px"></i>Procurar</button>
+                <div style="clear: both"></div>
+            </div>
+        </div>
+        <div class="table-default scroll">
+       
+            <table id="tbl">
+                <tr>
+                    <td base_library="api.Models.produto.codigo">
+                        Código
+                    </td>
+                    <td base_library="api.Models.produto.name">
+                        Nome
+                    </td>
+                    <td base_library="api.Models.produto.preco">
+                        Preço
+                    </td>
+                    <td base_library="api.Models.produto.buscavel">
+                        Ativo
+                    </td>
+
+                </tr>
+            </table>
+        </div>
+
+    </form>
+</section>
+
+<script template="tbl" type="text/template" redirect="@Url.Action("edit")">
+
+    <tr class="tblrow" pk="id">
+        <td column="codigo"></td>
+        <td column="nome"></td>
+        <td column="preco"></td>
+        <td column="buscavel"></td>
+
+        
+
+    </tr>
+
+
+</script>

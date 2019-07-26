@@ -1,0 +1,91 @@
+﻿@model api.Models.pagamento
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>pagamento</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.taxa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.taxa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.grupo_do_pagamento_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.grupo_do_pagamento_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.bandeira_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bandeira_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.place_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.place_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.transacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.transacao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.external_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.external_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.icone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.icone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.icone_itype)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.icone_itype)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

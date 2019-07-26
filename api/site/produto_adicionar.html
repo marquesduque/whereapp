@@ -1,0 +1,81 @@
+﻿<div class="pages">
+    <div data-page="responsavel_adicionar" class="page">
+        <div class="navbar background-creait">
+            <div class="navbar-inner margin-bottom-20">
+                <div class="left"><a onclick="creait.redirect('produto'); controller.responsavel_adicionar.set(null);" class="back link"> <i class="f7-icons icone-voltar" style="margin-right: 10px;">chevron_left</i></a></div>
+                <div class="center">Responsavel</div>
+            </div>
+        </div>
+        <div class="page-content text-center">
+            <div class="page-content" id="app-cover">
+                <!--<div class="margin-bottom-40" style="margin-top: 50px;"><img class="logo" src="" style="width: 240px;" /></div>-->
+                <div style="margin-top: 50px;">
+
+                    <formproduto id="sign_up">
+                        <div class="list-block margin-bottom-40">
+                            <input type="hidden" name="responsavel_id" id="responsavel_id" value="{{js 'controller.loginE.get().id'}}" />
+                            <input type="hidden" id="id_produto" name="id" value="0" />
+                            <input type="hidden" id="foto" name="foto_str" />
+                            <input type="hidden" id="photo_itype" name="photo_itype" value="data:image/jpeg;base64" />
+                            <input type="file" style="visibility: hidden" id="pega_foto" accept="image/x-png,image/jpeg" name="pega_foto" />
+
+                            <div style="display: flex; align-items: center; justify-content: center; width: 100%; height: 150px; padding: 20px 0; ">
+                                <div id="foto_produto" style="background-image: url(img/camera.png); background-size: contain; background-repeat: no-repeat; background-position: center; width: 280px; height: 100%; border: solid #CCC" onclick="$('#pega_foto').click()">
+
+                                </div>
+                            </div>
+
+                            <ul class="no-border" style="padding-top:20px; display: block;">
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" type="text" name="nome" id="nome_inpu" placeholder="Nome">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <textarea class="input-index" type="text" id="descricao" name="descricao" placeholder="descricao"></textarea>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" type="tel" name="valor" id="valor_input" placeholder="Preço">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" type="text" name="estoque" id="estoque_inpu" placeholder="Estoque">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="row btn-form-group margin-bottom-10 margin-top-10">
+                            <div class="col-100">
+                                <div id="btn_salvar" class="buton">Salvar</div>
+                            </div>
+                        </div>
+                    </formproduto>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

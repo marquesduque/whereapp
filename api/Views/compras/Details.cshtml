@@ -1,0 +1,275 @@
+﻿@model api.Models.compra
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>compra</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.pagamento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pagamento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.total)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.total)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.desconto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.desconto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.preparo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.preparo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.entregue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.entregue)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.finalizado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.finalizado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.filial_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.filial_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pago)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pago)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.recebido)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.recebido)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ativo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ativo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cancelamento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cancelamento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pagarme_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pagarme_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pagarme_status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pagarme_status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.place_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.place_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.balcao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.balcao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.delivery)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.delivery)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.codigo_servicos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.codigo_servicos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.valor_frete)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.valor_frete)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cpf)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cpf)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.boleto_barcode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.boleto_barcode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.boleto_url)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.boleto_url)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tipo_frete)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tipo_frete)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.comissao_vendedor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.comissao_vendedor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.external_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.external_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.frete)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.frete)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.observacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.observacao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cartao1.numero)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cartao1.numero)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.item.nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.item.nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pagamento1.nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pagamento1.nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pessoa.nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pessoa.nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pessoa1.nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pessoa1.nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.status_da_compra.nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.status_da_compra.nome)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

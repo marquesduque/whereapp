@@ -1,0 +1,41 @@
+﻿.gm-style-iw {
+	width: 350px !important;
+	top: 15px !important;
+	left: 0px !important;
+	background-color: #fff;
+	box-shadow: 0 1px 6px #539bec;
+	border: 2px solid #539bec;
+	border-radius: 6px 6px 10px 10px;
+    height:378px;
+}
+#iw-container {
+	margin-bottom: 10px;
+    border-radius: 6px 6px 0 0;
+}
+#iw-container .iw-title {
+	font-size: 22px;
+	font-weight: 400;
+	padding: 10px;
+	background-color: #d0e6ff;
+	color: #539bec;
+	margin: 0;
+	border-radius: 6px 6px 0 0;
+}
+#iw-container .iw-content {
+	font-size: 13px;
+	line-height: 18px;
+	font-weight: 400;
+	margin-right: 1px;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+.iw-content img {
+	float: right;
+	margin: 0 5px 5px 10px;	
+}
+.iw-subTitle {
+	font-size: 16px;
+	font-weight: 700;
+	padding: 5px 0;
+}

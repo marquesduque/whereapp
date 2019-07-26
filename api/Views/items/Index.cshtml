@@ -1,0 +1,266 @@
+﻿
+@model Site.Models.Find<api.Controllers.itemsController.find>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        @if (Utility.Session.Login.Tipo_Acesso == 1)
+        {
+            <a href="@Url.Action("Create", new { tipo_id = 7 } )" class="btn btn-info" base_library="api.Models.item.library_create"><i class="glyphicon glyphicon-plus" style="margin-right:10px"></i>Criar Novo</a>
+        }
+        
+        @*<a href="@Url.Action("Index", "tipoes")" class="btn btn-warning" base_library="api.Models.item.library_create"><i class="fa fa-clone" style="margin-right:10px"></i>Tipos de Item</a>*@
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#" base_library="api.Models.item.library_bc_1"><i class="fa fa-newspaper-o"></i>Listar</a></li>
+        <li class="active"><a href="@Url.Action("index")" base_library="api.Models.item.library_bc_list">Index</a></li>
+    </ol>
+</section>
+
+<section class="content">
+
+
+
+
+
+    <form ajax="@Url.Action("Find")" table="tbl">
+        <input type="hidden" id="Page" name="Page" value="0" />
+
+        @if (Utility.Session.Login.Perfil_ID == 2)
+        {
+            <input type="hidden" id="responsavel_id" name="responsavel_id" value="@Utility.Session.Login.Id" />
+        }
+
+        <div class="box box-default">
+            <div class="box-header with-border">
+
+
+                <div class="form-group col-md-4">
+                    <label class="control-label" style="width:100%" base_library="api.Models.item.nome">Nome</label>
+
+                    @Html.TextBoxFor(model => model.Filter.nome, new { placeholder = "", @class = "form-control", maxLength = "150" })
+
+                </div>
+
+                <div class="form-group col-md-2">
+                    <label class="control-label" style="width:100%" base_library="api.Models.item.valor">Valor</label>
+
+                    @Html.TextBoxFor(model => model.Filter.valor, new { placeholder = "", @class = "form-control", maxLength = "150", mask = "money" })
+
+                </div>
+
+                <div class="form-group col-md-2">
+                    <label class="control-label" style="width:100%" base_library="api.Models.item.estoque">Estoque</label>
+
+                    @Html.TextBoxFor(model => model.Filter.estoque, new { placeholder = "", @class = "form-control", type = "number" })
+
+                </div>
+
+                @*<div class="form-group col-md-3">
+            <label class="control-label" style="width:100%" base_library="api.Models.item.marca">Marca</label>
+
+            @Html.TextBoxFor(model => model.Filter.marca, new { placeholder = "", @class = "form-control", maxLength = "150" })
+
+        </div>*@
+
+                <div class="form-group col-md-2">
+                    <label class="control-label" style="width:100%" base_library="api.models.item.doacao">Doação</label>
+                    <select class="form-control select2" name="doacao" source="#filter_doacao" data-placeholder="" style="width: 100%;">
+                        <option value="null">Todos</option>
+                        <option value="true">Sim</option>
+                        <option value="false">Não</option>
+                    </select>
+                    @Html.HiddenFor(model => model.Filter.doacao)
+                    @Html.ValidationMessageFor(model => model.Filter.doacao)
+                </div>
+
+                <div class="form-group col-md-2">
+                    <label class="control-label" style="width:100%" base_library="api.models.item.apadrinhar">Apadrinhamento</label>
+                    <select class="form-control select2" name="apadrinhar" source="#filter_apadrinhar" data-placeholder="" style="width: 100%;">
+                        <option value="null">Todos</option>
+                        <option value="true">Sim</option>
+                        <option value="false">Não</option>
+                    </select>
+                    @Html.HiddenFor(model => model.Filter.apadrinhar)
+                    @Html.ValidationMessageFor(model => model.Filter.apadrinhar)
+                </div>
+
+
+
+                @if (Request.QueryString["tipo_id"] == null)
+                {
+                    @*<div class="form-group col-md-2">
+                <label class="control-label" style="width:100%" base_library="api.models.item.tipo_id">Tipo</label>
+                <select class="form-control select2" name="tipo_id" source="#filter_tipo_id" data-placeholder="" style="width: 100%;">
+                    <option value="null">Todos</option>
+                    @foreach (var item in new api.Models.db().tipo)
+                    {
+                        <option value="@item.id">@(item.nome)</option>
+                    }
+                </select>
+                @Html.HiddenFor(model => model.Filter.tipo_id)
+                @Html.ValidationMessageFor(model => model.Filter.tipo_id)
+            </div>*@
+
+                    if (Utility.Session.Login.Perfil_ID == 1)
+                    {
+                        <div class="form-group col-md-3">
+                            <label class="control-label" style="width:100%" base_library="api.Models.item.nome">Responsável</label>
+
+                            @Html.TextBoxFor(model => model.Filter.responsavel, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                        </div>
+                    }
+
+
+
+                    @*<div class="form-group col-md-3">
+                <label class="control-label" style="width:100%" base_library="api.Models.item.responsavel_id">Responsável</label>
+                <select class="form-control select2" source="#Filter_responsavel_id" data-placeholder="" onchange="$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" style="width: 100%;">
+                    <option value="null">Todos</option>
+                    @foreach (var item in new api.Models.db().pessoa.Select(c => new { id = c.id, nome = c.nome }))
+                    {
+                        <option value="@item.id">@(item.nome)</option>
+                    }
+                </select>
+                @Html.HiddenFor(model => model.Filter.responsavel_id)
+                @Html.ValidationMessageFor(model => model.Filter.responsavel_id)
+            </div>*@
+
+                }
+                else
+                {
+                    @Html.HiddenFor(model => model.Filter.tipo_id)
+                    @Html.HiddenFor(model => model.Filter.responsavel_id)
+                }
+
+                @*<div class="form-group col-md-3">
+            <label class="control-label" style="width:100%" base_library="api.Models.item.rastreado">Rastreado</label>
+
+            @Html.TextBoxFor(model => model.Filter.rastreado, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+        </div>
+
+        <div class="form-group col-md-2">
+            <label class="control-label" style="width:100%" base_library="api.Models.item.perdido">Ativo</label>
+
+            <div style="height: 34px; line-height: 30px;">
+                <label style="min-width: 45px;">
+                    <input type="checkbox" value="true" name="item_ativo" class="minimal-green">
+                    Sim
+
+                </label>
+                <label style="min-width: 45px;">
+                    <input type="checkbox" value="false" name="item_ativo" class="minimal">
+                    Não
+
+                </label>
+                @Html.HiddenFor(model => model.Filter.ativo, new { icheck = "item_ativo" })
+            </div>
+
+        </div>
+
+
+        <div class="form-group col-md-2">
+            <label class="control-label" style="width:100%" base_library="api.Models.item.perdido">Perdido</label>
+
+            <div style="height: 34px; line-height: 30px;">
+                <label style="min-width: 45px;">
+                    <input type="checkbox" value="true" name="item_perdido" class="minimal-green">
+                    Sim
+
+                </label>
+                <label style="min-width: 45px;">
+                    <input type="checkbox" value="false" name="item_perdido" class="minimal">
+                    Não
+
+                </label>
+                @Html.HiddenFor(model => model.Filter.perdido, new { icheck = "item_perdido" })
+            </div>
+
+        </div>*@
+
+                @*<div class="box-tools pull-right">
+            <button class="btn btn-box-tool" data-widget="collapse">Pesquisa Avançada<i style="margin-left: 10px" class="fa fa-plus-square fa-minus"></i></button>
+        </div>*@
+            </div>
+            <div class="box-body" style="display:none">
+            </div>
+            <div class="form-group" style="border-top: 1px solid #f4f4f4; padding: 10px">
+                <button href="#" class="btn btn-warning pull-right" type="button" name="btnProcurar" onclick="$('.tblrow').remove(); $('#Page').val('0'); $('[ajax]').submit();"><i class="glyphicon glyphicon-search" style="margin-right: 10px"></i>Procurar</button>
+                <div style="clear: both"></div>
+            </div>
+        </div>
+        <div class="table-default scroll">
+            <div class="filter-table" base_library="api.Models.item.library_filter"><i class="glyphicon glyphicon-filter"></i>filtros</div>
+
+            <div class="filter-table" base_library="api.Models.sample.library_report" onclick="fnExcelReport()" style="margin-left:83px; width:110px">
+                <i class="fa fa-file-excel-o"></i>Relatório
+            </div>
+            <table id="tbl">
+                <tr>
+                    <td base_library="api.Models.item.nome">
+                        Nome
+                    </td>
+                    <td base_library="api.Models.item.valor">
+                        Valor
+                    </td>
+                    <td base_library="api.Models.item.estoque">
+                        Estoque
+                    </td>
+                    <td base_library="api.Models.item.marca">
+                        Marca
+                    </td>
+                    @*<td base_library="api.Models.item.tipo_id">
+            Tipo
+        </td>*@
+                    @*<td base_library="api.Models.item.responsavel_id">
+                        Responsável
+                    </td>*@
+
+                    <td base_library="api.Models.item.doacao">
+                        Doação
+                    </td>
+
+                    <td base_library="api.Models.item.apadrinhar">
+                        Apadrinhamento
+                    </td>
+                    @*<td base_library="api.Models.item.rastreado_id">
+            Rastreado
+        </td>*@
+                    @*<td base_library="api.Models.item.descricao">
+            @Html.DisplayNameFor(model => model.Filter.descricao)
+        </td>*@
+                    @*<td base_library="api.Models.item.perdido">
+            Perdido
+        </td>
+        <td base_library="api.Models.item.ativo">
+            Ativo
+        </td>*@
+                </tr>
+            </table>
+        </div>
+    </form>
+</section>
+
+<script template="tbl" type="text/template" redirect="@Url.Action("edit")">
+
+    <tr class="tblrow" pk="id">
+        <td column="nome"></td>
+        <td column="valor"></td>
+        <td column="estoque"></td>
+        <td column="marca"></td>
+        @*<td column="tipo_id"></td>*@
+        @*<td column="responsavel_id"></td>*@
+        <td column="doacao"></td>
+        <td column="apadrinhar"></td>
+        @*<td column="rastreado_id"></td>*@
+        @*<td column="descricao"></td>*@
+        @*<td column="perdido"></td>
+        <td column="ativo"></td>*@
+    </tr>
+</script>

@@ -1,0 +1,139 @@
+﻿@model api.Models.responsavel_juridico
+
+@{
+    /**/
+
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        <a href="@Url.Action("Index")" class="btn btn-info"><i class="glyphicon glyphicon-chevron-left" style="margin-right: 10px"></i>Voltar</a>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("index")" base_library="api.Models.responsavel_juridico.library_bc_1">Listar</a></li>
+        <li class="active" base_library="api.Models.responsavel_juridico.library_bc_create">Criar</li>
+    </ol>
+</section>
+
+
+<section class="content">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.ValidationSummary(true)
+        <div class="alert alert-danger" role="alert" base_library="api.Models.responsavel_juridico.library_error_register">
+            Registro não gravado, verificar erro criticado
+        </div>
+
+        <fieldset>
+
+            <div class="col-md-12 bar">
+                <label class="col-md-6" base_library="api.Models.responsavel_juridico.library_title"><i class="fa fa-user" style="margin-right: 10px"></i>Dados do Funcionário</label>
+            </div>
+
+            <div>
+
+                <input type="hidden" value="@Utility.Session.Login.Id" name="pessoa_id" />
+
+                <div class="form-group col-md-5">
+                    <label class="control-label" base_library="api.Models.responsavel_juridico.nome">Nome</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.nome, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                    @Html.ValidationMessageFor(model => model.nome)
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label class="control-label" base_library="api.Models.responsavel_juridico.cargo_posicao">Cargo</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.cargo_posicao, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                    @Html.ValidationMessageFor(model => model.cargo_posicao)
+                </div>
+
+                <div class="form-group col-md-2">
+                    <label class="control-label" base_library="api.Models.responsavel_juridico.rg">RG</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.rg, new { placeholder = "", @class = "form-control", maxLength = "150", mask = "{\"value\":\"999999999\"}" })
+                    @Html.ValidationMessageFor(model => model.rg)
+                </div>
+
+                <div class="form-group col-md-2">
+                    <label class="control-label" base_library="api.Models.responsavel_juridico.cpf">CPF</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.cpf, new { placeholder = "", @class = "form-control", maxLength = "150", mask = "{\"value\":\"999.999.999-99\"}" })
+                    @Html.ValidationMessageFor(model => model.cpf)
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label class="control-label" base_library="api.Models.compra.tipo_acesso">Tipo de Acesso</label>
+                    <select class="form-control select2" source="#tipo_acesso" data-placeholder="" style="width: 100%;">
+                        <option value="1">Controle Total</option>
+                        <option value="2">Somente Visualização</option>
+                    </select>
+                    @Html.HiddenFor(model => model.tipo_acesso)
+                    @Html.ValidationMessageFor(model => model.tipo_acesso)
+                </div>
+
+                <div class="form-group col-md-2">
+                    <label class="control-label" base_library="api.Models.responsavel_juridico.celular">Celular</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.celular, new { placeholder = "", @class = "form-control", maxLength = "150", mask = "{\"value\":\"(99) 99999-9999\"}" })
+                    @Html.ValidationMessageFor(model => model.celular)
+                </div>
+
+                <div class="form-group col-md-2">
+                    <label class="control-label" base_library="api.Models.responsavel_juridico.telefone">Telefone</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.telefone, new { placeholder = "", @class = "form-control", maxLength = "150", mask = "{\"value\":\"(99) 9999-9999\"}" })
+                    @Html.ValidationMessageFor(model => model.telefone)
+                </div>
+
+                <div class="form-group col-md-2">
+                    <label class="control-label" base_library="api.Models.responsavel_juridico.porcentagem">Porcentagem (%)</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.porcentagem, new { placeholder = "", @class = "form-control", maxLength = "150", type = "number" })
+                    @Html.ValidationMessageFor(model => model.porcentagem)
+                </div>
+
+                <div class="col-md-12 bar" style="margin-top: 30px;">
+                    <label class="col-md-6" base_library="api.Models.responsavel_juridico.dados_acesso"><i class="fa fa-key" style="margin-right: 10px"></i>Dados para Acesso</label>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label class="control-label" base_library="api.Models.responsavel_juridico.email">Email</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.email, new { placeholder = "", @class = "form-control", maxLength = "100" })
+                    @Html.ValidationMessageFor(model => model.email)
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label class="control-label" base_library="api.Models.senha.email">Senha</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.senha, new { placeholder = "", @class = "form-control", maxLength = "50" })
+                    @Html.ValidationMessageFor(model => model.senha)
+                </div>
+
+                <div class="form-group col-md-12 btn-gallery" style="margin-top: 20px;">
+                    <a class="btn btn-success pull-right" onclick="$(this).closest('form').submit()" base_library="api.Models.responsavel_juridico.library_save"><i class="glyphicon glyphicon-ok"></i>Salvar</a>
+                </div>
+            </div>
+        </fieldset>
+    }
+
+</section>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

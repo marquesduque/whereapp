@@ -1,0 +1,212 @@
+﻿
+@model Site.Models.Find<api.Controllers.pessoasController.find>
+
+@{
+    ViewBag.Title = "Listo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        <a href="@Url.Action("Create", new { perfil_id = Request.QueryString["perfil_id"]})" class="btn btn-info"><i class="fa fa-plus" style="margin-right:10px"></i>Adicionar Novo</a>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-newspaper-o"></i>Listar</a></li>
+        <li class="active"><a href="@Url.Action("index")">Usuário</a></li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="box box-default collapsed-box">
+        <form ajax="@Url.Action("Find")" table="tbl">
+            <div class="box-header with-border">
+                <div>
+
+                    <div class="form-group col-md-4">
+                        @Html.LabelFor(model => model.Filter.nome, "Nome", new { @class = "control-label" })
+                        <div style="clear: both"></div>
+                        @Html.TextBoxFor(model => model.Filter.nome, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                        @Html.ValidationMessageFor(model => model.Filter.nome)
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        @Html.LabelFor(model => model.Filter.email, "E-mail", new { @class = "control-label" })
+                        <div style="clear: both"></div>
+                        @Html.TextBoxFor(model => model.Filter.email, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                        @Html.ValidationMessageFor(model => model.Filter.email)
+                    </div>
+
+                    <div class="form-group col-md-2">
+                        @Html.LabelFor(model => model.Filter.cpf, "CPF", new { @class = "control-label" })
+                        <div style="clear: both"></div>
+                        @Html.TextBoxFor(model => model.Filter.cpf, new { placeholder = "", @class = "form-control", maxLength = "150" , mask = "{\"value\":\"999.999.999-99\"}" })
+                        @Html.ValidationMessageFor(model => model.Filter.cpf)
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label class="control-label" base_library="api.Models.produto.active">Ativo</label>
+                        <div style="height: 34px; line-height: 30px;">
+                            <label style="min-width: 45px;">
+                                <input type="radio" value="null" name="item_correct" class="minimal-green">
+                                Novo
+                            </label>
+                            <label style="min-width: 45px; margin-left: 20px;">
+                                <input type="radio" value="true" checked="checked" name="item_correct" class="minimal-green">
+                                Ativo
+                            </label>
+                            <label style="min-width: 45px; margin-left: 15px;">
+                                <input type="radio" value="false" name="item_correct" class="minimal">
+                                Inativo
+                            </label>
+                            @Html.HiddenFor(model => model.Filter.active, new { icheck = "item_correct" })
+                        </div>
+                    </div>
+
+                    @*<div class="form-group col-md-6">
+                        <label class="control-label" base_library="api.Models.produto.vendedor_id">vendedor_id</label>
+                        <select class="form-control select2" source="#vendedor_id" data-placeholder="" style="width: 100%;">
+                            <option value="null">Selecione um item</option>
+                            @foreach (var item in new api.Models.db().pessoa.Where(c => c.place_id == api.Models.db.place.place_id && c.perfil_id == 5))
+                            {
+                                <option value="@item.id">@(item.nome)</option>
+                            }
+                        </select>
+                        @Html.HiddenFor(model => model.Filter.vendedor_id)
+                        @Html.ValidationMessageFor(model => model.Filter.vendedor_id)
+                    </div>*@
+
+                        @Html.HiddenFor(model => model.Filter.perfil_id)
+
+                </div>
+                <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" style="padding:0px 5px" data-widget="collapse">Pesquisa Avançada<i style="margin-left: 10px" class="fa fa-plus-square"></i></button>
+                </div>
+            </div>
+            <div class="box-body">
+                <div>
+                    <label><i class="fa fa-filter" style="margin-right: 10px"></i>Filtros Avançados</label>
+                    <hr style="margin: 6px 0px 10px 0px" />
+                </div>
+                <div class="form-group col-md-6">
+                    @Html.LabelFor(model => model.Filter.birthday, "Aniversário", new { @class = "control-label" })
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.Filter.birthday, "{0:yyyy-MM-dd}", new { placeholder = "", @class = "form-control", type = "date", maxLength = "10" })
+                    @Html.ValidationMessageFor(model => model.Filter.birthday)
+                </div>
+
+                <div class="form-group col-md-6">
+                    @Html.LabelFor(model => model.Filter.facebook, "Facebook", new { @class = "control-label" })
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.Filter.facebook, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                    @Html.ValidationMessageFor(model => model.Filter.facebook)
+                </div>
+
+                <div class="form-group col-md-6">
+                    @Html.LabelFor(model => model.Filter.rg, "RG", new { @class = "control-label" })
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.Filter.rg, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                    @Html.ValidationMessageFor(model => model.Filter.rg)
+                </div>
+
+                <div class="form-group col-md-6">
+                    @Html.LabelFor(model => model.Filter.phone, "Telefone", new { @class = "control-label" })
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.Filter.phone, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                    @Html.ValidationMessageFor(model => model.Filter.phone)
+                </div>
+
+                <div class="form-group col-md-6">
+                    @Html.LabelFor(model => model.Filter.phone_optional, "Telefone (opcional)", new { @class = "control-label" })
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.Filter.phone_optional, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                    @Html.ValidationMessageFor(model => model.Filter.phone_optional)
+                </div>
+
+                <div class="form-group col-md-6">
+                    @Html.LabelFor(model => model.Filter.mobile, "Celular", new { @class = "control-label" })
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.Filter.mobile, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                    @Html.ValidationMessageFor(model => model.Filter.mobile)
+                </div>
+
+                <div class="form-group col-md-6">
+                    @Html.LabelFor(model => model.Filter.mobile_optional, "Celular (opcional)", new { @class = "control-label" })
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.Filter.mobile_optional, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                    @Html.ValidationMessageFor(model => model.Filter.mobile_optional)
+                </div>
+
+                <div class="form-group col-md-6">
+                    @Html.LabelFor(model => model.Filter.rating, "Avaliação", new { @class = "control-label" })
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.Filter.rating, new { placeholder = "", @class = "form-control", maxLength = "150", type = "number", min = "1" })
+                    @Html.ValidationMessageFor(model => model.Filter.rating)
+                </div>
+                <div style="clear: both"></div>
+            </div>
+            <div class="form-group" style="border-top: 1px solid #f4f4f4; padding: 10px">
+                <button href="#" class="btn btn-warning pull-right" type="button" name="btnProcurar" onclick="$('.tblrow').remove(); $('#Page').val('0'); $('[ajax]').submit();"><i class="fa fa-search" style="margin-right: 10px"></i>Procurar</button>
+                <div style="clear: both"></div>
+            </div>
+            <div style="clear: both"></div>
+
+            <input type="hidden" id="Page" name="Page" value="0" />
+        </form>
+    </div>
+
+
+
+
+    <div class="table-default">
+        <table id="tbl">
+            <tr>
+                <td>
+                    Nome
+                </td>
+                <td>
+                    Email
+                </td>
+                <td>
+                    Aniversário
+                </td>
+                <td>
+                    CPF
+                </td>
+                <td>
+                    RG
+                </td>
+                <td>
+                    Telefone
+                </td>
+                <td>
+                    Celular
+                </td>
+                <td>
+                    Avaliação
+                </td>
+            </tr>
+        </table>
+    </div>
+</section>
+
+<script template="tbl" type="text/template" redirect="@Url.Action("edit")">
+
+    <tr class="tblrow" pk="id">
+        <td column="nome"></td>
+        <td column="email"></td>
+        <td column="birthday"></td>
+        <td column="cpf"></td>
+        <td column="rg"></td>
+        <td column="phone"></td>
+        <td column="mobile"></td>
+        <td column="rating"></td>
+    </tr>
+</script>
+
+<script type="text/javascript">
+    window.onload = function () {
+        $('[group="users"]').addClass('active');
+
+        $('[name = "btnProcurar"]').click();
+
+    }
+</script>

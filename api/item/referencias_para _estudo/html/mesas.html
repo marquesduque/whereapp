@@ -1,0 +1,67 @@
+﻿<div class="pages">
+    <div data-page="mesas" class="page navbar-fixed">
+        <div class="navbar background-creait">
+            <div class="navbar-inner">
+                <div class="center">MESAS</div>
+
+                <div class="right">
+                    <a href="#" class="link icon-only open-panel" style="padding:10px">
+                        <img src="icons/garcom.svg" style="width:30px;" />
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!--  -->
+        <div class="page-content imagem-background" style="padding-top:0px;margin-top: 50px;">
+            <div>
+                <div class="legenda selecionada" status="L" style="background-color:#009688">
+                    LIBERADA
+                </div>
+                <div class="legenda selecionada" status="A" style="background-color:#FF9800">
+                    OCUPADA
+                </div>
+                <div class="legenda selecionada" status="S" style="background-color:#f44336">
+                    CONTA
+                </div>
+                <div style="clear:both"></div>
+            </div>
+            <!-- Tabs, tabs wrapper -->
+            <div class="list-block ulcontent" style="height: calc(100% - 117px);
+    overflow: auto;
+    width: 100%;">
+                {{#js_if "this.mesas.length == 0"}}
+                <div style="text-align:center; font-size:20px; font-size:16px; padding:40px;">
+                    Oops, sem conexão com o caixa.
+                    Verifique se a maquina esta ligada.
+                </div>
+                {{/js_if}}
+                <ul>
+                    {{#each mesas}}
+                    <li class="background-pedido"  status="{{status}}" onclick="creait.redirect('mesa','id={{id}}')">
+                        <div class="item-title-row">
+                            <span class="calendar" style="float:left;" status_mesa="{{status}}">
+                                <span>{{id}}</span><br />
+                            </span>
+                            <div style="float:left;padding: 5px 5px; line-height:16px" class="semana-pedido">
+                                <div style="font-size:14px; margin-top:2px">{{lugares}} Pessoa(s)</div>
+                                <div style="font-size:9px; margin-top:0px" class="tempo_mesas" data="{{ultimo_consumo}}">{{ultimo_consumo}}</div>
+                            </div>
+
+                            <i class="f7-icons fonte_cinza" style="padding-top: 17px;
+                                        float: right;
+                                        position: absolute;
+                                        right: 0px;">angle-right</i>
+                        </div>
+                        <div style="clear:both"></div>
+                    </li>
+
+
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+        <!--  -->
+
+    </div>
+</div>

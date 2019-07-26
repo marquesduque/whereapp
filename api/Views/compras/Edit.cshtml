@@ -1,0 +1,1010 @@
+﻿@model api.Models.compra
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Model.vendedor_id == Utility.Session.Login.Id)
+{
+    <section class="content-header">
+        <h1>
+            <a href="@Url.Action("Index")" class="btn btn-warning"><i class="glyphicon glyphicon-chevron-left" style="margin-right: 10px"></i>Voltar</a>
+
+        </h1>
+        <ol class="breadcrumb">
+            @*<li><a href="@Url.Action("index")" base_library="api.Models.compra.library_bc_1">Listar</a></li>
+                <li class="active" base_library="api.Models.compra.library_bc_edit">Editar</li>*@
+
+            @if (Utility.Session.Login.Tipo_Acesso == 1)
+            {
+                if (Model.pagarme_status == 2 && Model.status_da_compra_id != 5)
+                {
+                    if (Model.recebido != null && Model.preparo == null && Model.finalizado == null && Model.entregue == null)
+                    {
+                        <a onclick="atualiza_compra(@Model.id, 2);" class="btn btn-default" style="margin-right: 20px;" id="btnPreparo"><i class="fa fa-archive" style="margin-right: 10px"></i>Enviar Pedido Ao Preparo</a>
+                        <a onclick="atualiza_compra(@Model.id, 3);" class="btn btn-default" style="margin-right: 20px; display: none;" id="btnFinalizar"><i class="fa fa-truck" style="margin-right: 10px"></i>Finalizar Pedido / Enviar para Entrega</a>
+                        <a onclick="atualiza_compra(@Model.id, 4);" class="btn btn-default" style="margin-right: 20px; display: none;" id="btnEntregue"><i class="fa fa-check" style="margin-right: 10px"></i>Confirmar Entrega do Pedido</a>
+                    }
+                    else if (Model.recebido != null && Model.preparo != null && Model.finalizado == null && Model.entregue == null)
+                    {
+                        <a onclick="atualiza_compra(@Model.id, 2);" class="btn btn-default" style="margin-right: 20px; display: none;" id="btnPreparo"><i class="fa fa-archive" style="margin-right: 10px"></i>Enviar Pedido Ao Preparo</a>
+                        <a onclick="atualiza_compra(@Model.id, 3);" class="btn btn-default" style="margin-right: 20px;" id="btnFinalizar"><i class="fa fa-truck" style="margin-right: 10px"></i>Finalizar Pedido / Enviar para Entrega</a>
+                        <a onclick="atualiza_compra(@Model.id, 4);" class="btn btn-default" style="margin-right: 20px; display: none;" id="btnEntregue"><i class="fa fa-check" style="margin-right: 10px"></i>Confirmar Entrega do Pedido</a>
+                    }
+                    else if (Model.recebido != null && Model.preparo != null && Model.finalizado != null && Model.entregue == null)
+                    {
+                        <a onclick="atualiza_compra(@Model.id, 2);" class="btn btn-default" style="margin-right: 20px; display: none;" id="btnPreparo"><i class="fa fa-archive" style="margin-right: 10px"></i>Enviar Pedido Ao Preparo</a>
+                        <a onclick="atualiza_compra(@Model.id, 3);" class="btn btn-default" style="margin-right: 20px; display: none;" id="btnFinalizar"><i class="fa fa-truck" style="margin-right: 10px"></i>Finalizar Pedido / Enviar para Entrega</a>
+                        <a onclick="atualiza_compra(@Model.id, 4);" class="btn btn-default" style="margin-right: 20px;" id="btnEntregue"><i class="fa fa-check" style="margin-right: 10px"></i>Confirmar Entrega do Pedido</a>
+                    }
+                }
+
+                if (Model.status_da_compra_id != 4 && Model.status_da_compra_id != 5)
+                {
+                    <a class="btn btn-danger" onclick="var c = this; confirm('Tem certeza que deseja cancelar o pedido ?', function (result) { if (result) { atualiza_compra(@Model.id, 5); } });" id="cancelar"><i class="glyphicon glyphicon-remove" style="margin-right: 10px"></i>Cancelar Pedido</a>
+                    <a href="@Url.Action("AtualizaCompra", new { id = Model.id, status = 5 })" id="btnCancelar" style="display: none;"></a>
+                }
+            }
+
+        </ol>
+    </section>
+
+
+
+    <section class="content">
+        @*<div class="col-md-12">
+                <div class="alert alert-info col-md-12" role="alert">
+                    <i class="glyphicon glyphicon-pencil" style="margin-right: 10px"></i><b base_library="api.Models.compra.library_code">Editando Código:</b> <span class="editid">@Model.id</span>
+                </div>
+            </div>*@
+        <div style="clear: both"></div>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken();
+            @Html.ValidationSummary(true)
+            <div class="alert alert-danger" role="alert" base_library="api.Models.compra.library_error_register">
+                Registro não gravado, verificar erro criticado
+            </div>
+
+
+            <fieldset>
+
+                @*<div class="col-md-7 bar">
+                        <label class="col-md-6" base_library="api.Models.compra.historico"><i class="fa fa-list" style="margin-right: 10px"></i>Histórico do Pedido</label>
+                    </div>
+                    <div class="col-md-1 bar">
+                    </div>
+                    <div class="col-md-4 bar">
+                        <label class="col-md-12" base_library="api.Models.compra.historico"><i class="fa fa-list" style="margin-right: 10px"></i>Histórico do Pedido</label>
+                    </div>*@
+
+                <div class="col-md-12 bar">
+                    <label class="col-md-8" base_library="api.Models.compra.historico"><i class="glyphicon glyphicon-time" style="margin-right: 10px"></i>Histórico do Pedido</label>
+
+                    @if (Model.pagarme_status == 0)
+                    {
+                        <label class="col-md-4"><a class="btn btn-block" style="pointer-events: none; background-color: #ffeb3b; color: black;"><i class="fa fa-hourglass" style="margin-right: 10px"></i>Aguardando Pagamento</a></label>
+                    }
+                    else if (Model.pagarme_status == 1)
+                    {
+                        <label class="col-md-4"><a class="btn btn-block" style="pointer-events: none; background-color: #2c8ca5; color: white;"><i class="fa fa-credit-card" style="margin-right: 10px"></i>Pagamento em Análise</a></label>
+                    }
+                    else if (Model.pagarme_status == 2)
+                    {
+                        <label class="col-md-4"><a class="btn btn-block" style="pointer-events: none; background-color: #00a65a;"><i class="fa fa-check" style="margin-right: 10px"></i>Pagamento Autorizado</a></label>
+                    }
+                    else if (Model.pagarme_status == 3)
+                    {
+                        <label class="col-md-4"><a class="btn btn-block" style="pointer-events: none; background-color: #dd4b39; color: white;"><i class="glyphicon glyphicon-remove" style="margin-right: 10px"></i>Pagamento Negado</a></label>
+                    }
+
+                </div>
+
+                <input type="hidden" id="status" value="@Model.status_da_compra_id">
+
+                <div class="col-md-12 fonte_montserrat">
+                    <div class="col-md-3">
+                        <!-- small box -->
+                        @if (Model.recebido != null)
+                        {
+                            <div class="small-box bg-yellow" id="pedido">
+                                <div class="inner">
+                                    <p style="margin-top: 15px; font-weight: 500;">Data da Compra</p>
+                                    <p style="font-size: 16px;">@Model.recebido.Value.ToShortDateString() - @Model.recebido.Value.ToShortTimeString()</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-ios-cart-outline"></i>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="small-box bg-aqua" id="pedido">
+                                <div class="inner">
+                                    <p style="margin-top: 15px; font-weight: 500;">Data da Compra</p>
+                                    <p style="font-size: 16px;">PENDENTE...</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-ios-cart-outline"></i>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <div class="col-md-3">
+                        <!-- small box -->
+                        @if (Model.preparo != null)
+                        {
+                            <div class="small-box bg-yellow" id="preparo">
+                                <div class="inner">
+                                    <p style="margin-top: 15px; font-weight: 500;">Data do Preparo</p>
+                                    <p style="font-size: 16px;">@Model.preparo.Value.ToShortDateString() - @Model.preparo.Value.ToShortTimeString()</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-bag"></i>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="small-box bg-aqua" id="preparo">
+                                <div class="inner">
+                                    <p style="margin-top: 15px; font-weight: 500;">Data do Preparo</p>
+                                    <p style="font-size: 16px;" id="dataPreparo">PENDENTE...</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-bag"></i>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <div class="col-md-3">
+                        <!-- small box -->
+                        @if (Model.finalizado != null)
+                        {
+                            <div class="small-box bg-yellow" id="finalizado">
+                                <div class="inner">
+                                    <p style="margin-top: 15px; font-weight: 500;">Data de Saída para Entrega</p>
+                                    <p style="font-size: 16px;">@Model.finalizado.Value.ToShortDateString() - @Model.finalizado.Value.ToShortTimeString()</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fa fa-truck"></i>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="small-box bg-aqua" id="finalizado">
+                                <div class="inner">
+                                    <p style="margin-top: 15px; font-weight: 500;">Data de Saída para Entrega</p>
+                                    <p style="font-size: 16px;" id="dataFinalizado">PENDENTE...</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fa fa-truck"></i>
+                                </div>
+                            </div>
+                        }
+                    </div>
+
+                    @if (Model.status_da_compra_id == 5)
+                    {
+                        <div class="col-md-3">
+                            <div class="small-box bg-red">
+                                <div class="inner">
+                                    <p style="margin-top: 15px; font-weight: 500;">Data do Cancelamento</p>
+                                    <p style="font-size: 16px;">@Model.cancelamento.Value.ToShortDateString() - @Model.cancelamento.Value.ToShortTimeString()</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="glyphicon glyphicon-remove-circle" style="margin-top: 5px;"></i>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="col-md-3">
+                            <!-- small box -->
+                            @if (Model.entregue != null)
+                            {
+                                <div class="small-box bg-yellow" id="entregue">
+                                    <div class="inner">
+                                        <p style="margin-top: 15px; font-weight: 500;">Data da Entrega</p>
+                                        <p style="font-size: 16px;">@Model.entregue.Value.ToShortDateString() - @Model.entregue.Value.ToShortTimeString()</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="fa fa-check"></i>
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="small-box bg-red" id="cancelamento" style="display: none;">
+                                    <div class="inner">
+                                        <p style="margin-top: 15px; font-weight: 500;">Data do Cancelamento</p>
+                                        <p style="font-size: 16px;" id="dataCancelamento">PENDENTE...</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="fa fa-check"></i>
+                                    </div>
+                                </div>
+
+                                <div class="small-box bg-aqua" id="entregue">
+                                    <div class="inner">
+                                        <p style="margin-top: 15px; font-weight: 500;">Data da Entrega</p>
+                                        <p style="font-size: 16px;" id="dataEntregue">PENDENTE...</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="fa fa-check"></i>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    }
+                </div>
+
+
+
+                <div class="col-md-12 bar">
+                    <label class="col-md-6" base_library="api.Models.compra.library_title"><i class="fa fa-user" style="margin-right: 10px"></i>Dados do Comprador</label>
+                </div>
+                @Html.HiddenFor(model => model.id)
+
+                @*<div class="form-group col-md-12">
+                        <label class="control-label" base_library="api.Models.compra.comprador_id">Nome do Cliente</label>
+                        <select class="form-control select2" source="#comprador_id" data-placeholder="" style="width: 100%;" disabled>
+                            <option value="null">Selecione um item</option>
+                            @foreach (var item in new api.Models.db().pessoa)
+                            {
+                                <option value="@item.id">@item.nome</option>
+                            }
+                        </select>
+                        @Html.HiddenFor(model => model.comprador_id)
+                        @Html.ValidationMessageFor(model => model.comprador_id)
+                    </div>*@
+
+                @Html.HiddenFor(model => model.comprador_id)
+
+                @{ var pessoa = new api.Models.db().pessoa.FirstOrDefault(c => c.id == Model.comprador_id); }
+
+                <div class="form-group col-md-9">
+                    <label class="control-label" base_library="api.Models.compra.comprador_id">Nome do Cliente</label>
+
+                    <div style="clear: both"></div>
+                    <input type="text" class="form-control" value="@pessoa.nome" readonly>
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label class="control-label" base_library="api.Models.compra.salvar">&nbsp;</label>
+
+                    <div style="clear: both"></div>
+
+                    @if (Utility.Session.Login.Tipo_Acesso == 1)
+                    {
+                        if (Model.status_da_compra_id == 5 || Model.status_da_compra_id == 4)
+                        {
+                            <a base_library="api.Models.compra.library_edit" onclick="$(this).closest('form').submit()" class="btn btn-success btn-block disabled"><i class="glyphicon glyphicon-home"></i>&nbsp;&nbsp;&nbsp;Salvar Endereço</a>
+                        }
+                        else
+                        {
+                            <a base_library="api.Models.compra.library_edit" onclick="$(this).closest('form').submit()" class="btn btn-success btn-block" id="salvarEndereco"><i class="glyphicon glyphicon-home"></i>&nbsp;&nbsp;&nbsp;Salvar Endereço</a>
+                        }
+                    }
+                    else
+                    {
+                        <a base_library="api.Models.compra.library_edit" class="btn btn-success btn-block disabled" id="salvarEndereco"><i class="glyphicon glyphicon-home"></i>&nbsp;&nbsp;&nbsp;Salvar Endereço</a>
+                    }
+
+
+                </div>
+
+                <div class="form-group col-md-6">
+                    @Html.LabelFor(model => model.address, "Buscar Endereço de Entrega", new { @class = "control-label" })
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.address, new { placeholder = "Buscar endereço", @class = "form-control", maxLength = "150", type = "text", id = "pac-input", })
+                    @Html.ValidationMessageFor(model => model.address)
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label class="control-label" base_library="api.Models.compra.rua">Endereço</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.rua, new { placeholder = "", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.rua)
+                </div>
+
+                <div class="form-group col-md-2">
+                    <label class="control-label" base_library="api.Models.compra.numero">Número</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.numero, new { placeholder = "", @class = "form-control", type = "number" })
+                    @Html.ValidationMessageFor(model => model.numero)
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label class="control-label" base_library="api.Models.compra.complemento">Complemento</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.complemento, new { placeholder = "", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.complemento)
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label class="control-label" base_library="api.Models.compra.cidade">Cidade</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.cidade, new { placeholder = "", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.cidade)
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label class="control-label" base_library="api.Models.compra.pais">País</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.pais, new { placeholder = "", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.pais)
+                </div>
+
+                <div class="form-group col-md-2">
+                    <label class="control-label" base_library="api.Models.compra.cep">CEP</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.cep, new { placeholder = "", @class = "form-control", mask = "{\"value\":\"99999-999\"}" })
+                    @Html.ValidationMessageFor(model => model.cep)
+                </div>
+
+                @*Latitude e Longitude*@
+                @Html.HiddenFor(model => model.lat)
+                @Html.HiddenFor(model => model.lng)
+
+                <div class="col-md-12 bar" style="margin-top: 25px;">
+                    <label class="col-md-6" base_library="api.Models.compra.library_title"><i class="fa fa-shopping-cart" style="margin-right: 10px"></i>Carrinho</label>
+                </div>
+
+                <div class="col-md-12 table-responsive">
+                    <table class="table table-striped fonte_montserrat">
+                        <thead style="background-color: #c5c5c5;">
+                            <tr>
+                                <th style="text-align: center;">Quantidade</th>
+                                <th>Item</th>
+                                <th>Descrição</th>
+                                <th>Valor</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var item in new api.Models.db().compra_item.Include("item").Where(c => c.compra_id == Model.id))
+                            {
+                                var total = item.quantidade * item.item.valor;
+
+                                <tr>
+                                    <td style="text-align: center;">@item.quantidade</td>
+                                    <td>@item.item.nome</td>
+                                    <td>@item.item.descricao</td>
+                                    <td style="color: green; font-weight: 600;">R$ @total</td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div><!-- /.col -->
+
+                <div class="col-md-12 bar" style="margin-top: 25px; background-color: #406a6f;">
+                    <label class="col-md-6" base_library="api.Models.compra.library_title"><i class="fa fa-credit-card" style="margin-right: 10px"></i>Fechamento da Compra</label>
+                </div>
+
+                <div class="form-group col-md-2">
+                    <label class="control-label" base_library="api.Models.compra.Total">Total</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.total, new { placeholder = "", @class = "form-control", maxLength = "150", ReadOnly = "ReadOnly" })
+                    @Html.ValidationMessageFor(model => model.total)
+                </div>
+
+                <div class="form-group col-md-2">
+                    <label class="control-label" base_library="api.Models.compra.frete">Frete</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.frete, new { placeholder = "", @class = "form-control", maxLength = "150", ReadOnly = "ReadOnly" })
+                    @Html.ValidationMessageFor(model => model.frete)
+                </div>
+
+                <div class="form-group col-md-2">
+                    <label class="control-label" base_library="api.Models.compra.desconto">Desconto</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.desconto, new { placeholder = "", @class = "form-control", maxLength = "150", ReadOnly = "ReadOnly" })
+                    @Html.ValidationMessageFor(model => model.desconto)
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label class="control-label" base_library="api.Models.compra.pagarme_status">Status Pagamento</label>
+                    <select class="form-control select2" source="#pagarme_status" data-placeholder="" style="width: 100%;" disabled>
+                        <option value="null">Selecione um item</option>
+                        <option value="0">Aguardando Pagamento</option>
+                        <option value="1">Pagamento em Análise</option>
+                        <option value="2">Pagamento Autorizado</option>
+                        <option value="3">Pagamento Negado</option>
+                    </select>
+                    @Html.HiddenFor(model => model.pagarme_status)
+                    @Html.ValidationMessageFor(model => model.pagarme_status)
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label class="control-label" base_library="api.Models.compra.status_da_compra_id">Status da Compra</label>
+                    <select class="form-control select2" source="#status_da_compra_id" id="compra_id" data-placeholder="" style="width: 100%;" disabled>
+                        <option value="null">Selecione um item</option>
+                        @foreach (var item in new api.Models.db().status_da_compra)
+                        {
+                            <option value="@item.id">@item.nome</option>
+                        }
+                    </select>
+                    @Html.HiddenFor(model => model.status_da_compra_id)
+                    @Html.ValidationMessageFor(model => model.status_da_compra_id)
+                </div>
+
+                <div class="col-md-12 bar" style="margin-top: 25px; background-color: #406a6f;">
+                    <label class="col-md-6" base_library="api.Models.compra.transacoes"><i class="glyphicon glyphicon-align-justify" style="margin-right: 10px"></i>Transações</label>
+                </div>
+
+                <div class="table-default scroll">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td base_library="api.Models.compra.status_transacao">Status</td>
+                                <td base_library="api.Models.compra.data_transacao">Data</td>
+                            </tr>
+
+                            @foreach (var item in new api.Models.db().transacao.Where(c => c.compra_id == Model.id).OrderByDescending(c => c.id))
+                            {
+                                string data;
+                                data = item.data != null ? item.data.Value.ToShortDateString() + " - " + item.data.Value.ToShortTimeString() : "";
+
+                                <tr>
+                                    <td>@item.status</td>
+                                    <td>@data</td>
+                                </tr>
+
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+                @*<div class="form-group col-md-6">
+                        <label class="control-label" base_library="api.Models.compra.pagamento">pagamento</label>
+
+                        <div style="clear: both"></div>
+                        @Html.TextBoxFor(model => model.pagamento, "{0:dd/MM/yyyy}", new { placeholder = "", @class = "form-control", mask = "{\"value\":\"99/99/9999\", \"placeholder\":\"dd/mm/yyyy\"}", maxLength = "10" })
+                        @Html.ValidationMessageFor(model => model.pagamento)
+                    </div>
+
+
+
+
+
+
+
+                    <div class="form-group col-md-6">
+                        <label class="control-label" base_library="api.Models.compra.total">total</label>
+
+                        <div style="clear: both"></div>
+                        @Html.TextBoxFor(model => model.total, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                        @Html.ValidationMessageFor(model => model.total)
+                    </div>
+
+
+
+
+
+
+
+                    <div class="form-group col-md-6">
+                        <label class="control-label" base_library="api.Models.compra.desconto">desconto</label>
+
+                        <div style="clear: both"></div>
+                        @Html.TextBoxFor(model => model.desconto, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                        @Html.ValidationMessageFor(model => model.desconto)
+                    </div>
+
+
+
+
+
+
+
+                    <div class="form-group col-md-6">
+                        <label class="control-label" base_library="api.Models.compra.pagamento_id">pagamento_id</label>
+                        <select class="form-control select2" source="#pagamento_id" data-placeholder="" style="width: 100%;">
+                            <option value="null">Selecione um item</option>
+                            @foreach (var item in new api.Models.db().pagamento.Select(c => new { id = c.id, nome = c.nome }))
+                            {
+                                <option value="@item.id">@item.nome</option>
+                            }
+                        </select>
+                        @Html.HiddenFor(model => model.pagamento_id)
+                        @Html.ValidationMessageFor(model => model.pagamento_id)
+                    </div>
+
+
+
+
+
+
+                    <div class="form-group col-md-6">
+                        <label class="control-label" base_library="api.Models.compra.preparo">preparo</label>
+
+                        <div style="clear: both"></div>
+                        @Html.TextBoxFor(model => model.preparo, "{0:dd/MM/yyyy}", new { placeholder = "", @class = "form-control", mask = "{\"value\":\"99/99/9999\", \"placeholder\":\"dd/mm/yyyy\"}", maxLength = "10" })
+                        @Html.ValidationMessageFor(model => model.preparo)
+                    </div>
+
+
+
+
+
+
+
+                    <div class="form-group col-md-6">
+                        <label class="control-label" base_library="api.Models.compra.entregue">entregue</label>
+
+                        <div style="clear: both"></div>
+                        @Html.TextBoxFor(model => model.entregue, "{0:dd/MM/yyyy}", new { placeholder = "", @class = "form-control", mask = "{\"value\":\"99/99/9999\", \"placeholder\":\"dd/mm/yyyy\"}", maxLength = "10" })
+                        @Html.ValidationMessageFor(model => model.entregue)
+                    </div>
+
+
+
+
+
+
+
+                    <div class="form-group col-md-6">
+                        <label class="control-label" base_library="api.Models.compra.finalizado">finalizado</label>
+
+                        <div style="clear: both"></div>
+                        @Html.TextBoxFor(model => model.finalizado, "{0:dd/MM/yyyy}", new { placeholder = "", @class = "form-control", mask = "{\"value\":\"99/99/9999\", \"placeholder\":\"dd/mm/yyyy\"}", maxLength = "10" })
+                        @Html.ValidationMessageFor(model => model.finalizado)
+                    </div>
+
+
+
+
+
+
+
+                    <div class="form-group col-md-6">
+                        <label class="control-label" base_library="api.Models.compra.status_da_compra_id">status_da_compra_id</label>
+                        <select class="form-control select2" source="#status_da_compra_id" data-placeholder="" style="width: 100%;">
+                            <option value="null">Selecione um item</option>
+                            @foreach (var item in new api.Models.db().status_da_compra.Select(c => new { id = c.id, nome = c.nome }))
+                            {
+                                <option value="@item.id">@item.nome</option>
+                            }
+                        </select>
+                        @Html.HiddenFor(model => model.status_da_compra_id)
+                        @Html.ValidationMessageFor(model => model.status_da_compra_id)
+                    </div>
+
+
+
+
+
+
+                    <div class="form-group col-md-6">
+                        <label class="control-label" base_library="api.Models.compra.filial_id">filial_id</label>
+
+                        <div style="clear: both"></div>
+                        @Html.TextBoxFor(model => model.filial_id, new { placeholder = "", @class = "form-control", maxLength = "150", type = "number", min = "1" })
+                        @Html.ValidationMessageFor(model => model.filial_id)
+                    </div>
+
+
+
+
+
+
+
+                    <div class="form-group col-md-6">
+                        <label class="control-label" base_library="api.Models.compra.pago">pago</label>
+
+                        <div style="clear: both"></div>
+                        @Html.TextBoxFor(model => model.pago, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                        @Html.ValidationMessageFor(model => model.pago)
+                    </div>
+
+
+
+
+
+
+
+                    <div class="form-group col-md-6">
+                        <label class="control-label" base_library="api.Models.compra.recebido">recebido</label>
+
+                        <div style="clear: both"></div>
+                        @Html.TextBoxFor(model => model.recebido, "{0:dd/MM/yyyy}", new { placeholder = "", @class = "form-control", mask = "{\"value\":\"99/99/9999\", \"placeholder\":\"dd/mm/yyyy\"}", maxLength = "10" })
+                        @Html.ValidationMessageFor(model => model.recebido)
+                    </div>
+
+
+
+
+
+
+
+                    <div class="form-group col-md-6">
+                        <label class="control-label" base_library="api.Models.compra.ativo">ativo</label>
+
+                        <div style="clear: both"></div>
+                        <div class="col-md-12 row" style="line-height: 29px">
+                            <label>
+                                <input type="radio" value="true" name="item_ativo" class="minimal-green">
+                                Sim
+
+                            </label>
+                            <label>
+                                <input type="radio" value="false" name="item_ativo" class="minimal">
+                                Não
+
+                            </label>
+                        </div>
+                        <div style="clear: both"></div>
+                        @Html.HiddenFor(model => model.ativo, new { icheck = "item_ativo" })
+                        @Html.ValidationMessageFor(model => model.ativo)
+                    </div>
+
+
+
+
+
+
+
+                    <div class="form-group col-md-6">
+                        <label class="control-label" base_library="api.Models.compra.cancelamento">cancelamento</label>
+
+                        <div style="clear: both"></div>
+                        @Html.TextBoxFor(model => model.cancelamento, "{0:dd/MM/yyyy}", new { placeholder = "", @class = "form-control", mask = "{\"value\":\"99/99/9999\", \"placeholder\":\"dd/mm/yyyy\"}", maxLength = "10" })
+                        @Html.ValidationMessageFor(model => model.cancelamento)
+                    </div>
+
+
+
+
+
+
+
+                    <div class="form-group col-md-6">
+                        <label class="control-label" base_library="api.Models.compra.pagarme_id">pagarme_id</label>
+
+                        <div style="clear: both"></div>
+                        @Html.TextBoxFor(model => model.pagarme_id, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                        @Html.ValidationMessageFor(model => model.pagarme_id)
+                    </div>
+
+
+
+
+
+
+
+                    <div class="form-group col-md-6">
+                        <label class="control-label" base_library="api.Models.compra.pagarme_status">pagarme_status</label>
+
+                        <div style="clear: both"></div>
+                        @Html.TextBoxFor(model => model.pagarme_status, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                        @Html.ValidationMessageFor(model => model.pagarme_status)
+                    </div>
+
+
+
+
+
+
+
+                    <div class="form-group col-md-6">
+                        <label class="control-label" base_library="api.Models.compra.place_id">place_id</label>
+
+                        <div style="clear: both"></div>
+                        @Html.TextBoxFor(model => model.place_id, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                        @Html.ValidationMessageFor(model => model.place_id)
+                    </div>
+
+
+
+
+
+
+
+                    <div class="form-group col-md-6">
+                        <label class="control-label" base_library="api.Models.compra.balcao">balcao</label>
+
+                        <div style="clear: both"></div>
+                        <div class="col-md-12 row" style="line-height: 29px">
+                            <label>
+                                <input type="radio" value="true" name="item_balcao" class="minimal-green">
+                                Sim
+
+                            </label>
+                            <label>
+                                <input type="radio" value="false" name="item_balcao" class="minimal">
+                                Não
+
+                            </label>
+                        </div>
+                        <div style="clear: both"></div>
+                        @Html.HiddenFor(model => model.balcao, new { icheck = "item_balcao" })
+                        @Html.ValidationMessageFor(model => model.balcao)
+                    </div>
+
+
+
+
+
+
+
+                    <div class="form-group col-md-6">
+                        <label class="control-label" base_library="api.Models.compra.delivery">delivery</label>
+
+                        <div style="clear: both"></div>
+                        <div class="col-md-12 row" style="line-height: 29px">
+                            <label>
+                                <input type="radio" value="true" name="item_delivery" class="minimal-green">
+                                Sim
+
+                            </label>
+                            <label>
+                                <input type="radio" value="false" name="item_delivery" class="minimal">
+                                Não
+
+                            </label>
+                        </div>
+                        <div style="clear: both"></div>
+                        @Html.HiddenFor(model => model.delivery, new { icheck = "item_delivery" })
+                        @Html.ValidationMessageFor(model => model.delivery)
+                    </div>
+
+
+
+
+
+
+
+                    <div class="form-group col-md-6">
+                        <label class="control-label" base_library="api.Models.compra.codigo_servicos">codigo_servicos</label>
+
+                        <div style="clear: both"></div>
+                        @Html.TextBoxFor(model => model.codigo_servicos, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                        @Html.ValidationMessageFor(model => model.codigo_servicos)
+                    </div>
+
+
+
+
+
+
+
+                    <div class="form-group col-md-6">
+                        <label class="control-label" base_library="api.Models.compra.valor_frete">valor_frete</label>
+
+                        <div style="clear: both"></div>
+                        @Html.TextBoxFor(model => model.valor_frete, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                        @Html.ValidationMessageFor(model => model.valor_frete)
+                    </div>
+
+
+
+
+
+
+
+                    <div class="form-group col-md-6">
+                        <label class="control-label" base_library="api.Models.compra.cartao_id">cartao_id</label>
+                        <select class="form-control select2" source="#cartao_id" data-placeholder="" style="width: 100%;">
+                            <option value="null">Selecione um item</option>
+                            @foreach (var item in new api.Models.db().cartao.Select(c => new { id = c.id, nome = c.nome }))
+                            {
+                                <option value="@item.id">@item.nome</option>
+                            }
+                        </select>
+                        @Html.HiddenFor(model => model.cartao_id)
+                        @Html.ValidationMessageFor(model => model.cartao_id)
+                    </div>
+
+
+
+
+
+
+                    <div class="form-group col-md-6">
+                        <label class="control-label" base_library="api.Models.compra.cpf">cpf</label>
+
+                        <div style="clear: both"></div>
+                        @Html.TextBoxFor(model => model.cpf, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                        @Html.ValidationMessageFor(model => model.cpf)
+                    </div>
+
+
+
+
+
+
+
+                    <div class="form-group col-md-6">
+                        <label class="control-label" base_library="api.Models.compra.boleto_barcode">boleto_barcode</label>
+
+                        <div style="clear: both"></div>
+                        @Html.TextBoxFor(model => model.boleto_barcode, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                        @Html.ValidationMessageFor(model => model.boleto_barcode)
+                    </div>
+
+
+
+
+
+
+
+                    <div class="form-group col-md-6">
+                        <label class="control-label" base_library="api.Models.compra.boleto_url">boleto_url</label>
+
+                        <div style="clear: both"></div>
+                        @Html.TextBoxFor(model => model.boleto_url, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                        @Html.ValidationMessageFor(model => model.boleto_url)
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <div class="form-group col-md-6">
+                        <label class="control-label" base_library="api.Models.compra.tipo_frete">tipo_frete</label>
+
+                        <div style="clear: both"></div>
+                        @Html.TextBoxFor(model => model.tipo_frete, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                        @Html.ValidationMessageFor(model => model.tipo_frete)
+                    </div>
+
+
+
+
+
+
+
+                    <div class="form-group col-md-6">
+                        <label class="control-label" base_library="api.Models.compra.vendedor_id">vendedor_id</label>
+                        <select class="form-control select2" source="#vendedor_id" data-placeholder="" style="width: 100%;">
+                            <option value="null">Selecione um item</option>
+                            @foreach (var item in new api.Models.db().pessoa)
+                            {
+                                <option value="@item.id">@item.nome</option>
+                            }
+                        </select>
+                        @Html.HiddenFor(model => model.vendedor_id)
+                        @Html.ValidationMessageFor(model => model.vendedor_id)
+                    </div>
+
+
+
+
+
+
+                    <div class="form-group col-md-6">
+                        <label class="control-label" base_library="api.Models.compra.comissao_vendedor">comissao_vendedor</label>
+
+                        <div style="clear: both"></div>
+                        @Html.TextBoxFor(model => model.comissao_vendedor, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                        @Html.ValidationMessageFor(model => model.comissao_vendedor)
+                    </div>
+
+
+
+
+
+
+
+                    <div class="form-group col-md-6">
+                        <label class="control-label" base_library="api.Models.compra.external_id">external_id</label>
+
+                        <div style="clear: both"></div>
+                        @Html.TextBoxFor(model => model.external_id, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                        @Html.ValidationMessageFor(model => model.external_id)
+                    </div>
+
+
+
+
+
+
+
+                    <div class="form-group col-md-6">
+                        <label class="control-label" base_library="api.Models.compra.frete">frete</label>
+
+                        <div style="clear: both"></div>
+                        @Html.TextBoxFor(model => model.frete, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                        @Html.ValidationMessageFor(model => model.frete)
+                    </div>
+
+
+
+
+
+
+
+                    <div class="form-group col-md-6">
+                        <label class="control-label" base_library="api.Models.compra.observacao">observacao</label>
+
+                        <div style="clear: both"></div>
+                        @Html.TextBoxFor(model => model.observacao, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                        @Html.ValidationMessageFor(model => model.observacao)
+                    </div>
+
+
+
+
+
+
+
+                    <div class="form-group col-md-6">
+                        <label class="control-label" base_library="api.Models.compra.item_id">item_id</label>
+                        <select class="form-control select2" source="#item_id" data-placeholder="" style="width: 100%;">
+                            <option value="null">Selecione um item</option>
+                            @foreach (var item in new api.Models.db().item.Select(c => new { id = c.id, nome = c.nome }))
+                            {
+                                <option value="@item.id">@item.nome</option>
+                            }
+                        </select>
+                        @Html.HiddenFor(model => model.item_id)
+                        @Html.ValidationMessageFor(model => model.item_id)
+                    </div>*@
+
+
+
+
+
+                <div class="form-group col-md-12 btn-gallery" style="margin-top:70px;">
+                    @*<a base_library="api.Models.compra.library_delete" onclick="delete_item('@(Url.Action("Delete"))?id=@(Model.id)')" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i>Excluir</a>*@
+                    @*<a base_library="api.Models.compra.library_edit" onclick="$(this).closest('form').submit()" class="btn btn-success pull-right"><i class="glyphicon glyphicon-pencil"></i>Editar</a>*@
+                </div>
+
+            </fieldset>
+        }
+    </section>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        if ($('#status').val() == "5") {
+            $('#pedido').removeClass('small-box bg-yellow').addClass('small-box bg-red');
+            $('#preparo').removeClass('small-box bg-yellow').addClass('small-box bg-red');
+            $('#finalizado').removeClass('small-box bg-yellow').addClass('small-box bg-red');
+            $('#pedido').removeClass('small-box bg-aqua').addClass('small-box bg-red');
+            $('#preparo').removeClass('small-box bg-aqua').addClass('small-box bg-red');
+            $('#finalizado').removeClass('small-box bg-aqua').addClass('small-box bg-red');
+        }
+
+        if ($('#status').val() == "5" || $('#status').val() == "4") {
+
+            $('#pac-input').prop('disabled', 'true');
+            $('#rua').prop('disabled', 'true');
+            $('#numero').prop('disabled', 'true');
+            $('#complemento').prop('disabled', 'true');
+            $('#cidade').prop('disabled', 'true');
+            $('#pais').prop('disabled', 'true');
+            $('#cep').prop('disabled', 'true');
+        }
+
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIoBAvqfno0lFGhuzuuwqX0KmXRdr-10o&libraries=places&callback=initSearch"
+            async defer></script>
+    <script src="~/Scripts/admin/compra.js"></script>
+}

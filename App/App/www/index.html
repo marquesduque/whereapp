@@ -1,0 +1,540 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags-->
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Security-Policy" content="
+default-src 'self' data: gap:
+    *;
+script-src 'self' 'unsafe-inline' 'unsafe-eval'
+    *;
+style-src 'self' 'unsafe-inline' 'unsafe-eval'
+    *;
+media-src 'self' 'unsafe-inline' 'unsafe-eval'
+    *;
+font-src 'self' 'unsafe-inline' 'unsafe-eval'
+    *;
+">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="creait_licenca" content="yes">
+    <link rel="apple-touch-icon" class="place_picture" href="<%= api.Models.db.place.picture %>" />
+    <link rel="apple-touch-startup-image" class="place_picture" href="<%= api.Models.db.place.picture %>" />
+    <link rel="shortcut icon" sizes="196x196" class="place_picture" href="<%= api.Models.db.place.picture %>">
+    <link rel="shortcut icon" sizes="128x128" class="place_picture" href="<%= api.Models.db.place.picture %>">
+    <meta property="og:url" class="og_url" content="http://<%= HttpContext.Current.Request.Url.DnsSafeHost%>" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" class="og_title" content="Aplicativo <%= api.Models.db.place.name %>" />
+    <meta property="og:description" class="og_description" content="<%= api.Models.db.place.about %>" />
+    <meta property="og:image" class="og_image" content="<%= api.Models.db.place.picture %>" />
+
+    <!-- Your app title -->
+    <title></title>
+    <style id="rootcss">
+    </style>
+
+    <!-- FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700' rel='stylesheet' type='text/css'>
+    <!-- Path to Framework7 Library CSS, Material Theme -->
+    <link rel="stylesheet" href="css/framework7.material.min.css">
+    <!-- Path to Framework7 color related styles, Material Theme -->
+    <link rel="stylesheet" href="css/framework7.material.colors.min.css">
+    <!-- Slick Carousel -->
+    <link rel="stylesheet" type="text/css" href="css/slick.css" />
+    <link rel="stylesheet" type="text/css" href="css/slick-theme.css" />
+    <!-- Path to your custom app styles-->
+    <link rel="stylesheet" href="fonts/food/flaticon.css">
+    <link href="fonts/f7/css/framework7-icons.css" rel="stylesheet" />
+    <link href="fonts/ecommerce/flaticon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/my-app.css">
+    <link href="fonts/icomoon/style.css" rel="stylesheet" />
+    <link href="loader/cube.css" rel="stylesheet" />
+    <link href="loader/pizza.css" rel="stylesheet" />
+    <link href="loader/coffee.css" rel="stylesheet" />
+    <link href="loader/beer.css" rel="stylesheet" />
+    <link href="loader/bol.css" rel="stylesheet" />
+    <link href="loader/connect.css" rel="stylesheet" />
+    <link href="loader/wine.css" rel="stylesheet" />
+    <link href="loader/hamburger.css" rel="stylesheet" />
+    <link href="loader/diamond.css" rel="stylesheet" />
+    <link href="loader/peixe.css" rel="stylesheet" />
+    <link href="css/effect/bonce.css" rel="stylesheet" />
+    <link href="css/tooltip.css" rel="stylesheet" />
+    <link href="css/custom.css" rel="stylesheet" />
+    <link href="" rel="stylesheet" id="tema" />
+    <link href="css/animate.css" rel="stylesheet" />
+</head>
+<body style="background-color: var(--dark-color); background-size: cover; background-repeat: no-repeat">
+    <div class="fb-root"></div>
+    <div style="display: none">
+        <div class="fb-like" data-href="https://facebook.com/<%= api.Models.db.place.place_id %>" data-layout="button" data-action="recommend" data-size="large" data-show-faces="true" data-share="true"></div>
+
+    </div>
+    <!-- Status bar overlay for fullscreen mode-->
+    <div class="statusbar-overlay"></div>
+    <!-- Panels overlay-->
+    <div class="panel-overlay"></div>
+    <!-- Left panel with reveal effect-->
+    <div class="loader_on">
+        <div class="container" style="width: 100%;">
+            <div loader="altec" style="display: none; text-align: center;">
+                <img class="animated bouncelogo" style="max-width: 200px; max-height: 200px" src="img/monitoramento/logo/azul.png" />
+                <div class="animated bouncelogo" id="loader_message" style="font-size: 20px; font-weight: bold; color: var(--light-color);">
+                    CARREGANDO
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="notificacao">
+        <div id="n-box">
+            <div id="n-titulo">
+                <img src="img/monitoramento/logo_mini.png">
+                <span>Notificação</span>
+                <a role="button" id="n-fecha">
+                    <i class="icon f7-icons">close_round_fill</i>
+                </a>
+            </div>
+            <div id="n-msg">
+                <span></span>
+            </div>
+        </div>
+    </div>
+    <div id="left-menu" class="panel panel-right panel-reveal imagem-background" style="background-color: var(--primary-color); color: var(--primary-font-color)">
+        <div id="menu_usuario" class="list-block list-menu fonte_branca" style="margin: 0px !important; display: none">
+            <div href="#" class="close-panel" onclick="creait.redirect('perfil')" style="padding: 20px; background-color: var(--secondary-color); color: var(--secondary-font-color); cursor: pointer">
+                <span style="float: left; padding: 5px 10px 0px 0px;" class="icon-pencil2"></span>
+                <div id="nomeUsuario" class="nomegarcom" style="font-size: 18px; font-weight: 700; text-transform: uppercase;">
+                    NOME
+                </div>
+                <div style="font-size: 10px" class="email_user">
+                </div>
+            </div>
+            <ul>
+                <li class="close-panel li_menu_pedido qrcode_opt" onclick="openCameraQRcode();">
+                    <span class="f7-icons">qrcode</span>
+                    LER QRCODE
+                </li>
+                <!--<li class="close-panel" id="menu_pedido" onclick="creait.redirect('responsavel_juridico')">
+                    <span class="f7-icons">person_fill</span>
+                    RESPONSAVEIS
+                </li>-->
+                <li class="close-panel" id="menu_pedido" onclick="creait.redirect('grupo')">
+                    <span class="f7-icons">color_filter</span>
+                    GRUPOS
+                </li>
+                <li class="close-panel li_menu_pedido" onclick="creait.redirect('meuItem')">
+                    <span class="f7-icons">collection</span>
+                    ITENS MONITORADOS
+                </li>
+                <li class="close-panel" id="menu_pedido" onclick="creait.redirect('notificacao')">
+                    <div id="num_notificacao">
+
+                    </div>
+                    <span class="f7-icons">email_fill</span>
+                    NOTIFICAÇÃO
+                </li>
+                <li class="close-panel" id="menu_pedido" onclick="if (controller.carrinho.get() != null) { creait.redirect('carrinho') } else { myApp.alert('O carrinho está vazio!', '') }">
+                    <!---->
+                    <span class="f7-icons">shopping_cart</span>
+                    CARRINHO
+                </li>
+                <li class="close-panel" id="menu_pedido" onclick='myApp.params.modalButtonOk = "Ativar"; myApp.params.modalButtonCancel = "Desativar"; myApp.confirm("App em segundo plano!", "", function () { cordova.plugins.backgroundMode.enable(); localStorage.setItem("segundo_plano", "0"); myApp.params.modalButtonOk = "Ok"; myApp.params.modalButtonCancel = "Cancelar"; }, function () { cordova.plugins.backgroundMode.disable(); localStorage.setItem("segundo_plano", "1"); myApp.params.modalButtonOk = "Ok"; myApp.params.modalButtonCancel = "Cancelar"; } );'>
+                    <!---->
+                    <!--<span class="f7-icons">shopping_cart</span>-->
+                    HABILITAR SEGUNDO PLANO
+                </li>
+                <li id="logout" class="close-panel no-animation fonte_branca" onclick="localStorage.clear(); creait.redirect('login');">
+                    <span class="icon-unlocked"></span>
+                    SAIR
+                </li>
+            </ul>
+        </div>
+        <div id="menu_login" class="list-block list-menu" style="display: none; margin: 0px !important;">
+            <div style="padding: 20px; margin-bottom: 10px; text-align: center; background-color: var(--secondary-color); color: var(--secondary-font-color);">
+                <img class="logo" style="max-height: 150px; margin-bottom: 10px" />
+            </div>
+            <div class="content-block">
+                <div class="item-title text-medium" style="text-align: center">
+                    <formloginmenu>
+                        <div class="list-block margin-bottom-40">
+                            <input type="hidden" name="push_id" value="" id="push_id" />
+                            <input type="hidden" name="plataforma" value="" id="plataforma" />
+                            <ul class="no-border" style="padding:0px">
+                                <li style="padding:0px">
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" id="email" type="email" name="email" placeholder="E-mail">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li style="padding:0px">
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" id="senha" type="password" name="password" class="text-thiny" placeholder="Senha">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="row btn-form-group margin-bottom-10 margin-top-40">
+                            <div class="col-100">
+                                <div id="btn_login_menu" class="buton" style="background-color:var(--secondary-color); color:var(--secondary-font-color)">Entrar</div>
+                                <div class="lembrar" onclick="myApp.closePanel(); creait.redirect('lembrar');">Esqueci minha senha</div>
+                            </div>
+                        </div>
+                    </formloginmenu>
+                </div>
+            </div>
+            <div style="clear: both"></div>
+            <div class="login_cadastro" onclick="myApp.closePanel(); creait.redirect('cadastro');" style="cursor: pointer; text-align: center">
+                Criar nova conta
+            </div>
+        </div>
+    </div>
+    <div class="popover popover_rastreador">
+        <div class="popover-angle"></div>
+        <div class="popover-inner">
+            <div class="content-block">
+                <p>About</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ac diam ac quam euismod porta vel a nunc. Quisque sodales scelerisque est, at porta justo cursus ac.</p>
+            </div>
+        </div>
+    </div>
+    <div class="popover popover_ongs">
+        <div class="popover-angle"></div>
+        <div class="popover-inner">
+            <div class="content-block">
+                <p>About</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ac diam ac quam euismod porta vel a nunc. Quisque sodales scelerisque est, at porta justo cursus ac.</p>
+            </div>
+        </div>
+    </div>
+    <div class="popover popover_padrinho">
+        <div class="popover-angle"></div>
+        <div class="popover-inner">
+            <div class="content-block">
+                <p>About</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ac diam ac quam euismod porta vel a nunc. Quisque sodales scelerisque est, at porta justo cursus ac.</p>
+            </div>
+        </div>
+    </div>
+    <div style="position: absolute; width: 100%; height: 50px; bottom: 0; display: none;" id="div_carrinho">
+        <button onclick="creait.redirect('carrinho')" id="ir_carrinho" style="border: none; color: #FFFFFF; width: 100%; height: 100%; background-color: rgb(162, 10, 10);"><span class="f7-icons">shopping_cart</span>  Ir para o carrinho</button>
+    </div>
+    <div class="popup popup_doar_ong">
+        <div class="popover-inner" style="height: 100%">
+            <div class="">
+                <div class="navbar background-creait">
+                    <div class="navbar-inner margin-bottom-20">
+                        <div class="center" id="titulo_doacao">Doação para a ONG Xxx no valor de Xxx</div>
+                    </div>
+                </div>
+                <div class="list-block" id="" style="text-align: center; margin-top: 50px;">
+                    <div id="pagar_cc" style="height: 100px; width: 33.33%; justify-content: center; align-items: center; display: flex; float: left;">
+                        <div id="pagar_cc1" style="width: 90%; border-radius: 9px; border: 1px solid #bfbdbd; background-color: #CCCCCC;"><i class="icon f7-icons">card</i><br /><span>Crédito</span></div>
+                    </div>
+                    <div id="pagar_b" style="height: 100px; width: 33.33%; justify-content: center; align-items: center; display: flex; float: left;">
+                        <div id="pagar_b1" style="width: 90%; border-radius: 9px; border: 1px solid #bfbdbd;"><i class="icon f7-icons">barcode</i><br /><span>Boleto</span></div>
+                    </div>
+                </div>
+                <div class="page-content text-center" style="margin-top: 50px; width: 100%; height: calc(100% - 150px)">
+                    <div style="width: 100%; height: auto; overflow: auto; display: block" id="pagamento_cc">
+                        <div class="list-block">
+                            <ul>
+                                <input type="hidden" id="bandeira" name="bandeira" />
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" type="text" name="nome" id="nome_cc" placeholder="Nome Impresso no Cartão" maxlength="16">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" type="tel" name="cpf" id="cpf_cc" mask="cpf" placeholder="CPF">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" type="tel" name="data_nasc_cc" id="data_nasc_cc" placeholder="Data de Nascimento" readonly onclick="seleciona_data(this.id)">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" type="tel" name="telefone_cc" id="telefone_cc" mask="cel" placeholder="Telefone">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-media"><img src="" id="img_bandeira" /></div>
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" type="tel" name="num_cartao" id="num_cartao" placeholder="Numero do Cartão" maxlength="16">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" type="tel" name="cvv" id="cvv" placeholder="CVV" maxlength="3" style="width: 20%; float: left;">
+                                                <input class="input-index" type="tel" name="exp_date" id="exp_date" mask="exp_date" placeholder="Data Validade" style="width: 78%; float: right;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="list-block" style="text-align: center;">
+                            <h4>Endereço de Cobrança</h4>
+                            <ul>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" type="tel" name="cep_cobranca" id="cep_cobranca" mask="cep" placeholder="CEP" value="{{js 'controller.login.get().cep'}}">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" id="estado_cobranca" type="text" name="estado_cobranca" readonly placeholder="Estado" onclick="seleciona_estado(this.id)" value="{{js 'controller.login.get().estado'}}">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" type="text" name="cidade_cobranca" id="cidade_cobranca" placeholder="Cidade" value="{{js 'controller.login.get().cidade'}}">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" type="text" name="bairro_cobranca" id="bairro_cobranca" placeholder="Bairro" value="{{js 'controller.login.get().bairro'}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" type="text" name="rua_cobranca" id="rua_cobranca" placeholder="Rua" value="{{js 'controller.login.get().rua'}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" type="number" name="numero_cobranca" id="numero_cobranca" placeholder="Numero" value="{{js 'controller.login.get().numero'}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" type="text" name="complemento_cobranca" id="complemento_cobranca" placeholder="Complemento" value="{{js 'controller.login.get().complemento'}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div style="width: 100%; height: 50px; background-color: darkred;">
+                            <button id="finalizar_cc" style="border: none; color: #FFFFFF; width: 100%; height: 100%; background-color: rgb(162, 10, 10);">Finalizar compra</button>
+                        </div>
+                    </div>
+
+                    <div id="pagamento_b" style="width: 100%; height: auto; overflow: auto; display: none;">
+                        <div style="height: calc(100% - 50px); width: 100%; display: flex; align-items: center; justify-content: center">
+                            <div style="height: auto; width: 70%;">
+                                <span>Um e-mail será enviado à você com o link para imprimir o boleto. <br /><b>Lembre-se ele tem validade de 3 dias.</b></span>
+                            </div>
+                        </div>
+                        <div style="width: 100%; height: 50px; background-color: darkred; position: absolute; bottom: 0;">
+                            <button id="finalizar_cc" style="border: none; color: #FFFFFF; width: 100%; height: 100%; background-color: rgb(162, 10, 10);">Finalizar compra</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Views -->
+    <div class="views" style="display: none">
+        <!-- Your main view, should have "view-main" class -->
+        <div class="view view-main">
+            <!-- Pages container, because we use fixed navbar and toolbar, it has additional appropriate classes-->
+            <div class="pages" style="">
+                <!-- Page, "data-page" contains page name -->
+                <div data-page="index" class="page navbar-fixed toolbar-fixed">
+                    <!-- Scrollable page content -->
+                    <div class="page-content" id="app-cover" style="background-size: cover">
+                        <div class="clearfix"></div>
+                        <div class="app-cover-content">
+                            <div class="loader_off">
+                                <div>
+                                    <img class="logo" src="" style="max-width: 200px; border-radius: 10px; margin-top: 50px" />
+                                </div>
+
+                                <div class="index-titulo"></div>
+                                <div style="position: relative; width: 120px; height: 50px; z-index: 99999999999999; top: 0px; margin: 0 auto">
+                                    <a target="_blank" id="index_facebook" class="link external" href="#" style="background-image: url(img/facebook.svg); height: 50px; background-size: 100% 100%; max-width: 50px; width: 100%; float: right; margin-right: 10px"></a>
+                                    <a target="_blank" id="index_whatsapp" class="link external" href="#" style="background-image: url(img/whatsapp.svg); height: 50px; background-size: 100% 100%; max-width: 50px; width: 100%; float: right; margin-right: 10px; border-radius: 100%"></a>
+                                </div>
+                                <div class="row" style="position: absolute; bottom: 0px; left: 0px; width: 100%">
+                                    <div style="width: 100%; float: left; padding: 10px 20px">
+                                        <div onclick="creait.redirect('endereco')" class="buton" style="height: 80px; line-height: 80px; padding: 0px; overflow: hidden; border-radius: 10px;">
+                                            <div class="bgroxo">
+                                                <img src="icons/delivery-man.svg" />
+                                            </div>
+                                            <div style="font-size: 16px; line-height: 30px; float: right; padding: 6px 14px;">
+                                                ENTREGAR EM<br />
+                                                <span style="font-size: 44px; font-weight: 700;">CASA</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div style="width: 100%; float: left; padding: 10px 20px 20px 20px">
+                                        <div onclick="creait.redirect('filial')" class="buton" style="height: 80px; line-height: 80px; padding: 0px; overflow: hidden; border-radius: 10px;">
+                                            <div class="bgroxo">
+                                                <img src="icons/shop.svg" />
+                                            </div>
+                                            <div style="font-size: 16px; line-height: 30px; float: right; padding: 6px 14px;">
+                                                RETIRADA NA<br />
+                                                <span style="font-size: 44px; font-weight: 700;">LOJA</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="scripts/index.js"></script>
+    <!-- Jquery-->
+    <script type="text/javascript" src="js/jquery-1.12.3.min.js"></script>
+    <!-- Slick Carousel -->
+    <script type="text/javascript" src="js/slick.min.js"></script>
+    <!-- Path to Framework7 Library JS-->
+    <script type="text/javascript" src="js/framework7.min.js"></script>
+    <script src="js/jquery.maskedinput.min.js"></script>
+    <script src="js/jquery.maskMoney.js"></script>
+    <script type="text/javascript" src="js/qrcode/src/grid.js"></script>
+    <script type="text/javascript" src="js/qrcode/src/version.js"></script>
+    <script type="text/javascript" src="js/qrcode/src/detector.js"></script>
+    <script type="text/javascript" src="js/qrcode/src/formatinf.js"></script>
+    <script type="text/javascript" src="js/qrcode/src/errorlevel.js"></script>
+    <script type="text/javascript" src="js/qrcode/src/bitmat.js"></script>
+    <script type="text/javascript" src="js/qrcode/src/datablock.js"></script>
+    <script type="text/javascript" src="js/qrcode/src/bmparser.js"></script>
+    <script type="text/javascript" src="js/qrcode/src/datamask.js"></script>
+    <script type="text/javascript" src="js/qrcode/src/rsdecoder.js"></script>
+    <script type="text/javascript" src="js/qrcode/src/gf256poly.js"></script>
+    <script type="text/javascript" src="js/qrcode/src/gf256.js"></script>
+    <script type="text/javascript" src="js/qrcode/src/decoder.js"></script>
+    <script type="text/javascript" src="js/qrcode/src/qrcode.js"></script>
+    <script type="text/javascript" src="js/qrcode/src/findpat.js"></script>
+    <script type="text/javascript" src="js/qrcode/src/alignpat.js"></script>
+    <script type="text/javascript" src="js/qrcode/src/databr.js"></script>
+    <script src="js/card.js"></script>
+    <script src="js/d3.v3.min.js"></script>
+    <script src="js/trianglify-min.js"></script>
+    <script src="biblioteca.js"></script>
+    <!-- Path to your app js-->
+    <script type="text/javascript" src="js/my-app.js"></script>
+    <!--<script type="text/javascript" src="js/creait.min.js"></script>-->
+    <script src="controllers/bundle.js"></script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIoBAvqfno0lFGhuzuuwqX0KmXRdr-10o" async defer></script>
+    <!--<script type="text/javascript" src="https://stc.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.directpayment.js"></script>-->
+    <script type="text/javascript" src="https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.directpayment.js"></script>
+
+    <script>
+        var alerta = [];
+        var notificacao = [];
+        var notificacao_atual = {};
+        var alerta_atual = {};
+
+
+        if (window.location.href.indexOf("#!") == -1 || window.location.href.split("#!")[1].length == 0) {
+
+            onloadpage(function () {
+                creait.get('tipo', null, function (data) {
+                    controller.tipo.set(data);
+                    if (controller.login.get() == null) {
+                        creait.redirect('login');
+                    }
+                    else {
+                        creait.get('pessoas?email=' + controller.login.get().email + '&password=' + controller.login.get().senha, null, function (data) {
+                            debugger;
+                            controller.login.set(data);
+                            creait.redirect('categoria');
+                        });
+
+                    }
+                });
+            });
+
+        }
+
+        function inIframe() {
+            try {
+                return window.self !== window.top;
+            } catch (e) {
+                return true;
+            }
+        }
+
+    </script>
+
+    <div id="fb-root"></div>
+</body>
+</html>

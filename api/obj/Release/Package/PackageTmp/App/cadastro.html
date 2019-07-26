@@ -1,0 +1,171 @@
+﻿<div class="pages">
+    <div data-page="register" class="page">
+        <div class="navbar background-creait">
+            <div class="navbar-inner margin-bottom-20">
+                <div class="left"><a onclick="creait.redirect('login');" class="back link"> <i class="f7-icons icone-voltar" style="margin-right: 10px;">angle-left</i></a></div>
+                <div class="center">Nova conta</div>
+            </div>
+        </div>
+        <div class="page-content text-center">
+            <div class="page-content" id="app-cover">
+                <!--<div class="margin-bottom-40" style="margin-top: 50px;"><img class="logo" src="" style="width: 240px;" /></div>-->
+                <div style="margin-top: 50px;">
+
+                    <formcadastro id="sign_up">
+                        <div class="list-block margin-bottom-40">
+                            <input type="hidden" name="push_id" id="pushC" />
+                            <input type="hidden" name="plataforma" id="platC" />
+                            <ul class="no-border" style="padding-top:20px">
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" type="text" name="nome" id="nome_input" placeholder="Nome">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </li>
+                                <li style="padding: 10px 15px;">
+                                    <div class="label-radio-content" id="genero">
+                                        <span style="float:left; padding: 10px 10px 0px 10px;font-style: italic;">
+                                            Genero
+                                        </span>
+                                        <label class="label-radio item-content" style="
+    color: var(--textbox-font-color);
+    float: left;     min-height: 41px;padding-right:15px">
+                                            <!-- Checked by default -->
+                                            <input type="radio" name="genero" value="" checked="checked">
+                                            <div class="item-media" style="min-width:0px; margin-bottom:0px">
+                                                <i class="icon icon-form-radio" style="margin-right:0px"></i>
+                                            </div>
+                                            <div class="item-title" style="margin-left:5px;margin-top: 5px;">Indiferente</div>
+                                        </label>
+                                        <label class="label-radio item-content" style="
+    color: var(--textbox-font-color);
+    float: left;    min-height: 41px;padding-right:15px">
+                                            <!-- Checked by default -->
+                                            <input type="radio" name="genero" value="true">
+                                            <div class="item-media" style="min-width:0px;margin-bottom:0px">
+                                                <i class="icon icon-form-radio" style="margin-right:0px"></i>
+                                            </div>
+                                            <div class="item-title" style="margin-left:5px;    margin-top: 5px;">Masculino</div>
+                                        </label>
+                                        <label class="label-radio item-content" style="
+    color: var(--textbox-font-color);
+    float: left;     min-height: 41px;padding-right:15px">
+                                            <!-- Checked by default -->
+                                            <input type="radio" name="genero" value="false">
+                                            <div class="item-media" style="min-width:0px; margin-bottom:0px">
+                                                <i class="icon icon-form-radio" style="margin-right:0px"></i>
+                                            </div>
+                                            <div class="item-title" style="margin-left:5px;margin-top: 5px;">Feminino</div>
+                                        </label>
+                                        <div style="clear:both"></div>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" type="email" name="email" id="email_input" placeholder="E-mail">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" type="tel" mask="tel" name="phone" id="telefone_input" placeholder="Celular">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" type="password" name="password" id="password_input" placeholder="Senha">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" type="password" name="password_confirmar" id="password_confirmar_input" placeholder="Confirmar Senha">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+
+                        <div style="padding: 0px 20px 20px 20px;
+    width: 311px;
+    margin: 0 auto;">
+                            {{#js_if "biblioteca.get('termo_uso_trabalhar') != ''"}}
+                            <div style="margin-bottom:20px;">
+                                <span style="cursor:pointer;color:var(--primary-color); margin-left:10px" class="link external" target="_blank" href="#" onclick="window.open('{{js "biblioteca.get('conduta')"}}', '_system');">
+                                    Manual de conduta
+                                </span>
+                            </div>
+                            {{/js_if}}
+
+                            {{#js_if "biblioteca.get('termo_uso_trabalhar') != ''"}}
+                            <div style="cursor:pointer;margin-bottom:20px;" onclick="window.open('{{js "biblioteca.get('politica_trabalhar')"}}', '_system');">
+                                <span style="color:var(--primary-color); margin-left:10px" class="link external" target="_blank" href="#" onclick="window.open('{{js "biblioteca.get('politica_trabalhar')"}}', '_system');">
+                                    Politica de privacidade
+                                </span>
+                            </div>
+                            {{/js_if}}
+
+                            {{#js_if "biblioteca.get('termo_uso') != ''"}}
+                            <div>
+                                <input id="aceite" type="checkbox" /><span style="cursor:pointer;color:var(--primary-color); margin-left:10px" class="link external" target="_blank" href="#" onclick="window.open('{{js "biblioteca.get('termo_uso')"}}', '_system');">Li e concordo com os termos de uso</span>
+                                <style>
+                                    input[type=checkbox] {
+                                        -ms-transform: scale(2);
+                                        -moz-transform: scale(2);
+                                        -webkit-transform: scale(2);
+                                        -o-transform: scale(2);
+                                        padding: 10px;
+                                    }
+                                </style>
+                            </div>
+                            {{/js_if}}
+                        </div>
+
+                        <div class="row btn-form-group margin-bottom-10 margin-top-10">
+                            <div class="col-100">
+                                <div id="btn_sign_up" class="buton">Salvar</div>
+                            </div>
+                            <!--<div class="col-50">
+            <div href="restaurants.html" class="buton-facebook">Facebook</div>
+        </div>-->
+                        </div>
+                    </formcadastro>
+
+                    <div class="text-center margin-bottom-15 margin-top-50">
+                        <a onclick="creait.redirect('login')" class="gray-text" style="font-size:16px;cursor:pointer;">
+                            <img src="icons/animated/{{cor_tema}}/key.svg" style="    width: 30px;
+    position: absolute;
+    margin-left: -33px;" />
+                            Já tenho um cadastro!
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

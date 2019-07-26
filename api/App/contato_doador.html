@@ -1,0 +1,31 @@
+﻿<div class="pages" redirect="categoria">
+    <div data-page="adicionar" class="page">
+        <div class="page-content no-searchbar imagem-background" style="padding-top: 0px !important">
+            <div class="list-block addblock">
+                <ul>
+                    <li class="">
+                        <div style="background-image: url(https://whereapp.creait.com.br/api/getPhoto?id={{id}}&tabela=item);" class="background_produto">
+                            <div style="float:left; width:auto; padding:10px" id="voltar_doacao" class="link closeadd"><i class="icon-circle-left" id="circulo-fechar"></i></div>
+                        </div>
+                        <div class="content_adicionar">
+                            <div class="titulo-produto" style="font-size:18px;">
+                                {{nome}}
+                            </div>
+                        </div>
+                        <div style="clear:both"></div>
+                        <div class="agrupamento" style="font-weight: 100;font-size: 12px; padding:0px 0px 0px 10px">
+                            {{descricao}}
+                        </div>
+                    </li>
+                </ul>
+
+                <div style="padding:10px">
+                    <div id="btn_adotar" class="buton" item_id="{{id}}" doador_id="{{id_doador}}">
+                        Adotar!
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div><!--  -->
+</div>

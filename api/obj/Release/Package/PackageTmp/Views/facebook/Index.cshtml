@@ -1,0 +1,94 @@
+﻿
+@model List<api.Models.place>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>whatsapp</title>
+    <script>
+        function enviar() {
+            $('#btnEnviar').hide();
+
+            var whats = $('.whatsitem');
+            var popup = window.open(whats.find('.whatsapp').attr('href'));
+
+            close();
+            function close() {
+                
+                try {
+                    if (popup.location.href.indexOf('/sucesso') != -1) {
+                        
+                        $.get('facebook?place_id=' + $(whats[0]).attr('place_id') + '&tipo=1', null, function () {
+
+                            $(whats[0]).remove();
+                            popup.close();
+                            enviar();
+
+                        });
+
+                    }
+                    if (popup.location.href.indexOf('/erro') != -1) {
+                        
+                        $.get('facebook?place_id=' + $(whats[0]).attr('place_id')+'&tipo=99', null, function () {
+
+                            $(whats[0]).remove();
+                            popup.close();
+                            enviar();
+
+                        });
+
+                    }
+                    else {
+                        setTimeout(function () {
+                            close();
+                        }, 1)
+                    }
+                }
+                catch (ex) {
+                    setTimeout(function () {
+                        close();
+                    }, 1)
+                }
+            }
+        }
+        function excluir(place_id) {
+            
+            $.get('facebook/delete?place_id=' + place_id, null, function () {
+
+                $('[place_id="' + place_id +'"]').remove();
+
+            });
+        }
+    </script>
+</head>
+<body style="font-family:Arial">
+    <div id="btnEnviar" onclick="enviar()" style="margin:20px; padding:20px;background-color:green; color:white; max-width:200px; float:right; text-align:center; cursor:pointer">INICIAR DISPARO</div>
+    @foreach (var item in Model)
+    {
+        <div class="whatsitem" place_id="@(item.id)" style="padding:10px; border-bottom:1px solid gray">
+            <img src="@item.picture" style="width:75px; height:75px; margin:0px 10px; float:left" />
+            <div><a href="http://@(item.url).creapp.com.br">http://@(item.url).creapp.com.br</a><br />@item.name<br />@item.phone</div>
+            <a class="whatsapp" target="_blank" href=https://m.facebook.com/messages/read/?fbid=@(item.id.ToString())#@(System.Web.HttpUtility.UrlEncode("Olá meu nome é Marco, minha empresa criou este incrível APLICATIVO para SUA EMPRESA! Hoje GRANDE parte do seu LUCRO vai para o ifood e PedidosJá? Com um aplicativo próprio você fideliza seus clientes e lucra muito mais. Acesse: http://"+ item.url +".creapp.com.br").Replace("+","%20")) ;>
+                Enviar
+            </a>
+            @*<a class="whatsapp" target="_blank" href=https://m.facebook.com/@(item.id.ToString())/posts?ref=@(System.Web.HttpUtility.UrlEncode("Olá, criamos este incrível APLICATIVO para SUA EMPRESA! Hoje GRANDE parte do seu LUCRO vai para o ifood e PedidosJá? Com um aplicativo próprio você fideliza seus clientes e lucra muito mais. Acesse: http://"+ item.url +".creapp.com.br").Replace("+","%20")) ;>
+                Enviar
+            </a>*@
+            
+            <a href="#" style="margin-left:20px" onclick="excluir(@item.id)">
+                Excluir
+            </a>
+
+            <div style="clear:both"></div>
+        </div>
+        <div style="clear:both"></div>
+    }
+
+</body>
+</html>

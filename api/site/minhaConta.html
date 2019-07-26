@@ -1,0 +1,250 @@
+﻿<div class="pages">
+    <div data-page="cadastro" class="page">
+        <div class="navbar background-creait">
+            <div class="navbar-inner margin-bottom-20">
+                <div class="left"><a onclick="creait.redirect('home');" class="back link"> <i class="f7-icons icone-voltar" style="margin-right: 10px;">chevron_left</i></a></div>
+                <div class="center">Nova conta</div>
+            </div>
+        </div>
+        <div class="page-content text-center">
+            <div class="page-content" id="app-cover">
+                <!--<div class="margin-bottom-40" style="margin-top: 50px;"><img class="logo" src="" style="width: 240px;" /></div>-->
+                <div style="margin-top: 50px;">
+
+                    <formcadastro id="sign_up">
+                        <li style="padding: 10px 15px;">
+                            <div class="label-radio-content" id="perfil_id">
+                                <span style="float:left; padding: 10px 10px 0px 10px;font-style: italic;">
+                                    Tipo
+                                </span>
+                                <label class="label-radio item-content" style="color: var(--textbox-font-color); float: left; min-height: 41px; padding-right:15px">
+                                    <!-- Checked by default -->
+                                    <input type="radio" name="perfil_id" value="2" >
+                                    <div class="item-media" style="min-width:0px; margin-bottom:0px">
+                                        <i class="icon icon-form-radio" style="margin-right:0px"></i>
+                                    </div>
+                                    <div class="item-title" style="margin-left:5px;margin-top: 5px;">Loja / Empresa</div>
+                                </label>
+                                <label class="label-radio item-content" style="color: var(--textbox-font-color); float: left; min-height: 41px; padding-right:15px">
+                                    <!-- Checked by default -->
+                                    <input type="radio" name="perfil_id" value="true">
+                                    <div class="item-media" style="min-width:0px;margin-bottom:0px">
+                                        <i class="icon icon-form-radio" style="margin-right:0px"></i>
+                                    </div>
+                                    <div class="item-title" style="margin-left:5px;    margin-top: 5px;">ONG / Organização Filantrópica</div>
+                                </label>
+                                <div style="clear:both"></div>
+                            </div>
+                        </li>
+                        <div class="list-block margin-bottom-40">
+                            <input type="hidden" name="id" id="id" value="{{id}}" />
+                            <input type="hidden" name="foto_str" id="foto_str" value="{{foto}}" />
+                            <input type="hidden" name="foto_itype" id="foto_itype" value="data:image/jpeg;base64" />
+                            <input type="file" style="visibility: hidden" id="pega_foto" accept="image/x-png,image/jpeg" name="pega_foto" />
+
+                            <div style="display: flex; align-items: center; justify-content: center; width: 100%; height: 150px; padding: 20px 0; ">
+                                <div id="foto_usuario" style="background-image: url(http://whereapp.creait.com.br/api/getPhoto?id={{id}}&tabela=pessoa); background-size: contain; background-repeat: no-repeat; background-position: center; width: 280px; height: 100%; border: solid #CCC" onclick="$('#pega_foto').click()">
+
+                                </div>
+                            </div>
+                            <ul class="no-border" style="padding-top:20px; display: block;" id="empresa">
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" type="text" name="nome" id="nome_inpu" placeholder="Nome Fantasia" value="{{nome}}">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" type="text" name="razao_social" id="rs_input" placeholder="Razao Social" value="{{razao_social}}">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" type="text" name="email" id="email_inpu" placeholder="Email" value="{{email}}">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </li>
+                                <!--Alteral Senha Inicio-->
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" type="password" name="password" id="password_inpu" placeholder="Senha">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" type="password" name="password_confirmar" id="password_confirmar_inpu" placeholder="Confirmar Senha">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </li>
+                                <!--Alterar Senha Fim-->
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" type="tel" mask="cnpj" name="cnpj" id="cnpj_input" placeholder="CNPJ"  value="{{cnpj}}">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" type="text" name="grupo" id="grupo_input" placeholder="Grupo" value="{{grupo}}">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" type="text" name="filial" id="filial_input" placeholder="Filial" value="{{filial}}">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" type="text" name="franqueador" id="franqueador_input" placeholder="Franqueador"  value="{{franqueador}}">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" type="text" name="franqueado" id="franqueado_input" placeholder="Franqueado" value="{{franqueado}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="list-block" style="text-align: center;">
+                            <h4>Endereço</h4>
+                            <input type="hidden" name="lat" id="latitude" />
+                            <input type="hidden" name="lng" id="longitude" />
+                            <ul>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" type="tel" name="cep" id="cep_input" mask="cep" placeholder="CEP" value="{{cep}}">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" type="text" name="pais" id="pais_input" placeholder="Pais" value="{{pais}}">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" id="picker_estados" type="text" name="estado" readonly placeholder="Estado" value="{{estado}}">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" type="text" name="cidade" id="cidade" placeholder="Cidade" value="{{cidade}}">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" type="text" name="bairro" id="bairro_input" placeholder="Bairro" value="{{bairro}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" type="text" name="rua" id="rua_input" placeholder="Rua" value="{{rua}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" type="number" name="numero" id="numero_input" placeholder="Numero" value="{{numero}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" type="text" name="complemento" id="complemento_input" placeholder="Complemento" value="{{complemento}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+
+                        <div class="row btn-form-group margin-bottom-10 margin-top-10">
+                            <div class="col-100">
+                                <div id="btn_sign_up" class="buton">Salvar</div>
+                            </div>
+                        </div>
+                    </formcadastro>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

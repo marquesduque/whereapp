@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="maillingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="email">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="nome" Type="varchar" MaxLength="8000" />
+    <Property Name="data_id" Type="bigint" />
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="place">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="8000" />
+    <Property Name="checkins" Type="int" />
+    <Property Name="phone" Type="varchar" MaxLength="8000" />
+    <Property Name="website" Type="varchar" MaxLength="8000" />
+    <Property Name="location_id" Type="bigint" />
+    <Property Name="search" Type="varchar" MaxLength="1000" />
+    <Property Name="picture" Type="varchar" MaxLength="5000" />
+    <Property Name="cover" Type="varchar" MaxLength="5000" />
+    <Property Name="rating_count" Type="int" />
+    <Property Name="about" Type="varchar" MaxLength="8000" />
+    <Property Name="hours_id" Type="int" />
+    <Property Name="user_name" Type="varchar" MaxLength="500" />
+    <Property Name="password" Type="varchar" MaxLength="50" />
+    <Property Name="logo" Type="image" />
+    <Property Name="logo_itype" Type="varchar" MaxLength="50" />
+    <Property Name="specialty" Type="varchar" MaxLength="250" />
+    <Property Name="url" Type="varchar" MaxLength="5000" Nullable="false" />
+    <Property Name="theme" Type="varchar" MaxLength="150" />
+    <Property Name="connection" Type="varchar" MaxLength="5000" />
+    <Property Name="place_id" Type="bigint" />
+    <Property Name="loader" Type="varchar" MaxLength="500" />
+    <Property Name="background_image_local" Type="varchar" MaxLength="500" />
+    <Property Name="balcao" Type="bit" />
+    <Property Name="delivery" Type="bit" />
+    <Property Name="primary_color" Type="varchar" MaxLength="50" />
+    <Property Name="primary_font_color" Type="varchar" MaxLength="50" />
+    <Property Name="secondary_color" Type="varchar" MaxLength="50" />
+    <Property Name="secondary_font_color" Type="varchar" MaxLength="50" />
+    <Property Name="textbox_color" Type="varchar" MaxLength="50" />
+    <Property Name="textbox_font_color" Type="varchar" MaxLength="50" />
+    <Property Name="border_radius_textbox" Type="varchar" MaxLength="50" />
+    <Property Name="border_radius_button" Type="varchar" MaxLength="50" />
+    <Property Name="light_color" Type="varchar" MaxLength="50" />
+    <Property Name="dark_color" Type="varchar" MaxLength="50" />
+    <Property Name="font_color" Type="varchar" MaxLength="50" />
+    <Property Name="card_number" Type="varchar" MaxLength="500" />
+    <Property Name="card_name" Type="varchar" MaxLength="500" />
+    <Property Name="card_date" Type="varchar" MaxLength="50" />
+    <Property Name="card_cvv" Type="varchar" MaxLength="50" />
+    <Property Name="card_hash" Type="varchar" MaxLength="500" />
+    <Property Name="card_document" Type="varchar" MaxLength="100" />
+    <Property Name="pagarme_id" Type="varchar" MaxLength="1000" />
+    <Property Name="card_brand" Type="varchar" MaxLength="50" />
+    <Property Name="pagarme_status" Type="varchar" MaxLength="50" />
+    <Property Name="created" Type="datetime" />
+    <Property Name="whatsapp" Type="int" />
+    <Property Name="whatsapp_message" Type="varchar" MaxLength="8000" />
+    <Property Name="address_required" Type="bit" />
+    <Property Name="frete_produto" Type="bit" />
+    <Property Name="icone" Type="image" />
+    <Property Name="icone_itype" Type="varchar" MaxLength="50" />
+    <Property Name="mesa" Type="bit" />
+    <Property Name="comanda" Type="bit" />
+    <Property Name="border_color" Type="varchar" MaxLength="50" />
+    <Property Name="background" Type="image" />
+    <Property Name="background_itype" Type="varchar" MaxLength="50" />
+    <Property Name="bg_color" Type="varchar" MaxLength="50" />
+    <Property Name="font_light_color" Type="varchar" MaxLength="50" />
+    <Property Name="token_paggi" Type="varchar" MaxLength="1000" />
+  </EntityType>
+  <Association Name="FK_email_place">
+    <End Role="place" Type="Self.place" Multiplicity="0..1" />
+    <End Role="email" Type="Self.email" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="place">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="email">
+        <PropertyRef Name="data_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="maillingModelStoreContainer">
+    <EntitySet Name="email" EntityType="Self.email" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="place" EntityType="Self.place" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_email_place" Association="Self.FK_email_place">
+      <End Role="place" EntitySet="place" />
+      <End Role="email" EntitySet="email" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

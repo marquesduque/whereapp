@@ -1,0 +1,934 @@
+﻿@model api.Models.place
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        <a href="@Url.Action("Index")" class="btn btn-warning"><i class="glyphicon glyphicon-chevron-left" style="margin-right: 10px"></i>Voltar</a>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("index")" base_library="api.Models.place.library_bc_1">Listar</a></li>
+        <li class="active" base_library="api.Models.place.library_bc_edit">Editar</li>
+    </ol>
+</section>
+
+
+
+<section class="content">
+    <div class="col-md-12">
+        <div class="alert alert-info col-md-12" role="alert">
+            <i class="glyphicon glyphicon-pencil" style="margin-right: 10px"></i><b base_library="api.Models.place.library_code">Editando Código:</b> <span class="editid">@Model.id</span>
+        </div>
+    </div>
+    <div style="clear: both"></div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken();
+        @Html.ValidationSummary(true)
+        <div class="alert alert-danger" role="alert" base_library="api.Models.place.library_error_register">
+            Registro não gravado, verificar erro criticado
+        </div>
+
+
+        <fieldset>
+
+            <div class="col-md-12 bar">
+                <label class="col-md-6" base_library="api.Models.place.library_title"><i class="glyphicon glyphicon-list-alt" style="margin-right: 10px"></i>Dados Pessoais</label>
+            </div>
+            @Html.HiddenFor(model => model.id)
+
+
+
+
+            <div class="form-group col-md-6">
+                <label class="control-label" base_library="api.Models.place.name">name</label>
+
+                <div style="clear: both"></div>
+                @Html.TextBoxFor(model => model.name, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                @Html.ValidationMessageFor(model => model.name)
+            </div>
+
+
+
+
+
+
+
+            <div class="form-group col-md-6">
+                <label class="control-label" base_library="api.Models.place.checkins">checkins</label>
+
+                <div style="clear: both"></div>
+                @Html.TextBoxFor(model => model.checkins, new { placeholder = "", @class = "form-control", maxLength = "150", type = "number", min = "1" })
+                @Html.ValidationMessageFor(model => model.checkins)
+            </div>
+
+
+
+
+
+
+
+            <div class="form-group col-md-6">
+                <label class="control-label" base_library="api.Models.place.phone">phone</label>
+
+                <div style="clear: both"></div>
+                @Html.TextBoxFor(model => model.phone, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                @Html.ValidationMessageFor(model => model.phone)
+            </div>
+
+
+
+
+
+
+
+            <div class="form-group col-md-6">
+                <label class="control-label" base_library="api.Models.place.website">website</label>
+
+                <div style="clear: both"></div>
+                @Html.TextBoxFor(model => model.website, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                @Html.ValidationMessageFor(model => model.website)
+            </div>
+
+
+
+
+
+
+
+            <div class="form-group col-md-6">
+                <label class="control-label" base_library="api.Models.place.location_id">location_id</label>
+                <select class="form-control select2" source="#location_id" data-placeholder="" style="width: 100%;">
+                    <option value="null">Selecione um item</option>
+                    @foreach (var item in new api.Models.delivery_prospectEntities().location)
+                    {
+                        <option value="@item.id">@item.street</option>
+                    }
+                </select>
+                @Html.HiddenFor(model => model.location_id)
+                @Html.ValidationMessageFor(model => model.location_id)
+            </div>
+
+
+
+
+
+
+            <div class="form-group col-md-6">
+                <label class="control-label" base_library="api.Models.place.search">search</label>
+
+                <div style="clear: both"></div>
+                @Html.TextBoxFor(model => model.search, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                @Html.ValidationMessageFor(model => model.search)
+            </div>
+
+
+
+
+
+
+
+            <div class="form-group col-md-6">
+                <label class="control-label" base_library="api.Models.place.picture">picture</label>
+
+                <div style="clear: both"></div>
+                @Html.TextBoxFor(model => model.picture, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                @Html.ValidationMessageFor(model => model.picture)
+            </div>
+
+
+
+
+
+
+
+            <div class="form-group col-md-6">
+                <label class="control-label" base_library="api.Models.place.cover">cover</label>
+
+                <div style="clear: both"></div>
+                @Html.TextBoxFor(model => model.cover, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                @Html.ValidationMessageFor(model => model.cover)
+            </div>
+
+
+
+
+
+
+
+            <div class="form-group col-md-6">
+                <label class="control-label" base_library="api.Models.place.rating_count">rating_count</label>
+
+                <div style="clear: both"></div>
+                @Html.TextBoxFor(model => model.rating_count, new { placeholder = "", @class = "form-control", maxLength = "150", type = "number", min = "1" })
+                @Html.ValidationMessageFor(model => model.rating_count)
+            </div>
+
+
+
+
+
+
+
+            <div class="form-group col-md-6">
+                <label class="control-label" base_library="api.Models.place.about">about</label>
+
+                <div style="clear: both"></div>
+                @Html.TextBoxFor(model => model.about, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                @Html.ValidationMessageFor(model => model.about)
+            </div>
+
+
+
+
+
+
+
+            <div class="form-group col-md-6">
+                <label class="control-label" base_library="api.Models.place.hours_id">hours_id</label>
+                <select class="form-control select2" source="#hours_id" data-placeholder="" style="width: 100%;">
+                    <option value="null">Selecione um item</option>
+                    @foreach (var item in new api.Models.delivery_prospectEntities().hours)
+                    {
+                        <option value="@item.id">@item.id</option>
+                    }
+                </select>
+                @Html.HiddenFor(model => model.hours_id)
+                @Html.ValidationMessageFor(model => model.hours_id)
+            </div>
+
+
+
+
+
+
+            <div class="form-group col-md-6">
+                <label class="control-label" base_library="api.Models.place.user_name">user_name</label>
+
+                <div style="clear: both"></div>
+                @Html.TextBoxFor(model => model.user_name, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                @Html.ValidationMessageFor(model => model.user_name)
+            </div>
+
+
+
+
+
+
+
+            <div class="form-group col-md-6">
+                <label class="control-label" base_library="api.Models.place.password">password</label>
+
+                <div style="clear: both"></div>
+                @Html.TextBoxFor(model => model.password, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                @Html.ValidationMessageFor(model => model.password)
+            </div>
+
+
+
+
+
+
+
+            <div class="form-group col-md-6">
+                <label class="control-label" base_library="api.Models.place.logo">logo</label>
+
+                <div style="clear: both"></div>
+                <div class="info-box bg-aqua">
+                    <span class="info-box-icon" style="background-image:@(Model.logo == null || string.IsNullOrEmpty(Model.logo_itype) ? "" : "url(" + Model.logo_itype + "," + Convert.ToBase64String(Model.logo) + ")")">
+                        @{
+                            if (Model == null || string.IsNullOrEmpty(Model.logo_itype))
+                            {
+                                <i class="fa fa-image"></i>
+                            }
+                        }
+                    </span>
+                    <div class="info-box-content">
+                        <span>
+                            <label class="control-label" base_library="api.Models.place.logo">logo</label><br />
+                            Upload de imagem <i class="fa fa-cloud-upload"></i>
+                        </span>
+                        <input type="file" source="#logo" class="upload" />
+                        <input type="hidden" id="logo" name="logo" value="@(Model.logo == null ? "" : Convert.ToBase64String(Model.logo))" class="upload" />
+                        <input type="hidden" id="logo_itype" name="logo_itype" value="@Model.logo_itype" class="upload" />
+
+                    </div><!-- /.info-box-content -->
+                </div><!-- /.info-box -->
+
+                @Html.ValidationMessageFor(model => model.logo)
+            </div>
+
+
+
+            <div class="form-group col-md-6">
+                <label class="control-label" base_library="api.Models.place.background">background</label>
+
+                <div style="clear: both"></div>
+                <div class="info-box bg-aqua">
+                    <span class="info-box-icon" style="background-image:@(Model.background == null || string.IsNullOrEmpty(Model.background_itype) ? "" : "url(" + Model.background_itype + "," + Convert.ToBase64String(Model.background) + ")")">
+                        @{
+                            if (Model == null || string.IsNullOrEmpty(Model.background_itype))
+                            {
+                                <i class="fa fa-image"></i>
+                            }
+                        }
+                    </span>
+                    <div class="info-box-content">
+                        <span>
+                            <label class="control-label" base_library="api.Models.place.background">background</label><br />
+                            Upload de imagem <i class="fa fa-cloud-upload"></i>
+                        </span>
+                        <input type="file" source="#background" class="upload" />
+                        <input type="hidden" id="background" name="background" value="@(Model.background == null ? "" : Convert.ToBase64String(Model.background))" class="upload" />
+                        <input type="hidden" id="background_itype" name="background_itype" value="@Model.background_itype" class="upload" />
+
+                    </div><!-- /.info-box-content -->
+                </div><!-- /.info-box -->
+
+                @Html.ValidationMessageFor(model => model.background)
+            </div>
+
+            <div class="form-group col-md-6">
+                <label class="control-label" base_library="api.Models.place.icone">Icone</label>
+
+                <div style="clear: both"></div>
+                <div class="info-box bg-aqua">
+                    <span class="info-box-icon" style="background-image:@(Model.icone == null || string.IsNullOrEmpty(Model.icone_itype) ? "" : "url(" + Model.icone_itype + "," + Convert.ToBase64String(Model.icone) + ")")">
+                        @{
+                            if (Model == null || string.IsNullOrEmpty(Model.icone_itype))
+                            {
+                                <i class="fa fa-image"></i>
+                            }
+                        }
+                    </span>
+                    <div class="info-box-content">
+                        <span>
+                            <label class="control-label" base_library="api.Models.place.icone">icone</label><br />
+                            Upload de imagem <i class="fa fa-cloud-upload"></i>
+                        </span>
+                        <input type="file" source="#icone" class="upload" />
+                        <input type="hidden" id="icone" name="icone" value="@(Model.icone == null ? "" : Convert.ToBase64String(Model.icone))" class="upload" />
+                        <input type="hidden" id="icone_itype" name="icone_itype" value="@Model.icone_itype" class="upload" />
+
+                    </div><!-- /.info-box-content -->
+                </div><!-- /.info-box -->
+
+                @Html.ValidationMessageFor(model => model.icone)
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+            <div class="form-group col-md-6">
+                <label class="control-label" base_library="api.Models.place.specialty">specialty</label>
+
+                <div style="clear: both"></div>
+                @Html.TextBoxFor(model => model.specialty, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                @Html.ValidationMessageFor(model => model.specialty)
+            </div>
+
+
+
+
+
+
+
+            <div class="form-group col-md-6">
+                <label class="control-label" base_library="api.Models.place.url">url</label>
+
+                <div style="clear: both"></div>
+                @Html.TextBoxFor(model => model.url, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                @Html.ValidationMessageFor(model => model.url)
+            </div>
+
+
+
+
+
+
+
+            <div class="form-group col-md-6">
+                <label class="control-label" base_library="api.Models.place.theme">theme</label>
+
+                <div style="clear: both"></div>
+                @Html.TextBoxFor(model => model.theme, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                @Html.ValidationMessageFor(model => model.theme)
+            </div>
+
+
+
+
+
+
+
+            @Html.HiddenFor(model => model.connection, new { placeholder = "", @class = "form-control", maxLength = "150" })
+
+
+
+
+
+
+
+
+            <div class="form-group col-md-6">
+                <label class="control-label" base_library="api.Models.place.place_id">place_id</label>
+
+                <div style="clear: both"></div>
+                @Html.TextBoxFor(model => model.place_id, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                @Html.ValidationMessageFor(model => model.place_id)
+            </div>
+
+
+
+
+
+
+
+            <div class="form-group col-md-6">
+                <label class="control-label" base_library="api.Models.place.loader">loader</label>
+
+                <div style="clear: both"></div>
+                @Html.TextBoxFor(model => model.loader, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                @Html.ValidationMessageFor(model => model.loader)
+            </div>
+
+
+
+
+
+
+
+            <div class="form-group col-md-6">
+                <label class="control-label" base_library="api.Models.place.background_image_local">background_image_local</label>
+
+                <div style="clear: both"></div>
+                @Html.TextBoxFor(model => model.background_image_local, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                @Html.ValidationMessageFor(model => model.background_image_local)
+            </div>
+
+
+
+
+
+
+
+            <div class="form-group col-md-6">
+                <label class="control-label" base_library="api.Models.place.balcao">balcao</label>
+
+                <div style="clear: both"></div>
+                <div class="col-md-12 row" style="line-height: 29px">
+                    <label>
+                        <input type="radio" value="true" name="item_balcao" class="minimal-green">
+                        Sim
+
+                    </label>
+                    <label>
+                        <input type="radio" value="false" name="item_balcao" class="minimal">
+                        Não
+
+                    </label>
+                </div>
+                <div style="clear: both"></div>
+                @Html.HiddenFor(model => model.balcao, new { icheck = "item_balcao" })
+                @Html.ValidationMessageFor(model => model.balcao)
+            </div>
+
+
+
+
+
+
+
+            <div class="form-group col-md-6">
+                <label class="control-label" base_library="api.Models.place.delivery">delivery</label>
+
+                <div style="clear: both"></div>
+                <div class="col-md-12 row" style="line-height: 29px">
+                    <label>
+                        <input type="radio" value="true" name="item_delivery" class="minimal-green">
+                        Sim
+
+                    </label>
+                    <label>
+                        <input type="radio" value="false" name="item_delivery" class="minimal">
+                        Não
+
+                    </label>
+                </div>
+                <div style="clear: both"></div>
+                @Html.HiddenFor(model => model.delivery, new { icheck = "item_delivery" })
+                @Html.ValidationMessageFor(model => model.delivery)
+            </div>
+
+            <div class="form-group col-md-6">
+                <label class="control-label" base_library="api.Models.place.mesa">mesa</label>
+
+                <div style="clear: both"></div>
+                <div class="col-md-12 row" style="line-height: 29px">
+                    <label>
+                        <input type="radio" value="true" name="item_mesa" class="minimal-green">
+                        Sim
+
+                    </label>
+                    <label>
+                        <input type="radio" value="false" name="item_mesa" class="minimal">
+                        Não
+
+                    </label>
+                </div>
+                <div style="clear: both"></div>
+                @Html.HiddenFor(model => model.mesa, new { icheck = "item_mesa" })
+                @Html.ValidationMessageFor(model => model.mesa)
+            </div>
+
+            <div class="form-group col-md-6">
+                <label class="control-label" base_library="api.Models.place.comanda">comanda</label>
+
+                <div style="clear: both"></div>
+                <div class="col-md-12 row" style="line-height: 29px">
+                    <label>
+                        <input type="radio" value="true" name="item_comanda" class="minimal-green">
+                        Sim
+
+                    </label>
+                    <label>
+                        <input type="radio" value="false" name="item_comanda" class="minimal">
+                        Não
+
+                    </label>
+                </div>
+                <div style="clear: both"></div>
+                @Html.HiddenFor(model => model.comanda, new { icheck = "item_comanda" })
+                @Html.ValidationMessageFor(model => model.comanda)
+            </div>
+
+
+
+            <div class="form-group col-md-6">
+                <label class="control-label" base_library="api.Models.place.primary_color">primary_color</label>
+
+                <div style="clear: both"></div>
+                @Html.TextBoxFor(model => model.primary_color, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                @Html.ValidationMessageFor(model => model.primary_color)
+            </div>
+
+
+
+
+
+
+
+            <div class="form-group col-md-6">
+                <label class="control-label" base_library="api.Models.place.primary_font_color">primary_font_color</label>
+
+                <div style="clear: both"></div>
+                @Html.TextBoxFor(model => model.primary_font_color, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                @Html.ValidationMessageFor(model => model.primary_font_color)
+            </div>
+
+
+
+
+
+
+
+            <div class="form-group col-md-6">
+                <label class="control-label" base_library="api.Models.place.secondary_color">secondary_color</label>
+
+                <div style="clear: both"></div>
+                @Html.TextBoxFor(model => model.secondary_color, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                @Html.ValidationMessageFor(model => model.secondary_color)
+            </div>
+
+
+
+
+
+
+
+            <div class="form-group col-md-6">
+                <label class="control-label" base_library="api.Models.place.secondary_font_color">secondary_font_color</label>
+
+                <div style="clear: both"></div>
+                @Html.TextBoxFor(model => model.secondary_font_color, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                @Html.ValidationMessageFor(model => model.secondary_font_color)
+            </div>
+
+
+
+
+
+
+
+            <div class="form-group col-md-6">
+                <label class="control-label" base_library="api.Models.place.textbox_color">textbox_color</label>
+
+                <div style="clear: both"></div>
+                @Html.TextBoxFor(model => model.textbox_color, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                @Html.ValidationMessageFor(model => model.textbox_color)
+            </div>
+
+
+
+
+
+
+
+            <div class="form-group col-md-6">
+                <label class="control-label" base_library="api.Models.place.textbox_font_color">textbox_font_color</label>
+
+                <div style="clear: both"></div>
+                @Html.TextBoxFor(model => model.textbox_font_color, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                @Html.ValidationMessageFor(model => model.textbox_font_color)
+            </div>
+
+
+
+
+
+
+
+            <div class="form-group col-md-6">
+                <label class="control-label" base_library="api.Models.place.border_radius_textbox">border_radius_textbox</label>
+
+                <div style="clear: both"></div>
+                @Html.TextBoxFor(model => model.border_radius_textbox, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                @Html.ValidationMessageFor(model => model.border_radius_textbox)
+            </div>
+
+
+            <div class="form-group col-md-6">
+                <label class="control-label" base_library="api.Models.place.border_color">border_color</label>
+
+                <div style="clear: both"></div>
+                @Html.TextBoxFor(model => model.border_color, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                @Html.ValidationMessageFor(model => model.border_color)
+            </div>
+
+            <div class="form-group col-md-6">
+                <label class="control-label" base_library="api.Models.place.bg_color">bg_color</label>
+
+                <div style="clear: both"></div>
+                @Html.TextBoxFor(model => model.bg_color, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                @Html.ValidationMessageFor(model => model.bg_color)
+            </div>
+
+            <div class="form-group col-md-6">
+                <label class="control-label" base_library="api.Models.place.font_light_color">font_light_color</label>
+
+                <div style="clear: both"></div>
+                @Html.TextBoxFor(model => model.font_light_color, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                @Html.ValidationMessageFor(model => model.font_light_color)
+            </div>
+
+
+
+
+
+
+            <div class="form-group col-md-6">
+                <label class="control-label" base_library="api.Models.place.border_radius_button">border_radius_button</label>
+
+                <div style="clear: both"></div>
+                @Html.TextBoxFor(model => model.border_radius_button, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                @Html.ValidationMessageFor(model => model.border_radius_button)
+            </div>
+
+
+
+
+
+
+
+            <div class="form-group col-md-6">
+                <label class="control-label" base_library="api.Models.place.light_color">light_color</label>
+
+                <div style="clear: both"></div>
+                @Html.TextBoxFor(model => model.light_color, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                @Html.ValidationMessageFor(model => model.light_color)
+            </div>
+
+
+
+
+
+
+
+            <div class="form-group col-md-6">
+                <label class="control-label" base_library="api.Models.place.dark_color">dark_color</label>
+
+                <div style="clear: both"></div>
+                @Html.TextBoxFor(model => model.dark_color, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                @Html.ValidationMessageFor(model => model.dark_color)
+            </div>
+
+
+
+
+
+
+
+            <div class="form-group col-md-6">
+                <label class="control-label" base_library="api.Models.place.font_color">font_color</label>
+
+                <div style="clear: both"></div>
+                @Html.TextBoxFor(model => model.font_color, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                @Html.ValidationMessageFor(model => model.font_color)
+            </div>
+
+
+
+
+
+
+
+            <div class="form-group col-md-6">
+                <label class="control-label" base_library="api.Models.place.card_number">card_number</label>
+
+                <div style="clear: both"></div>
+                @Html.TextBoxFor(model => model.card_number, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                @Html.ValidationMessageFor(model => model.card_number)
+            </div>
+
+
+
+
+
+
+
+            <div class="form-group col-md-6">
+                <label class="control-label" base_library="api.Models.place.card_name">card_name</label>
+
+                <div style="clear: both"></div>
+                @Html.TextBoxFor(model => model.card_name, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                @Html.ValidationMessageFor(model => model.card_name)
+            </div>
+
+
+
+
+
+
+
+            <div class="form-group col-md-6">
+                <label class="control-label" base_library="api.Models.place.card_date">card_date</label>
+
+                <div style="clear: both"></div>
+                @Html.TextBoxFor(model => model.card_date, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                @Html.ValidationMessageFor(model => model.card_date)
+            </div>
+
+
+
+
+
+
+
+            <div class="form-group col-md-6">
+                <label class="control-label" base_library="api.Models.place.card_cvv">card_cvv</label>
+
+                <div style="clear: both"></div>
+                @Html.TextBoxFor(model => model.card_cvv, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                @Html.ValidationMessageFor(model => model.card_cvv)
+            </div>
+
+
+
+
+
+
+
+            <div class="form-group col-md-6">
+                <label class="control-label" base_library="api.Models.place.card_hash">card_hash</label>
+
+                <div style="clear: both"></div>
+                @Html.TextBoxFor(model => model.card_hash, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                @Html.ValidationMessageFor(model => model.card_hash)
+            </div>
+
+
+
+
+
+
+
+            <div class="form-group col-md-6">
+                <label class="control-label" base_library="api.Models.place.card_document">card_document</label>
+
+                <div style="clear: both"></div>
+                @Html.TextBoxFor(model => model.card_document, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                @Html.ValidationMessageFor(model => model.card_document)
+            </div>
+
+
+
+
+
+
+
+            <div class="form-group col-md-6">
+                <label class="control-label" base_library="api.Models.place.pagarme_id">pagarme_id</label>
+
+                <div style="clear: both"></div>
+                @Html.TextBoxFor(model => model.pagarme_id, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                @Html.ValidationMessageFor(model => model.pagarme_id)
+            </div>
+
+
+
+
+
+
+
+            <div class="form-group col-md-6">
+                <label class="control-label" base_library="api.Models.place.card_brand">card_brand</label>
+
+                <div style="clear: both"></div>
+                @Html.TextBoxFor(model => model.card_brand, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                @Html.ValidationMessageFor(model => model.card_brand)
+            </div>
+
+
+
+
+
+
+
+            <div class="form-group col-md-6">
+                <label class="control-label" base_library="api.Models.place.pagarme_status">pagarme_status</label>
+
+                <div style="clear: both"></div>
+                @Html.TextBoxFor(model => model.pagarme_status, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                @Html.ValidationMessageFor(model => model.pagarme_status)
+            </div>
+
+            <div class="form-group col-md-6">
+                <label class="control-label" base_library="api.Models.place.pagarme_status">token_paggi</label>
+
+                <div style="clear: both"></div>
+                @Html.TextBoxFor(model => model.token_paggi, new { placeholder = "", @class = "form-control", maxLength = "1000" })
+                @Html.ValidationMessageFor(model => model.token_paggi)
+            </div>
+
+
+
+
+
+            <div class="form-group col-md-6">
+                <label class="control-label" base_library="api.Models.place.created">created</label>
+
+                <div style="clear: both"></div>
+                @Html.TextBoxFor(model => model.created, "{0:dd/MM/yyyy}", new { placeholder = "", @class = "form-control", mask = "{\"value\":\"99/99/9999\", \"placeholder\":\"dd/mm/yyyy\"}", maxLength = "10" })
+                @Html.ValidationMessageFor(model => model.created)
+            </div>
+
+
+
+
+
+
+
+            <div class="form-group col-md-6">
+                <label class="control-label" base_library="api.Models.place.whatsapp">whatsapp</label>
+
+                <div style="clear: both"></div>
+                @Html.TextBoxFor(model => model.whatsapp, new { placeholder = "", @class = "form-control", maxLength = "150", type = "number", min = "1" })
+                @Html.ValidationMessageFor(model => model.whatsapp)
+            </div>
+
+
+
+
+
+
+
+            <div class="form-group col-md-6">
+                <label class="control-label" base_library="api.Models.place.whatsapp_message">whatsapp_message</label>
+
+                <div style="clear: both"></div>
+                @Html.TextBoxFor(model => model.whatsapp_message, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                @Html.ValidationMessageFor(model => model.whatsapp_message)
+            </div>
+
+
+
+
+
+
+
+            <div class="form-group col-md-6">
+                <label class="control-label" base_library="api.Models.place.address_required">address_required</label>
+
+                <div style="clear: both"></div>
+                <div class="col-md-12 row" style="line-height: 29px">
+                    <label>
+                        <input type="radio" value="true" name="item_address_required" class="minimal-green">
+                        Sim
+
+                    </label>
+                    <label>
+                        <input type="radio" value="false" name="item_address_required" class="minimal">
+                        Não
+
+                    </label>
+                </div>
+                <div style="clear: both"></div>
+                @Html.HiddenFor(model => model.address_required, new { icheck = "item_address_required" })
+                @Html.ValidationMessageFor(model => model.address_required)
+            </div>
+
+
+
+
+
+
+
+            <div class="form-group col-md-6">
+                <label class="control-label" base_library="api.Models.place.frete_produto">frete_produto</label>
+
+                <div style="clear: both"></div>
+                <div class="col-md-12 row" style="line-height: 29px">
+                    <label>
+                        <input type="radio" value="true" name="item_frete_produto" class="minimal-green">
+                        Sim
+
+                    </label>
+                    <label>
+                        <input type="radio" value="false" name="item_frete_produto" class="minimal">
+                        Não
+
+                    </label>
+                </div>
+                <div style="clear: both"></div>
+                @Html.HiddenFor(model => model.frete_produto, new { icheck = "item_frete_produto" })
+                @Html.ValidationMessageFor(model => model.frete_produto)
+            </div>
+
+
+
+
+
+
+            <div class="form-group col-md-12 btn-gallery">
+                <a base_library="api.Models.place.library_delete" onclick="delete_item('@(Url.Action("Delete"))?id=@(Model.id)')" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i>Excluir</a>
+                <a base_library="api.Models.place.library_edit" onclick="$(this).closest('form').submit()" class="btn btn-success pull-right"><i class="glyphicon glyphicon-pencil"></i>Editar</a>
+            </div>
+
+        </fieldset>
+                            }
+</section>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

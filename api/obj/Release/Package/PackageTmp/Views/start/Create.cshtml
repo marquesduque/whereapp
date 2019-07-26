@@ -1,0 +1,167 @@
+﻿@model api.Models.billing
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+</head>
+<body>
+    <section class="content">
+    @using (Html.BeginForm()) 
+    {
+        @Html.AntiForgeryToken()
+    
+    	      @Html.ValidationSummary(true)
+            <div class="alert alert-danger" role="alert" base_library="api.Models.billing.library_error_register">
+                Registro não gravado, verificar erro criticado
+            </div>
+    
+            <fieldset>
+    
+                <div class="col-md-12 bar">
+                    <label class="col-md-6" base_library="api.Models.billing.library_title"><i class="glyphicon glyphicon-list-alt" style="margin-right: 10px"></i>Dados Pessoais</label>
+                </div>
+        
+        <div>
+    
+                
+                <div class="form-group col-md-6">
+    									<label class="control-label" base_library="api.Models.billing.charges" >charges</label>
+    				
+    				<div style="clear: both"></div>
+    									@Html.TextBoxFor(model => model.charges, new { placeholder = "", @class = "form-control", maxLength = "150" })
+    				                @Html.ValidationMessageFor(model => model.charges)
+                </div>
+       
+    
+                
+                <div class="form-group col-md-6">
+    									<label class="control-label" base_library="api.Models.billing.installments" >installments</label>
+    				
+    				<div style="clear: both"></div>
+    									@Html.TextBoxFor(model => model.installments, new { placeholder = "", @class = "form-control", maxLength = "150" })
+    				                @Html.ValidationMessageFor(model => model.installments)
+                </div>
+       
+    
+                
+                <div class="form-group col-md-6">
+    									<label class="control-label" base_library="api.Models.billing.created" >created</label>
+    				
+    				<div style="clear: both"></div>
+    									@Html.TextBoxFor(model => model.created, "{0:dd/MM/yyyya}", new { placeholder = "", @class = "form-control", mask = "{\"value\":\"99/99/9999\", \"placeholder\":\"dd/mm/yyyy\"}", maxLength = "10" })
+    				                @Html.ValidationMessageFor(model => model.created)
+                </div>
+       
+    
+                
+                <div class="form-group col-md-6">
+    									<label class="control-label" base_library="api.Models.billing.day" >day</label>
+    				
+    				<div style="clear: both"></div>
+    									@Html.TextBoxFor(model => model.day, new { placeholder = "", @class = "form-control", maxLength = "150", type="number", min="1" })
+    				                @Html.ValidationMessageFor(model => model.day)
+                </div>
+       
+    
+                
+                <div class="form-group col-md-6">
+    									<label class="control-label" base_library="api.Models.billing.amount" >amount</label>
+    				
+    				<div style="clear: both"></div>
+    									@Html.TextBoxFor(model => model.amount, new { placeholder = "", @class = "form-control", maxLength = "150", type="number", min="1" })
+    				                @Html.ValidationMessageFor(model => model.amount)
+                </div>
+       
+    
+                
+                <div class="form-group col-md-6">
+    									<label class="control-label" base_library="api.Models.billing.trial_days" >trial_days</label>
+    				
+    				<div style="clear: both"></div>
+    									@Html.TextBoxFor(model => model.trial_days, new { placeholder = "", @class = "form-control", maxLength = "150", type="number", min="1" })
+    				                @Html.ValidationMessageFor(model => model.trial_days)
+                </div>
+       
+    
+                
+                <div class="form-group col-md-6">
+    									<label class="control-label" base_library="api.Models.billing.invoice_reminder" >invoice_reminder</label>
+    				
+    				<div style="clear: both"></div>
+    									@Html.TextBoxFor(model => model.invoice_reminder, new { placeholder = "", @class = "form-control", maxLength = "150", type="number", min="1" })
+    				                @Html.ValidationMessageFor(model => model.invoice_reminder)
+                </div>
+       
+    
+                
+                <div class="form-group col-md-6">
+    									<label class="control-label" base_library="api.Models.billing.active" >active</label>
+    				
+    				<div style="clear: both"></div>
+    									<div class="col-md-12 row" style="line-height: 29px">
+    						<label>
+    							<input type="radio" value="true" name="item_active" class="minimal-green">
+    							Sim
+    
+    						</label>
+    						<label>
+    							<input type="radio" value="false" name="item_active" class="minimal">
+    							Não
+    
+    						</label>
+    					</div>
+    					<div style="clear: both"></div>
+    					@Html.HiddenFor(model => model.active, new { icheck = "item_active" })
+                                    @Html.ValidationMessageFor(model => model.active)
+                </div>
+       
+    
+                
+                <div class="form-group col-md-6">
+    									<label class="control-label" base_library="api.Models.billing.finish" >finish</label>
+    				
+    				<div style="clear: both"></div>
+    									@Html.TextBoxFor(model => model.finish, "{0:dd/MM/yyyya}", new { placeholder = "", @class = "form-control", mask = "{\"value\":\"99/99/9999\", \"placeholder\":\"dd/mm/yyyy\"}", maxLength = "10" })
+    				                @Html.ValidationMessageFor(model => model.finish)
+                </div>
+       
+    
+                
+                <div class="form-group col-md-6">
+    									<label class="control-label" base_library="api.Models.billing.plan_id" >plan_id</label>
+    				
+    				<div style="clear: both"></div>
+    									@Html.TextBoxFor(model => model.plan_id, new { placeholder = "", @class = "form-control", maxLength = "150", type="number", min="1" })
+    				                @Html.ValidationMessageFor(model => model.plan_id)
+                </div>
+       
+    
+                
+                <div class="form-group col-md-6">
+    									<label class="control-label" base_library="api.Models.billing.place_id" >place_id</label>
+    				
+    				<div style="clear: both"></div>
+    									@Html.TextBoxFor(model => model.place_id, new { placeholder = "", @class = "form-control", maxLength = "150" })
+    				                @Html.ValidationMessageFor(model => model.place_id)
+                </div>
+       
+    
+            
+                <div class="form-group col-md-12 btn-gallery">
+                    <a class="btn btn-success pull-right" onclick="$(this).closest('form').submit()" base_library="api.Models.billing.library_save"><i class="glyphicon glyphicon-ok"></i>Salvar</a>
+                </div>
+        </div>
+    	</fieldset>
+    }
+    
+    </section>
+    
+</body>
+</html>

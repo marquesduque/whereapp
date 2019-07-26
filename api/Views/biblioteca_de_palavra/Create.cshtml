@@ -1,0 +1,122 @@
+﻿@model api.Models.biblioteca_de_palavra
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<section class="content-header">
+    <h1>
+        <a href="@Url.Action("Index")" class="btn btn-info"><i class="glyphicon glyphicon-chevron-left" style="margin-right: 10px"></i>Voltar</a>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("index")" base_library="api.Models.biblioteca_de_palavra.library_bc_1">Listar</a></li>
+        <li class="active" base_library="api.Models.biblioteca_de_palavra.library_bc_create">Criar</li>
+    </ol>
+</section>
+
+
+<section class="content">
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+
+	      @Html.ValidationSummary(true)
+        <div class="alert alert-danger" role="alert" base_library="api.Models.biblioteca_de_palavra.library_error_register">
+            Registro não gravado, verificar erro criticado
+        </div>
+
+        <fieldset>
+
+            <div class="col-md-12 bar">
+                <label class="col-md-6" base_library="api.Models.biblioteca_de_palavra.library_title"><i class="glyphicon glyphicon-list-alt" style="margin-right: 10px"></i>Dados Pessoais</label>
+            </div>
+    
+    <div>
+
+            
+            <div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.biblioteca_de_palavra.url" >url</label>
+				
+				<div style="clear: both"></div>
+									@Html.TextBoxFor(model => model.url, new { placeholder = "", @class = "form-control", maxLength = "150" })
+				                @Html.ValidationMessageFor(model => model.url)
+            </div>
+   
+
+            
+            <div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.biblioteca_de_palavra.name" >name</label>
+				
+				<div style="clear: both"></div>
+									@Html.TextBoxFor(model => model.name, new { placeholder = "", @class = "form-control", maxLength = "150" })
+				                @Html.ValidationMessageFor(model => model.name)
+            </div>
+   
+
+            
+            <div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.biblioteca_de_palavra.description" >description</label>
+				
+				<div style="clear: both"></div>
+									@Html.TextBoxFor(model => model.description, new { placeholder = "", @class = "form-control", maxLength = "150" })
+				                @Html.ValidationMessageFor(model => model.description)
+            </div>
+   
+
+            
+            <div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.biblioteca_de_palavra.col" >col</label>
+				
+				<div style="clear: both"></div>
+									<div class="col-md-12 row" style="line-height: 29px">
+						<label>
+							<input type="radio" value="true" name="item_col" class="minimal-green">
+							Sim
+
+						</label>
+						<label>
+							<input type="radio" value="false" name="item_col" class="minimal">
+							Não
+
+						</label>
+					</div>
+					<div style="clear: both"></div>
+					@Html.HiddenFor(model => model.col, new { icheck = "item_col" })
+                                @Html.ValidationMessageFor(model => model.col)
+            </div>
+   
+
+            
+            <div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.biblioteca_de_palavra.col_description" >col_description</label>
+				
+				<div style="clear: both"></div>
+									@Html.TextBoxFor(model => model.col_description, new { placeholder = "", @class = "form-control", maxLength = "150" })
+				                @Html.ValidationMessageFor(model => model.col_description)
+            </div>
+   
+
+            
+            <div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.biblioteca_de_palavra.size" >size</label>
+				
+				<div style="clear: both"></div>
+									@Html.TextBoxFor(model => model.size, new { placeholder = "", @class = "form-control", maxLength = "150", type="number", min="1" })
+				                @Html.ValidationMessageFor(model => model.size)
+            </div>
+   
+
+        
+            <div class="form-group col-md-12 btn-gallery">
+                <a class="btn btn-success pull-right" onclick="$(this).closest('form').submit()" base_library="api.Models.biblioteca_de_palavra.library_save"><i class="glyphicon glyphicon-ok"></i>Salvar</a>
+            </div>
+    </div>
+	</fieldset>
+}
+
+</section>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

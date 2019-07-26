@@ -1,0 +1,116 @@
+﻿@model api.Models.estoque
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        <a href="@Url.Action("Index")" class="btn btn-info"><i class="glyphicon glyphicon-chevron-left" style="margin-right: 10px"></i>Voltar</a>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("index")" base_library="api.Models.estoque.library_bc_1">Listar</a></li>
+        <li class="active" base_library="api.Models.estoque.library_bc_create">Criar</li>
+    </ol>
+</section>
+
+
+<section class="content">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.ValidationSummary(true)
+        <div class="alert alert-danger" role="alert" base_library="api.Models.estoque.library_error_register">
+            Registro não gravado, verificar erro criticado
+        </div>
+
+        <fieldset>
+
+            <div class="col-md-12 bar">
+                <label class="col-md-6" base_library="api.Models.estoque.library_title"><i class="glyphicon glyphicon-list-alt" style="margin-right: 10px"></i>Dados Pessoais</label>
+            </div>
+
+            <div>
+
+                @Html.HiddenFor(C => C.estoque_list)
+                @Html.HiddenFor(model => model.pagamento_id_estoque, new {  Value = "1"})
+
+
+
+
+                <div class="form-group col-md-12">
+                    <label class="control-label" base_library="api.Models.estoque.pessoa_id">Vendedor</label>
+                    <select class="form-control select2" source="#pessoa_id" data-placeholder="" style="width: 100%;" id="s_vendedor">
+                        <option value="null">Selecione um item</option>
+                        @foreach (var item in new api.Models.db().pessoa.Where(c => c.perfil_id == 5 && c.place_id == api.Models.db.place.place_id))
+                        {
+                            <option value="@item.id">@(item.nome)</option>
+                        }
+                    </select>
+                    @Html.HiddenFor(model => model.pessoa_id)
+                    @Html.ValidationMessageFor(model => model.pessoa_id)
+                </div>
+
+
+                <div class="col-md-6">
+
+                    <div class="form-group col-md-6">
+                        <label class="control-label" base_library="api.Models.estoque.produto_id">Produto</label>
+                        <select class="form-control select2" source="#produto_id" data-placeholder="" style="width: 100%;" id="s_produto">
+                            <option value="null">Selecione um item</option>
+                            @foreach (var item in new api.Models.db().produto.Where(c => c.place_id == Model.place_id && c.status == true))
+                            {
+                                <option value="@item.id" quantidade="@item.estoque" preco="@item.preco" codigo="@(item.codigo == null ? item.id.ToString() : item.codigo)">@(item.codigo == null ? item.id.ToString() : item.codigo) - @item.nome Q:@item.estoque</option>
+                            }
+                        </select>
+                        @Html.HiddenFor(model => model.produto_id)
+                        @Html.ValidationMessageFor(model => model.produto_id)
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <label class="control-label" base_library="api.Models.estoque.estoque1">Quantidade</label>
+
+                        <div style="clear: both"></div>
+                        @Html.TextBoxFor(model => model.estoque1, new { placeholder = "", @class = "form-control", maxLength = "150", type = "number", min = "1", @Value = "1" })
+                        @Html.ValidationMessageFor(model => model.estoque1)
+                    </div>
+
+                    <div style="clear: both"></div>
+                    <a class="btn btn-success pull-right" onclick="InserirProduto()" base_library="api.Models.estoque.insereproduto"><i class="glyphicon glyphicon-plus"></i>Inserir</a>
+
+                </div>
+
+                <div class="col-md-6">
+                    <div id="sessao_produtos">
+
+
+                        <table id="grid" class=" table-striped table-bordered col-md-12">
+
+                            <thead>
+                            <th>Produto</th>
+                            <th>Valor Revenda</th>
+                            <th>Quantidade</th>
+                            <th>Remover</th>
+                            </thead>
+
+
+                        </table>
+                    </div>
+                </div>
+
+                <div class="form-group col-md-12 btn-gallery">
+                    <a class="btn btn-success pull-right" onclick="$(this).closest('form').submit()" base_library="api.Models.estoque.library_save"><i class="glyphicon glyphicon-ok"></i>Salvar</a>
+                </div>
+            </div>
+        </fieldset>
+    }
+
+</section>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/admin/estoque.js"></script>
+}

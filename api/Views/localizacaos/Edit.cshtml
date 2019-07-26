@@ -1,0 +1,198 @@
+﻿@model api.Models.localizacao
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        <a href="@Url.Action("Index")" class="btn btn-warning"><i class="glyphicon glyphicon-chevron-left" style="margin-right: 10px"></i>Voltar</a>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("index")" base_library="api.Models.localizacao.library_bc_1">Listar</a></li>
+        <li class="active" base_library="api.Models.localizacao.library_bc_edit">Editar</li>
+    </ol>
+</section>
+
+
+
+<section class="content">
+    <div class="col-md-12">
+        <div class="alert alert-info col-md-12" role="alert">
+            <i class="glyphicon glyphicon-pencil" style="margin-right: 10px"></i><b base_library="api.Models.localizacao.library_code">Editando Código:</b> <span class="editid">@Model.id</span>
+        </div>
+    </div>
+    <div style="clear: both"></div>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken();
+    @Html.ValidationSummary(true)
+        <div class="alert alert-danger" role="alert" base_library="api.Models.localizacao.library_error_register">
+            Registro não gravado, verificar erro criticado
+        </div>
+
+
+        <fieldset>
+		
+            <div class="col-md-12 bar">
+                <label class="col-md-6" base_library="api.Models.localizacao.library_title"><i class="glyphicon glyphicon-list-alt" style="margin-right: 10px"></i>Dados pessoais</label>
+            </div>
+        @Html.HiddenFor(model => model.id)
+
+
+            
+       
+                <div class="form-group col-md-6">
+					<label class="control-label" base_library="api.Models.localizacao.item_id" >item_id</label>
+					<select class="form-control select2" source="#item_id" data-placeholder="" style="width: 100%;">
+                        <option value="null">Selecione um item</option>
+						@foreach (var item in new api.Models.db().item.Select(c => new { id = c.id, nome = c.nome }))
+						{
+							<option value="@item.id">@item.nome</option>
+						}
+					</select>
+					@Html.HiddenFor(model => model.item_id)
+					@Html.ValidationMessageFor(model => model.item_id)
+				</div>
+         
+  
+
+
+            
+       
+<div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.localizacao.lat" >lat</label>
+				
+				<div style="clear: both"></div>
+									@Html.TextBoxFor(model => model.lat, new { placeholder = "", @class = "form-control", maxLength = "150" })
+				                @Html.ValidationMessageFor(model => model.lat)
+            </div>
+
+         
+  
+
+
+            
+       
+<div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.localizacao.lng" >lng</label>
+				
+				<div style="clear: both"></div>
+									@Html.TextBoxFor(model => model.lng, new { placeholder = "", @class = "form-control", maxLength = "150" })
+				                @Html.ValidationMessageFor(model => model.lng)
+            </div>
+
+         
+  
+
+
+            
+       
+<div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.localizacao.cadastro" >cadastro</label>
+				
+				<div style="clear: both"></div>
+									@Html.TextBoxFor(model => model.cadastro, "{0:dd/MM/yyyy}", new { placeholder = "", @class = "form-control", mask = "{\"value\":\"99/99/9999\", \"placeholder\":\"dd/mm/yyyy\"}", maxLength = "10" })
+				                @Html.ValidationMessageFor(model => model.cadastro)
+            </div>
+
+         
+  
+
+
+            
+       
+<div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.localizacao.photo" >photo</label>
+				
+				<div style="clear: both"></div>
+				                    <div class="info-box bg-aqua">
+                        <span class="info-box-icon" style="background-image:@(Model == null || string.IsNullOrEmpty(Model.photo_itype) ? "" : "url(" + Model.photo_itype + "," + Convert.ToBase64String(Model.photo) + ")")">
+                        @{
+                            if (Model == null || string.IsNullOrEmpty(Model.photo_itype))
+                            {
+                                <i class="fa fa-image"></i>
+                            }
+                        }
+                        </span>
+                        <div class="info-box-content">
+                            <span>
+                                <label class="control-label" base_library="api.Models.localizacao.photo" >photo</label><br />
+                                Upload de imagem <i class="fa fa-cloud-upload"></i>
+                            </span>
+                            <input type="file" source="#photo" class="upload" />
+                            <input type="hidden" id="photo" name="photo" value="@Convert.ToBase64String(Model.photo)" class="upload" />
+                            <input type="hidden" id="photo_itype" name="photo_itype" value="@Model.photo_itype" class="upload" />
+                            
+                        </div><!-- /.info-box-content -->
+                    </div><!-- /.info-box -->
+                
+				                @Html.ValidationMessageFor(model => model.photo)
+            </div>
+
+         
+  
+
+
+            
+       
+         
+  
+
+
+            
+       
+<div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.localizacao.descricao" >descricao</label>
+				
+				<div style="clear: both"></div>
+									@Html.TextBoxFor(model => model.descricao, new { placeholder = "", @class = "form-control", maxLength = "150" })
+				                @Html.ValidationMessageFor(model => model.descricao)
+            </div>
+
+         
+  
+
+
+            
+       
+<div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.localizacao.ativo" >ativo</label>
+				
+				<div style="clear: both"></div>
+									<div class="col-md-12 row" style="line-height: 29px">
+						<label>
+							<input type="radio" value="true" name="item_ativo" class="minimal-green">
+							Sim
+
+						</label>
+						<label>
+							<input type="radio" value="false" name="item_ativo" class="minimal">
+							Não
+
+						</label>
+					</div>
+					<div style="clear: both"></div>
+					@Html.HiddenFor(model => model.ativo, new { icheck = "item_ativo" })
+                                @Html.ValidationMessageFor(model => model.ativo)
+            </div>
+
+         
+  
+
+        
+		
+            <div class="form-group col-md-12 btn-gallery">
+                <a base_library="api.Models.localizacao.library_delete" onclick="delete_item('@(Url.Action("Delete"))?id=@(Model.id)')" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i>Excluir</a>
+                <a base_library="api.Models.localizacao.library_edit" onclick="$(this).closest('form').submit()" class="btn btn-success pull-right"><i class="glyphicon glyphicon-pencil"></i>Editar</a>
+            </div>
+
+    </fieldset>
+}
+</section>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

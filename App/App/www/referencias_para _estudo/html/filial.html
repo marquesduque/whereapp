@@ -1,0 +1,57 @@
+﻿<div class="pages">
+    <div data-page="filial" class="page toolbar-fixed">
+
+        <div class="navbar background-creait">
+            <div class="navbar-inner">
+                <div class="left">
+                    <a onclick="window.location = '/';" class="link"><i class="f7-icons icone-voltar">angle-left</i></a>
+                </div>
+                <div class="center">Nossas lojas</div>
+                <div class="right">
+                    <!-- Right link contains only icon - additional "icon-only" class-->
+                    <a href="#" class="link icon-only open-panel"> <i class="icon icon-bars"></i></a>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <div class="page-content imagem-background">
+
+
+
+            <!-- Tab 1, active by default -->
+            <div style="display: block !important;">
+                <!-- Search Bar overlay -->
+                <div class="searchbar-overlay"></div>
+                <!-- This block will be displayed if nothing found -->
+                <div class="content-block searchbar-not-found">
+                    <div class="content-block-inner">:( Categoria não encontrada</div>
+                </div>
+
+                <div class="list-block list-block-search searchbar-found media-list">
+                    <ul>
+
+                        {{#each filiais}}
+                        <li>
+
+                            <a data='{{js "JSON.stringify(this)"}}' href="#" class="item-link item-content text-white redirecionar_categoria" style="width:100%">
+                                <div class="item-inner">
+                                    <div class="item-title-row" style="height: calc(100% - 28px); position: absolute; right: 15px;">
+                                    </div>
+                                    <div class="item-title">{{nome}}</div>
+                                    <div class="item-subtitle">{{cidade}}{{endereco}}</div>
+                                </div>
+                            </a>
+
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

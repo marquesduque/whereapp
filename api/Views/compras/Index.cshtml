@@ -1,0 +1,283 @@
+﻿
+@model Site.Models.Find<api.Controllers.comprasController.find>
+
+@{
+    /**/
+
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        <a href="@Url.Action("Create")" class="btn btn-info" base_library="api.Models.compra.library_create"><i class="glyphicon glyphicon-plus" style="margin-right:10px"></i>Criar Novo</a>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#" base_library="api.Models.compra.library_bc_1"><i class="fa fa-newspaper-o"></i>Listar</a></li>
+        <li class="active"><a href="@Url.Action("index")" base_library="api.Models.compra.library_bc_list">Index</a></li>
+    </ol>
+</section>
+
+<section class="content">
+
+    <form ajax="@Url.Action("Find")" table="tbl">
+        <input type="hidden" id="Page" name="Page" value="0" />
+
+        <input type="hidden" id="vendedor_id" name="vendedor_id" value="@Utility.Session.Login.Id">
+
+        <div class="box box-default">
+            <div class="box-header with-border">
+
+                <div class="form-group col-md-2">
+                    <label class="control-label" style="width:100%" base_library="api.Models.compra.id">ID</label>
+
+                    @Html.TextBoxFor(model => model.Filter.id, new { placeholder = "", @class = "form-control", maxLength = "150", type = "number" })
+
+                </div>
+
+                @*<div class="form-group col-md-3">
+                        <label class="control-label" style="width:100%" base_library="api.Models.compra.pagamento_id">Pagamento</label>
+                        <select class="form-control select2" source="#Filter_pagamento_id" data-placeholder="" onchange="$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" style="width: 100%;">
+                            <option value="null">Todos</option>
+                            @foreach (var item in new api.Models.db().pagamento.Select(c => new { id = c.id, nome = c.nome }))
+                            {
+                                <option value="@item.id">@(item.nome)</option>
+                            }
+                        </select>
+                        @Html.HiddenFor(model => model.Filter.pagamento_id)
+                        @Html.ValidationMessageFor(model => model.Filter.pagamento_id)
+                    </div>*@
+
+                <div class="form-group col-md-3">
+                    <label class="control-label" style="width:100%" base_library="api.Models.compra.pagarme_status">Status do Pagamento</label>
+                    <select class="form-control select2" source="#Filter_pagarme_status" data-placeholder="" style="width: 100%;">
+                        <option value="null">Todos</option>
+                        <option value="0">Aguardando Pagamento</option>
+                        <option value="1">Pagamento em Análise</option>
+                        <option value="2">Pagamento Autorizado</option>
+                        <option value="3">Pagamento Negado</option>
+                    </select>
+                    @Html.HiddenFor(model => model.Filter.pagarme_status)
+                    @Html.ValidationMessageFor(model => model.Filter.pagarme_status)
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label class="control-label" style="width:100%" base_library="api.Models.compra.status_da_compra_id">Status do Pedido</label>
+                    <select class="form-control select2" source="#Filter_status_da_compra_id" data-placeholder="" style="width: 100%;">
+                        <option value="null">Todos</option>
+                        @foreach (var item in new api.Models.db().status_da_compra)
+                        {
+                            <option value="@item.id">@(item.nome)</option>
+                        }
+                    </select>
+                    @Html.HiddenFor(model => model.Filter.status_da_compra_id)
+                    @Html.ValidationMessageFor(model => model.Filter.status_da_compra_id)
+                </div>
+
+                @*<div class="form-group col-md-2">
+                        <label class="control-label" style="width:100%" base_library="api.Models.compra.de">De</label>
+
+                        @Html.TextBoxFor(model => model.Filter.pagamento, "{0:dd/MM/yyyy}", new { placeholder = "", @class = "form-control", mask = "{\"value\":\"99/99/9999\", \"placeholder\":\"dd/mm/yyyy\"}", maxLength = "10" })
+
+                    </div>
+
+                    <div class="form-group col-md-2">
+                        <label class="control-label" style="width:100%" base_library="api.Models.compra.ate">Até</label>
+
+                        @Html.TextBoxFor(model => model.Filter.pagamento, "{0:dd/MM/yyyy}", new { placeholder = "", @class = "form-control", mask = "{\"value\":\"99/99/9999\", \"placeholder\":\"dd/mm/yyyy\"}", maxLength = "10" })
+
+                    </div>*@
+
+                <div class="form-group col-md-3">
+                    <div class="form-group">
+                        <label class="control-label" style="width:100%" base_library="api.Models.compra.ate">De / Até</label>
+                        <div class="input-group fonte_montserrat">
+                            <input type="text" class="form-control pull-right" style="font-size: 15px;" id="reservation" name="data_range">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group col-md-12">
+                    <label class="control-label" style="width:100%" base_library="api.Models.compra.item_id">Item</label>
+                    <select class="form-control select2" source="#Filter_item_id" data-placeholder="" style="width: 100%;">
+                        <option value="null">Todos</option>
+                        @foreach (var item in new api.Models.db().item.Where(c => c.responsavel_id == Utility.Session.Login.Id))
+                        {
+                            <option value="@item.id">@(item.nome)</option>
+                        }
+                    </select>
+                    @Html.HiddenFor(model => model.Filter.item_id)
+                    @Html.ValidationMessageFor(model => model.Filter.item_id)
+                </div>
+
+                @*<div class="form-group col-md-6">
+                        <label class="control-label" style="width:100%" base_library="api.Models.compra.filial_id">filial_id</label>
+
+                        @Html.TextBoxFor(model => model.Filter.filial_id, new { placeholder = "", @class = "form-control", maxLength = "150", type = "number", min = "1", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                    </div>*@
+
+                @*<div class="form-group col-md-6">
+                        <label class="control-label" style="width:100%" base_library="api.Models.compra.ativo">ativo</label>
+
+                        <div style="height: 34px; line-height: 30px;">
+                            <label style="min-width: 45px;">
+                                <input type="checkbox" value="true" name="item_ativo" class="minimal-green">
+                                Sim
+
+                            </label>
+                            <label style="min-width: 45px;">
+                                <input type="checkbox" value="false" name="item_ativo" class="minimal">
+                                Não
+
+                            </label>
+                            @Html.HiddenFor(model => model.Filter.ativo, new { icheck = "item_ativo" })
+                        </div>
+
+                    </div>*@
+
+                @*<div class="box-tools pull-right">
+                        <button class="btn btn-box-tool" data-widget="collapse">Pesquisa Avançada<i style="margin-left: 10px" class="fa fa-plus-square fa-minus"></i></button>
+                    </div>*@
+            </div>
+            <div class="box-body" style="display:none">
+            </div>
+            <div class="form-group" style="border-top: 1px solid #f4f4f4; padding: 10px">
+                <button href="#" class="btn btn-warning pull-right" type="button" name="btnProcurar" onclick="$('.tblrow').remove(); $('#Page').val('0'); $('[ajax]').submit();"><i class="glyphicon glyphicon-search" style="margin-right: 10px"></i>Procurar</button>
+                <div style="clear: both"></div>
+            </div>
+        </div>
+        <div class="table-default scroll">
+            <div class="filter-table" base_library="api.Models.compra.library_filter"><i class="glyphicon glyphicon-filter"></i>filtros</div>
+
+            <div class="filter-table" base_library="api.Models.sample.library_report" onclick="fnExcelReport()" style="margin-left:83px; width:110px">
+                <i class="fa fa-file-excel-o"></i>Relatório
+            </div>
+            <table id="tbl">
+                <tr>
+                    <td base_library="api.Models.compra.id">
+                        ID
+                    </td>
+                    <td base_library="api.Models.compra.compradorid">
+                        Comprador
+                    </td>
+                    @*<td base_library="api.Models.compra.pagamento_id">
+                            Pagamento
+                        </td>*@
+                    @*<td base_library="api.Models.compra.recebido">
+                            Recebido
+                        </td>
+                        <td base_library="api.Models.compra.preparo">
+                            Andamento
+                        </td>
+                        <td base_library="api.Models.compra.finalizado">
+                            Finalizado
+                        </td>
+                        <td base_library="api.Models.compra.entregue">
+                            Entregue
+                        </td>*@
+                    @*<td base_library="api.Models.compra.cancelamento">
+                            Cancelado
+                        </td>*@
+                    <td base_library="api.Models.compra.status_da_compra_id">
+                        Status Pagamento
+                    </td>
+                    <td base_library="api.Models.compra.status_da_compra_id">
+                        Status Pedido
+                    </td>
+                    <td base_library="api.Models.compra.total">
+                        Valor
+                    </td>
+                    <td base_library="api.Models.compra.recebido">
+                        Data
+                    </td>
+                    @*<td base_library="api.Models.compra.frete">
+                            Frete
+                        </td>
+                        <td base_library="api.Models.compra.desconto">
+                            Desconto
+                        </td>*@
+                </tr>
+            </table>
+        </div>
+    </form>
+</section>
+
+<script template="tbl" type="text/template" redirect="@Url.Action("edit")">
+
+    <tr class="tblrow" pk="id">
+        <td column="id"></td>
+        <td column="comprador_id"></td>
+        @*<td column="pagamento_id"></td>*@
+        @*<td column="recebido"></td>
+            <td column="preparo"></td>
+            <td column="finalizado"></td>
+            <td column="entregue"></td>*@
+        @*<td column="cancelamento"></td>*@
+        <td column="pagarme_status"></td>
+        <td column="status_da_compra_id"></td>
+        <td column="total"></td>
+        <td column="recebido"></td>
+        @*<td column="frete"></td>
+            <td column="desconto"></td>*@
+    </tr>
+</script>
+
+@section Scripts {
+    <script>
+        setInterval(function () {
+            if ($('.table-default tbody tr').length > 6) {
+                $('.table-default.scroll').height(window.innerHeight - 190);
+            }
+        }, 100);
+    </script>
+
+    <!-- date-range-picker -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
+    <script src="~/Content/themes/LTE/plugins/daterangepicker/daterangepicker.js"></script>
+
+    <script>
+        $(function () {
+            //Date range picker
+            //$('#reservation').daterangepicker();
+
+            $('#reservation').daterangepicker({
+
+                format: 'DD/MM/YYYY',
+
+                "locale": {
+                    "separator": " - ",
+                    "applyLabel": "Aplicar",
+                    "cancelLabel": "Cancelar",
+                    "fromLabel": "De",
+                    "toLabel": "Até",
+                    "customRangeLabel": "Custom",
+                    "daysOfWeek": [
+                        "Dom",
+                        "Seg",
+                        "Ter",
+                        "Qua",
+                        "Qui",
+                        "Sex",
+                        "Sáb"
+                    ],
+                    "monthNames": [
+                        "Janeiro",
+                        "Fevereiro",
+                        "Março",
+                        "Abril",
+                        "Maio",
+                        "Junho",
+                        "Julho",
+                        "Agosto",
+                        "Setembro",
+                        "Outubro",
+                        "Novembro",
+                        "Dezembro"
+                    ],
+                    "firstDay": 0
+                }
+            });
+        });
+    </script>
+}

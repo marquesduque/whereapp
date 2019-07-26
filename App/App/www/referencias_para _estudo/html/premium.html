@@ -1,0 +1,554 @@
+﻿<div class="pages">
+    <div data-page="premium" class="page">
+        <div class="navbar background-creait">
+            <div class="navbar-inner" style="text-align: center;
+    display: block;
+    line-height: 48px;
+    font-size: 20px;
+    font-weight: 700;">
+   
+                    Ativar APP {{js "controller.layout.get().nome"}}
+           
+            </div>
+        </div>
+        <div class="page-content text-center" style="margin-top:51px;
+    height: calc(100% - 53px);">
+            <div id="app-cover">
+                <!--<div class="margin-bottom-40" style="margin-top: 50px;"><img class="logo" src="" style="width: 240px;" /></div>-->
+                <div style="margin: 0 auto;">
+
+                    <div class="premium">
+
+                  
+                        <div style="font-size:25px; color:var(--primary-color); padding:20px">
+             
+                            <div style="width: 370px;
+    margin: 0 auto;
+    height: 160px;">
+                                <img src="{{js "controller.layout.get().logo"}}" style=" float:left;   width: 150px;
+    border: 1px solid rgba(0, 0, 0, 0.08);" />
+                                <div style="    max-width: 300px;
+    margin: 0 auto;
+    width: 204px;
+    float: left;
+    margin-left: 10px;">
+                                    <img src="../CriarAplicativo/img/app-store.svg" />
+                                    <img src="../CriarAplicativo/img/google-play.svg" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pricing" style=" color: var(--secondary-color);">
+           
+                                Assine 12 meses de APP por apenas R$99 por mês.
+                    
+                        </div>
+
+                    </div>
+                    <div style="max-width:400px; margin:0 auto;    max-width: 550px;">
+                        <formcartao id="cartao">
+
+                            <input name="plan_id" value="1" type="hidden" />
+                            <div class="list-block">
+                                <ul>
+                                    <li>
+
+                                        <h4 style="font-size: 40px;    letter-spacing: 4px;
+    color: var(--primary-color);
+    font-weight: 900; margin-top:-12px">
+                                            <div id="valor_cartao"></div>
+                                        </h4>
+                                    </li>
+               
+
+                                    <li>
+                                        <input class="input-index" type="text" name="nome" value="{{cartao.nome}}" id="nome_input" style="text-transform:uppercase" placeholder="Nome impresso no cartão">
+                                    </li>
+
+                                    <li>
+                                        <input type="hidden" name="bandeira" value="{{cartao.bandeira}}" />
+                                        <input class="input-index" type="tel" inputmode="numeric" pattern="[0-9]*" name="numero" value="{{cartao.numero}}" id="cardnumber_input" placeholder="Numero do cartão">
+
+                                        <img style="position: relative;
+    z-index: 1;
+    height: 20px;
+    float: right;
+    margin-top: -30px;
+    margin-right: 10px;" src="icons/bandeiras/{{cartao.bandeira}}.svg" id="brand" onerror="$(this).hide()" />
+
+                                    </li>
+                                    <li>
+                                        <div style="float:left; width:calc(50% - 5px); padding-right:5px">
+                                            <input class="input-index" type="tel" inputmode="numeric" pattern="[0-9]*" name="expiracao" value="{{cartao.expiracao}}" id="expiracao_input" placeholder="Validade">
+                                        </div>
+                                        <div style="float:left; width:calc(50% - 5px); padding-left:5px">
+                                            <input class="input-index" type="number" inputmode="numeric" pattern="[0-9]*" name="cvv" value="{{cartao.cvv}}" id="cvv" placeholder="CVV">
+                                        </div>
+                                        <div style="clear:both"></div>
+                                    </li>
+
+                                    <li>
+                                        <input onKeyPress="if (this.value.length == 14 || event.keyCode < 48 || event.keyCode > 57) { return false; } debugger;" type="number" inputmode="numeric" pattern="[0-9]*" class="input-index" name="documento" value="{{cartao.documento}}" id="documento_input" placeholder="CPF ou CNPJ">
+                                    </li>
+
+                                </ul>
+                            </div>
+                            <div style="padding:30px">
+                                <input type="checkbox" /><a onclick="$('#termodeuso').show();" style="color:var(--primary-color); margin-left:10px" href="#">Li e concordo com os termos de uso</a>
+                                <div id="termodeuso" style="display:none;position:absolute; z-index:999; width:calc(100% - 40px); padding:20px; overflow:auto; top:0px; left:0px; background-color:white; color:dimgray">
+                                    TERMOS DE USO<br /><br />Estes Termos e Condições de Uso (os "Termos de Uso") se aplicam ao Aplicativo CREAPP
+                                    representado por Fernando Marques Duque-ME, CNPJ 26.741.635/0001-33 situada na Rua
+                                    Emilio Mallet, 317 sala 213 , São Paulo – SP com o website www.creapp.com.br e a todos os
+                                    sites associados vinculados a www.creapp.com.br pela Creapp, suas subsidiárias e afiliadas,
+                                    incluindo os aplicativos e sites CREAPP em todo o mundo (coletivamente, o "Site"). O Site é
+                                    propriedade da Creapp("Creapp") e seus licenciadores. Ao usar o aplicativo, você concorda
+                                    com esses termos de uso; SE NÃO ACONTECER, NÃO USE O APLICATIVO . Ao usar ou acessar o
+                                    Creapp, você concorda com esta Declaração, conforme atualizado de tempos em tempos de
+                                    acordo com a Seção 14 abaixo. Além disso, você encontrará recursos no final deste documento
+                                    que o ajudam a entender como o Creapp funciona. 1. Este Aplicativo Web Creapp reserva-se o
+                                    direito, a seu exclusivo critério, de alterar, modificar, adicionar ou remover partes desses
+                                    Termos de Uso, a qualquer momento. É sua responsabilidade verificar esses Termos de Uso
+                                    periodicamente para mudanças. O seu uso contínuo do Site ou Aplicativo após a publicação de
+                                    alterações significará que você aceita e concorda com as mudanças. Enquanto você cumprir
+                                    estes Termos de Uso, o Creapp lhe concede privilégios pessoais, não exclusivos, intransferíveis
+                                    e limitados para entrar e usar o Aplicativo.
+                                    Este Termo permite aos usuários possuidores de CONTA na plataforma (CREAPP) criarem
+                                    aplicativos para celulares e tablets (APLICATIVOS WEB) das plataformas Android, iOS, HTML5
+                                    para o uso de outros Usuários (USUÁRIOS FINAIS)através de seus SERVIÇOS de acordo com o
+                                    plano contratado.
+                                    Aplicativo Web: Todo o sistema que é acessado através de um browser (navegador)
+                                    Aplicativo: Sistema disponibilizado em lojas Google Play e Apple Store
+                                    Por este TERMO DE USO, o usuário fica ciente e concorda que ao utilizar a plataforma
+                                    da Creapp para construir, desenvolver e publicar seu APP, em qualquer plataforma de celular
+                                    ou qualquer loja de aplicativos, automaticamente aderirá e concordará em se submeter
+                                    integralmente às condições do presente TERMO DE USO e qualquer de suas alterações
+                                    futuras.
+                                    A CREAPP se reserva no direito de atualizar e modificar os TERMOS DE USO periodicamente,
+                                    sem notificar a sua base da CREAPP. Quaisquer novos recursos que aumentem ou aprimorem
+                                    os SERVIÇOS atuais, incluindo a liberação de novas ferramentas e funcionalidades, estarão
+                                    sujeitos aos TERMOS DE USO. O uso continuado do SERVIÇO após qualquer alteração
+                                    constituirá anuências às referidas mudanças. O CREAPP poderá rever a versão mais recente
+                                    dos TERMOS DE USO a qualquer momento através desta página, acessível através do
+                                    seguinte link.
+                                    O CREAPP declara que está consciente de que a violação de qualquer das disposições
+                                    estipuladas neste instrumento poderá resultar no cancelamento de sua CONTA (“CONTA”)
+                                    sem qualquer notificação, de modo que o CREAPP ficará impossibilitado de criar Aplicativos
+                                    Web, bem como poderá resultar na exclusão do Aplicativos Web da CREAPP e das lojas onde
+                                    o Aplicativos Web poderá ter sido disponibilizado (Apple App Store e Google Play),
+                                    conjuntamente com todo seu conteúdo e sua base de dados.
+                                    Nossas Responsabilidades
+                                    Quando permitido por lei, a Creapp e seus fornecedores ou distribuidores não se
+                                    responsabilizarão por perda de lucros, perda de faturamento (receita), perda de dados e
+                                    informações, perdas financeiras ou por danos indiretos, especiais, consequenciais, exemplares
+                                    ou punitivos.
+                                    Na medida permitida pela legislação, a responsabilidade total da Creapp e de seus
+                                    fornecedores e distribuidores, para qualquer reclamação sob estes termos, incluindo
+                                    quaisquer garantias implícitas, limita-se ao valor que você pagou à Creapp para usar
+                                    os SERVIÇOS. Fica a nosso critério se forneceremos os SERVIÇOS a você novamente.
+                                    Em todos os casos, a CREAPP e seus fornecedores e distribuidores não serão responsáveis por
+                                    qualquer perda ou dano que não seja razoavelmente previsível.
+                                    Conteúdo
+                                    Conteúdo inclui texto, programas, scripts, gráficos, fotos, sons, imagens, músicas, vídeos,
+                                    combinações audiovisuais, animações, recursos interativos e outros materiais que
+                                    o(s) CREAPP(s) e o(s) Anunciante(s), têm acesso ou submetem a um Aplicativos Web.
+                                    O CREAPP é o proprietário do conteúdo que publica nos APLICATIVOS WEB construídos
+                                    na CRIADOR DE APLICATIVOS WEB CREAPP. O CREAPP declara ter conhecimento de que a
+                                    responsabilidade pelo conteúdo inserido nos APLICATIVOS WEB é exclusiva do CREAPP que a
+                                    publicar, entende e concorda que a CRIADOR DE APLICATIVOS WEB CREAPP não pode ser
+                                    responsável pelo conteúdo postado ou compartilhado no SERVIÇO.
+                                    A CRIADOR DE APLICATIVOS WEB CREAPP proíbe a utilização ou transmissão de conteúdos
+                                    impróprios nos APLICATIVOS WEB criados na CRIADOR DE APLICATIVOS WEB CREAPP,
+                                    conforme listado abaixo, mas não se limitando a:
+                                    1. Vírus ou outros códigos maliciosos como worms, spywares ou códigos destrutivos
+                                    2. Publicações que visam intimidar, assediar ou praticar bullying contra qualquer usuário.
+                                    3. Discurso de ódio, seja ameaçador; incite violência; ou contenha violência gráfica ou
+                                    desnecessária. Discursos de ódio ou qualquer
+                                    4. Conteúdos e discursos discriminatórios que infrinjam o Artigo 5º, inciso XLI, da
+                                    Constituição Federal.
+                                    O CREAPP concorda ainda em usar o SERVIÇO por sua própria conta e risco. A CRIADOR DE
+                                    APLICATIVOS WEB CREAPP não será responsável por quaisquer danos diretos, indiretos,
+                                    incidentais, especiais, consequenciais ou exemplares, incluindo, mas não limitado, a danos por
+                                    perda de lucros, boa vontade, uso, dados ou outras perdas intangíveis, em decorrência da
+                                    utilização imprópria de tais conteúdos.
+                                    Todos as infrações relativas a direitos de propriedade intelectual dos conteúdos publicados e
+                                    compartilhados nos APLICATIVOS WEBsão de exclusiva responsabilidade do CREAPP que o
+                                    publicar, não podendo a CRIADOR DE APLICATIVOS WEB CREAPP em hipótese alguma ser
+                                    responsabilizada pelo uso indevido de tais conteúdos, reservando-se no direito de, caso ter
+                                    conhecimento de sua ilegalidade ou uso indevido, cancelar a CONTA do CREAPP e excluir
+                                    seusAPLICATIVOS WEB, sem qualquer notificação.
+                                    Caso o CREAPP ou o USUÁRIO FINAL encontre conteúdos ou materiais que considere ofensivo
+                                    ou que viole direitos de terceiros em APLICATIVOS WEB, este deverá utilizar o link “Denunciar
+                                    este App” que se encontra abaixo da pré-visualização do mesmo e a CRIADOR DE
+                                    APLICATIVOS WEB CREAPP se compromete a investigar referida denúncia. A CRIADOR DE
+                                    APLICATIVOS WEB CREAPPainda está autorizada a retirar o APP, bem como cancelar
+                                    a CONTA do CREAPP em detrimento de exigências emanados do poder judiciário.
+                                    Caso a CRIADOR DE APLICATIVOS WEB CREAPP venha a ser acionada ou condenada
+                                    judicialmente, por violações cometidas pelo CREAPP, em violação a estes TERMOS DE USO,
+                                    o CREAPPdeclara e concorda que deverá ressarcir a CRIADOR DE APLICATIVOS WEB
+                                    CREAPP dos valores despendidos, corrigidos monetariamente, bem como das perdas e danos.
+                                    O CREAPP concorda em ceder os direitos de uso de imagem dos seus APLICATIVOS WEB, para
+                                    o uso pela CRIADOR DE APLICATIVOS WEB CREAPP, em mídia espontânea, sem prazo
+                                    determinado, de forma gratuita, sem que este possua o direito a qualquer tipo de
+                                    remuneração em decorrência deste uso.
+                                    Anúncios e Anunciantes
+                                    O CREAPP concorda e está ciente que a CRIADOR DE APLICATIVOS WEB CREAPP poderá
+                                    inserir nos APLICATIVOS WEB, mídia e publicidade de terceiros, a seu critério e oportunidade,
+                                    sem qualquer necessidade de notificação ou aviso.
+                                    A CRIADOR DE APLICATIVOS WEB CREAPP pode divulgar anúncios/ofertas advindos de
+                                    diversos anunciantes. A CRIADOR DE APLICATIVOS WEB CREAPP não atua como prestador de
+                                    serviços de consultoria ou ainda intermediário ou participante em nenhum negócio jurídico
+                                    entre o CREAPP, USUÁRIOS FINAIS e os anunciantes, salvo anúncios da própria CRIADOR DE
+                                    APLICATIVOS WEB CREAPP.
+                                    Termos de CONTA
+                                    O CREAPP declara e tem conhecimento que para a utilização do SERVIÇO, deverá cumprir o
+                                    disposto abaixo:
+                                    1. O CREAPP deve ser humano. CONTAS registradas por “robôs” ou qualquer outro
+                                    método automatizado não serão permitidas.
+                                    2. O CREAPP deve fornecer seu nome inteiro, um e-mail válido e quaisquer outras
+                                    informações necessárias para completar o processo de cadastro para criação da CONTA, sendo
+                                    responsável pela veracidade das informações prestadas.
+                                    3. O CREAPP é responsável por manter a segurança da sua CONTA e senha. A CRIADOR
+                                    DE APLICATIVOS WEB CREAPP não pode e não será responsável por qualquer perda ou dano
+                                    de sua falha em cumprir com esta obrigação de segurança.
+                                    4. O CREAPP é responsável por todo e qualquer conteúdo publicado (texto, dados,
+                                    gráficos, imagens, fotos, vídeos, etc.) e por todas as atividades que ocorrem na
+                                    sua CONTA (mesmo quando o conteúdo é publicado por outras pessoas que tenham acesso à
+                                    sua CONTA).
+                                    5. O CREAPP não pode utilizar o SERVIÇO para fins ilegais ou não autorizados.
+                                    O CREAPP não deve, no uso do SERVIÇO, violar as leis em sua jurisdição e na jurisdição
+                                    da CRIADOR DE APLICATIVOS WEB CREAPP(incluindo, mas não se limitando a leis de direitos
+                                    autorais, de propriedade industrial e/ou intelectual).
+                                    6. O CREAPP deve deter todos os direitos autorais e de propriedade dos conteúdos por
+                                    ele publicados e compartilhados, ou possuir autorização dos detentores de tais conteúdos para
+                                    sua utilização em compartilhamento.
+                                    Estes termos não conferem ao CREAPP e USUÁRIOS FINAIS o direito de usar quaisquer marcas
+                                    ou logotipos utilizados na CRIADOR DE APLICATIVOS WEB CREAPP, sendo que a infração estará
+                                    sujeita à ações perante os órgãos responsáveis.
+                                    Termos de Pagamento e Restituição
+                                    Um meio de pagamento válido é necessário para ingressar nos PLANOS NÃO GRATUÍTOS,
+                                    como cobrança em redes de terceiros (cartão de crédito, pagamento em conta, boleto
+                                    bancário etc.)
+                                    O SERVIÇO dos PLANOS NÃO GRATUÍTOS é cobrado do CREAPP antecipadamente, no período
+                                    escolhido, e não é reembolsável após 7 (sete) dias à partir do fato gerador, ou seja, do
+                                    pagamento, conforme o Artigo 49 do Código de Defesa do Consumidor – Lei 8078 de 1990:
+                                    Art. 49. O consumidor pode desistir do contrato, no prazo de 7 dias a contar de sua assinatura
+                                    ou do ato de recebimento do produto ou serviço, sempre que a contratação de fornecimento
+                                    de produtos e serviços ocorrer fora do estabelecimento comercial, especialmente por telefone
+                                    ou a domicílio.
+                                    Parágrafo único. Se o consumidor exercitar o direito de arrependimento previsto neste artigo,
+                                    os valores eventualmente pagos, a qualquer título, durante o prazo de reflexão, serão
+                                    devolvidos, de imediato, monetariamente atualizados.
+                                    As renovações, com exceção das assinaturas feitas por boletos, ocorrem de maneira
+                                    automática, não sendo necessária uma permissão prévia doCREAPP.
+                                    Não haverá reembolso ou créditos por utilização dos PLANOS NÃO GRATUITOS em parte do
+                                    mês, restituições ou pró-rata por mudança de plano , ou reembolsos por mês não utilizado
+                                    com uma CONTA aberta. A fim de tratar a todos igualmente, não serão feitas exceções. O
+                                    estorno ou a devolução será feita se o CREAPP fizer o pedido de maneira ativa, ou seja, o
+                                    cancelamento de qualquer serviço prestado não implica na devolução do montante parcial ou
+                                    total.
+                                    Todos valores cobrados nos PLANOS NÃO GRATUITOS incluem impostos, taxas, ou obrigações
+                                    impostas por autoridades fiscais e o CreCreappá responsável pelo pagamento de todos esses
+                                    impostos, taxas ou encargos.
+                                    Cancelamento e Término
+                                    O CREAPP é o único responsável por cancelar adequadamente a sua CONTA, ressalvando-se o
+                                    direito da CRIADOR DE APLICATIVOS WEB CREAPP de cancelar a CONTA doCREAPP conforme
+                                    estabelecido neste instrumento. Para realizar o cancelamento, o CREAPP deverá realizar a
+                                    autenticação no portal do SERVIÇO, acessar o menu “Minha Conta” e clicar no link “cancelar
+                                    conta” na parte inferior direita desta tela. Cancelamentos por telefone ou enviados para
+                                    qualquer endereço eletrônico não serão considerados válidos.
+                                    Todo o conteúdo da CONTA será excluído do SERVIÇO devido ao cancelamento. Estas
+                                    informações não podem ser recuperadas uma vez que sua CONTAseja cancelada.
+                                    Caso o cancelamento da CONTA seja solicitado antes do fim do período já pago de um PLANO
+                                    NÃO GRATUITO, o cancelamento e a consequente exclusão dos dados da CONTA será
+                                    executado ao final do período já pago do PLANO NÃO GRATUITO e não haverá nova cobrança.
+                                    A CRIADOR DE APLICATIVOS WEB CREAPP, a seu exclusivo critério, tem o direito de suspender
+                                    ou encerrar a CONTA do CREAPP e recusar toda e qualquer utilização, por qualquer pessoa,
+                                    presente ou futura do SERVIÇO, por qualquer motivo, a qualquer momento. Tal encerramento
+                                    do SERVIÇO resultará na desativação ou exclusão da CONTAdo CREAPP ou do acesso à
+                                    sua CONTA, e à perda e renúncia de todo o conteúdo em sua CONTA.
+                                    Modificações aos Serviços e Preços
+                                    A CRIADOR DE APLICATIVOS WEB CREAPP se reserva o direito de, a qualquer momento e de
+                                    tempos em tempos, modificar ou descontinuar, temporariamente ou permanentemente,
+                                    o SERVIÇO ou parte dele, com ou sem aviso prévio.
+                                    Os preços de todos os SERVIÇOS, incluindo, mas não limitados, aos valores dos planos mensais
+                                    de assinatura dos PLANOS NÃO GRATUITOS, estão sujeitos a alteração sem prévio aviso
+                                    pela CRIADOR DE APLICATIVOS WEB CREAPP.
+                                    CREAPP que assinam PLANOS NÃO GRATUITOS terão os valores de suas assinaturas mantidos
+                                    nos valores atuais até a renovação do PLANO NÃO GRATUITO. No momento da renovação do
+                                    PLANO NÃO GRATUITO o CREAPP terá sua assinatura dos PLANOS NÃO GRATUITOSrenovada
+                                    com os novos valores praticados e dispostos na página de planos ( https://creapp.com.br/).
+                                    A CRIADOR DE APLICATIVOS WEB CREAPP não deverá ser responsabilizada perante
+                                    ao CREAPP ou qualquer terceiro por qualquer modificação, alteração de preço, suspensão ou
+                                    descontinuação do SERVIÇO.
+                                    Esporadicamente, a CRIADOR DE APLICATIVOS WEB CREAPP pode emitir uma atualização que
+                                    pode adicionar, modificar e/ou remover funcionalidades da CRIADOR DE APLICATIVOS WEB
+                                    CREAPP, do APP ou do SERVIÇO. Essas atualizações poderão ser inseridas automaticamente
+                                    sem nenhum aviso. No entanto, a CRIADOR DE APLICATIVOS WEB CREAPP fará o possível para
+                                    notificar o CREAPP antecipadamente de uma próxima atualização, incluindo detalhes sobre o
+                                    que esta inclui.
+                                    Como usar os serviços da CRIADOR DE APLICATIVOS WEB CREAPP
+                                    Primeiro, é necessário que o CREAPP siga as políticas disponibilizadas a você
+                                    nos SERVIÇOS da CRIADOR DE APLICATIVOS WEB CREAPP.
+                                    Não faça o uso indevido de nossos SERVIÇOS. Podemos suspender ou deixar de fornecer
+                                    nossos SERVIÇOS caso o CREAPP descumpra qualquer uma de nossas políticas ou se
+                                    estivermos suspeitando e analisando qualquer atitude que considerarmos de má conduta,
+                                    conforme citado acima nos TERMOS DE USO.
+                                    Vale reforçar que o uso dos SERVIÇOS da CRIADOR DE APLICATIVOS WEB CREAPP não
+                                    conferem ao CREAPP a propriedade sobre direitos de propriedade intelectual sobre os
+                                    SERVIÇOS ou sobre o conteúdo dos APLICATIVOS WEB ou de qualquer conteúdo disposto nos
+                                    domínios da CRIADOR DE APLICATIVOS WEB CREAPP supra citados. Você não pode usar
+                                    conteúdos de nossos SERVIÇOSa menos que obtenha permissão do proprietário de tais
+                                    conteúdos ou que o faça por algum meio permitido por lei.
+                                    Estes TERMOS DE USO não conferem ao CREAPP o direito de usar quaisquer marcas ou
+                                    logotipos utilizados nos SERVIÇOS.
+                                    OS SERVIÇOS exibem conteúdos que não são da CRIADOR DE APLICATIVOS WEB CREAPP em
+                                    seus APLICATIVOS WEB e estes são de exclusiva responsabilidade do CREAPP. A CRIADOR DE
+                                    APLICATIVOS WEB CREAPP pode revisar o conteúdo e definir se este é ilegal ou se fere uma de
+                                    suas políticas ou dos seus fornecedores e distribuidores, o que impedirá ou suspenderá a
+                                    prestação de qualquer SERVIÇO.
+                                    Termos dos serviços de PUBLICAÇÃO dos APLICATIVOS WEB
+                                    A PUBLICAÇÃO é um serviço que disponibiliza o APP criado na CRIADOR DE APLICATIVOS WEB
+                                    CREAPP para ser baixado e instalado nos celulares Android através da Google Play, doravante
+                                    denominada unicamente como “PLAY” e também IOS através da Apple App Store, doravante
+                                    denominada unicamente como “APP STORE” e que conjuntamente denominadas unicamente
+                                    como “LOJAS”.
+                                    O CREAPP pode ter a sua conta própria nas LOJAS e é o único responsável por elas.
+                                    O CREAPP deve fornecer todas as informações necessárias para que seu APP seja
+                                    disponibilizado nas LOJAS. No caso de não envio destas informações, a CRIADOR DE
+                                    APLICATIVOS WEB CREAPP não se responsabilizará pelo atraso e nem por suas consequências
+                                    ou quaisquer prejuízos que o CREAPP venha a ter por esta causa.
+                                    Após a conclusão do processo de PUBLICAÇÃO, ou seja, à partir do momento que
+                                    o APP estiver publicado em qualquer das LOJAS, aCRIADOR DE APLICATIVOS WEB
+                                    CREAPP tem o direito de efetuar novas cobranças para fazer quaisquer alterações no APP,
+                                    atualizações ou manutenções imprevistas e caberá ao CREAPP tomar esta decisão. Caso
+                                    contrário a CRIADOR DE APLICATIVOS WEB CREAPP não reembolsará e nem estornará o valor
+                                    pago pelo serviço de PUBLICAÇÃOprestado.
+                                    Na PUBLICAÇÃO, a CRIADOR DE APLICATIVOS WEB CREAPP se propõe a fazer a inserção
+                                    dos APLICATIVOS WEB nas LOJAS e não garante a aprovação ou aceitação da candidatura de
+                                    nenhum APPcriado pelo CREAPP, para distribuição em outros provedores de plataforma
+                                    móvel. Com a contratação dos serviços dePUBLICAÇÃO, o CREAPP terá o direito a submeter
+                                    o APP duas vezes. Se o pedido for negado pelo provedor da LOJA por duas vezes,
+                                    o CREAPPpode cancelar sua CONTA, não havendo, entretanto, reembolso sob nenhuma
+                                    circunstância conforme abaixo.
+                                    Caso as empresas Google INC. e Apple INC. façam alguma alteração em seus padrões e
+                                    exigências para que os aplicativos sejam publicados nas lojas da Play Store e App Store,
+                                    respectivamente, a Criador de Aplicativos Web Creapp não será responsabilizada em nenhum
+                                    momento ou circunsntância pela interrupção dos serviços ou distribuição dos aplicativos
+                                    criados e desenvolvidos pelos CREAPP.
+                                    As empresas Apple e Google atualizam suas exigências e sistemas com recorrência a
+                                    interrupção de qualquer serviço contratado anteriormente, que seja afetado por tais
+                                    mudanças, serão avisadas com até 90 dias úteis de após as alterações e a Criador de
+                                    Aplicativos Web Creapp de Aplicativos S.A não tem a obrigação de acompanhar tais mudanças,
+                                    cabendo a Criador de Aplicativos Web Creapp e somente a Criador de Aplicativos Web Creapp,
+                                    decidir se deve atualizar sua tecnologia ou não e se deve continuar ou não com os serviços de
+                                    publicação nas lojas do Google e Apple.
+                                    Suspensão ou retirada do APP do ar
+                                    Caso o APP seja publicado em uma conta da PLAY e/ou APP STORE possuída ou de
+                                    responsabilidade do CREAPP, a CRIADOR DE APLICATIVOS WEB CREAPP se limita ao serviço
+                                    de PUBLICAÇÃO e toda a relação entre o CREAPP e a PLAY e/ou APP STORE é de inteira
+                                    responsabilidade do CREAPP. A CRIADOR DE APLICATIVOS WEB CREAPP não será
+                                    responsabilizada caso o APP seja removido ou por qualquer outra comunicação da PLAY junto
+                                    ao CREAPP.
+                                    No caso de APLICATIVOS WEB publicados nas contas das LOJAS possuídas pela CRIADOR DE
+                                    APLICATIVOS WEB CREAPP, a mesma poderá encerrar a CONTA do CREAPP e remover
+                                    osAPLICATIVOS WEB das LOJAS caso violações do Contrato de distribuição da CRIADOR DE
+                                    APLICATIVOS WEB CREAPP junto às LOJAS ou deste TERMO DE USO sejam violadas. A
+                                    violação de direitos de propriedade intelectual, incluindo direitos autorais, também resultará
+                                    no encerramento da CONTA. Acesse os termos de desenvolvedor da PLAY aqui e da APP
+                                    STOREaqui.
+                                    É importante salientar que as publicações ocorrerão apenas se o CREAPP for assinante de um
+                                    dos planos pagos da CRIADOR DE APLICATIVOS WEB CREAPP. Se a assinatura desses planos
+                                    for cancelada ou suspensa, por qualquer natureza, o conteúdo do aplicativo ficará inacessível
+                                    para os USUÁRIOS que já tenham o aplicativo instalado no celular ou que venham a instalar
+                                    enquanto o plano estiver suspenso.
+                                    A CRIADOR DE APLICATIVOS WEB CREAPP não se responsabiliza caso o CREAPP infrinja
+                                    quaisquer políticas e não agirá em nenhum momento como corresponsável e nem como
+                                    intermediário. Nesta situação o CREAPP deve entrar em contato com a PLAY aqui e com a APP
+                                    STORE aqui.
+                                    No caso de suspensão do APP nas LOJAS, seja fato único ou múltiplo, no caso de suspensão ou
+                                    banimento da conta nas LOJAS, a CRIADOR DE APLICATIVOS WEB CREAPP irá apurar a
+                                    responsabilidade do acontecimento. Caso seja reconhecido, e cabe apenas à CRIADOR DE
+                                    APLICATIVOS WEB CREAPP determinar esta responsabilidade, que a falha foi originada
+                                    pela CRIADOR DE APLICATIVOS WEB CREAPP, haverá novamente a publicação destes
+                                    aplicativos em outra conta sem cobrança da PUBLICAÇÃO ao CREAPP.
+                                    A CRIADOR DE APLICATIVOS WEB CREAPP não se responsabiliza por quaisquer danos,
+                                    prejuízos financeiros ou pessoais ou outras externalidades causadas pela retirada
+                                    dosAPLICATIVOS WEB das LOJAS e não haverá reembolso em hipótese alguma, sem exceções,
+                                    para que todos sejam tratados de forma única.
+                                    Caso o CREAPP publique seu APP na PLAY por conta própria, sem a contratação
+                                    da PUBLICAÇÃO, este deve seguir as instruções de publicação fornecidas na página
+                                    de detalhes do APP. Clicando dentro dos detalhes, o CREAPP deve clicar em publicação e
+                                    seguir os passos lá fornecidos. A CRIADOR DE APLICATIVOS WEB CREAPP não possui
+                                    responsabilidade pela publicação de APLICATIVOS WEB feitas desta ou de qualquer outra
+                                    forma quando não utilizado o serviço de PUBLICAÇÃO.
+                                    Serviço de CRIAÇÃO DE CONTA nas Lojas
+                                    O CREAPP fornecerá todas as informações necessárias para que sua conta seja criada. No caso
+                                    de não envio destas informações, a CRIADOR DE APLICATIVOS WEB CREAPP não se
+                                    responsabiliza pelo atraso e nem por suas consequências ou quaisquer prejuízos que
+                                    o CREAPP venha a ter por esta causa.
+                                    No caso de suspensão ou banimento da conta nas LOJAS, a CRIADOR DE APLICATIVOS WEB
+                                    CREAPP não se responsabiliza por quaisquer danos, prejuízos financeiros ou pessoais ou outras
+                                    externalidades causadas pela retirada dos APLICATIVOS WEB das LOJAS e não haverá
+                                    reembolso em hipótese alguma, sem exceções, para que todos sejam tratados de forma única.
+                                    A CRIADOR DE APLICATIVOS WEB CREAPP não se responsabiliza caso o CREAPP infrinja
+                                    quaisquer políticas e não agirá em nenhum momento como corresponsável e nem como
+                                    intermediário. Nesta situação o CREAPP deve entrar em contato com a PLAY Store e com
+                                    a APP STORE
+                                    Termos de Pagamento e Devoluções dos Serviços de PUBLICAÇÃO e CRIAÇÃO DE CONTA
+                                    Um meio de pagamento válido é necessário para ocorrer a contratação dos serviços prestados
+                                    ao CREAPP (cartão de crédito, pagamento em conta, boleto bancário etc.)
+                                    A PUBLICAÇÃO e a CRIAÇÃO DE CONTA é cobrada antecipadamente, uma única vez e não é
+                                    reembolsável após o início do processo. Com a finalidade de tratar a todos igualmente, não
+                                    serão feitas exceções.
+                                    Todos valores cobrados incluem impostos, taxas, ou obrigações impostas por autoridades
+                                    fiscais e o Creapp será responsável pelo pagamento de todos esses impostos, taxas ou
+                                    encargos.
+                                    Na PUBLICAÇÃO, a CRIADOR DE APLICATIVOS WEB CREAPP não garante a aprovação ou
+                                    aceitação da candidatura de nenhum APP criado pelo CREAPP. Se o pedido for negado
+                                    pela LOJA, o CREAPP pode cancelar sua CONTA, não havendo, entretanto, reembolso sob
+                                    nenhuma circunstância, pois a não aceitação ou aprovação decorre de uma falha originada
+                                    pelo CREAPP e não pela CRIADOR DE APLICATIVOS WEB CREAPP.
+                                    A devolução do valor da PUBLICAÇÃO é permitida enquanto o processo de PUBLICAÇÃO ainda
+                                    não se iniciou, isto é, anteriormente aoCREAPP enviar os dados solicitados pela CRIADOR DE
+                                    APLICATIVOS WEB CREAPP para a PUBLICAÇÃO. Após o envio das informações solicitadas pela
+                                    CRIADOR DE APLICATIVOS WEB CREAPP para aPUBLICAÇÃO, a mesma deixa de ser
+                                    reembolsável.
+                                    A devolução do valor da CRIAÇÃO DE CONTA é permitida enquanto o processo de CRIAÇÃO DE
+                                    CONTA ainda não se iniciou, isto é, anteriormente ao CREAPPenviar os dados solicitados
+                                    pela CRIADOR DE APLICATIVOS WEB CREAPP para a CRIAÇÃO DE CONTA. Após o envio das
+                                    informações solicitadas pela CRIADOR DE APLICATIVOS WEB CREAPP para a CRIAÇÃO DE
+                                    CONTA, a mesma deixa de ser reembolsável.
+                                    Direitos autorais e Propriedade de Conteúdo
+                                    A CRIADOR DE APLICATIVOS WEB CREAPP não reivindica quaisquer direitos de propriedade
+                                    intelectual sobre o material fornecido para o SERVIÇO. O perfil e materiais enviados
+                                    permanecem de propriedade do CREAPP. No entanto, usando a CRIADOR DE APLICATIVOS
+                                    WEB CREAPP para criar seu APP, o CREAPP concorda em permitir que outras
+                                    pessoas, USUÁRIOS FINAIS, em particular, possam ver e compartilhar o seu conteúdo.
+                                    Ressalvado os direitos sobre a mídia e publicidade de terceiros, inseridos a critério
+                                    da CRIADOR DE APLICATIVOS WEB CREAPP, que permanecerão de titularidade dos detentores
+                                    originais.
+                                    A CRIADOR DE APLICATIVOS WEB CREAPP não realiza seleção prévia do conteúdo, mas
+                                    a CRIADOR DE APLICATIVOS WEB CREAPP e seus representantes têm o direito (mas não a
+                                    obrigação), a seu exclusivo critério, de recusar ou remover qualquer conteúdo que seja
+                                    disponibilizado através do SERVIÇO.
+                                    O visual e a experiência desse SERVIÇO são propriedade privada da CRIADOR DE APLICATIVOS
+                                    WEB CREAPP. Todos os direitos reservados. O CREAPP não pode duplicar, copiar ou reutilizar
+                                    qualquer parte do design visual, HTML, JavaScript e CSS sem a permissão escrita e expressa
+                                    da CRIADOR DE APLICATIVOS WEB CREAPP, ficando claro que qualquer violação poderá
+                                    ensejar procedimentos legais para garanti-los, bem como a responsabilização do CREAPP nas
+                                    esferas cível e penal.
+                                    O CREAPP será unicamente responsável por assegurar e pagar por todo registro telefônico,
+                                    entregas, licenças, qualquer licença de performance pública, licenças de sincronização e
+                                    qualquer outra licenças de composição musical que sejam requeridas por donos de
+                                    propriedades privadas (ou seus agentes) em conexão com todo o conteúdo selecionado
+                                    pelo CREAPP para uso em conexão com o aplicativo da CRIADOR DE APLICATIVOS WEB
+                                    CREAPP.
+                                    Privacidade
+                                    O CREAPP e o APP gerado devem respeitar todas as leis e regulamentações aplicáveis de
+                                    privacidade e Propriedade Intelectual e Industrial, seus termos e condições.
+                                    Condições Gerais
+                                    O uso do SERVIÇO é por própria conta e risco do CREAPP. O SERVIÇO é fornecido “como está”
+                                    e “conforme estiver disponível”.
+                                    Apoio técnico está disponível somente através da central de ajuda da CRIADOR DE
+                                    APLICATIVOS WEB CREAPP.
+                                    O CREAPP autoriza a utilização, reutilização e concede aos outros o direito de usar e reutilizar
+                                    o seu conteúdo, e qualquer reprodução ou simulação deste, em qualquer forma de mídia ou
+                                    tecnologia atualmente conhecida ou desenvolvida no futuro, durante e após o uso
+                                    deSERVIÇOS, para quaisquer fins relacionados ao SERVIÇO.
+                                    O CREAPP entende que a CRIADOR DE APLICATIVOS WEB CREAPP se utiliza de terceiros e
+                                    servidores parceiros para o fornecimento dos hardwares, softwares, serviços de rede,
+                                    armazenamento e tecnologias relacionadas que são necessárias para executar o SERVIÇO. Não
+                                    caberá em nenhum momento o requerimento do código-fonte, sendo ele de direito exclusivo
+                                    e permanente da Criador de Aplicativos Web Creapp de Aplicativos S.A. O serviço da Criador
+                                    de Aplicativos Web Creapp de Aplicativos, no que se refere a construção e desenvolvimento de
+                                    Aplicativos Web, não consiste em hipótese alguma no compartilhamento ou envio do códigofonte
+                                    e tão pouco da estruturação de APKs, IPAs ou quaisquer formatos de compilação de
+                                    códigos ou seus códigos-fonte.
+                                    O CREAPP não deve modificar, adaptar ou “hackear” o SERVIÇO, ou modificar outro website
+                                    de modo a implicar falsamente que está associado com o SERVIÇO, ou qualquer outro serviço
+                                    da CRIADOR DE APLICATIVOS WEB CREAPP.
+                                    O CREAPP concorda em não reproduzir ou duplicar ou copiar qualquer parte do SERVIÇO ou
+                                    acesso ao SERVIÇO sem permissão expressa e escrita da CRIADOR DE APLICATIVOS WEB
+                                    CREAPP.
+                                    A CRIADOR DE APLICATIVOS WEB CREAPP pode remover o conteúdo e CONTAS que
+                                    contenham conteúdo que determinar, segundo critério exclusivo, como ilegal, imoral,
+                                    ofensivo, ameaçador, calunioso, difamatório ou questionável, ou que viole qualquer
+                                    propriedade intelectual de qualquer parte ou a estesTERMOS DE USO.
+                                    Abusos verbais, físicos, escritos ou outros (incluindo ameaças de insulto ou vingança) a
+                                    qualquer cliente, empregado, membro ou funcionário do CRIADOR DE APLICATIVOS WEB
+                                    CREAPP, resultará no cancelamento imediato da CONTA.
+                                    O CREAPP entende que o processamento técnico e a transmissão do SERVIÇO, incluindo seu
+                                    conteúdo, podem ser transferidos sem criptografia e envolvem (a) transmissões através de
+                                    várias redes; e (b) mudanças para se adequar e se adaptar às exigências técnicas para a
+                                    conexão de redes ou dispositivos.
+                                    Se seu uso de banda de um APP exceder 1 GB/mês, ou exceder significativamente o uso médio
+                                    de banda (como determinado unicamente pelaCRIADOR DE APLICATIVOS WEB CREAPP) dos
+                                    outros APLICATIVOS WEB da CRIADOR DE APLICATIVOS WEB CREAPP, taxas adicionais
+                                    poderão cobradas. A CRIADOR DE APLICATIVOS WEB CREAPP se reserva o direito de alterar a
+                                    cobrança da carga excedente a qualquer momento.
+                                    A CRIADOR DE APLICATIVOS WEB CREAPP não garante que:
+                                    1. O SERVIÇO atenderá às suas necessidades específicas;
+                                    2. O SERVIÇO será ininterrupto, pontual, seguro, ou livre de erros;
+                                    3. Os resultados que podem ser obtidos a partir da utilização do SERVIÇO serão precisos
+                                    ou confiáveis;
+                                    4. A qualidade de quaisquer produtos, serviços, informações, ou outro material adquirido
+                                    ou obtido pelo CREAPP através do SERVIÇOatenderá às suas expectativas; e
+                                    5. Quaisquer erros no SERVIÇO serão corrigidos.
+                                    O CREAPP entende e concorda expressamente que a CRIADOR DE APLICATIVOS WEB
+                                    CREAPP não será responsável por quaisquer danos diretos, indiretos, incidentais, especiais,
+                                    consequências, ou exemplares, incluindo, mas não limitado a danos por perda de lucros, boa
+                                    vontade, uso, dados, ou outras perdas intangíveis (mesmo se a CRIADOR DE APLICATIVOS
+                                    WEB CREAPP tiver sido avisado da possibilidade de tais danos), resultantes de:
+                                    1. o uso ou a incapacidade de usar o SERVIÇO;
+                                    2. o custo de aquisição de bens e serviços resultantes de quaisquer bens, dados,
+                                    informações ou serviços comprados ou obtidos ou mensagens recebidas ou transações
+                                    efetuadas através do SERVIÇO;
+                                    3. acesso não autorizado ou alteração das suas transmissões ou dados;
+                                    4. declarações ou condutas de terceiros sobre o SERVIÇO; e
+                                    5. ou quaisquer outros assuntos relacionados ao SERVIÇO.
+                                    O CREAPP concorda em defender, indenizar e manter a CRIADOR DE APLICATIVOS WEB
+                                    CREAPP, seus administradores, diretores, funcionários e agentes de e contra quaisquer
+                                    reivindicações, responsabilidades, danos, perdas e despesas, incluindo honorários advocatícios
+                                    e despesas, decorrentes de ou em alguma forma relacionados com:
+                                    1. Seu acesso ou utilização da CRIADOR DE APLICATIVOS WEB CREAPP ou do SERVIÇO;
+                                    2. Sua violação destes TERMOS DE USO; ou
+                                    3. A violação de qualquer direito de terceiros, incluindo, mas não se limitando a qualquer
+                                    direito de propriedade intelectual, publicidade, de propriedade de confidencialidade,
+                                    privacidade ou direito por si ou por seu APP.
+                                    O não exercício ou a não imposição de qualquer direito ou disposição dos TERMOS DE USO por
+                                    parte da CRIADOR DE APLICATIVOS WEB CREAPP não constituirá uma renúncia de tal direito
+                                    ou disposição. Os TERMOS DE USO constituem o acordo integral entre o CREAPP e a CRIADOR
+                                    DE APLICATIVOS WEB CREAPP e regulam a utilização doSERVIÇO, substituindo quaisquer
+                                    contratos anteriores entre o CREAPP e a CRIADOR DE APLICATIVOS WEB CREAPP referentes
+                                    à CRIADOR DE APLICATIVOS WEB CREAPP (incluindo, mas não limitado a todas as versões
+                                    anteriores dos TERMOS DE USO).
+                                    Em nenhum caso as obrigações da CRIADOR DE APLICATIVOS WEB CREAPP com
+                                    o CREAPP deverão exceder o valor efetivamente pago à CRIADOR DE APLICATIVOS WEB
+                                    CREAPP pelo CREAPP durante o período compreendido nos últimos 12 meses.
+                                </div>
+                                <style>
+                                    input[type=checkbox] {
+                                        /* Double-sized Checkboxes */
+                                        -ms-transform: scale(2); /* IE */
+                                        -moz-transform: scale(2); /* FF */
+                                        -webkit-transform: scale(2); /* Safari and Chrome */
+                                        -o-transform: scale(2); /* Opera */
+                                        padding: 10px;
+                                    }
+                                </style>
+                            </div>
+
+
+                            <div class="row btn-form-group margin-bottom-10 margin-top-10">
+                                <div class="col-100">
+                                    <div id="btn_savar_cartao" class="buton">Assinar</div>
+                                </div>
+                            </div>
+                        </formcartao>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,93 @@
+﻿<div class="pages">
+    <div data-page="grupo_item" class="page">
+        <div class="navbar background-creait">
+            <div class="navbar-inner">
+                <div class="left"><a class="back link" onclick="creait.redirect('grupo')"> <i class="f7-icons icone-voltar" style="margin-right: 10px;">chevron_left</i></a></div>
+                <div class="center">{{nome}}</div>
+                <div class="right" id="qrgrupo" grupo_id="{{id}}"><a><i class="f7-icons">qrcode</i></a></div>
+            </div>
+        </div>
+        <div class="page-content text-center" style="margin-top: 50px;">
+            <div class="list-block list-block-search list searchbar-found" style="height: calc(100% - 100px); overflow: auto;">
+                <ul style="height: auto;">
+                    <li>
+                        <div>
+                            Pessoas
+                        </div>
+                    </li>
+                    {{#each pessoas}}
+                    <li class="produtoli grid-item-m swipeout">
+                        <div class="item-title-row swipeout-content">
+
+                            <div id="bg{{id}}" style="background:url(https://whereapp.creait.com.br/api/getPhoto?id={{id}}&tabela=pessoa)" class="image_cart">
+                            </div>
+                            <div class="titulo_produto item-title" style="text-align: left;">
+                                {{nome}}
+                            </div>
+                            <div style="padding: 0px 10px; text-align: left;">
+                                email: {{email}}
+                                <br />
+                                {{telefone}}  {{celular}}
+                            </div>
+                        </div>
+                        <!--<div id="deletar" class="swipeout-actions-right deletar_rota">
+                            <a href="#" class="swipeout-delete">Perdido</a>
+                        </div>-->
+                        <div style="clear:both"></div>
+                    </li>
+                    {{/each}}
+                </ul>
+                <ul style="height: auto;">
+                    <li>
+                        <div>
+                            Itens
+                        </div>
+                    </li>
+                    {{#each itens}}
+                    <li class="produtoli grid-item-m swipeout perdido{{perdido}}">
+                        <div class="item-title-row swipeout-content">
+
+                            <div id="bg{{id}}" style="background:url(https://whereapp.creait.com.br/api/getPhoto?id={{id}}&tabela=item)" class="image_cart">
+                            </div>
+                            <div class="titulo_produto item-title" style="text-align: left;">
+                                {{nome}}
+                            </div>
+                            <div style="padding: 0px 10px; text-align: left;">
+                                {{descricao}}
+                            </div>
+                        </div>
+                        <div id="deletar" class="swipeout-actions-right item_perdido perdido{{perdido}}" item_id="{{id}}">
+                            <a href="#" class="swipeout-delete perdido{{perdido}}">Perdido</a>
+                        </div>
+                        <div style="clear:both"></div>
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+            <div style="width: 100%; height: 50px;" id="convidaitem">
+                <div style="width: 50%; height: 100%; float: left">
+                    <div style="width: 100%; height: 100%;">
+                        <button style="width: 100%; height: 100%;" onclick="convidar()">Convidar Pessoa</button>
+                    </div>
+                </div>
+                <div style="width: 50%; height: 100%; float: left">
+                    <div style="width: 100%; height: 100%;">
+                        <button style="width: 100%; height: 100%;" onclick="creait.redirect('additemgrupo');">Adicionar Item</button>
+                    </div>
+                </div>
+            </div>
+            <div style="width: 100%; height: 50px;" id="aceitarrecusar">
+                <div style="width: 50%; height: 100%; float: left">
+                    <div style="width: 100%; height: 100%; background-color: orangered;">
+                        <button style="width: 100%; height: 100%;" id="recusar">Recusar</button>
+                    </div>
+                </div>
+                <div style="width: 50%; height: 100%; float: left; background-color: greenyellow">
+                    <div style="width: 100%; height: 100%;">
+                        <button style="width: 100%; height: 100%;" id="aceitar">Aceitar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

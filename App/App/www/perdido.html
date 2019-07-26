@@ -1,0 +1,36 @@
+﻿<div class="pages">
+    <div data-page="meuItem" class="page">
+        <div class="navbar background-creait">
+            <div class="navbar-inner margin-bottom-20">
+                <div class="left"><a class="back link" onclick="creait.redirect('categoria')"> <i class="f7-icons icone-voltar" style="margin-right: 10px;">chevron_left</i></a></div>
+                <div class="center">Item(s)</div>
+            </div>
+        </div>
+        <div class="page-content text-center" style="margin-top: 50px;">
+            <div class="list-block list-block-search list searchbar-found" style="height: calc(100% - 10px);">
+                <ul style="height: 100%;">
+                    {{#each itens}}
+                    <li class="produtoli grid-item-m swipeout perdido1">
+                        <div class="item-title-row swipeout-content">
+
+                            <div id="bg{{id}}" style="background:url(https://whereapp.creait.com.br/api/getPhoto?id={{id}}&tabela=item)" class="image_cart">
+                            </div>
+                            <div class="titulo_produto item-title" style="text-align: left;">
+                                {{nome}}
+                                <div style="display:none">{{descricao}}</div>
+                            </div>
+                            <div style="padding: 0px 10px; text-align: left;">
+                                {{descricao}}
+                            </div>
+                        </div>
+                        <div id="achado" class="swipeout-actions-right item_perdido" item_id="{{id}}">
+                            <a href="#" class="swipeout-content" style="background-color: #00d700 !important;">Encontrado</a>
+                        </div>
+                        <div style="clear:both"></div>
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

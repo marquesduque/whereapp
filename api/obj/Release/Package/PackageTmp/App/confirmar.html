@@ -1,0 +1,92 @@
+﻿<div class="pages">
+    <div data-page="confirmar" class="page">
+
+
+        <div class="navbar background-creait">
+            <div class="navbar-inner">
+                <div class="left">
+                    <a href="carrinho.html" class="link"><i class="f7-icons icone-voltar">angle-left</i></a>
+                </div>
+                <div class="right" style="margin-right:20px">
+                    CONFIRMAR
+                </div>
+            </div>
+        </div>
+
+
+        <div class="page-content text-center imagem-background no-searchbar" style="margin-top:60px;    height: calc(100% - 60px);">
+
+
+            <div style="width:100%">
+                <formatte id="sign_up">
+
+                    <input name="active" type="hidden" value="true" />
+                    <input name="id" type="hidden" id="idPerfil" value="true" />
+
+                    <div class="list-block margin-bottom-40" style="position:relative; top:-4px; max-width:500px; margin:0 auto !important; padding:20px">
+
+
+                        <div style="padding-bottom:25px">
+                            <div class="tablet-50 col-100 list" style="line-height:35px">
+                                <label class="label-switch iscpf" style="width:350px">
+                                    <input id="ckb_cpf" onchange="if ($(this).is(':checked')) { $('#confirmar_cpf').show(); $('#confirmar_cpf').val(''); } else { $('#confirmar_cpf').hide() }" type="checkbox">
+                                    <div class="checkbox"></div>
+                                    <div style="margin-top: -25px; font-size:20px">Gostaria de CPF na nota?</div>
+                                </label>
+                            </div>
+
+                            <div class="tablet-50 col-100" style="margin: 10px 45px 0px; display:none" id="confirmar_cpf">
+                                <input onKeyPress="if (this.value.length == 11) { return false; }" type="number" inputmode="numeric" pattern="[0-9]*" value="{{cpf}}" style="text-align:center" type="text" name="cpf" class="fonte_branca input-confirmarCliente" placeholder="Informe o CPF">
+                            </div>
+                        </div>
+
+                        <div class="buton" style="margin-bottom: 10px;
+    background-color: #FF9800;
+    width: calc(100% - 10px);
+    float: left;
+    font-size: 12px;
+    padding: 5px;" onclick="creait.redirect('endereco', 'to=confirmar')">
+                            Alterar Endereço
+                        </div>
+
+                        <div style="clear:both"></div>
+
+                        <div class="row">
+                            <div class="tablet-30 col-100" style="margin-bottom:10px">
+                                <input value="{{state}}" type="text" fixo_cep disabled onKeyPress="if(event.keyCode == 13) { $('#complementoPerfil').focus(); }" class="fonte_branca input-confirmarCliente" placeholder="Estado">
+                            </div>
+                            <div class="tablet-70 col-100" style="margin-bottom:10px">
+                                <input value="{{city}}" type="text" fixo_cep disabled onKeyPress="if(event.keyCode == 13) { $('#complementoPerfil').focus(); }" class="fonte_branca input-confirmarCliente" placeholder="Cidade">
+                            </div>
+                            <div class="tablet-70 col-100" style="margin-bottom:10px">
+                                <input value="{{street}}" type="text" fixo_cep disabled onKeyPress="if(event.keyCode == 13) { $('#complementoPerfil').focus(); }" class="fonte_branca input-confirmarCliente" placeholder="Digite seu endereço">
+                            </div>
+                            <div class="tablet-30 col-100" style="margin-bottom:10px">
+                                <input value="{{number}}" type="number" inputmode="numeric" pattern="[0-9]*" maxlength="8" max="99999999" id="numeroPerfil" name="number" onKeyPress="if (event.keyCode == 13) { $('#complementoPerfil').focus(); }" class="fonte_branca input-confirmarCliente" placeholder="N°">
+                            </div>
+                            <div class="tablet-50 col-100" style="margin-bottom:10px">
+                                <input value="{{complement}}" type="text" id="confirmar_complemento" name="complemento" onKeyPress="if (event.keyCode == 13) { $('#referencia').focus(); }" class="fonte_branca input-confirmarCliente" placeholder="Complemento">
+                            </div>
+                            <div class="tablet-50 col-100 list" style="line-height:35px">
+                                <label class="label-switch" style="width:240px">
+                                    <input id="ckb_complemento" onchange="if ($(this).is(':checked')) { $('#confirmar_complemento').attr('disabled', 'disabled'); $('#confirmar_complemento').val(''); } else { $('#confirmar_complemento').removeAttr('disabled') }" type="checkbox">
+                                    <div class="checkbox"></div>
+                                    <div style="margin-top: -24px;">Sem Complemento</div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div style="clear:both"></div>
+
+
+                        <div class="row" style="margin-top:20px">
+                            <div id="btn_complementoendereco" class="buton col-100">
+                                CONTINUAR
+                            </div>
+                        </div>
+                    </div>
+                </formatte>
+            </div>
+        </div>
+    </div>
+</div>

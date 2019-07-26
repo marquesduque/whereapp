@@ -1,0 +1,66 @@
+﻿@model api.Models.pergunta
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>pergunta</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.descricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.grupo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.grupo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ordem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ordem)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tipo_controle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tipo_controle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tipo.nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tipo.nome)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

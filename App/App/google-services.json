@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1082934731737",
+    "firebase_url": "https://whereapp-253a5.firebaseio.com",
+    "project_id": "whereapp-253a5",
+    "storage_bucket": "whereapp-253a5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1082934731737:android:7d6c258e06874449",
+        "android_client_info": {
+          "package_name": "whereapp.creait.com"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1082934731737-u9g48l02jb91np90al91nvl6f9g80glf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC2_MctPs9-0s0rZ1uta4CiQ-jQH6QiMZE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

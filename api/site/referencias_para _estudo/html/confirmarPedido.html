@@ -1,0 +1,202 @@
+﻿<div class="pages">
+    <div data-page="confirmarPedido" class="page navbar-fixed">
+        <div class="navbar background-creait">
+            <div class="navbar-inner">
+                <div class="left">
+                    <a href="carrinho.html" class="link"><i class="f7-icons icone-voltar">angle-left</i></a>
+                </div>
+                <div class="right total_carrinho">
+
+                    <img style="width: 40px" src="icons/animated/{{cor_tema}}/coin.svg" /><span id="total_confirmarPedido" formatMoney>{{total}}</span>
+                </div>
+                <!--<div class="right">
+                    <a href="#" class="link icon-only open-panel"> <i class="icon icon-bars"></i></a>
+                </div>-->
+            </div>
+        </div>
+
+
+        <div class="page-content contacts-content no-searchbar imagem-background" style="    background-color: var(--textbox-color);">
+
+            <div class="list-block contacts-block" style="padding-bottom:100px">
+
+                <ul>
+                    {{#js_if "this.tempo != 0"}}
+                    {{#js_if "!biblioteca.get('notificacao', false)"}}
+                    <li class="background-pagamento" style="padding: 15px; margin-top:auto; font-size: 16px; font-weight: 700; text-align:center; line-height: 10px;">
+                        <span class="icon-alarm" style="font-size:30px; float:left">
+                        </span>
+                        <div style="font-size:12px">PREVISÃO DE ENTREGA</div><br />{{tempo}}
+                    </li>
+                    {{else}}
+                    <li class="background-pagamento" style="padding: 15px;
+    margin-top: auto;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+    line-height: 18px;">
+                        {{js "biblioteca.get('notificacao', false)"}}
+                    </li>
+                    {{/js_if}}
+                    {{/js_if}}
+                    <li class="list-group-title panel_cliente" style="margin-top: 0px;width:100%;display:none">
+                        <i class="icon-credit-card"></i>Cliente
+                    </li>
+                    <li class="background-pagamento panel_cliente" onclick="creait.redirect('cliente')" style="padding-left: 14px; margin-top:auto; display:none">
+
+                        <div class="item-inner" style="width:100%">
+                            <div style="width:100%" id="label_cliente"></div>
+                        </div>
+
+                    </li>
+
+                    <li class="list-group-title panel_promocao" style="margin-top: 0px;width:100%; display:none">
+                        <i class="icon-coin-dollar"></i>Cupom de desconto
+                    </li>
+                    <li class="background-pagamento panel_promocao" style="padding-left: 14px; margin-top:auto; display:none">
+
+
+                        <div class="item-inner" style="width:100%; padding:0px">
+               
+                                    <input onKeyDown="if(this.value.length==6 && event.keyCode!=6) return false;" style="float: right;
+    width: 100%;
+    text-align: left; padding:5px"
+                                           type="number" inputmode="numeric" pattern="[0-9]*" placeholder="Digite seu código" name="troco" />
+                            <span style="    background-color: #4CAF50;
+    line-height: 48px;
+    width: 130px;
+    text-align: center;
+    font-weight: 700;">VALIDAR</span>
+                        </div>
+
+                    </li>
+                    {{#js_if "!biblioteca.get('pagamento_no_final', false)"}}
+                    <li class="list-group-title" style="margin-top: 0px;width:100%;">
+                        <i class="icon-credit-card"></i>Forma de Pagamento
+                    </li>
+                    <li class="background-pagamento" style="padding-left: 14px; margin-top:auto; margin-bottom:2px; cursor:pointer">
+
+                        <div class="item-inner" style="width:100%">
+                            <div style="width:100%" id="label_pagamento"></div>
+                            <span id="dinheiro" style="display:none; text-align:right">
+                                <div style="font-weight:800; font-size:10px; color:var(--font-light-color);margin-top:-3px">Troco para quanto?</div>
+                                <div style="float:right; text-align:right;  width:160px;margin: -5px -10px -10px 0px;
+    font-size: 14px;">
+                                    <input onKeyDown="if(this.value.length==6 && event.keyCode!=6) return false;" style="float: right;
+    width: 75px;
+    text-align: left;
+    font-size: 20px; padding:5px"
+                                           type="tel" mask="money" inputmode="numeric" pattern="[0-9]*" placeholder="0,00" name="troco" />
+                                    <span style="float:right;     padding: 4px 0px 0px 0px; font-size:18px">R$ </span>
+                                </div>
+                            </span>
+                        </div>
+                    </li>
+                    {{/js_if}}
+                </ul>
+
+                <ul>
+                    <li class="list-group-title titulo_endereco" style="margin-top: 0px;width:100%;">
+                        <i class="icon-location"></i>{{js "biblioteca.get('entrega', 'Endereço')"}}
+                        <span style="float:right;">{{frete_valor}}</span>
+                    </li>
+                    <li style="padding-left: 14px; margin-top:auto; cursor:pointer" class="background-pagamento" id="trocar_endereco">
+
+                        <div class="item-inner">
+
+                            <div class="item-title" style="white-space:inherit" id="label_endereco"></div>
+                        </div>
+                    </li>
+                    <li class="list-group-title" style="margin-top: 0px;width:100%;" id="trocar_frete">
+                        <i class="glyph-icon iconecommerce-truck-4"></i>Frete
+                    </li>
+                    <li style="padding-left: 14px; margin-top:auto;">
+                        <div id="frete_selecionado" class="background-pagamento">
+
+                        </div>
+                        {{#each frete}}
+                        <div style="margin-top:auto; display:none" class="fonte_branca fontextra frete_li">
+
+                            <div class="item-inner" data='{{js "JSON.stringify(this)"}}'>
+                                <div class="item-title" style="white-space:inherit">
+                                    <span class="icon-circle-right arrow"></span>{{codigo}} ({{prazo_entrega}} dias úteis)
+                                </div>
+                                <span class="valor_frete">R${{valor_total}}</span>
+
+                            </div>
+
+                        </div>
+                        {{/each}}
+                    </li>
+                </ul>
+
+                <ul>
+                    <li class="list-group-title" style="margin-top: 0px;width:100%;">
+                        <i class="icon-gift"></i>{{js "biblioteca.get('confirmarpedido', 'Pedido')"}}
+                        <span formatMoney style="float:right">{{carrinho.carrinho_total}}</span>
+                    </li>
+                    {{#each carrinho.produtos}}
+                    <li style="padding: 0px; margin-top:auto; margin-bottom:2px">
+
+                        <div style="padding:10px">
+                            <div style="float:left;width: calc(100% - 80px); font-weight:700; font-size:14px">
+
+                                {{#js_if "biblioteca.get('quantidade', true)"}}
+                                {{quantidade}} x 
+                                {{/js_if}}
+                                {{nome}}
+                            </div>
+
+                            <span style="float:right; font-size:14px; font-weight:700">
+                                <span total="{{id}}" style="padding-right:5px;">{{total}}</span>
+                            </span>
+                            <div style="float:left;">
+                                {{agrupamento}}
+                            </div>
+
+
+                            <div style="clear:both"></div>
+                        </div>
+                    </li>
+                    {{/each}}
+                </ul>
+
+
+
+
+
+
+                <!-- JEITO QUE ESTAVA ANTES, SE DER MERDA É SÓ DESCOMENTAR ESSE E COMENTAR O DE CIMA -->
+                <!--<div class="list-group">
+                    <ul>
+                        <li class="list-group-title" style="margin-top: 0px;width:100%;color:black;">
+                            <div class="row">
+                                <div class="list-group-title col-50" style="margin-top: 0px;text-align:left;color:black;">Total</div>
+                                <div class="list-group-title col-50" style="margin-top: 0px;text-align:right;color:black;">
+                                    {{carrinho.carrinho_total}}
+                                </div>
+                            </div>
+
+                        </li>
+                    </ul>
+                </div>-->
+
+
+
+                <div style="width:100%; position:fixed; bottom:0px;">
+                    <div>
+                        <div id="rick" class="buton" style="width:100%; height:20px; border-radius:0px">
+                            <img style="width: 30px;
+    margin-right: 5px;
+    margin-left: -100px;
+    margin-top: -5px" src="icons/animated/{{cor_tema}}/finish.svg" />
+                            <span style="position:absolute">Finalizar</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

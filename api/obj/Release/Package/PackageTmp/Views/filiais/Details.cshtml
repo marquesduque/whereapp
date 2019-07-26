@@ -1,0 +1,107 @@
+﻿@model api.Models.filial
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<section class="content-header" style="position:absolute;z-index:99999">
+    <h1>
+        <a style="    margin-top: -112px;
+    margin-left: 30px;" href="@Url.Action("edit",new { id = Model.id })" class="btn btn-warning"><i class="fa fa-angle-left fa-lg" style="margin-right: 10px"></i>Voltar</a>
+    </h1>
+</section>
+<script src="~/Scripts/drawmaps.js"></script>
+<style>
+    #map {
+        position: initial !important;
+    }
+</style>
+<div id="map" style="overflow: hidden;
+    height: calc(100% - 49px);
+    width: 100%"></div>
+<!-- Replace the value of the key parameter with your own API key. -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIoBAvqfno0lFGhuzuuwqX0KmXRdr-10o&libraries=drawing&callback=initMap"
+        async defer></script>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.entraga_cep_bloqueado, new { placeholder = "", @class = "form-control", maxLength = "150" })
+}
+
+@section scripts{
+    <script>
+        function initMap() {
+            debugger;
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: @Model.lat.Value.ToString().Replace(",","."), lng: @Model.lng.Value.ToString().Replace(",", ".") },
+                zoom: 13
+            });
+
+            var drawingManager = new google.maps.drawing.DrawingManager({
+                drawingMode: google.maps.drawing.OverlayType.POLYGON,
+                drawingControl: false,
+                drawingControlOptions: {
+                    position: google.maps.ControlPosition.TOP_CENTER,
+                    drawingModes: ['polygon']
+                },
+                markerOptions: { icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png' },
+                circleOptions: {
+                    fillColor: '#ffff00',
+                    fillOpacity: 1,
+                    strokeWeight: 5,
+                    clickable: false,
+                    editable: true,
+                    zIndex: 1
+                }
+            });
+
+
+
+            google.maps.event.addListener(drawingManager, 'polygoncomplete', function (polygon) {
+                drawingManager.setDrawingMode(null);
+                var arr = [];
+                polygon.getPath().forEach(function (latLng) {
+                    arr.push([latLng.lat(), latLng.lng()]);
+                });
+
+                var inner = inside([@Model.lat.Value.ToString().Replace(",","."), @Model.lng.Value.ToString().Replace(",", ".")], arr);
+                debugger;
+                $('[name="entraga_cep_bloqueado"]').val(JSON.stringify(arr));
+                $('form').submit();
+                function inside(point, vs) {
+                    // ray-casting algorithm based on
+                    // http://www.ecse.rpi.edu/Homepages/wrf/Research/Short_Notes/pnpoly.html
+
+                    var x = point[0], y = point[1];
+
+                    var inside = false;
+                    for (var i = 0, j = vs.length - 1; i < vs.length; j = i++) {
+                        var xi = vs[i][0], yi = vs[i][1];
+                        var xj = vs[j][0], yj = vs[j][1];
+
+                        var intersect = ((yi > y) != (yj > y))
+                            && (x < (xj - xi) * (y - yi) / (yj - yi) + xi);
+                        if (intersect) inside = !inside;
+                    }
+
+                    return inside;
+                };
+
+            });
+            drawingManager.setMap(map);
+
+            var ceps = [];
+            $(@Model.entraga_cep_bloqueado).each(function (index, item) {
+                ceps.push({ lat: item[0], lng: item[1] });
+            });
+
+            debugger;
+            var bermudaTriangle = new google.maps.Polygon({
+                paths: ceps
+            });
+            bermudaTriangle.setMap(map);
+        }
+    </script>
+}

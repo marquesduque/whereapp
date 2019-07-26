@@ -1,0 +1,259 @@
+﻿@model api.Models.filial
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<section class="content-header">
+    <h1>
+        <a href="@Url.Action("Index")" class="btn btn-info"><i class="fa fa-angle-left fa-lg" style="margin-right: 10px"></i>Voltar</a>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("index")" base_library="api.Models.filial.library_bc_1">Listar</a></li>
+        <li class="active" base_library="api.Models.filial.library_bc_create">Criar</li>
+    </ol>
+</section>
+
+<section class="content">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.ValidationSummary(true)
+        <div class="alert alert-danger" role="alert" base_library="api.Models.filial.library_error_register">
+            Registro não gravado, verificar erro criticado
+        </div>
+
+        <fieldset>
+
+            <div class="col-md-12 bar">
+                <label class="col-md-6" base_library="api.Models.filial.library_title"><i class="fa fa-list-alt" style="margin-right: 10px"></i>Dados Pessoais</label>
+            </div>
+
+            <div>
+
+
+                <div class="form-group col-md-12">
+                    <label class="control-label" base_library="api.Models.filial.nome">nome</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.nome, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                    @Html.ValidationMessageFor(model => model.nome)
+                </div>
+
+                <div class="form-group col-md-12">
+                    @Html.LabelFor(model => model.address, "Busca Endereço (Endereço, numero, bairro, cidade, estado, país)", new { @class = "control-label" })
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.address, new { placeholder = "Buscar endereço", @class = "form-control", maxLength = "150", type = "text", id = "pac-input", })
+                    @Html.ValidationMessageFor(model => model.address)
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label class="control-label" base_library="api.Models.filial.endereco">endereco</label>
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.endereco, new { placeholder = "", @class = "form-control", maxLength = "150", type = "text", Readonly = "readonly" })
+                    @Html.ValidationMessageFor(model => model.endereco)
+                </div>
+                <div class="form-group col-md-2">
+                    <label class="control-label" base_library="api.Models.filial.numero">numero</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.numero, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                    @Html.ValidationMessageFor(model => model.numero)
+                </div>
+
+
+
+
+                <div class="form-group col-md-2">
+                    <label class="control-label" base_library="api.Models.filial.cidade">cidade</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.cidade, new { placeholder = "", @class = "form-control", maxLength = "150", Readonly = "readonly" })
+                    @Html.ValidationMessageFor(model => model.cidade)
+                </div>
+
+                <div class="form-group col-md-2">
+                    <label class="control-label" base_library="api.Models.filial.pais">País</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.pais, new { placeholder = "", @class = "form-control", maxLength = "150", Readonly = "readonly" })
+                    @Html.ValidationMessageFor(model => model.pais)
+                </div>
+
+
+                <div class="form-group col-md-2">
+                    <label class="control-label" base_library="api.Models.filial.complemento">complemento</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.complemento, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                    @Html.ValidationMessageFor(model => model.complemento)
+                </div>
+
+                <div class="form-group col-md-1">
+                    <label class="control-label" base_library="api.Models.filial.distancia">distancia</label>
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.distancia, new { placeholder = "", @class = "form-control", maxLength = "150", type = "number", min = "1", max = "50" })
+                    @Html.ValidationMessageFor(model => model.distancia)
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label class="control-label" base_library="api.Models.filial.matriz_id">matriz_id</label>
+                    <select class="form-control select2" source="#matriz_id" data-placeholder="" style="width: 100%;">
+                        <option value="null">Selecione um item</option>
+                        @foreach (var item in new api.Models.db().filial.Where(c => c.place_id == api.Models.db.place.place_id))
+                        {
+                            <option value="@item.id">@(item.nome)</option>
+                        }
+                    </select>
+                    @Html.HiddenFor(model => model.matriz_id)
+                    @Html.ValidationMessageFor(model => model.matriz_id)
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label class="control-label" base_library="api.Models.filial.administrador_id">administrador_id</label>
+                    <select class="form-control select2" source="#administrador_id" data-placeholder="" style="width: 100%;">
+                        <option value="null">Selecione um item</option>
+                        @foreach (var item in new api.Models.db().pessoa.Where(c => c.place_id == api.Models.db.place.place_id && c.perfil_id == 4))
+                {
+                            <option value="@item.id">@(item.nome)</option>
+                        }
+                    </select>
+                    @Html.HiddenFor(model => model.administrador_id)
+                    @Html.ValidationMessageFor(model => model.administrador_id)
+                </div>
+
+
+
+
+
+
+
+
+
+                @*<div class="form-group col-md-12">
+                        <label class="control-label">lat</label>
+                        <div style="clear: both"></div>
+                        @Html.TextBoxFor(model => model.lat, new { placeholder = "", @class = "form-control", maxLength = "150", type = "number", min = "1", max = "50" })
+                        @Html.ValidationMessageFor(model => model.lat)
+                    </div>
+
+
+                    <div class="form-group col-md-12">
+                        <label class="control-label">lng</label>
+                        <div style="clear: both"></div>
+                        @Html.TextBoxFor(model => model.lng, new { placeholder = "", @class = "form-control", maxLength = "150", type = "number", min = "1", max = "50" })
+                        @Html.ValidationMessageFor(model => model.lng)
+                    </div>*@
+
+
+
+                @*Latitude e Longitude*@
+                @Html.HiddenFor(model => model.lat)
+                @Html.ValidationMessageFor(model => model.lat)
+
+                @Html.HiddenFor(model => model.lng)
+                @Html.ValidationMessageFor(model => model.lng)
+
+                <div class="form-group col-md-3">
+                    <label class="control-label" base_library="api.Models.filial.cor_id">cor_id</label>
+                    <select class="form-control select2" source="#cor_id" data-placeholder="" style="width: 100%;">
+                        <option value="null">Selecione um item</option>
+                        @foreach (var item in new api.Models.db().cor)
+                {
+                            <option value="@item.id">@(item.nome)</option>
+                        }
+                    </select>
+                    @Html.HiddenFor(model => model.cor_id)
+                    @Html.ValidationMessageFor(model => model.cor_id)
+                </div>
+
+
+                <div class="form-group col-md-3">
+                    <label class="control-label" base_library="api.Models.filial.telefone">telefone</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.telefone, new { placeholder = "", @class = "form-control", maxLength = "150", mask = "{\"value\":\"+999999999999\"}" })
+                    @Html.ValidationMessageFor(model => model.telefone)
+                </div>
+
+
+
+                <div class="form-group col-md-3">
+                    <label class="control-label" base_library="api.Models.filial.celular">celular</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.celular, new { placeholder = "", @class = "form-control", maxLength = "150", mask = "{\"value\":\"+9999999999999\"}" })
+                    @Html.ValidationMessageFor(model => model.celular)
+                </div>
+
+
+
+
+                <div class="form-group col-md-3">
+                    <label class="control-label" base_library="api.Models.filial.Balcao">Balcao</label>
+                    <div style="height: 34px; line-height: 30px;">
+                        <label style="min-width: 45px;">
+                            <input type="radio" value="true" name="item_correctt" class="minimal-green">
+                            Sim
+
+                        </label>
+                        <label style="min-width: 45px;">
+                            <input type="radio" value="false" name="item_correctt" class="minimal">
+                            Não
+
+                        </label>
+                        @Html.HiddenFor(model => model.balcao, new { icheck = "item_correctt" })
+                        @Html.ValidationMessageFor(model => model.balcao)
+                    </div>
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label class="control-label" base_library="api.Models.filial.Delivery">Delivery</label>
+                    <div style="height: 34px; line-height: 30px;">
+                        <label style="min-width: 45px;">
+                            <input type="radio" value="true" name="item_correct" class="minimal-green">
+                            Sim
+
+                        </label>
+                        <label style="min-width: 45px;">
+                            <input type="radio" value="false" name="item_correct" class="minimal">
+                            Não
+
+                        </label>
+                        @Html.HiddenFor(model => model.delivery, new { icheck = "item_correct" })
+                        @Html.ValidationMessageFor(model => model.delivery)
+                    </div>
+                </div>
+
+
+
+
+                <div class="form-group col-md-3">
+                    <label class="control-label" base_library="api.Models.filial.versao">versao</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.versao, new { placeholder = "", @class = "form-control", maxLength = "150"})
+                    @Html.ValidationMessageFor(model => model.versao)
+                </div>
+
+
+
+
+                <div class="form-group col-md-12 btn-gallery">
+                    <a class="btn btn-success pull-right" onclick="$(this).closest('form').submit()" base_library="api.Models.filial.library_save"><i class="fa fa-check"></i>Salvar</a>
+                </div>
+            </div>
+        </fieldset>
+                                }
+
+</section>
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIoBAvqfno0lFGhuzuuwqX0KmXRdr-10o&libraries=places&callback=initSearch"
+            async defer></script>
+    <script src="~/Scripts/admin/filial.js"></script>
+
+}
+

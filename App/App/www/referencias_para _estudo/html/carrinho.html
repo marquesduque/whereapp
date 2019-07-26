@@ -1,0 +1,149 @@
+﻿<div class="pages">
+    <div data-page="detail-restaurant" class="page navbar-fixed">
+        <div class="navbar background-creait">
+            <div class="navbar-inner">
+                <div class="left">
+                    <a onclick="creait.redirect('categoria')" class="link"><i class="f7-icons icone-voltar">angle-left</i></a>
+                    {{js "controller.cliente.get() == null ? '' : controller.cliente.get().nome"}}
+                </div>
+                <div class="right total_carrinho">
+                    <img style="width: 40px" src="icons/animated/{{cor_tema}}/coin.svg" />
+                    <span id="total" formatMoney>{{carrinho_total}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="panel_carrinho" style="    width: 100%;
+    /* height: 200px; */
+    position: fixed;
+    bottom: 0px;
+    z-index: 999;">
+            <div style="font-size:22px;text-align:right;
+    padding: 0px 20px;">
+
+            </div>
+            <div style="clear:both"></div>
+            <div>
+                {{#js_if "biblioteca.get('pagamento_no_final', false)"}}
+                <div class="buton" onclick="controller.login.get() ==null ? creait.redirect('login') : creait.redirect('confirmar')" style="width:100%; height:20px; border-radius:0px">
+                    <span class="icon-alarm">
+                    </span>{{js "biblioteca.get('label_finalizar_compra', 'Comprar')"}}
+                </div>
+                {{else}}
+
+                {{#js_if "controller.login.get() != null && controller.login.get().perfil_id == 5"}}
+                <div class="buton labelcomprar" style="width:calc(100% - 60px); height:20px; border-radius:0px;float: left; background-color: #009688; color:#fff">
+                    <span class="icon-checkmark">
+                    </span>{{js "biblioteca.get('label_finalizar_compra', 'FINALIZAR')"}}
+                </div>  <div class="buton" onclick="controller.carrinho.memory = { carrinho: controller.carrinho.get(), cliente: controller.cliente.get() }; controller.carrinho.set(null); $('.menu_continuar div').text(controller.cliente.get().nome); $('.menu_continuar').show(); creait.redirect('mesas')"
+     style="width:60px; height:20px; border-radius:0px;float: left;">
+    <span class="icon-stopwatch">
+    </span>{{js "biblioteca.get('label_finalizar_compra', 'GUARDAR')"}}GUARDAR
+</div>
+                {{/js_if}}
+                {{#js_if "controller.login.get() != null && controller.login.get().perfil_id == 3"}}
+                        <div class=" buton labelcomprar" style="width:100%; height:20px; border-radius:0px">
+
+                            <span class="icon-checkmark">
+                            </span>{{js "biblioteca.get('label_finalizar_compra', 'FINALIZAR PEDIDO')"}}
+                        </div>
+                {{/js_if}}
+                {{#js_if "controller.login.get() == null || (controller.login.get().perfil_id != 5 && controller.login.get().perfil_id != 3)"}}
+                <div class=" buton labelcomprar" style="width:100%; height:20px; border-radius:0px">
+                    <img style="width: 40px;
+    margin-right: 5px;
+    margin-left: -90px;
+    margin-top: -10px;" src="icons/animated/{{cor_tema}}/card.svg" />
+                    <span style="position:absolute">{{js "biblioteca.get('label_finalizar_compra', 'Comprar')"}}</span>
+                </div>
+                {{/js_if}}
+
+                {{/js_if}}
+
+            </div>
+        </div>
+
+        <div class="page-content imagem-background no-searchbar" style="padding-bottom: 40px;
+    top: 50px;
+    padding-top: 0px;
+    height: calc(100% - 90px); background-color:var(--bg-color);color:var(--textbox-font-color)">
+
+            {{#each comandas}}
+            {{#js_if "this.label_numero != '' && this.label_numero != null"}}
+            <div class="comanda_numero">{{label_numero}}</div>
+            {{/js_if}}
+            {{#each produtos}}
+
+            <div class="col-100 item-link" produto_id="{{id}}" agrupamentoid="{{agrupamentoid}}" style="min-height: 50px; border-bottom: 1px solid var(--textbox-color-hover); padding: 5px;">
+                {{#js_if "this.icone != ''"}}
+                <div style="background:url({{icone}}); width:95px !important; height:95px !important; margin-right: 10px;" class="image_cart">
+                </div>
+                {{/js_if}}
+                <div class="item-title fonte_cinza" style="font-weight: bold;  width:100%; padding-top:5px;">
+                    {{nome}}
+                </div>
+                <div class="item-title fonte_cinza" style=" white-space: normal;padding-right: 115px; font-size:12px;width:100%;margin-bottom: 10px;">
+                    {{agrupamento}}
+
+                    <span class="link-deeporange" style="    width: 200px;
+    font-weight: bold;
+    font-size: 20px;
+    float: right;
+    text-align: right;
+    line-height: 23px;    margin-top: 5px;">
+
+                        <span class="total_carrinho">{{total}}</span>
+                        <div class="fonte_cinza" style="text-align:right; width:100%; font-size:9px; margin-right:8px; float:right">
+                            {{#js_if "this.agenda_id != null"}}
+                            {{#js_if "this.duracao != null || this.duracao != 0"}}
+                            VALOR DA CONSULTA
+                            {{/js_if}}
+                            {{else}}
+                            Valor Unitário
+                            {{/js_if}}<span formatMoney>{{preco}}</span>
+                        </div>
+                        {{js_if "biblioteca.get('excluir_tudo', true)"}}
+                        <div class="remover_tudo" datahora="{{data}}" style="font-size:10px; float:right; color:var(--primary-color) !important; font-weight:900; cursor:pointer">
+                            <i class="f7-icons size-50" style="float: right;
+    font-size: 12px;
+    padding: 4px 0px 0px 4px;">trash_fill</i>
+                            <div style="float:right">EXCLUIR</div>
+                        </div>
+                        {{/js_if}}
+                    </span>
+                </div>
+
+                <div class="item-title fonte_cinza" style="font-weight:bold; white-space: normal; float:left">
+
+                    {{#js_if "this.agenda_id == null"}}
+                    {{#js_if "this.unidade == null || this.unidade == ''"}}
+                    <div style="
+    float: left;
+    padding: 5px;">
+                        <span class="f7-icons size-50 remover">delete_round_fill</span>
+                        <span style="font-size:16px; padding:0px 10px" class="fonte_branca quantidade_carrinho">{{quantidade}}</span>
+                        <span class="f7-icons size-50 adicionar">add_round_fill</span>
+
+                    </div>
+                    {{else}}
+                    <span class="buton unidade" style="    padding: 7px 10px 6px;
+    float: left;
+    line-height: 17px; font-size:12px">
+                        <span style="font-size: 16px;
+    text-align: center;
+    padding: 0px;" class="quantidade_carrinho">{{js "creait.convert_int_peso(this.quantidade)"}}</span>
+                        <span>{{this.unidade}}</span>
+                    </span>
+                    {{/js_if}}
+                    {{/js_if}}
+
+                </div>
+                <div style="clear:both"></div>
+            </div>
+
+            {{/each}}
+            {{/each}}
+        </div>
+        <!--  -->
+
+    </div>
+</div>

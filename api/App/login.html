@@ -1,0 +1,62 @@
+﻿<div class="pages">
+    <div data-page="login" class="page">
+        <div class="navbar background-creait">
+            <div class="navbar-inner margin-bottom-20">
+                <div class="center">Fazer login</div>
+            </div>
+        </div>
+        <div class="page-content text-center">
+            <div class="page-content" id="app-cover" style="overflow: hidden;">
+
+                <div  style="margin-top: 50px;">
+                    <!--<div class="text-center" style="text-align: right;"><a href="#" class="back link cor-creait"><i class="flaticon-close cor-creait"></i></a></div>-->
+
+                    <formlogin>
+                        <div class="list-block margin-bottom-40">
+                            <input type="hidden" name="push_id" value="" id="push_id"/>
+                            <input type="hidden" name="plataforma" value="" id="plataforma"/>
+                            <ul class="no-border" style="padding-top:20px">
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" id="email" type="email" name="email" placeholder="E-mail">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" id="senha" type="password" name="password" class="text-thiny" placeholder="Senha">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div style="text-align: right;margin-right: 10px;">
+                                <a onclick="creait.redirect('lembrar')" class="text-underline gray-text" style="font-size:14px;cursor:pointer; margin-right:20px">Esqueci minha senha</a>
+                            </div>
+                        </div>
+                        <div class="row btn-form-group margin-bottom-10 margin-top-40">
+                            <div class="col-100">
+                                <div id="btn_login" class="buton">Entrar</div>
+                            </div>
+                            <!--<div class="col-50">
+                                <div id="btn_facebook" class="buton-facebook">Facebook</div>
+                            </div>-->
+                        </div>
+                        <div class="text-center margin-bottom-15 margin-top-50">
+                            <a onclick="creait.redirect('cadastro')" class="gray-text" style="font-size:216x;cursor:pointer;">
+                                <img src="icons/animated/{{cor_tema}}/add.svg" style="    width: 30px;
+    position: absolute;
+    margin-left: -33px;
+    margin-top: -5px;" />Ainda não tem Login? Cadastre-se!</a>
+                        </div>
+                    </formlogin>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

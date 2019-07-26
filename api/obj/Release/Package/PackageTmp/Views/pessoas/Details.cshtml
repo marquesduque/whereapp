@@ -1,0 +1,93 @@
+﻿@model api.Models.pessoa
+
+@{
+    ViewBag.Title = "Listo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        <a href="@Url.Action("Index", new { perfil_id = 2 })" class="btn btn-info"><i class="glyphicon glyphicon-chevron-left" style="margin-right: 10px"></i>Voltar</a>
+    </h1>
+</section>
+
+
+<section class="content">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.ValidationSummary(true)
+        <div class="alert alert-danger" role="alert" base_library="api.Models.estabelecimento.library_error_register">
+            Registro não gravado, verificar erro criticado
+        </div>
+
+        <fieldset>
+
+            <div class="col-md-12 bar">
+                <label class="col-md-6" base_library="api.Models.estabelecimento.library_title"><i class="glyphicon glyphicon-list-alt" style="margin-right: 10px"></i>Usuário: @Model.nome</label>
+            </div>
+
+            <div>
+                <div class="form-group col-md-6">
+                    <label class="control-label" base_library="api.Models.produto.tipo_id">Enviar Notificacao Para</label>
+                    <select class="form-control select2" multiple="multiple" source="#notificacao_para" data-placeholder="" style="width: 100%;">
+                        <option value="0">Todos</option>
+                        @foreach (var item in new api.Models.db().pessoa.Where(c => c.place_id == api.Models.db.place.place_id && c.perfil_id == 2))
+                        {
+                            <option value="@item.id">@(item.nome)</option>
+                        }
+                    </select>
+                    @Html.HiddenFor(model => model.notificacao_para)
+                    @Html.ValidationMessageFor(model => model.notificacao_para)
+                </div>
+
+                <div class="form-group col-md-12">
+                    <label class="control-label" base_library="api.Models.estabelecimento.Texto">Texto da Notificação</label>
+                    <div style="clear: both"></div>
+                    @Html.TextAreaFor(model => model.msg_notificacao, new { placeholder = "", @class = "form-control", maxLength = "350", type = "text" })
+                    @Html.ValidationMessageFor(model => model.msg_notificacao)
+                </div>
+
+                <div class="form-group col-md-12 btn-gallery">
+                    <a onclick="notify()" class="btn btn-success pull-right"><i class="fa fa-bell" style="margin-right: 10px"></i>Notificar</a>
+                </div>
+            </div>
+        </fieldset>
+    }
+
+</section>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        function notify() {
+            var usuarios = JSON.parse($("#notificacao_para").val());
+            var texto = $('[name="msg_notificacao"]').val();
+            var id = "";
+
+            $('.loader').show();
+
+            for (var i = 0; i < usuarios.length; i++) {
+                id += "id=" + usuarios[i] + "&"
+            }
+
+            $.ajax({
+                type: "POST",
+                url: "/pessoas/notify?" + id + "msg_push=" + texto,
+                //dataType: 'json',
+                success: function (result) {
+                    $('.loader').hide();
+                    modal(result);
+                    window.close();
+                },
+                error: function (a, b, c) {
+                    $('.loader').hide();
+                    modal("Ocorreu um erro ao enviar a notificação!");
+                }
+            });
+        }
+    </script>
+}

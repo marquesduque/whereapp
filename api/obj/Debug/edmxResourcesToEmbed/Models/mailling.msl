@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="maillingModelStoreContainer" CdmEntityContainer="maillingEntities">
+    <EntitySetMapping Name="email">
+      <EntityTypeMapping TypeName="maillingModel.email">
+        <MappingFragment StoreEntitySet="email">
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="data_id" ColumnName="data_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="place">
+      <EntityTypeMapping TypeName="maillingModel.place">
+        <MappingFragment StoreEntitySet="place">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="checkins" ColumnName="checkins" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="website" ColumnName="website" />
+          <ScalarProperty Name="location_id" ColumnName="location_id" />
+          <ScalarProperty Name="search" ColumnName="search" />
+          <ScalarProperty Name="picture" ColumnName="picture" />
+          <ScalarProperty Name="cover" ColumnName="cover" />
+          <ScalarProperty Name="rating_count" ColumnName="rating_count" />
+          <ScalarProperty Name="about" ColumnName="about" />
+          <ScalarProperty Name="hours_id" ColumnName="hours_id" />
+          <ScalarProperty Name="user_name" ColumnName="user_name" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="logo" ColumnName="logo" />
+          <ScalarProperty Name="logo_itype" ColumnName="logo_itype" />
+          <ScalarProperty Name="specialty" ColumnName="specialty" />
+          <ScalarProperty Name="url" ColumnName="url" />
+          <ScalarProperty Name="theme" ColumnName="theme" />
+          <ScalarProperty Name="connection" ColumnName="connection" />
+          <ScalarProperty Name="place_id" ColumnName="place_id" />
+          <ScalarProperty Name="loader" ColumnName="loader" />
+          <ScalarProperty Name="background_image_local" ColumnName="background_image_local" />
+          <ScalarProperty Name="balcao" ColumnName="balcao" />
+          <ScalarProperty Name="delivery" ColumnName="delivery" />
+          <ScalarProperty Name="primary_color" ColumnName="primary_color" />
+          <ScalarProperty Name="primary_font_color" ColumnName="primary_font_color" />
+          <ScalarProperty Name="secondary_color" ColumnName="secondary_color" />
+          <ScalarProperty Name="secondary_font_color" ColumnName="secondary_font_color" />
+          <ScalarProperty Name="textbox_color" ColumnName="textbox_color" />
+          <ScalarProperty Name="textbox_font_color" ColumnName="textbox_font_color" />
+          <ScalarProperty Name="border_radius_textbox" ColumnName="border_radius_textbox" />
+          <ScalarProperty Name="border_radius_button" ColumnName="border_radius_button" />
+          <ScalarProperty Name="light_color" ColumnName="light_color" />
+          <ScalarProperty Name="dark_color" ColumnName="dark_color" />
+          <ScalarProperty Name="font_color" ColumnName="font_color" />
+          <ScalarProperty Name="card_number" ColumnName="card_number" />
+          <ScalarProperty Name="card_name" ColumnName="card_name" />
+          <ScalarProperty Name="card_date" ColumnName="card_date" />
+          <ScalarProperty Name="card_cvv" ColumnName="card_cvv" />
+          <ScalarProperty Name="card_hash" ColumnName="card_hash" />
+          <ScalarProperty Name="card_document" ColumnName="card_document" />
+          <ScalarProperty Name="pagarme_id" ColumnName="pagarme_id" />
+          <ScalarProperty Name="card_brand" ColumnName="card_brand" />
+          <ScalarProperty Name="pagarme_status" ColumnName="pagarme_status" />
+          <ScalarProperty Name="created" ColumnName="created" />
+          <ScalarProperty Name="whatsapp" ColumnName="whatsapp" />
+          <ScalarProperty Name="whatsapp_message" ColumnName="whatsapp_message" />
+          <ScalarProperty Name="address_required" ColumnName="address_required" />
+          <ScalarProperty Name="frete_produto" ColumnName="frete_produto" />
+          <ScalarProperty Name="icone" ColumnName="icone" />
+          <ScalarProperty Name="icone_itype" ColumnName="icone_itype" />
+          <ScalarProperty Name="mesa" ColumnName="mesa" />
+          <ScalarProperty Name="comanda" ColumnName="comanda" />
+          <ScalarProperty Name="border_color" ColumnName="border_color" />
+          <ScalarProperty Name="background" ColumnName="background" />
+          <ScalarProperty Name="background_itype" ColumnName="background_itype" />
+          <ScalarProperty Name="bg_color" ColumnName="bg_color" />
+          <ScalarProperty Name="font_light_color" ColumnName="font_light_color" />
+          <ScalarProperty Name="token_paggi" ColumnName="token_paggi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

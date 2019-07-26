@@ -1,0 +1,66 @@
+﻿@model api.Models.mensagens
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>mensagens</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.mensagem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mensagem)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.documento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.documento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.perfil_da_mensagem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.perfil_da_mensagem)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.documento_itype)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.documento_itype)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.horario.motivo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.horario.motivo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pessoa.nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pessoa.nome)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

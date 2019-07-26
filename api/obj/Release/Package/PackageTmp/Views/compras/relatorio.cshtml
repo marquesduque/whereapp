@@ -1,0 +1,83 @@
+﻿
+@model api.Models.compra
+
+@{
+    Layout = null;
+    ViewBag.Title = "Index";
+}
+
+
+<br><br>
+<hr width="800" align="left" />
+<br>
+
+<table width="800" style="font-size:13px; font-family: Verdana;">
+    <tr>
+        <td width="150"><b>Código do Pedido:</b></td>
+        <td width="280">@Model.id</td>
+        <td width="120"><b>Data do Pedido:</b></td>
+        <td>@Model.recebido.Value.ToLongDateString()</td>
+    </tr>
+    <tr>
+        <td><b>Representante:</b></td>
+        <td>@(Model.pessoa1 != null ? Model.pessoa1.nome : "")</td>
+        <td><b>Situação:</b></td>
+        <td>@Model.status_da_compra.nome</td>
+    </tr>
+    <tr>
+        <td><b>Nome do Cliente:</b> </td>
+        <td>@(Model.pessoa != null ? Model.pessoa.nome : "")</td>
+    </tr>
+    <tr>
+        <td><b>Tipo de Pagamento:</b></td>
+        <td>@Model.pagamento</td>
+    </tr>
+    <tr>
+        <td><b>Desconto(%):</b></td>
+        <td>@Model.desconto</td>
+        <td><b>Total do Pedido:</b></td>
+        <td>R$: @Model.total</td>
+    </tr>
+</table>
+
+<br>
+<hr width="800" align="left" />
+<br><br>
+
+<table width="800" style="font-size:13px; font-family: Verdana" cellspacing="0" border="1">
+
+    <tr bgcolor="#DCDCDC">
+    <th colspan="1" height="30">Código</th>
+    <th colspan="1">Descrição</th>
+    <th colspan="1">Observação</th>
+    <th colspan="1">Total</th>
+    </tr>
+
+
+    @foreach (var item in Model.pedido)
+    {
+        if (item.complemento_de == null)
+        {
+            <tr>
+                <td width="60" height="35" align="center">@item.id</td>
+
+                @{string nome_produto = item.produto.nome; }
+                @foreach (var itemm in Model.pedido.Where(c => c.complemento_de == item.id))
+                {
+                    nome_produto = nome_produto + " + " + itemm.produto.nome;
+
+                }
+
+                <td> @nome_produto</td>
+                <td width="250">@item.observacao</td>
+                <td width="60" align="center">@item.preco</td>
+            </tr>
+
+        }
+    }
+
+</table>
+
+<script>
+    window.print();
+</Script >

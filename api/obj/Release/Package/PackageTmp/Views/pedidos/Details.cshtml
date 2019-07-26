@@ -1,0 +1,66 @@
+﻿@model api.Models.pedido
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>pedido</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.preco)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.preco)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.desconto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.desconto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.montagem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.montagem)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.compra.id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.compra.id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pedido2.montagem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pedido2.montagem)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.produto.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.produto.name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

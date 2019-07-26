@@ -1,0 +1,2264 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Monitoramento.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="acesso">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="create" Type="bit" />
+          <Property Name="edit" Type="bit" />
+          <Property Name="delete" Type="bit" />
+          <Property Name="list" Type="bit" />
+          <Property Name="perfil_id" Type="int" />
+          <Property Name="url" Type="varchar" MaxLength="350" />
+          <Property Name="name" Type="varchar" MaxLength="350" />
+          <Property Name="icon" Type="varchar" MaxLength="50" />
+          <Property Name="group" Type="varchar" MaxLength="150" />
+          <Property Name="order" Type="int" />
+          <Property Name="place_id" Type="bigint" />
+        </EntityType>
+        <EntityType Name="assinatura">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pessoa_id" Type="int" />
+          <Property Name="item_id" Type="int" />
+          <Property Name="codigo" Type="varchar" MaxLength="200" />
+          <Property Name="valor" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="biblioteca_de_palavra">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="url" Type="varchar" MaxLength="500" />
+          <Property Name="name" Type="varchar" MaxLength="500" />
+          <Property Name="description" Type="varchar" MaxLength="500" />
+          <Property Name="col" Type="bit" />
+          <Property Name="col_description" Type="varchar" MaxLength="500" />
+          <Property Name="size" Type="int" />
+          <Property Name="place_id" Type="bigint" />
+          <Property Name="edit" Type="bit" />
+        </EntityType>
+        <EntityType Name="cartao">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="numero" Type="varchar" MaxLength="500" />
+          <Property Name="nome" Type="varchar" MaxLength="500" />
+          <Property Name="expiracao" Type="varchar" MaxLength="50" />
+          <Property Name="cvv" Type="varchar" MaxLength="50" />
+          <Property Name="hash" Type="varchar" MaxLength="500" />
+          <Property Name="pessoa_id" Type="int" />
+          <Property Name="documento" Type="varchar" MaxLength="100" />
+          <Property Name="pagarme_id" Type="varchar" MaxLength="50" />
+          <Property Name="bandeira" Type="varchar" MaxLength="50" />
+          <Property Name="place_id" Type="bigint" />
+          <Property Name="compra_id" Type="int" />
+          <Property Name="credito" Type="bit" />
+          <Property Name="debito" Type="bit" />
+        </EntityType>
+        <EntityType Name="compra">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pagamento" Type="datetime" />
+          <Property Name="total" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="desconto" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="pagamento_id" Type="int" />
+          <Property Name="preparo" Type="datetime" />
+          <Property Name="entregue" Type="datetime" />
+          <Property Name="finalizado" Type="datetime" />
+          <Property Name="status_da_compra_id" Type="int" />
+          <Property Name="filial_id" Type="int" />
+          <Property Name="pago" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="recebido" Type="datetime" />
+          <Property Name="ativo" Type="bit" />
+          <Property Name="cancelamento" Type="datetime" />
+          <Property Name="pagarme_id" Type="varchar" MaxLength="50" />
+          <Property Name="pagarme_status" Type="int" />
+          <Property Name="place_id" Type="bigint" />
+          <Property Name="balcao" Type="bit" />
+          <Property Name="delivery" Type="bit" />
+          <Property Name="codigo_servicos" Type="varchar" MaxLength="50" />
+          <Property Name="valor_frete" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="cartao_id" Type="int" />
+          <Property Name="cpf" Type="varchar" MaxLength="100" />
+          <Property Name="boleto_barcode" Type="varchar" MaxLength="500" />
+          <Property Name="boleto_url" Type="varchar" MaxLength="500" />
+          <Property Name="comprador_id" Type="int" />
+          <Property Name="tipo_frete" Type="varchar" MaxLength="150" />
+          <Property Name="vendedor_id" Type="int" />
+          <Property Name="comissao_vendedor" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="external_id" Type="bigint" />
+          <Property Name="frete" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="observacao" Type="varchar" MaxLength="450" />
+          <Property Name="item_id" Type="int" />
+          <Property Name="lat" Type="decimal" Precision="20" Scale="12" />
+          <Property Name="lng" Type="decimal" Precision="20" Scale="12" />
+          <Property Name="rua" Type="varchar" MaxLength="250" />
+          <Property Name="numero" Type="varchar" MaxLength="10" />
+          <Property Name="complemento" Type="varchar" MaxLength="850" />
+          <Property Name="cidade" Type="varchar" MaxLength="250" />
+          <Property Name="pais" Type="varchar" MaxLength="250" />
+          <Property Name="cep" Type="varchar" MaxLength="250" />
+          <Property Name="bairro" Type="varchar" MaxLength="1000" />
+          <Property Name="estado" Type="varchar" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="compra_item">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="item_id" Type="int" />
+          <Property Name="compra_id" Type="int" />
+          <Property Name="status" Type="int" />
+          <Property Name="quantidade" Type="int" />
+        </EntityType>
+        <EntityType Name="grupo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="250" />
+          <Property Name="descricao" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="grupo_item">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="item_id" Type="int" />
+          <Property Name="grupo_id" Type="int" />
+        </EntityType>
+        <EntityType Name="grupo_pessoa">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pessoa_id" Type="int" />
+          <Property Name="grupo_id" Type="int" />
+          <Property Name="ativo" Type="bit" />
+          <Property Name="convite" Type="int" />
+        </EntityType>
+        <EntityType Name="item">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="500" />
+          <Property Name="cor" Type="varchar" MaxLength="250" />
+          <Property Name="raca" Type="varchar" MaxLength="250" />
+          <Property Name="photo" Type="image" />
+          <Property Name="photo_itype" Type="varchar" MaxLength="150" />
+          <Property Name="sangue" Type="varchar" MaxLength="250" />
+          <Property Name="nascimento" Type="datetime" />
+          <Property Name="pelo" Type="varchar" MaxLength="250" />
+          <Property Name="vacinas" Type="varchar" MaxLength="1000" />
+          <Property Name="responsavel_id" Type="int" />
+          <Property Name="valor" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="tipo_id" Type="int" />
+          <Property Name="cnpj" Type="varchar" MaxLength="250" />
+          <Property Name="cpf" Type="varchar" MaxLength="250" />
+          <Property Name="ativo" Type="bit" />
+          <Property Name="rastreado_id" Type="int" />
+          <Property Name="descricao" Type="varchar" MaxLength="500" />
+          <Property Name="perdido" Type="bit" />
+          <Property Name="genero" Type="varchar" MaxLength="50" />
+          <Property Name="rg" Type="varchar" MaxLength="50" />
+          <Property Name="estoque" Type="int" />
+          <Property Name="doacao" Type="bit" />
+          <Property Name="apadrinhar" Type="bit" />
+          <Property Name="modelo" Type="varchar" MaxLength="250" />
+          <Property Name="fabricante" Type="varchar" MaxLength="250" />
+          <Property Name="marca" Type="varchar" MaxLength="250" />
+          <Property Name="num_serie" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="localizacao">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="item_id" Type="int" />
+          <Property Name="lat" Type="decimal" Precision="20" Scale="12" />
+          <Property Name="lng" Type="decimal" Precision="20" Scale="12" />
+          <Property Name="cadastro" Type="datetime" />
+          <Property Name="photo" Type="image" />
+          <Property Name="photo_itype" Type="varchar" MaxLength="150" />
+          <Property Name="descricao" Type="varchar" MaxLength="1000" />
+          <Property Name="ativo" Type="bit" />
+        </EntityType>
+        <EntityType Name="localizacao_pessoa">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="latitude" Type="decimal" Precision="20" Scale="12" />
+          <Property Name="longitude" Type="decimal" Precision="20" Scale="12" />
+          <Property Name="pessoa_id" Type="int" />
+        </EntityType>
+        <EntityType Name="notificacao">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pessoa_id" Type="int" />
+          <Property Name="mensagem" Type="varchar" MaxLength="500" />
+          <Property Name="lido" Type="bit" />
+          <Property Name="data" Type="datetime" />
+        </EntityType>
+        <EntityType Name="padrinho">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="padrinho_id" Type="int" />
+          <Property Name="item_id" Type="int" />
+          <Property Name="valor" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="cadastro" Type="datetime" />
+        </EntityType>
+        <EntityType Name="pagamento">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="250" />
+          <Property Name="taxa" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="grupo_do_pagamento_id" Type="int" />
+          <Property Name="bandeira_id" Type="varchar" MaxLength="50" />
+          <Property Name="place_id" Type="bigint" />
+          <Property Name="transacao" Type="int" />
+          <Property Name="external_id" Type="varchar" MaxLength="50" />
+          <Property Name="icone" Type="image" />
+          <Property Name="icone_itype" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="perfil">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="500" />
+          <Property Name="place_id" Type="bigint" />
+        </EntityType>
+        <EntityType Name="pessoa">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="500" />
+          <Property Name="email" Type="varchar" MaxLength="4000" />
+          <Property Name="birthday" Type="datetime" />
+          <Property Name="facebook" Type="varchar" MaxLength="4000" />
+          <Property Name="cpf" Type="varchar" MaxLength="100" />
+          <Property Name="rg" Type="varchar" MaxLength="100" />
+          <Property Name="perfil_id" Type="int" />
+          <Property Name="phone" Type="varchar" MaxLength="50" />
+          <Property Name="phone_optional" Type="varchar" MaxLength="50" />
+          <Property Name="mobile" Type="varchar" MaxLength="50" />
+          <Property Name="mobile_optional" Type="varchar" MaxLength="50" />
+          <Property Name="rating" Type="int" />
+          <Property Name="password" Type="varchar" MaxLength="50" />
+          <Property Name="photo" Type="image" />
+          <Property Name="description" Type="varchar" MaxLength="4000" />
+          <Property Name="active" Type="bit" />
+          <Property Name="charge" Type="varchar" MaxLength="150" />
+          <Property Name="email_change" Type="datetime" />
+          <Property Name="status_usuario_id" Type="int" />
+          <Property Name="photo_itype" Type="varchar" MaxLength="50" />
+          <Property Name="push_id" Type="varchar" MaxLength="300" />
+          <Property Name="push_arn" Type="varchar" MaxLength="300" />
+          <Property Name="credit" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="cnpj" Type="varchar" MaxLength="100" />
+          <Property Name="razao_social" Type="varchar" MaxLength="100" />
+          <Property Name="place_id" Type="bigint" />
+          <Property Name="Agencia" Type="varchar" MaxLength="50" />
+          <Property Name="AgenciaDv" Type="varchar" MaxLength="50" />
+          <Property Name="Conta" Type="varchar" MaxLength="50" />
+          <Property Name="ContaDv" Type="varchar" MaxLength="50" />
+          <Property Name="BankCode" Type="varchar" MaxLength="50" />
+          <Property Name="DocumentNumber" Type="varchar" MaxLength="50" />
+          <Property Name="LegalName" Type="varchar" MaxLength="50" />
+          <Property Name="comissao" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="pagarme_id" Type="varchar" MaxLength="50" />
+          <Property Name="created" Type="datetime" />
+          <Property Name="external_id" Type="int" />
+          <Property Name="filial_id" Type="int" />
+          <Property Name="cpf_image" Type="image" />
+          <Property Name="cpf_image_itype" Type="varchar" MaxLength="50" />
+          <Property Name="rg_image" Type="image" />
+          <Property Name="rg_image_itype" Type="varchar" MaxLength="50" />
+          <Property Name="comprovante" Type="image" />
+          <Property Name="comprovante_itype" Type="varchar" MaxLength="50" />
+          <Property Name="genero" Type="bit" />
+          <Property Name="antecedentes" Type="image" />
+          <Property Name="antecedentes_itype" Type="varchar" MaxLength="50" />
+          <Property Name="certificado" Type="image" />
+          <Property Name="certificado_itype" Type="varchar" MaxLength="50" />
+          <Property Name="BankToken" Type="varchar" MaxLength="5000" />
+          <Property Name="especialidade_id" Type="int" />
+          <Property Name="lat" Type="decimal" Precision="20" Scale="12" />
+          <Property Name="lng" Type="decimal" Precision="20" Scale="12" />
+          <Property Name="rua" Type="varchar" MaxLength="250" />
+          <Property Name="numero" Type="varchar" MaxLength="10" />
+          <Property Name="complemento" Type="varchar" MaxLength="850" />
+          <Property Name="cidade" Type="varchar" MaxLength="250" />
+          <Property Name="pais" Type="varchar" MaxLength="250" />
+          <Property Name="cep" Type="varchar" MaxLength="250" />
+          <Property Name="bairro" Type="varchar" MaxLength="1000" />
+          <Property Name="estado" Type="varchar" MaxLength="2" />
+          <Property Name="grupo" Type="varchar" MaxLength="500" />
+          <Property Name="filial" Type="varchar" MaxLength="500" />
+          <Property Name="franqueador" Type="varchar" MaxLength="500" />
+          <Property Name="franqueado" Type="varchar" MaxLength="500" />
+          <Property Name="lat_celular" Type="decimal" Precision="20" Scale="12" />
+          <Property Name="lon_celular" Type="decimal" Precision="20" Scale="12" />
+          <Property Name="data_localizacao" Type="datetime" />
+        </EntityType>
+        <EntityType Name="rastreador">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codigo" Type="varchar" MaxLength="500" />
+          <Property Name="cadastro" Type="datetime" />
+          <Property Name="item_id" Type="int" />
+          <Property Name="vinculo" Type="datetime" />
+          <Property Name="ativo" Type="bit" />
+        </EntityType>
+        <EntityType Name="responsavel_juridico">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="100" />
+          <Property Name="rg" Type="varchar" MaxLength="50" />
+          <Property Name="cpf" Type="varchar" MaxLength="50" />
+          <Property Name="email" Type="varchar" MaxLength="100" />
+          <Property Name="celular" Type="varchar" MaxLength="50" />
+          <Property Name="telefone" Type="varchar" MaxLength="50" />
+          <Property Name="porcentagem" Type="int" />
+          <Property Name="cargo_posicao" Type="varchar" MaxLength="500" />
+          <Property Name="pessoa_id" Type="int" />
+          <Property Name="tipo_acesso" Type="int" />
+          <Property Name="senha" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="status_da_compra">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="250" />
+          <Property Name="place_id" Type="bigint" />
+        </EntityType>
+        <EntityType Name="status_usuario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="place_id" Type="bigint" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tipo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="transacao">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="status" Type="varchar" MaxLength="100" />
+          <Property Name="data" Type="datetime" />
+          <Property Name="compra_id" Type="int" />
+        </EntityType>
+        <Association Name="FK_acesso_perfil">
+          <End Role="perfil" Type="Self.perfil" Multiplicity="0..1" />
+          <End Role="acesso" Type="Self.acesso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="perfil">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="acesso">
+              <PropertyRef Name="perfil_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_assinatura_item">
+          <End Role="item" Type="Self.item" Multiplicity="0..1" />
+          <End Role="assinatura" Type="Self.assinatura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="item">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="assinatura">
+              <PropertyRef Name="item_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_assinatura_pessoa">
+          <End Role="pessoa" Type="Self.pessoa" Multiplicity="0..1" />
+          <End Role="assinatura" Type="Self.assinatura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pessoa">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="assinatura">
+              <PropertyRef Name="pessoa_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_cartao_compra">
+          <End Role="compra" Type="Self.compra" Multiplicity="0..1" />
+          <End Role="cartao" Type="Self.cartao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="compra">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="cartao">
+              <PropertyRef Name="compra_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_cartao_pessoa">
+          <End Role="pessoa" Type="Self.pessoa" Multiplicity="0..1" />
+          <End Role="cartao" Type="Self.cartao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pessoa">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="cartao">
+              <PropertyRef Name="pessoa_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_compra_cartao">
+          <End Role="cartao" Type="Self.cartao" Multiplicity="0..1" />
+          <End Role="compra" Type="Self.compra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cartao">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="compra">
+              <PropertyRef Name="cartao_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_compra_item_compra">
+          <End Role="compra" Type="Self.compra" Multiplicity="0..1" />
+          <End Role="compra_item" Type="Self.compra_item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="compra">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="compra_item">
+              <PropertyRef Name="compra_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_compra_item_item">
+          <End Role="item" Type="Self.item" Multiplicity="0..1" />
+          <End Role="compra_item" Type="Self.compra_item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="item">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="compra_item">
+              <PropertyRef Name="item_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_compra_pagamento">
+          <End Role="pagamento" Type="Self.pagamento" Multiplicity="0..1" />
+          <End Role="compra" Type="Self.compra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pagamento">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="compra">
+              <PropertyRef Name="pagamento_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_compra_pessoa">
+          <End Role="pessoa" Type="Self.pessoa" Multiplicity="0..1" />
+          <End Role="compra" Type="Self.compra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pessoa">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="compra">
+              <PropertyRef Name="comprador_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_compra_pessoa1">
+          <End Role="pessoa" Type="Self.pessoa" Multiplicity="0..1" />
+          <End Role="compra" Type="Self.compra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pessoa">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="compra">
+              <PropertyRef Name="vendedor_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_compra_status_da_compra">
+          <End Role="status_da_compra" Type="Self.status_da_compra" Multiplicity="0..1" />
+          <End Role="compra" Type="Self.compra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="status_da_compra">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="compra">
+              <PropertyRef Name="status_da_compra_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_grupo_item_grupo">
+          <End Role="grupo" Type="Self.grupo" Multiplicity="0..1" />
+          <End Role="grupo_item" Type="Self.grupo_item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="grupo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="grupo_item">
+              <PropertyRef Name="grupo_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_grupo_item_item">
+          <End Role="item" Type="Self.item" Multiplicity="0..1" />
+          <End Role="grupo_item" Type="Self.grupo_item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="item">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="grupo_item">
+              <PropertyRef Name="item_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_grupo_pessoa_grupo">
+          <End Role="grupo" Type="Self.grupo" Multiplicity="0..1" />
+          <End Role="grupo_pessoa" Type="Self.grupo_pessoa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="grupo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="grupo_pessoa">
+              <PropertyRef Name="grupo_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_grupo_pessoa_pessoa">
+          <End Role="pessoa" Type="Self.pessoa" Multiplicity="0..1" />
+          <End Role="grupo_pessoa" Type="Self.grupo_pessoa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pessoa">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="grupo_pessoa">
+              <PropertyRef Name="pessoa_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_item_pessoa">
+          <End Role="pessoa" Type="Self.pessoa" Multiplicity="0..1" />
+          <End Role="item" Type="Self.item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pessoa">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="item">
+              <PropertyRef Name="responsavel_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_item_pessoa1">
+          <End Role="pessoa" Type="Self.pessoa" Multiplicity="0..1" />
+          <End Role="item" Type="Self.item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pessoa">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="item">
+              <PropertyRef Name="rastreado_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_item_tipo">
+          <End Role="tipo" Type="Self.tipo" Multiplicity="0..1" />
+          <End Role="item" Type="Self.item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="item">
+              <PropertyRef Name="tipo_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_localizacao_item">
+          <End Role="item" Type="Self.item" Multiplicity="0..1" />
+          <End Role="localizacao" Type="Self.localizacao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="item">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="localizacao">
+              <PropertyRef Name="item_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_localizacao_pessoa_pessoa">
+          <End Role="pessoa" Type="Self.pessoa" Multiplicity="0..1" />
+          <End Role="localizacao_pessoa" Type="Self.localizacao_pessoa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pessoa">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="localizacao_pessoa">
+              <PropertyRef Name="pessoa_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_notificacao_pessoa">
+          <End Role="pessoa" Type="Self.pessoa" Multiplicity="0..1" />
+          <End Role="notificacao" Type="Self.notificacao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pessoa">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="notificacao">
+              <PropertyRef Name="pessoa_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_padrinho_item">
+          <End Role="item" Type="Self.item" Multiplicity="0..1" />
+          <End Role="padrinho" Type="Self.padrinho" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="item">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="padrinho">
+              <PropertyRef Name="item_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_padrinho_pessoa">
+          <End Role="pessoa" Type="Self.pessoa" Multiplicity="0..1" />
+          <End Role="padrinho" Type="Self.padrinho" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pessoa">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="padrinho">
+              <PropertyRef Name="padrinho_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_rastreador_item">
+          <End Role="item" Type="Self.item" Multiplicity="0..1" />
+          <End Role="rastreador" Type="Self.rastreador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="item">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="rastreador">
+              <PropertyRef Name="item_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_reponsavel_empresa_pessoa">
+          <End Role="pessoa" Type="Self.pessoa" Multiplicity="0..1" />
+          <End Role="responsavel_juridico" Type="Self.responsavel_juridico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pessoa">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="responsavel_juridico">
+              <PropertyRef Name="pessoa_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_transacao_compra">
+          <End Role="compra" Type="Self.compra" Multiplicity="0..1" />
+          <End Role="transacao" Type="Self.transacao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="compra">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="transacao">
+              <PropertyRef Name="compra_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_status_usuario">
+          <End Role="status_usuario" Type="Self.status_usuario" Multiplicity="0..1" />
+          <End Role="pessoa" Type="Self.pessoa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="status_usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="pessoa">
+              <PropertyRef Name="status_usuario_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_usuario_perfil">
+          <End Role="perfil" Type="Self.perfil" Multiplicity="0..1" />
+          <End Role="pessoa" Type="Self.pessoa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="perfil">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="pessoa">
+              <PropertyRef Name="perfil_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MonitoramentoStoreContainer">
+          <EntitySet Name="acesso" EntityType="Self.acesso" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="assinatura" EntityType="Self.assinatura" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="biblioteca_de_palavra" EntityType="Self.biblioteca_de_palavra" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cartao" EntityType="Self.cartao" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="compra" EntityType="Self.compra" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="compra_item" EntityType="Self.compra_item" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="grupo" EntityType="Self.grupo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="grupo_item" EntityType="Self.grupo_item" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="grupo_pessoa" EntityType="Self.grupo_pessoa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="item" EntityType="Self.item" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="localizacao" EntityType="Self.localizacao" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="localizacao_pessoa" EntityType="Self.localizacao_pessoa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="notificacao" EntityType="Self.notificacao" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="padrinho" EntityType="Self.padrinho" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="pagamento" EntityType="Self.pagamento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="perfil" EntityType="Self.perfil" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="pessoa" EntityType="Self.pessoa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="rastreador" EntityType="Self.rastreador" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="responsavel_juridico" EntityType="Self.responsavel_juridico" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="status_da_compra" EntityType="Self.status_da_compra" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="status_usuario" EntityType="Self.status_usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tipo" EntityType="Self.tipo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="transacao" EntityType="Self.transacao" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_acesso_perfil" Association="Self.FK_acesso_perfil">
+            <End Role="perfil" EntitySet="perfil" />
+            <End Role="acesso" EntitySet="acesso" />
+          </AssociationSet>
+          <AssociationSet Name="FK_assinatura_item" Association="Self.FK_assinatura_item">
+            <End Role="item" EntitySet="item" />
+            <End Role="assinatura" EntitySet="assinatura" />
+          </AssociationSet>
+          <AssociationSet Name="FK_assinatura_pessoa" Association="Self.FK_assinatura_pessoa">
+            <End Role="pessoa" EntitySet="pessoa" />
+            <End Role="assinatura" EntitySet="assinatura" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cartao_compra" Association="Self.FK_cartao_compra">
+            <End Role="compra" EntitySet="compra" />
+            <End Role="cartao" EntitySet="cartao" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cartao_pessoa" Association="Self.FK_cartao_pessoa">
+            <End Role="pessoa" EntitySet="pessoa" />
+            <End Role="cartao" EntitySet="cartao" />
+          </AssociationSet>
+          <AssociationSet Name="FK_compra_cartao" Association="Self.FK_compra_cartao">
+            <End Role="cartao" EntitySet="cartao" />
+            <End Role="compra" EntitySet="compra" />
+          </AssociationSet>
+          <AssociationSet Name="FK_compra_item_compra" Association="Self.FK_compra_item_compra">
+            <End Role="compra" EntitySet="compra" />
+            <End Role="compra_item" EntitySet="compra_item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_compra_item_item" Association="Self.FK_compra_item_item">
+            <End Role="item" EntitySet="item" />
+            <End Role="compra_item" EntitySet="compra_item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_compra_pagamento" Association="Self.FK_compra_pagamento">
+            <End Role="pagamento" EntitySet="pagamento" />
+            <End Role="compra" EntitySet="compra" />
+          </AssociationSet>
+          <AssociationSet Name="FK_compra_pessoa" Association="Self.FK_compra_pessoa">
+            <End Role="pessoa" EntitySet="pessoa" />
+            <End Role="compra" EntitySet="compra" />
+          </AssociationSet>
+          <AssociationSet Name="FK_compra_pessoa1" Association="Self.FK_compra_pessoa1">
+            <End Role="pessoa" EntitySet="pessoa" />
+            <End Role="compra" EntitySet="compra" />
+          </AssociationSet>
+          <AssociationSet Name="FK_compra_status_da_compra" Association="Self.FK_compra_status_da_compra">
+            <End Role="status_da_compra" EntitySet="status_da_compra" />
+            <End Role="compra" EntitySet="compra" />
+          </AssociationSet>
+          <AssociationSet Name="FK_grupo_item_grupo" Association="Self.FK_grupo_item_grupo">
+            <End Role="grupo" EntitySet="grupo" />
+            <End Role="grupo_item" EntitySet="grupo_item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_grupo_item_item" Association="Self.FK_grupo_item_item">
+            <End Role="item" EntitySet="item" />
+            <End Role="grupo_item" EntitySet="grupo_item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_grupo_pessoa_grupo" Association="Self.FK_grupo_pessoa_grupo">
+            <End Role="grupo" EntitySet="grupo" />
+            <End Role="grupo_pessoa" EntitySet="grupo_pessoa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_grupo_pessoa_pessoa" Association="Self.FK_grupo_pessoa_pessoa">
+            <End Role="pessoa" EntitySet="pessoa" />
+            <End Role="grupo_pessoa" EntitySet="grupo_pessoa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_item_pessoa" Association="Self.FK_item_pessoa">
+            <End Role="pessoa" EntitySet="pessoa" />
+            <End Role="item" EntitySet="item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_item_pessoa1" Association="Self.FK_item_pessoa1">
+            <End Role="pessoa" EntitySet="pessoa" />
+            <End Role="item" EntitySet="item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_item_tipo" Association="Self.FK_item_tipo">
+            <End Role="tipo" EntitySet="tipo" />
+            <End Role="item" EntitySet="item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_localizacao_item" Association="Self.FK_localizacao_item">
+            <End Role="item" EntitySet="item" />
+            <End Role="localizacao" EntitySet="localizacao" />
+          </AssociationSet>
+          <AssociationSet Name="FK_localizacao_pessoa_pessoa" Association="Self.FK_localizacao_pessoa_pessoa">
+            <End Role="pessoa" EntitySet="pessoa" />
+            <End Role="localizacao_pessoa" EntitySet="localizacao_pessoa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_notificacao_pessoa" Association="Self.FK_notificacao_pessoa">
+            <End Role="pessoa" EntitySet="pessoa" />
+            <End Role="notificacao" EntitySet="notificacao" />
+          </AssociationSet>
+          <AssociationSet Name="FK_padrinho_item" Association="Self.FK_padrinho_item">
+            <End Role="item" EntitySet="item" />
+            <End Role="padrinho" EntitySet="padrinho" />
+          </AssociationSet>
+          <AssociationSet Name="FK_padrinho_pessoa" Association="Self.FK_padrinho_pessoa">
+            <End Role="pessoa" EntitySet="pessoa" />
+            <End Role="padrinho" EntitySet="padrinho" />
+          </AssociationSet>
+          <AssociationSet Name="FK_rastreador_item" Association="Self.FK_rastreador_item">
+            <End Role="item" EntitySet="item" />
+            <End Role="rastreador" EntitySet="rastreador" />
+          </AssociationSet>
+          <AssociationSet Name="FK_reponsavel_empresa_pessoa" Association="Self.FK_reponsavel_empresa_pessoa">
+            <End Role="pessoa" EntitySet="pessoa" />
+            <End Role="responsavel_juridico" EntitySet="responsavel_juridico" />
+          </AssociationSet>
+          <AssociationSet Name="FK_transacao_compra" Association="Self.FK_transacao_compra">
+            <End Role="compra" EntitySet="compra" />
+            <End Role="transacao" EntitySet="transacao" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_status_usuario" Association="Self.FK_user_status_usuario">
+            <End Role="status_usuario" EntitySet="status_usuario" />
+            <End Role="pessoa" EntitySet="pessoa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usuario_perfil" Association="Self.FK_usuario_perfil">
+            <End Role="perfil" EntitySet="perfil" />
+            <End Role="pessoa" EntitySet="pessoa" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Monitoramento" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ec2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="acesso" EntityType="Monitoramento.acesso" />
+          <EntitySet Name="assinatura" EntityType="Monitoramento.assinatura" />
+          <EntitySet Name="biblioteca_de_palavra" EntityType="Monitoramento.biblioteca_de_palavra" />
+          <EntitySet Name="cartao" EntityType="Monitoramento.cartao" />
+          <EntitySet Name="compra" EntityType="Monitoramento.compra" />
+          <EntitySet Name="compra_item" EntityType="Monitoramento.compra_item" />
+          <EntitySet Name="grupo" EntityType="Monitoramento.grupo" />
+          <EntitySet Name="grupo_item" EntityType="Monitoramento.grupo_item" />
+          <EntitySet Name="grupo_pessoa" EntityType="Monitoramento.grupo_pessoa" />
+          <EntitySet Name="item" EntityType="Monitoramento.item" />
+          <EntitySet Name="localizacao" EntityType="Monitoramento.localizacao" />
+          <EntitySet Name="localizacao_pessoa" EntityType="Monitoramento.localizacao_pessoa" />
+          <EntitySet Name="notificacao" EntityType="Monitoramento.notificacao" />
+          <EntitySet Name="padrinho" EntityType="Monitoramento.padrinho" />
+          <EntitySet Name="pagamento" EntityType="Monitoramento.pagamento" />
+          <EntitySet Name="perfil" EntityType="Monitoramento.perfil" />
+          <EntitySet Name="pessoa" EntityType="Monitoramento.pessoa" />
+          <EntitySet Name="rastreador" EntityType="Monitoramento.rastreador" />
+          <EntitySet Name="responsavel_juridico" EntityType="Monitoramento.responsavel_juridico" />
+          <EntitySet Name="status_da_compra" EntityType="Monitoramento.status_da_compra" />
+          <EntitySet Name="status_usuario" EntityType="Monitoramento.status_usuario" />
+          <EntitySet Name="sysdiagrams" EntityType="Monitoramento.sysdiagrams" />
+          <EntitySet Name="tipo" EntityType="Monitoramento.tipo" />
+          <EntitySet Name="transacao" EntityType="Monitoramento.transacao" />
+          <AssociationSet Name="FK_acesso_perfil" Association="Monitoramento.FK_acesso_perfil">
+            <End Role="perfil" EntitySet="perfil" />
+            <End Role="acesso" EntitySet="acesso" />
+          </AssociationSet>
+          <AssociationSet Name="FK_assinatura_item" Association="Monitoramento.FK_assinatura_item">
+            <End Role="item" EntitySet="item" />
+            <End Role="assinatura" EntitySet="assinatura" />
+          </AssociationSet>
+          <AssociationSet Name="FK_assinatura_pessoa" Association="Monitoramento.FK_assinatura_pessoa">
+            <End Role="pessoa" EntitySet="pessoa" />
+            <End Role="assinatura" EntitySet="assinatura" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cartao_compra" Association="Monitoramento.FK_cartao_compra">
+            <End Role="compra" EntitySet="compra" />
+            <End Role="cartao" EntitySet="cartao" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cartao_pessoa" Association="Monitoramento.FK_cartao_pessoa">
+            <End Role="pessoa" EntitySet="pessoa" />
+            <End Role="cartao" EntitySet="cartao" />
+          </AssociationSet>
+          <AssociationSet Name="FK_compra_cartao" Association="Monitoramento.FK_compra_cartao">
+            <End Role="cartao" EntitySet="cartao" />
+            <End Role="compra" EntitySet="compra" />
+          </AssociationSet>
+          <AssociationSet Name="FK_compra_item_compra" Association="Monitoramento.FK_compra_item_compra">
+            <End Role="compra" EntitySet="compra" />
+            <End Role="compra_item" EntitySet="compra_item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_compra_pagamento" Association="Monitoramento.FK_compra_pagamento">
+            <End Role="pagamento" EntitySet="pagamento" />
+            <End Role="compra" EntitySet="compra" />
+          </AssociationSet>
+          <AssociationSet Name="FK_compra_pessoa" Association="Monitoramento.FK_compra_pessoa">
+            <End Role="pessoa" EntitySet="pessoa" />
+            <End Role="compra" EntitySet="compra" />
+          </AssociationSet>
+          <AssociationSet Name="FK_compra_pessoa1" Association="Monitoramento.FK_compra_pessoa1">
+            <End Role="pessoa" EntitySet="pessoa" />
+            <End Role="compra" EntitySet="compra" />
+          </AssociationSet>
+          <AssociationSet Name="FK_compra_status_da_compra" Association="Monitoramento.FK_compra_status_da_compra">
+            <End Role="status_da_compra" EntitySet="status_da_compra" />
+            <End Role="compra" EntitySet="compra" />
+          </AssociationSet>
+          <AssociationSet Name="FK_transacao_compra" Association="Monitoramento.FK_transacao_compra">
+            <End Role="compra" EntitySet="compra" />
+            <End Role="transacao" EntitySet="transacao" />
+          </AssociationSet>
+          <AssociationSet Name="FK_compra_item_item" Association="Monitoramento.FK_compra_item_item">
+            <End Role="item" EntitySet="item" />
+            <End Role="compra_item" EntitySet="compra_item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_grupo_item_grupo" Association="Monitoramento.FK_grupo_item_grupo">
+            <End Role="grupo" EntitySet="grupo" />
+            <End Role="grupo_item" EntitySet="grupo_item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_grupo_pessoa_grupo" Association="Monitoramento.FK_grupo_pessoa_grupo">
+            <End Role="grupo" EntitySet="grupo" />
+            <End Role="grupo_pessoa" EntitySet="grupo_pessoa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_grupo_item_item" Association="Monitoramento.FK_grupo_item_item">
+            <End Role="item" EntitySet="item" />
+            <End Role="grupo_item" EntitySet="grupo_item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_grupo_pessoa_pessoa" Association="Monitoramento.FK_grupo_pessoa_pessoa">
+            <End Role="pessoa" EntitySet="pessoa" />
+            <End Role="grupo_pessoa" EntitySet="grupo_pessoa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_item_pessoa" Association="Monitoramento.FK_item_pessoa">
+            <End Role="pessoa" EntitySet="pessoa" />
+            <End Role="item" EntitySet="item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_item_pessoa1" Association="Monitoramento.FK_item_pessoa1">
+            <End Role="pessoa" EntitySet="pessoa" />
+            <End Role="item" EntitySet="item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_item_tipo" Association="Monitoramento.FK_item_tipo">
+            <End Role="tipo" EntitySet="tipo" />
+            <End Role="item" EntitySet="item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_localizacao_item" Association="Monitoramento.FK_localizacao_item">
+            <End Role="item" EntitySet="item" />
+            <End Role="localizacao" EntitySet="localizacao" />
+          </AssociationSet>
+          <AssociationSet Name="FK_padrinho_item" Association="Monitoramento.FK_padrinho_item">
+            <End Role="item" EntitySet="item" />
+            <End Role="padrinho" EntitySet="padrinho" />
+          </AssociationSet>
+          <AssociationSet Name="FK_rastreador_item" Association="Monitoramento.FK_rastreador_item">
+            <End Role="item" EntitySet="item" />
+            <End Role="rastreador" EntitySet="rastreador" />
+          </AssociationSet>
+          <AssociationSet Name="FK_localizacao_pessoa_pessoa" Association="Monitoramento.FK_localizacao_pessoa_pessoa">
+            <End Role="pessoa" EntitySet="pessoa" />
+            <End Role="localizacao_pessoa" EntitySet="localizacao_pessoa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_notificacao_pessoa" Association="Monitoramento.FK_notificacao_pessoa">
+            <End Role="pessoa" EntitySet="pessoa" />
+            <End Role="notificacao" EntitySet="notificacao" />
+          </AssociationSet>
+          <AssociationSet Name="FK_padrinho_pessoa" Association="Monitoramento.FK_padrinho_pessoa">
+            <End Role="pessoa" EntitySet="pessoa" />
+            <End Role="padrinho" EntitySet="padrinho" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usuario_perfil" Association="Monitoramento.FK_usuario_perfil">
+            <End Role="perfil" EntitySet="perfil" />
+            <End Role="pessoa" EntitySet="pessoa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_reponsavel_empresa_pessoa" Association="Monitoramento.FK_reponsavel_empresa_pessoa">
+            <End Role="pessoa" EntitySet="pessoa" />
+            <End Role="responsavel_juridico" EntitySet="responsavel_juridico" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_status_usuario" Association="Monitoramento.FK_user_status_usuario">
+            <End Role="status_usuario" EntitySet="status_usuario" />
+            <End Role="pessoa" EntitySet="pessoa" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="acesso">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="create" Type="Boolean" />
+          <Property Name="edit" Type="Boolean" />
+          <Property Name="delete" Type="Boolean" />
+          <Property Name="list" Type="Boolean" />
+          <Property Name="perfil_id" Type="Int32" />
+          <Property Name="url" Type="String" MaxLength="350" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" MaxLength="350" FixedLength="false" Unicode="false" />
+          <Property Name="icon" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="group" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="order" Type="Int32" />
+          <Property Name="place_id" Type="Int64" />
+          <NavigationProperty Name="perfil" Relationship="Monitoramento.FK_acesso_perfil" FromRole="acesso" ToRole="perfil" />
+        </EntityType>
+        <EntityType Name="assinatura">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pessoa_id" Type="Int32" />
+          <Property Name="item_id" Type="Int32" />
+          <Property Name="codigo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="valor" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="item" Relationship="Monitoramento.FK_assinatura_item" FromRole="assinatura" ToRole="item" />
+          <NavigationProperty Name="pessoa" Relationship="Monitoramento.FK_assinatura_pessoa" FromRole="assinatura" ToRole="pessoa" />
+        </EntityType>
+        <EntityType Name="biblioteca_de_palavra">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="url" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="col" Type="Boolean" />
+          <Property Name="col_description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="size" Type="Int32" />
+          <Property Name="place_id" Type="Int64" />
+          <Property Name="edit" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="cartao">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="numero" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="nome" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="expiracao" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cvv" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="hash" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="pessoa_id" Type="Int32" />
+          <Property Name="documento" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="pagarme_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="bandeira" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="place_id" Type="Int64" />
+          <Property Name="compra_id" Type="Int32" />
+          <Property Name="credito" Type="Boolean" />
+          <Property Name="debito" Type="Boolean" />
+          <NavigationProperty Name="compra" Relationship="Monitoramento.FK_cartao_compra" FromRole="cartao" ToRole="compra" />
+          <NavigationProperty Name="pessoa" Relationship="Monitoramento.FK_cartao_pessoa" FromRole="cartao" ToRole="pessoa" />
+          <NavigationProperty Name="compra1" Relationship="Monitoramento.FK_compra_cartao" FromRole="cartao" ToRole="compra" />
+        </EntityType>
+        <EntityType Name="compra">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pagamento" Type="DateTime" Precision="3" />
+          <Property Name="total" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="desconto" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="pagamento_id" Type="Int32" />
+          <Property Name="preparo" Type="DateTime" Precision="3" />
+          <Property Name="entregue" Type="DateTime" Precision="3" />
+          <Property Name="finalizado" Type="DateTime" Precision="3" />
+          <Property Name="status_da_compra_id" Type="Int32" />
+          <Property Name="filial_id" Type="Int32" />
+          <Property Name="pago" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="recebido" Type="DateTime" Precision="3" />
+          <Property Name="ativo" Type="Boolean" />
+          <Property Name="cancelamento" Type="DateTime" Precision="3" />
+          <Property Name="pagarme_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="pagarme_status" Type="Int32" />
+          <Property Name="place_id" Type="Int64" />
+          <Property Name="balcao" Type="Boolean" />
+          <Property Name="delivery" Type="Boolean" />
+          <Property Name="codigo_servicos" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="valor_frete" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="cartao_id" Type="Int32" />
+          <Property Name="cpf" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="boleto_barcode" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="boleto_url" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="comprador_id" Type="Int32" />
+          <Property Name="tipo_frete" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="vendedor_id" Type="Int32" />
+          <Property Name="comissao_vendedor" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="external_id" Type="Int64" />
+          <Property Name="frete" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="observacao" Type="String" MaxLength="450" FixedLength="false" Unicode="false" />
+          <Property Name="item_id" Type="Int32" />
+          <Property Name="lat" Type="Decimal" Precision="20" Scale="12" />
+          <Property Name="lng" Type="Decimal" Precision="20" Scale="12" />
+          <Property Name="rua" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="numero" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="complemento" Type="String" MaxLength="850" FixedLength="false" Unicode="false" />
+          <Property Name="cidade" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="pais" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="cep" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="bairro" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="estado" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="cartao" Relationship="Monitoramento.FK_cartao_compra" FromRole="compra" ToRole="cartao" />
+          <NavigationProperty Name="cartao1" Relationship="Monitoramento.FK_compra_cartao" FromRole="compra" ToRole="cartao" />
+          <NavigationProperty Name="compra_item" Relationship="Monitoramento.FK_compra_item_compra" FromRole="compra" ToRole="compra_item" />
+          <NavigationProperty Name="pagamento1" Relationship="Monitoramento.FK_compra_pagamento" FromRole="compra" ToRole="pagamento" />
+          <NavigationProperty Name="pessoa" Relationship="Monitoramento.FK_compra_pessoa" FromRole="compra" ToRole="pessoa" />
+          <NavigationProperty Name="pessoa1" Relationship="Monitoramento.FK_compra_pessoa1" FromRole="compra" ToRole="pessoa" />
+          <NavigationProperty Name="status_da_compra" Relationship="Monitoramento.FK_compra_status_da_compra" FromRole="compra" ToRole="status_da_compra" />
+          <NavigationProperty Name="transacao" Relationship="Monitoramento.FK_transacao_compra" FromRole="compra" ToRole="transacao" />
+        </EntityType>
+        <EntityType Name="compra_item">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="item_id" Type="Int32" />
+          <Property Name="compra_id" Type="Int32" />
+          <Property Name="status" Type="Int32" />
+          <Property Name="quantidade" Type="Int32" />
+          <NavigationProperty Name="compra" Relationship="Monitoramento.FK_compra_item_compra" FromRole="compra_item" ToRole="compra" />
+          <NavigationProperty Name="item" Relationship="Monitoramento.FK_compra_item_item" FromRole="compra_item" ToRole="item" />
+        </EntityType>
+        <EntityType Name="grupo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="descricao" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="grupo_item" Relationship="Monitoramento.FK_grupo_item_grupo" FromRole="grupo" ToRole="grupo_item" />
+          <NavigationProperty Name="grupo_pessoa" Relationship="Monitoramento.FK_grupo_pessoa_grupo" FromRole="grupo" ToRole="grupo_pessoa" />
+        </EntityType>
+        <EntityType Name="grupo_item">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="item_id" Type="Int32" />
+          <Property Name="grupo_id" Type="Int32" />
+          <NavigationProperty Name="grupo" Relationship="Monitoramento.FK_grupo_item_grupo" FromRole="grupo_item" ToRole="grupo" />
+          <NavigationProperty Name="item" Relationship="Monitoramento.FK_grupo_item_item" FromRole="grupo_item" ToRole="item" />
+        </EntityType>
+        <EntityType Name="grupo_pessoa">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pessoa_id" Type="Int32" />
+          <Property Name="grupo_id" Type="Int32" />
+          <Property Name="ativo" Type="Boolean" />
+          <Property Name="convite" Type="Int32" />
+          <NavigationProperty Name="grupo" Relationship="Monitoramento.FK_grupo_pessoa_grupo" FromRole="grupo_pessoa" ToRole="grupo" />
+          <NavigationProperty Name="pessoa" Relationship="Monitoramento.FK_grupo_pessoa_pessoa" FromRole="grupo_pessoa" ToRole="pessoa" />
+        </EntityType>
+        <EntityType Name="item">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="cor" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="raca" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="photo_itype" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="sangue" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="nascimento" Type="DateTime" Precision="3" />
+          <Property Name="pelo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="vacinas" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="responsavel_id" Type="Int32" />
+          <Property Name="valor" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="tipo_id" Type="Int32" />
+          <Property Name="cnpj" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="cpf" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ativo" Type="Boolean" />
+          <Property Name="rastreado_id" Type="Int32" />
+          <Property Name="descricao" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="perdido" Type="Boolean" />
+          <Property Name="genero" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="rg" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="estoque" Type="Int32" />
+          <Property Name="doacao" Type="Boolean" />
+          <Property Name="apadrinhar" Type="Boolean" />
+          <Property Name="modelo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="fabricante" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="marca" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="num_serie" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="assinatura" Relationship="Monitoramento.FK_assinatura_item" FromRole="item" ToRole="assinatura" />
+          <NavigationProperty Name="compra_item" Relationship="Monitoramento.FK_compra_item_item" FromRole="item" ToRole="compra_item" />
+          <NavigationProperty Name="grupo_item" Relationship="Monitoramento.FK_grupo_item_item" FromRole="item" ToRole="grupo_item" />
+          <NavigationProperty Name="pessoa" Relationship="Monitoramento.FK_item_pessoa" FromRole="item" ToRole="pessoa" />
+          <NavigationProperty Name="pessoa1" Relationship="Monitoramento.FK_item_pessoa1" FromRole="item" ToRole="pessoa" />
+          <NavigationProperty Name="tipo" Relationship="Monitoramento.FK_item_tipo" FromRole="item" ToRole="tipo" />
+          <NavigationProperty Name="localizacao" Relationship="Monitoramento.FK_localizacao_item" FromRole="item" ToRole="localizacao" />
+          <NavigationProperty Name="padrinho" Relationship="Monitoramento.FK_padrinho_item" FromRole="item" ToRole="padrinho" />
+          <NavigationProperty Name="rastreador" Relationship="Monitoramento.FK_rastreador_item" FromRole="item" ToRole="rastreador" />
+        </EntityType>
+        <EntityType Name="localizacao">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="item_id" Type="Int32" />
+          <Property Name="lat" Type="Decimal" Precision="20" Scale="12" />
+          <Property Name="lng" Type="Decimal" Precision="20" Scale="12" />
+          <Property Name="cadastro" Type="DateTime" Precision="3" />
+          <Property Name="photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="photo_itype" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="descricao" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="ativo" Type="Boolean" />
+          <NavigationProperty Name="item" Relationship="Monitoramento.FK_localizacao_item" FromRole="localizacao" ToRole="item" />
+        </EntityType>
+        <EntityType Name="localizacao_pessoa">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="latitude" Type="Decimal" Precision="20" Scale="12" />
+          <Property Name="longitude" Type="Decimal" Precision="20" Scale="12" />
+          <Property Name="pessoa_id" Type="Int32" />
+          <NavigationProperty Name="pessoa" Relationship="Monitoramento.FK_localizacao_pessoa_pessoa" FromRole="localizacao_pessoa" ToRole="pessoa" />
+        </EntityType>
+        <EntityType Name="notificacao">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pessoa_id" Type="Int32" />
+          <Property Name="mensagem" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="lido" Type="Boolean" />
+          <Property Name="data" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="pessoa" Relationship="Monitoramento.FK_notificacao_pessoa" FromRole="notificacao" ToRole="pessoa" />
+        </EntityType>
+        <EntityType Name="padrinho">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="padrinho_id" Type="Int32" />
+          <Property Name="item_id" Type="Int32" />
+          <Property Name="valor" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="cadastro" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="item" Relationship="Monitoramento.FK_padrinho_item" FromRole="padrinho" ToRole="item" />
+          <NavigationProperty Name="pessoa" Relationship="Monitoramento.FK_padrinho_pessoa" FromRole="padrinho" ToRole="pessoa" />
+        </EntityType>
+        <EntityType Name="pagamento">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="taxa" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="grupo_do_pagamento_id" Type="Int32" />
+          <Property Name="bandeira_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="place_id" Type="Int64" />
+          <Property Name="transacao" Type="Int32" />
+          <Property Name="external_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="icone" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="icone_itype" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="compra" Relationship="Monitoramento.FK_compra_pagamento" FromRole="pagamento" ToRole="compra" />
+        </EntityType>
+        <EntityType Name="perfil">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="place_id" Type="Int64" />
+          <NavigationProperty Name="acesso" Relationship="Monitoramento.FK_acesso_perfil" FromRole="perfil" ToRole="acesso" />
+          <NavigationProperty Name="pessoa" Relationship="Monitoramento.FK_usuario_perfil" FromRole="perfil" ToRole="pessoa" />
+        </EntityType>
+        <EntityType Name="pessoa">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="birthday" Type="DateTime" Precision="3" />
+          <Property Name="facebook" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="cpf" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="rg" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="perfil_id" Type="Int32" />
+          <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="phone_optional" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="mobile_optional" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="rating" Type="Int32" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="description" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="active" Type="Boolean" />
+          <Property Name="charge" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="email_change" Type="DateTime" Precision="3" />
+          <Property Name="status_usuario_id" Type="Int32" />
+          <Property Name="photo_itype" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="push_id" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="push_arn" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="credit" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="cnpj" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="razao_social" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="place_id" Type="Int64" />
+          <Property Name="Agencia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AgenciaDv" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Conta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ContaDv" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BankCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DocumentNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LegalName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="comissao" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="pagarme_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="created" Type="DateTime" Precision="3" />
+          <Property Name="external_id" Type="Int32" />
+          <Property Name="filial_id" Type="Int32" />
+          <Property Name="cpf_image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="cpf_image_itype" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="rg_image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="rg_image_itype" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="comprovante" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="comprovante_itype" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="genero" Type="Boolean" />
+          <Property Name="antecedentes" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="antecedentes_itype" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="certificado" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="certificado_itype" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BankToken" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+          <Property Name="especialidade_id" Type="Int32" />
+          <Property Name="lat" Type="Decimal" Precision="20" Scale="12" />
+          <Property Name="lng" Type="Decimal" Precision="20" Scale="12" />
+          <Property Name="rua" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="numero" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="complemento" Type="String" MaxLength="850" FixedLength="false" Unicode="false" />
+          <Property Name="cidade" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="pais" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="cep" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="bairro" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="estado" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="grupo" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="filial" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="franqueador" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="franqueado" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="lat_celular" Type="Decimal" Precision="20" Scale="12" />
+          <Property Name="lon_celular" Type="Decimal" Precision="20" Scale="12" />
+          <Property Name="data_localizacao" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="assinatura" Relationship="Monitoramento.FK_assinatura_pessoa" FromRole="pessoa" ToRole="assinatura" />
+          <NavigationProperty Name="cartao" Relationship="Monitoramento.FK_cartao_pessoa" FromRole="pessoa" ToRole="cartao" />
+          <NavigationProperty Name="compra" Relationship="Monitoramento.FK_compra_pessoa" FromRole="pessoa" ToRole="compra" />
+          <NavigationProperty Name="compra1" Relationship="Monitoramento.FK_compra_pessoa1" FromRole="pessoa" ToRole="compra" />
+          <NavigationProperty Name="grupo_pessoa" Relationship="Monitoramento.FK_grupo_pessoa_pessoa" FromRole="pessoa" ToRole="grupo_pessoa" />
+          <NavigationProperty Name="item" Relationship="Monitoramento.FK_item_pessoa" FromRole="pessoa" ToRole="item" />
+          <NavigationProperty Name="item1" Relationship="Monitoramento.FK_item_pessoa1" FromRole="pessoa" ToRole="item" />
+          <NavigationProperty Name="localizacao_pessoa" Relationship="Monitoramento.FK_localizacao_pessoa_pessoa" FromRole="pessoa" ToRole="localizacao_pessoa" />
+          <NavigationProperty Name="notificacao" Relationship="Monitoramento.FK_notificacao_pessoa" FromRole="pessoa" ToRole="notificacao" />
+          <NavigationProperty Name="padrinho" Relationship="Monitoramento.FK_padrinho_pessoa" FromRole="pessoa" ToRole="padrinho" />
+          <NavigationProperty Name="perfil" Relationship="Monitoramento.FK_usuario_perfil" FromRole="pessoa" ToRole="perfil" />
+          <NavigationProperty Name="responsavel_juridico" Relationship="Monitoramento.FK_reponsavel_empresa_pessoa" FromRole="pessoa" ToRole="responsavel_juridico" />
+          <NavigationProperty Name="status_usuario" Relationship="Monitoramento.FK_user_status_usuario" FromRole="pessoa" ToRole="status_usuario" />
+        </EntityType>
+        <EntityType Name="rastreador">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codigo" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="cadastro" Type="DateTime" Precision="3" />
+          <Property Name="item_id" Type="Int32" />
+          <Property Name="vinculo" Type="DateTime" Precision="3" />
+          <Property Name="ativo" Type="Boolean" />
+          <NavigationProperty Name="item" Relationship="Monitoramento.FK_rastreador_item" FromRole="rastreador" ToRole="item" />
+        </EntityType>
+        <EntityType Name="responsavel_juridico">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="rg" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cpf" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="celular" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="telefone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="porcentagem" Type="Int32" />
+          <Property Name="cargo_posicao" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="pessoa_id" Type="Int32" />
+          <Property Name="tipo_acesso" Type="Int32" />
+          <Property Name="senha" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="pessoa" Relationship="Monitoramento.FK_reponsavel_empresa_pessoa" FromRole="responsavel_juridico" ToRole="pessoa" />
+        </EntityType>
+        <EntityType Name="status_da_compra">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="place_id" Type="Int64" />
+          <NavigationProperty Name="compra" Relationship="Monitoramento.FK_compra_status_da_compra" FromRole="status_da_compra" ToRole="compra" />
+        </EntityType>
+        <EntityType Name="status_usuario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="place_id" Type="Int64" />
+          <NavigationProperty Name="pessoa" Relationship="Monitoramento.FK_user_status_usuario" FromRole="status_usuario" ToRole="pessoa" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tipo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="item" Relationship="Monitoramento.FK_item_tipo" FromRole="tipo" ToRole="item" />
+        </EntityType>
+        <EntityType Name="transacao">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="status" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="data" Type="DateTime" Precision="3" />
+          <Property Name="compra_id" Type="Int32" />
+          <NavigationProperty Name="compra" Relationship="Monitoramento.FK_transacao_compra" FromRole="transacao" ToRole="compra" />
+        </EntityType>
+        <Association Name="FK_acesso_perfil">
+          <End Type="Monitoramento.perfil" Role="perfil" Multiplicity="0..1" />
+          <End Type="Monitoramento.acesso" Role="acesso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="perfil">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="acesso">
+              <PropertyRef Name="perfil_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_assinatura_item">
+          <End Type="Monitoramento.item" Role="item" Multiplicity="0..1" />
+          <End Type="Monitoramento.assinatura" Role="assinatura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="item">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="assinatura">
+              <PropertyRef Name="item_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_assinatura_pessoa">
+          <End Type="Monitoramento.pessoa" Role="pessoa" Multiplicity="0..1" />
+          <End Type="Monitoramento.assinatura" Role="assinatura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pessoa">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="assinatura">
+              <PropertyRef Name="pessoa_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_cartao_compra">
+          <End Type="Monitoramento.compra" Role="compra" Multiplicity="0..1" />
+          <End Type="Monitoramento.cartao" Role="cartao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="compra">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="cartao">
+              <PropertyRef Name="compra_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_cartao_pessoa">
+          <End Type="Monitoramento.pessoa" Role="pessoa" Multiplicity="0..1" />
+          <End Type="Monitoramento.cartao" Role="cartao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pessoa">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="cartao">
+              <PropertyRef Name="pessoa_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_compra_cartao">
+          <End Type="Monitoramento.cartao" Role="cartao" Multiplicity="0..1" />
+          <End Type="Monitoramento.compra" Role="compra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cartao">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="compra">
+              <PropertyRef Name="cartao_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_compra_item_compra">
+          <End Type="Monitoramento.compra" Role="compra" Multiplicity="0..1" />
+          <End Type="Monitoramento.compra_item" Role="compra_item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="compra">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="compra_item">
+              <PropertyRef Name="compra_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_compra_pagamento">
+          <End Type="Monitoramento.pagamento" Role="pagamento" Multiplicity="0..1" />
+          <End Type="Monitoramento.compra" Role="compra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pagamento">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="compra">
+              <PropertyRef Name="pagamento_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_compra_pessoa">
+          <End Type="Monitoramento.pessoa" Role="pessoa" Multiplicity="0..1" />
+          <End Type="Monitoramento.compra" Role="compra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pessoa">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="compra">
+              <PropertyRef Name="comprador_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_compra_pessoa1">
+          <End Type="Monitoramento.pessoa" Role="pessoa" Multiplicity="0..1" />
+          <End Type="Monitoramento.compra" Role="compra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pessoa">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="compra">
+              <PropertyRef Name="vendedor_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_compra_status_da_compra">
+          <End Type="Monitoramento.status_da_compra" Role="status_da_compra" Multiplicity="0..1" />
+          <End Type="Monitoramento.compra" Role="compra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="status_da_compra">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="compra">
+              <PropertyRef Name="status_da_compra_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_transacao_compra">
+          <End Type="Monitoramento.compra" Role="compra" Multiplicity="0..1" />
+          <End Type="Monitoramento.transacao" Role="transacao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="compra">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="transacao">
+              <PropertyRef Name="compra_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_compra_item_item">
+          <End Type="Monitoramento.item" Role="item" Multiplicity="0..1" />
+          <End Type="Monitoramento.compra_item" Role="compra_item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="item">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="compra_item">
+              <PropertyRef Name="item_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_grupo_item_grupo">
+          <End Type="Monitoramento.grupo" Role="grupo" Multiplicity="0..1" />
+          <End Type="Monitoramento.grupo_item" Role="grupo_item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="grupo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="grupo_item">
+              <PropertyRef Name="grupo_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_grupo_pessoa_grupo">
+          <End Type="Monitoramento.grupo" Role="grupo" Multiplicity="0..1" />
+          <End Type="Monitoramento.grupo_pessoa" Role="grupo_pessoa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="grupo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="grupo_pessoa">
+              <PropertyRef Name="grupo_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_grupo_item_item">
+          <End Type="Monitoramento.item" Role="item" Multiplicity="0..1" />
+          <End Type="Monitoramento.grupo_item" Role="grupo_item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="item">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="grupo_item">
+              <PropertyRef Name="item_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_grupo_pessoa_pessoa">
+          <End Type="Monitoramento.pessoa" Role="pessoa" Multiplicity="0..1" />
+          <End Type="Monitoramento.grupo_pessoa" Role="grupo_pessoa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pessoa">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="grupo_pessoa">
+              <PropertyRef Name="pessoa_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_item_pessoa">
+          <End Type="Monitoramento.pessoa" Role="pessoa" Multiplicity="0..1" />
+          <End Type="Monitoramento.item" Role="item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pessoa">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="item">
+              <PropertyRef Name="responsavel_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_item_pessoa1">
+          <End Type="Monitoramento.pessoa" Role="pessoa" Multiplicity="0..1" />
+          <End Type="Monitoramento.item" Role="item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pessoa">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="item">
+              <PropertyRef Name="rastreado_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_item_tipo">
+          <End Type="Monitoramento.tipo" Role="tipo" Multiplicity="0..1" />
+          <End Type="Monitoramento.item" Role="item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="item">
+              <PropertyRef Name="tipo_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_localizacao_item">
+          <End Type="Monitoramento.item" Role="item" Multiplicity="0..1" />
+          <End Type="Monitoramento.localizacao" Role="localizacao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="item">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="localizacao">
+              <PropertyRef Name="item_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_padrinho_item">
+          <End Type="Monitoramento.item" Role="item" Multiplicity="0..1" />
+          <End Type="Monitoramento.padrinho" Role="padrinho" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="item">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="padrinho">
+              <PropertyRef Name="item_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_rastreador_item">
+          <End Type="Monitoramento.item" Role="item" Multiplicity="0..1" />
+          <End Type="Monitoramento.rastreador" Role="rastreador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="item">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="rastreador">
+              <PropertyRef Name="item_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_localizacao_pessoa_pessoa">
+          <End Type="Monitoramento.pessoa" Role="pessoa" Multiplicity="0..1" />
+          <End Type="Monitoramento.localizacao_pessoa" Role="localizacao_pessoa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pessoa">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="localizacao_pessoa">
+              <PropertyRef Name="pessoa_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_notificacao_pessoa">
+          <End Type="Monitoramento.pessoa" Role="pessoa" Multiplicity="0..1" />
+          <End Type="Monitoramento.notificacao" Role="notificacao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pessoa">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="notificacao">
+              <PropertyRef Name="pessoa_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_padrinho_pessoa">
+          <End Type="Monitoramento.pessoa" Role="pessoa" Multiplicity="0..1" />
+          <End Type="Monitoramento.padrinho" Role="padrinho" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pessoa">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="padrinho">
+              <PropertyRef Name="padrinho_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_usuario_perfil">
+          <End Type="Monitoramento.perfil" Role="perfil" Multiplicity="0..1" />
+          <End Type="Monitoramento.pessoa" Role="pessoa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="perfil">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="pessoa">
+              <PropertyRef Name="perfil_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_reponsavel_empresa_pessoa">
+          <End Type="Monitoramento.pessoa" Role="pessoa" Multiplicity="0..1" />
+          <End Type="Monitoramento.responsavel_juridico" Role="responsavel_juridico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pessoa">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="responsavel_juridico">
+              <PropertyRef Name="pessoa_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_status_usuario">
+          <End Type="Monitoramento.status_usuario" Role="status_usuario" Multiplicity="0..1" />
+          <End Type="Monitoramento.pessoa" Role="pessoa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="status_usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="pessoa">
+              <PropertyRef Name="status_usuario_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MonitoramentoStoreContainer" CdmEntityContainer="ec2">
+          <EntitySetMapping Name="acesso">
+            <EntityTypeMapping TypeName="Monitoramento.acesso">
+              <MappingFragment StoreEntitySet="acesso">
+                <ScalarProperty Name="place_id" ColumnName="place_id" />
+                <ScalarProperty Name="order" ColumnName="order" />
+                <ScalarProperty Name="group" ColumnName="group" />
+                <ScalarProperty Name="icon" ColumnName="icon" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="url" ColumnName="url" />
+                <ScalarProperty Name="perfil_id" ColumnName="perfil_id" />
+                <ScalarProperty Name="list" ColumnName="list" />
+                <ScalarProperty Name="delete" ColumnName="delete" />
+                <ScalarProperty Name="edit" ColumnName="edit" />
+                <ScalarProperty Name="create" ColumnName="create" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="assinatura">
+            <EntityTypeMapping TypeName="Monitoramento.assinatura">
+              <MappingFragment StoreEntitySet="assinatura">
+                <ScalarProperty Name="valor" ColumnName="valor" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="item_id" ColumnName="item_id" />
+                <ScalarProperty Name="pessoa_id" ColumnName="pessoa_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="biblioteca_de_palavra">
+            <EntityTypeMapping TypeName="Monitoramento.biblioteca_de_palavra">
+              <MappingFragment StoreEntitySet="biblioteca_de_palavra">
+                <ScalarProperty Name="edit" ColumnName="edit" />
+                <ScalarProperty Name="place_id" ColumnName="place_id" />
+                <ScalarProperty Name="size" ColumnName="size" />
+                <ScalarProperty Name="col_description" ColumnName="col_description" />
+                <ScalarProperty Name="col" ColumnName="col" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="url" ColumnName="url" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cartao">
+            <EntityTypeMapping TypeName="Monitoramento.cartao">
+              <MappingFragment StoreEntitySet="cartao">
+                <ScalarProperty Name="debito" ColumnName="debito" />
+                <ScalarProperty Name="credito" ColumnName="credito" />
+                <ScalarProperty Name="compra_id" ColumnName="compra_id" />
+                <ScalarProperty Name="place_id" ColumnName="place_id" />
+                <ScalarProperty Name="bandeira" ColumnName="bandeira" />
+                <ScalarProperty Name="pagarme_id" ColumnName="pagarme_id" />
+                <ScalarProperty Name="documento" ColumnName="documento" />
+                <ScalarProperty Name="pessoa_id" ColumnName="pessoa_id" />
+                <ScalarProperty Name="hash" ColumnName="hash" />
+                <ScalarProperty Name="cvv" ColumnName="cvv" />
+                <ScalarProperty Name="expiracao" ColumnName="expiracao" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="numero" ColumnName="numero" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="compra">
+            <EntityTypeMapping TypeName="Monitoramento.compra">
+              <MappingFragment StoreEntitySet="compra">
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="bairro" ColumnName="bairro" />
+                <ScalarProperty Name="cep" ColumnName="cep" />
+                <ScalarProperty Name="pais" ColumnName="pais" />
+                <ScalarProperty Name="cidade" ColumnName="cidade" />
+                <ScalarProperty Name="complemento" ColumnName="complemento" />
+                <ScalarProperty Name="numero" ColumnName="numero" />
+                <ScalarProperty Name="rua" ColumnName="rua" />
+                <ScalarProperty Name="lng" ColumnName="lng" />
+                <ScalarProperty Name="lat" ColumnName="lat" />
+                <ScalarProperty Name="item_id" ColumnName="item_id" />
+                <ScalarProperty Name="observacao" ColumnName="observacao" />
+                <ScalarProperty Name="frete" ColumnName="frete" />
+                <ScalarProperty Name="external_id" ColumnName="external_id" />
+                <ScalarProperty Name="comissao_vendedor" ColumnName="comissao_vendedor" />
+                <ScalarProperty Name="vendedor_id" ColumnName="vendedor_id" />
+                <ScalarProperty Name="tipo_frete" ColumnName="tipo_frete" />
+                <ScalarProperty Name="comprador_id" ColumnName="comprador_id" />
+                <ScalarProperty Name="boleto_url" ColumnName="boleto_url" />
+                <ScalarProperty Name="boleto_barcode" ColumnName="boleto_barcode" />
+                <ScalarProperty Name="cpf" ColumnName="cpf" />
+                <ScalarProperty Name="cartao_id" ColumnName="cartao_id" />
+                <ScalarProperty Name="valor_frete" ColumnName="valor_frete" />
+                <ScalarProperty Name="codigo_servicos" ColumnName="codigo_servicos" />
+                <ScalarProperty Name="delivery" ColumnName="delivery" />
+                <ScalarProperty Name="balcao" ColumnName="balcao" />
+                <ScalarProperty Name="place_id" ColumnName="place_id" />
+                <ScalarProperty Name="pagarme_status" ColumnName="pagarme_status" />
+                <ScalarProperty Name="pagarme_id" ColumnName="pagarme_id" />
+                <ScalarProperty Name="cancelamento" ColumnName="cancelamento" />
+                <ScalarProperty Name="ativo" ColumnName="ativo" />
+                <ScalarProperty Name="recebido" ColumnName="recebido" />
+                <ScalarProperty Name="pago" ColumnName="pago" />
+                <ScalarProperty Name="filial_id" ColumnName="filial_id" />
+                <ScalarProperty Name="status_da_compra_id" ColumnName="status_da_compra_id" />
+                <ScalarProperty Name="finalizado" ColumnName="finalizado" />
+                <ScalarProperty Name="entregue" ColumnName="entregue" />
+                <ScalarProperty Name="preparo" ColumnName="preparo" />
+                <ScalarProperty Name="pagamento_id" ColumnName="pagamento_id" />
+                <ScalarProperty Name="desconto" ColumnName="desconto" />
+                <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="pagamento" ColumnName="pagamento" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="compra_item">
+            <EntityTypeMapping TypeName="Monitoramento.compra_item">
+              <MappingFragment StoreEntitySet="compra_item">
+                <ScalarProperty Name="quantidade" ColumnName="quantidade" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="compra_id" ColumnName="compra_id" />
+                <ScalarProperty Name="item_id" ColumnName="item_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="grupo">
+            <EntityTypeMapping TypeName="Monitoramento.grupo">
+              <MappingFragment StoreEntitySet="grupo">
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="grupo_item">
+            <EntityTypeMapping TypeName="Monitoramento.grupo_item">
+              <MappingFragment StoreEntitySet="grupo_item">
+                <ScalarProperty Name="grupo_id" ColumnName="grupo_id" />
+                <ScalarProperty Name="item_id" ColumnName="item_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="grupo_pessoa">
+            <EntityTypeMapping TypeName="Monitoramento.grupo_pessoa">
+              <MappingFragment StoreEntitySet="grupo_pessoa">
+                <ScalarProperty Name="convite" ColumnName="convite" />
+                <ScalarProperty Name="ativo" ColumnName="ativo" />
+                <ScalarProperty Name="grupo_id" ColumnName="grupo_id" />
+                <ScalarProperty Name="pessoa_id" ColumnName="pessoa_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="item">
+            <EntityTypeMapping TypeName="Monitoramento.item">
+              <MappingFragment StoreEntitySet="item">
+                <ScalarProperty Name="num_serie" ColumnName="num_serie" />
+                <ScalarProperty Name="marca" ColumnName="marca" />
+                <ScalarProperty Name="fabricante" ColumnName="fabricante" />
+                <ScalarProperty Name="modelo" ColumnName="modelo" />
+                <ScalarProperty Name="apadrinhar" ColumnName="apadrinhar" />
+                <ScalarProperty Name="doacao" ColumnName="doacao" />
+                <ScalarProperty Name="estoque" ColumnName="estoque" />
+                <ScalarProperty Name="rg" ColumnName="rg" />
+                <ScalarProperty Name="genero" ColumnName="genero" />
+                <ScalarProperty Name="perdido" ColumnName="perdido" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+                <ScalarProperty Name="rastreado_id" ColumnName="rastreado_id" />
+                <ScalarProperty Name="ativo" ColumnName="ativo" />
+                <ScalarProperty Name="cpf" ColumnName="cpf" />
+                <ScalarProperty Name="cnpj" ColumnName="cnpj" />
+                <ScalarProperty Name="tipo_id" ColumnName="tipo_id" />
+                <ScalarProperty Name="valor" ColumnName="valor" />
+                <ScalarProperty Name="responsavel_id" ColumnName="responsavel_id" />
+                <ScalarProperty Name="vacinas" ColumnName="vacinas" />
+                <ScalarProperty Name="pelo" ColumnName="pelo" />
+                <ScalarProperty Name="nascimento" ColumnName="nascimento" />
+                <ScalarProperty Name="sangue" ColumnName="sangue" />
+                <ScalarProperty Name="photo_itype" ColumnName="photo_itype" />
+                <ScalarProperty Name="photo" ColumnName="photo" />
+                <ScalarProperty Name="raca" ColumnName="raca" />
+                <ScalarProperty Name="cor" ColumnName="cor" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="localizacao">
+            <EntityTypeMapping TypeName="Monitoramento.localizacao">
+              <MappingFragment StoreEntitySet="localizacao">
+                <ScalarProperty Name="ativo" ColumnName="ativo" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+                <ScalarProperty Name="photo_itype" ColumnName="photo_itype" />
+                <ScalarProperty Name="photo" ColumnName="photo" />
+                <ScalarProperty Name="cadastro" ColumnName="cadastro" />
+                <ScalarProperty Name="lng" ColumnName="lng" />
+                <ScalarProperty Name="lat" ColumnName="lat" />
+                <ScalarProperty Name="item_id" ColumnName="item_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="localizacao_pessoa">
+            <EntityTypeMapping TypeName="Monitoramento.localizacao_pessoa">
+              <MappingFragment StoreEntitySet="localizacao_pessoa">
+                <ScalarProperty Name="pessoa_id" ColumnName="pessoa_id" />
+                <ScalarProperty Name="longitude" ColumnName="longitude" />
+                <ScalarProperty Name="latitude" ColumnName="latitude" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="notificacao">
+            <EntityTypeMapping TypeName="Monitoramento.notificacao">
+              <MappingFragment StoreEntitySet="notificacao">
+                <ScalarProperty Name="data" ColumnName="data" />
+                <ScalarProperty Name="lido" ColumnName="lido" />
+                <ScalarProperty Name="mensagem" ColumnName="mensagem" />
+                <ScalarProperty Name="pessoa_id" ColumnName="pessoa_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="padrinho">
+            <EntityTypeMapping TypeName="Monitoramento.padrinho">
+              <MappingFragment StoreEntitySet="padrinho">
+                <ScalarProperty Name="cadastro" ColumnName="cadastro" />
+                <ScalarProperty Name="valor" ColumnName="valor" />
+                <ScalarProperty Name="item_id" ColumnName="item_id" />
+                <ScalarProperty Name="padrinho_id" ColumnName="padrinho_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pagamento">
+            <EntityTypeMapping TypeName="Monitoramento.pagamento">
+              <MappingFragment StoreEntitySet="pagamento">
+                <ScalarProperty Name="icone_itype" ColumnName="icone_itype" />
+                <ScalarProperty Name="icone" ColumnName="icone" />
+                <ScalarProperty Name="external_id" ColumnName="external_id" />
+                <ScalarProperty Name="transacao" ColumnName="transacao" />
+                <ScalarProperty Name="place_id" ColumnName="place_id" />
+                <ScalarProperty Name="bandeira_id" ColumnName="bandeira_id" />
+                <ScalarProperty Name="grupo_do_pagamento_id" ColumnName="grupo_do_pagamento_id" />
+                <ScalarProperty Name="taxa" ColumnName="taxa" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="perfil">
+            <EntityTypeMapping TypeName="Monitoramento.perfil">
+              <MappingFragment StoreEntitySet="perfil">
+                <ScalarProperty Name="place_id" ColumnName="place_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pessoa">
+            <EntityTypeMapping TypeName="Monitoramento.pessoa">
+              <MappingFragment StoreEntitySet="pessoa">
+                <ScalarProperty Name="data_localizacao" ColumnName="data_localizacao" />
+                <ScalarProperty Name="lon_celular" ColumnName="lon_celular" />
+                <ScalarProperty Name="lat_celular" ColumnName="lat_celular" />
+                <ScalarProperty Name="franqueado" ColumnName="franqueado" />
+                <ScalarProperty Name="franqueador" ColumnName="franqueador" />
+                <ScalarProperty Name="filial" ColumnName="filial" />
+                <ScalarProperty Name="grupo" ColumnName="grupo" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="bairro" ColumnName="bairro" />
+                <ScalarProperty Name="cep" ColumnName="cep" />
+                <ScalarProperty Name="pais" ColumnName="pais" />
+                <ScalarProperty Name="cidade" ColumnName="cidade" />
+                <ScalarProperty Name="complemento" ColumnName="complemento" />
+                <ScalarProperty Name="numero" ColumnName="numero" />
+                <ScalarProperty Name="rua" ColumnName="rua" />
+                <ScalarProperty Name="lng" ColumnName="lng" />
+                <ScalarProperty Name="lat" ColumnName="lat" />
+                <ScalarProperty Name="especialidade_id" ColumnName="especialidade_id" />
+                <ScalarProperty Name="BankToken" ColumnName="BankToken" />
+                <ScalarProperty Name="certificado_itype" ColumnName="certificado_itype" />
+                <ScalarProperty Name="certificado" ColumnName="certificado" />
+                <ScalarProperty Name="antecedentes_itype" ColumnName="antecedentes_itype" />
+                <ScalarProperty Name="antecedentes" ColumnName="antecedentes" />
+                <ScalarProperty Name="genero" ColumnName="genero" />
+                <ScalarProperty Name="comprovante_itype" ColumnName="comprovante_itype" />
+                <ScalarProperty Name="comprovante" ColumnName="comprovante" />
+                <ScalarProperty Name="rg_image_itype" ColumnName="rg_image_itype" />
+                <ScalarProperty Name="rg_image" ColumnName="rg_image" />
+                <ScalarProperty Name="cpf_image_itype" ColumnName="cpf_image_itype" />
+                <ScalarProperty Name="cpf_image" ColumnName="cpf_image" />
+                <ScalarProperty Name="filial_id" ColumnName="filial_id" />
+                <ScalarProperty Name="external_id" ColumnName="external_id" />
+                <ScalarProperty Name="created" ColumnName="created" />
+                <ScalarProperty Name="pagarme_id" ColumnName="pagarme_id" />
+                <ScalarProperty Name="comissao" ColumnName="comissao" />
+                <ScalarProperty Name="LegalName" ColumnName="LegalName" />
+                <ScalarProperty Name="DocumentNumber" ColumnName="DocumentNumber" />
+                <ScalarProperty Name="BankCode" ColumnName="BankCode" />
+                <ScalarProperty Name="ContaDv" ColumnName="ContaDv" />
+                <ScalarProperty Name="Conta" ColumnName="Conta" />
+                <ScalarProperty Name="AgenciaDv" ColumnName="AgenciaDv" />
+                <ScalarProperty Name="Agencia" ColumnName="Agencia" />
+                <ScalarProperty Name="place_id" ColumnName="place_id" />
+                <ScalarProperty Name="razao_social" ColumnName="razao_social" />
+                <ScalarProperty Name="cnpj" ColumnName="cnpj" />
+                <ScalarProperty Name="credit" ColumnName="credit" />
+                <ScalarProperty Name="push_arn" ColumnName="push_arn" />
+                <ScalarProperty Name="push_id" ColumnName="push_id" />
+                <ScalarProperty Name="photo_itype" ColumnName="photo_itype" />
+                <ScalarProperty Name="status_usuario_id" ColumnName="status_usuario_id" />
+                <ScalarProperty Name="email_change" ColumnName="email_change" />
+                <ScalarProperty Name="charge" ColumnName="charge" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="photo" ColumnName="photo" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="rating" ColumnName="rating" />
+                <ScalarProperty Name="mobile_optional" ColumnName="mobile_optional" />
+                <ScalarProperty Name="mobile" ColumnName="mobile" />
+                <ScalarProperty Name="phone_optional" ColumnName="phone_optional" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="perfil_id" ColumnName="perfil_id" />
+                <ScalarProperty Name="rg" ColumnName="rg" />
+                <ScalarProperty Name="cpf" ColumnName="cpf" />
+                <ScalarProperty Name="facebook" ColumnName="facebook" />
+                <ScalarProperty Name="birthday" ColumnName="birthday" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rastreador">
+            <EntityTypeMapping TypeName="Monitoramento.rastreador">
+              <MappingFragment StoreEntitySet="rastreador">
+                <ScalarProperty Name="ativo" ColumnName="ativo" />
+                <ScalarProperty Name="vinculo" ColumnName="vinculo" />
+                <ScalarProperty Name="item_id" ColumnName="item_id" />
+                <ScalarProperty Name="cadastro" ColumnName="cadastro" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="responsavel_juridico">
+            <EntityTypeMapping TypeName="Monitoramento.responsavel_juridico">
+              <MappingFragment StoreEntitySet="responsavel_juridico">
+                <ScalarProperty Name="senha" ColumnName="senha" />
+                <ScalarProperty Name="tipo_acesso" ColumnName="tipo_acesso" />
+                <ScalarProperty Name="pessoa_id" ColumnName="pessoa_id" />
+                <ScalarProperty Name="cargo_posicao" ColumnName="cargo_posicao" />
+                <ScalarProperty Name="porcentagem" ColumnName="porcentagem" />
+                <ScalarProperty Name="telefone" ColumnName="telefone" />
+                <ScalarProperty Name="celular" ColumnName="celular" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="cpf" ColumnName="cpf" />
+                <ScalarProperty Name="rg" ColumnName="rg" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="status_da_compra">
+            <EntityTypeMapping TypeName="Monitoramento.status_da_compra">
+              <MappingFragment StoreEntitySet="status_da_compra">
+                <ScalarProperty Name="place_id" ColumnName="place_id" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="status_usuario">
+            <EntityTypeMapping TypeName="Monitoramento.status_usuario">
+              <MappingFragment StoreEntitySet="status_usuario">
+                <ScalarProperty Name="place_id" ColumnName="place_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Monitoramento.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tipo">
+            <EntityTypeMapping TypeName="Monitoramento.tipo">
+              <MappingFragment StoreEntitySet="tipo">
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="transacao">
+            <EntityTypeMapping TypeName="Monitoramento.transacao">
+              <MappingFragment StoreEntitySet="transacao">
+                <ScalarProperty Name="compra_id" ColumnName="compra_id" />
+                <ScalarProperty Name="data" ColumnName="data" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

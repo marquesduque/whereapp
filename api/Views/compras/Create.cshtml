@@ -1,0 +1,445 @@
+﻿@model api.Models.compra
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        <a href="@Url.Action("Index")" class="btn btn-info"><i class="glyphicon glyphicon-chevron-left" style="margin-right: 10px"></i>Voltar</a>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("index")" base_library="api.Models.compra.library_bc_1">Listar</a></li>
+        <li class="active" base_library="api.Models.compra.library_bc_create">Criar</li>
+    </ol>
+</section>
+
+
+<section class="content">
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+
+	      @Html.ValidationSummary(true)
+        <div class="alert alert-danger" role="alert" base_library="api.Models.compra.library_error_register">
+            Registro não gravado, verificar erro criticado
+        </div>
+
+        <fieldset>
+
+            <div class="col-md-12 bar">
+                <label class="col-md-6" base_library="api.Models.compra.library_title"><i class="glyphicon glyphicon-list-alt" style="margin-right: 10px"></i>Dados pessoais</label>
+            </div>
+    
+    <div>
+
+            
+            <div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.compra.pagamento" >pagamento</label>
+				
+				<div style="clear: both"></div>
+									@Html.TextBoxFor(model => model.pagamento, "{0:dd/MM/yyyya}", new { placeholder = "", @class = "form-control", mask = "{\"value\":\"99/99/9999\", \"placeholder\":\"dd/mm/yyyy\"}", maxLength = "10" })
+				                @Html.ValidationMessageFor(model => model.pagamento)
+            </div>
+   
+
+            
+            <div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.compra.total" >total</label>
+				
+				<div style="clear: both"></div>
+									@Html.TextBoxFor(model => model.total, new { placeholder = "", @class = "form-control", maxLength = "150" })
+				                @Html.ValidationMessageFor(model => model.total)
+            </div>
+   
+
+            
+            <div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.compra.desconto" >desconto</label>
+				
+				<div style="clear: both"></div>
+									@Html.TextBoxFor(model => model.desconto, new { placeholder = "", @class = "form-control", maxLength = "150" })
+				                @Html.ValidationMessageFor(model => model.desconto)
+            </div>
+   
+
+
+				<div class="form-group col-md-6">
+					<label class="control-label" base_library="api.Models.compra.pagamento_id" >pagamento_id</label>
+					<select class="form-control select2" source="#pagamento_id" data-placeholder="" style="width: 100%;">
+                        <option value="null">Selecione um item</option>
+						@foreach (var item in new api.Models.db().pagamento.Select(c => new { id = c.id, nome = c.nome }))
+						{
+							<option value="@item.id">@(item.nome)</option>
+						}
+					</select>
+					@Html.HiddenFor(model => model.pagamento_id)
+					@Html.ValidationMessageFor(model => model.pagamento_id)
+				</div>
+
+   
+
+            
+            <div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.compra.preparo" >preparo</label>
+				
+				<div style="clear: both"></div>
+									@Html.TextBoxFor(model => model.preparo, "{0:dd/MM/yyyya}", new { placeholder = "", @class = "form-control", mask = "{\"value\":\"99/99/9999\", \"placeholder\":\"dd/mm/yyyy\"}", maxLength = "10" })
+				                @Html.ValidationMessageFor(model => model.preparo)
+            </div>
+   
+
+            
+            <div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.compra.entregue" >entregue</label>
+				
+				<div style="clear: both"></div>
+									@Html.TextBoxFor(model => model.entregue, "{0:dd/MM/yyyya}", new { placeholder = "", @class = "form-control", mask = "{\"value\":\"99/99/9999\", \"placeholder\":\"dd/mm/yyyy\"}", maxLength = "10" })
+				                @Html.ValidationMessageFor(model => model.entregue)
+            </div>
+   
+
+            
+            <div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.compra.finalizado" >finalizado</label>
+				
+				<div style="clear: both"></div>
+									@Html.TextBoxFor(model => model.finalizado, "{0:dd/MM/yyyya}", new { placeholder = "", @class = "form-control", mask = "{\"value\":\"99/99/9999\", \"placeholder\":\"dd/mm/yyyy\"}", maxLength = "10" })
+				                @Html.ValidationMessageFor(model => model.finalizado)
+            </div>
+   
+
+
+				<div class="form-group col-md-6">
+					<label class="control-label" base_library="api.Models.compra.status_da_compra_id" >status_da_compra_id</label>
+					<select class="form-control select2" source="#status_da_compra_id" data-placeholder="" style="width: 100%;">
+                        <option value="null">Selecione um item</option>
+						@foreach (var item in new api.Models.db().status_da_compra.Select(c => new { id = c.id, nome = c.nome }))
+						{
+							<option value="@item.id">@(item.nome)</option>
+						}
+					</select>
+					@Html.HiddenFor(model => model.status_da_compra_id)
+					@Html.ValidationMessageFor(model => model.status_da_compra_id)
+				</div>
+
+   
+
+            
+            <div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.compra.filial_id" >filial_id</label>
+				
+				<div style="clear: both"></div>
+									@Html.TextBoxFor(model => model.filial_id, new { placeholder = "", @class = "form-control", maxLength = "150", type="number", min="1" })
+				                @Html.ValidationMessageFor(model => model.filial_id)
+            </div>
+   
+
+            
+            <div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.compra.pago" >pago</label>
+				
+				<div style="clear: both"></div>
+									@Html.TextBoxFor(model => model.pago, new { placeholder = "", @class = "form-control", maxLength = "150" })
+				                @Html.ValidationMessageFor(model => model.pago)
+            </div>
+   
+
+            
+            <div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.compra.recebido" >recebido</label>
+				
+				<div style="clear: both"></div>
+									@Html.TextBoxFor(model => model.recebido, "{0:dd/MM/yyyya}", new { placeholder = "", @class = "form-control", mask = "{\"value\":\"99/99/9999\", \"placeholder\":\"dd/mm/yyyy\"}", maxLength = "10" })
+				                @Html.ValidationMessageFor(model => model.recebido)
+            </div>
+   
+
+            
+            <div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.compra.ativo" >ativo</label>
+				
+				<div style="clear: both"></div>
+									<div class="col-md-12 row" style="line-height: 29px">
+						<label>
+							<input type="radio" value="true" name="item_ativo" class="minimal-green">
+							Sim
+
+						</label>
+						<label>
+							<input type="radio" value="false" name="item_ativo" class="minimal">
+							Não
+
+						</label>
+					</div>
+					<div style="clear: both"></div>
+					@Html.HiddenFor(model => model.ativo, new { icheck = "item_ativo" })
+                                @Html.ValidationMessageFor(model => model.ativo)
+            </div>
+   
+
+            
+            <div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.compra.cancelamento" >cancelamento</label>
+				
+				<div style="clear: both"></div>
+									@Html.TextBoxFor(model => model.cancelamento, "{0:dd/MM/yyyya}", new { placeholder = "", @class = "form-control", mask = "{\"value\":\"99/99/9999\", \"placeholder\":\"dd/mm/yyyy\"}", maxLength = "10" })
+				                @Html.ValidationMessageFor(model => model.cancelamento)
+            </div>
+   
+
+            
+            <div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.compra.pagarme_id" >pagarme_id</label>
+				
+				<div style="clear: both"></div>
+									@Html.TextBoxFor(model => model.pagarme_id, new { placeholder = "", @class = "form-control", maxLength = "150" })
+				                @Html.ValidationMessageFor(model => model.pagarme_id)
+            </div>
+   
+
+            
+            <div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.compra.pagarme_status" >pagarme_status</label>
+				
+				<div style="clear: both"></div>
+									@Html.TextBoxFor(model => model.pagarme_status, new { placeholder = "", @class = "form-control", maxLength = "150" })
+				                @Html.ValidationMessageFor(model => model.pagarme_status)
+            </div>
+   
+
+            
+            <div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.compra.place_id" >place_id</label>
+				
+				<div style="clear: both"></div>
+									@Html.TextBoxFor(model => model.place_id, new { placeholder = "", @class = "form-control", maxLength = "150" })
+				                @Html.ValidationMessageFor(model => model.place_id)
+            </div>
+   
+
+            
+            <div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.compra.balcao" >balcao</label>
+				
+				<div style="clear: both"></div>
+									<div class="col-md-12 row" style="line-height: 29px">
+						<label>
+							<input type="radio" value="true" name="item_balcao" class="minimal-green">
+							Sim
+
+						</label>
+						<label>
+							<input type="radio" value="false" name="item_balcao" class="minimal">
+							Não
+
+						</label>
+					</div>
+					<div style="clear: both"></div>
+					@Html.HiddenFor(model => model.balcao, new { icheck = "item_balcao" })
+                                @Html.ValidationMessageFor(model => model.balcao)
+            </div>
+   
+
+            
+            <div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.compra.delivery" >delivery</label>
+				
+				<div style="clear: both"></div>
+									<div class="col-md-12 row" style="line-height: 29px">
+						<label>
+							<input type="radio" value="true" name="item_delivery" class="minimal-green">
+							Sim
+
+						</label>
+						<label>
+							<input type="radio" value="false" name="item_delivery" class="minimal">
+							Não
+
+						</label>
+					</div>
+					<div style="clear: both"></div>
+					@Html.HiddenFor(model => model.delivery, new { icheck = "item_delivery" })
+                                @Html.ValidationMessageFor(model => model.delivery)
+            </div>
+   
+
+            
+            <div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.compra.codigo_servicos" >codigo_servicos</label>
+				
+				<div style="clear: both"></div>
+									@Html.TextBoxFor(model => model.codigo_servicos, new { placeholder = "", @class = "form-control", maxLength = "150" })
+				                @Html.ValidationMessageFor(model => model.codigo_servicos)
+            </div>
+   
+
+            
+            <div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.compra.valor_frete" >valor_frete</label>
+				
+				<div style="clear: both"></div>
+									@Html.TextBoxFor(model => model.valor_frete, new { placeholder = "", @class = "form-control", maxLength = "150" })
+				                @Html.ValidationMessageFor(model => model.valor_frete)
+            </div>
+   
+
+
+				<div class="form-group col-md-6">
+					<label class="control-label" base_library="api.Models.compra.cartao_id" >cartao_id</label>
+					<select class="form-control select2" source="#cartao_id" data-placeholder="" style="width: 100%;">
+                        <option value="null">Selecione um item</option>
+						@foreach (var item in new api.Models.db().cartao.Select(c => new { id = c.id, nome = c.nome }))
+						{
+							<option value="@item.id">@(item.nome)</option>
+						}
+					</select>
+					@Html.HiddenFor(model => model.cartao_id)
+					@Html.ValidationMessageFor(model => model.cartao_id)
+				</div>
+
+   
+
+            
+            <div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.compra.cpf" >cpf</label>
+				
+				<div style="clear: both"></div>
+									@Html.TextBoxFor(model => model.cpf, new { placeholder = "", @class = "form-control", maxLength = "150" })
+				                @Html.ValidationMessageFor(model => model.cpf)
+            </div>
+   
+
+            
+            <div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.compra.boleto_barcode" >boleto_barcode</label>
+				
+				<div style="clear: both"></div>
+									@Html.TextBoxFor(model => model.boleto_barcode, new { placeholder = "", @class = "form-control", maxLength = "150" })
+				                @Html.ValidationMessageFor(model => model.boleto_barcode)
+            </div>
+   
+
+            
+            <div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.compra.boleto_url" >boleto_url</label>
+				
+				<div style="clear: both"></div>
+									@Html.TextBoxFor(model => model.boleto_url, new { placeholder = "", @class = "form-control", maxLength = "150" })
+				                @Html.ValidationMessageFor(model => model.boleto_url)
+            </div>
+   
+
+
+				<div class="form-group col-md-6">
+					<label class="control-label" base_library="api.Models.compra.comprador_id" >comprador_id</label>
+					<select class="form-control select2" source="#comprador_id" data-placeholder="" style="width: 100%;">
+                        <option value="null">Selecione um item</option>
+						@foreach (var item in new api.Models.db().comprador.Select(c => new { id = c.id, nome = c.nome }))
+						{
+							<option value="@item.id">@(item.nome)</option>
+						}
+					</select>
+					@Html.HiddenFor(model => model.comprador_id)
+					@Html.ValidationMessageFor(model => model.comprador_id)
+				</div>
+
+   
+
+            
+            <div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.compra.tipo_frete" >tipo_frete</label>
+				
+				<div style="clear: both"></div>
+									@Html.TextBoxFor(model => model.tipo_frete, new { placeholder = "", @class = "form-control", maxLength = "150" })
+				                @Html.ValidationMessageFor(model => model.tipo_frete)
+            </div>
+   
+
+
+				<div class="form-group col-md-6">
+					<label class="control-label" base_library="api.Models.compra.vendedor_id" >vendedor_id</label>
+					<select class="form-control select2" source="#vendedor_id" data-placeholder="" style="width: 100%;">
+                        <option value="null">Selecione um item</option>
+						@foreach (var item in new api.Models.db().vendedor.Select(c => new { id = c.id, nome = c.nome }))
+						{
+							<option value="@item.id">@(item.nome)</option>
+						}
+					</select>
+					@Html.HiddenFor(model => model.vendedor_id)
+					@Html.ValidationMessageFor(model => model.vendedor_id)
+				</div>
+
+   
+
+            
+            <div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.compra.comissao_vendedor" >comissao_vendedor</label>
+				
+				<div style="clear: both"></div>
+									@Html.TextBoxFor(model => model.comissao_vendedor, new { placeholder = "", @class = "form-control", maxLength = "150" })
+				                @Html.ValidationMessageFor(model => model.comissao_vendedor)
+            </div>
+   
+
+            
+            <div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.compra.external_id" >external_id</label>
+				
+				<div style="clear: both"></div>
+									@Html.TextBoxFor(model => model.external_id, new { placeholder = "", @class = "form-control", maxLength = "150" })
+				                @Html.ValidationMessageFor(model => model.external_id)
+            </div>
+   
+
+            
+            <div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.compra.frete" >frete</label>
+				
+				<div style="clear: both"></div>
+									@Html.TextBoxFor(model => model.frete, new { placeholder = "", @class = "form-control", maxLength = "150" })
+				                @Html.ValidationMessageFor(model => model.frete)
+            </div>
+   
+
+            
+            <div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.compra.observacao" >observacao</label>
+				
+				<div style="clear: both"></div>
+									@Html.TextBoxFor(model => model.observacao, new { placeholder = "", @class = "form-control", maxLength = "150" })
+				                @Html.ValidationMessageFor(model => model.observacao)
+            </div>
+   
+
+
+				<div class="form-group col-md-6">
+					<label class="control-label" base_library="api.Models.compra.item_id" >item_id</label>
+					<select class="form-control select2" source="#item_id" data-placeholder="" style="width: 100%;">
+                        <option value="null">Selecione um item</option>
+						@foreach (var item in new api.Models.db().item.Select(c => new { id = c.id, nome = c.nome }))
+						{
+							<option value="@item.id">@(item.nome)</option>
+						}
+					</select>
+					@Html.HiddenFor(model => model.item_id)
+					@Html.ValidationMessageFor(model => model.item_id)
+				</div>
+
+   
+
+        
+            <div class="form-group col-md-12 btn-gallery">
+                <a class="btn btn-success pull-right" onclick="$(this).closest('form').submit()" base_library="api.Models.compra.library_save"><i class="glyphicon glyphicon-ok"></i>Salvar</a>
+            </div>
+    </div>
+	</fieldset>
+}
+
+</section>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

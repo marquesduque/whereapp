@@ -1,0 +1,51 @@
+﻿<div class="pages">
+    <div data-page="entrar" class="page" style="background-image: url({{js "controller.layout.get().background_image_local"}}) !important; background-size:cover; background-position:center; text-align:center">
+        <img src="{{js "controller.layout.get().logo"}}" style="width: 200px; margin:10vh auto; margin-bottom:00px; border-radius: 100px;" />
+        <div style="clear:both"></div>
+        <form_entrar_mesa>
+            <div style="display:none">
+                <input type="file" accept="image/*" id="fileqrcode" style="    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    top: 0px;
+    left: 0px;" capture="camera">
+                <div style="font-size: 16px;
+    text-shadow: 1px 1px #000000;
+    color: white;">
+                    <b style="font-size:25px">Faça seu pedido</b><br />
+                    Escaneie o <b>QrCode</b> que esta na mesa
+                </div>
+
+
+                <div class="qrcodescan">
+                    <div style="font-weight:700; font-size:20px">QRCode</div>
+                    <span class="icon-camera"></span>
+                    <div style="font-weight:700; font-size:25px">SCAN</div>
+                </div>
+            </div>
+
+            <div>
+                <input style="text-align: center;
+    width: 200px;
+    margin: 0 auto;
+    height: 40px;
+    margin-bottom: 5px;
+    border-radius: 0px;
+    border: 1px;
+    background-color: var(--textbox-color);
+    color: var(--textbox-font-color);
+    FONT-SIZE: 20px;
+    border-radius: var(--border-radius-button);
+    padding: 18px"
+                       type="number" name="email" onclick="$(this).val('')" inputmode="numeric" pattern="[0-9]*" onKeyPress="if (event.keyCode == 13) { $('#btn_buscar').click(); }" onKeyDown="if(this.value.length==8 && event.keyCode!=8) return false;" placeholder="MESA">
+                <input hidden="hidden" name="password" value="{{js "controller.layout.get().place_id"}}" />
+                <div id="btn_entrar_mesa" class="buton" style="width:236px; margin:0 auto">
+                    ENTRAR
+                </div>
+            </div>
+
+        </form_entrar_mesa>
+       
+    </div>
+</div>

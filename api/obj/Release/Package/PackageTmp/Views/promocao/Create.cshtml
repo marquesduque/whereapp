@@ -1,0 +1,344 @@
+﻿@model api.Models.promocao
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        <a href="@Url.Action("Index")" class="btn btn-info"><i class="glyphicon glyphicon-chevron-left" style="margin-right: 10px"></i>Voltar</a>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("index")" base_library="api.Models.promocao.library_bc_1">Listar</a></li>
+        <li class="active" base_library="api.Models.promocao.library_bc_create">Criar</li>
+    </ol>
+</section>
+
+
+<section class="content">
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+
+	      @Html.ValidationSummary(true)
+        <div class="alert alert-danger" role="alert" base_library="api.Models.promocao.library_error_register">
+            Registro não gravado, verificar erro criticado
+        </div>
+
+        <fieldset>
+
+            <div class="col-md-12 bar">
+                <label class="col-md-6" base_library="api.Models.promocao.library_title"><i class="glyphicon glyphicon-list-alt" style="margin-right: 10px"></i>Dados Pessoais</label>
+            </div>
+    
+            <div>
+
+
+
+
+
+
+
+                <div class="form-group col-md-6">
+                    <label class="control-label" base_library="api.Models.promocao.valor">valor</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.valor, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                    @Html.ValidationMessageFor(model => model.valor)
+                </div>
+
+
+
+                <div class="form-group col-md-6">
+                    <label class="control-label" base_library="api.Models.promocao.validade">validade</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.validade, "{0:dd/MM/yyyya}", new { placeholder = "", @class = "form-control", mask = "{\"value\":\"99/99/9999\", \"placeholder\":\"dd/mm/yyyy\"}", maxLength = "10" })
+                    @Html.ValidationMessageFor(model => model.validade)
+                </div>
+
+
+
+                <div class="form-group col-md-6">
+                    <label class="control-label" base_library="api.Models.promocao.nome">nome</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.nome, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                    @Html.ValidationMessageFor(model => model.nome)
+                </div>
+
+
+
+                <div class="form-group col-md-6">
+                    <label class="control-label" base_library="api.Models.promocao.automatico">automatico</label>
+
+                    <div style="clear: both"></div>
+                    <div class="col-md-12 row" style="line-height: 29px">
+                        <label>
+                            <input type="radio" value="true" name="item_automatico" class="minimal-green">
+                            Sim
+
+                        </label>
+                        <label>
+                            <input type="radio" value="false" name="item_automatico" class="minimal">
+                            Não
+
+                        </label>
+                    </div>
+                    <div style="clear: both"></div>
+                    @Html.HiddenFor(model => model.automatico, new { icheck = "item_automatico" })
+                    @Html.ValidationMessageFor(model => model.automatico)
+                </div>
+
+
+
+                @Html.HiddenFor(model => model.compra_id)
+
+
+                <div class="form-group col-md-6">
+                    <label class="control-label" base_library="api.Models.promocao.codigo">codigo</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.codigo, new { placeholder = "", @class = "form-control", maxLength = "150", type = "number", min = "1" })
+                    @Html.ValidationMessageFor(model => model.codigo)
+                </div>
+
+
+                <div class="form-group col-md-6">
+                    <label class="control-label" base_library="api.Models.promocao.quantidade">quantidade</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.quantidade, new { placeholder = "", @class = "form-control", maxLength = "150", type = "number", min = "1" })
+                    @Html.ValidationMessageFor(model => model.quantidade)
+                </div>
+
+
+
+
+
+                <div class="form-group col-md-6">
+                    <label class="control-label" base_library="api.Models.promocao.utilizacao">utilizacao</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.utilizacao, "{0:dd/MM/yyyya}", new { placeholder = "", @class = "form-control", mask = "{\"value\":\"99/99/9999\", \"placeholder\":\"dd/mm/yyyy\"}", maxLength = "10" })
+                    @Html.ValidationMessageFor(model => model.utilizacao)
+                </div>
+
+
+
+                <div class="form-group col-md-6">
+                    <label class="control-label" base_library="api.Models.promocao.ativo">ativo</label>
+
+                    <div style="clear: both"></div>
+                    <div class="col-md-12 row" style="line-height: 29px">
+                        <label>
+                            <input type="radio" value="true" name="item_ativo" class="minimal-green">
+                            Sim
+
+                        </label>
+                        <label>
+                            <input type="radio" value="false" name="item_ativo" class="minimal">
+                            Não
+
+                        </label>
+                    </div>
+                    <div style="clear: both"></div>
+                    @Html.HiddenFor(model => model.ativo, new { icheck = "item_ativo" })
+                    @Html.ValidationMessageFor(model => model.ativo)
+                </div>
+
+
+
+
+
+                <div class="form-group col-md-6">
+                    <label class="control-label" base_library="api.Models.promocao.produto_id">produto_id</label>
+                    <select class="form-control select2" source="#produto_id" data-placeholder="" style="width: 100%;">
+                        <option value="null">Selecione um item</option>
+                        @foreach (var item in new api.Models.db().produto.Where(c => c.place_id == api.Models.db.place.place_id).Select(c => new { id = c.id, nome = c.nome }))
+                        {
+                            <option value="@item.id">@(item.nome)</option>
+                        }
+                    </select>
+                    @Html.HiddenFor(model => model.produto_id)
+                    @Html.ValidationMessageFor(model => model.produto_id)
+                </div>
+
+
+
+
+                <div class="form-group col-md-6">
+                    <label class="control-label" base_library="api.Models.promocao.seg">seg</label>
+
+                    <div style="clear: both"></div>
+                    <div class="col-md-12 row" style="line-height: 29px">
+                        <label>
+                            <input type="radio" value="true" name="item_seg" class="minimal-green">
+                            Sim
+
+                        </label>
+                        <label>
+                            <input type="radio" value="false" name="item_seg" class="minimal">
+                            Não
+
+                        </label>
+                    </div>
+                    <div style="clear: both"></div>
+                    @Html.HiddenFor(model => model.seg, new { icheck = "item_seg" })
+                    @Html.ValidationMessageFor(model => model.seg)
+                </div>
+
+
+
+                <div class="form-group col-md-6">
+                    <label class="control-label" base_library="api.Models.promocao.ter">ter</label>
+
+                    <div style="clear: both"></div>
+                    <div class="col-md-12 row" style="line-height: 29px">
+                        <label>
+                            <input type="radio" value="true" name="item_ter" class="minimal-green">
+                            Sim
+
+                        </label>
+                        <label>
+                            <input type="radio" value="false" name="item_ter" class="minimal">
+                            Não
+
+                        </label>
+                    </div>
+                    <div style="clear: both"></div>
+                    @Html.HiddenFor(model => model.ter, new { icheck = "item_ter" })
+                    @Html.ValidationMessageFor(model => model.ter)
+                </div>
+
+
+
+                <div class="form-group col-md-6">
+                    <label class="control-label" base_library="api.Models.promocao.qua">qua</label>
+
+                    <div style="clear: both"></div>
+                    <div class="col-md-12 row" style="line-height: 29px">
+                        <label>
+                            <input type="radio" value="true" name="item_qua" class="minimal-green">
+                            Sim
+
+                        </label>
+                        <label>
+                            <input type="radio" value="false" name="item_qua" class="minimal">
+                            Não
+
+                        </label>
+                    </div>
+                    <div style="clear: both"></div>
+                    @Html.HiddenFor(model => model.qua, new { icheck = "item_qua" })
+                    @Html.ValidationMessageFor(model => model.qua)
+                </div>
+
+
+
+                <div class="form-group col-md-6">
+                    <label class="control-label" base_library="api.Models.promocao.qui">qui</label>
+
+                    <div style="clear: both"></div>
+                    <div class="col-md-12 row" style="line-height: 29px">
+                        <label>
+                            <input type="radio" value="true" name="item_qui" class="minimal-green">
+                            Sim
+
+                        </label>
+                        <label>
+                            <input type="radio" value="false" name="item_qui" class="minimal">
+                            Não
+
+                        </label>
+                    </div>
+                    <div style="clear: both"></div>
+                    @Html.HiddenFor(model => model.qui, new { icheck = "item_qui" })
+                    @Html.ValidationMessageFor(model => model.qui)
+                </div>
+
+
+
+                <div class="form-group col-md-6">
+                    <label class="control-label" base_library="api.Models.promocao.sex">sex</label>
+
+                    <div style="clear: both"></div>
+                    <div class="col-md-12 row" style="line-height: 29px">
+                        <label>
+                            <input type="radio" value="true" name="item_sex" class="minimal-green">
+                            Sim
+
+                        </label>
+                        <label>
+                            <input type="radio" value="false" name="item_sex" class="minimal">
+                            Não
+
+                        </label>
+                    </div>
+                    <div style="clear: both"></div>
+                    @Html.HiddenFor(model => model.sex, new { icheck = "item_sex" })
+                    @Html.ValidationMessageFor(model => model.sex)
+                </div>
+
+
+
+                <div class="form-group col-md-6">
+                    <label class="control-label" base_library="api.Models.promocao.sab">sab</label>
+
+                    <div style="clear: both"></div>
+                    <div class="col-md-12 row" style="line-height: 29px">
+                        <label>
+                            <input type="radio" value="true" name="item_sab" class="minimal-green">
+                            Sim
+
+                        </label>
+                        <label>
+                            <input type="radio" value="false" name="item_sab" class="minimal">
+                            Não
+
+                        </label>
+                    </div>
+                    <div style="clear: both"></div>
+                    @Html.HiddenFor(model => model.sab, new { icheck = "item_sab" })
+                    @Html.ValidationMessageFor(model => model.sab)
+                </div>
+
+
+
+                <div class="form-group col-md-6">
+                    <label class="control-label" base_library="api.Models.promocao.dom">dom</label>
+
+                    <div style="clear: both"></div>
+                    <div class="col-md-12 row" style="line-height: 29px">
+                        <label>
+                            <input type="radio" value="true" name="item_dom" class="minimal-green">
+                            Sim
+
+                        </label>
+                        <label>
+                            <input type="radio" value="false" name="item_dom" class="minimal">
+                            Não
+
+                        </label>
+                    </div>
+                    <div style="clear: both"></div>
+                    @Html.HiddenFor(model => model.dom, new { icheck = "item_dom" })
+                    @Html.ValidationMessageFor(model => model.dom)
+                </div>
+
+
+
+                <div class="form-group col-md-12 btn-gallery">
+                    <a class="btn btn-success pull-right" onclick="$(this).closest('form').submit()" base_library="api.Models.promocao.library_save"><i class="glyphicon glyphicon-ok"></i>Salvar</a>
+                </div>
+            </div>
+	</fieldset>
+}
+
+</section>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

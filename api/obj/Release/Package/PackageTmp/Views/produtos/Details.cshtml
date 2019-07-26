@@ -1,0 +1,302 @@
+﻿
+@model Site.Models.Find<api.Controllers.produtosController.find>
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<section class="content-header">
+    <h1>
+        <a href="@Url.Action("Create")" class="btn btn-info" base_library="api.Models.produto.library_create"><i class="fa fa-plus" style="margin-right:10px"></i>Criar Novo</a>
+        <a href="@Url.Action("index", "tipos")" class="btn btn-danger"><i class="fa fa-info-circle" style="margin-right: 10px"></i>Tipos de Produtos</a>
+        @*<a href="@Url.Action("index", "descontos")" class="btn btn-warning"><i class="fa fa-info-circle" style="margin-right: 10px"></i>Descontos</a>*@
+        @*<a href="@Url.Action("index", "montagens")" class="btn btn-info"><i class="fa fa-info-circle" style="margin-right: 10px"></i>Montagens</a>*@
+
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#" base_library="api.Models.produto.library_bc_1"><i class="fa fa-newspaper-o"></i>Listar</a></li>
+        <li class="active"><a href="@Url.Action("index")" base_library="api.Models.produto.library_bc_list">Index</a></li>
+    </ol>
+</section>
+
+<section class="content">
+
+
+
+
+
+    <form ajax="@Url.Action("Find")" table="tbl">
+        <input type="hidden" id="Page" name="Page" value="0" />
+
+        <div class="box box-default">
+            <div class="box-header with-border">
+
+
+                <div class="form-group col-md-6">
+                    <label class="control-label" style="width:100%" base_library="api.Models.produto.name">Nome</label>
+
+                    @Html.TextBoxFor(model => model.Filter.nome, new { placeholder = "", @class = "form-control", maxLength = "150" })
+
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label class="control-label" style="width:100%" base_library="api.Models.produto.codigo">Código</label>
+
+                    @Html.TextBoxFor(model => model.Filter.codigo, new { placeholder = "", @class = "form-control", maxLength = "150" })
+
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label class="control-label" style="width:100%" base_library="api.Models.produto.tipo_id">Categoria</label>
+                    <select class="form-control select2" source="#Filter_tipo_id" data-placeholder="" style="width: 100%;">
+                        <option value="null">Todos</option>
+                        @foreach (var item in new api.Models.db().tipo.Where(c => c.place_id == api.Models.db.place.place_id))
+                        {
+                            <option value="@item.id">@(item.nome)</option>
+                        }
+                    </select>
+                    @Html.HiddenFor(model => model.Filter.tipo_id)
+                    @Html.ValidationMessageFor(model => model.Filter.tipo_id)
+
+
+                </div>
+
+
+
+
+                <div class="form-group col-md-6">
+
+                    <label class="control-label" style="width:100%" base_library="api.Models.produto.importar">Importar</label>
+                    <input id="myfile" name="myFile" type="file" class="upload" source="#productSheet">
+                    @* O HIDDEN ABAIXO RECEBE O ARRAY DE PRODUTOS *@
+                    <input type="hidden" id="productSheet" />
+
+
+
+                </div>
+
+
+                <div class="form-group col-md-6">
+                    @*<label class="control-label" style="width:100%" base_library="api.Models.produto.preco">Valor de Venda</label>
+
+                            @Html.TextBoxFor(model => model.Filter.preco, new { placeholder = "", @class = "form-control", maxLength = "150", money = "true" })
+
+                        </div>*@
+
+
+
+                    @*<div class="form-group col-md-6">
+                            <label class="control-label" style="width:100%" base_library="api.Models.produto.descricao">descricao</label>
+
+                            @Html.TextBoxFor(model => model.Filter.descricao, new { placeholder = "", @class = "form-control", maxLength = "150" })
+
+
+                        </div>*@
+
+                    @*<div class="form-group col-md-6">
+                            <label class="control-label" style="width:100%" base_library="api.Models.produto.desconto_id">desconto_id</label>
+                            <select class="form-control select2" source="#Filter_desconto_id" data-placeholder="" style="width: 100%;">
+                                <option value="null">Todos</option>
+                                @foreach (var item in new api.Models.db().desconto.Where(c => c.place_id == api.Models.db.place.place_id))
+                                {
+                                    <option value="@item.id">@(item.nome)</option>
+                                }
+                            </select>
+                            @Html.HiddenFor(model => model.Filter.desconto_id)
+                            @Html.ValidationMessageFor(model => model.Filter.desconto_id)
+
+
+                        </div>*@
+
+
+
+
+
+
+
+                    @*<div class="form-group col-md-6">
+                                         <label class="control-label" style="width:100%" base_library="api.Models.produto.status" >status</label>
+
+                                                         @Html.TextBoxFor(model => model.Filter.status, new { placeholder = "", @class = "form-control", maxLength = "150", type="number", min="1", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                        </div>*@
+
+
+
+                    @*<div class="form-group col-md-6">
+                                         <label class="control-label" style="width:100%" base_library="api.Models.produto.filial_id" >filial_id</label>
+                                         <select class="form-control select2" source="#Filter_filial_id" data-placeholder="" onchange = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" style="width: 100%;">
+                                             <option value="null">Todos</option>
+                                             @foreach (var item in new api.Models.db().filial)
+                                             {
+                                                 <option value="@item.id">@(item.nome)</option>
+                                             }
+                                         </select>
+                                         @Html.HiddenFor(model => model.Filter.filial_id)
+                                         @Html.ValidationMessageFor(model => model.Filter.filial_id)
+
+
+                        </div>*@
+
+
+
+                    @*<div class="form-group col-md-6">
+                            <label class="control-label" style="width:100%" base_library="api.Models.produto.duracao">duracao</label>
+
+                            @Html.TextBoxFor(model => model.Filter.duracao, new { placeholder = "", @class = "form-control", maxLength = "150", type = "number", min = "1", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                        </div>*@
+
+                    @*<div class="box-tools pull-right">
+                            <button class="btn btn-box-tool" data-widget="collapse">Pesquisa Avançada<i style="margin-left: 10px" class="fa fa-plus-square fa-minus"></i></button>
+                        </div>*@
+                </div>
+
+                <div class="box-body" style="display:none">
+                </div>
+                <div class="form-group" style="border-top: 1px solid #f4f4f4; padding: 10px">
+                    <button href="#" class="btn btn-warning pull-right" type="button" name="btnProcurar" onclick="$('.tblrow').remove(); $('#Page').val('0'); $('[ajax]').submit();"><i class="fa fa-search" style="margin-right: 10px"></i>Procurar</button>
+                    <button href="#" style="margin-right:10px" class="btn btn-primary pull-right" type="button" name="btnImportar" onclick="ImportarProdutos('productSheet',@Request.QueryString["tipo_id"])"><i class="fa fa-plus" style="margin-right: 10px"></i>Importar Produtos</button>
+
+                    <div style="clear: both"></div>
+                </div>
+            </div>
+
+            <div class="table-default scroll">
+                <div class="filter-table" base_library="api.Models.produto.library_filter"><i class="fa fa-filter"></i>filtros</div>
+
+                <div class="filter-table" base_library="api.Models.sample.library_report" onclick="fnExcelReport()" style="margin-left:83px; width:110px">
+                    <i class="fa fa-file-excel-o"></i>Relatório
+                </div>
+                <table id="tbl">
+                    <tr>
+
+
+                        <td base_library="api.Models.produto.codigo">
+                            @*@Html.DisplayNameFor(model => model.Filter.codigo)*@
+                            Código
+                        </td>
+
+                        <td base_library="api.Models.produto.name">
+                            @*@Html.DisplayNameFor(model => model.Filter.nome)*@
+                            Nome
+                        </td>
+                        <td base_library="api.Models.produto.tipo_id">
+                            @*@Html.DisplayNameFor(model => model.Filter.tipo_id)*@
+                            Categoria
+                        </td>
+
+                        <td base_library="api.Models.produto.preco">
+                            @*@Html.DisplayNameFor(model => model.Filter.preco)*@
+                            Valor Venda
+                        </td>
+                        <td base_library="api.Models.produto.porcentagemlucro">
+                            @*@Html.DisplayNameFor(model => model.Filter.porcentagemlucro)*@
+                            Porcentagem Lucro
+                        </td>
+
+                        @*SÓ APARECE ISSO NO FASHIONYOU*@
+                        @if (Utility.Session.Login.Correios == true)
+                        {
+                            <td base_library="api.Models.produto.valorcompra">
+                                @*@Html.DisplayNameFor(model => model.Filter.valorcompra)*@
+                                Custo
+                            </td>
+
+
+                            <td base_library="api.Models.produto.estoque">
+                                @*@Html.DisplayNameFor(model => model.Filter.estoque)*@
+                                Estoque/Qtd
+                            </td>
+                        }
+
+                        @*SE TIVER VENDEDOR, ELE MOSTRA ESSAS PARADA DE VENDEDOR*@
+                        @if (new api.Models.db().pessoa.Where(c => c.perfil_id == 5 && c.place_id == api.Models.db.place.place_id).Count() > 0)
+                        {
+                            <td base_library="api.Models.produto.valor_revenda">
+                                @*@Html.DisplayNameFor(model => model.Filter.valor_revenda)*@
+                                Valor Revenda
+                            </td>
+                            <td base_library="api.Models.produto.comissao_vendedor">
+                                @*@Html.DisplayNameFor(model => model.Filter.comissao_vendedor)*@
+                                Comissão Vendedor
+                            </td>
+                        }
+
+                        <td base_library="api.Models.produto.observacao">
+                            @*@Html.DisplayNameFor(model => model.Filter.comissao_vendedor)*@
+                            Observação
+                        </td>
+
+
+                        @*<td base_library="api.Models.produto.descricao">
+            @Html.DisplayNameFor(model => model.Filter.descricao)
+        </td>*@
+                        @*<td base_library="api.Models.produto.desconto_id">
+            @Html.DisplayNameFor(model => model.Filter.desconto_id)
+        </td>*@
+                        @*<td base_library="api.Models.produto.status">
+            @Html.DisplayNameFor(model => model.Filter.status)
+        </td>*@
+                        @*<td base_library="api.Models.produto.filial_id">
+            @Html.DisplayNameFor(model => model.Filter.filial_id)
+        </td>*@
+                        @*<td base_library="api.Models.produto.duracao">
+            @Html.DisplayNameFor(model => model.Filter.duracao)
+        </td>*@
+                    </tr>
+                </table>
+            </div>
+
+    </form>
+</section>
+
+<script template="tbl" type="text/template" redirect="@Url.Action("edit")">
+
+    <tr class="tblrow" pk="id">
+
+        <td column="codigo"></td>
+
+        <td column="nome"></td>
+        <td column="tipo"></td>
+
+        <td column="preco"></td>
+        <td column="porcentagemlucro"></td>
+
+
+        @*SÓ APARECE ISSO NO FASHIONYOU*@
+        @if (Utility.Session.Login.Correios == true)
+        {
+            <td column="valorcompra"></td>
+            <td column="estoque"></td>
+        }
+
+        @*SE TIVER VENDEDOR, ELE MOSTRA ESSAS PARADA DE VENDEDOR*@
+        @if (new api.Models.db().pessoa.Where(c => c.perfil_id == 5 && c.place_id == api.Models.db.place.place_id).Count() > 0)
+        {
+            <td column="valor_revenda"></td>
+            <td column="comissao_vendedor"></td>
+        }
+
+        <td column="observacao"></td>
+
+        @*<td column="descricao"></td>*@
+        @*<td column="desconto"></td>*@
+        @*<td column="status">
+        </td>*@
+        @*<td column="filial">
+        </td>*@
+        @*<td column="duracao"></td>*@
+
+    </tr>
+
+
+</script>
+
+
+
+@section scripts{
+
+    <script src="~/Scripts/admin/produto.js"></script>
+
+}

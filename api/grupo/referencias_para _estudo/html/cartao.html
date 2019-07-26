@@ -1,0 +1,76 @@
+﻿<div class="pages">
+    <div data-page="register" class="page">
+        <div class="navbar background-creait">
+            <div class="navbar-inner margin-bottom-20">
+                <div class="left"><a class="back link"> <i class="f7-icons icone-voltar" style="margin-right: 10px;">angle-left</i></a></div>
+                <div class="center">Cartão de Crédito</div>
+            </div>
+        </div>
+        <div class="page-content text-center">
+            <div class="page-content" id="app-cover">
+                <!--<div class="margin-bottom-40" style="margin-top: 50px;"><img class="logo" src="" style="width: 240px;" /></div>-->
+                <div style="
+    max-width: 500px;
+    margin: 50px auto;
+">
+
+
+                    <formcartao id="cartao">
+                        <div class="list-block margin-bottom-40">
+                            <img src="img/ssl.png" style="    width: 200px;    margin: 10px 20px 0px 20px;" />
+                            <ul>
+                                <li class="link-deeporange" style="
+    font-size: 12px;    margin: 0px;">
+                                    Para continuar sua compra<br />informe os dados do seu cartão de crédito
+                                </li>
+
+
+                                <li>
+                                    <input class="input-index" type="text" style="text-transform:uppercase" name="nome" value="{{cartao.nome}}" id="nome_input" placeholder="Nome impresso no cartão">
+
+                                </li>
+
+
+                                <li>
+                                    <input type="hidden" name="bandeira" value="{{cartao.bandeira}}" />
+                                    <input class="input-index" type="text" name="numero" value="{{cartao.numero}}" id="cardnumber_input" placeholder="Numero do cartão">
+
+                                    <img style="position: relative;
+    z-index: 999;
+    height: 20px;
+    float: right;
+    margin-top: -30px;
+    margin-right: 10px;" src="icons/bandeiras/{{cartao.bandeira}}.svg" id="brand" onerror="$(this).hide()" />
+
+                                </li>
+                                <li>
+                                    <div style="float:left; width:calc(50% - 5px); padding-right:5px">
+                                        <input class="input-index" type="tel" name="expiracao" value="{{cartao.expiracao}}" id="expiracao_input" placeholder="Validade">
+                                    </div>
+                                    <div style="float:left; width:calc(50% - 5px); padding-left:5px">
+                                        <input class="input-index" type="password" name="cvv" value="" id="cvv" placeholder="CVV">
+                                    </div>
+                                    <div style="clear:both"></div>
+                                </li>
+
+                                <li>
+                                    <input onKeyPress="if (this.value.length == 14 || event.keyCode < 48 || event.keyCode > 57) { return false; } debugger;" type="number" inputmode="numeric" pattern="[0-9]*" class="input-index" name="documento" value="{{cartao.documento}}" id="documento" placeholder="CPF ou CNPJ">
+
+                                </li>
+
+                            </ul>
+                        </div>
+
+
+                        <div class="row btn-form-group margin-bottom-10 margin-top-10">
+                            <div class="col-100">
+                                <div id="btn_savar_cartao" class="buton">Continuar</div>
+                            </div>
+                        </div>
+                    </formcartao>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

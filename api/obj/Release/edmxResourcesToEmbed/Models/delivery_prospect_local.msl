@@ -1,0 +1,268 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="delivery_prospect_localModelStoreContainer" CdmEntityContainer="delivery_prospect_localEntities">
+    <EntitySetMapping Name="bank">
+      <EntityTypeMapping TypeName="delivery_prospect_localModel.bank">
+        <MappingFragment StoreEntitySet="bank">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="sigla" ColumnName="sigla" />
+          <ScalarProperty Name="website" ColumnName="website" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="billing">
+      <EntityTypeMapping TypeName="delivery_prospect_localModel.billing">
+        <MappingFragment StoreEntitySet="billing">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="charges" ColumnName="charges" />
+          <ScalarProperty Name="installments" ColumnName="installments" />
+          <ScalarProperty Name="created" ColumnName="created" />
+          <ScalarProperty Name="day" ColumnName="day" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="trial_days" ColumnName="trial_days" />
+          <ScalarProperty Name="invoice_reminder" ColumnName="invoice_reminder" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="finish" ColumnName="finish" />
+          <ScalarProperty Name="plan_id" ColumnName="plan_id" />
+          <ScalarProperty Name="place_id" ColumnName="place_id" />
+          <ScalarProperty Name="pagarme_id" ColumnName="pagarme_id" />
+          <ScalarProperty Name="pagarme_status" ColumnName="pagarme_status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="category">
+      <EntityTypeMapping TypeName="delivery_prospect_localModel.category">
+        <MappingFragment StoreEntitySet="category">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="category_list">
+      <EntityTypeMapping TypeName="delivery_prospect_localModel.category_list">
+        <MappingFragment StoreEntitySet="category_list">
+          <ScalarProperty Name="place_id" ColumnName="place_id" />
+          <ScalarProperty Name="category_id" ColumnName="category_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="config">
+      <EntityTypeMapping TypeName="delivery_prospect_localModel.config">
+        <MappingFragment StoreEntitySet="config">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="connection" ColumnName="connection" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="creait">
+      <EntityTypeMapping TypeName="delivery_prospect_localModel.creait">
+        <MappingFragment StoreEntitySet="creait">
+          <ScalarProperty Name="Agencia" ColumnName="Agencia" />
+          <ScalarProperty Name="AgenciaDv" ColumnName="AgenciaDv" />
+          <ScalarProperty Name="Conta" ColumnName="Conta" />
+          <ScalarProperty Name="ContaDv" ColumnName="ContaDv" />
+          <ScalarProperty Name="BankCode" ColumnName="BankCode" />
+          <ScalarProperty Name="DocumentNumber" ColumnName="DocumentNumber" />
+          <ScalarProperty Name="LegalName" ColumnName="LegalName" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="pagarme_DefaultApiKey" ColumnName="pagarme_DefaultApiKey" />
+          <ScalarProperty Name="pagarme_DefaultEncryptionKey" ColumnName="pagarme_DefaultEncryptionKey" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dictionary">
+      <EntityTypeMapping TypeName="delivery_prospect_localModel.dictionary">
+        <MappingFragment StoreEntitySet="dictionary">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="tag" ColumnName="tag" />
+          <ScalarProperty Name="page" ColumnName="page" />
+          <ScalarProperty Name="language" ColumnName="language" />
+          <ScalarProperty Name="place_id" ColumnName="place_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="email">
+      <EntityTypeMapping TypeName="delivery_prospect_localModel.email">
+        <MappingFragment StoreEntitySet="email">
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="data_id" ColumnName="data_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="hours">
+      <EntityTypeMapping TypeName="delivery_prospect_localModel.hours">
+        <MappingFragment StoreEntitySet="hours">
+          <ScalarProperty Name="tue_1_open" ColumnName="tue_1_open" />
+          <ScalarProperty Name="tue_1_close" ColumnName="tue_1_close" />
+          <ScalarProperty Name="wed_1_open" ColumnName="wed_1_open" />
+          <ScalarProperty Name="wed_1_close" ColumnName="wed_1_close" />
+          <ScalarProperty Name="thu_1_open" ColumnName="thu_1_open" />
+          <ScalarProperty Name="thu_1_close" ColumnName="thu_1_close" />
+          <ScalarProperty Name="fri_1_open" ColumnName="fri_1_open" />
+          <ScalarProperty Name="fri_1_close" ColumnName="fri_1_close" />
+          <ScalarProperty Name="sat_1_open" ColumnName="sat_1_open" />
+          <ScalarProperty Name="sat_1_close" ColumnName="sat_1_close" />
+          <ScalarProperty Name="sun_1_open" ColumnName="sun_1_open" />
+          <ScalarProperty Name="sun_1_close" ColumnName="sun_1_close" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="location">
+      <EntityTypeMapping TypeName="delivery_prospect_localModel.location">
+        <MappingFragment StoreEntitySet="location">
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="country" ColumnName="country" />
+          <ScalarProperty Name="latitude" ColumnName="latitude" />
+          <ScalarProperty Name="longitude" ColumnName="longitude" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="street" ColumnName="street" />
+          <ScalarProperty Name="zip" ColumnName="zip" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="number" ColumnName="number" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="notificacoes_enviadas">
+      <EntityTypeMapping TypeName="delivery_prospect_localModel.notificacoes_enviadas">
+        <MappingFragment StoreEntitySet="notificacoes_enviadas">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="place_id" ColumnName="place_id" />
+          <ScalarProperty Name="num_notificacoes_enviadas" ColumnName="num_notificacoes_enviadas" />
+          <ScalarProperty Name="data_envio" ColumnName="data_envio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="payments">
+      <EntityTypeMapping TypeName="delivery_prospect_localModel.payments">
+        <MappingFragment StoreEntitySet="payments">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="proccess" ColumnName="proccess" />
+          <ScalarProperty Name="prevision" ColumnName="prevision" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="place_id" ColumnName="place_id" />
+          <ScalarProperty Name="plan_id" ColumnName="plan_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="place">
+      <EntityTypeMapping TypeName="delivery_prospect_localModel.place">
+        <MappingFragment StoreEntitySet="place">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="checkins" ColumnName="checkins" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="website" ColumnName="website" />
+          <ScalarProperty Name="location_id" ColumnName="location_id" />
+          <ScalarProperty Name="search" ColumnName="search" />
+          <ScalarProperty Name="picture" ColumnName="picture" />
+          <ScalarProperty Name="cover" ColumnName="cover" />
+          <ScalarProperty Name="rating_count" ColumnName="rating_count" />
+          <ScalarProperty Name="about" ColumnName="about" />
+          <ScalarProperty Name="hours_id" ColumnName="hours_id" />
+          <ScalarProperty Name="user_name" ColumnName="user_name" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="logo" ColumnName="logo" />
+          <ScalarProperty Name="logo_itype" ColumnName="logo_itype" />
+          <ScalarProperty Name="specialty" ColumnName="specialty" />
+          <ScalarProperty Name="url" ColumnName="url" />
+          <ScalarProperty Name="theme" ColumnName="theme" />
+          <ScalarProperty Name="connection" ColumnName="connection" />
+          <ScalarProperty Name="place_id" ColumnName="place_id" />
+          <ScalarProperty Name="loader" ColumnName="loader" />
+          <ScalarProperty Name="background_image_local" ColumnName="background_image_local" />
+          <ScalarProperty Name="balcao" ColumnName="balcao" />
+          <ScalarProperty Name="delivery" ColumnName="delivery" />
+          <ScalarProperty Name="primary_color" ColumnName="primary_color" />
+          <ScalarProperty Name="primary_font_color" ColumnName="primary_font_color" />
+          <ScalarProperty Name="secondary_color" ColumnName="secondary_color" />
+          <ScalarProperty Name="secondary_font_color" ColumnName="secondary_font_color" />
+          <ScalarProperty Name="textbox_color" ColumnName="textbox_color" />
+          <ScalarProperty Name="textbox_font_color" ColumnName="textbox_font_color" />
+          <ScalarProperty Name="border_radius_textbox" ColumnName="border_radius_textbox" />
+          <ScalarProperty Name="border_radius_button" ColumnName="border_radius_button" />
+          <ScalarProperty Name="light_color" ColumnName="light_color" />
+          <ScalarProperty Name="dark_color" ColumnName="dark_color" />
+          <ScalarProperty Name="font_color" ColumnName="font_color" />
+          <ScalarProperty Name="card_number" ColumnName="card_number" />
+          <ScalarProperty Name="card_name" ColumnName="card_name" />
+          <ScalarProperty Name="card_date" ColumnName="card_date" />
+          <ScalarProperty Name="card_cvv" ColumnName="card_cvv" />
+          <ScalarProperty Name="card_hash" ColumnName="card_hash" />
+          <ScalarProperty Name="card_document" ColumnName="card_document" />
+          <ScalarProperty Name="pagarme_id" ColumnName="pagarme_id" />
+          <ScalarProperty Name="card_brand" ColumnName="card_brand" />
+          <ScalarProperty Name="pagarme_status" ColumnName="pagarme_status" />
+          <ScalarProperty Name="created" ColumnName="created" />
+          <ScalarProperty Name="whatsapp" ColumnName="whatsapp" />
+          <ScalarProperty Name="whatsapp_message" ColumnName="whatsapp_message" />
+          <ScalarProperty Name="address_required" ColumnName="address_required" />
+          <ScalarProperty Name="frete_produto" ColumnName="frete_produto" />
+          <ScalarProperty Name="icone" ColumnName="icone" />
+          <ScalarProperty Name="icone_itype" ColumnName="icone_itype" />
+          <ScalarProperty Name="mesa" ColumnName="mesa" />
+          <ScalarProperty Name="comanda" ColumnName="comanda" />
+          <ScalarProperty Name="border_color" ColumnName="border_color" />
+          <ScalarProperty Name="background" ColumnName="background" />
+          <ScalarProperty Name="background_itype" ColumnName="background_itype" />
+          <ScalarProperty Name="bg_color" ColumnName="bg_color" />
+          <ScalarProperty Name="font_light_color" ColumnName="font_light_color" />
+          <ScalarProperty Name="token_paggi" ColumnName="token_paggi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="plan">
+      <EntityTypeMapping TypeName="delivery_prospect_localModel.plan">
+        <MappingFragment StoreEntitySet="plan">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="charges" ColumnName="charges" />
+          <ScalarProperty Name="installments" ColumnName="installments" />
+          <ScalarProperty Name="day" ColumnName="day" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="trial_days" ColumnName="trial_days" />
+          <ScalarProperty Name="invoice_reminder" ColumnName="invoice_reminder" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="finish" ColumnName="finish" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="payment_methods" ColumnName="payment_methods" />
+          <ScalarProperty Name="color" ColumnName="color" />
+          <ScalarProperty Name="primary_color" ColumnName="primary_color" />
+          <ScalarProperty Name="primary_font_color" ColumnName="primary_font_color" />
+          <ScalarProperty Name="secondary_color" ColumnName="secondary_color" />
+          <ScalarProperty Name="secondary_font_color" ColumnName="secondary_font_color" />
+          <ScalarProperty Name="textbox_color" ColumnName="textbox_color" />
+          <ScalarProperty Name="textbox_font_color" ColumnName="textbox_font_color" />
+          <ScalarProperty Name="border_radius_textbox" ColumnName="border_radius_textbox" />
+          <ScalarProperty Name="border_radius_button" ColumnName="border_radius_button" />
+          <ScalarProperty Name="light_color" ColumnName="light_color" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="themes">
+      <EntityTypeMapping TypeName="delivery_prospect_localModel.themes">
+        <MappingFragment StoreEntitySet="themes">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="primary_color" ColumnName="primary_color" />
+          <ScalarProperty Name="primary_font_color" ColumnName="primary_font_color" />
+          <ScalarProperty Name="secondary_color" ColumnName="secondary_color" />
+          <ScalarProperty Name="secondary_font_color" ColumnName="secondary_font_color" />
+          <ScalarProperty Name="textbox_color" ColumnName="textbox_color" />
+          <ScalarProperty Name="textbox_font_color" ColumnName="textbox_font_color" />
+          <ScalarProperty Name="border_radius_textbox" ColumnName="border_radius_textbox" />
+          <ScalarProperty Name="border_radius_button" ColumnName="border_radius_button" />
+          <ScalarProperty Name="light_color" ColumnName="light_color" />
+          <ScalarProperty Name="dark_color" ColumnName="dark_color" />
+          <ScalarProperty Name="font_color" ColumnName="font_color" />
+          <ScalarProperty Name="border_color" ColumnName="border_color" />
+          <ScalarProperty Name="bg_color" ColumnName="bg_color" />
+          <ScalarProperty Name="font_light_color" ColumnName="font_light_color" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

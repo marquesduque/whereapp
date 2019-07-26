@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a3f4bebe9e71449aaf778c0bf7382b64" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="Monitoramento.acesso" Width="1.5" PointX="3" PointY="23.25" />
+        <EntityTypeShape EntityType="Monitoramento.assinatura" Width="1.5" PointX="11.25" PointY="23.75" />
+        <EntityTypeShape EntityType="Monitoramento.biblioteca_de_palavra" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Monitoramento.cartao" Width="1.5" PointX="8.25" PointY="17.875" />
+        <EntityTypeShape EntityType="Monitoramento.compra" Width="1.5" PointX="16.5" PointY="12.5" />
+        <EntityTypeShape EntityType="Monitoramento.compra_item" Width="1.5" PointX="21.75" PointY="19.625" />
+        <EntityTypeShape EntityType="Monitoramento.grupo" Width="1.5" PointX="17.25" PointY="35" />
+        <EntityTypeShape EntityType="Monitoramento.grupo_item" Width="1.5" PointX="19.5" PointY="24" />
+        <EntityTypeShape EntityType="Monitoramento.grupo_pessoa" Width="1.5" PointX="8.25" PointY="26.75" />
+        <EntityTypeShape EntityType="Monitoramento.item" Width="1.5" PointX="14.25" PointY="20.875" />
+        <EntityTypeShape EntityType="Monitoramento.localizacao" Width="1.5" PointX="16.5" PointY="24.625" />
+        <EntityTypeShape EntityType="Monitoramento.localizacao_pessoa" Width="1.5" PointX="8.25" PointY="23.5" />
+        <EntityTypeShape EntityType="Monitoramento.notificacao" Width="1.5" PointX="8.25" PointY="43.25" />
+        <EntityTypeShape EntityType="Monitoramento.padrinho" Width="1.5" PointX="19.5" PointY="20.75" />
+        <EntityTypeShape EntityType="Monitoramento.pagamento" Width="1.5" PointX="14.25" PointY="10.625" />
+        <EntityTypeShape EntityType="Monitoramento.perfil" Width="1.5" PointX="0.75" PointY="24" />
+        <EntityTypeShape EntityType="Monitoramento.pessoa" Width="1.5" PointX="6" PointY="16.625" />
+        <EntityTypeShape EntityType="Monitoramento.rastreador" Width="1.5" PointX="16.5" PointY="31.5" />
+        <EntityTypeShape EntityType="Monitoramento.responsavel_juridico" Width="1.5" PointX="8.25" PointY="46.25" />
+        <EntityTypeShape EntityType="Monitoramento.status_da_compra" Width="1.5" PointX="14.25" PointY="15.125" />
+        <EntityTypeShape EntityType="Monitoramento.status_usuario" Width="1.5" PointX="3.75" PointY="20.125" />
+        <EntityTypeShape EntityType="Monitoramento.sysdiagrams" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Monitoramento.tipo" Width="1.5" PointX="12" PointY="21.125" />
+        <EntityTypeShape EntityType="Monitoramento.transacao" Width="1.5" PointX="18.75" PointY="17.125" />
+        <AssociationConnector Association="Monitoramento.FK_acesso_perfil" />
+        <AssociationConnector Association="Monitoramento.FK_assinatura_item" />
+        <AssociationConnector Association="Monitoramento.FK_assinatura_pessoa" />
+        <AssociationConnector Association="Monitoramento.FK_cartao_compra" />
+        <AssociationConnector Association="Monitoramento.FK_cartao_pessoa" />
+        <AssociationConnector Association="Monitoramento.FK_compra_cartao" />
+        <AssociationConnector Association="Monitoramento.FK_compra_item_compra" />
+        <AssociationConnector Association="Monitoramento.FK_compra_pagamento" />
+        <AssociationConnector Association="Monitoramento.FK_compra_pessoa" />
+        <AssociationConnector Association="Monitoramento.FK_compra_pessoa1" />
+        <AssociationConnector Association="Monitoramento.FK_compra_status_da_compra" />
+        <AssociationConnector Association="Monitoramento.FK_transacao_compra" />
+        <AssociationConnector Association="Monitoramento.FK_compra_item_item" />
+        <AssociationConnector Association="Monitoramento.FK_grupo_item_grupo" />
+        <AssociationConnector Association="Monitoramento.FK_grupo_pessoa_grupo" />
+        <AssociationConnector Association="Monitoramento.FK_grupo_item_item" />
+        <AssociationConnector Association="Monitoramento.FK_grupo_pessoa_pessoa" />
+        <AssociationConnector Association="Monitoramento.FK_item_pessoa" />
+        <AssociationConnector Association="Monitoramento.FK_item_pessoa1" />
+        <AssociationConnector Association="Monitoramento.FK_item_tipo" />
+        <AssociationConnector Association="Monitoramento.FK_localizacao_item" />
+        <AssociationConnector Association="Monitoramento.FK_padrinho_item" />
+        <AssociationConnector Association="Monitoramento.FK_rastreador_item" />
+        <AssociationConnector Association="Monitoramento.FK_localizacao_pessoa_pessoa" />
+        <AssociationConnector Association="Monitoramento.FK_notificacao_pessoa" />
+        <AssociationConnector Association="Monitoramento.FK_padrinho_pessoa" />
+        <AssociationConnector Association="Monitoramento.FK_usuario_perfil" />
+        <AssociationConnector Association="Monitoramento.FK_reponsavel_empresa_pessoa" />
+        <AssociationConnector Association="Monitoramento.FK_user_status_usuario" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

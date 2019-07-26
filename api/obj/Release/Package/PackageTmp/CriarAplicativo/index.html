@@ -1,0 +1,456 @@
+﻿<!doctype html>
+<html lang="pt">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Crie seu aplicativo OnLine</title>
+    <meta name="description" content="Crie em poucos passos o aplicativo da sua empresa!" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+
+
+    <meta name="theme-color" content="#3d3935" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Crie seu aplicativo OnLine" />
+    <meta property="og:description" content="Crie em poucos passos o aplicativo da sua empresa!" />
+    <meta property="og:url" content="index.html" />
+    <meta property="og:site_name" content="Crie seu aplicativo OnLine" />
+    <meta property="og:image" content="img/app/share-og-pt.png" />
+
+
+    <link rel="canonical" href="index.html" />
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" sizes="180x180">
+    <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="manifest.json">
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="fonts/icomoon/style.css" rel="stylesheet" />
+    <link href="fonts/food/flaticon.css" rel="stylesheet" />
+    <link href="css/paleta.css" rel="stylesheet" />
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="js/jquery-1.10.2.min.js"></script>
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <script src="js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
+
+
+
+    <link href="css/base.css" rel="stylesheet" />
+
+</head>
+<body>
+    <form id="form">
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <section class="start active" style="z-index: 101; background-image: url('img/image2.png'); color: white; max-width: 100%;">
+
+            <div>
+                <div class="title_section" style="margin-bottom:10px">
+                    <div style="font-size:30px">Oi, tudo bem?</div>
+                    Seja bem vindo criador de aplicativo da CREAPP
+                </div>
+                <div class="subtitle_section" style="font-size:16px">
+                    Sabemos bem que criar um aplicativo pode ser um desafio! Mas não se preocupe, somos especialistas no assunto e vamos te ajudar com isso, ok?
+
+                </div>
+            </div>
+            <div style="margin-top:20px">
+                <div style="    background-color: #ffffffcc;
+    border-radius: 2px;
+    color: #3db6c7;
+    padding: 5px 10px;">
+                    Vamos precisar te conhecer um pouquinho melhor, tudo bem? :)
+                </div>
+                <div style="padding:5px">
+                    <input class="input_simple" onkeyup="if(event.keyCode == 13 && $($(this).attr('show_button')).css('visibility')!='hidden') $($(this).attr('show_button')).click();" required name="nome_usuario" style="margin-top:0px; padding:10px" show_button="#btn_iniciar" placeholder="Como podemos te chamar?" />
+                </div>
+                <button id="btn_iniciar" type="button" class="btn-start" style="margin-top:15px">Começar</button>
+            </div>
+        </section>
+
+        <!--<section class="section" id="section_importar" style="z-index:102;min-height:0px">
+
+            <div class="title_section">
+                <div class="step-number"><span>1</span></div>Prazer, <span nome_usuario></span>! Vamos iniciar a configuração do seu aplicativo?
+                <div class="subtitle_section">
+                    Aconselhamos você a utilizar a opção importar minha pagina do facebook, é muito mais simples do que a configuração manual?
+                </div>
+
+            </div>
+            <div class="checkbox">
+                <ul>
+                    <li tabindex="0" id="btn_importar" class="selected" style="margin: 20px 0px;">
+                        <span class="icon-check-validation"></span>
+                        <span class="content">Importar do facebook</span>
+                    </li>
+                    <li tabindex="0" id="btn_manual" style="margin: 20px 0px;">
+                        <span class="icon-check-validation"></span>
+                        <span class="content">Configurar manualmente</span>
+                    </li>
+                </ul>
+
+                <button class="btn-blue-back" type="button" style="margin-top: 20px">VOLTAR</button>
+            </div>
+        </section>-->
+
+
+        <section id="section_facebook" style="z-index:103;">
+
+            <div id="div_facebook">
+
+                <div class="title_section">
+                    <div class="step-number"><span>2</span></div>Pagina do facebook!
+                    <div class="subtitle_section">
+                        Cole abaixo o link da sua pagina no facebook! ex: https://www.facebook.com/<b>NomeDaPágina</b>
+                    </div>
+                </div>
+
+                <div style="width:100%">
+                    <div class="icon-facebook" style="color: #3b5998;
+    position: absolute;
+    margin: 7px 8px;
+    font-size: 25px;"></div>
+                    <span style="    float: left;
+    width: 35px;
+    height:40px;
+    background-color: #dedede;
+    color: #3b5998;
+    line-height: 40px;
+    border-radius: 50px 0px 0px 50px;
+    text-align: center;
+    padding-left: 25px;" class="facebook_busca"></span>
+                    <input placeholder="Url da sua página" type="text" id="txt_pagina" style="    padding: 7px 0px 7px 8px;
+    border-radius: 0px 50px 50px 0px;
+    border: 0px;
+    float: left;
+    width: calc(100% - 35px);
+    background-color: #3b599800;
+    color: #3b5998;
+    BORDER: 3px solid #DEDEDF;" />
+
+                </div>
+                <div style="margin-top: 50px;
+    overflow: auto;
+    height: calc(100% - 275px);
+    width: 95%;
+    left: 0px;
+    margin:0 auto">
+                    <div id="paginas" style="margin-top:1px"></div>
+                </div>
+                <div class="msg_required" required="facebook" style="text-align:center; font-size:24px"></div>
+                <button class="btn-blue-back" type="button" style="margin-top: 20px">VOLTAR</button>
+                <button id="btn_facebook" type="button" class="btn-blue" style="margin-left:10px; float:right; margin-top:20px">CONTINUAR</button>
+            </div>
+        </section>
+
+        <section id="section_manual" style="z-index:104;">
+            <div id="div_manual">
+                <div class="title_section">
+                    <div class="step-number"><span>3</span></div>Cadastrar Aplicativo!
+                    <div class="subtitle_section">
+                        Confirme abaixo se os dados importados do facebook estão corretos e precione continuar!
+                    </div>
+                </div>
+                <table cellpadding="0" cellspacing="0" style="margin:0 auto">
+                    <tr>
+                        <td style="overflow: hidden; width:50%; background-position:left" class="logo">
+                            <input type="file" source="logo" size="200" name="upload_file" id="file" style="width: 100%;
+    height: 100%;
+    z-index: 99999;
+    opacity: 0;" required />
+                            <input type="hidden" name="logo" />
+                            <input type="hidden" name="logo_itype" />
+                        </td>
+                        <td style="width:50%; padding-left:10px">
+                            <div class="store">
+                                <img src="img/app-store.svg" style="width: 100%; float: right; max-height: 78px;" />
+                                <img src="img/google-play.svg" style="width: 100%; float: right; max-height: 70px;" />
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <div class="msg_required" required="logo">Campo obrigatório</div>
+
+                <div style="clear:both"></div>
+                <div style="width:100%">
+                    <div class="text-block">
+                        <span style="    background-color: #355eb1;
+    padding: 10px;
+    color: white;
+    font-size: 12px;
+    border-radius: 50px 0px 0px 50px;">http://</span>
+                        <input class="input_simple_blue" style="text-transform: lowercase;width: calc(100% - 158px);" required show_button="#btn_aplicativo" name="urldoaplicativo" placeholder="url" type="text" />
+                        <span style="    background-color: #355eb1;
+    padding: 10px;
+    color: white;
+    font-size: 12px;
+    border-radius: 0px 50px 50px 0px;">.creapp.com.br</span>
+                        <div class="msg_required" style="    margin-left: 53px;
+    margin-top: 7px;
+    margin-bottom: -15px;" required="urldoaplicativo">Campo obrigatório</div>
+                    </div>
+                    <div class="text-block">
+                        <input class="input_simple_blue" required show_button="#btn_aplicativo" name="nomedoaplicativo" placeholder="Nome Do Aplicativo" type="text" />
+                        <div class="msg_required" required="nomedoaplicativo">Campo obrigatório</div>
+                    </div>
+                    <div class="text-block">
+                        <textarea rows="2" required style="font-size:14px; margin-top:15px" show_button="#btn_aplicativo" name="descricaoaplicativo" class="input_simple_blue" placeholder="Descrição do aplicativo" type="text"></textarea>
+                        <div class="msg_required" required="descricaoaplicativo">Campo obrigatório</div>
+                    </div>
+                </div>
+                <div style="clear:both; height:20px"></div>
+
+                <button id="btn_aplicativo" type="button" class="btn-blue" style="margin-left:10px; float:right">CONTINUAR</button>
+                <span class="btn-blue-normal" style="margin-left:10px; float:right"><img src="img/loader.svg" style="width:45px" /></span>
+                <button class="btn-blue-back" type="button" style="float:left">VOLTAR</button>
+
+
+            </div>
+        </section>
+
+        <section id="section_endereco" style="z-index:105;">
+            <div class="title_section">
+                <div class="step-number"><span>5</span></div>Endereço!
+                <div class="subtitle_section">
+                    Seu aplicativo ira funcionar com um sistema de proximidade e para isso funcionar corretamente precisamos do seu endereço
+                </div>
+            </div>
+
+            <div class="text-block endereco_busca">
+                <input class="input_simple_blue" required  name="busca" placeholder="Buscar Av, Rua ou Cep " type="text" />
+                <ul id="place_results" style="list-style-type: none;padding: 0"></ul>
+            </div>
+            <div id="endereco_busca" style="display:none">
+                <div style="    background-color: #325596;
+    color: white;
+    text-align: center;
+    padding: 5px;
+    margin: 15px 0px -10px 0px;
+    border-radius: 50px;" onclick="$('#endereco_busca').hide(); $('#btn_endereco').hide(); $('.endereco_busca').show()">ALTERAR ENDEREÇO</div>
+
+                <div class="text-block" style="float:left; width:calc(70% - 10px); margin-right:10px">
+                    <input readonly="readonly" style="border: 0px;" class="input_simple_blue" required  name="city" placeholder="Cidade" type="text" />
+                    <div class="msg_required" required="city">Campo obrigatório</div>
+                </div>
+                <div class="text-block" style="float:left; width:30%">
+                    <input readonly="readonly" style="border: 0px;" class="input_simple_blue" required  name="state" placeholder="Estado" type="text" />
+                    <div class="msg_required" required="state">Campo obrigatório</div>
+                </div>
+                <div class="text-block" style="float:left; width:calc(70% - 10px); margin-right:10px">
+                    <input readonly="readonly" style="border: 0px;" class="input_simple_blue" required name="street" placeholder="Endereço" type="text" />
+                    <div class="msg_required" required="street">Campo obrigatório</div>
+                </div>
+                <div class="text-block" style="float:left; width:30%">
+                    <input class="input_simple_blue" required name="number" placeholder="Numero" type="text" />
+                    <div class="msg_required" required="number">Campo obrigatório</div>
+                </div>
+                <div class="text-block">
+                    <input class="input_simple_blue" required name="complement" placeholder="Complemento" type="text" />
+                    <div class="msg_required" required="complement">Campo obrigatório</div>
+                </div>
+            </div>
+            <input type="hidden" name="lat" />
+            <input type="hidden" name="lng" />
+            <input type="hidden" name="country" />
+            <input type="hidden" name="cep" />
+            <div style="margin-top:20px">
+                <button id="btn_endereco" type="button" class="btn-blue" style="margin-left:10px; float:right; display:none">CADASTRAR</button>
+                <button class="btn-blue-back" type="button" style="float:left">VOLTAR</button>
+            </div>
+
+        </section>
+
+        <section id="section_especialidade" style="z-index:105;">
+            <div class="title_section">
+                <div class="step-number"><span>4</span></div>Especialidade!
+                <div class="subtitle_section">
+                    Infome a especialidade do seu estabelecimento para que possamos preparar corretamente seu aplicativo
+                </div>
+            </div>
+            <input type="hidden" name="specialty" />
+            <input type="hidden" name="loader" />
+            <input type="hidden" name="background_image_local" />
+
+            <input type="hidden" name="place_id" />
+
+            <div class="checkbox answer-group" style="height: calc(100% - 150px);
+    overflow: auto;">
+                <ul style="flex-direction: initial;"></ul>
+            </div>
+            <div style="clear:both; height:13px"></div>
+            <div>
+                <button class="btn-blue-back" type="button" style="float:left">VOLTAR</button>
+            </div>
+
+        </section>
+
+        <section id="section_cor" style="z-index:105;">
+            <div class="title_section">
+                <div class="step-number"><span>5</span></div>Cor do Aplicativo!
+                <div class="subtitle_section">
+                    Escolha abaixo a cor que você gostaria para seu aplicativo!
+                </div>
+            </div>
+
+            <div style="text-align:center; margin-bottom: 10px;">
+
+                <div class="paleta_default" onclick="$('#modal_paletas').show()">
+
+                </div>
+
+            </div>
+
+
+            <input type="hidden" name="primary_color" />
+            <input type="hidden" name="primary_font_color" />
+            <input type="hidden" name="secondary_color" />
+            <input type="hidden" name="secondary_font_color" />
+            <input type="hidden" name="light_color" />
+            <input type="hidden" name="dark_color" />
+            <input type="hidden" name="font_color" />
+            <input type="hidden" name="textbox_color" />
+            <input type="hidden" name="textbox_font_color" />
+
+            <input type="hidden" name="border_color" />
+            <input type="hidden" name="bg_color" />
+            <input type="hidden" name="font_light_color" />
+
+            <div class="mobile" onclick="$('#modal_paletas').show()">
+                <div style="background-color:white; height:100%; width:100%;  overflow:hidden">
+
+                    <table cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td style="height:10%;" class="top">
+                                <i class="icon-user" style="margin-right:10px"></i>Olá, bem vindo!
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="height:20%;" class="logobar">
+                                <table cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <td style="width:0px"><img class="logoapp" /></td>
+                                        <td style="width:100%; " class="nomeapp"></td>
+                                    </tr>
+                                </table>
+
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="local" style="height:8%;  font-size:10px; text-align:left; padding:0px 5px">
+                                <span style="float:left">
+                                    <i class="icon-location" style="margin-right:10px"></i>Local de entrega
+                                </span>
+                                <span style="font-size:5px; float:right">
+                                    Tempo de entrega<br />
+                                    30-40 min
+                                </span>
+                            </td>
+                        <tr>
+                            <td style="height:8%;" class="busca">
+                                <i class="icon-search" style="margin-right:5px;font-size:10px"></i>Procurar
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="color:black" class="produto">- PRODUTO 1 -</td>
+                        </tr>
+                        <tr>
+                            <td style="color:black" class="produto">- PRODUTO 2 -</td>
+                        </tr>
+                        <tr>
+                            <td style="color:black" class="produto">- PRODUTO 3 -</td>
+                        </tr>
+                        <tr>
+                            <td class="carrinho" style="height:13%; font-size:9px; text-align:left; padding:0px 5px">
+                                <span style="float:left">
+                                    FINALIZAR COMPRA<br />
+                                    2 ITENS ADICIONADOS
+                                </span>
+                                <span style="float:right; font-size:16px;">
+                                    R$52,90
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div style="background-color: #cdcdcd;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-top: 8px;"></div>
+            </div>
+
+            <div style="clear:both; height:20px"></div>
+
+            <div>
+                <button class="btn-blue-back" type="button" style="float:left">VOLTAR</button>
+                <button id="btn_cor" type="button" class="btn-blue" style="float:right">CONTINUAR</button>
+            </div>
+        </section>
+
+        <section id="section_acesso" style="z-index:105;">
+            <div class="title_section">
+                <div class="step-number"><span>5</span></div>Dados de acesso!
+                <div class="subtitle_section">
+                    Infome os dados abaixo para liberar o acesso a parte adiministrativa do seu aplicativo
+                </div>
+            </div>
+            <div class="text-block">
+                <input class="input_simple_blue" name="email_usuario" placeholder="Email" type="text" />
+                <div class="msg_required" required="email_usuario">Campo obrigatório</div>
+            </div>
+            <div class="text-block">
+                <input class="input_simple_blue" name="telefone_usuario" placeholder="Celular ou Telefone" type="tel" />
+                <div class="msg_required" required="telefone_usuario">Campo obrigatório</div>
+            </div>
+            <div class="text-block">
+                <input class="input_simple_blue" name="senha_usuario" placeholder="Senha" type="password" />
+                <div class="msg_required" required="senha_usuario">Campo obrigatório</div>
+            </div>
+            <div class="text-block">
+                <input class="input_simple_blue" name="confirmarsenha_usuario" placeholder="Confirmar Senha" type="password" />
+                <div class="msg_required" required="confirmarsenha_usuario">Campo obrigatório</div>
+            </div>
+            <div style="clear:both; height:40px"></div>
+            <div style="text-align:center">
+                <button id="btn_cadastrar" type="button" class="btn-criar" style="">CRIAR APLICATIVO</button>
+
+                <button class="btn-blue-back" type="button" style="margin-top:20px;">VOLTAR</button>
+            </div>
+        </section>
+
+        <section id="section_loader" style="background-image: url('img/image2.png'); text-align:center">
+            <div class="logo" style="    height: 150px;
+    width: 150px;
+    border-radius: 5px;"></div>
+            <div style="padding:20px; font-size:14px; text-align:center; font-weight:bold">
+                AGUARDE<br />ESTAMOS CRIANDO O SEU APLICATIVO
+            </div>
+            <img style="width:100%; max-width:200px; margin:0 auto" src="img/create.svg" />
+        </section>
+
+        <script src="js/base.js"></script>
+    </form>
+
+
+
+
+    <div id="modal_paletas" style="display:none;">
+        <div style="width: 100%; max-width:800px; margin:0 auto;">
+            <label style="float: left;  font-size:20px"> Escolha sua paleta de cores</label>
+            <span onclick="$('#modal_paletas').hide()" class="close_paleta">X</span>
+
+        </div><div style="clear:both; height:0px"></div>
+
+    </div>
+
+
+</body>
+</html>

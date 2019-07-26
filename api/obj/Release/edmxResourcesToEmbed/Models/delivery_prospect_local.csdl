@@ -1,0 +1,430 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="delivery_prospect_localModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="bank">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="code" Type="Int32" />
+    <Property Name="sigla" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="website" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="billing">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="charges" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="installments" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="created" Type="DateTime" Precision="3" />
+    <Property Name="day" Type="Int32" />
+    <Property Name="amount" Type="Int32" />
+    <Property Name="trial_days" Type="Int32" />
+    <Property Name="invoice_reminder" Type="Int32" />
+    <Property Name="active" Type="Boolean" />
+    <Property Name="finish" Type="DateTime" Precision="3" />
+    <Property Name="plan_id" Type="Int32" />
+    <Property Name="place_id" Type="Int64" />
+    <Property Name="pagarme_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="pagarme_status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="place" Relationship="Self.FK_billing_place" FromRole="billing" ToRole="place" />
+    <NavigationProperty Name="plan" Relationship="Self.FK_billing_plan" FromRole="billing" ToRole="plan" />
+  </EntityType>
+  <EntityType Name="category">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="category_list" Relationship="Self.FK_category_list_category" FromRole="category" ToRole="category_list" />
+  </EntityType>
+  <EntityType Name="category_list">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="place_id" Type="Int64" />
+    <Property Name="category_id" Type="Int64" />
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="category" Relationship="Self.FK_category_list_category" FromRole="category_list" ToRole="category" />
+  </EntityType>
+  <EntityType Name="config">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="connection" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="creait">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="Agencia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AgenciaDv" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Conta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ContaDv" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BankCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DocumentNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LegalName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="pagarme_DefaultApiKey" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="pagarme_DefaultEncryptionKey" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="dictionary">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="tag" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="page" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="language" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="place_id" Type="Int64" />
+    <NavigationProperty Name="place" Relationship="Self.FK_dictionary_place" FromRole="dictionary" ToRole="place" />
+  </EntityType>
+  <EntityType Name="email">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="nome" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+    <Property Name="data_id" Type="Int64" />
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="place" Relationship="Self.FK_email_place" FromRole="email" ToRole="place" />
+  </EntityType>
+  <EntityType Name="hours">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="tue_1_open" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tue_1_close" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="wed_1_open" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="wed_1_close" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="thu_1_open" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="thu_1_close" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="fri_1_open" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="fri_1_close" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="sat_1_open" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="sat_1_close" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="sun_1_open" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="sun_1_close" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="place" Relationship="Self.FK_place_hours" FromRole="hours" ToRole="place" />
+  </EntityType>
+  <EntityType Name="location">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="city" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+    <Property Name="country" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+    <Property Name="latitude" Type="Decimal" Precision="20" Scale="12" />
+    <Property Name="longitude" Type="Decimal" Precision="20" Scale="12" />
+    <Property Name="state" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+    <Property Name="street" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+    <Property Name="zip" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="number" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="place" Relationship="Self.FK_place_location" FromRole="location" ToRole="place" />
+  </EntityType>
+  <EntityType Name="notificacoes_enviadas">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="place_id" Type="Int64" />
+    <Property Name="num_notificacoes_enviadas" Type="Int32" />
+    <Property Name="data_envio" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="place" Relationship="Self.FK_notificacoes_enviadas_place" FromRole="notificacoes_enviadas" ToRole="place" />
+  </EntityType>
+  <EntityType Name="payments">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="proccess" Type="DateTime" Precision="3" />
+    <Property Name="prevision" Type="DateTime" Precision="3" />
+    <Property Name="amount" Type="Int32" />
+    <Property Name="place_id" Type="Int64" />
+    <Property Name="plan_id" Type="Int32" />
+    <NavigationProperty Name="place" Relationship="Self.FK_payments_place" FromRole="payments" ToRole="place" />
+  </EntityType>
+  <EntityType Name="place">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+    <Property Name="checkins" Type="Int32" />
+    <Property Name="phone" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+    <Property Name="website" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+    <Property Name="location_id" Type="Int64" />
+    <Property Name="search" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="picture" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+    <Property Name="cover" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+    <Property Name="rating_count" Type="Int32" />
+    <Property Name="about" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+    <Property Name="hours_id" Type="Int32" />
+    <Property Name="user_name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="logo" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="logo_itype" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="specialty" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="url" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="theme" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="connection" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+    <Property Name="place_id" Type="Int64" />
+    <Property Name="loader" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="background_image_local" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="balcao" Type="Boolean" />
+    <Property Name="delivery" Type="Boolean" />
+    <Property Name="primary_color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="primary_font_color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="secondary_color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="secondary_font_color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="textbox_color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="textbox_font_color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="border_radius_textbox" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="border_radius_button" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="light_color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="dark_color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="font_color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="card_number" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="card_name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="card_date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="card_cvv" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="card_hash" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="card_document" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="pagarme_id" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="card_brand" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="pagarme_status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="created" Type="DateTime" Precision="3" />
+    <Property Name="whatsapp" Type="Int32" />
+    <Property Name="whatsapp_message" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+    <Property Name="address_required" Type="Boolean" />
+    <Property Name="frete_produto" Type="Boolean" />
+    <Property Name="icone" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="icone_itype" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="mesa" Type="Boolean" />
+    <Property Name="comanda" Type="Boolean" />
+    <Property Name="border_color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="background" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="background_itype" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="bg_color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="font_light_color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="token_paggi" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="billing" Relationship="Self.FK_billing_place" FromRole="place" ToRole="billing" />
+    <NavigationProperty Name="dictionary" Relationship="Self.FK_dictionary_place" FromRole="place" ToRole="dictionary" />
+    <NavigationProperty Name="email" Relationship="Self.FK_email_place" FromRole="place" ToRole="email" />
+    <NavigationProperty Name="hours" Relationship="Self.FK_place_hours" FromRole="place" ToRole="hours" />
+    <NavigationProperty Name="location" Relationship="Self.FK_place_location" FromRole="place" ToRole="location" />
+    <NavigationProperty Name="notificacoes_enviadas" Relationship="Self.FK_notificacoes_enviadas_place" FromRole="place" ToRole="notificacoes_enviadas" />
+    <NavigationProperty Name="payments" Relationship="Self.FK_payments_place" FromRole="place" ToRole="payments" />
+  </EntityType>
+  <EntityType Name="plan">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="charges" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="installments" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="day" Type="Int32" />
+    <Property Name="amount" Type="Int32" />
+    <Property Name="trial_days" Type="Int32" />
+    <Property Name="invoice_reminder" Type="Int32" />
+    <Property Name="active" Type="Boolean" />
+    <Property Name="finish" Type="Int32" />
+    <Property Name="name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="payment_methods" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="primary_color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="primary_font_color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="secondary_color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="secondary_font_color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="textbox_color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="textbox_font_color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="border_radius_textbox" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="border_radius_button" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="light_color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="billing" Relationship="Self.FK_billing_plan" FromRole="plan" ToRole="billing" />
+  </EntityType>
+  <EntityType Name="themes">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="primary_color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="primary_font_color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="secondary_color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="secondary_font_color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="textbox_color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="textbox_font_color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="border_radius_textbox" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="border_radius_button" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="light_color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="dark_color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="font_color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="border_color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="bg_color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="font_light_color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK_billing_place">
+    <End Role="place" Type="Self.place" Multiplicity="0..1" />
+    <End Role="billing" Type="Self.billing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="place">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="billing">
+        <PropertyRef Name="place_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_billing_plan">
+    <End Role="plan" Type="Self.plan" Multiplicity="0..1" />
+    <End Role="billing" Type="Self.billing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="plan">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="billing">
+        <PropertyRef Name="plan_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_category_list_category">
+    <End Role="category" Type="Self.category" Multiplicity="0..1" />
+    <End Role="category_list" Type="Self.category_list" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="category">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="category_list">
+        <PropertyRef Name="category_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dictionary_place">
+    <End Role="place" Type="Self.place" Multiplicity="0..1" />
+    <End Role="dictionary" Type="Self.dictionary" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="place">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="dictionary">
+        <PropertyRef Name="place_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_email_place">
+    <End Role="place" Type="Self.place" Multiplicity="0..1" />
+    <End Role="email" Type="Self.email" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="place">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="email">
+        <PropertyRef Name="data_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_place_hours">
+    <End Role="hours" Type="Self.hours" Multiplicity="0..1" />
+    <End Role="place" Type="Self.place" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="hours">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="place">
+        <PropertyRef Name="hours_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_place_location">
+    <End Role="location" Type="Self.location" Multiplicity="0..1" />
+    <End Role="place" Type="Self.place" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="location">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="place">
+        <PropertyRef Name="location_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_notificacoes_enviadas_place">
+    <End Role="place" Type="Self.place" Multiplicity="0..1" />
+    <End Role="notificacoes_enviadas" Type="Self.notificacoes_enviadas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="place">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="notificacoes_enviadas">
+        <PropertyRef Name="place_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_payments_place">
+    <End Role="place" Type="Self.place" Multiplicity="0..1" />
+    <End Role="payments" Type="Self.payments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="place">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="payments">
+        <PropertyRef Name="place_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="delivery_prospect_localEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="bank" EntityType="Self.bank" />
+    <EntitySet Name="billing" EntityType="Self.billing" />
+    <EntitySet Name="category" EntityType="Self.category" />
+    <EntitySet Name="category_list" EntityType="Self.category_list" />
+    <EntitySet Name="config" EntityType="Self.config" />
+    <EntitySet Name="creait" EntityType="Self.creait" />
+    <EntitySet Name="dictionary" EntityType="Self.dictionary" />
+    <EntitySet Name="email" EntityType="Self.email" />
+    <EntitySet Name="hours" EntityType="Self.hours" />
+    <EntitySet Name="location" EntityType="Self.location" />
+    <EntitySet Name="notificacoes_enviadas" EntityType="Self.notificacoes_enviadas" />
+    <EntitySet Name="payments" EntityType="Self.payments" />
+    <EntitySet Name="place" EntityType="Self.place" />
+    <EntitySet Name="plan" EntityType="Self.plan" />
+    <EntitySet Name="themes" EntityType="Self.themes" />
+    <AssociationSet Name="FK_billing_place" Association="Self.FK_billing_place">
+      <End Role="place" EntitySet="place" />
+      <End Role="billing" EntitySet="billing" />
+    </AssociationSet>
+    <AssociationSet Name="FK_billing_plan" Association="Self.FK_billing_plan">
+      <End Role="plan" EntitySet="plan" />
+      <End Role="billing" EntitySet="billing" />
+    </AssociationSet>
+    <AssociationSet Name="FK_category_list_category" Association="Self.FK_category_list_category">
+      <End Role="category" EntitySet="category" />
+      <End Role="category_list" EntitySet="category_list" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dictionary_place" Association="Self.FK_dictionary_place">
+      <End Role="place" EntitySet="place" />
+      <End Role="dictionary" EntitySet="dictionary" />
+    </AssociationSet>
+    <AssociationSet Name="FK_email_place" Association="Self.FK_email_place">
+      <End Role="place" EntitySet="place" />
+      <End Role="email" EntitySet="email" />
+    </AssociationSet>
+    <AssociationSet Name="FK_place_hours" Association="Self.FK_place_hours">
+      <End Role="hours" EntitySet="hours" />
+      <End Role="place" EntitySet="place" />
+    </AssociationSet>
+    <AssociationSet Name="FK_place_location" Association="Self.FK_place_location">
+      <End Role="location" EntitySet="location" />
+      <End Role="place" EntitySet="place" />
+    </AssociationSet>
+    <AssociationSet Name="FK_notificacoes_enviadas_place" Association="Self.FK_notificacoes_enviadas_place">
+      <End Role="place" EntitySet="place" />
+      <End Role="notificacoes_enviadas" EntitySet="notificacoes_enviadas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_payments_place" Association="Self.FK_payments_place">
+      <End Role="place" EntitySet="place" />
+      <End Role="payments" EntitySet="payments" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

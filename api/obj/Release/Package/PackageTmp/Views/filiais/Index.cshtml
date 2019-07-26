@@ -1,0 +1,109 @@
+﻿
+@model Site.Models.Find<api.Controllers.filiaisController.find>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<section class="content-header">
+
+    <a href="#" onclick="alert_whats()" class="btn btn-info" base_library="api.Models.filial.library_create">
+        <i class="fa fa-building" style="margin-right:10px"></i>Criar Nova Filial
+    </a>
+    <script>
+        function alert_whats() {
+            modal('<img  style="padding:10px;" src=/images/whats.png />Solicite a criação de uma nova filial através do whatsapp <a href="#" onclick="" style="float:right" class="btn btn-success" base_library="api.Models.filial.library_creatgdfe">ABRIR WHATSAPP</a>');
+        
+        }
+    </script>
+
+
+    <ol class="breadcrumb" style="float:right">
+        <li><a href="#" base_library="api.Models.filial.library_bc_1"><i class="fa fa-newspaper-o"></i>FILIAIS</a></li>
+        <li class="active"><a href="@Url.Action("index")" base_library="api.Models.filial.library_bc_list">LISTA</a></li>
+    </ol>
+</section>
+
+<section class="content">
+
+    <form ajax="@Url.Action("Find")" table="tbl">
+        <input type="hidden" id="Page" name="Page" value="0" />
+
+        <div class="box box-default">
+            <div class="box-header with-border">
+
+
+
+                <div class="form-group col-md-6">
+                    <label class="control-label" style="width:100%" base_library="api.Models.filial.nome">Nome da filial</label>
+
+                    @Html.TextBoxFor(model => model.Filter.nome, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+                @Html.HiddenFor(model => model.Filter)
+
+                <div class="form-group col-md-6">
+                    <label class="control-label" style="width:100%" base_library="api.Models.filial.busca_cidade">Cidade</label>
+
+                    @Html.TextBoxFor(model => model.Filter.cidade, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+            </div>
+            <div class="box-body" style="display:none">
+            </div>
+            <div class="form-group" style="border-top: 1px solid #f4f4f4; padding: 10px">
+                <button href="#" class="btn btn-warning pull-right" type="button" name="btnProcurar" onclick="$('.tblrow').remove(); $('#Page').val('0'); $('[ajax]').submit();"><i class="fa fa-search" style="margin-right: 10px"></i>Procurar</button>
+                <div style="clear: both"></div>
+            </div>
+        </div>
+        <div class="table-default scroll">
+
+
+            <table id="tbl">
+                <tr>
+                    <td base_library="api.Models.filial.id">
+                        ID
+                    </td>
+                    <td base_library="api.Models.filial.nome">
+                        NOME
+                    </td>
+                    <td base_library="api.Models.filial.endereco">
+                        Endereço
+                    </td>
+                    <td base_library="api.Models.filial.numero">
+                        Numero
+                    </td>
+                    <td base_library="api.Models.filial.cidade">
+                        Cidade
+                    </td>
+                    <td base_library="api.Models.filial.telefone">
+                        Telefone
+                    </td>
+                    <td base_library="api.Models.filial.celular">
+                        Whatsapp
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</section>
+
+<script template="tbl" type="text/template" redirect="@Url.Action("edit")">
+
+    <tr class="tblrow" pk="id">
+        <td column="id"></td>
+        <td column="nome"></td>
+        <td column="endereco"></td>
+        <td column="numero"></td>
+        <td column="cidade"></td>
+        <td column="telefone"></td>
+        <td column="celular"></td>
+
+    </tr>
+
+
+</script>

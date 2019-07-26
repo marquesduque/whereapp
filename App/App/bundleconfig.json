@@ -1,0 +1,94 @@
+[
+  {
+    "outputFileName": "App/js/my-app.min.js",
+    "inputFiles": [
+      "App/js/my-app.js"
+    ]
+  },
+  {
+    "outputFileName": "www/controllers/bundle.js",
+    "inputFiles": [
+      "www/controllers/confirma_compra.js",
+      "www/controllers/concluir_compra.js",
+      "www/controllers/endereco_entrega.js",
+      "www/controllers/detalhe_padrinho.js",
+      "www/controllers/acompanhamento.js",
+      "www/controllers/addgrupo.js",
+      "www/controllers/addItem.js",
+      "www/controllers/additemgrupo.js",
+      "www/controllers/adicionar.js",
+      "www/controllers/agenda.js",
+      "www/controllers/apadrinhar.js",
+      "www/controllers/avaliacao.js",
+      "www/controllers/bemvindo.js",
+      "www/controllers/cadastrarRastreador.js",
+      "www/controllers/cadastro.js",
+      "www/controllers/carrinho.js",
+      "www/controllers/cartao.js",
+      "www/controllers/categoria.js",
+      "www/controllers/cliente.js",
+      "www/controllers/configuracao.js",
+      "www/controllers/confirmar.js",
+      "www/controllers/confirmarEndereco.js",
+      "www/controllers/confirmarNumero.js",
+      "www/controllers/confirmarPedido.js",
+      "www/controllers/consulta.js",
+      "www/controllers/contato_doador.js",
+      "www/controllers/doacao.js",
+      "www/controllers/endereco.js",
+      "www/controllers/entrar.js",
+      "www/controllers/forma_pagamento.js",
+      "www/controllers/finalizar.js",
+      "www/controllers/grupo.js",
+      "www/controllers/grupo_item.js",
+      "www/controllers/item.js",
+      "www/controllers/itemRastrear.js",
+      "www/controllers/lembrar.js",
+      "www/controllers/login.js",
+      "www/controllers/loja.js",
+      "www/controllers/mapa.js",
+      "www/controllers/notificacao.js",
+      "www/controllers/mesa.js",
+      "www/controllers/mesas.js",
+      "www/controllers/meuItem.js",
+      "www/controllers/ong.js",
+      "www/controllers/padrinho.js",
+      "www/controllers/pagamento.js",
+      "www/controllers/perdido.js",
+      "www/controllers/perfil.js",
+      "www/controllers/premium.js",
+      "www/controllers/produto.js",
+      "www/controllers/qrcode.js",
+      "www/controllers/responsavel_juridico.js",
+      "www/controllers/reservar.js",
+      "www/controllers/root.js",
+      "www/controllers/senha.js",
+      "www/controllers/servico.js",
+      "www/controllers/trabalhar.js"
+    ]
+  },
+  {
+    "outputFileName": "App/js/creait.min.js",
+    "inputFiles": [
+      "App/js/creait.js"
+    ]
+  },
+  {
+    "outputFileName": "www/js/creait.min.js",
+    "inputFiles": [
+      "www/js/creait.js"
+    ]
+  },
+  {
+    "outputFileName": "www/js/my-app.min.js",
+    "inputFiles": [
+      "www/js/my-app.js"
+    ]
+  },
+  {
+    "outputFileName": "www/controllers/bundle.min.js",
+    "inputFiles": [
+      "www/controllers/bundle.js"
+    ]
+  }
+]

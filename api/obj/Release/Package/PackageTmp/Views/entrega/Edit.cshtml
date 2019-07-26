@@ -1,0 +1,153 @@
+﻿@model api.Models.fila_de_entrega_Result
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
+<body>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    
+    
+    
+    <section class="content">
+        <div class="col-md-12">
+            <div class="alert alert-info col-md-12" role="alert">
+                <i class="glyphicon glyphicon-pencil" style="margin-right: 10px"></i><b base_library="api.Models.fila_de_entrega_Result.library_code">Editando Código:</b> <span class="editid">@Model.id</span>
+            </div>
+        </div>
+        <div style="clear: both"></div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken();
+        @Html.ValidationSummary(true)
+            <div class="alert alert-danger" role="alert" base_library="api.Models.fila_de_entrega_Result.library_error_register">
+                Registro não gravado, verificar erro criticado
+            </div>
+    
+    
+            <fieldset>
+    		
+                <div class="col-md-12 bar">
+                    <label class="col-md-6" base_library="api.Models.fila_de_entrega_Result.library_title"><i class="glyphicon glyphicon-list-alt" style="margin-right: 10px"></i>Dados Pessoais</label>
+                </div>
+            @Html.HiddenFor(model => model.id)
+    
+    
+                
+           
+    <div class="form-group col-md-6">
+    									<label class="control-label" base_library="api.Models.fila_de_entrega_Result.Column1" >Column1</label>
+    				
+    				<div style="clear: both"></div>
+    									@Html.TextBoxFor(model => model.Column1, new { placeholder = "", @class = "form-control", maxLength = "150" })
+    				                @Html.ValidationMessageFor(model => model.Column1)
+                </div>
+    
+             
+      
+    
+    
+                
+           
+    <div class="form-group col-md-6">
+    									<label class="control-label" base_library="api.Models.fila_de_entrega_Result.recebido" >recebido</label>
+    				
+    				<div style="clear: both"></div>
+    									@Html.TextBoxFor(model => model.recebido, "{0:dd/MM/yyyy}", new { placeholder = "", @class = "form-control", mask = "{\"value\":\"99/99/9999\", \"placeholder\":\"dd/mm/yyyy\"}", maxLength = "10" })
+    				                @Html.ValidationMessageFor(model => model.recebido)
+                </div>
+    
+             
+      
+    
+    
+                
+           
+    <div class="form-group col-md-6">
+    									<label class="control-label" base_library="api.Models.fila_de_entrega_Result.endereco" >endereco</label>
+    				
+    				<div style="clear: both"></div>
+    									@Html.TextBoxFor(model => model.endereco, new { placeholder = "", @class = "form-control", maxLength = "150" })
+    				                @Html.ValidationMessageFor(model => model.endereco)
+                </div>
+    
+             
+      
+    
+    
+                
+           
+    <div class="form-group col-md-6">
+    									<label class="control-label" base_library="api.Models.fila_de_entrega_Result.numero" >numero</label>
+    				
+    				<div style="clear: both"></div>
+    									@Html.TextBoxFor(model => model.numero, new { placeholder = "", @class = "form-control", maxLength = "150" })
+    				                @Html.ValidationMessageFor(model => model.numero)
+                </div>
+    
+             
+      
+    
+    
+                
+           
+    <div class="form-group col-md-6">
+    									<label class="control-label" base_library="api.Models.fila_de_entrega_Result.complemento" >complemento</label>
+    				
+    				<div style="clear: both"></div>
+    									@Html.TextBoxFor(model => model.complemento, new { placeholder = "", @class = "form-control", maxLength = "150" })
+    				                @Html.ValidationMessageFor(model => model.complemento)
+                </div>
+    
+             
+      
+    
+    
+                
+           
+    <div class="form-group col-md-6">
+    									<label class="control-label" base_library="api.Models.fila_de_entrega_Result.cidade" >cidade</label>
+    				
+    				<div style="clear: both"></div>
+    									@Html.TextBoxFor(model => model.cidade, new { placeholder = "", @class = "form-control", maxLength = "150" })
+    				                @Html.ValidationMessageFor(model => model.cidade)
+                </div>
+    
+             
+      
+    
+    
+                
+           
+    <div class="form-group col-md-6">
+    									<label class="control-label" base_library="api.Models.fila_de_entrega_Result.cep" >cep</label>
+    				
+    				<div style="clear: both"></div>
+    									@Html.TextBoxFor(model => model.cep, new { placeholder = "", @class = "form-control", maxLength = "150" })
+    				                @Html.ValidationMessageFor(model => model.cep)
+                </div>
+    
+             
+      
+    
+            
+    		
+                <div class="form-group col-md-12 btn-gallery">
+                    <a base_library="api.Models.fila_de_entrega_Result.library_delete" onclick="delete_item('@(Url.Action("Delete"))?id=@(Model.id)')" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i>Excluir</a>
+                    <a base_library="api.Models.fila_de_entrega_Result.library_edit" onclick="$(this).closest('form').submit()" class="btn btn-success pull-right"><i class="glyphicon glyphicon-pencil"></i>Editar</a>
+                </div>
+    
+        </fieldset>
+    }
+    </section>
+    
+</body>
+</html>

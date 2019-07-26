@@ -1,0 +1,56 @@
+﻿<div class="pages">
+    <div data-page="detail-restaurant" class="page navbar-fixed">
+        <div class="navbar background-creait">
+            <div class="navbar-inner">
+                <div class="center" style="margin-left:10px">CONSULTAS</div>
+                <div class="right">
+                    <!-- Right link contains only icon - additional "icon-only" class-->
+                    <a href="#" class="link icon-only open-panel">
+                        <i class="f7-icons size-50" style="margin-right:0px">person_fill</i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!--  -->
+        <div class="page-content imagem-background" style="height: calc(100% - 52px); padding-top:0px;margin-top: 50px;">
+
+            <!-- Tabs, tabs wrapper -->
+            <div class="list-block">
+
+                {{#js_if "this.compra.length == 0"}}
+                <div style="width:100%; padding:20px; text-align:center">
+                    Você ainda não recebeu solicitações de agendamento.
+                </div>
+                {{/js_if}}
+                <ul>
+                    {{#each compra}}
+                    <li class="background-pedido" onclick="creait.redirect('horario','id={{id}}')">
+                        <div class="item-title-row">
+                            <span class="calendar" style="float:left;">
+                                <span>{{dia}}</span><br />
+                                {{mes}}
+                            </span>
+                            <div style="float:left;padding: 5px 5px;text-transform: uppercase; line-height:16px" class="semana-pedido">
+                                <div style="font-size:12px">{{titulo}} - {{semana}}</div>
+                                <div style="font-size:10px">{{usuario}}</div>
+                                <div style="font-size:13px"><span formatMoney>{{total}}</span></div>
+                            </div>
+
+                            <i class="f7-icons fonte_cinza" style="padding-top: 17px;
+                                        float: right;
+                                        position: absolute;
+                                        right: 0px;">angle-right</i>
+                        </div>
+                        <div style="clear:both"></div>
+                    </li>
+
+
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+        <!--  -->
+
+    </div>
+</div>

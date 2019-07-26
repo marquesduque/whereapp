@@ -1,0 +1,67 @@
+﻿<div class="pages">
+    <div data-page="register" class="page">
+        <div class="navbar background-creait">
+            <div class="navbar-inner margin-bottom-20">
+                <div class="left"><a onclick="creait.redirect('pagamento');" class="back link"> <i class="f7-icons icone-voltar" style="margin-right: 10px;">angle-left</i></a></div>
+                <div class="center">Nova conta</div>
+            </div>
+        </div>
+        <div class="page-content text-center">
+            <div class="page-content" id="app-cover">
+                <!--<div class="margin-bottom-40" style="margin-top: 50px;"><img class="logo" src="" style="width: 240px;" /></div>-->
+                <div  style="margin-top: 50px;">
+
+                    <formreserva id="sign_up">
+                        <div class="list-block margin-bottom-40">
+                            <ul class="no-border" style="padding-top:20px">
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" type="date" name="dia" id="nome_input" placeholder="Data">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" type="time" name="de" placeholder="De">
+                                            </div>
+                                            <div class="item-input">
+                                                <input class="input-index" type="time" name="ate" placeholder="Até">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </li>
+                                
+                            </ul>
+                        </div>
+
+
+                        <div class="row btn-form-group margin-bottom-10 margin-top-10">
+                            <div class="col-100">
+                                <div id="btn_sign_up" class="buton">Salvar</div>
+                            </div>
+                            <!--<div class="col-50">
+                                <div href="restaurants.html" class="buton-facebook">Facebook</div>
+                            </div>-->
+                        </div>
+                    </formreserva>
+
+                    <div class="text-center margin-bottom-15 margin-top-50">
+                        <a onclick="creait.redirect('login')" class="gray-text" style="font-size:16px;cursor:pointer;">
+                            <img src="icons/animated/{{cor_tema}}/key.svg" style="    width: 30px;
+    position: absolute;
+    margin-left: -33px;" />
+                        Já tenho um cadastro!</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,442 @@
+﻿@model api.Models.pessoa
+
+@{
+    ViewBag.Title = "Listo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+
+        @if (Request.QueryString["compra_pessoa"] != null)
+        {
+            if (Request.QueryString["id_compra"] != null)
+            {
+                <a href="@Url.Action("Edit", "compras", new { id = Request.QueryString["id_compra"], perfil_id = Model.perfil_id, compra_pessoa = 1})" class="btn btn-info"><i class="fa fa-angle-left fa-lg" style="margin-right: 10px"></i>Voltar</a>
+            }
+            else
+            {
+                <a href="@Url.Action("Create", "compras", new { perfil_id = Model.perfil_id, compra_pessoa = 1})" class="btn btn-info"><i class="fa fa-angle-left fa-lg" style="margin-right: 10px"></i>Voltar</a>
+            }
+        }
+        else
+        {
+            <a href="@Url.Action("Index", new { perfil_id=Model.perfil_id})" class="btn btn-info"><i class="fa fa-angle-left fa-lg" style="margin-right: 10px"></i>Voltar</a>
+        }
+
+
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-newspaper-o"></i>Cadastro</a></li>
+        <li><a href="@Url.Action("index")">Usuario</a></li>
+        <li class="active">Criar</li>
+    </ol>
+</section>
+
+
+<section class="content">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.ValidationSummary(true)
+        <div class="alert alert-danger" role="alert">
+            Registro não gravado, verificar erro criticado
+        </div>
+
+        <fieldset>
+
+            @*<div class="col-md-12 bar">
+            <label class="col-md-6"><i class="fa fa-list-alt" style="margin-right: 10px"></i>Usuário</label>
+        </div>*@
+
+
+
+            <div class="alert bg-gray col-md-12" role="alert" style="padding: 20px 8px;">
+
+                <div style="padding:0px 20px 20px 20px">
+
+                    <h1 style="FONT-WEIGHT: 700;">Dados Pessoais</h1>
+                    <div>Informe abaixo os dados pessoais do cliente</div>
+
+                </div>
+
+                <div class="form-group col-md-6">
+                    @Html.LabelFor(model => model.nome, "Nome (*)", new { @class = "control-label" })
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.nome, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                    @Html.ValidationMessageFor(model => model.nome)
+                </div>
+
+
+                <div class="form-group col-md-6">
+                    @Html.LabelFor(model => model.email, "E-mail", new { @class = "control-label" })
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.email, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                    @Html.ValidationMessageFor(model => model.email)
+                </div>
+
+
+                <div class="form-group col-md-4">
+                    @Html.LabelFor(model => model.birthday, "Nascimento", new { @class = "control-label" })
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.birthday, "{0:dd/MM/yyyya}", new { placeholder = "", @class = "form-control", mask = "{\"value\":\"99/99/9999\", \"placeholder\":\"dd/mm/yyyy\"}", maxLength = "10" })
+                    @Html.ValidationMessageFor(model => model.birthday)
+                </div>
+
+                <div class="form-group col-md-4">
+                    @Html.LabelFor(model => model.cpf, "CPF", new { @class = "control-label" })
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.cpf, new { placeholder = "", @class = "form-control", maxLength = "150", mask = "{\"value\":\"999.999.999-99\"}" })
+                    @Html.ValidationMessageFor(model => model.cpf)
+                </div>
+
+                <div class="form-group col-md-4">
+                    @Html.LabelFor(model => model.rg, "RG", new { @class = "control-label" })
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.rg, new { placeholder = "", @class = "form-control", maxLength = "150", mask = "{\"value\":\"99.999.999-9\"}" })
+                    @Html.ValidationMessageFor(model => model.rg)
+                </div>
+                <div class="form-group col-md-6">
+                    @Html.LabelFor(model => model.phone, "Telefone", new { @class = "control-label" })
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.phone, new { placeholder = "", @class = "form-control", maxLength = "150", mask = "{\"value\":\"(99)9999-9999\"}" })
+                    @Html.ValidationMessageFor(model => model.phone)
+                </div>
+
+
+                <div class="form-group col-md-6">
+                    @Html.LabelFor(model => model.mobile, "Celular", new { @class = "control-label" })
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.mobile, new { placeholder = "", @class = "form-control", maxLength = "150", mask = "{\"value\":\"(99)9 9999-9999\"}" })
+                    @Html.ValidationMessageFor(model => model.mobile)
+                </div>
+
+
+
+                <div class="form-group col-md-6">
+                    @Html.LabelFor(model => model.password, "Password", new { @class = "control-label" })
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.password, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                    @Html.ValidationMessageFor(model => model.password)
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label class="control-label" base_library="api.Models.produto.tipo_id">Preferência</label>
+                    <select class="form-control select2" source="#especialidade_id" data-placeholder="" style="width: 100%;">
+                        <option value="null">Selecione um item</option>
+                        @foreach (var item in new api.Models.db().tipo.Where(c => c.place_id == api.Models.db.place.place_id && c.ativo == true).Select(c => new { id = c.id, nome = c.nome }))
+                        {
+                            <option value="@item.id">@(item.nome)</option>
+                        }
+                    </select>
+                    @Html.HiddenFor(model => model.especialidade_id)
+                    @Html.ValidationMessageFor(model => model.especialidade_id)
+                </div>
+
+            </div>
+
+
+            @Html.HiddenFor(model => model.perfil_id)
+            @Html.HiddenFor(model => model.external_id)
+            @Html.HiddenFor(model => model.created)
+            @Html.HiddenFor(model => model.filial_id)
+
+            
+
+            <div class="alert bg-blue col-md-12" role="alert" style="padding: 20px 8px; margin-top:20px">
+
+                <div style="padding:0px 20px 20px 20px">
+
+                    <h1 style="FONT-WEIGHT: 700;">Dados para entrega</h1>
+                    <div>Informe abaixo os dados do endereço para entrega</div>
+
+                </div>
+
+                <div class="form-group col-md-12">
+                    @Html.LabelFor(model => model.ultimo_horario.address, "Buscar Endereço de Entrega", new { @class = "control-label" })
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.ultimo_horario.address, new { placeholder = "Buscar endereço", @class = "form-control", maxLength = "150", type = "text", id = "pac-input", })
+                    @Html.ValidationMessageFor(model => model.ultimo_horario.address)
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label class="control-label" base_library="api.Models.filial.endereco">endereco</label>
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.ultimo_horario.endereco, new { placeholder = "", @class = "form-control", maxLength = "150", type = "text", ReadOnly = "ReadOnly" })
+                    @Html.ValidationMessageFor(model => model.ultimo_horario.endereco)
+                </div>
+
+                <div class="form-group col-md-1">
+                    <label class="control-label" base_library="api.Models.filial.numero">numero</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.ultimo_horario.numero, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                    @Html.ValidationMessageFor(model => model.ultimo_horario.numero)
+                </div>
+
+                <div class="form-group col-md-2">
+                    <label class="control-label" base_library="api.Models.filial.cidade">cidade</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.ultimo_horario.cidade, new { placeholder = "", @class = "form-control", maxLength = "150", ReadOnly = "ReadOnly" })
+                    @Html.ValidationMessageFor(model => model.ultimo_horario.cidade)
+                </div>
+
+                <div class="form-group col-md-1">
+                    <label class="control-label" base_library="api.Models.filial.pais">País</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.ultimo_horario.pais, new { placeholder = "", @class = "form-control", maxLength = "150", ReadOnly = "ReadOnly" })
+                    @Html.ValidationMessageFor(model => model.ultimo_horario.pais)
+                </div>
+
+
+                <div class="form-group col-md-2">
+                    <label class="control-label" base_library="api.Models.filial.cep">CEP</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.ultimo_horario.cep, new { placeholder = "", @class = "form-control", maxLength = "150", mask = "{\"value\":\"99999-999\"}" })
+                    @Html.ValidationMessageFor(model => model.ultimo_horario.cep)
+                </div>
+
+
+                <div class="form-group col-md-2">
+                    <label class="control-label" base_library="api.Models.filial.complemento">complemento</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.ultimo_horario.complemento, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                    @Html.ValidationMessageFor(model => model.ultimo_horario.complemento)
+                </div>
+
+
+                @*DADOS DO HORARIO*@
+                @Html.HiddenFor(model => model.ultimo_horario.lat)
+                @Html.HiddenFor(model => model.ultimo_horario.lng)
+                @Html.HiddenFor(model => model.ultimo_horario.compra_id)
+                @Html.HiddenFor(model => model.ultimo_horario.NovoEndereco, new { @value = 0 })
+
+            </div>
+
+            <div class="alert bg-gray col-md-12" role="alert" style="padding: 20px 8px; margin-top:20px;">
+                <div style="padding:0px 20px 20px 20px">
+
+                    <h1 style="FONT-WEIGHT: 700;">Dados Bancários</h1>
+                    <div>Informe abaixo os dados bancários do cliente</div>
+
+                </div>
+                <div class="form-group col-md-2">
+                    <label class="control-label" base_library="api.Models.produto.comissao">comissao</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.comissao, new { placeholder = "", @class = "form-control", maxLength = "150", mask = "money" })
+                    @Html.ValidationMessageFor(model => model.comissao)
+                </div>
+                <div class="form-group col-md-7">
+                    <label class="control-label" base_library="api.Models.pessoa.LegalName">Nome da empresa ou pessoa</label>
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.LegalName, new { placeholder = "", @class = "form-control", maxLength = "150", type = "text" })
+                    @Html.ValidationMessageFor(model => model.LegalName)
+                </div>
+                <div class="form-group col-md-3">
+                    <label class="control-label" base_library="api.Models.pessoa.DocumentNumber">CPF ou CNPJ</label>
+                    <div style="clear: both"></div>
+                    <input name="DocumentNumber" onKeyPress="if (this.value.length == 14 || event.keyCode < 48 || event.keyCode > 57) { return false; }" type="number" inputmode="numeric" pattern="[0-9]*" class="form-control" value="@Model.DocumentNumber" placeholder="" />
+
+                    @Html.ValidationMessageFor(model => model.DocumentNumber)
+                </div>
+
+                <div class="form-group col-md-12" style="height: 70px;">
+                    <label class="control-label" base_library="api.Models.pessoa.BankCode">Banco</label>
+                    <select class="form-control select2" source="#BankCode" data-placeholder="" style="width: 100%;">
+                        <option value="" null selected>Selecione um banco</option>
+                        <option value="001">Banco do Brasil</option>
+                        <option value="003">Banco da Amazônia</option>
+                        <option value="004">Banco do Nordeste</option>
+                        <option value="021">Banestes</option>
+                        <option value="025">Banco Alfa</option>
+                        <option value="027">Besc</option>
+                        <option value="029">Banerj</option>
+                        <option value="031">Banco Beg</option>
+                        <option value="033">Banco Santander Banespa</option>
+                        <option value="036">Banco Bem</option>
+                        <option value="037">Banpará</option>
+                        <option value="038">Banestado</option>
+                        <option value="039">BEP</option>
+                        <option value="040">Banco Cargill</option>
+                        <option value="041">Banrisul</option>
+                        <option value="044">BVA</option>
+                        <option value="045">Banco Opportunity</option>
+                        <option value="047">Banese</option>
+                        <option value="062">Hipercard</option>
+                        <option value="063">Ibibank</option>
+                        <option value="065">Lemon Bank</option>
+                        <option value="066">Banco Morgan Stanley Dean Witter</option>
+                        <option value="069">BPN Brasil</option>
+                        <option value="070">Banco de Brasília – BRB</option>
+                        <option value="072">Banco Rural</option>
+                        <option value="073">Banco Popular</option>
+                        <option value="074">Banco J. Safra</option>
+                        <option value="075">Banco CR2</option>
+                        <option value="076">Banco KDB</option>
+                        <option value="096">Banco BMF</option>
+                        <option value="104">Caixa Econômica Federal</option>
+                        <option value="107">Banco BBM</option>
+                        <option value="116">Banco Único</option>
+                        <option value="151">Nossa Caixa</option>
+                        <option value="175">Banco Finasa</option>
+                        <option value="184">Banco Itaú BBA</option>
+                        <option value="204">American Express Bank</option>
+                        <option value="208">Banco Pactual</option>
+                        <option value="212">Banco Matone</option>
+                        <option value="213">Banco Arbi</option>
+                        <option value="214">Banco Dibens</option>
+                        <option value="217">Banco Joh Deere</option>
+                        <option value="218">Banco Bonsucesso</option>
+                        <option value="222">Banco Calyon Brasil</option>
+                        <option value="224">Banco Fibra</option>
+                        <option value="225">Banco Brascan</option>
+                        <option value="229">Banco Cruzeiro</option>
+                        <option value="230">Unicard</option>
+                        <option value="233">Banco GE Capital</option>
+                        <option value="237">Bradesco</option>
+                        <option value="241">Banco Clássico</option>
+                        <option value="243">Banco Stock Máxima</option>
+                        <option value="246">Banco ABC Brasil</option>
+                        <option value="248">Banco Boavista Interatlântico</option>
+                        <option value="249">Investcred Unibanco</option>
+                        <option value="250">Banco Schahin</option>
+                        <option value="252">Fininvest</option>
+                        <option value="254">Paraná Banco</option>
+                        <option value="263">Banco Cacique</option>
+                        <option value="265">Banco Fator</option>
+                        <option value="266">Banco Cédula</option>
+                        <option value="300">Banco de la Nación Argentina</option>
+                        <option value="318">Banco BMG</option>
+                        <option value="320">Banco Industrial e Comercial</option>
+                        <option value="356">ABN Amro Real</option>
+                        <option value="341">Itau</option>
+                        <option value="347">Sudameris</option>
+                        <option value="351">Banco Santander</option>
+                        <option value="353">Banco Santander Brasil</option>
+                        <option value="366">Banco Societe Generale Brasil</option>
+                        <option value="370">Banco WestLB</option>
+                        <option value="376">JP Morgan</option>
+                        <option value="389">Banco Mercantil do Brasil</option>
+                        <option value="394">Banco Mercantil de Crédito</option>
+                        <option value="399">HSBC</option>
+                        <option value="409">Unibanco</option>
+                        <option value="412">Banco Capital</option>
+                        <option value="422">Banco Safra</option>
+                        <option value="453">Banco Rural</option>
+                        <option value="456">Banco Tokyo Mitsubishi UFJ</option>
+                        <option value="464">Banco Sumitomo Mitsui Brasileiro</option>
+                        <option value="477">Citibank</option>
+                        <option value="479">Itaubank (antigo Bank Boston)</option>
+                        <option value="487">Deutsche Bank</option>
+                        <option value="488">Banco Morgan Guaranty</option>
+                        <option value="492">Banco NMB Postbank</option>
+                        <option value="494">Banco la República Oriental del Uruguay</option>
+                        <option value="495">Banco La Provincia de Buenos Aires</option>
+                        <option value="505">Banco Credit Suisse</option>
+                        <option value="600">Banco Luso Brasileiro</option>
+                        <option value="604">Banco Industrial</option>
+                        <option value="610">Banco VR</option>
+                        <option value="611">Banco Paulista</option>
+                        <option value="612">Banco Guanabara</option>
+                        <option value="613">Banco Pecunia</option>
+                        <option value="623">Banco Panamericano</option>
+                        <option value="626">Banco Ficsa</option>
+                        <option value="630">Banco Intercap</option>
+                        <option value="633">Banco Rendimento</option>
+                        <option value="634">Banco Triângulo</option>
+                        <option value="637">Banco Sofisa</option>
+                        <option value="638">Banco Prosper</option>
+                        <option value="643">Banco Pine</option>
+                        <option value="652">Itaú Holding Financeira</option>
+                        <option value="653">Banco Indusval</option>
+                        <option value="654">Banco A.J. Renner</option>
+                        <option value="655">Banco Votorantim</option>
+                        <option value="707">Banco Daycoval</option>
+                        <option value="719">Banif</option>
+                        <option value="721">Banco Credibel</option>
+                        <option value="734">Banco Gerdau</option>
+                        <option value="735">Banco Pottencial</option>
+                        <option value="738">Banco Morada</option>
+                        <option value="739">Banco Galvão de Negócios</option>
+                        <option value="740">Banco Barclays</option>
+                        <option value="741">BRP</option>
+                        <option value="743">Banco Semear</option>
+                        <option value="745">Banco Citibank</option>
+                        <option value="746">Banco Modal</option>
+                        <option value="747">Banco Rabobank International</option>
+                        <option value="748">Banco Cooperativo Sicredi</option>
+                        <option value="749">Banco Simples</option>
+                        <option value="751">Dresdner Bank</option>
+                        <option value="752">BNP Paribas</option>
+                        <option value="753">Banco Comercial Uruguai</option>
+                        <option value="755">Banco Merrill Lynch</option>
+                        <option value="756">Banco Cooperativo do Brasil</option>
+                        <option value="757">KEB</option>
+                    </select>
+                    @Html.HiddenFor(model => model.BankCode)
+                    @Html.ValidationMessageFor(model => model.BankCode)
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label class="control-label" base_library="api.Models.pessoa.Agencia">Agencia</label>
+                    <div style="clear: both"></div>
+                    <input name="Agencia" onKeyPress="if (this.value.length == 14 || event.keyCode < 48 || event.keyCode > 57) { return false; }" type="number" inputmode="numeric" pattern="[0-9]*" class="form-control" value="@Model.Agencia" placeholder="" />
+                    @Html.ValidationMessageFor(model => model.Agencia)
+                </div>
+
+                <div class="form-group col-md-2">
+                    <label class="control-label" base_library="api.Models.pessoa.AgenciaDv">Digito Ag</label>
+                    <div style="clear: both"></div>
+                    <input name="AgenciaDv" onKeyPress="if (this.value.length == 14 || event.keyCode < 48 || event.keyCode > 57) { return false; }" type="number" inputmode="numeric" pattern="[0-9]*" class="form-control" value="@Model.AgenciaDv" placeholder="" />
+                    @Html.ValidationMessageFor(model => model.AgenciaDv)
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label class="control-label" base_library="api.Models.pessoa.Conta">conta</label>
+                    <div style="clear: both"></div>
+                    <input name="Conta" onKeyPress="if (this.value.length == 14 || event.keyCode < 48 || event.keyCode > 57) { return false; }" type="number" inputmode="numeric" pattern="[0-9]*" class="form-control" value="@Model.Conta" placeholder="" />
+                    @Html.ValidationMessageFor(model => model.Conta)
+                </div>
+
+                <div class="form-group col-md-2">
+                    <label class="control-label" base_library="api.Models.pessoa.ContaDv">Digito Cc</label>
+                    <div style="clear: both"></div>
+                    <input name="ContaDv" onKeyPress="if (this.value.length == 14 || event.keyCode < 48 || event.keyCode > 57) { return false; }" type="number" inputmode="numeric" pattern="[0-9]*" class="form-control" value="@Model.ContaDv" placeholder="" />
+                    @Html.ValidationMessageFor(model => model.ContaDv)
+                </div>
+            </div>
+
+            @if (Request.QueryString["compra_pessoa"] != null)
+            {
+                <input type="hidden" name="compra_pessoa" id="compra_pessoa" value="@Convert.ToInt32(Request.QueryString["compra_pessoa"])">
+            }
+
+            <div>
+                <div class="form-group col-md-12">
+                    <input type="submit" class="btn btn-success pull-right" value="Salvar" />
+                </div>
+            </div>
+        </fieldset>
+    }
+
+</section>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIoBAvqfno0lFGhuzuuwqX0KmXRdr-10o&libraries=places&callback=initSearch"
+            async defer></script>
+    <script src="~/Scripts/admin/pessoa.js"></script>
+
+}
+<script type="text/javascript">
+    window.onload = function () {
+        $('[group="users"]').addClass('active');
+    }
+</script>

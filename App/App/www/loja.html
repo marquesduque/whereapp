@@ -1,0 +1,27 @@
+﻿<div class="pages">
+    <div data-page="loja" class="page">
+        <div class="navbar background-creait">
+            <div class="navbar-inner margin-bottom-20">
+                <div class="left"><a class="back link" onclick="creait.redirect('categoria')"> <i class="f7-icons icone-voltar" style="margin-right: 10px;">chevron_left</i></a></div>
+                <div class="center">Loja(s)</div>
+            </div>
+        </div>
+        <div class="page-content text-center">
+            <div class="page-content" id="app-cover" style="margin-top: 50px;">
+                <div class="list-block" style="width: 100%; height: calc(100% - 50px);">
+                    <ul style="height:calc(100% - 2px)">
+                        {{#each lojas}}
+                        <li class="categoriali" onclick="creait.redirect('produto'); localStorage.setItem('loja_id', {{id}})">
+                            <div responsavel_id="id_do_banco" style="margin-bottom: 2px; height:100%">
+                                <div class="restaurant-img" id="imagem loja" style="line-height:0px;background-image: url(https://whereapp.creait.com.br/api/getPhoto?id={{id}}&tabela=pessoa); background-position: center;">
+                                    <div class="text-white fontextra item-title categoria_item_text" style="display: flex; align-items: center; justify-content: center;">-{{nome}}-</div>
+                                </div>
+                            </div>
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

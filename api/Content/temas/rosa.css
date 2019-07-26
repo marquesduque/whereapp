@@ -1,0 +1,64 @@
+#imagem_bg_login {
+    background-color: #2c3b41;
+    background-position: bottom !important;
+    background-size: 100% auto !important;
+}
+
+.logo_grande {
+    background-color: #E17477 !important;
+}
+
+.logo_pequeno {
+    background-color: #e47f82 !important;
+}
+
+.menu_lateral {
+    background-color: #E6999B !important;
+}
+
+    .menu_lateral ul li a:hover {
+        background: #e47f82 !important;
+        border: none;
+    }
+
+.titulo_menu {
+    color: #fff !important;
+    background: #e47f82 !important;
+}
+
+.menu_topo {
+    background-color: #E6999B !important;
+}
+
+    .menu_topo a:hover {
+        background: #E17477 !important;
+    }
+
+.skin-blue .sidebar-menu > li.active > a {
+    background: #e47f82 !important;
+}
+
+.skin-blue .sidebar-menu > li > .treeview-menu {
+    background: #e65a5f !important;
+    background-color: #e65a5f !important;
+}
+
+.skin-blue .wrapper, .skin-blue .main-sidebar, .skin-blue .left-side {
+    background-color: #e6999b !important;
+}
+
+
+/*TABLES*/
+
+.table-default tr:first-child td {
+    background-color: #e6999b !important;
+}
+
+.table-default tr:first-child:hover td {
+    background: #e65a5f !important;
+}
+
+.table-default tr:hover td {
+    background-color: #e65a5f !important;
+}
+

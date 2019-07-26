@@ -1,0 +1,887 @@
+﻿
+@model Site.Models.Find<api.Controllers.pessoasController.find>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        <a href="@Url.Action("Create", new { perfil_id = Request.QueryString["perfil_id"] })" class="btn btn-info" base_library="api.Models.pessoa.library_create"><i class="glyphicon glyphicon-plus" style="margin-right:10px"></i>Criar Novo</a>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#" base_library="api.Models.pessoa.library_bc_1"><i class="fa fa-newspaper-o"></i>Listar</a></li>
+        <li class="active"><a href="@Url.Action("index")" base_library="api.Models.pessoa.library_bc_list">Index</a></li>
+    </ol>
+</section>
+
+<section class="content">
+
+
+
+
+
+    <form ajax="@Url.Action("Find")" table="tbl">
+        <input type="hidden" id="Page" name="Page" value="0" />
+        <input type="hidden" id="perfil_id" name="perfil_id" value="@Request.QueryString["perfil_id"]" />
+
+        <div class="box box-default">
+            <div class="box-header with-border">
+
+
+                <div class="form-group col-md-6">
+                    <label class="control-label" style="width:100%" base_library="api.Models.pessoa.nome">Nome</label>
+
+                    @Html.TextBoxFor(model => model.Filter.nome, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                <div class="form-group col-md-6">
+                    <label class="control-label" style="width:100%" base_library="api.Models.pessoa.email">Email</label>
+
+                    @Html.TextBoxFor(model => model.Filter.email, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                @*<div class="form-group col-md-6">
+                                 <label class="control-label" style="width:100%" base_library="api.Models.pessoa.birthday" >birthday</label>
+
+                                                 @Html.TextBoxFor(model => model.Filter.birthday, "{0:dd/MM/yyyy}", new { placeholder = "", @class = "form-control", mask = "{\"value\":\"99/99/9999\", \"placeholder\":\"dd/mm/yyyy\"}", maxLength = "10", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                             <div class="form-group col-md-6">
+                                 <label class="control-label" style="width:100%" base_library="api.Models.pessoa.facebook" >facebook</label>
+
+                                                 @Html.TextBoxFor(model => model.Filter.facebook, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                             <div class="form-group col-md-6">
+                                 <label class="control-label" style="width:100%" base_library="api.Models.pessoa.cpf" >cpf</label>
+
+                                                 @Html.TextBoxFor(model => model.Filter.cpf, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                             <div class="form-group col-md-6">
+                                 <label class="control-label" style="width:100%" base_library="api.Models.pessoa.rg" >rg</label>
+
+                                                 @Html.TextBoxFor(model => model.Filter.rg, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                             <div class="form-group col-md-6">
+                                 <label class="control-label" style="width:100%" base_library="api.Models.pessoa.perfil_id" >perfil_id</label>
+                                 <select class="form-control select2" source="#Filter_perfil_id" data-placeholder="" onchange = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" style="width: 100%;">
+                                     <option value="null">Todos</option>
+                                     @foreach (var item in new api.Models.db().perfil)
+                                     {
+                                         <option value="@item.id">@(item.name)</option>
+                                     }
+                                 </select>
+                                 @Html.HiddenFor(model => model.Filter.perfil_id)
+                                 @Html.ValidationMessageFor(model => model.Filter.perfil_id)
+
+
+                </div>
+
+
+
+                             <div class="form-group col-md-6">
+                                 <label class="control-label" style="width:100%" base_library="api.Models.pessoa.phone" >phone</label>
+
+                                                 @Html.TextBoxFor(model => model.Filter.phone, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                             <div class="form-group col-md-6">
+                                 <label class="control-label" style="width:100%" base_library="api.Models.pessoa.phone_optional" >phone_optional</label>
+
+                                                 @Html.TextBoxFor(model => model.Filter.phone_optional, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                             <div class="form-group col-md-6">
+                                 <label class="control-label" style="width:100%" base_library="api.Models.pessoa.mobile" >mobile</label>
+
+                                                 @Html.TextBoxFor(model => model.Filter.mobile, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                             <div class="form-group col-md-6">
+                                 <label class="control-label" style="width:100%" base_library="api.Models.pessoa.mobile_optional" >mobile_optional</label>
+
+                                                 @Html.TextBoxFor(model => model.Filter.mobile_optional, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                             <div class="form-group col-md-6">
+                                 <label class="control-label" style="width:100%" base_library="api.Models.pessoa.rating" >rating</label>
+
+                                                 @Html.TextBoxFor(model => model.Filter.rating, new { placeholder = "", @class = "form-control", maxLength = "150", type="number", min="1", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                             <div class="form-group col-md-6">
+                                 <label class="control-label" style="width:100%" base_library="api.Models.pessoa.password" >password</label>
+
+                                                 @Html.TextBoxFor(model => model.Filter.password, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                             <div class="form-group col-md-6">
+                                 <label class="control-label" style="width:100%" base_library="api.Models.pessoa.description" >description</label>
+
+                                                 @Html.TextBoxFor(model => model.Filter.description, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                             <div class="form-group col-md-6">
+                                 <label class="control-label" style="width:100%" base_library="api.Models.pessoa.active" >active</label>
+
+                                                 <div style="height: 34px; line-height: 30px;">
+                                     <label style="min-width: 45px;">
+                                         <input type="checkbox" value="true" name="item_active" class="minimal-green">
+                                         Sim
+
+                                     </label>
+                                     <label style="min-width: 45px;">
+                                         <input type="checkbox" value="false" name="item_active" class="minimal">
+                                         Não
+
+                                     </label>
+                                     @Html.HiddenFor(model => model.Filter.active, new { icheck = "item_active" })
+                                 </div>
+
+                </div>
+
+
+
+                             <div class="form-group col-md-6">
+                                 <label class="control-label" style="width:100%" base_library="api.Models.pessoa.charge" >charge</label>
+
+                                                 @Html.TextBoxFor(model => model.Filter.charge, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                             <div class="form-group col-md-6">
+                                 <label class="control-label" style="width:100%" base_library="api.Models.pessoa.email_change" >email_change</label>
+
+                                                 @Html.TextBoxFor(model => model.Filter.email_change, "{0:dd/MM/yyyy}", new { placeholder = "", @class = "form-control", mask = "{\"value\":\"99/99/9999\", \"placeholder\":\"dd/mm/yyyy\"}", maxLength = "10", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                             <div class="form-group col-md-6">
+                                 <label class="control-label" style="width:100%" base_library="api.Models.pessoa.status_usuario_id" >status_usuario_id</label>
+                                 <select class="form-control select2" source="#Filter_status_usuario_id" data-placeholder="" onchange = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" style="width: 100%;">
+                                     <option value="null">Todos</option>
+                                     @foreach (var item in new api.Models.db().status_usuario)
+                                     {
+                                         <option value="@item.id">@(item.name)</option>
+                                     }
+                                 </select>
+                                 @Html.HiddenFor(model => model.Filter.status_usuario_id)
+                                 @Html.ValidationMessageFor(model => model.Filter.status_usuario_id)
+
+
+                </div>
+
+
+
+                             <div class="form-group col-md-6">
+                                 <label class="control-label" style="width:100%" base_library="api.Models.pessoa.push_id" >push_id</label>
+
+                                                 @Html.TextBoxFor(model => model.Filter.push_id, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                             <div class="form-group col-md-6">
+                                 <label class="control-label" style="width:100%" base_library="api.Models.pessoa.push_arn" >push_arn</label>
+
+                                                 @Html.TextBoxFor(model => model.Filter.push_arn, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                             <div class="form-group col-md-6">
+                                 <label class="control-label" style="width:100%" base_library="api.Models.pessoa.credit" >credit</label>
+
+                                                 @Html.TextBoxFor(model => model.Filter.credit, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                             <div class="form-group col-md-6">
+                                 <label class="control-label" style="width:100%" base_library="api.Models.pessoa.cnpj" >cnpj</label>
+
+                                                 @Html.TextBoxFor(model => model.Filter.cnpj, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                             <div class="form-group col-md-6">
+                                 <label class="control-label" style="width:100%" base_library="api.Models.pessoa.razao_social" >razao_social</label>
+
+                                                 @Html.TextBoxFor(model => model.Filter.razao_social, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                             <div class="form-group col-md-6">
+                                 <label class="control-label" style="width:100%" base_library="api.Models.pessoa.place_id" >place_id</label>
+
+                                                 @Html.TextBoxFor(model => model.Filter.place_id, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                             <div class="form-group col-md-6">
+                                 <label class="control-label" style="width:100%" base_library="api.Models.pessoa.Agencia" >Agencia</label>
+
+                                                 @Html.TextBoxFor(model => model.Filter.Agencia, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                             <div class="form-group col-md-6">
+                                 <label class="control-label" style="width:100%" base_library="api.Models.pessoa.AgenciaDv" >AgenciaDv</label>
+
+                                                 @Html.TextBoxFor(model => model.Filter.AgenciaDv, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                             <div class="form-group col-md-6">
+                                 <label class="control-label" style="width:100%" base_library="api.Models.pessoa.Conta" >Conta</label>
+
+                                                 @Html.TextBoxFor(model => model.Filter.Conta, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                             <div class="form-group col-md-6">
+                                 <label class="control-label" style="width:100%" base_library="api.Models.pessoa.ContaDv" >ContaDv</label>
+
+                                                 @Html.TextBoxFor(model => model.Filter.ContaDv, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                             <div class="form-group col-md-6">
+                                 <label class="control-label" style="width:100%" base_library="api.Models.pessoa.BankCode" >BankCode</label>
+
+                                                 @Html.TextBoxFor(model => model.Filter.BankCode, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                             <div class="form-group col-md-6">
+                                 <label class="control-label" style="width:100%" base_library="api.Models.pessoa.DocumentNumber" >DocumentNumber</label>
+
+                                                 @Html.TextBoxFor(model => model.Filter.DocumentNumber, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                             <div class="form-group col-md-6">
+                                 <label class="control-label" style="width:100%" base_library="api.Models.pessoa.LegalName" >LegalName</label>
+
+                                                 @Html.TextBoxFor(model => model.Filter.LegalName, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                             <div class="form-group col-md-6">
+                                 <label class="control-label" style="width:100%" base_library="api.Models.pessoa.comissao" >comissao</label>
+
+                                                 @Html.TextBoxFor(model => model.Filter.comissao, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                             <div class="form-group col-md-6">
+                                 <label class="control-label" style="width:100%" base_library="api.Models.pessoa.pagarme_id" >pagarme_id</label>
+
+                                                 @Html.TextBoxFor(model => model.Filter.pagarme_id, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                             <div class="form-group col-md-6">
+                                 <label class="control-label" style="width:100%" base_library="api.Models.pessoa.created" >created</label>
+
+                                                 @Html.TextBoxFor(model => model.Filter.created, "{0:dd/MM/yyyy}", new { placeholder = "", @class = "form-control", mask = "{\"value\":\"99/99/9999\", \"placeholder\":\"dd/mm/yyyy\"}", maxLength = "10", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                             <div class="form-group col-md-6">
+                                 <label class="control-label" style="width:100%" base_library="api.Models.pessoa.external_id" >external_id</label>
+
+                                                 @Html.TextBoxFor(model => model.Filter.external_id, new { placeholder = "", @class = "form-control", maxLength = "150", type="number", min="1", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                             <div class="form-group col-md-6">
+                                 <label class="control-label" style="width:100%" base_library="api.Models.pessoa.filial_id" >filial_id</label>
+
+                                                 @Html.TextBoxFor(model => model.Filter.filial_id, new { placeholder = "", @class = "form-control", maxLength = "150", type="number", min="1", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                             <div class="form-group col-md-6">
+                                 <label class="control-label" style="width:100%" base_library="api.Models.pessoa.genero" >genero</label>
+
+                                                 <div style="height: 34px; line-height: 30px;">
+                                     <label style="min-width: 45px;">
+                                         <input type="checkbox" value="true" name="item_genero" class="minimal-green">
+                                         Sim
+
+                                     </label>
+                                     <label style="min-width: 45px;">
+                                         <input type="checkbox" value="false" name="item_genero" class="minimal">
+                                         Não
+
+                                     </label>
+                                     @Html.HiddenFor(model => model.Filter.genero, new { icheck = "item_genero" })
+                                 </div>
+
+                </div>
+
+
+
+                             <div class="form-group col-md-6">
+                                 <label class="control-label" style="width:100%" base_library="api.Models.pessoa.BankToken" >BankToken</label>
+
+                                                 @Html.TextBoxFor(model => model.Filter.BankToken, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                             <div class="form-group col-md-6">
+                                 <label class="control-label" style="width:100%" base_library="api.Models.pessoa.especialidade_id" >especialidade_id</label>
+
+                                                 @Html.TextBoxFor(model => model.Filter.especialidade_id, new { placeholder = "", @class = "form-control", maxLength = "150", type="number", min="1", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                             <div class="form-group col-md-6">
+                                 <label class="control-label" style="width:100%" base_library="api.Models.pessoa.lat" >lat</label>
+
+                                                 @Html.TextBoxFor(model => model.Filter.lat, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                             <div class="form-group col-md-6">
+                                 <label class="control-label" style="width:100%" base_library="api.Models.pessoa.lng" >lng</label>
+
+                                                 @Html.TextBoxFor(model => model.Filter.lng, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                             <div class="form-group col-md-6">
+                                 <label class="control-label" style="width:100%" base_library="api.Models.pessoa.rua" >rua</label>
+
+                                                 @Html.TextBoxFor(model => model.Filter.rua, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                             <div class="form-group col-md-6">
+                                 <label class="control-label" style="width:100%" base_library="api.Models.pessoa.numero" >numero</label>
+
+                                                 @Html.TextBoxFor(model => model.Filter.numero, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                             <div class="form-group col-md-6">
+                                 <label class="control-label" style="width:100%" base_library="api.Models.pessoa.complemento" >complemento</label>
+
+                                                 @Html.TextBoxFor(model => model.Filter.complemento, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                             <div class="form-group col-md-6">
+                                 <label class="control-label" style="width:100%" base_library="api.Models.pessoa.cidade" >cidade</label>
+
+                                                 @Html.TextBoxFor(model => model.Filter.cidade, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                             <div class="form-group col-md-6">
+                                 <label class="control-label" style="width:100%" base_library="api.Models.pessoa.pais" >pais</label>
+
+                                                 @Html.TextBoxFor(model => model.Filter.pais, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                             <div class="form-group col-md-6">
+                                 <label class="control-label" style="width:100%" base_library="api.Models.pessoa.cep" >cep</label>
+
+                                                 @Html.TextBoxFor(model => model.Filter.cep, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                             <div class="form-group col-md-6">
+                                 <label class="control-label" style="width:100%" base_library="api.Models.pessoa.bairro" >bairro</label>
+
+                                                 @Html.TextBoxFor(model => model.Filter.bairro, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                             <div class="form-group col-md-6">
+                                 <label class="control-label" style="width:100%" base_library="api.Models.pessoa.estado" >estado</label>
+
+                                                 @Html.TextBoxFor(model => model.Filter.estado, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                             <div class="form-group col-md-6">
+                                 <label class="control-label" style="width:100%" base_library="api.Models.pessoa.grupo" >grupo</label>
+
+                                                 @Html.TextBoxFor(model => model.Filter.grupo, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                             <div class="form-group col-md-6">
+                                 <label class="control-label" style="width:100%" base_library="api.Models.pessoa.filial" >filial</label>
+
+                                                 @Html.TextBoxFor(model => model.Filter.filial, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                             <div class="form-group col-md-6">
+                                 <label class="control-label" style="width:100%" base_library="api.Models.pessoa.franqueador" >franqueador</label>
+
+                                                 @Html.TextBoxFor(model => model.Filter.franqueador, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                             <div class="form-group col-md-6">
+                                 <label class="control-label" style="width:100%" base_library="api.Models.pessoa.franqueado" >franqueado</label>
+
+                                                 @Html.TextBoxFor(model => model.Filter.franqueado, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                             <div class="form-group col-md-6">
+                                 <label class="control-label" style="width:100%" base_library="api.Models.pessoa.lat_celular" >lat_celular</label>
+
+                                                 @Html.TextBoxFor(model => model.Filter.lat_celular, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                             <div class="form-group col-md-6">
+                                 <label class="control-label" style="width:100%" base_library="api.Models.pessoa.lon_celular" >lon_celular</label>
+
+                                                 @Html.TextBoxFor(model => model.Filter.lon_celular, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                             <div class="form-group col-md-6">
+                                 <label class="control-label" style="width:100%" base_library="api.Models.pessoa.data_localizacao" >data_localizacao</label>
+
+                                                 @Html.TextBoxFor(model => model.Filter.data_localizacao, "{0:dd/MM/yyyy}", new { placeholder = "", @class = "form-control", mask = "{\"value\":\"99/99/9999\", \"placeholder\":\"dd/mm/yyyy\"}", maxLength = "10", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>*@
+
+                <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse">Pesquisa Avançada<i style="margin-left: 10px" class="fa fa-plus-square fa-minus"></i></button>
+                </div>
+            </div>
+            <div class="box-body" style="display:none">
+            </div>
+            <div class="form-group" style="border-top: 1px solid #f4f4f4; padding: 10px">
+                <button href="#" class="btn btn-warning pull-right" type="button" name="btnProcurar" onclick="$('.tblrow').remove(); $('#Page').val('0'); $('[ajax]').submit();"><i class="glyphicon glyphicon-search" style="margin-right: 10px"></i>Procurar</button>
+                <div style="clear: both"></div>
+            </div>
+        </div>
+        <div class="table-default scroll">
+            <div class="filter-table" base_library="api.Models.pessoa.library_filter"><i class="glyphicon glyphicon-filter"></i>filtros</div>
+
+            <div class="filter-table" base_library="api.Models.sample.library_report" onclick="fnExcelReport()" style="margin-left:83px; width:110px">
+                <i class="fa fa-file-excel-o"></i>Relatório
+            </div>
+            <table id="tbl">
+                <tr>
+                    <td base_library="api.Models.pessoa.nome">
+                        Nome
+                    </td>
+                    <td base_library="api.Models.pessoa.email">
+                        Email
+                    </td>
+                    @*<td base_library="api.Models.pessoa.birthday">
+                        @Html.DisplayNameFor(model => model.Filter.birthday)
+                    </td>
+                    <td base_library="api.Models.pessoa.facebook">
+                        @Html.DisplayNameFor(model => model.Filter.facebook)
+                    </td>*@
+                    @*<td base_library="api.Models.pessoa.cpf">
+                        CPF
+                    </td>
+                    <td base_library="api.Models.pessoa.rg">
+                        RG
+                    </td>*@
+                    <td base_library="api.Models.pessoa.perfil_id">
+                        Perfil
+                    </td>
+                    <td base_library="api.Models.pessoa.phone">
+                        Telefone
+                    </td>
+                    @*<td base_library="api.Models.pessoa.phone_optional">
+                        @Html.DisplayNameFor(model => model.Filter.phone_optional)
+                    </td>*@
+                    <td base_library="api.Models.pessoa.mobile">
+                        Celular
+                    </td>
+                    @*<td base_library="api.Models.pessoa.mobile_optional">
+                        @Html.DisplayNameFor(model => model.Filter.mobile_optional)
+                    </td>
+                    <td base_library="api.Models.pessoa.rating">
+                        @Html.DisplayNameFor(model => model.Filter.rating)
+                    </td>
+                    <td base_library="api.Models.pessoa.password">
+                        @Html.DisplayNameFor(model => model.Filter.password)
+                    </td>
+                    <td base_library="api.Models.pessoa.description">
+                        @Html.DisplayNameFor(model => model.Filter.description)
+                    </td>
+                    <td base_library="api.Models.pessoa.active">
+                        @Html.DisplayNameFor(model => model.Filter.active)
+                    </td>
+                    <td base_library="api.Models.pessoa.charge">
+                        @Html.DisplayNameFor(model => model.Filter.charge)
+                    </td>
+                    <td base_library="api.Models.pessoa.email_change">
+                        @Html.DisplayNameFor(model => model.Filter.email_change)
+                    </td>
+                    <td base_library="api.Models.pessoa.status_usuario_id">
+                        @Html.DisplayNameFor(model => model.Filter.status_usuario_id)
+                    </td>
+                    <td base_library="api.Models.pessoa.push_id">
+                        @Html.DisplayNameFor(model => model.Filter.push_id)
+                    </td>
+                    <td base_library="api.Models.pessoa.push_arn">
+                        @Html.DisplayNameFor(model => model.Filter.push_arn)
+                    </td>
+                    <td base_library="api.Models.pessoa.credit">
+                        @Html.DisplayNameFor(model => model.Filter.credit)
+                    </td>
+                    <td base_library="api.Models.pessoa.cnpj">
+                        @Html.DisplayNameFor(model => model.Filter.cnpj)
+                    </td>
+                    <td base_library="api.Models.pessoa.razao_social">
+                        @Html.DisplayNameFor(model => model.Filter.razao_social)
+                    </td>
+                    <td base_library="api.Models.pessoa.place_id">
+                        @Html.DisplayNameFor(model => model.Filter.place_id)
+                    </td>
+                    <td base_library="api.Models.pessoa.Agencia">
+                        @Html.DisplayNameFor(model => model.Filter.Agencia)
+                    </td>
+                    <td base_library="api.Models.pessoa.AgenciaDv">
+                        @Html.DisplayNameFor(model => model.Filter.AgenciaDv)
+                    </td>
+                    <td base_library="api.Models.pessoa.Conta">
+                        @Html.DisplayNameFor(model => model.Filter.Conta)
+                    </td>
+                    <td base_library="api.Models.pessoa.ContaDv">
+                        @Html.DisplayNameFor(model => model.Filter.ContaDv)
+                    </td>
+                    <td base_library="api.Models.pessoa.BankCode">
+                        @Html.DisplayNameFor(model => model.Filter.BankCode)
+                    </td>
+                    <td base_library="api.Models.pessoa.DocumentNumber">
+                        @Html.DisplayNameFor(model => model.Filter.DocumentNumber)
+                    </td>
+                    <td base_library="api.Models.pessoa.LegalName">
+                        @Html.DisplayNameFor(model => model.Filter.LegalName)
+                    </td>
+                    <td base_library="api.Models.pessoa.comissao">
+                        @Html.DisplayNameFor(model => model.Filter.comissao)
+                    </td>
+                    <td base_library="api.Models.pessoa.pagarme_id">
+                        @Html.DisplayNameFor(model => model.Filter.pagarme_id)
+                    </td>
+                    <td base_library="api.Models.pessoa.created">
+                        @Html.DisplayNameFor(model => model.Filter.created)
+                    </td>
+                    <td base_library="api.Models.pessoa.external_id">
+                        @Html.DisplayNameFor(model => model.Filter.external_id)
+                    </td>
+                    <td base_library="api.Models.pessoa.filial_id">
+                        @Html.DisplayNameFor(model => model.Filter.filial_id)
+                    </td>
+                    <td base_library="api.Models.pessoa.genero">
+                        @Html.DisplayNameFor(model => model.Filter.genero)
+                    </td>
+                    <td base_library="api.Models.pessoa.BankToken">
+                        @Html.DisplayNameFor(model => model.Filter.BankToken)
+                    </td>
+                    <td base_library="api.Models.pessoa.especialidade_id">
+                        @Html.DisplayNameFor(model => model.Filter.especialidade_id)
+                    </td>
+                    <td base_library="api.Models.pessoa.lat">
+                        @Html.DisplayNameFor(model => model.Filter.lat)
+                    </td>
+                    <td base_library="api.Models.pessoa.lng">
+                        @Html.DisplayNameFor(model => model.Filter.lng)
+                    </td>
+                    <td base_library="api.Models.pessoa.rua">
+                        @Html.DisplayNameFor(model => model.Filter.rua)
+                    </td>
+                    <td base_library="api.Models.pessoa.numero">
+                        @Html.DisplayNameFor(model => model.Filter.numero)
+                    </td>
+                    <td base_library="api.Models.pessoa.complemento">
+                        @Html.DisplayNameFor(model => model.Filter.complemento)
+                    </td>
+                    <td base_library="api.Models.pessoa.cidade">
+                        @Html.DisplayNameFor(model => model.Filter.cidade)
+                    </td>
+                    <td base_library="api.Models.pessoa.pais">
+                        @Html.DisplayNameFor(model => model.Filter.pais)
+                    </td>
+                    <td base_library="api.Models.pessoa.cep">
+                        @Html.DisplayNameFor(model => model.Filter.cep)
+                    </td>
+                    <td base_library="api.Models.pessoa.bairro">
+                        @Html.DisplayNameFor(model => model.Filter.bairro)
+                    </td>
+                    <td base_library="api.Models.pessoa.estado">
+                        @Html.DisplayNameFor(model => model.Filter.estado)
+                    </td>
+                    <td base_library="api.Models.pessoa.grupo">
+                        @Html.DisplayNameFor(model => model.Filter.grupo)
+                    </td>
+                    <td base_library="api.Models.pessoa.filial">
+                        @Html.DisplayNameFor(model => model.Filter.filial)
+                    </td>
+                    <td base_library="api.Models.pessoa.franqueador">
+                        @Html.DisplayNameFor(model => model.Filter.franqueador)
+                    </td>
+                    <td base_library="api.Models.pessoa.franqueado">
+                        @Html.DisplayNameFor(model => model.Filter.franqueado)
+                    </td>
+                    <td base_library="api.Models.pessoa.lat_celular">
+                        @Html.DisplayNameFor(model => model.Filter.lat_celular)
+                    </td>
+                    <td base_library="api.Models.pessoa.lon_celular">
+                        @Html.DisplayNameFor(model => model.Filter.lon_celular)
+                    </td>
+                    <td base_library="api.Models.pessoa.data_localizacao">
+                        @Html.DisplayNameFor(model => model.Filter.data_localizacao)
+                    </td>*@
+                </tr>
+            </table>
+        </div>
+    </form>
+</section>
+
+		<script template="tbl" type="text/template" redirect="@Url.Action("edit")"> 
+
+    <tr class="tblrow" pk="id">
+        <td column="nome">
+        </td>
+        <td column="email">
+        </td>
+        @*<td column="birthday">
+        </td>
+        <td column="facebook">
+        </td>*@
+        @*<td column="cpf">
+        </td>
+        <td column="rg">
+        </td>*@
+        <td column="perfil_id">
+        </td>
+        <td column="phone">
+        </td>
+        @*<td column="phone_optional">
+        </td>*@
+        <td column="mobile">
+        </td>
+        @*<td column="mobile_optional">
+        </td>
+        <td column="rating">
+        </td>
+        <td column="password">
+        </td>
+        <td column="description">
+        </td>
+        <td column="active">
+        </td>
+        <td column="charge">
+        </td>
+        <td column="email_change">
+        </td>
+        <td column="status_usuario_id">
+        </td>
+        <td column="push_id">
+        </td>
+        <td column="push_arn">
+        </td>
+        <td column="credit">
+        </td>
+        <td column="cnpj">
+        </td>
+        <td column="razao_social">
+        </td>
+        <td column="place_id">
+        </td>
+        <td column="Agencia">
+        </td>
+        <td column="AgenciaDv">
+        </td>
+        <td column="Conta">
+        </td>
+        <td column="ContaDv">
+        </td>
+        <td column="BankCode">
+        </td>
+        <td column="DocumentNumber">
+        </td>
+        <td column="LegalName">
+        </td>
+        <td column="comissao">
+        </td>
+        <td column="pagarme_id">
+        </td>
+        <td column="created">
+        </td>
+        <td column="external_id">
+        </td>
+        <td column="filial_id">
+        </td>
+        <td column="genero">
+        </td>
+        <td column="BankToken">
+        </td>
+        <td column="especialidade_id">
+        </td>
+        <td column="lat">
+        </td>
+        <td column="lng">
+        </td>
+        <td column="rua">
+        </td>
+        <td column="numero">
+        </td>
+        <td column="complemento">
+        </td>
+        <td column="cidade">
+        </td>
+        <td column="pais">
+        </td>
+        <td column="cep">
+        </td>
+        <td column="bairro">
+        </td>
+        <td column="estado">
+        </td>
+        <td column="grupo">
+        </td>
+        <td column="filial">
+        </td>
+        <td column="franqueador">
+        </td>
+        <td column="franqueado">
+        </td>
+        <td column="lat_celular">
+        </td>
+        <td column="lon_celular">
+        </td>
+        <td column="data_localizacao">
+        </td>*@
+       
+    </tr>
+
+
+</script>

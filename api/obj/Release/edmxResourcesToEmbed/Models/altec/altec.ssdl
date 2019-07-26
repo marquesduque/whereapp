@@ -1,0 +1,1838 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ModelAltec.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ACESSO">
+    <Key>
+      <PropertyRef Name="CodAcesso" />
+      <PropertyRef Name="LOJA" />
+    </Key>
+    <Property Name="CodAcesso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DescriAcesso" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="AcessaGerencial" Type="bit" Nullable="false" />
+    <Property Name="AcessaCaixa" Type="bit" Nullable="false" />
+    <Property Name="ExcluProd" Type="bit" Nullable="false" />
+    <Property Name="TransfProd" Type="bit" Nullable="false" />
+    <Property Name="LancaProd" Type="bit" Nullable="false" />
+    <Property Name="CadCli" Type="bit" Nullable="false" />
+    <Property Name="LibCartao" Type="bit" Nullable="false" />
+    <Property Name="BaixaConta" Type="bit" Nullable="false" />
+    <Property Name="TiraServico" Type="bit" Nullable="false" />
+    <Property Name="DaDesconto" Type="bit" Nullable="false" />
+    <Property Name="FechaCasa" Type="bit" Nullable="false" />
+    <Property Name="CadUsuario" Type="bit" Nullable="false" />
+    <Property Name="CadProduto" Type="bit" Nullable="false" />
+    <Property Name="CadVendedor" Type="bit" Nullable="false" />
+    <Property Name="CadMesa" Type="bit" Nullable="false" />
+    <Property Name="Relatorios" Type="bit" Nullable="false" />
+    <Property Name="FechaOperador" Type="bit" Nullable="false" />
+    <Property Name="VerMesas" Type="bit" Nullable="false" />
+    <Property Name="ServicoRepique" Type="bit" Nullable="false" />
+    <Property Name="ImprimeConta" Type="bit" Nullable="false" />
+    <Property Name="DesbloqueiaMesa" Type="bit" Nullable="false" />
+    <Property Name="EfetuaEstorno" Type="bit" Nullable="false" />
+    <Property Name="EfetuaDebito" Type="bit" Nullable="false" />
+    <Property Name="EfetuaCredito" Type="bit" Nullable="false" />
+    <Property Name="Detalhes" Type="bit" Nullable="false" />
+    <Property Name="Extrato" Type="bit" Nullable="false" />
+    <Property Name="Cadastros" Type="bit" Nullable="false" />
+    <Property Name="FazBackup" Type="bit" Nullable="false" />
+    <Property Name="CadAliquota" Type="bit" Nullable="false" />
+    <Property Name="CadRecebDesc" Type="bit" Nullable="false" />
+    <Property Name="CadImpressora" Type="bit" Nullable="false" />
+    <Property Name="CadGrupoProduto" Type="bit" Nullable="false" />
+    <Property Name="CadCombinado" Type="bit" Nullable="false" />
+    <Property Name="CadCompTroca" Type="bit" Nullable="false" />
+    <Property Name="CadMotoqueiro" Type="bit" Nullable="false" />
+    <Property Name="CadLoja" Type="bit" Nullable="false" />
+    <Property Name="RelAcumuladoDiaDia" Type="bit" Nullable="false" />
+    <Property Name="RelAuditoriaContaConta" Type="bit" Nullable="false" />
+    <Property Name="RelAtendimentoClienteHora" Type="bit" Nullable="false" />
+    <Property Name="RelSaldoDebitoCli" Type="bit" Nullable="false" />
+    <Property Name="RelEstatisticaContaCorr" Type="bit" Nullable="false" />
+    <Property Name="RelCardapio" Type="bit" Nullable="false" />
+    <Property Name="RelDescontos" Type="bit" Nullable="false" />
+    <Property Name="RelFaturamentoDataOp" Type="bit" Nullable="false" />
+    <Property Name="RelProdutosExcluidos" Type="bit" Nullable="false" />
+    <Property Name="RelProdutosTransf" Type="bit" Nullable="false" />
+    <Property Name="RelProdutosVendidos" Type="bit" Nullable="false" />
+    <Property Name="RelVendasGrupoProd" Type="bit" Nullable="false" />
+    <Property Name="RelVendasVendedor" Type="bit" Nullable="false" />
+    <Property Name="RelServicoRepique" Type="bit" Nullable="false" />
+    <Property Name="AcessaContaCorrente" Type="bit" Nullable="false" />
+    <Property Name="RelOcorrencia" Type="bit" Nullable="false" />
+    <Property Name="RelVendaPorMotoqueiro" Type="bit" Nullable="false" />
+    <Property Name="RelResumoGeral" Type="bit" Nullable="false" />
+    <Property Name="RelRepiqueTaxa" Type="bit" Nullable="false" />
+    <Property Name="RelFaturamentoMultiLoja" Type="bit" Nullable="false" />
+    <Property Name="RelVendasPorGrupoMultiLoja" Type="bit" Nullable="false" />
+    <Property Name="RelProdutosVendidosMultiLoja" Type="bit" Nullable="false" />
+    <Property Name="STATUS" Type="nvarchar" MaxLength="1" />
+    <Property Name="AcessaCadastroProduto" Type="bit" Nullable="false" />
+    <Property Name="CadTroca" Type="bit" Nullable="false" />
+    <Property Name="AltDescProd" Type="bit" Nullable="false" />
+    <Property Name="AltGrpoProd" Type="bit" Nullable="false" />
+    <Property Name="AltCmdaProd" Type="bit" Nullable="false" />
+    <Property Name="AltPcktProd" Type="bit" Nullable="false" />
+    <Property Name="AltImprProd" Type="bit" Nullable="false" />
+    <Property Name="AltPrcoProd" Type="bit" Nullable="false" />
+    <Property Name="AltSrvcProd" Type="bit" Nullable="false" />
+    <Property Name="AltTrbtProd" Type="bit" Nullable="false" />
+    <Property Name="AltAliqProd" Type="bit" Nullable="false" />
+    <Property Name="AltCdBrProd" Type="bit" Nullable="false" />
+    <Property Name="AltCombProd" Type="bit" Nullable="false" />
+    <Property Name="AltNCmbProd" Type="bit" Nullable="false" />
+    <Property Name="AltVtdoProd" Type="bit" Nullable="false" />
+    <Property Name="AltVAntProd" Type="bit" Nullable="false" />
+    <Property Name="AltCCstProd" Type="bit" Nullable="false" />
+    <Property Name="InsertProd" Type="bit" Nullable="false" />
+    <Property Name="DelProd" Type="bit" Nullable="false" />
+    <Property Name="AltCodProd" Type="bit" Nullable="false" />
+    <Property Name="Sangria" Type="bit" Nullable="false" />
+    <Property Name="Estacionamento" Type="bit" Nullable="false" />
+    <Property Name="Fidelidade" Type="bit" Nullable="false" />
+    <Property Name="Producao" Type="bit" Nullable="false" />
+    <Property Name="TranfContaCorrente" Type="bit" Nullable="false" />
+    <Property Name="Taxa" Type="bit" Nullable="false" />
+    <Property Name="VerTaxaRepique" Type="bit" Nullable="false" />
+    <Property Name="Ocorrencias" Type="bit" Nullable="false" />
+    <Property Name="Expedir" Type="bit" Nullable="false" />
+    <Property Name="AbrePedido" Type="bit" Nullable="false" />
+    <Property Name="FundoCaixa" Type="bit" Nullable="false" />
+    <Property Name="AcessaImpressoras" Type="bit" Nullable="false" />
+    <Property Name="CancelaCupom" Type="bit" Nullable="false" />
+    <Property Name="LeituraX" Type="bit" Nullable="false" />
+    <Property Name="ReducZ" Type="bit" Nullable="false" />
+    <Property Name="TransfPraca" Type="bit" />
+    <Property Name="ValorVerMesa" Type="bit" Nullable="false" />
+    <Property Name="Gaveta" Type="bit" Nullable="false" />
+    <Property Name="ManutencaoPtos" Type="bit" />
+    <Property Name="GERAPTOMANUAL" Type="bit" />
+    <Property Name="COD_AGENTE" Type="bit" />
+    <Property Name="BREIMPRIMECONTA" Type="bit" />
+    <Property Name="BALTERAPESSOAS" Type="bit" />
+    <Property Name="LOJA" Type="nvarchar" MaxLength="6" Nullable="false" />
+    <Property Name="DIAS_VALIDADE" Type="int" />
+    <Property Name="VERBTNAGENDADOS" Type="bit" />
+    <Property Name="VerPedAgendadosImpressos" Type="bit" />
+    <Property Name="restaurarPedAgendados" Type="bit" />
+    <Property Name="VerPedidosAgendados" Type="bit" />
+    <Property Name="altEntrada" Type="bit" />
+    <Property Name="altconsumacao" Type="bit" />
+    <Property Name="acessaContaConrrente" Type="bit" />
+    <Property Name="acessaImpressora" Type="bit" />
+    <Property Name="aliqprod" Type="bit" />
+    <Property Name="aliquota" Type="bit" />
+    <Property Name="altcmdarpod" Type="bit" />
+    <Property Name="AltCouvert" Type="bit" />
+    <Property Name="altprco" Type="bit" />
+    <Property Name="altsrvc" Type="bit" />
+    <Property Name="alttribtprod" Type="bit" />
+    <Property Name="altvtdo" Type="bit" />
+    <Property Name="balterpessoas" Type="bit" />
+    <Property Name="cdbrprod" Type="bit" />
+    <Property Name="cmdarpod" Type="bit" />
+    <Property Name="CodProd" Type="bit" />
+    <Property Name="combprod" Type="bit" />
+    <Property Name="consumacao" Type="bit" />
+    <Property Name="couvert" Type="bit" />
+    <Property Name="descprod" Type="bit" />
+    <Property Name="entrada" Type="bit" />
+    <Property Name="grpoprod" Type="bit" />
+    <Property Name="imprprod" Type="bit" />
+    <Property Name="ncmbprod" Type="bit" />
+    <Property Name="Ocorrencia" Type="bit" />
+    <Property Name="pcktprod" Type="bit" />
+    <Property Name="prco" Type="bit" />
+    <Property Name="relAtrendimentoClienteHora" Type="bit" />
+    <Property Name="relOcorrencias" Type="bit" />
+    <Property Name="srvc" Type="bit" />
+    <Property Name="tribtprod" Type="bit" />
+    <Property Name="vantprod" Type="bit" />
+    <Property Name="vtdo" Type="bit" />
+    <Property Name="AltNomeCC" Type="bit" />
+    <Property Name="AltCPFCC" Type="bit" />
+    <Property Name="AltCNPJCC" Type="bit" />
+    <Property Name="ABRIRGAVETA" Type="bit" />
+    <Property Name="DataFechamentoImp" Type="bit" />
+    <Property Name="STATUS_WEB" Type="char" MaxLength="1" />
+    <Property Name="CONTROLE_SPED" Type="bit" />
+    <Property Name="CONFIG_PROMO" Type="bit" />
+    <Property Name="REL_PROMO" Type="bit" />
+    <Property Name="CON_PROMO" Type="bit" />
+    <Property Name="LOTE_PROMO" Type="bit" />
+    <Property Name="EDICAO_PROMO" Type="bit" />
+    <Property Name="ACESSO_PROMO" Type="bit" />
+    <Property Name="bConsulMesaAllVend" Type="bit" />
+    <Property Name="bTransfVend" Type="bit" />
+    <Property Name="AltProdEspcProd" Type="bit" />
+    <Property Name="AltBalancProd" Type="bit" />
+    <Property Name="AltGpProducaoProd" Type="bit" />
+    <Property Name="AltKDSProd" Type="bit" />
+    <Property Name="AltEAN13Prod" Type="bit" />
+    <Property Name="AltCSTPISProd" Type="bit" />
+    <Property Name="AltVLPISProd" Type="bit" />
+    <Property Name="AltALQPISProd" Type="bit" />
+    <Property Name="AltCONTPISProd" Type="bit" />
+    <Property Name="AltDIFPISProd" Type="bit" />
+    <Property Name="AltCSTCOFINSProd" Type="bit" />
+    <Property Name="AltVLCOFINSProd" Type="bit" />
+    <Property Name="AltALQCOFINSProd" Type="bit" />
+    <Property Name="AltCONTCOFINSProd" Type="bit" />
+    <Property Name="AltDIFCOFINSProd" Type="bit" />
+    <Property Name="EditaProd" Type="bit" />
+    <Property Name="excluistatusn" Type="bit" />
+    <Property Name="exclustatusn" Type="bit" />
+    <Property Name="REEINPRIMIRESPECIFICOTEF" Type="bit" />
+    <Property Name="INTEGRACAO_ACOM_FINAN" Type="bit" Nullable="false" />
+    <Property Name="INTEGRACAO_ACOM_VENDA" Type="bit" Nullable="false" />
+    <Property Name="FINCONF_FECHAMENTO" Type="bit" Nullable="false" />
+    <Property Name="MESA" Type="bit" Nullable="false" />
+    <Property Name="RelZ" Type="bit" Nullable="false" />
+    <Property Name="OBSERVACAO" Type="bit" Nullable="false" />
+    <Property Name="ExportaXML_SAT" Type="bit" Nullable="false" />
+    <Property Name="ABRE_DIA" Type="bit" />
+    <Property Name="CANCELRAPIDDO" Type="bit" />
+    <Property Name="ACESSO_GUID" Type="uniqueidentifier" />
+    <Property Name="ACESSO_MIGRATION" Type="datetime" />
+  </EntityType>
+  <EntityType Name="CLIENTES">
+    <Key>
+      <PropertyRef Name="CodCli" />
+      <PropertyRef Name="loja" />
+    </Key>
+    <Property Name="CodCli" Type="int" Nullable="false" />
+    <Property Name="NomeCli" Type="nvarchar" MaxLength="60" />
+    <Property Name="Endereco" Type="nvarchar" MaxLength="100" />
+    <Property Name="Bairro" Type="nvarchar" MaxLength="60" />
+    <Property Name="Complemento" Type="nvarchar" MaxLength="100" />
+    <Property Name="CEP" Type="nvarchar" MaxLength="9" />
+    <Property Name="Cidade" Type="nvarchar" MaxLength="30" />
+    <Property Name="Estado" Type="nvarchar" MaxLength="2" />
+    <Property Name="Telefone" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Ramal" Type="nvarchar" MaxLength="10" />
+    <Property Name="Nascimento" Type="datetime" />
+    <Property Name="Referencia" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="DataCadastro" Type="datetime" />
+    <Property Name="taxa" Type="int" />
+    <Property Name="Guia" Type="nvarchar" MaxLength="50" />
+    <Property Name="status" Type="nvarchar" MaxLength="1" />
+    <Property Name="Numero" Type="nvarchar" MaxLength="10" />
+    <Property Name="loja" Type="nvarchar" MaxLength="6" Nullable="false" />
+    <Property Name="ultimacompra" Type="datetime" />
+    <Property Name="numerocompra" Type="int" />
+    <Property Name="sEstadoCivil" Type="varchar" MaxLength="10" />
+    <Property Name="sObs" Type="varchar" MaxLength="40" />
+    <Property Name="sCpf" Type="nvarchar" MaxLength="40" />
+    <Property Name="sNumCartao" Type="varchar" MaxLength="15" />
+    <Property Name="CODPROMO" Type="int" />
+    <Property Name="COD_ORIGEM" Type="int" />
+    <Property Name="INATIVO" Type="bit" />
+    <Property Name="PERFIL" Type="int" />
+    <Property Name="Status_Cliente" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="Reativacao_Cliente" Type="smalldatetime" />
+    <Property Name="Inativacao_Cliente" Type="smalldatetime" />
+    <Property Name="tipo" Type="nvarchar" MaxLength="20" />
+    <Property Name="sexo" Type="nvarchar" MaxLength="10" />
+    <Property Name="rg" Type="nvarchar" MaxLength="30" />
+    <Property Name="LIMITE" Type="money" />
+    <Property Name="TELEFONE2" Type="nvarchar" MaxLength="20" />
+    <Property Name="basebonus" Type="money" />
+    <Property Name="OCORRENCIAS" Type="varchar(max)" />
+    <Property Name="STATUS_WEB" Type="char" MaxLength="1" />
+    <Property Name="ID_DOCUMENTO" Type="varchar" MaxLength="18" />
+    <Property Name="IE" Type="varchar" MaxLength="20" />
+    <Property Name="CodArea" Type="char" MaxLength="2" />
+    <Property Name="TIPO_CARTAO" Type="int" />
+    <Property Name="CLIENTE_GUID" Type="uniqueidentifier" />
+    <Property Name="CLIENTE_MIGRATION" Type="datetime" />
+  </EntityType>
+  <EntityType Name="COMBINADO">
+    <Key>
+      <PropertyRef Name="CombPai" />
+      <PropertyRef Name="CombFilho" />
+      <PropertyRef Name="loja" />
+    </Key>
+    <Property Name="CombPai" Type="int" Nullable="false" />
+    <Property Name="CombFilho" Type="int" Nullable="false" />
+    <Property Name="bCombo" Type="bit" />
+    <Property Name="loja" Type="nvarchar" MaxLength="6" Nullable="false" />
+    <Property Name="status" Type="nvarchar" MaxLength="1" />
+    <Property Name="STATUS_WEB" Type="char" MaxLength="1" />
+    <Property Name="Status_CE" Type="char" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DESBLOQUEIO_MESA">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="LOJA" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CODMESA" Type="int" Nullable="false" />
+    <Property Name="DATA" Type="datetime" />
+    <Property Name="HORARIO" Type="datetime" />
+    <Property Name="USUARIO_CAIXA" Type="nvarchar" MaxLength="35" />
+    <Property Name="VENDEDOR" Type="nvarchar" MaxLength="35" />
+    <Property Name="USUARIO_PERMISSAO" Type="nvarchar" MaxLength="35" />
+    <Property Name="QTDE_PRODUTOS" Type="int" />
+    <Property Name="TOTAL_PRODUTOS" Type="float" />
+    <Property Name="OPERACAO" Type="nvarchar" MaxLength="30" />
+    <Property Name="LOJA" Type="nvarchar" MaxLength="6" Nullable="false" />
+    <Property Name="PERMISSAO" Type="bit" />
+    <Property Name="STATUS_EXPORTA" Type="varchar" MaxLength="1" />
+    <Property Name="STATUS_WEB" Type="char" MaxLength="1" />
+    <Property Name="STATUSKIIK" Type="bit" />
+    <Property Name="DESBLOQUEIOMESA_GUID" Type="uniqueidentifier" />
+    <Property Name="DESBLOQUEIOMESA_FINAN_GUID" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="DETALHES_PAGAMENTO">
+    <Key>
+      <PropertyRef Name="PEDIDO" />
+      <PropertyRef Name="CODFORMAPG" />
+    </Key>
+    <Property Name="PEDIDO" Type="int" Nullable="false" />
+    <Property Name="CODFORMAPG" Type="nvarchar" MaxLength="6" Nullable="false" />
+    <Property Name="TIPO" Type="char" MaxLength="1" />
+    <Property Name="VALOR" Type="float" />
+    <Property Name="LOJA" Type="nvarchar" MaxLength="6" />
+  </EntityType>
+  <EntityType Name="IMPRESSO">
+    <Key>
+      <PropertyRef Name="CodImpressora" />
+      <PropertyRef Name="loja" />
+    </Key>
+    <Property Name="CodImpressora" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="loja" Type="nvarchar" MaxLength="6" Nullable="false" />
+    <Property Name="status" Type="nvarchar" MaxLength="1" />
+    <Property Name="Descricao" Type="nvarchar" MaxLength="20" />
+    <Property Name="Normal" Type="nvarchar" MaxLength="20" />
+    <Property Name="Condensado" Type="nvarchar" MaxLength="20" />
+    <Property Name="Expandido" Type="nvarchar" MaxLength="20" />
+    <Property Name="Sublinhado" Type="nvarchar" MaxLength="12" />
+    <Property Name="Vermelho" Type="nvarchar" MaxLength="12" />
+    <Property Name="Preto" Type="nvarchar" MaxLength="12" />
+    <Property Name="CorteParcial" Type="nvarchar" MaxLength="12" />
+    <Property Name="CorteTotal" Type="nvarchar" MaxLength="12" />
+    <Property Name="Avancapapel" Type="nvarchar" MaxLength="12" />
+    <Property Name="ImpReserva" Type="nvarchar" MaxLength="50" />
+    <Property Name="NumeroEspacoColaConta" Type="int" />
+    <Property Name="NumeroEspacoConta" Type="int" />
+    <Property Name="NumeroEspacoProducao" Type="int" />
+    <Property Name="icolexpandido" Type="int" />
+    <Property Name="STATUS_WEB" Type="char" MaxLength="1" />
+    <Property Name="SiglaImpressora" Type="char" MaxLength="5" />
+    <Property Name="TipoImpressora" Type="int" />
+  </EntityType>
+  <EntityType Name="ITENSPED">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Loja" />
+    </Key>
+    <Property Name="ID" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Excluir" Type="bit" />
+    <Property Name="Numero" Type="int" Nullable="false" />
+    <Property Name="CodProduto" Type="int" Nullable="false" />
+    <Property Name="DescriProduto" Type="varchar" MaxLength="200" />
+    <Property Name="Horario" Type="datetime" Nullable="false" />
+    <Property Name="Preferencia" Type="varchar" MaxLength="200" />
+    <Property Name="Qtde" Type="decimal" Precision="10" Scale="3" />
+    <Property Name="Unitario" Type="money" />
+    <Property Name="TotalItem" Type="money" />
+    <Property Name="Impressora" Type="nvarchar" MaxLength="50" />
+    <Property Name="Montagem" Type="int" />
+    <Property Name="Aliquota" Type="char" MaxLength="3" />
+    <Property Name="Comanda" Type="int" />
+    <Property Name="Loja" Type="nvarchar" MaxLength="6" Nullable="false" />
+    <Property Name="StatusImp" Type="char" MaxLength="1" />
+    <Property Name="Data" Type="datetime" />
+    <Property Name="iCodGrupo" Type="int" />
+    <Property Name="aCod" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="iCombinado" Type="int" />
+    <Property Name="sUsuarioPedido" Type="nvarchar" MaxLength="30" />
+    <Property Name="bComplemento" Type="bit" />
+    <Property Name="ST" Type="char" MaxLength="1" />
+    <Property Name="bCombinado" Type="bit" />
+    <Property Name="CANCELUSER" Type="varchar" MaxLength="20" />
+    <Property Name="cancelDataHorario" Type="datetime" />
+    <Property Name="cancelMotivo" Type="nvarchar" MaxLength="520" />
+    <Property Name="VERSAOLANCAMENTO" Type="varchar" MaxLength="15" />
+    <Property Name="ITENSPED_FINAN_GUID" Type="uniqueidentifier" />
+    <Property Name="ITENSPED_MOV_GUID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="DescontoItem" Type="money" />
+  </EntityType>
+  <EntityType Name="ITENSPED_COMBINADO">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="ID_LOJA" />
+    </Key>
+    <Property Name="ID" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="ID_ITENSPED" Type="varchar" MaxLength="100" />
+    <Property Name="ID_PRODUTO_FILHO" Type="int" />
+    <Property Name="ID_LOJA" Type="nvarchar" MaxLength="6" Nullable="false" />
+    <Property Name="QTDE_PRODUTO_FILHO" Type="float" />
+    <Property Name="OBS_PRODUTO_FILHO" Type="varchar" MaxLength="100" />
+    <Property Name="AUTOINC" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ST" Type="char" MaxLength="1" />
+    <Property Name="QTDE_ORIGINAL" Type="float" />
+    <Property Name="ITENSPED_MOV_GUID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="valor_combinado" Type="money" />
+  </EntityType>
+  <EntityType Name="ITENSPED_COMBINADO_COMPLEMENTO">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="ID_LOJA" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_ITENSPED_COMBINADO" Type="varchar" MaxLength="100" />
+    <Property Name="ID_COMBINADO_COMP_PRODUTO" Type="int" />
+    <Property Name="ID_LOJA" Type="nvarchar" MaxLength="6" Nullable="false" />
+    <Property Name="QTDE_COMPLEMENTO" Type="float" />
+    <Property Name="OBS_COMPLEMENTO" Type="varchar" MaxLength="100" />
+    <Property Name="ST" Type="char" MaxLength="1" />
+    <Property Name="valor_complemento" Type="float" />
+    <Property Name="ITENSPED_MOV_GUID" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ITENSPED_COMPLEMENTO">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="ID_LOJA" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_ITENSPED" Type="varchar" MaxLength="100" />
+    <Property Name="QTDE_COMPLEMENTO_PRODUTO" Type="float" />
+    <Property Name="ID_LOJA" Type="nvarchar" MaxLength="6" Nullable="false" />
+    <Property Name="ID_COMPLEMENTO_PRODUTO" Type="int" />
+    <Property Name="OBS_COMPLEMENTO" Type="varchar" MaxLength="100" />
+    <Property Name="ST" Type="char" MaxLength="1" />
+    <Property Name="valor_complemento" Type="float" />
+    <Property Name="ITENSPED_MOV_GUID" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LOCALIMP">
+    <Key>
+      <PropertyRef Name="loja" />
+      <PropertyRef Name="codProduto" />
+      <PropertyRef Name="local" />
+      <PropertyRef Name="codImpressora" />
+    </Key>
+    <Property Name="loja" Type="nvarchar" MaxLength="6" Nullable="false" />
+    <Property Name="codProduto" Type="int" Nullable="false" />
+    <Property Name="local" Type="int" Nullable="false" />
+    <Property Name="codImpressora" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="status" Type="nvarchar" MaxLength="1" />
+    <Property Name="qtdProducao" Type="int" />
+    <Property Name="STATUS_WEB" Type="char" MaxLength="1" />
+    <Property Name="CodTroca" Type="int" />
+    <Property Name="bImpExclu" Type="bit" />
+  </EntityType>
+  <EntityType Name="LOJA">
+    <Key>
+      <PropertyRef Name="Sigla" />
+    </Key>
+    <Property Name="Sigla" Type="nvarchar" MaxLength="6" Nullable="false" />
+    <Property Name="Nome" Type="nvarchar" MaxLength="60" Nullable="false" />
+    <Property Name="Telefone" Type="varchar" MaxLength="14" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="endereco" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="bairro" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="CaminhoExporta" Type="nvarchar" MaxLength="60" />
+    <Property Name="Gerente" Type="nvarchar" MaxLength="50" />
+    <Property Name="Fantasia" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="uf" Type="char" MaxLength="2" Nullable="false" />
+    <Property Name="EmailCentral" Type="nvarchar" MaxLength="50" />
+    <Property Name="Cnpj" Type="varchar" MaxLength="20" />
+    <Property Name="Ie" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="cep" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="ativo" Type="bit" />
+    <Property Name="CODIGOPLANO" Type="nvarchar" MaxLength="20" />
+    <Property Name="portaremota" Type="nvarchar" MaxLength="10" />
+    <Property Name="ipremoto" Type="nvarchar" MaxLength="50" />
+    <Property Name="codmunicipio" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="TextoExtratoSmile" Type="varchar" MaxLength="35" />
+    <Property Name="CodParcSmile" Type="varchar" MaxLength="10" />
+    <Property Name="CodEnvSmile" Type="varchar" MaxLength="3" />
+    <Property Name="fValorServDelivery" Type="float" />
+    <Property Name="CODCONVENIO" Type="nvarchar" MaxLength="20" />
+    <Property Name="INTEGRA_SEM_CAIXA" Type="bit" />
+    <Property Name="ECENTRAL" Type="bit" />
+    <Property Name="CONTAPADRAO" Type="nvarchar" MaxLength="20" />
+    <Property Name="CIDADE" Type="nvarchar" MaxLength="50" />
+    <Property Name="NUMENDERECO" Type="int" />
+    <Property Name="COMPLEMENTOENDERECO" Type="nvarchar" MaxLength="40" />
+    <Property Name="NOMECONTATO" Type="nvarchar" MaxLength="50" />
+    <Property Name="IM" Type="varchar" MaxLength="30" />
+    <Property Name="cofins" Type="float" />
+    <Property Name="pis" Type="float" />
+    <Property Name="CPF" Type="varchar" MaxLength="14" />
+    <Property Name="SUFRAMA" Type="varchar" MaxLength="9" />
+    <Property Name="IND_PERFIL" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="IND_ATIV" Type="smallint" Nullable="false" />
+    <Property Name="COMPLEMENTO" Type="varchar" MaxLength="60" />
+    <Property Name="FAX" Type="varchar" MaxLength="14" />
+    <Property Name="REGIMETRIB" Type="int" />
+    <Property Name="COD_INC_TRIB" Type="int" Nullable="false" />
+    <Property Name="COD_TIPO_CONT" Type="int" Nullable="false" />
+    <Property Name="IND_REG_CUM" Type="int" />
+    <Property Name="tipo_regime" Type="int" />
+    <Property Name="STATUS_EXPORTA" Type="varchar" MaxLength="1" />
+    <Property Name="IND_APRO_CRED" Type="int" />
+    <Property Name="codpais" Type="nvarchar" MaxLength="30" />
+    <Property Name="IPVanrooy" Type="varchar" MaxLength="80" />
+    <Property Name="NomeBancoRemoto" Type="varchar" MaxLength="100" />
+    <Property Name="STATUS_WEB" Type="char" MaxLength="1" />
+    <Property Name="LOGIN" Type="varchar" MaxLength="80" />
+    <Property Name="SENHA" Type="varchar" MaxLength="80" />
+    <Property Name="IDFRN" Type="varchar" MaxLength="80" />
+    <Property Name="EXPORTA_CARDAPIO" Type="bit" />
+    <Property Name="Status_CE" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="EXPORTA_KIIK_CARDAPIO" Type="bit" />
+    <Property Name="CLOUD_EXTERNAL_CODE" Type="varchar" MaxLength="40" />
+    <Property Name="LOJA_GUID" Type="uniqueidentifier" />
+    <Property Name="TipoGorjeta" Type="int" />
+    <Property Name="CFOPGorjeta" Type="varchar" MaxLength="10" />
+    <Property Name="CST_ICMSGorjeta" Type="varchar" MaxLength="3" />
+    <Property Name="ALIQ_ICMSGorjeta" Type="numeric" Precision="19" Scale="2" />
+    <Property Name="CST_PISGorjeta" Type="varchar" MaxLength="2" />
+    <Property Name="CST_COFINSGorjeta" Type="varchar" MaxLength="2" />
+    <Property Name="NCMGorjeta" Type="varchar" MaxLength="20" />
+    <Property Name="CESTGorjeta" Type="varchar" MaxLength="20" />
+    <Property Name="PercGorjeta" Type="numeric" Precision="19" Scale="2" />
+    <Property Name="Descr_PreConta" Type="varchar" MaxLength="50" />
+    <Property Name="Descr_CupomFiscal" Type="varchar" MaxLength="50" />
+    <Property Name="CST_IPIGorjeta" Type="varchar" MaxLength="3" />
+    <Property Name="DeAcordo_Gorjeta" Type="bit" />
+    <Property Name="TipoAliquota" Type="varchar" MaxLength="2" />
+    <Property Name="LOJA_EMPRESA_GUID" Type="uniqueidentifier" />
+    <Property Name="LOJA_MIGRATION" Type="datetime" />
+    <Property Name="LOJA_LOGOTIPONFE" Type="varbinary(max)" />
+    <Property Name="ISS_QNGorjeta" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="MESAS">
+    <Key>
+      <PropertyRef Name="Codigo" />
+      <PropertyRef Name="loja" />
+    </Key>
+    <Property Name="Codigo" Type="nvarchar" MaxLength="6" Nullable="false" />
+    <Property Name="Descricao" Type="nvarchar" MaxLength="160" />
+    <Property Name="loja" Type="nvarchar" MaxLength="6" Nullable="false" />
+    <Property Name="statusExporta" Type="nvarchar" MaxLength="1" />
+    <Property Name="Status" Type="nvarchar" MaxLength="1" Nullable="false" />
+    <Property Name="Lugares" Type="nvarchar" MaxLength="2" />
+    <Property Name="Servico" Type="nvarchar" MaxLength="1" />
+    <Property Name="Impressora" Type="nvarchar" MaxLength="160" />
+    <Property Name="Pessoas" Type="float" />
+    <Property Name="StatusIMP" Type="nvarchar" MaxLength="1" />
+    <Property Name="Vendedor" Type="nvarchar" MaxLength="20" />
+    <Property Name="Controle" Type="int" />
+    <Property Name="ContaImpressa" Type="int" />
+    <Property Name="HorarioAbertura" Type="datetime" />
+    <Property Name="HorarioFechamento" Type="datetime" />
+    <Property Name="Cliente" Type="int" />
+    <Property Name="UltimoConsumo" Type="datetime" />
+    <Property Name="Caixinha" Type="float" />
+    <Property Name="Usuariodesconto" Type="nvarchar" MaxLength="30" />
+    <Property Name="estacionamento" Type="float" />
+    <Property Name="carros" Type="int" />
+    <Property Name="TabelaServico" Type="nvarchar" MaxLength="20" />
+    <Property Name="MOTIVODESC" Type="int" />
+    <Property Name="NUM_COUVERT" Type="int" />
+    <Property Name="CODPRACA" Type="int" />
+    <Property Name="PESSOAS_INICIAL" Type="int" />
+    <Property Name="COO" Type="varchar" MaxLength="6" />
+    <Property Name="SeqECF" Type="varchar" MaxLength="2" />
+    <Property Name="entrada" Type="money" />
+    <Property Name="consumacao" Type="money" />
+    <Property Name="couvert" Type="money" />
+    <Property Name="valservico" Type="money" />
+    <Property Name="usuarioCheckin" Type="nvarchar" MaxLength="30" />
+    <Property Name="CODPROMO" Type="int" />
+    <Property Name="JUNCAOMESA" Type="int" />
+    <Property Name="STATUS_WEB" Type="char" MaxLength="1" />
+    <Property Name="bMesaDividida" Type="bit" />
+    <Property Name="IECF" Type="varchar" MaxLength="100" />
+    <Property Name="COD_PRE_CONTA" Type="varchar" MaxLength="200" />
+    <Property Name="CONFIRM_PRINTER_TABLE" Type="bit" Nullable="false" />
+    <Property Name="MESAS_FINAN_GUID" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="PEDIDO">
+    <Key>
+      <PropertyRef Name="Numero" />
+      <PropertyRef Name="loja" />
+    </Key>
+    <Property Name="Numero" Type="int" Nullable="false" />
+    <Property Name="Status" Type="nvarchar" MaxLength="20" />
+    <Property Name="TotalPedido" Type="money" />
+    <Property Name="Observacao" Type="nvarchar" MaxLength="80" />
+    <Property Name="NomeCli" Type="nvarchar" MaxLength="60" Nullable="false" />
+    <Property Name="Expedidor" Type="nvarchar" MaxLength="30" />
+    <Property Name="Horario" Type="datetime" />
+    <Property Name="HorarioImpresso" Type="datetime" />
+    <Property Name="HoraExpedido" Type="datetime" />
+    <Property Name="Data" Type="datetime" />
+    <Property Name="UsuarioPedido" Type="nvarchar" MaxLength="20" />
+    <Property Name="CodCli" Type="int" />
+    <Property Name="Taxa" Type="money" />
+    <Property Name="Form_Pag" Type="nvarchar" MaxLength="50" />
+    <Property Name="Pagamento" Type="money" />
+    <Property Name="Troco" Type="money" />
+    <Property Name="NumeroCV" Type="int" />
+    <Property Name="Servico" Type="money" />
+    <Property Name="UsuarioExpedido" Type="nvarchar" MaxLength="30" />
+    <Property Name="Desconto" Type="money" />
+    <Property Name="UsuarioDesconto" Type="nvarchar" MaxLength="30" />
+    <Property Name="NumeroImpressao" Type="int" />
+    <Property Name="HorarioRecebido" Type="datetime" />
+    <Property Name="UsuarioRecebimento" Type="nvarchar" MaxLength="30" />
+    <Property Name="Endereço" Type="nvarchar" MaxLength="80" />
+    <Property Name="Telefone" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Ref" Type="nvarchar" MaxLength="80" />
+    <Property Name="Guia" Type="nvarchar" MaxLength="30" />
+    <Property Name="UsuarioDesc" Type="nvarchar" MaxLength="30" />
+    <Property Name="ValorDesc" Type="money" />
+    <Property Name="ultimacompra" Type="datetime" />
+    <Property Name="totpedido" Type="int" />
+    <Property Name="sUsuServ" Type="varchar" MaxLength="30" />
+    <Property Name="fRepique" Type="money" />
+    <Property Name="Dinheiro" Type="money" />
+    <Property Name="Cheque" Type="money" />
+    <Property Name="Cartao" Type="money" />
+    <Property Name="Ticket" Type="money" />
+    <Property Name="Assinados" Type="money" />
+    <Property Name="Vale" Type="money" />
+    <Property Name="sObsPedido" Type="varchar" MaxLength="2000" />
+    <Property Name="dTempoEntrega" Type="datetime" />
+    <Property Name="sMotivoDesc" Type="nvarchar" MaxLength="30" />
+    <Property Name="bTempoEsgotado" Type="bit" />
+    <Property Name="loja" Type="nvarchar" MaxLength="6" Nullable="false" />
+    <Property Name="CodPromocional" Type="nvarchar" MaxLength="20" />
+    <Property Name="Bairro" Type="nvarchar" MaxLength="30" />
+    <Property Name="dPrazoEntrega" Type="datetime" />
+    <Property Name="codExpedidor" Type="int" />
+    <Property Name="SNUMCUPOM" Type="nvarchar" MaxLength="15" />
+    <Property Name="SNUMSERIEFISCAL" Type="nvarchar" MaxLength="20" />
+    <Property Name="SDATAFISCAL" Type="nvarchar" MaxLength="15" />
+    <Property Name="STATUS_LIDO" Type="bit" />
+    <Property Name="minutoentrega" Type="varchar" MaxLength="2" />
+    <Property Name="dataentrega" Type="datetime" />
+    <Property Name="bRecManual" Type="bit" />
+    <Property Name="iCupomManual" Type="int" />
+    <Property Name="nSerie" Type="varchar" MaxLength="20" />
+    <Property Name="SubSerie" Type="varchar" MaxLength="20" />
+    <Property Name="bPrimeiroPedido" Type="bit" />
+    <Property Name="NRORESTAURANTEWEB" Type="int" />
+    <Property Name="ST" Type="char" MaxLength="1" />
+    <Property Name="DATARW" Type="datetime" />
+    <Property Name="CodPagto" Type="int" />
+    <Property Name="CONTROLECONTA" Type="int" />
+    <Property Name="ddatahoraimpfiscal" Type="datetime" />
+    <Property Name="ccf" Type="varchar" MaxLength="10" />
+    <Property Name="bBaixaCC" Type="bit" />
+    <Property Name="ID_DOCUMENTO" Type="varchar" MaxLength="20" />
+    <Property Name="NroIntegradorWeb" Type="varchar" MaxLength="50" />
+    <Property Name="IECF" Type="varchar" MaxLength="100" />
+    <Property Name="CIDADE" Type="varchar" MaxLength="50" />
+    <Property Name="PEDIDO_SAT_XML_SALE" Type="varchar(max)" />
+    <Property Name="PEDIDO_SAT_ACCESSKEY" Type="varchar" MaxLength="100" />
+    <Property Name="PEDIDO_SAT_ACCESSPROTOCOL" Type="varchar" MaxLength="25" />
+    <Property Name="CHAVEACESSO" Type="varchar" MaxLength="100" />
+    <Property Name="PROTOCOLOACESSO" Type="varchar" MaxLength="25" />
+    <Property Name="PEDIDO_GUID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="PEDIDO_FINAN_GUID" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="PedidoMesa">
+    <Key>
+      <PropertyRef Name="loja" />
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="AUTOINCREMENT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CodigoMesa" Type="nvarchar" MaxLength="6" />
+    <Property Name="Vendedor" Type="nvarchar" MaxLength="6" />
+    <Property Name="CodProduto" Type="int" />
+    <Property Name="Produto" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="Qtde" Type="float" Nullable="false" />
+    <Property Name="Horario" Type="datetime" />
+    <Property Name="Lugar" Type="nvarchar" MaxLength="6" />
+    <Property Name="Manual" Type="nvarchar" MaxLength="1" />
+    <Property Name="Desconto" Type="float" />
+    <Property Name="Substituto" Type="nvarchar" MaxLength="6" />
+    <Property Name="Pref1" Type="nvarchar" MaxLength="250" />
+    <Property Name="Pref2" Type="nvarchar" MaxLength="30" />
+    <Property Name="Pref3" Type="nvarchar" MaxLength="30" />
+    <Property Name="Pref4" Type="nvarchar" MaxLength="30" />
+    <Property Name="Pref5" Type="nvarchar" MaxLength="30" />
+    <Property Name="Pref6" Type="nvarchar" MaxLength="30" />
+    <Property Name="Pref7" Type="nvarchar" MaxLength="30" />
+    <Property Name="Pref8" Type="nvarchar" MaxLength="30" />
+    <Property Name="Pref9" Type="nvarchar" MaxLength="30" />
+    <Property Name="Pref10" Type="nvarchar" MaxLength="30" />
+    <Property Name="Pref11" Type="nvarchar" MaxLength="30" />
+    <Property Name="Pref12" Type="nvarchar" MaxLength="30" />
+    <Property Name="Pref13" Type="nvarchar" MaxLength="30" />
+    <Property Name="Pref14" Type="nvarchar" MaxLength="30" />
+    <Property Name="Pref15" Type="nvarchar" MaxLength="30" />
+    <Property Name="Pref16" Type="nvarchar" MaxLength="30" />
+    <Property Name="Pref17" Type="nvarchar" MaxLength="30" />
+    <Property Name="Pref18" Type="nvarchar" MaxLength="30" />
+    <Property Name="Pref19" Type="nvarchar" MaxLength="30" />
+    <Property Name="Pref20" Type="nvarchar" MaxLength="30" />
+    <Property Name="Comanda" Type="nvarchar" MaxLength="30" />
+    <Property Name="Usuario" Type="nvarchar" MaxLength="30" />
+    <Property Name="Usuariodesconto" Type="nvarchar" MaxLength="30" />
+    <Property Name="Impressora" Type="nvarchar" MaxLength="100" />
+    <Property Name="spool" Type="nvarchar" MaxLength="1" />
+    <Property Name="Estacionamento" Type="float" />
+    <Property Name="carros" Type="int" />
+    <Property Name="Combinado" Type="int" />
+    <Property Name="unit" Type="float" Nullable="false" />
+    <Property Name="bComplemento" Type="bit" />
+    <Property Name="loja" Type="nvarchar" MaxLength="6" Nullable="false" />
+    <Property Name="local" Type="int" Nullable="false" />
+    <Property Name="juntacartao" Type="int" />
+    <Property Name="mesaorigem" Type="nvarchar" MaxLength="6" />
+    <Property Name="st" Type="nvarchar" MaxLength="1" />
+    <Property Name="userbaixa" Type="nvarchar" MaxLength="30" />
+    <Property Name="bJuncaoTemDesconto" Type="bit" />
+    <Property Name="fDescontoJuncao" Type="float" />
+    <Property Name="bDescPromo" Type="bit" />
+    <Property Name="NomeDispositivo" Type="varchar" MaxLength="500" />
+    <Property Name="ID" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="bEspera" Type="bit" />
+    <Property Name="bComp" Type="bit" />
+    <Property Name="MesaLugar" Type="nvarchar" MaxLength="12" />
+    <Property Name="JuncaoMesaLugar" Type="int" />
+    <Property Name="ID_COMANDA_VENDEDOR" Type="int" />
+    <Property Name="CancelUser" Type="varchar" MaxLength="100" />
+    <Property Name="Cancelmotivo" Type="varchar" MaxLength="100" />
+    <Property Name="CancelDataHorario" Type="datetime" />
+    <Property Name="ID_PED_ORIGEM" Type="varchar" MaxLength="100" />
+    <Property Name="VERSAOLANCAMENTO" Type="varchar" MaxLength="15" />
+    <Property Name="ID_SPOOLER" Type="varchar" MaxLength="100" />
+    <Property Name="bItemEmEspera" Type="bit" />
+    <Property Name="COODIV" Type="varchar" MaxLength="6" />
+    <Property Name="PRINTER_TABLE_ID" Type="varchar" MaxLength="12" />
+    <Property Name="PEDIDOMESA_FINAN_GUID" Type="uniqueidentifier" />
+    <Property Name="PEDIDOMESA_MOV_GUID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="DescontoItem" Type="money" />
+  </EntityType>
+  <EntityType Name="PEDIDOMESA_COMBINADO">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="ID_LOJA" />
+    </Key>
+    <Property Name="ID" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="ID_PEDIDOMESA" Type="varchar" MaxLength="100" />
+    <Property Name="ID_PRODUTO_FILHO" Type="int" />
+    <Property Name="ID_LOJA" Type="nvarchar" MaxLength="6" Nullable="false" />
+    <Property Name="QTDE_PRODUTO_FILHO" Type="float" />
+    <Property Name="OBS_PRODUTO_FILHO" Type="varchar" MaxLength="100" />
+    <Property Name="AUTOINC" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ST" Type="char" MaxLength="1" />
+    <Property Name="ID_PED_ORIGEM" Type="varchar" MaxLength="100" />
+    <Property Name="PEDIDOMESA_MOV_GUID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="valor_combinado" Type="money" />
+  </EntityType>
+  <EntityType Name="PEDIDOMESA_COMBINADO_COMPLEMENTO">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="ID_LOJA" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_PEDIDOMESA_COMBINADO" Type="varchar" MaxLength="100" />
+    <Property Name="ID_COMBINADO_COMP_PRODUTO" Type="int" />
+    <Property Name="ID_LOJA" Type="nvarchar" MaxLength="6" Nullable="false" />
+    <Property Name="QTDE_COMPLEMENTO" Type="float" />
+    <Property Name="OBS_COMPLEMENTO" Type="varchar" MaxLength="100" />
+    <Property Name="ST" Type="char" MaxLength="1" />
+    <Property Name="valor_complemento" Type="float" />
+    <Property Name="ID_PED_ORIGEM" Type="int" />
+    <Property Name="PEDIDOMESA_MOV_GUID" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PEDIDOMESA_COMPLEMENTO">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="ID_LOJA" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_PEDIDOMESA" Type="varchar" MaxLength="100" />
+    <Property Name="QTDE_COMPLEMENTO_PRODUTO" Type="float" />
+    <Property Name="ID_LOJA" Type="nvarchar" MaxLength="6" Nullable="false" />
+    <Property Name="ID_COMPLEMENTO_PRODUTO" Type="int" />
+    <Property Name="OBS_COMPLEMENTO" Type="varchar" MaxLength="100" />
+    <Property Name="ST" Type="char" MaxLength="1" />
+    <Property Name="valor_complemento" Type="float" />
+    <Property Name="ID_PED_ORIGEM" Type="int" />
+    <Property Name="PEDIDOMESA_MOV_GUID" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PEDIDOMESAB">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="loja" />
+    </Key>
+    <Property Name="ID" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="controle" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CodProduto" Type="int" Nullable="false" />
+    <Property Name="Produto" Type="varchar" MaxLength="200" />
+    <Property Name="Qtde" Type="float" Nullable="false" />
+    <Property Name="Pref1" Type="varchar" MaxLength="250" />
+    <Property Name="Usuario" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Impressora" Type="nvarchar" MaxLength="100" />
+    <Property Name="Comanda" Type="int" Nullable="false" />
+    <Property Name="CODBALCAO" Type="nvarchar" MaxLength="6" />
+    <Property Name="VENDEDOR" Type="nvarchar" MaxLength="100" />
+    <Property Name="HORARIO" Type="datetime" />
+    <Property Name="Combinado" Type="int" />
+    <Property Name="Terminal" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="bComplemento" Type="bit" />
+    <Property Name="unit" Type="float" Nullable="false" />
+    <Property Name="loja" Type="nvarchar" MaxLength="6" Nullable="false" />
+    <Property Name="local" Type="int" Nullable="false" />
+    <Property Name="sStatusImp" Type="char" MaxLength="1" />
+    <Property Name="st" Type="char" MaxLength="1" />
+    <Property Name="bEspera" Type="bit" />
+    <Property Name="bComp" Type="bit" />
+    <Property Name="canceluser" Type="varchar" MaxLength="100" />
+    <Property Name="Cancelmotivo" Type="varchar" MaxLength="100" />
+    <Property Name="CancelDataHorario" Type="datetime" />
+    <Property Name="bCombinado" Type="bit" />
+    <Property Name="VERSAOLANCAMENTO" Type="varchar" MaxLength="15" />
+    <Property Name="ID_SPOOLER" Type="varchar" MaxLength="100" />
+    <Property Name="Cliente_espera" Type="varchar" MaxLength="50" />
+    <Property Name="IECF" Type="varchar" MaxLength="100" />
+    <Property Name="NroIntegradorWeb" Type="varchar" MaxLength="50" />
+    <Property Name="PEDIDOMESAB_FINAN_GUID" Type="uniqueidentifier" />
+    <Property Name="PEDIDOMESAB_MOV_GUID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="DescontoItem" Type="money" />
+  </EntityType>
+  <EntityType Name="PEDIDOMESAB_COMBINADO">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="ID_LOJA" />
+    </Key>
+    <Property Name="ID" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="ID_PEDIDOMESAB" Type="varchar" MaxLength="100" />
+    <Property Name="ID_PRODUTO_FILHO" Type="int" />
+    <Property Name="ID_LOJA" Type="nvarchar" MaxLength="6" Nullable="false" />
+    <Property Name="QTDE_PRODUTO_FILHO" Type="float" />
+    <Property Name="OBS_PRODUTO_FILHO" Type="varchar" MaxLength="100" />
+    <Property Name="AUTOINC" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ST" Type="char" MaxLength="1" />
+    <Property Name="horario" Type="datetime" />
+    <Property Name="PEDIDOMESAB_MOV_GUID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="valor_combinado" Type="money" />
+  </EntityType>
+  <EntityType Name="PEDIDOMESAB_COMBINADO_COMPLEMENTO">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="ID_LOJA" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_PEDIDOMESAB_COMBINADO" Type="varchar" MaxLength="100" />
+    <Property Name="ID_COMBINADO_COMP_PRODUTO" Type="int" />
+    <Property Name="ID_LOJA" Type="nvarchar" MaxLength="6" Nullable="false" />
+    <Property Name="QTDE_COMPLEMENTO" Type="float" />
+    <Property Name="OBS_COMPLEMENTO" Type="varchar" MaxLength="100" />
+    <Property Name="ST" Type="char" MaxLength="1" />
+    <Property Name="valor_complemento" Type="float" />
+    <Property Name="PEDIDOMESAB_MOV_GUID" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PEDIDOMESAB_COMPLEMENTO">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="ID_LOJA" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_PEDIDOMESAB" Type="varchar" MaxLength="100" />
+    <Property Name="QTDE_COMPLEMENTO_PRODUTO" Type="float" />
+    <Property Name="ID_LOJA" Type="nvarchar" MaxLength="6" Nullable="false" />
+    <Property Name="ID_COMPLEMENTO_PRODUTO" Type="int" />
+    <Property Name="OBS_COMPLEMENTO" Type="varchar" MaxLength="100" />
+    <Property Name="ST" Type="char" MaxLength="1" />
+    <Property Name="valor_complemento" Type="float" />
+    <Property Name="PEDIDOMESAB_MOV_GUID" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DELIVERY_SAT.dbo.PREPEDIDOMESA' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="PREPEDIDOMESA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="codigomesa" Type="varchar" MaxLength="500" />
+    <Property Name="venderdor" Type="varchar" MaxLength="500" />
+    <Property Name="codProduto" Type="varchar" MaxLength="500" />
+    <Property Name="Produto" Type="varchar" MaxLength="500" />
+    <Property Name="quantidade" Type="varchar" MaxLength="500" />
+    <Property Name="horario" Type="datetime" />
+    <Property Name="lugar" Type="varchar" MaxLength="50" />
+    <Property Name="MANUAL" Type="varchar" MaxLength="50" />
+    <Property Name="versaoAplicativo" Type="varchar" MaxLength="500" />
+    <Property Name="OBSERVACAO" Type="varchar" MaxLength="500" />
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="sessionId" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="PREPEDIDOMESA_COMBINADO">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ID_PREDIDOMESA" Type="varchar" MaxLength="500" />
+    <Property Name="ID_PRODUTO_FILHO" Type="int" />
+    <Property Name="ID_LOJA" Type="nvarchar" MaxLength="6" Nullable="false" />
+    <Property Name="QTDE_PRODUTO_FILHO" Type="float" />
+    <Property Name="OBS_PRODUTO_FILHO" Type="varchar" MaxLength="100" />
+    <Property Name="ST" Type="char" MaxLength="1" />
+    <Property Name="ID_PED_ORIGEM" Type="varchar" MaxLength="100" />
+    <Property Name="COR" Type="varchar" MaxLength="50" />
+    <Property Name="horario" Type="datetime" />
+    <Property Name="OrdemSelecao" Type="tinyint" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DELIVERY_SAT.dbo.PREPEDIDOMESA_COMBINADO_COMPLEMENTO' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="PREPEDIDOMESA_COMBINADO_COMPLEMENTO">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="ID_LOJA" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_PEDIDOMESA_COMBINADO" Type="varchar" MaxLength="100" />
+    <Property Name="ID_COMBINADO_COMP_PRODUTO" Type="int" />
+    <Property Name="ID_LOJA" Type="nvarchar" MaxLength="6" Nullable="false" />
+    <Property Name="QTDE_COMPLEMENTO" Type="float" />
+    <Property Name="OBS_COMPLEMENTO" Type="varchar" MaxLength="100" />
+    <Property Name="ST" Type="char" MaxLength="1" />
+    <Property Name="valor_complemento" Type="float" />
+    <Property Name="ID_PED_ORIGEM" Type="int" />
+  </EntityType>
+  <EntityType Name="PREPEDIDOMESA_COMPLEMENTO">
+    <Key>
+      <PropertyRef Name="PK" />
+    </Key>
+    <Property Name="PK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_PEDIDOMESA" Type="varchar" MaxLength="100" />
+    <Property Name="QTDE_COMPLEMENTO_PRODUTO" Type="float" />
+    <Property Name="ID_LOJA" Type="varchar" MaxLength="50" />
+    <Property Name="ID_COMPLEMENTO_PRODUTO" Type="int" />
+    <Property Name="OBS_COMPLEMENTO" Type="varchar" MaxLength="100" />
+    <Property Name="ST" Type="char" MaxLength="1" />
+    <Property Name="valor_complemento" Type="float" />
+    <Property Name="ID_PED_ORIGEM" Type="int" />
+  </EntityType>
+  <EntityType Name="Produto">
+    <Key>
+      <PropertyRef Name="CodProduto" />
+      <PropertyRef Name="loja" />
+    </Key>
+    <Property Name="CodProduto" Type="int" Nullable="false" />
+    <Property Name="loja" Type="nvarchar" MaxLength="6" Nullable="false" />
+    <Property Name="status" Type="nvarchar" MaxLength="1" />
+    <Property Name="DescriProduto" Type="nvarchar" MaxLength="150" />
+    <Property Name="Grupo" Type="int" Nullable="false" />
+    <Property Name="Local1" Type="nvarchar" MaxLength="50" />
+    <Property Name="Local2" Type="nvarchar" MaxLength="50" />
+    <Property Name="PrecoVenda" Type="money" Nullable="false" />
+    <Property Name="Tributado" Type="varchar" MaxLength="3" />
+    <Property Name="CodCNO" Type="varchar" MaxLength="3" />
+    <Property Name="Comanda" Type="int" />
+    <Property Name="Observacao" Type="nvarchar" MaxLength="300" />
+    <Property Name="CobraServico" Type="bit" />
+    <Property Name="Pocket" Type="char" MaxLength="1" />
+    <Property Name="LOCAL3" Type="nvarchar" MaxLength="50" />
+    <Property Name="CodigoDeBarras" Type="nvarchar" MaxLength="13" Nullable="false" />
+    <Property Name="bCombinado" Type="bit" />
+    <Property Name="iCombinado" Type="int" />
+    <Property Name="Vetado" Type="bit" />
+    <Property Name="Preco_Compra" Type="float" />
+    <Property Name="IPI" Type="float" />
+    <Property Name="CODFISCAL" Type="nvarchar" MaxLength="15" />
+    <Property Name="ICMS" Type="float" />
+    <Property Name="setorpadrao" Type="int" Nullable="false" />
+    <Property Name="PE" Type="bit" />
+    <Property Name="PV" Type="bit" />
+    <Property Name="maxCombFilho" Type="int" Nullable="false" />
+    <Property Name="codCct" Type="int" />
+    <Property Name="bVendaAntecipada" Type="bit" />
+    <Property Name="PT" Type="bit" />
+    <Property Name="consig" Type="bit" />
+    <Property Name="CODMATRIZ" Type="nvarchar" MaxLength="13" />
+    <Property Name="bProdutoEspecial" Type="bit" />
+    <Property Name="bProdutoBanlanca" Type="bit" />
+    <Property Name="iSetorSaida" Type="int" />
+    <Property Name="bProdutoBalanca" Type="bit" />
+    <Property Name="IAT" Type="varchar" MaxLength="1" />
+    <Property Name="IPPT" Type="varchar" MaxLength="1" />
+    <Property Name="controleconta" Type="nvarchar" MaxLength="13" />
+    <Property Name="EAN13" Type="nvarchar" MaxLength="13" />
+    <Property Name="COD_KDS" Type="int" />
+    <Property Name="minimo" Type="float" />
+    <Property Name="maximo" Type="float" />
+    <Property Name="ID_ALTEC_GRUPO_COMPROD" Type="int" />
+    <Property Name="TipoSaida" Type="int" />
+    <Property Name="CompProd" Type="varchar" MaxLength="100" />
+    <Property Name="Comp" Type="varchar" MaxLength="100" />
+    <Property Name="TipoPreco" Type="int" />
+    <Property Name="STATUS_WEB" Type="char" MaxLength="1" />
+    <Property Name="MotivoDesc" Type="varchar" MaxLength="200" />
+    <Property Name="COD_ANT_ITEM" Type="varchar" MaxLength="60" />
+    <Property Name="UNC" Type="varchar" MaxLength="6" Nullable="false" />
+    <Property Name="ID_TIPO_ITEM" Type="char" MaxLength="2" />
+    <Property Name="DT_CADASTRO" Type="smalldatetime" Nullable="false" />
+    <Property Name="TIPO_ITEM" Type="char" MaxLength="2" Nullable="false" />
+    <Property Name="IND_PROP" Type="int" Nullable="false" />
+    <Property Name="COD_PART" Type="int" />
+    <Property Name="TXT_COMPL" Type="varchar" MaxLength="300" />
+    <Property Name="Qtde_Anterior" Type="float" />
+    <Property Name="Data" Type="datetime" />
+    <Property Name="CST_PIS" Type="varchar" MaxLength="2" />
+    <Property Name="VALOR_PIS" Type="float" />
+    <Property Name="ALIQ_PERC_PIS" Type="float" />
+    <Property Name="CST_COFINS" Type="varchar" MaxLength="2" />
+    <Property Name="VALOR_COFINS" Type="float" />
+    <Property Name="ALIQ_PERC_COFINS" Type="float" />
+    <Property Name="CST_IPI" Type="varchar" MaxLength="2" />
+    <Property Name="ALIQ_PERC_IPI" Type="float" />
+    <Property Name="NAT_REC_PIS" Type="varchar" MaxLength="10" />
+    <Property Name="NAT_REC_COFINS" Type="varchar" MaxLength="10" />
+    <Property Name="COD_CONT" Type="varchar" MaxLength="2" />
+    <Property Name="ContaContabil" Type="nvarchar" MaxLength="20" />
+    <Property Name="sNumSerieFiscal" Type="varchar" MaxLength="30" />
+    <Property Name="CompE1" Type="varchar" MaxLength="100" />
+    <Property Name="UNIDADECONSUMO" Type="char" MaxLength="2" />
+    <Property Name="ID_NCM" Type="int" Nullable="false" />
+    <Property Name="COD_EX" Type="varchar" MaxLength="3" />
+    <Property Name="COD_GENERO" Type="int" />
+    <Property Name="COD_SERVICO" Type="int" />
+    <Property Name="NAT_REC" Type="varchar" MaxLength="10" />
+    <Property Name="COD_CONT_COFINS" Type="varchar" MaxLength="2" />
+    <Property Name="ID_MySwissChoco" Type="varchar" MaxLength="8" />
+    <Property Name="Class_MySwissChoco" Type="varchar" MaxLength="50" />
+    <Property Name="bComboQtdeFrac" Type="bit" />
+    <Property Name="COMP_P2" Type="nvarchar" MaxLength="255" />
+    <Property Name="COD_ORIGEM" Type="int" />
+    <Property Name="Qtde_Original" Type="float" />
+    <Property Name="Status_VR" Type="char" MaxLength="1" />
+    <Property Name="Status_CE" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="PRODUTO_KIIK" Type="bit" />
+    <Property Name="COD_CEST" Type="varchar" MaxLength="20" />
+    <Property Name="PRODUCT_GUID" Type="uniqueidentifier" />
+    <Property Name="PRODUCT_FORCED_QUESTION" Type="bit" Nullable="false" />
+    <Property Name="PRODUTO_MIGRATION" Type="datetime" />
+    <Property Name="indicador_escala" Type="char" MaxLength="1" />
+    <Property Name="cnpj_fabricante" Type="varchar" MaxLength="20" />
+    <Property Name="cod_beneficio" Type="varchar" MaxLength="10" />
+    <Property Name="ExibirTotem" Type="bit" />
+    <Property Name="ImagemTotem" Type="varchar(max)" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DELIVERY_SAT.dbo.TBCONTA' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TBCONTA">
+    <Key>
+      <PropertyRef Name="loja" />
+    </Key>
+    <Property Name="CodigoMesa" Type="nvarchar" MaxLength="6" />
+    <Property Name="CodVendedor" Type="nvarchar" MaxLength="6" />
+    <Property Name="NomeVendedor" Type="varchar" MaxLength="20" />
+    <Property Name="Horario" Type="datetime" />
+    <Property Name="Status" Type="char" MaxLength="1" />
+    <Property Name="loja" Type="nvarchar" MaxLength="6" Nullable="false" />
+    <Property Name="PRINTER_TABLE_ID" Type="varchar" MaxLength="12" />
+  </EntityType>
+  <EntityType Name="USUARIO">
+    <Key>
+      <PropertyRef Name="Codigo" />
+      <PropertyRef Name="loja" />
+    </Key>
+    <Property Name="Codigo" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="loja" Type="nvarchar" MaxLength="6" Nullable="false" />
+    <Property Name="status" Type="nvarchar" MaxLength="1" />
+    <Property Name="Prioridade" Type="int" Nullable="false" />
+    <Property Name="Senha" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Enabled" Type="bit" />
+    <Property Name="FundoCX" Type="char" MaxLength="1" />
+    <Property Name="codacesso" Type="int" Nullable="false" />
+    <Property Name="ULTIMA_ALTERACAO_SENHA" Type="datetime" />
+    <Property Name="STATUS_WEB" Type="char" MaxLength="1" />
+    <Property Name="IMG_DIGITAL" Type="varbinary(max)" />
+    <Property Name="ID_BIOMETRICO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CodBarAcesso" Type="varchar" MaxLength="20" />
+    <Property Name="BEXCLUIR" Type="bit" />
+    <Property Name="BTRANSFERIR" Type="bit" />
+    <Property Name="BDESCONTO" Type="bit" />
+    <Property Name="BSERVICO" Type="bit" />
+    <Property Name="USUARIO_GUID" Type="uniqueidentifier" />
+    <Property Name="USUARIO_MIGRATION" Type="datetime" />
+  </EntityType>
+  <Association Name="FK_ITENSPED_COMBINADO_COMPLEMENTO_ITENSPED_COMBINADO">
+    <End Role="ITENSPED_COMBINADO" Type="Self.ITENSPED_COMBINADO" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ITENSPED_COMBINADO_COMPLEMENTO" Type="Self.ITENSPED_COMBINADO_COMPLEMENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ITENSPED_COMBINADO">
+        <PropertyRef Name="ID" />
+        <PropertyRef Name="ID_LOJA" />
+      </Principal>
+      <Dependent Role="ITENSPED_COMBINADO_COMPLEMENTO">
+        <PropertyRef Name="ID_ITENSPED_COMBINADO" />
+        <PropertyRef Name="ID_LOJA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ITENSPED_COMBINADO_COMPLEMENTO_LOJA">
+    <End Role="LOJA" Type="Self.LOJA" Multiplicity="1" />
+    <End Role="ITENSPED_COMBINADO_COMPLEMENTO" Type="Self.ITENSPED_COMBINADO_COMPLEMENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOJA">
+        <PropertyRef Name="Sigla" />
+      </Principal>
+      <Dependent Role="ITENSPED_COMBINADO_COMPLEMENTO">
+        <PropertyRef Name="ID_LOJA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ITENSPED_COMBINADO_COMPLEMENTO_PRODUTO">
+    <End Role="Produto" Type="Self.Produto" Multiplicity="0..1" />
+    <End Role="ITENSPED_COMBINADO_COMPLEMENTO" Type="Self.ITENSPED_COMBINADO_COMPLEMENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Produto">
+        <PropertyRef Name="CodProduto" />
+        <PropertyRef Name="loja" />
+      </Principal>
+      <Dependent Role="ITENSPED_COMBINADO_COMPLEMENTO">
+        <PropertyRef Name="ID_COMBINADO_COMP_PRODUTO" />
+        <PropertyRef Name="ID_LOJA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ITENSPED_COMBINADO_ITENSPED">
+    <End Role="ITENSPED" Type="Self.ITENSPED" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ITENSPED_COMBINADO" Type="Self.ITENSPED_COMBINADO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ITENSPED">
+        <PropertyRef Name="ID" />
+        <PropertyRef Name="Loja" />
+      </Principal>
+      <Dependent Role="ITENSPED_COMBINADO">
+        <PropertyRef Name="ID_ITENSPED" />
+        <PropertyRef Name="ID_LOJA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ITENSPED_COMBINADO_PRODUTO">
+    <End Role="Produto" Type="Self.Produto" Multiplicity="0..1" />
+    <End Role="ITENSPED_COMBINADO" Type="Self.ITENSPED_COMBINADO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Produto">
+        <PropertyRef Name="CodProduto" />
+        <PropertyRef Name="loja" />
+      </Principal>
+      <Dependent Role="ITENSPED_COMBINADO">
+        <PropertyRef Name="ID_PRODUTO_FILHO" />
+        <PropertyRef Name="ID_LOJA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ITENSPED_COMPLEMENTO_ITENSPED">
+    <End Role="ITENSPED" Type="Self.ITENSPED" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ITENSPED_COMPLEMENTO" Type="Self.ITENSPED_COMPLEMENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ITENSPED">
+        <PropertyRef Name="ID" />
+        <PropertyRef Name="Loja" />
+      </Principal>
+      <Dependent Role="ITENSPED_COMPLEMENTO">
+        <PropertyRef Name="ID_ITENSPED" />
+        <PropertyRef Name="ID_LOJA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ITENSPED_COMPLEMENTO_LOJA">
+    <End Role="LOJA" Type="Self.LOJA" Multiplicity="1" />
+    <End Role="ITENSPED_COMPLEMENTO" Type="Self.ITENSPED_COMPLEMENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOJA">
+        <PropertyRef Name="Sigla" />
+      </Principal>
+      <Dependent Role="ITENSPED_COMPLEMENTO">
+        <PropertyRef Name="ID_LOJA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ITENSPED_COMPLEMENTO_PRODUTO">
+    <End Role="Produto" Type="Self.Produto" Multiplicity="0..1" />
+    <End Role="ITENSPED_COMPLEMENTO" Type="Self.ITENSPED_COMPLEMENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Produto">
+        <PropertyRef Name="CodProduto" />
+        <PropertyRef Name="loja" />
+      </Principal>
+      <Dependent Role="ITENSPED_COMPLEMENTO">
+        <PropertyRef Name="ID_COMPLEMENTO_PRODUTO" />
+        <PropertyRef Name="ID_LOJA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_itensPed_PEDIDO">
+    <End Role="PEDIDO" Type="Self.PEDIDO" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ITENSPED" Type="Self.ITENSPED" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PEDIDO">
+        <PropertyRef Name="Numero" />
+        <PropertyRef Name="loja" />
+      </Principal>
+      <Dependent Role="ITENSPED">
+        <PropertyRef Name="Numero" />
+        <PropertyRef Name="Loja" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_ItensPed_Usuario">
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="0..1" />
+    <End Role="ITENSPED" Type="Self.ITENSPED" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="Codigo" />
+        <PropertyRef Name="loja" />
+      </Principal>
+      <Dependent Role="ITENSPED">
+        <PropertyRef Name="sUsuarioPedido" />
+        <PropertyRef Name="Loja" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_localImp_impresso">
+    <End Role="IMPRESSO" Type="Self.IMPRESSO" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="LOCALIMP" Type="Self.LOCALIMP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IMPRESSO">
+        <PropertyRef Name="CodImpressora" />
+        <PropertyRef Name="loja" />
+      </Principal>
+      <Dependent Role="LOCALIMP">
+        <PropertyRef Name="codImpressora" />
+        <PropertyRef Name="loja" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_localImp_produto">
+    <End Role="Produto" Type="Self.Produto" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="LOCALIMP" Type="Self.LOCALIMP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Produto">
+        <PropertyRef Name="CodProduto" />
+        <PropertyRef Name="loja" />
+      </Principal>
+      <Dependent Role="LOCALIMP">
+        <PropertyRef Name="codProduto" />
+        <PropertyRef Name="loja" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Mesas_X_Loja">
+    <End Role="LOJA" Type="Self.LOJA" Multiplicity="1" />
+    <End Role="MESAS" Type="Self.MESAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOJA">
+        <PropertyRef Name="Sigla" />
+      </Principal>
+      <Dependent Role="MESAS">
+        <PropertyRef Name="loja" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PEDIDOMESA_COMBINADO_COMPLEMENTO_LOJA">
+    <End Role="LOJA" Type="Self.LOJA" Multiplicity="1" />
+    <End Role="PEDIDOMESA_COMBINADO_COMPLEMENTO" Type="Self.PEDIDOMESA_COMBINADO_COMPLEMENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOJA">
+        <PropertyRef Name="Sigla" />
+      </Principal>
+      <Dependent Role="PEDIDOMESA_COMBINADO_COMPLEMENTO">
+        <PropertyRef Name="ID_LOJA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PEDIDOMESA_COMBINADO_COMPLEMENTO_PEDIDOMESA_COMBINADO">
+    <End Role="PEDIDOMESA_COMBINADO" Type="Self.PEDIDOMESA_COMBINADO" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PEDIDOMESA_COMBINADO_COMPLEMENTO" Type="Self.PEDIDOMESA_COMBINADO_COMPLEMENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PEDIDOMESA_COMBINADO">
+        <PropertyRef Name="ID" />
+        <PropertyRef Name="ID_LOJA" />
+      </Principal>
+      <Dependent Role="PEDIDOMESA_COMBINADO_COMPLEMENTO">
+        <PropertyRef Name="ID_PEDIDOMESA_COMBINADO" />
+        <PropertyRef Name="ID_LOJA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PEDIDOMESA_COMBINADO_COMPLEMENTO_PRODUTO">
+    <End Role="Produto" Type="Self.Produto" Multiplicity="0..1" />
+    <End Role="PEDIDOMESA_COMBINADO_COMPLEMENTO" Type="Self.PEDIDOMESA_COMBINADO_COMPLEMENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Produto">
+        <PropertyRef Name="CodProduto" />
+        <PropertyRef Name="loja" />
+      </Principal>
+      <Dependent Role="PEDIDOMESA_COMBINADO_COMPLEMENTO">
+        <PropertyRef Name="ID_COMBINADO_COMP_PRODUTO" />
+        <PropertyRef Name="ID_LOJA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PEDIDOMESA_COMBINADO_PEDIDOMESA">
+    <End Role="PedidoMesa" Type="Self.PedidoMesa" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PEDIDOMESA_COMBINADO" Type="Self.PEDIDOMESA_COMBINADO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PedidoMesa">
+        <PropertyRef Name="loja" />
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PEDIDOMESA_COMBINADO">
+        <PropertyRef Name="ID_LOJA" />
+        <PropertyRef Name="ID_PEDIDOMESA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PEDIDOMESA_COMBINADO_PRODUTO">
+    <End Role="Produto" Type="Self.Produto" Multiplicity="0..1" />
+    <End Role="PEDIDOMESA_COMBINADO" Type="Self.PEDIDOMESA_COMBINADO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Produto">
+        <PropertyRef Name="CodProduto" />
+        <PropertyRef Name="loja" />
+      </Principal>
+      <Dependent Role="PEDIDOMESA_COMBINADO">
+        <PropertyRef Name="ID_PRODUTO_FILHO" />
+        <PropertyRef Name="ID_LOJA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PEDIDOMESA_COMPLEMENTO_LOJA">
+    <End Role="LOJA" Type="Self.LOJA" Multiplicity="1" />
+    <End Role="PEDIDOMESA_COMPLEMENTO" Type="Self.PEDIDOMESA_COMPLEMENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOJA">
+        <PropertyRef Name="Sigla" />
+      </Principal>
+      <Dependent Role="PEDIDOMESA_COMPLEMENTO">
+        <PropertyRef Name="ID_LOJA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PEDIDOMESA_COMPLEMENTO_PEDIDOMESA">
+    <End Role="PedidoMesa" Type="Self.PedidoMesa" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PEDIDOMESA_COMPLEMENTO" Type="Self.PEDIDOMESA_COMPLEMENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PedidoMesa">
+        <PropertyRef Name="loja" />
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PEDIDOMESA_COMPLEMENTO">
+        <PropertyRef Name="ID_LOJA" />
+        <PropertyRef Name="ID_PEDIDOMESA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PEDIDOMESA_COMPLEMENTO_PRODUTO">
+    <End Role="Produto" Type="Self.Produto" Multiplicity="0..1" />
+    <End Role="PEDIDOMESA_COMPLEMENTO" Type="Self.PEDIDOMESA_COMPLEMENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Produto">
+        <PropertyRef Name="CodProduto" />
+        <PropertyRef Name="loja" />
+      </Principal>
+      <Dependent Role="PEDIDOMESA_COMPLEMENTO">
+        <PropertyRef Name="ID_COMPLEMENTO_PRODUTO" />
+        <PropertyRef Name="ID_LOJA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PEDIDOMESAB_COMBINADO_COMPLEMENTO_LOJA">
+    <End Role="LOJA" Type="Self.LOJA" Multiplicity="1" />
+    <End Role="PEDIDOMESAB_COMBINADO_COMPLEMENTO" Type="Self.PEDIDOMESAB_COMBINADO_COMPLEMENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOJA">
+        <PropertyRef Name="Sigla" />
+      </Principal>
+      <Dependent Role="PEDIDOMESAB_COMBINADO_COMPLEMENTO">
+        <PropertyRef Name="ID_LOJA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PEDIDOMESAB_COMBINADO_COMPLEMENTO_PEDIDOMESAB_COMBINADO">
+    <End Role="PEDIDOMESAB_COMBINADO" Type="Self.PEDIDOMESAB_COMBINADO" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PEDIDOMESAB_COMBINADO_COMPLEMENTO" Type="Self.PEDIDOMESAB_COMBINADO_COMPLEMENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PEDIDOMESAB_COMBINADO">
+        <PropertyRef Name="ID" />
+        <PropertyRef Name="ID_LOJA" />
+      </Principal>
+      <Dependent Role="PEDIDOMESAB_COMBINADO_COMPLEMENTO">
+        <PropertyRef Name="ID_PEDIDOMESAB_COMBINADO" />
+        <PropertyRef Name="ID_LOJA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PEDIDOMESAB_COMBINADO_COMPLEMENTO_PRODUTO">
+    <End Role="Produto" Type="Self.Produto" Multiplicity="0..1" />
+    <End Role="PEDIDOMESAB_COMBINADO_COMPLEMENTO" Type="Self.PEDIDOMESAB_COMBINADO_COMPLEMENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Produto">
+        <PropertyRef Name="CodProduto" />
+        <PropertyRef Name="loja" />
+      </Principal>
+      <Dependent Role="PEDIDOMESAB_COMBINADO_COMPLEMENTO">
+        <PropertyRef Name="ID_COMBINADO_COMP_PRODUTO" />
+        <PropertyRef Name="ID_LOJA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PEDIDOMESAB_COMBINADO_PEDIDOMESAB">
+    <End Role="PEDIDOMESAB" Type="Self.PEDIDOMESAB" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PEDIDOMESAB_COMBINADO" Type="Self.PEDIDOMESAB_COMBINADO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PEDIDOMESAB">
+        <PropertyRef Name="ID" />
+        <PropertyRef Name="loja" />
+      </Principal>
+      <Dependent Role="PEDIDOMESAB_COMBINADO">
+        <PropertyRef Name="ID_PEDIDOMESAB" />
+        <PropertyRef Name="ID_LOJA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PEDIDOMESAB_COMBINADO_PRODUTO">
+    <End Role="Produto" Type="Self.Produto" Multiplicity="0..1" />
+    <End Role="PEDIDOMESAB_COMBINADO" Type="Self.PEDIDOMESAB_COMBINADO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Produto">
+        <PropertyRef Name="CodProduto" />
+        <PropertyRef Name="loja" />
+      </Principal>
+      <Dependent Role="PEDIDOMESAB_COMBINADO">
+        <PropertyRef Name="ID_PRODUTO_FILHO" />
+        <PropertyRef Name="ID_LOJA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PEDIDOMESAB_COMPLEMENTO_LOJA">
+    <End Role="LOJA" Type="Self.LOJA" Multiplicity="1" />
+    <End Role="PEDIDOMESAB_COMPLEMENTO" Type="Self.PEDIDOMESAB_COMPLEMENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOJA">
+        <PropertyRef Name="Sigla" />
+      </Principal>
+      <Dependent Role="PEDIDOMESAB_COMPLEMENTO">
+        <PropertyRef Name="ID_LOJA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PEDIDOMESAB_COMPLEMENTO_PEDIDOMESAB">
+    <End Role="PEDIDOMESAB" Type="Self.PEDIDOMESAB" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PEDIDOMESAB_COMPLEMENTO" Type="Self.PEDIDOMESAB_COMPLEMENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PEDIDOMESAB">
+        <PropertyRef Name="ID" />
+        <PropertyRef Name="loja" />
+      </Principal>
+      <Dependent Role="PEDIDOMESAB_COMPLEMENTO">
+        <PropertyRef Name="ID_PEDIDOMESAB" />
+        <PropertyRef Name="ID_LOJA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PEDIDOMESAB_COMPLEMENTO_PRODUTO">
+    <End Role="Produto" Type="Self.Produto" Multiplicity="0..1" />
+    <End Role="PEDIDOMESAB_COMPLEMENTO" Type="Self.PEDIDOMESAB_COMPLEMENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Produto">
+        <PropertyRef Name="CodProduto" />
+        <PropertyRef Name="loja" />
+      </Principal>
+      <Dependent Role="PEDIDOMESAB_COMPLEMENTO">
+        <PropertyRef Name="ID_COMPLEMENTO_PRODUTO" />
+        <PropertyRef Name="ID_LOJA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PedidoMesaB_produto_Loja">
+    <End Role="Produto" Type="Self.Produto" Multiplicity="1" />
+    <End Role="PEDIDOMESAB" Type="Self.PEDIDOMESAB" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Produto">
+        <PropertyRef Name="CodProduto" />
+        <PropertyRef Name="loja" />
+      </Principal>
+      <Dependent Role="PEDIDOMESAB">
+        <PropertyRef Name="CodProduto" />
+        <PropertyRef Name="loja" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProdutoEstoque_X_Loja">
+    <End Role="LOJA" Type="Self.LOJA" Multiplicity="1" />
+    <End Role="Produto" Type="Self.Produto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOJA">
+        <PropertyRef Name="Sigla" />
+      </Principal>
+      <Dependent Role="Produto">
+        <PropertyRef Name="loja" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_usuario_acesso">
+    <End Role="ACESSO" Type="Self.ACESSO" Multiplicity="1" />
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ACESSO">
+        <PropertyRef Name="CodAcesso" />
+        <PropertyRef Name="LOJA" />
+      </Principal>
+      <Dependent Role="USUARIO">
+        <PropertyRef Name="codacesso" />
+        <PropertyRef Name="loja" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USUARIO_LOJA">
+    <End Role="LOJA" Type="Self.LOJA" Multiplicity="1" />
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOJA">
+        <PropertyRef Name="Sigla" />
+      </Principal>
+      <Dependent Role="USUARIO">
+        <PropertyRef Name="loja" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PedidoMesaB_PRODUTO">
+    <End Role="Produto" Type="Self.Produto" Multiplicity="1" />
+    <End Role="PEDIDOMESAB" Type="Self.PEDIDOMESAB" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Produto">
+        <PropertyRef Name="CodProduto" />
+        <PropertyRef Name="loja" />
+      </Principal>
+      <Dependent Role="PEDIDOMESAB">
+        <PropertyRef Name="CodProduto" />
+        <PropertyRef Name="loja" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="CREAIT_CATEGORIA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LOJA_GUID" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="CREAIT_CONSUMO_MESA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LOJA_GUID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="CODIGOMESA" Type="int" Mode="In" />
+  </Function>
+  <Function Name="CREAIT_FILIAL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LOJA_GUID" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="CREAIT_MESA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="MESA_ID" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="CREAIT_MESAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LOJA_GUID" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="CREAIT_Mesas_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Codigo" Type="varchar" Mode="In" />
+    <Parameter Name="UltimoConsumo" Type="datetime" Mode="In" />
+    <Parameter Name="Vendedor" Type="varchar" Mode="In" />
+    <Parameter Name="Status" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="CREAIT_OBSERVACAO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="COD_GRUPO" Type="int" Mode="In" />
+  </Function>
+  <Function Name="CREAIT_PedidoMesaAgrupaLancamentos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="MESA" Type="nvarchar" Mode="In" />
+    <Parameter Name="SESSIONID" Type="varchar" Mode="In" />
+    <Parameter Name="VENDEDOR" Type="varchar" Mode="In" />
+    <Parameter Name="LUGAR" Type="nvarchar" Mode="In" />
+    <Parameter Name="PRINTER_TABLE_ID" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="CREAIT_PERGUNTA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PRODUCT_GUID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="CREAIT_PRACAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="CREAIT_PREPEDIDOMESA_COMPLEMENTO_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdPedidomesa" Type="varchar" Mode="In" />
+    <Parameter Name="QtdeComplementoProduto" Type="float" Mode="In" />
+    <Parameter Name="IdLoja" Type="varchar" Mode="In" />
+    <Parameter Name="IdComplementoProduto" Type="int" Mode="In" />
+    <Parameter Name="ObsComplemento" Type="varchar" Mode="In" />
+    <Parameter Name="ST" Type="varchar" Mode="In" />
+    <Parameter Name="ValorComplemento" Type="float" Mode="In" />
+    <Parameter Name="IdPedOrigem" Type="int" Mode="In" />
+  </Function>
+  <Function Name="CREAIT_PREPEDIDOMESA_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Codigomesa" Type="varchar" Mode="In" />
+    <Parameter Name="Venderdor" Type="varchar" Mode="In" />
+    <Parameter Name="codProduto" Type="varchar" Mode="In" />
+    <Parameter Name="Produto" Type="varchar" Mode="In" />
+    <Parameter Name="Quantidade" Type="varchar" Mode="In" />
+    <Parameter Name="Horario" Type="datetime" Mode="In" />
+    <Parameter Name="Lugar" Type="varchar" Mode="In" />
+    <Parameter Name="Manual" Type="varchar" Mode="In" />
+    <Parameter Name="versaoAplicativo" Type="varchar" Mode="In" />
+    <Parameter Name="Observacao" Type="varchar" Mode="In" />
+    <Parameter Name="ID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="sessionId" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="CREAIT_PREPEDIDOMESA_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Codigomesa" Type="varchar" Mode="In" />
+    <Parameter Name="Venderdor" Type="varchar" Mode="In" />
+    <Parameter Name="codProduto" Type="varchar" Mode="In" />
+    <Parameter Name="Produto" Type="varchar" Mode="In" />
+    <Parameter Name="Quantidade" Type="varchar" Mode="In" />
+    <Parameter Name="Horario" Type="datetime" Mode="In" />
+    <Parameter Name="Lugar" Type="varchar" Mode="In" />
+    <Parameter Name="Manual" Type="varchar" Mode="In" />
+    <Parameter Name="versaoAplicativo" Type="varchar" Mode="In" />
+    <Parameter Name="Observacao" Type="varchar" Mode="In" />
+    <Parameter Name="ID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="sessionId" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="CREAIT_PRODUTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LOJA_GUID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="GRUPO" Type="int" Mode="In" />
+  </Function>
+  <Function Name="CREAIT_RESPOSTA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PERGUNTA_GUID" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="CREAIT_TbConta_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CodigoMesa" Type="varchar" Mode="In" />
+    <Parameter Name="CodVendedor" Type="varchar" Mode="In" />
+    <Parameter Name="NomeVendedor" Type="varchar" Mode="In" />
+    <Parameter Name="Horario" Type="datetime" Mode="In" />
+    <Parameter Name="Status" Type="varchar" Mode="In" />
+    <Parameter Name="Loja" Type="varchar" Mode="In" />
+    <Parameter Name="printer_mesa_id" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="CREAIT_VENDEDOR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="ModelAltecStoreContainer">
+    <EntitySet Name="ACESSO" EntityType="Self.ACESSO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CLIENTES" EntityType="Self.CLIENTES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="COMBINADO" EntityType="Self.COMBINADO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DESBLOQUEIO_MESA" EntityType="Self.DESBLOQUEIO_MESA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DETALHES_PAGAMENTO" EntityType="Self.DETALHES_PAGAMENTO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="IMPRESSO" EntityType="Self.IMPRESSO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ITENSPED" EntityType="Self.ITENSPED" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ITENSPED_COMBINADO" EntityType="Self.ITENSPED_COMBINADO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ITENSPED_COMBINADO_COMPLEMENTO" EntityType="Self.ITENSPED_COMBINADO_COMPLEMENTO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ITENSPED_COMPLEMENTO" EntityType="Self.ITENSPED_COMPLEMENTO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LOCALIMP" EntityType="Self.LOCALIMP" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LOJA" EntityType="Self.LOJA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MESAS" EntityType="Self.MESAS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PEDIDO" EntityType="Self.PEDIDO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PedidoMesa" EntityType="Self.PedidoMesa" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PEDIDOMESA_COMBINADO" EntityType="Self.PEDIDOMESA_COMBINADO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PEDIDOMESA_COMBINADO_COMPLEMENTO" EntityType="Self.PEDIDOMESA_COMBINADO_COMPLEMENTO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PEDIDOMESA_COMPLEMENTO" EntityType="Self.PEDIDOMESA_COMPLEMENTO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PEDIDOMESAB" EntityType="Self.PEDIDOMESAB" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PEDIDOMESAB_COMBINADO" EntityType="Self.PEDIDOMESAB_COMBINADO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PEDIDOMESAB_COMBINADO_COMPLEMENTO" EntityType="Self.PEDIDOMESAB_COMBINADO_COMPLEMENTO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PEDIDOMESAB_COMPLEMENTO" EntityType="Self.PEDIDOMESAB_COMPLEMENTO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PREPEDIDOMESA_COMBINADO" EntityType="Self.PREPEDIDOMESA_COMBINADO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PREPEDIDOMESA_COMPLEMENTO" EntityType="Self.PREPEDIDOMESA_COMPLEMENTO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Produto" EntityType="Self.Produto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PREPEDIDOMESA" EntityType="Self.PREPEDIDOMESA" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [PREPEDIDOMESA].[codigomesa] AS [codigomesa], 
+    [PREPEDIDOMESA].[venderdor] AS [venderdor], 
+    [PREPEDIDOMESA].[codProduto] AS [codProduto], 
+    [PREPEDIDOMESA].[Produto] AS [Produto], 
+    [PREPEDIDOMESA].[quantidade] AS [quantidade], 
+    [PREPEDIDOMESA].[horario] AS [horario], 
+    [PREPEDIDOMESA].[lugar] AS [lugar], 
+    [PREPEDIDOMESA].[MANUAL] AS [MANUAL], 
+    [PREPEDIDOMESA].[versaoAplicativo] AS [versaoAplicativo], 
+    [PREPEDIDOMESA].[OBSERVACAO] AS [OBSERVACAO], 
+    [PREPEDIDOMESA].[ID] AS [ID], 
+    [PREPEDIDOMESA].[sessionId] AS [sessionId]
+    FROM [dbo].[PREPEDIDOMESA] AS [PREPEDIDOMESA]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="PREPEDIDOMESA_COMBINADO_COMPLEMENTO" EntityType="Self.PREPEDIDOMESA_COMBINADO_COMPLEMENTO" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [PREPEDIDOMESA_COMBINADO_COMPLEMENTO].[ID] AS [ID], 
+    [PREPEDIDOMESA_COMBINADO_COMPLEMENTO].[ID_PEDIDOMESA_COMBINADO] AS [ID_PEDIDOMESA_COMBINADO], 
+    [PREPEDIDOMESA_COMBINADO_COMPLEMENTO].[ID_COMBINADO_COMP_PRODUTO] AS [ID_COMBINADO_COMP_PRODUTO], 
+    [PREPEDIDOMESA_COMBINADO_COMPLEMENTO].[ID_LOJA] AS [ID_LOJA], 
+    [PREPEDIDOMESA_COMBINADO_COMPLEMENTO].[QTDE_COMPLEMENTO] AS [QTDE_COMPLEMENTO], 
+    [PREPEDIDOMESA_COMBINADO_COMPLEMENTO].[OBS_COMPLEMENTO] AS [OBS_COMPLEMENTO], 
+    [PREPEDIDOMESA_COMBINADO_COMPLEMENTO].[ST] AS [ST], 
+    [PREPEDIDOMESA_COMBINADO_COMPLEMENTO].[valor_complemento] AS [valor_complemento], 
+    [PREPEDIDOMESA_COMBINADO_COMPLEMENTO].[ID_PED_ORIGEM] AS [ID_PED_ORIGEM]
+    FROM [dbo].[PREPEDIDOMESA_COMBINADO_COMPLEMENTO] AS [PREPEDIDOMESA_COMBINADO_COMPLEMENTO]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TBCONTA" EntityType="Self.TBCONTA" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TBCONTA].[CodigoMesa] AS [CodigoMesa], 
+    [TBCONTA].[CodVendedor] AS [CodVendedor], 
+    [TBCONTA].[NomeVendedor] AS [NomeVendedor], 
+    [TBCONTA].[Horario] AS [Horario], 
+    [TBCONTA].[Status] AS [Status], 
+    [TBCONTA].[loja] AS [loja], 
+    [TBCONTA].[PRINTER_TABLE_ID] AS [PRINTER_TABLE_ID]
+    FROM [dbo].[TBCONTA] AS [TBCONTA]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_ITENSPED_COMBINADO_COMPLEMENTO_ITENSPED_COMBINADO" Association="Self.FK_ITENSPED_COMBINADO_COMPLEMENTO_ITENSPED_COMBINADO">
+      <End Role="ITENSPED_COMBINADO" EntitySet="ITENSPED_COMBINADO" />
+      <End Role="ITENSPED_COMBINADO_COMPLEMENTO" EntitySet="ITENSPED_COMBINADO_COMPLEMENTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ITENSPED_COMBINADO_COMPLEMENTO_LOJA" Association="Self.FK_ITENSPED_COMBINADO_COMPLEMENTO_LOJA">
+      <End Role="LOJA" EntitySet="LOJA" />
+      <End Role="ITENSPED_COMBINADO_COMPLEMENTO" EntitySet="ITENSPED_COMBINADO_COMPLEMENTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ITENSPED_COMBINADO_COMPLEMENTO_PRODUTO" Association="Self.FK_ITENSPED_COMBINADO_COMPLEMENTO_PRODUTO">
+      <End Role="Produto" EntitySet="Produto" />
+      <End Role="ITENSPED_COMBINADO_COMPLEMENTO" EntitySet="ITENSPED_COMBINADO_COMPLEMENTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ITENSPED_COMBINADO_ITENSPED" Association="Self.FK_ITENSPED_COMBINADO_ITENSPED">
+      <End Role="ITENSPED" EntitySet="ITENSPED" />
+      <End Role="ITENSPED_COMBINADO" EntitySet="ITENSPED_COMBINADO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ITENSPED_COMBINADO_PRODUTO" Association="Self.FK_ITENSPED_COMBINADO_PRODUTO">
+      <End Role="Produto" EntitySet="Produto" />
+      <End Role="ITENSPED_COMBINADO" EntitySet="ITENSPED_COMBINADO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ITENSPED_COMPLEMENTO_ITENSPED" Association="Self.FK_ITENSPED_COMPLEMENTO_ITENSPED">
+      <End Role="ITENSPED" EntitySet="ITENSPED" />
+      <End Role="ITENSPED_COMPLEMENTO" EntitySet="ITENSPED_COMPLEMENTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ITENSPED_COMPLEMENTO_LOJA" Association="Self.FK_ITENSPED_COMPLEMENTO_LOJA">
+      <End Role="LOJA" EntitySet="LOJA" />
+      <End Role="ITENSPED_COMPLEMENTO" EntitySet="ITENSPED_COMPLEMENTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ITENSPED_COMPLEMENTO_PRODUTO" Association="Self.FK_ITENSPED_COMPLEMENTO_PRODUTO">
+      <End Role="Produto" EntitySet="Produto" />
+      <End Role="ITENSPED_COMPLEMENTO" EntitySet="ITENSPED_COMPLEMENTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_itensPed_PEDIDO" Association="Self.FK_itensPed_PEDIDO">
+      <End Role="PEDIDO" EntitySet="PEDIDO" />
+      <End Role="ITENSPED" EntitySet="ITENSPED" />
+    </AssociationSet>
+    <AssociationSet Name="fk_ItensPed_Usuario" Association="Self.fk_ItensPed_Usuario">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="ITENSPED" EntitySet="ITENSPED" />
+    </AssociationSet>
+    <AssociationSet Name="fk_localImp_impresso" Association="Self.fk_localImp_impresso">
+      <End Role="IMPRESSO" EntitySet="IMPRESSO" />
+      <End Role="LOCALIMP" EntitySet="LOCALIMP" />
+    </AssociationSet>
+    <AssociationSet Name="fk_localImp_produto" Association="Self.fk_localImp_produto">
+      <End Role="Produto" EntitySet="Produto" />
+      <End Role="LOCALIMP" EntitySet="LOCALIMP" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Mesas_X_Loja" Association="Self.FK_Mesas_X_Loja">
+      <End Role="LOJA" EntitySet="LOJA" />
+      <End Role="MESAS" EntitySet="MESAS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PEDIDOMESA_COMBINADO_COMPLEMENTO_LOJA" Association="Self.FK_PEDIDOMESA_COMBINADO_COMPLEMENTO_LOJA">
+      <End Role="LOJA" EntitySet="LOJA" />
+      <End Role="PEDIDOMESA_COMBINADO_COMPLEMENTO" EntitySet="PEDIDOMESA_COMBINADO_COMPLEMENTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PEDIDOMESA_COMBINADO_COMPLEMENTO_PEDIDOMESA_COMBINADO" Association="Self.FK_PEDIDOMESA_COMBINADO_COMPLEMENTO_PEDIDOMESA_COMBINADO">
+      <End Role="PEDIDOMESA_COMBINADO" EntitySet="PEDIDOMESA_COMBINADO" />
+      <End Role="PEDIDOMESA_COMBINADO_COMPLEMENTO" EntitySet="PEDIDOMESA_COMBINADO_COMPLEMENTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PEDIDOMESA_COMBINADO_COMPLEMENTO_PRODUTO" Association="Self.FK_PEDIDOMESA_COMBINADO_COMPLEMENTO_PRODUTO">
+      <End Role="Produto" EntitySet="Produto" />
+      <End Role="PEDIDOMESA_COMBINADO_COMPLEMENTO" EntitySet="PEDIDOMESA_COMBINADO_COMPLEMENTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PEDIDOMESA_COMBINADO_PEDIDOMESA" Association="Self.FK_PEDIDOMESA_COMBINADO_PEDIDOMESA">
+      <End Role="PedidoMesa" EntitySet="PedidoMesa" />
+      <End Role="PEDIDOMESA_COMBINADO" EntitySet="PEDIDOMESA_COMBINADO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PEDIDOMESA_COMBINADO_PRODUTO" Association="Self.FK_PEDIDOMESA_COMBINADO_PRODUTO">
+      <End Role="Produto" EntitySet="Produto" />
+      <End Role="PEDIDOMESA_COMBINADO" EntitySet="PEDIDOMESA_COMBINADO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PEDIDOMESA_COMPLEMENTO_LOJA" Association="Self.FK_PEDIDOMESA_COMPLEMENTO_LOJA">
+      <End Role="LOJA" EntitySet="LOJA" />
+      <End Role="PEDIDOMESA_COMPLEMENTO" EntitySet="PEDIDOMESA_COMPLEMENTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PEDIDOMESA_COMPLEMENTO_PEDIDOMESA" Association="Self.FK_PEDIDOMESA_COMPLEMENTO_PEDIDOMESA">
+      <End Role="PedidoMesa" EntitySet="PedidoMesa" />
+      <End Role="PEDIDOMESA_COMPLEMENTO" EntitySet="PEDIDOMESA_COMPLEMENTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PEDIDOMESA_COMPLEMENTO_PRODUTO" Association="Self.FK_PEDIDOMESA_COMPLEMENTO_PRODUTO">
+      <End Role="Produto" EntitySet="Produto" />
+      <End Role="PEDIDOMESA_COMPLEMENTO" EntitySet="PEDIDOMESA_COMPLEMENTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PEDIDOMESAB_COMBINADO_COMPLEMENTO_LOJA" Association="Self.FK_PEDIDOMESAB_COMBINADO_COMPLEMENTO_LOJA">
+      <End Role="LOJA" EntitySet="LOJA" />
+      <End Role="PEDIDOMESAB_COMBINADO_COMPLEMENTO" EntitySet="PEDIDOMESAB_COMBINADO_COMPLEMENTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PEDIDOMESAB_COMBINADO_COMPLEMENTO_PEDIDOMESAB_COMBINADO" Association="Self.FK_PEDIDOMESAB_COMBINADO_COMPLEMENTO_PEDIDOMESAB_COMBINADO">
+      <End Role="PEDIDOMESAB_COMBINADO" EntitySet="PEDIDOMESAB_COMBINADO" />
+      <End Role="PEDIDOMESAB_COMBINADO_COMPLEMENTO" EntitySet="PEDIDOMESAB_COMBINADO_COMPLEMENTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PEDIDOMESAB_COMBINADO_COMPLEMENTO_PRODUTO" Association="Self.FK_PEDIDOMESAB_COMBINADO_COMPLEMENTO_PRODUTO">
+      <End Role="Produto" EntitySet="Produto" />
+      <End Role="PEDIDOMESAB_COMBINADO_COMPLEMENTO" EntitySet="PEDIDOMESAB_COMBINADO_COMPLEMENTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PEDIDOMESAB_COMBINADO_PEDIDOMESAB" Association="Self.FK_PEDIDOMESAB_COMBINADO_PEDIDOMESAB">
+      <End Role="PEDIDOMESAB" EntitySet="PEDIDOMESAB" />
+      <End Role="PEDIDOMESAB_COMBINADO" EntitySet="PEDIDOMESAB_COMBINADO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PEDIDOMESAB_COMBINADO_PRODUTO" Association="Self.FK_PEDIDOMESAB_COMBINADO_PRODUTO">
+      <End Role="Produto" EntitySet="Produto" />
+      <End Role="PEDIDOMESAB_COMBINADO" EntitySet="PEDIDOMESAB_COMBINADO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PEDIDOMESAB_COMPLEMENTO_LOJA" Association="Self.FK_PEDIDOMESAB_COMPLEMENTO_LOJA">
+      <End Role="LOJA" EntitySet="LOJA" />
+      <End Role="PEDIDOMESAB_COMPLEMENTO" EntitySet="PEDIDOMESAB_COMPLEMENTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PEDIDOMESAB_COMPLEMENTO_PEDIDOMESAB" Association="Self.FK_PEDIDOMESAB_COMPLEMENTO_PEDIDOMESAB">
+      <End Role="PEDIDOMESAB" EntitySet="PEDIDOMESAB" />
+      <End Role="PEDIDOMESAB_COMPLEMENTO" EntitySet="PEDIDOMESAB_COMPLEMENTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PEDIDOMESAB_COMPLEMENTO_PRODUTO" Association="Self.FK_PEDIDOMESAB_COMPLEMENTO_PRODUTO">
+      <End Role="Produto" EntitySet="Produto" />
+      <End Role="PEDIDOMESAB_COMPLEMENTO" EntitySet="PEDIDOMESAB_COMPLEMENTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PedidoMesaB_produto_Loja" Association="Self.FK_PedidoMesaB_produto_Loja">
+      <End Role="Produto" EntitySet="Produto" />
+      <End Role="PEDIDOMESAB" EntitySet="PEDIDOMESAB" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProdutoEstoque_X_Loja" Association="Self.FK_ProdutoEstoque_X_Loja">
+      <End Role="LOJA" EntitySet="LOJA" />
+      <End Role="Produto" EntitySet="Produto" />
+    </AssociationSet>
+    <AssociationSet Name="fk_usuario_acesso" Association="Self.fk_usuario_acesso">
+      <End Role="ACESSO" EntitySet="ACESSO" />
+      <End Role="USUARIO" EntitySet="USUARIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USUARIO_LOJA" Association="Self.FK_USUARIO_LOJA">
+      <End Role="LOJA" EntitySet="LOJA" />
+      <End Role="USUARIO" EntitySet="USUARIO" />
+    </AssociationSet>
+    <AssociationSet Name="PedidoMesaB_PRODUTO" Association="Self.PedidoMesaB_PRODUTO">
+      <End Role="Produto" EntitySet="Produto" />
+      <End Role="PEDIDOMESAB" EntitySet="PEDIDOMESAB" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,172 @@
+﻿<div class="pages">
+    <div data-page="forma_pagamento" class="page">
+        <div class="navbar background-creait">
+            <div class="navbar-inner margin-bottom-20">
+                <div class="left"><a class="back link" onclick="creait.redirect('detalhe_padrinho')"> <i class="f7-icons icone-voltar" style="margin-right: 10px;">chevron_left</i></a></div>
+                <div class="center">Detalhes do Apadrinhamento</div>
+            </div>
+        </div>
+        <div class="page-content text-center" style="width: 100%; height: calc(100% - 50px)">
+            <div style="width: 100%; height: auto; overflow: auto; display: block;" id="pagamento_cc_fp">
+                <div class="list-block">
+                    <ul style="border-bottom: 1px solid #CCCCCC;">
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner no-margin">
+                                    <div class="item-input">
+                                        <input class="input-index" type="number" name="valor_m" id="valor_mensal" placeholder="Valor Mensal">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner no-margin">
+                                    <div class="item-input">
+                                        <input class="input-index" type="number" name="dia_d" id="dia_da_cobraça" placeholder="Dia da cobrança Mensal">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul>
+                        <input type="hidden" id="bandeira_fp" name="bandeira" />
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner no-margin">
+                                    <div class="item-input">
+                                        <input class="input-index" type="text" name="nome" id="nome_cc_fp" placeholder="Nome Impresso no Cartão">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner no-margin">
+                                    <div class="item-input">
+                                        <input class="input-index" type="tel" name="cpf" id="cpf_cc_fp" mask="cpf" placeholder="CPF">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner no-margin">
+                                    <div class="item-input">
+                                        <input class="input-index" type="tel" name="data_nasc_cc" id="data_nasc_cc_fp" placeholder="Data de Nascimento" readonly onclick="seleciona_data(this.id)">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner no-margin">
+                                    <div class="item-input">
+                                        <input class="input-index" type="tel" name="telefone_cc" id="telefone_cc_fp" mask="cel" placeholder="Telefone">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-media"><img src="" id="img_bandeira_fp" /></div>
+                                <div class="item-inner no-margin">
+                                    <div class="item-input">
+                                        <input class="input-index" type="tel" name="num_cartao" id="num_cartao_fp" placeholder="Numero do Cartão" maxlength="16">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner no-margin">
+                                    <div class="item-input">
+                                        <input class="input-index" type="tel" name="cvv" id="cvv_fp" placeholder="CVV" maxlength="3" style="width: 20%; float: left;">
+                                        <input class="input-index" type="tel" name="exp_date" id="exp_date_fp" mask="exp_date" placeholder="Data Validade" style="width: 78%; float: right;">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="list-block" style="text-align: center;">
+                    <h4>Endereço de Cobrança</h4>
+                    <ul>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner no-margin">
+                                    <div class="item-input">
+                                        <input class="input-index" type="tel" name="cep_cobranca" id="cep_cobranca_fp" mask="cep" placeholder="CEP" value="{{js 'controller.login.get().cep'}}">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner no-margin">
+                                    <div class="item-input">
+                                        <input class="input-index" id="estado_cobranca_fp" type="text" name="estado_cobranca" readonly placeholder="Estado" onclick="seleciona_estado(this.id)" value="{{js 'controller.login.get().estado'}}">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner no-margin">
+                                    <div class="item-input">
+                                        <input class="input-index" type="text" name="cidade_cobranca" id="cidade_cobranca_fp" placeholder="Cidade" value="{{js 'controller.login.get().cidade'}}">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner no-margin">
+                                    <div class="item-input">
+                                        <input class="input-index" type="text" name="bairro_cobranca" id="bairro_cobranca_fp" placeholder="Bairro" value="{{js 'controller.login.get().bairro'}}">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner no-margin">
+                                    <div class="item-input">
+                                        <input class="input-index" type="text" name="rua_cobranca" id="rua_cobranca_fp" placeholder="Rua" value="{{js 'controller.login.get().rua'}}">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner no-margin">
+                                    <div class="item-input">
+                                        <input class="input-index" type="number" name="numero_cobranca" id="numero_cobranca_fp" placeholder="Numero" value="{{js 'controller.login.get().numero'}}">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner no-margin">
+                                    <div class="item-input">
+                                        <input class="input-index" type="text" name="complemento_cobranca" id="complemento_cobranca_fp" placeholder="Complemento" value="{{js 'controller.login.get().complemento'}}">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div style="width: 100%; height: 50px; background-color: darkred;">
+                    <button id="finalizar_cc_fp" style="border: none; color: #FFFFFF; width: 100%; height: 100%; background-color: rgb(162, 10, 10);">Finalizar compra</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

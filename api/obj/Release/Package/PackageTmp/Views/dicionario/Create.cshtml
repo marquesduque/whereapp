@@ -1,0 +1,106 @@
+﻿@model api.Models.dictionary
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        <a href="@Url.Action("Index")" class="btn btn-info"><i class="glyphicon glyphicon-chevron-left" style="margin-right: 10px"></i>Voltar</a>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("index")" base_library="api.Models.dictionary.library_bc_1">Listar</a></li>
+        <li class="active" base_library="api.Models.dictionary.library_bc_create">Criar</li>
+    </ol>
+</section>
+
+
+<section class="content">
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+
+	      @Html.ValidationSummary(true)
+        <div class="alert alert-danger" role="alert" base_library="api.Models.dictionary.library_error_register">
+            Registro não gravado, verificar erro criticado
+        </div>
+
+        <fieldset>
+
+            <div class="col-md-12 bar">
+                <label class="col-md-6" base_library="api.Models.dictionary.library_title"><i class="glyphicon glyphicon-list-alt" style="margin-right: 10px"></i>Dados Pessoais</label>
+            </div>
+    
+    <div>
+
+            
+            <div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.dictionary.name" >name</label>
+				
+				<div style="clear: both"></div>
+									@Html.TextBoxFor(model => model.name, new { placeholder = "", @class = "form-control", maxLength = "150" })
+				                @Html.ValidationMessageFor(model => model.name)
+            </div>
+   
+
+            
+            <div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.dictionary.tag" >tag</label>
+				
+				<div style="clear: both"></div>
+									@Html.TextBoxFor(model => model.tag, new { placeholder = "", @class = "form-control", maxLength = "150" })
+				                @Html.ValidationMessageFor(model => model.tag)
+            </div>
+   
+
+            
+            <div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.dictionary.page" >page</label>
+				
+				<div style="clear: both"></div>
+									@Html.TextBoxFor(model => model.page, new { placeholder = "", @class = "form-control", maxLength = "150" })
+				                @Html.ValidationMessageFor(model => model.page)
+            </div>
+   
+
+            
+            <div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.dictionary.language" >language</label>
+				
+				<div style="clear: both"></div>
+									@Html.TextBoxFor(model => model.language, new { placeholder = "", @class = "form-control", maxLength = "150" })
+				                @Html.ValidationMessageFor(model => model.language)
+            </div>
+   
+
+
+				<div class="form-group col-md-6">
+					<label class="control-label" base_library="api.Models.dictionary.place_id" >place_id</label>
+					<select class="form-control select2" source="#place_id" data-placeholder="" style="width: 100%;">
+                        <option value="null">Selecione um item</option>
+						@foreach (var item in new api.Models.delivery_prospectEntities().place)
+						{
+							<option value="@item.id">@(item.name)</option>
+						}
+					</select>
+					@Html.HiddenFor(model => model.place_id)
+					@Html.ValidationMessageFor(model => model.place_id)
+				</div>
+
+   
+
+        
+            <div class="form-group col-md-12 btn-gallery">
+                <a class="btn btn-success pull-right" onclick="$(this).closest('form').submit()" base_library="api.Models.dictionary.library_save"><i class="glyphicon glyphicon-ok"></i>Salvar</a>
+            </div>
+    </div>
+	</fieldset>
+}
+
+</section>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

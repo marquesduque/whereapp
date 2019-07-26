@@ -1,0 +1,79 @@
+﻿<div class="pages">
+    <div data-page="meuItem" class="page">
+        <div class="navbar background-creait">
+            <div class="navbar-inner margin-bottom-20">
+                <div class="left"><a class="back link" onclick="creait.redirect('categoria')"><i class="f7-icons icone-voltar" style="margin-right: 10px;">chevron_left</i></a></div>
+                <div class="center">Item(s)</div>
+                <div class="right"><a class="back link" id="addItem"><i class="f7-icons icone-voltar" style="margin-right: 10px;">add</i></a></div>
+            </div>
+        </div>
+        <div style="position: relative; margin-top: 50px;">
+            <form data-search-list=".list-block-search" data-search-in=".item-title" style="position:initial" class="searchbar searchbar-init">
+                <div class="searchbar-input">
+                    <input type="search" placeholder="Buscar">
+                    <a href="#" class="searchbar-clear"></a>
+                </div>
+                <a href="#" class="searchbar-cancel">cancelar</a>
+            </form>
+        </div>
+        <div class="toolbar tabbar" style="position: relative;background-color: #963256;">
+            <div class="toolbar-inner">
+                <a href="#tab_item" class="tab-link tab-link-active active">Item</a>
+                <a href="#tab_grupo" class="tab-link">Grupo</a>
+            </div>
+        </div>
+        <div class="page-content text-center" style="height: calc(100% - 154px); padding: 0;">
+
+            <div class="tabs" style="color: black; height: 100%">
+                <div id="tab_item" class="page-content tab tab-active active" style="overflow: auto;">
+                    <div class="list-block list-block-search list searchbar-found">
+                        <ul style="height: 100%;">
+                            {{#each meusitens}}
+                            <li class="produtoli grid-item-m swipeout perdido{{perdido}}"  onclick='creait.redirect("addItem"); controller.addItem.set({{js "JSON.stringify(this)"}})'>
+                                <div class="item-title-row swipeout-content">
+
+                                    <div id="bg{{id}}" style="background:url(https://whereapp.creait.com.br/api/getPhoto?id={{id}}&tabela=item)" class="image_cart">
+                                    </div>
+                                    <div class="titulo_produto item-title" style="text-align: left;">
+                                        {{nome}}
+                                    </div>
+                                    <div style="padding: 0px 10px; text-align: left;">
+                                        {{descricao}}
+                                    </div>
+                                </div>
+                                <div id="deletar" class="swipeout-actions-right item_perdido  perdido{{perdido}}" item_id="{{id}}">
+                                    <a href="#" class="swipeout-delete perdido{{perdido}}">Perdido</a>
+                                </div>
+                                <div style="clear:both"></div>
+                            </li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="tab_grupo" class="page-content tab" style="overflow: auto;">
+                    <div class="list-block list-block-search list searchbar-found">
+                        <ul style="height: 100%;">
+                            {{#each grupos}}
+                            <li class="produtoli grid-item-m swipeout">
+                                <div class="item-title-row swipeout-content opt_grupo" grupo_id="{{id}}">
+                                    <div class="titulo_produto item-title" style="text-align: left; font-size: 20px;">
+                                        {{nome}}
+                                    </div>
+                                    <div style="padding: 0px 10px; text-align: left; font-size: 15px;">
+                                        {{descricao}}
+                                    </div>
+                                </div>
+                                <div id="deletar" class="swipeout-actions-right sair_grupo" grupo_id="{{id}}">
+                                    <a href="#" class="swipeout-delete">Sair</a>
+                                </div>
+                                <div style="clear:both"></div>
+                            </li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

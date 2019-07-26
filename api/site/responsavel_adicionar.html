@@ -1,0 +1,112 @@
+﻿<div class="pages">
+    <div data-page="responsavel_adicionar" class="page">
+        <div class="navbar background-creait">
+            <div class="navbar-inner margin-bottom-20">
+                <div class="left"><a onclick="creait.redirect('responsavel'); controller.responsavel_adicionar.set(null);" class="back link"> <i class="f7-icons icone-voltar" style="margin-right: 10px;">chevron_left</i></a></div>
+                <div class="center">Responsavel</div>
+            </div>
+        </div>
+        <div class="page-content text-center">
+            <div class="page-content" id="app-cover">
+                <!--<div class="margin-bottom-40" style="margin-top: 50px;"><img class="logo" src="" style="width: 240px;" /></div>-->
+                <div style="margin-top: 50px;">
+
+                    <formresponsavel id="sign_up">
+                        <div class="list-block margin-bottom-40">
+                            <input type="hidden" name="pessoa_id" id="pessoa_id" value="{{js 'controller.loginE.get().id'}}" />
+                            <input type="hidden" id="id_responsavel" name="id" value="0"/>
+
+                            <ul class="no-border" style="padding-top:20px; display: block;">
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" type="text" name="nome" id="nome_inpu" placeholder="Nome">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" type="tel" name="rg" mask="rg" id="rg_input" placeholder="RG">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" type="tel" name="cpf" mask="cpf" id="cpf_input" placeholder="CPF">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" type="email" name="email" id="email_inpu" placeholder="Email">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" type="tel" name="telefone" id="telefone_inpu" placeholder="Telefone" mask="tel">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" type="tel" name="celular" id="celular_inpu" placeholder="Celular" mask="cel">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" type="text" name="cargo_posicao" id="cargo_inpu" placeholder="Cargo">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner no-margin">
+                                            <div class="item-input">
+                                                <input class="input-index" type="tel" name="porcentagem" id="porcentagem_input" placeholder="% no Capital Social">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="row btn-form-group margin-bottom-10 margin-top-10">
+                            <div class="col-100">
+                                <div id="btn_salvar" class="buton">Salvar</div>
+                            </div>
+                        </div>
+                    </formresponsavel>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

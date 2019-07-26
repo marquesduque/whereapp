@@ -1,0 +1,103 @@
+{
+  "telefone": "(11) 11111-1111",
+  "celular": "+551111111-1111",
+  "lat": -23.546274700000,
+  "lng": -46.549338100000,
+  "endereco": "Rua Nova Jerusalém,   - São Paulo",
+  "delivery": true,
+  "balcao": false,
+  "correios": false,
+  "versao": 9,
+  "id": 76,
+  "nome": "Marcando Agora",
+  "external_id": null,
+  "tipos": [],
+  "grupo_do_pagamento": [
+    {
+      "pagamento": [
+        {
+          "bandeira": null,
+          "compra": [],
+          "id": 276,
+          "nome": "Cartão de Crédito",
+          "taxa": 2.00,
+          "grupo_do_pagamento_id": 86,
+          "bandeira_id": null,
+          "place_id": 182703108483277899,
+          "transacao": 4,
+          "external_id": null,
+          "icone": null,
+          "icone_itype": null
+        }
+      ],
+      "id": 86,
+      "nome": "Pague Online",
+      "place_id": 182703108483277899,
+      "app": null
+    },
+    {
+      "pagamento": [
+        {
+          "bandeira": null,
+          "compra": [],
+          "id": 272,
+          "nome": "Dinheiro",
+          "taxa": null,
+          "grupo_do_pagamento_id": 87,
+          "bandeira_id": null,
+          "place_id": 182703108483277899,
+          "transacao": 1,
+          "external_id": null,
+          "icone": null,
+          "icone_itype": null
+        },
+        {
+          "bandeira": null,
+          "compra": [],
+          "id": 273,
+          "nome": "Cartão de Crédito",
+          "taxa": 2.00,
+          "grupo_do_pagamento_id": 87,
+          "bandeira_id": null,
+          "place_id": 182703108483277899,
+          "transacao": 2,
+          "external_id": null,
+          "icone": null,
+          "icone_itype": null
+        },
+        {
+          "bandeira": null,
+          "compra": [],
+          "id": 274,
+          "nome": "Cartão de Débito",
+          "taxa": 0.00,
+          "grupo_do_pagamento_id": 87,
+          "bandeira_id": null,
+          "place_id": 182703108483277899,
+          "transacao": 3,
+          "external_id": null,
+          "icone": null,
+          "icone_itype": null
+        },
+        {
+          "bandeira": null,
+          "compra": [],
+          "id": 275,
+          "nome": "Vale Refeição",
+          "taxa": 0.00,
+          "grupo_do_pagamento_id": 87,
+          "bandeira_id": null,
+          "place_id": 182703108483277899,
+          "transacao": 5,
+          "external_id": null,
+          "icone": null,
+          "icone_itype": null
+        }
+      ],
+      "id": 87,
+      "nome": "Pague na Entrega",
+      "place_id": 182703108483277899,
+      "app": null
+    }
+  ]
+}

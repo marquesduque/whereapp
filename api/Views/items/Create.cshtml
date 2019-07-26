@@ -1,0 +1,304 @@
+﻿@model api.Models.item
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        <a href="@Url.Action("Index")" class="btn btn-info"><i class="glyphicon glyphicon-chevron-left" style="margin-right: 10px"></i>Voltar</a>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("index")" base_library="api.Models.item.library_bc_1">Listar</a></li>
+        <li class="active" base_library="api.Models.item.library_bc_create">Criar</li>
+    </ol>
+</section>
+
+
+<section class="content">
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+	      @Html.ValidationSummary(true)
+        <div class="alert alert-danger" role="alert" base_library="api.Models.item.library_error_register">
+            Registro não gravado, verificar erro criticado
+        </div>
+
+        <fieldset>
+
+            <div class="col-md-12 bar">
+                <label class="col-md-6" base_library="api.Models.item.library_title"><i class="glyphicon glyphicon-list-alt" style="margin-right: 10px"></i>Dados do item</label>
+            </div>
+    
+            <div>
+
+                <div class="form-group col-md-3" style="display: none;">
+                    <label class="control-label" base_library="api.Models.item.tipo_id">Tipo</label>
+                    <select class="form-control select2" source="#tipo_id" data-placeholder="" style="width: 100%;" disabled>
+                        <option value="null">Selecione um item</option>
+                        @foreach (var item in new api.Models.db().tipo)
+                        {
+                            <option value="@item.id">@(item.nome)</option>
+                        }
+                    </select>
+                    @Html.HiddenFor(model => model.tipo_id)
+                    @Html.ValidationMessageFor(model => model.tipo_id)
+                </div>
+
+
+                <div class="form-group col-md-5">
+                    <label class="control-label" base_library="api.Models.item.nome">Nome (*)</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.nome, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                    @Html.ValidationMessageFor(model => model.nome)
+                </div>
+
+                <div class="form-group col-md-2">
+                    <label class="control-label" base_library="api.Models.item.valor">Valor (*)</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.valor, new { placeholder = "", @class = "form-control", maxLength = "150", mask = "money" })
+                    @Html.ValidationMessageFor(model => model.valor)
+                </div>
+
+                <div class="form-group col-md-2">
+                    <label class="control-label" base_library="api.Models.item.estoque">Estoque</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.estoque, new { placeholder = "", @class = "form-control", type = "number" })
+                    @Html.ValidationMessageFor(model => model.estoque)
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label class="control-label" base_library="api.Models.item.photo">Foto</label>
+
+                    <div style="clear: both"></div>
+                    <div class="info-box bg-aqua">
+                        <span class="info-box-icon" style="background-image:@(Model == null || string.IsNullOrEmpty(Model.photo_itype) ? "" : "url(" + Model.photo_itype + "," + System.Text.Encoding.UTF8.GetString(Model.photo).Replace(" ","+") + ")")">
+                            @{
+                                if (Model == null || string.IsNullOrEmpty(Model.photo_itype))
+                                {
+                                    <i class="fa fa-image"></i>
+                                }
+                            }
+                        </span>
+                        <div class="info-box-content">
+                            <span>
+                                <label class="control-label" base_library="api.Models.item.photo">Foto</label><br />
+                                Upload de imagem <i class="fa fa-cloud-upload"></i>
+                            </span>
+
+                            <input type="file" source="#photo" class="upload" @*size="150"*@ />
+                            <input type="hidden" id="photo" name="photo" value="@(Model.photo != null ? Convert.ToBase64String(Model.photo) : "")" class="upload" />
+                            <input type="hidden" id="foto_site" name="foto_site" value="@(Model.photo != null ? System.Text.Encoding.UTF8.GetString(Model.photo) : "")" />
+                            <input type="hidden" id="photo_itype" name="photo_itype" value="@Model.photo_itype" class="upload" />
+
+                        </div>
+                    </div>
+
+                    @Html.ValidationMessageFor(model => model.photo)
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label class="control-label" base_library="api.Models.item.modelo">Modelo</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.modelo, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                    @Html.ValidationMessageFor(model => model.modelo)
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label class="control-label" base_library="api.Models.item.fabricante">Fabricante</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.fabricante, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                    @Html.ValidationMessageFor(model => model.fabricante)
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label class="control-label" base_library="api.Models.item.marca">Marca</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.marca, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                    @Html.ValidationMessageFor(model => model.marca)
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label class="control-label" base_library="api.Models.item.num_serie">Número de Série</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextBoxFor(model => model.num_serie, new { placeholder = "", @class = "form-control", maxLength = "150" })
+                    @Html.ValidationMessageFor(model => model.num_serie)
+                </div>
+
+                @*<div class="form-group col-md-2">
+            <label class="control-label" base_library="api.Models.item.cor">Cor</label>
+
+            <div style="clear: both"></div>
+            @Html.TextBoxFor(model => model.cor, new { placeholder = "", @class = "form-control", maxLength = "150" })
+            @Html.ValidationMessageFor(model => model.cor)
+        </div>
+
+
+
+
+        <div class="form-group col-md-2">
+            <label class="control-label" base_library="api.Models.item.raca">Raça</label>
+
+            <div style="clear: both"></div>
+            @Html.TextBoxFor(model => model.raca, new { placeholder = "", @class = "form-control", maxLength = "150" })
+            @Html.ValidationMessageFor(model => model.raca)
+        </div>
+
+
+        <div class="form-group col-md-2">
+            <label class="control-label" base_library="api.Models.item.sangue">Sangue</label>
+
+            <div style="clear: both"></div>
+            @Html.TextBoxFor(model => model.sangue, new { placeholder = "", @class = "form-control", maxLength = "150" })
+            @Html.ValidationMessageFor(model => model.sangue)
+        </div>
+
+        <div class="form-group col-md-2">
+            <label class="control-label" base_library="api.Models.item.pelo">Pelo</label>
+
+            <div style="clear: both"></div>
+            @Html.TextBoxFor(model => model.pelo, new { placeholder = "", @class = "form-control", maxLength = "150" })
+            @Html.ValidationMessageFor(model => model.pelo)
+        </div>
+
+
+
+        <div class="form-group col-md-2">
+            <label class="control-label" base_library="api.Models.item.nascimento">Data Nascimento</label>
+
+            <div style="clear: both"></div>
+            @Html.TextBoxFor(model => model.nascimento, "{0:dd/MM/yyyya}", new { placeholder = "", @class = "form-control", mask = "{\"value\":\"99/99/9999\", \"placeholder\":\"dd/mm/yyyy\"}", maxLength = "10" })
+            @Html.ValidationMessageFor(model => model.nascimento)
+        </div>
+
+
+        <div class="form-group col-md-2">
+            <label class="control-label" base_library="api.Models.item.vacinas">Vacinas</label>
+
+            <div style="clear: both"></div>
+            @Html.TextBoxFor(model => model.vacinas, new { placeholder = "", @class = "form-control", maxLength = "150" })
+            @Html.ValidationMessageFor(model => model.vacinas)
+        </div>*@
+
+
+
+                @*<div class="form-group col-md-8">
+            <label class="control-label" base_library="api.Models.item.responsavel_id">Responsável</label>
+
+            @{ var loja = new api.Models.db().pessoa.FirstOrDefault(c => c.id == Utility.Session.Login.Id).nome; }
+
+            <input type="text" class="form-control" value="@loja" readonly>
+            <input type="hidden" name="responsavel_id" id="responsavel_id" value="@Utility.Session.Login.Id">
+
+            @Html.ValidationMessageFor(model => model.responsavel_id)
+        </div>*@
+
+                <input type="hidden" name="responsavel_id" id="responsavel_id" value="@Utility.Session.Login.Id">
+
+                @Html.HiddenFor(model => model.ativo)
+                @Html.HiddenFor(model => model.perdido)
+
+                @*<div class="form-group col-md-2">
+            <label class="control-label" base_library="api.Models.item.cpf">CPF</label>
+
+            <div style="clear: both"></div>
+            @Html.TextBoxFor(model => model.cpf, new { placeholder = "", @class = "form-control", maxLength = "150", mask = "{\"value\":\"999.999.999-99\"}" })
+            @Html.ValidationMessageFor(model => model.cpf)
+        </div>
+
+        <div class="form-group col-md-2">
+            <label class="control-label" base_library="api.Models.item.cnpj">CNPJ</label>
+
+            <div style="clear: both"></div>
+            @Html.TextBoxFor(model => model.cnpj, new { placeholder = "", @class = "form-control", maxLength = "150", mask = "{\"value\":\"99.999.999/9999-99\"}" })
+            @Html.ValidationMessageFor(model => model.cnpj)
+        </div>
+
+        <div class="form-group col-md-8">
+            <label class="control-label" base_library="api.Models.item.rastreado_id">Rastreado</label>
+            <select class="form-control select2" source="#rastreado_id" data-placeholder="" style="width: 100%;">
+                <option value="null">Selecione um item</option>
+                @foreach (var item in new api.Models.db().pessoa)
+                {
+                    <option value="@item.id">@(item.nome)</option>
+                }
+            </select>
+            @Html.HiddenFor(model => model.rastreado_id)
+            @Html.ValidationMessageFor(model => model.rastreado_id)
+        </div>*@
+
+
+
+                @*<div class="form-group col-md-2">
+            <label class="control-label" base_library="api.Models.item.ativo">Ativo</label>
+
+            <div style="clear: both"></div>
+            <div class="col-md-12 row" style="line-height: 29px">
+                <label>
+                    <input type="radio" value="true" name="item_ativo" class="minimal-green">
+                    Sim
+
+                </label>
+                <label>
+                    <input type="radio" value="false" name="item_ativo" class="minimal">
+                    Não
+
+                </label>
+            </div>
+            <div style="clear: both"></div>
+            @Html.HiddenFor(model => model.ativo, new { icheck = "item_ativo" })
+            @Html.ValidationMessageFor(model => model.ativo)
+        </div>
+
+
+        <div class="form-group col-md-2">
+            <label class="control-label" base_library="api.Models.item.perdido">Perdido</label>
+
+            <div style="clear: both"></div>
+            <div class="col-md-12 row" style="line-height: 29px">
+                <label>
+                    <input type="radio" value="true" name="item_perdido" class="minimal-green">
+                    Sim
+
+                </label>
+                <label>
+                    <input type="radio" value="false" name="item_perdido" class="minimal">
+                    Não
+
+                </label>
+            </div>
+            <div style="clear: both"></div>
+            @Html.HiddenFor(model => model.perdido, new { icheck = "item_perdido" })
+            @Html.ValidationMessageFor(model => model.perdido)
+        </div>*@
+
+                <div class="form-group col-md-12">
+                    <label class="control-label" base_library="api.Models.item.descricao">Descrição</label>
+
+                    <div style="clear: both"></div>
+                    @Html.TextAreaFor(model => model.descricao, new { placeholder = "", @class = "form-control", maxLength = "500" })
+                    @Html.ValidationMessageFor(model => model.descricao)
+                </div>
+
+                <div class="form-group col-md-12 btn-gallery">
+                    <a class="btn btn-success pull-right" onclick="var foto_site = $('#photo').val(); $('#foto_site').val(foto_site); $(this).closest('form').submit()" base_library="api.Models.item.library_save"><i class="glyphicon glyphicon-ok"></i>Salvar</a>
+                </div>
+            </div>
+	</fieldset>
+}
+
+</section>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

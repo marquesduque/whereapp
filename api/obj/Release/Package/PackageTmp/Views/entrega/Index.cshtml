@@ -1,0 +1,141 @@
+﻿@model Site.Models.Find<api.Controllers.entregaController.find>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        <a href="@Url.Action("Create")" class="btn btn-info" base_library="api.Models.estoque.library_create"><i class="glyphicon glyphicon-plus" style="margin-right:10px"></i>Criar Novo</a>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#" base_library="api.Models.estoque.library_bc_1"><i class="fa fa-newspaper-o"></i>Listar</a></li>
+        <li class="active"><a href="@Url.Action("index")" base_library="api.Models.estoque.library_bc_list">Index</a></li>
+    </ol>
+</section>
+
+<section class="content">
+    <form ajax="@Url.Action("Find")" table="tbl">
+        <input type="hidden" id="Page" name="Page" value="0" />
+
+        <div class="box box-default">
+            <div class="box-header with-border">
+
+
+
+
+
+                <div class="form-group col-md-6">
+                    <label class="control-label" style="width:100%" base_library="api.Models.fila_de_entrega_Result.recebido">recebido</label>
+
+                    @Html.TextBoxFor(model => model.Filter.recebido, "{0:dd/MM/yyyy}", new { placeholder = "", @class = "form-control", mask = "{\"value\":\"99/99/9999\", \"placeholder\":\"dd/mm/yyyy\"}", maxLength = "10", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                <div class="form-group col-md-6">
+                    <label class="control-label" style="width:100%" base_library="api.Models.fila_de_entrega_Result.endereco">endereco</label>
+
+                    @Html.TextBoxFor(model => model.Filter.endereco, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                <div class="form-group col-md-6">
+                    <label class="control-label" style="width:100%" base_library="api.Models.fila_de_entrega_Result.numero">numero</label>
+
+                    @Html.TextBoxFor(model => model.Filter.numero, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                <div class="form-group col-md-6">
+                    <label class="control-label" style="width:100%" base_library="api.Models.fila_de_entrega_Result.complemento">complemento</label>
+
+                    @Html.TextBoxFor(model => model.Filter.complemento, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                <div class="form-group col-md-6">
+                    <label class="control-label" style="width:100%" base_library="api.Models.fila_de_entrega_Result.cidade">cidade</label>
+
+                    @Html.TextBoxFor(model => model.Filter.cidade, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                <div class="form-group col-md-6">
+                    <label class="control-label" style="width:100%" base_library="api.Models.fila_de_entrega_Result.cep">cep</label>
+
+                    @Html.TextBoxFor(model => model.Filter.cep, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+                <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse">Pesquisa Avançada<i style="margin-left: 10px" class="fa fa-plus-square fa-minus"></i></button>
+                </div>
+            </div>
+            <div class="box-body" style="display:none">
+            </div>
+            <div class="form-group" style="border-top: 1px solid #f4f4f4; padding: 10px">
+                <button href="#" class="btn btn-warning pull-right" type="button" name="btnProcurar" onclick="$('.tblrow').remove(); $('#Page').val('0'); $('[ajax]').submit();"><i class="glyphicon glyphicon-search" style="margin-right: 10px"></i>Procurar</button>
+                <div style="clear: both"></div>
+            </div>
+        </div>
+        <div class="table-default scroll">
+            <div class="filter-table" base_library="api.Models.fila_de_entrega_Result.library_filter"><i class="glyphicon glyphicon-filter"></i>filtros</div>
+
+            <div class="filter-table" base_library="api.Models.sample.library_report" onclick="fnExcelReport()" style="margin-left:83px; width:110px">
+                <i class="fa fa-file-excel-o"></i>Relatório
+            </div>
+            <table id="tbl">
+                <tr>
+                    <td base_library="api.Models.fila_de_entrega_Result.id">
+                        @Html.DisplayNameFor(model => model.Filter.id)
+                    </td>
+                    <td base_library="api.Models.fila_de_entrega_Result.recebido">
+                        @Html.DisplayNameFor(model => model.Filter.recebido)
+                    </td>
+                    <td base_library="api.Models.fila_de_entrega_Result.endereco">
+                        @Html.DisplayNameFor(model => model.Filter.endereco)
+                    </td>
+                    <td base_library="api.Models.fila_de_entrega_Result.numero">
+                        @Html.DisplayNameFor(model => model.Filter.numero)
+                    </td>
+                    <td base_library="api.Models.fila_de_entrega_Result.complemento">
+                        @Html.DisplayNameFor(model => model.Filter.complemento)
+                    </td>
+                    <td base_library="api.Models.fila_de_entrega_Result.cidade">
+                        @Html.DisplayNameFor(model => model.Filter.cidade)
+                    </td>
+                    <td base_library="api.Models.fila_de_entrega_Result.cep">
+                        @Html.DisplayNameFor(model => model.Filter.cep)
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</section>
+
+<script template="tbl" type="text/template" redirect="@Url.Action("edit")">
+
+    <tr class="tblrow" pk="id">
+        <td column="id"></td>
+        <td column="recebido"></td>
+        <td column="endereco"></td>
+        <td column="numero"></td>
+        <td column="complemento"></td>
+        <td column="cidade"></td>
+        <td column="cep"></td>
+
+    </tr>
+
+
+    </script>

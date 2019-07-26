@@ -1,0 +1,198 @@
+﻿
+@model Site.Models.Find<api.Controllers.filiaisController.find>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<section class="content-header">
+    <h1>
+        <a href="@Url.Action("Create")" class="btn btn-info" base_library="api.Models.filial.library_create"><i class="fa fa-plus" style="margin-right:10px"></i>Criar Novo</a>
+
+   </h1>
+    <ol class="breadcrumb">
+        <li><a href="#" base_library="api.Models.filial.library_bc_1"><i class="fa fa-newspaper-o"></i>Listar</a></li>
+        <li class="active"><a href="@Url.Action("index")" base_library="api.Models.filial.library_bc_list">Index</a></li>
+    </ol>
+</section>
+
+<section class="content">
+
+
+
+
+
+    <form ajax="@Url.Action("Find")" table="tbl">
+        <input type="hidden" id="Page" name="Page" value="0" />
+
+        <div class="box box-default">
+            <div class="box-header with-border">
+
+
+                <div class="form-group col-md-6">
+                    <label class="control-label" style="width:100%" base_library="api.Models.filial.matriz_id">matriz_id</label>
+                    <select class="form-control select2" source="#Filter_matriz_id" data-placeholder="" onchange="$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" style="width: 100%;">
+                        <option value="null">Todos</option>
+                        @foreach (var item in new api.Models.db().filial.Where(c=>c.place_id == api.Models.db.place.place_id))
+                        {
+                            <option value="@item.id">@(item.nome)</option>
+                        }
+                    </select>
+                    @Html.HiddenFor(model => model.Filter.matriz_id)
+                    @Html.ValidationMessageFor(model => model.Filter.matriz_id)
+
+
+                </div>
+
+
+
+                <div class="form-group col-md-6">
+                    <label class="control-label" style="width:100%" base_library="api.Models.filial.nome">nome</label>
+
+                    @Html.TextBoxFor(model => model.Filter.nome, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+                @Html.HiddenFor(model => model.Filter)
+
+                <div class="form-group col-md-6">
+                    <label class="control-label" style="width:100%" base_library="api.Models.filial.endereco">endereco</label>
+
+                    @Html.TextBoxFor(model => model.Filter.endereco, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                <div class="form-group col-md-6">
+                    <label class="control-label" style="width:100%" base_library="api.Models.filial.cidade">cidade</label>
+
+                    @Html.TextBoxFor(model => model.Filter.cidade, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                <div class="form-group col-md-6">
+                    <label class="control-label" style="width:100%" base_library="api.Models.filial.administrador_id">administrador_id</label>
+                    <select class="form-control select2" source="#Filter_administrador_id" data-placeholder="" onchange="$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" style="width: 100%;">
+                        <option value="null">Todos</option>
+                        @foreach (var item in new api.Models.db().pessoa.Where(c => c.place_id == api.Models.db.place.place_id && c.perfil_id == 4))
+                        {
+                            <option value="@item.id">@(item.nome)</option>
+                        }
+                    </select>
+                    @Html.HiddenFor(model => model.Filter.administrador_id)
+                    @Html.ValidationMessageFor(model => model.Filter.administrador_id)
+
+
+                </div>
+
+
+
+                <div class="form-group col-md-6">
+                    <label class="control-label" style="width:100%" base_library="api.Models.filial.telefone">telefone</label>
+
+                    @Html.TextBoxFor(model => model.Filter.telefone, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                <div class="form-group col-md-6">
+                    <label class="control-label" style="width:100%" base_library="api.Models.filial.celular">celular</label>
+
+                    @Html.TextBoxFor(model => model.Filter.celular, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+
+
+                <div class="form-group col-md-6">
+                    <label class="control-label" style="width:100%" base_library="api.Models.filial.pais">pais</label>
+
+                    @Html.TextBoxFor(model => model.Filter.pais, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+
+                </div>
+
+                <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse">Pesquisa Avançada<i style="margin-left: 10px" class="fa fa-plus-square fa-minus"></i></button>
+                </div>
+            </div>
+            <div class="box-body" style="display:none">
+            </div>
+            <div class="form-group" style="border-top: 1px solid #f4f4f4; padding: 10px">
+                <button href="#" class="btn btn-warning pull-right" type="button" name="btnProcurar" onclick="$('.tblrow').remove(); $('#Page').val('0'); $('[ajax]').submit();"><i class="fa fa-search" style="margin-right: 10px"></i>Procurar</button>
+                <div style="clear: both"></div>
+            </div>
+        </div>
+        <div class="table-default scroll">
+            <div class="filter-table" base_library="api.Models.filial.library_filter"><i class="fa fa-filter"></i>filtros</div>
+
+            <div class="filter-table" base_library="api.Models.sample.library_report" onclick="fnExcelReport()" style="margin-left:83px; width:110px">
+                <i class="fa fa-file-excel-o"></i>Relatório
+            </div>
+            <table id="tbl">
+                <tr>
+                    <td base_library="api.Models.filial.id">
+                        @Html.DisplayNameFor(model => model.Filter.id)
+                    </td>
+                    <td base_library="api.Models.filial.nome">
+                        @Html.DisplayNameFor(model => model.Filter.nome)
+                    </td>
+                    <td base_library="api.Models.filial.balcao">
+                        @Html.DisplayNameFor(model => model.Filter.balcao)
+                    </td>
+                    <td base_library="api.Models.filial.delivery">
+                        @Html.DisplayNameFor(model => model.Filter.delivery)
+                    </td>
+                    <td base_library="api.Models.filial.endereco">
+                        @Html.DisplayNameFor(model => model.Filter.endereco)
+                    </td>
+                    <td base_library="api.Models.filial.numero">
+                        @Html.DisplayNameFor(model => model.Filter.numero)
+                    </td>
+                    <td base_library="api.Models.filial.complemento">
+                        @Html.DisplayNameFor(model => model.Filter.complemento)
+                    </td>
+                    <td base_library="api.Models.filial.cidade">
+                        @Html.DisplayNameFor(model => model.Filter.cidade)
+                    </td>
+                    <td base_library="api.Models.filial.administrador_id">
+                        @Html.DisplayNameFor(model => model.Filter.administrador_id)
+                    </td>
+                    <td base_library="api.Models.filial.telefone">
+                        @Html.DisplayNameFor(model => model.Filter.telefone)
+                    </td>
+                    <td base_library="api.Models.filial.celular">
+                        @Html.DisplayNameFor(model => model.Filter.celular)
+                    </td>
+                    <td base_library="api.Models.filial.pais">
+                        @Html.DisplayNameFor(model => model.Filter.pais)
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</section>
+
+<script template="tbl" type="text/template" redirect="@Url.Action("details")">
+
+    <tr class="tblrow" pk="id">
+        <td column="id"></td>
+        <td column="nome"></td>
+        <td column="balcao"></td>
+        <td column="delivery"></td>
+        <td column="endereco"></td>
+        <td column="numero"></td>
+        <td column="complemento"></td>
+        <td column="cidade"></td>
+        <td column="nome_administrador"></td>
+        <td column="telefone"></td>
+        <td column="celular"></td>
+        <td column="pais"></td>
+
+    </tr>
+
+
+</script>

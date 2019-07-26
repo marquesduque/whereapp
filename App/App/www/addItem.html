@@ -1,0 +1,472 @@
+﻿<div class="pages">
+    <div data-page="additem" class="page">
+        <div class="navbar background-creait">
+            <div class="navbar-inner margin-bottom-20">
+                <div class="left"><a class="back link" onclick="creait.redirect('meuItem')"> <i class="f7-icons icone-voltar" style="margin-right: 10px;">chevron_left</i></a></div>
+                <div class="center">Adicionar Item</div>
+            </div>
+        </div>
+        <div class="page-content text-center">
+            <div class="page-content" id="app-cover" style="overflow: auto;">
+
+                <div style="margin-top: 50px;">
+                    <!--<div class="text-center" style="text-align: right;"><a href="#" class="back link cor-creait"><i class="flaticon-close cor-creait"></i></a></div>-->
+
+                    <div class="list-block margin-bottom-40">
+                        <div style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100px; padding: 20px 0; ">
+                            <div id="foto" style="background-image: url(img/perfil1.svg); background-size: contain; background-repeat: no-repeat; background-position: center; width: 100px; height: 100px; border-radius: 100%; border: solid #CCC">
+
+                            </div>
+                        </div>
+                        <ul class="no-border" style="padding-top:20px">
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-media"><i class="icon f7-icons">help_round</i></div>
+                                    <div class="item-inner">
+                                        <div class="item-title label">Tipo de Casdastro</div>
+                                        <div class="item-input">
+                                            <select id="tipoI"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <div class="label-radio-content" id="doacao_slc">
+                                <span style="float:left; padding: 10px 10px 0px 10px;font-style: italic;">
+                                    Doar
+                                </span>
+                                <label class="label-radio item-content" style="color: var(--textbox-font-color); float: left; min-height: 41px; padding-right:15px">
+                                    <!-- Checked by default -->
+                                    <input type="radio" name="doacao_slc" value="false" checked="checked">
+                                    <div class="item-media" style="min-width:0px; margin-bottom:0px">
+                                        <i class="icon icon-form-radio" style="margin-right:0px"></i>
+                                    </div>
+                                    <div class="item-title" style="margin-left:5px;margin-top: 5px;">Não</div>
+                                </label>
+                                <label class="label-radio item-content" style="color: var(--textbox-font-color); float: left; min-height: 41px; padding-right:15px">
+                                    <!-- Checked by default -->
+                                    <input type="radio" name="doacao_slc" value="true">
+                                    <div class="item-media" style="min-width:0px;margin-bottom:0px">
+                                        <i class="icon icon-form-radio" style="margin-right:0px"></i>
+                                    </div>
+                                    <div class="item-title" style="margin-left:5px;    margin-top: 5px;">Sim</div>
+                                </label>
+                                <div style="clear:both"></div>
+                            </div>
+                            <div class="label-radio-content" id="apadrinhar_slc">
+                                <span style="float:left; padding: 10px 10px 0px 10px;font-style: italic;">
+                                    Apadrinhar
+                                </span>
+                                <label class="label-radio item-content" style="color: var(--textbox-font-color); float: left; min-height: 41px; padding-right:15px">
+                                    <!-- Checked by default -->
+                                    <input type="radio" name="apadrinhar_slc" value="false" checked="checked">
+                                    <div class="item-media" style="min-width:0px; margin-bottom:0px">
+                                        <i class="icon icon-form-radio" style="margin-right:0px"></i>
+                                    </div>
+                                    <div class="item-title" style="margin-left:5px;margin-top: 5px;">Não</div>
+                                </label>
+                                <label class="label-radio item-content" style="color: var(--textbox-font-color); float: left; min-height: 41px; padding-right:15px">
+                                    <!-- Checked by default -->
+                                    <input type="radio" name="apadrinhar_slc" value="true">
+                                    <div class="item-media" style="min-width:0px;margin-bottom:0px">
+                                        <i class="icon icon-form-radio" style="margin-right:0px"></i>
+                                    </div>
+                                    <div class="item-title" style="margin-left:5px;    margin-top: 5px;">Sim</div>
+                                </label>
+                                <div style="clear:both"></div>
+                            </div>
+                        </ul>
+
+                        <!--Pessoa-->
+                        <form id="1" style="display: none;">
+                            <input type="hidden" name="responsavel_id" class="responsavel_id" />
+                            <input type="hidden" name="tipo_id" class="tipo_id" />
+                            <input type="hidden" name="foto_str" class="photo" />
+                            <input type="hidden" name="photo_itype" class="photo_itype" />
+                            <input type="hidden" name="doacao" class="doacao" value="false" />
+                            <input type="hidden" name="apadrinhar" class="apadrinhar" value="false" />
+                            <ul id="pessoa">
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">Nome</div>
+                                            <div class="item-input">
+                                                <input type="text" placeholder="Nome" name="nome" id="nome_1">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">CPF</div>
+                                            <div class="item-input">
+                                                <input type="tel" mask="cpf" placeholder="CPF" name="cpf_1">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">RG</div>
+                                            <div class="item-input">
+                                                <input type="tel" mask="rg" placeholder="RG" name="rg" id="rg_1">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">Nascimento</div>
+                                            <div class="item-input">
+                                                <input type="tel" placeholder="Nascimento" id="nasc_1" name="nascimento" mask="mask_date">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li style="padding: 10px 15px;">
+                                    <div class="label-radio-content" id="genero">
+                                        <span style="float:left; padding: 10px 10px 0px 10px;font-style: italic;">
+                                            Genero
+                                        </span>
+                                        <label class="label-radio item-content" style="color: var(--textbox-font-color); float: left; min-height: 41px; padding-right:15px">
+                                            <!-- Checked by default -->
+                                            <input type="radio" name="genero" value="indiferente" checked="checked">
+                                            <div class="item-media" style="min-width:0px; margin-bottom:0px">
+                                                <i class="icon icon-form-radio" style="margin-right:0px"></i>
+                                            </div>
+                                            <div class="item-title" style="margin-left:5px;margin-top: 5px;">Indiferente</div>
+                                        </label>
+                                        <label class="label-radio item-content" style="color: var(--textbox-font-color); float: left; min-height: 41px; padding-right:15px">
+                                            <!-- Checked by default -->
+                                            <input type="radio" name="genero" value="masculino">
+                                            <div class="item-media" style="min-width:0px;margin-bottom:0px">
+                                                <i class="icon icon-form-radio" style="margin-right:0px"></i>
+                                            </div>
+                                            <div class="item-title" style="margin-left:5px;    margin-top: 5px;">Masculino</div>
+                                        </label>
+                                        <label class="label-radio item-content" style="color: var(--textbox-font-color); float: left; min-height: 41px; padding-right:15px">
+                                            <!-- Checked by default -->
+                                            <input type="radio" name="genero" value="feminino">
+                                            <div class="item-media" style="min-width:0px; margin-bottom:0px">
+                                                <i class="icon icon-form-radio" style="margin-right:0px"></i>
+                                            </div>
+                                            <div class="item-title" style="margin-left:5px;margin-top: 5px;">Feminino</div>
+                                        </label>
+                                        <div style="clear:both"></div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">Observação</div>
+                                            <div class="item-input">
+                                                <textarea type="text" placeholder="Observação" name="descricao" id="desc_1"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </form>
+
+                        <!--Animal-->
+                        <form id="2" style="display: none;">
+                            <input type="hidden" name="responsavel_id" class="responsavel_id" />
+                            <input type="hidden" name="tipo_id" class="tipo_id" />
+                            <input type="hidden" name="foto_str" class="photo" />
+                            <input type="hidden" name="photo_itype" class="photo_itype" />
+                            <input type="hidden" name="doacao" class="doacao" />
+                            <input type="hidden" name="apadrinhar" class="apadrinhar" />
+                            <ul id="animal">
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">Nome</div>
+                                            <div class="item-input">
+                                                <input type="text" placeholder="Nome" name="nome" id="nome_2">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">Cor</div>
+                                            <div class="item-input">
+                                                <input type="text" placeholder="Cor" name="cor" id="cor_2">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">Raça</div>
+                                            <div class="item-input">
+                                                <input type="text" placeholder="Raça" name="raca" id="raca_2">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li style="padding: 10px 15px;">
+                                    <div class="label-radio-content" id="genero">
+                                        <span style="float:left; padding: 10px 10px 0px 10px;font-style: italic;">
+                                            Genero
+                                        </span>
+                                        <label class="label-radio item-content" style="color: var(--textbox-font-color); float: left; min-height: 41px; padding-right:15px">
+                                            <!-- Checked by default -->
+                                            <input type="radio" name="genero" value="femea" checked="checked">
+                                            <div class="item-media" style="min-width:0px; margin-bottom:0px">
+                                                <i class="icon icon-form-radio" style="margin-right:0px"></i>
+                                            </div>
+                                            <div class="item-title" style="margin-left:5px;margin-top: 5px;">Femea</div>
+                                        </label>
+                                        <label class="label-radio item-content" style="color: var(--textbox-font-color); float: left; min-height: 41px; padding-right:15px">
+                                            <!-- Checked by default -->
+                                            <input type="radio" name="genero" value="macho">
+                                            <div class="item-media" style="min-width:0px;margin-bottom:0px">
+                                                <i class="icon icon-form-radio" style="margin-right:0px"></i>
+                                            </div>
+                                            <div class="item-title" style="margin-left:5px;    margin-top: 5px;">MAcho</div>
+                                        </label>
+                                        <div style="clear:both"></div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">Observação</div>
+                                            <div class="item-input">
+                                                <textarea type="text" placeholder="Observação" name="descricao" id="desc_2"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </form>
+
+                        <!--Objeto--> <!--Arrumar BD-->
+                        <form id="3" style="display: none;">
+                            <input type="hidden" name="responsavel_id" class="responsavel_id" />
+                            <input type="hidden" name="tipo_id" class="tipo_id" />
+                            <input type="hidden" name="foto_str" class="photo" />
+                            <input type="hidden" name="photo_itype" class="photo_itype" />
+                            <input type="hidden" name="doacao" class="doacao" />
+                            <input type="hidden" name="apadrinhar" class="apadrinhar" />
+                            <ul id="objeto">
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">Identificacao</div>
+                                            <div class="item-input">
+                                                <input type="text" placeholder="Identificacao" name="nome" id="nome_3">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">Fabricante</div>
+                                            <div class="item-input">
+                                                <input type="text" placeholder="Fabricante" name="fabricante" id="fabri_3">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">Marca</div>
+                                            <div class="item-input">
+                                                <input type="text" placeholder="dados" name="marca" id="marca_3">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">num de serie</div>
+                                            <div class="item-input">
+                                                <input type="text" placeholder="Numero de Serie" id="nums_3">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">Cor</div>
+                                            <div class="item-input">
+                                                <input type="text" placeholder="Cor" id="cor_3">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">Observação</div>
+                                            <div class="item-input">
+                                                <textarea type="text" placeholder="Observação" name="descricao" id="desc_3"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </form>
+
+                        <!--Veiculo-->  <!--Arrumar BD-->
+                        <form id="4" style="display: none;">
+                            <input type="hidden" name="responsavel_id" class="responsavel_id" />
+                            <input type="hidden" name="tipo_id" class="tipo_id" />
+                            <input type="hidden" name="foto_str" class="photo" />
+                            <input type="hidden" name="photo_itype" class="photo_itype" />
+                            <input type="hidden" name="doacao" class="doacao" />
+                            <input type="hidden" name="apadrinhar" class="apadrinhar" />
+                            <ul id="veiculo">
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">Identificaçao</div>
+                                            <div class="item-input">
+                                                <input type="text" placeholder="Identificaçao" name="nome" id="nome_4">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">Fabricante</div>
+                                            <div class="item-input">
+                                                <input type="text" placeholder="Fabricante" name="fabricante" id="fabri_4">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">Marca</div>
+                                            <div class="item-input">
+                                                <input type="text" placeholder="Marca" name="marca" id="marca_4">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">Modelo</div>
+                                            <div class="item-input">
+                                                <input type="text" placeholder="Modelo" name="modelo" id="modelo_4">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">Cor</div>
+                                            <div class="item-input">
+                                                <input type="text" placeholder="Cor" name="cor" id="cor_4">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">Observação</div>
+                                            <div class="item-input">
+                                                <textarea type="text" placeholder="Observação" name="descricao" id="desc_4"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </form>
+
+                        <!--Carga-->  <!--Arrumar BD + Campos-->
+                        <form id="5" style="display: none;">
+                            <input type="hidden" name="responsavel_id" class="responsavel_id" />
+                            <input type="hidden" name="tipo_id" class="tipo_id" />
+                            <input type="hidden" name="foto_str" class="photo" />
+                            <input type="hidden" name="photo_itype" class="photo_itype" />
+                            <input type="hidden" name="doacao" class="doacao" />
+                            <input type="hidden" name="doacao" class="doacao" />
+                            <input type="hidden" name="apadrinhar" class="apadrinhar" />
+                            <ul id="carga">
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-media"><i class="icon f7-icons">qrcode</i></div>
+                                        <div class="item-inner">
+                                            <div class="item-title label">Código</div>
+                                            <div class="item-input">
+                                                <input type="text" placeholder="Código">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">Observação</div>
+                                            <div class="item-input">
+                                                <textarea type="text" placeholder="Observação" name="descricao" id="desc_5"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </form>
+
+                        <!--Carga-->  <!--Arrumar BD + Campos-->
+                        <form id="6" style="display: none;">
+                            <input type="hidden" name="responsavel_id" class="responsavel_id" />
+                            <input type="hidden" name="tipo_id" class="tipo_id" />
+                            <input type="hidden" name="foto_str" class="photo" />
+                            <input type="hidden" name="photo_itype" class="photo_itype" />
+                            <input type="hidden" name="doacao" class="doacao" />
+                            <input type="hidden" name="doacao" class="doacao" />
+                            <input type="hidden" name="apadrinhar" class="apadrinhar" />
+                            <ul id="carga">
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">Nome / Identificação</div>
+                                            <div class="item-input">
+                                                <input type="text" placeholder="Nome" id="nome_6">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">Observação</div>
+                                            <div class="item-input">
+                                                <textarea type="text" placeholder="Observação" name="descricao" id="desc_6"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </form>
+                    </div>
+                    <div class="row btn-form-group margin-bottom-10 margin-top-40">
+                        <div class="col-100">
+                            <div id="btn_cadastra_item" class="buton">Cadastrar</div>
+                        </div>
+                        <!--<div class="col-50">
+                            <div id="btn_facebook" class="buton-facebook">Facebook</div>
+                        </div>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

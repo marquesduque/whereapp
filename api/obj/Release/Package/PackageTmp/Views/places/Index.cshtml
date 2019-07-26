@@ -1,0 +1,776 @@
+﻿
+@model Site.Models.Find<api.Controllers.placesController.find>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        <a href="@Url.Action("Create")" class="btn btn-info" base_library="api.Models.place.library_create"><i class="glyphicon glyphicon-plus" style="margin-right:10px"></i>Criar Novo</a>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#" base_library="api.Models.place.library_bc_1"><i class="fa fa-newspaper-o"></i>Listar</a></li>
+        <li class="active"><a href="@Url.Action("index")" base_library="api.Models.place.library_bc_list">Index</a></li>
+    </ol>
+</section>
+
+<section class="content">
+
+
+
+
+
+     <form ajax="@Url.Action("Find")" table="tbl">
+        <input type="hidden" id="Page" name="Page" value="0" />
+
+		<div class="box box-default">
+			<div class="box-header with-border">
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.place.name" >name</label>
+            
+									@Html.TextBoxFor(model => model.Filter.name, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.place.checkins" >checkins</label>
+            
+									@Html.TextBoxFor(model => model.Filter.checkins, new { placeholder = "", @class = "form-control", maxLength = "150", type="number", min="1", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.place.phone" >phone</label>
+            
+									@Html.TextBoxFor(model => model.Filter.phone, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.place.website" >website</label>
+            
+									@Html.TextBoxFor(model => model.Filter.website, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.place.location_id" >location_id</label>
+					<select class="form-control select2" source="#Filter_location_id" data-placeholder="" onchange = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" style="width: 100%;">
+						<option value="null">Todos</option>
+						@foreach (var item in new api.Models.delivery_prospectEntities().location)
+						{
+							<option value="@item.id">@(item.street)</option>
+						}
+					</select>
+					@Html.HiddenFor(model => model.Filter.location_id)
+					@Html.ValidationMessageFor(model => model.Filter.location_id)
+				
+
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.place.search" >search</label>
+            
+									@Html.TextBoxFor(model => model.Filter.search, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.place.picture" >picture</label>
+            
+									@Html.TextBoxFor(model => model.Filter.picture, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.place.cover" >cover</label>
+            
+									@Html.TextBoxFor(model => model.Filter.cover, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.place.rating_count" >rating_count</label>
+            
+									@Html.TextBoxFor(model => model.Filter.rating_count, new { placeholder = "", @class = "form-control", maxLength = "150", type="number", min="1", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.place.about" >about</label>
+            
+									@Html.TextBoxFor(model => model.Filter.about, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.place.hours_id" >hours_id</label>
+					<select class="form-control select2" source="#Filter_hours_id" data-placeholder="" onchange = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" style="width: 100%;">
+						<option value="null">Todos</option>
+						@foreach (var item in new api.Models.delivery_prospectEntities().hours)
+						{
+							<option value="@item.id">@(item.id)</option>
+						}
+					</select>
+					@Html.HiddenFor(model => model.Filter.hours_id)
+					@Html.ValidationMessageFor(model => model.Filter.hours_id)
+				
+
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.place.user_name" >user_name</label>
+            
+									@Html.TextBoxFor(model => model.Filter.user_name, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.place.password" >password</label>
+            
+									@Html.TextBoxFor(model => model.Filter.password, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.place.specialty" >specialty</label>
+            
+									@Html.TextBoxFor(model => model.Filter.specialty, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.place.url" >url</label>
+            
+									@Html.TextBoxFor(model => model.Filter.url, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.place.theme" >theme</label>
+            
+									@Html.TextBoxFor(model => model.Filter.theme, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </div>
+
+
+
+
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.place.place_id" >place_id</label>
+            
+									@Html.TextBoxFor(model => model.Filter.place_id, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.place.loader" >loader</label>
+            
+									@Html.TextBoxFor(model => model.Filter.loader, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.place.background_image_local" >background_image_local</label>
+            
+									@Html.TextBoxFor(model => model.Filter.background_image_local, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.place.balcao" >balcao</label>
+            
+									<div style="height: 34px; line-height: 30px;">
+						<label style="min-width: 45px;">
+							<input type="checkbox" value="true" name="item_balcao" class="minimal-green">
+							Sim
+
+						</label>
+						<label style="min-width: 45px;">
+							<input type="checkbox" value="false" name="item_balcao" class="minimal">
+							Não
+
+						</label>
+						@Html.HiddenFor(model => model.Filter.balcao, new { icheck = "item_balcao" })
+					</div>
+                            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.place.delivery" >delivery</label>
+            
+									<div style="height: 34px; line-height: 30px;">
+						<label style="min-width: 45px;">
+							<input type="checkbox" value="true" name="item_delivery" class="minimal-green">
+							Sim
+
+						</label>
+						<label style="min-width: 45px;">
+							<input type="checkbox" value="false" name="item_delivery" class="minimal">
+							Não
+
+						</label>
+						@Html.HiddenFor(model => model.Filter.delivery, new { icheck = "item_delivery" })
+					</div>
+                            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.place.primary_color" >primary_color</label>
+            
+									@Html.TextBoxFor(model => model.Filter.primary_color, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.place.primary_font_color" >primary_font_color</label>
+            
+									@Html.TextBoxFor(model => model.Filter.primary_font_color, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.place.secondary_color" >secondary_color</label>
+            
+									@Html.TextBoxFor(model => model.Filter.secondary_color, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.place.secondary_font_color" >secondary_font_color</label>
+            
+									@Html.TextBoxFor(model => model.Filter.secondary_font_color, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.place.textbox_color" >textbox_color</label>
+            
+									@Html.TextBoxFor(model => model.Filter.textbox_color, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.place.textbox_font_color" >textbox_font_color</label>
+            
+									@Html.TextBoxFor(model => model.Filter.textbox_font_color, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.place.border_radius_textbox" >border_radius_textbox</label>
+            
+									@Html.TextBoxFor(model => model.Filter.border_radius_textbox, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.place.border_radius_button" >border_radius_button</label>
+            
+									@Html.TextBoxFor(model => model.Filter.border_radius_button, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.place.light_color" >light_color</label>
+            
+									@Html.TextBoxFor(model => model.Filter.light_color, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.place.dark_color" >dark_color</label>
+            
+									@Html.TextBoxFor(model => model.Filter.dark_color, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.place.font_color" >font_color</label>
+            
+									@Html.TextBoxFor(model => model.Filter.font_color, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.place.card_number" >card_number</label>
+            
+									@Html.TextBoxFor(model => model.Filter.card_number, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.place.card_name" >card_name</label>
+            
+									@Html.TextBoxFor(model => model.Filter.card_name, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.place.card_date" >card_date</label>
+            
+									@Html.TextBoxFor(model => model.Filter.card_date, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.place.card_cvv" >card_cvv</label>
+            
+									@Html.TextBoxFor(model => model.Filter.card_cvv, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.place.card_hash" >card_hash</label>
+            
+									@Html.TextBoxFor(model => model.Filter.card_hash, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.place.card_document" >card_document</label>
+            
+									@Html.TextBoxFor(model => model.Filter.card_document, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.place.pagarme_id" >pagarme_id</label>
+            
+									@Html.TextBoxFor(model => model.Filter.pagarme_id, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.place.card_brand" >card_brand</label>
+            
+									@Html.TextBoxFor(model => model.Filter.card_brand, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.place.pagarme_status" >pagarme_status</label>
+            
+									@Html.TextBoxFor(model => model.Filter.pagarme_status, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.place.created" >created</label>
+            
+									@Html.TextBoxFor(model => model.Filter.created, "{0:dd/MM/yyyy}", new { placeholder = "", @class = "form-control", mask = "{\"value\":\"99/99/9999\", \"placeholder\":\"dd/mm/yyyy\"}", maxLength = "10", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.place.whatsapp" >whatsapp</label>
+            
+									@Html.TextBoxFor(model => model.Filter.whatsapp, new { placeholder = "", @class = "form-control", maxLength = "150", type="number", min="1", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.place.whatsapp_message" >whatsapp_message</label>
+            
+									@Html.TextBoxFor(model => model.Filter.whatsapp_message, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.place.address_required" >address_required</label>
+            
+									<div style="height: 34px; line-height: 30px;">
+						<label style="min-width: 45px;">
+							<input type="checkbox" value="true" name="item_address_required" class="minimal-green">
+							Sim
+
+						</label>
+						<label style="min-width: 45px;">
+							<input type="checkbox" value="false" name="item_address_required" class="minimal">
+							Não
+
+						</label>
+						@Html.HiddenFor(model => model.Filter.address_required, new { icheck = "item_address_required" })
+					</div>
+                            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.place.frete_produto" >frete_produto</label>
+            
+									<div style="height: 34px; line-height: 30px;">
+						<label style="min-width: 45px;">
+							<input type="checkbox" value="true" name="item_frete_produto" class="minimal-green">
+							Sim
+
+						</label>
+						<label style="min-width: 45px;">
+							<input type="checkbox" value="false" name="item_frete_produto" class="minimal">
+							Não
+
+						</label>
+						@Html.HiddenFor(model => model.Filter.frete_produto, new { icheck = "item_frete_produto" })
+					</div>
+                            
+   </div>
+
+		<div class="box-tools pull-right">
+			<button class="btn btn-box-tool" data-widget="collapse">Pesquisa Avançada<i style="margin-left: 10px" class="fa fa-plus-square fa-minus"></i></button>
+		</div>
+	</div>
+	<div class="box-body" style="display:none">
+	</div>
+	<div class="form-group" style="border-top: 1px solid #f4f4f4; padding: 10px">
+		<button href="#" class="btn btn-warning pull-right" type="button" name="btnProcurar" onclick="$('.tblrow').remove(); $('#Page').val('0'); $('[ajax]').submit();"><i class="glyphicon glyphicon-search" style="margin-right: 10px"></i>Procurar</button>
+		<div style="clear: both"></div>
+	</div>
+</div>
+    <div class="table-default scroll">
+        <div class="filter-table" base_library="api.Models.place.library_filter"><i class="glyphicon glyphicon-filter"></i>filtros</div>
+		
+            <div class="filter-table" base_library="api.Models.sample.library_report" onclick="fnExcelReport()" style="margin-left:83px; width:110px">
+                <i class="fa fa-file-excel-o"></i>Relatório
+            </div>
+<table  id="tbl"> 
+    <tr>
+        <td base_library="api.Models.place.name">
+            @Html.DisplayNameFor(model => model.Filter.name)
+        </td>
+        <td base_library="api.Models.place.checkins">
+            @Html.DisplayNameFor(model => model.Filter.checkins)
+        </td>
+        <td base_library="api.Models.place.phone">
+            @Html.DisplayNameFor(model => model.Filter.phone)
+        </td>
+        <td base_library="api.Models.place.website">
+            @Html.DisplayNameFor(model => model.Filter.website)
+        </td>
+        <td base_library="api.Models.place.location_id">
+            @Html.DisplayNameFor(model => model.Filter.location_id)
+        </td>
+        <td base_library="api.Models.place.search">
+            @Html.DisplayNameFor(model => model.Filter.search)
+        </td>
+        <td base_library="api.Models.place.picture">
+            @Html.DisplayNameFor(model => model.Filter.picture)
+        </td>
+        <td base_library="api.Models.place.cover">
+            @Html.DisplayNameFor(model => model.Filter.cover)
+        </td>
+        <td base_library="api.Models.place.rating_count">
+            @Html.DisplayNameFor(model => model.Filter.rating_count)
+        </td>
+        <td base_library="api.Models.place.about">
+            @Html.DisplayNameFor(model => model.Filter.about)
+        </td>
+        <td base_library="api.Models.place.hours_id">
+            @Html.DisplayNameFor(model => model.Filter.hours_id)
+        </td>
+        <td base_library="api.Models.place.user_name">
+            @Html.DisplayNameFor(model => model.Filter.user_name)
+        </td>
+        <td base_library="api.Models.place.password">
+            @Html.DisplayNameFor(model => model.Filter.password)
+        </td>
+        <td base_library="api.Models.place.specialty">
+            @Html.DisplayNameFor(model => model.Filter.specialty)
+        </td>
+        <td base_library="api.Models.place.url">
+            @Html.DisplayNameFor(model => model.Filter.url)
+        </td>
+        <td base_library="api.Models.place.theme">
+            @Html.DisplayNameFor(model => model.Filter.theme)
+        </td>
+ 
+        <td base_library="api.Models.place.place_id">
+            @Html.DisplayNameFor(model => model.Filter.place_id)
+        </td>
+        <td base_library="api.Models.place.loader">
+            @Html.DisplayNameFor(model => model.Filter.loader)
+        </td>
+        <td base_library="api.Models.place.background_image_local">
+            @Html.DisplayNameFor(model => model.Filter.background_image_local)
+        </td>
+        <td base_library="api.Models.place.balcao">
+            @Html.DisplayNameFor(model => model.Filter.balcao)
+        </td>
+        <td base_library="api.Models.place.delivery">
+            @Html.DisplayNameFor(model => model.Filter.delivery)
+        </td>
+        <td base_library="api.Models.place.primary_color">
+            @Html.DisplayNameFor(model => model.Filter.primary_color)
+        </td>
+        <td base_library="api.Models.place.primary_font_color">
+            @Html.DisplayNameFor(model => model.Filter.primary_font_color)
+        </td>
+        <td base_library="api.Models.place.secondary_color">
+            @Html.DisplayNameFor(model => model.Filter.secondary_color)
+        </td>
+        <td base_library="api.Models.place.secondary_font_color">
+            @Html.DisplayNameFor(model => model.Filter.secondary_font_color)
+        </td>
+        <td base_library="api.Models.place.textbox_color">
+            @Html.DisplayNameFor(model => model.Filter.textbox_color)
+        </td>
+        <td base_library="api.Models.place.textbox_font_color">
+            @Html.DisplayNameFor(model => model.Filter.textbox_font_color)
+        </td>
+        <td base_library="api.Models.place.border_radius_textbox">
+            @Html.DisplayNameFor(model => model.Filter.border_radius_textbox)
+        </td>
+        <td base_library="api.Models.place.border_radius_button">
+            @Html.DisplayNameFor(model => model.Filter.border_radius_button)
+        </td>
+        <td base_library="api.Models.place.light_color">
+            @Html.DisplayNameFor(model => model.Filter.light_color)
+        </td>
+        <td base_library="api.Models.place.dark_color">
+            @Html.DisplayNameFor(model => model.Filter.dark_color)
+        </td>
+        <td base_library="api.Models.place.font_color">
+            @Html.DisplayNameFor(model => model.Filter.font_color)
+        </td>
+        <td base_library="api.Models.place.card_number">
+            @Html.DisplayNameFor(model => model.Filter.card_number)
+        </td>
+        <td base_library="api.Models.place.card_name">
+            @Html.DisplayNameFor(model => model.Filter.card_name)
+        </td>
+        <td base_library="api.Models.place.card_date">
+            @Html.DisplayNameFor(model => model.Filter.card_date)
+        </td>
+        <td base_library="api.Models.place.card_cvv">
+            @Html.DisplayNameFor(model => model.Filter.card_cvv)
+        </td>
+        <td base_library="api.Models.place.card_hash">
+            @Html.DisplayNameFor(model => model.Filter.card_hash)
+        </td>
+        <td base_library="api.Models.place.card_document">
+            @Html.DisplayNameFor(model => model.Filter.card_document)
+        </td>
+        <td base_library="api.Models.place.pagarme_id">
+            @Html.DisplayNameFor(model => model.Filter.pagarme_id)
+        </td>
+        <td base_library="api.Models.place.card_brand">
+            @Html.DisplayNameFor(model => model.Filter.card_brand)
+        </td>
+        <td base_library="api.Models.place.pagarme_status">
+            @Html.DisplayNameFor(model => model.Filter.pagarme_status)
+        </td>
+        <td base_library="api.Models.place.created">
+            @Html.DisplayNameFor(model => model.Filter.created)
+        </td>
+        <td base_library="api.Models.place.whatsapp">
+            @Html.DisplayNameFor(model => model.Filter.whatsapp)
+        </td>
+        <td base_library="api.Models.place.whatsapp_message">
+            @Html.DisplayNameFor(model => model.Filter.whatsapp_message)
+        </td>
+        <td base_library="api.Models.place.address_required">
+            @Html.DisplayNameFor(model => model.Filter.address_required)
+        </td>
+        <td base_library="api.Models.place.frete_produto">
+            @Html.DisplayNameFor(model => model.Filter.frete_produto)
+        </td>
+    </tr>
+</table>
+</div>
+</form>
+</section>
+
+		<script template="tbl" type="text/template" redirect="@Url.Action("edit")"> 
+
+    <tr class="tblrow" pk="id">
+        <td column="name">
+        </td>
+        <td column="checkins">
+        </td>
+        <td column="phone">
+        </td>
+        <td column="website">
+        </td>
+        <td column="location_id">
+        </td>
+        <td column="search">
+        </td>
+        <td column="picture">
+        </td>
+        <td column="cover">
+        </td>
+        <td column="rating_count">
+        </td>
+        <td column="about">
+        </td>
+        <td column="hours_id">
+        </td>
+        <td column="user_name">
+        </td>
+        <td column="password">
+        </td>
+        <td column="specialty">
+        </td>
+        <td column="url">
+        </td>
+        <td column="theme">
+        </td>
+    
+        <td column="place_id">
+        </td>
+        <td column="loader">
+        </td>
+        <td column="background_image_local">
+        </td>
+        <td column="balcao">
+        </td>
+        <td column="delivery">
+        </td>
+        <td column="primary_color">
+        </td>
+        <td column="primary_font_color">
+        </td>
+        <td column="secondary_color">
+        </td>
+        <td column="secondary_font_color">
+        </td>
+        <td column="textbox_color">
+        </td>
+        <td column="textbox_font_color">
+        </td>
+        <td column="border_radius_textbox">
+        </td>
+        <td column="border_radius_button">
+        </td>
+        <td column="light_color">
+        </td>
+        <td column="dark_color">
+        </td>
+        <td column="font_color">
+        </td>
+        <td column="card_number">
+        </td>
+        <td column="card_name">
+        </td>
+        <td column="card_date">
+        </td>
+        <td column="card_cvv">
+        </td>
+        <td column="card_hash">
+        </td>
+        <td column="card_document">
+        </td>
+        <td column="pagarme_id">
+        </td>
+        <td column="card_brand">
+        </td>
+        <td column="pagarme_status">
+        </td>
+        <td column="created">
+        </td>
+        <td column="whatsapp">
+        </td>
+        <td column="whatsapp_message">
+        </td>
+        <td column="address_required">
+        </td>
+        <td column="frete_produto">
+        </td>
+       
+    </tr>
+
+
+</script>

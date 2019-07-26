@@ -1,0 +1,62 @@
+﻿
+@model List<api.Models.place>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>whatsapp</title>
+    <script>
+        function enviar() {
+            $('#btnEnviar').hide();
+
+            var whats = $('.whatsitem');
+            var popup = window.open(whats.find('.whatsapp').attr('href'));
+
+            close();
+            function close() {
+
+                try {
+                    if (popup.location.href.indexOf('/whatsapp/') != -1) {
+                        $(whats[0]).remove();
+                        popup.close();
+                        enviar();
+                    }
+                    else {
+                        setTimeout(function () {
+                            close();
+                        }, 1)
+                    }
+                }
+                catch (ex) {
+                    setTimeout(function () {
+                        close();
+                    }, 1)
+                }
+            }
+        }
+    </script>
+</head>
+<body style="font-family:Arial">
+    <div id="btnEnviar" onclick="enviar()" style="margin:20px; padding:20px;background-color:green; color:white; max-width:200px; float:right; text-align:center; cursor:pointer">INICIAR DISPARO</div>
+    @foreach (var item in Model)
+    {
+        <div class="whatsitem" style="padding:10px; border-bottom:1px solid gray">
+            <img src="@item.picture" style="width:75px; height:75px; margin:0px 10px; float:left" />
+            <div><a href="http://@(item.url).creapp.com.br">http://@(item.url).creapp.com.br</a><br />@item.name<br />@item.phone</div>
+            <a class="whatsapp" target="_blank" href=https://api.whatsapp.com/send?phone=5511961207705&&text=@(System.Web.HttpUtility.UrlEncode("Olá me chamo Marco, minha empresa criou este incrível APLICATIVO para SUA PIZZARIA! Hoje GRANDE parte do seu LUCRO vai para o ifood e PedidosJá! Tenha o seu próprio aplicativo de delivery, modernize sua empresa e lucre muito mais. Por apenas R$199,90/mês - http://"+ item.url +".creapp.com.br").Replace("+","%20")) ;>
+                Enviar
+            </a>
+
+            <div style="clear:both"></div>
+        </div>
+        <div style="clear:both"></div>
+    }
+
+</body>
+</html>

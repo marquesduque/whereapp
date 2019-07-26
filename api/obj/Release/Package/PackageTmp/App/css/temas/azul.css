@@ -1,0 +1,328 @@
+.theme-deeporange .button.button-fill.active-state, html:not(.watch-active-state) .theme-deeporange .button.button-fill:active {
+    background: #3D8EB9 !important
+}
+
+.button.button-fill.bg-deeporange.active-state, .button.button-fill.color-deeporange.active-state, html:not(.watch-active-state) .button.button-fill.bg-deeporange:active, html:not(.watch-active-state) .button.button-fill.color-deeporange:active {
+    background: #3D8EB9 !important
+}
+
+.list-block .bg-deeporange .item-link.active-state, .list-block .item-link.bg-deeporange.active-state, .list-block .item-link.list-block .swipeout-actions-left a.bg-deeporange.active-state, .list-block .item-link.list-block .swipeout-actions-right a.bg-deeporange.active-state, .list-block .item-linka.bg-deeporange.active-state, .list-block .list-block .swipeout-actions-left a.bg-deeporange .item-link.active-state, .list-block .list-block .swipeout-actions-right a.bg-deeporange .item-link.active-state, .list-block a.bg-deeporange .item-link.active-state, .list-block.bg-deeporange .item-link.active-state, .list-block.list-block .swipeout-actions-left a.bg-deeporange .item-link.active-state, .list-block.list-block .swipeout-actions-right a.bg-deeporange .item-link.active-state, .list-blocka.bg-deeporange .item-link.active-state, html:not(.watch-active-state) .list-block .bg-deeporange .item-link:active, html:not(.watch-active-state) .list-block .item-link.bg-deeporange:active, html:not(.watch-active-state) .list-block .item-link.list-block .swipeout-actions-left a.bg-deeporange:active, html:not(.watch-active-state) .list-block .item-link.list-block .swipeout-actions-right a.bg-deeporange:active, html:not(.watch-active-state) .list-block .item-linka.bg-deeporange:active, html:not(.watch-active-state) .list-block .list-block .swipeout-actions-left a.bg-deeporange .item-link:active, html:not(.watch-active-state) .list-block .list-block .swipeout-actions-right a.bg-deeporange .item-link:active, html:not(.watch-active-state) .list-block a.bg-deeporange .item-link:active, html:not(.watch-active-state) .list-block.bg-deeporange .item-link:active, html:not(.watch-active-state) .list-block.list-block .swipeout-actions-left a.bg-deeporange .item-link:active, html:not(.watch-active-state) .list-block.list-block .swipeout-actions-right a.bg-deeporange .item-link:active, html:not(.watch-active-state) .list-blocka.bg-deeporange .item-link:active {
+    background: #3D8EB9 !important
+}
+
+.floating-button.bg-deeporange.active-state, .floating-button.color-deeporange.active-state, .floating-button.theme-deeporange.active-state, .speed-dial-buttons a.bg-deeporange.active-state, .speed-dial-buttons a.color-deeporange.active-state, .speed-dial-buttons a.theme-deeporange.active-state, .theme-deeporange .floating-button.active-state, .theme-deeporange .speed-dial-buttons a.active-state, html:not(.watch-active-state) .floating-button.bg-deeporange:active, html:not(.watch-active-state) .floating-button.color-deeporange:active, html:not(.watch-active-state) .floating-button.theme-deeporange:active, html:not(.watch-active-state) .speed-dial-buttons a.bg-deeporange:active, html:not(.watch-active-state) .speed-dial-buttons a.color-deeporange:active, html:not(.watch-active-state) .speed-dial-buttons a.theme-deeporange:active, html:not(.watch-active-state) .theme-deeporange .floating-button:active, html:not(.watch-active-state) .theme-deeporange .speed-dial-buttons a:active {
+    background: #3D8EB9 !important
+}
+
+.button.button-fill.color-deeporange {
+    background: #e0e0e0 !important;
+    color: #000;
+    font-size: 20px !important;
+    line-height: 50px;
+    height: 90px;
+}
+
+.boladd {
+    font-size: 15px;
+    width: 25px;
+    background-color: #264e63;
+    border-radius: 30px;
+    height: 25px;
+    line-height: 26px;
+    color: white;
+    font-size: 12px;
+}
+
+.titulo-produto {
+    background-color: #0d4563 !important;
+    text-shadow: none !important;
+    font-size: 25px;
+    padding: 5px;
+}
+
+.link-deeporange {
+    color: #0d4563 !important;
+}
+
+
+
+
+
+.theme-black .searchbar {
+    background-color: #0d4563 !important;
+}
+
+.theme-black .toolbar {
+    background-color: #0d4563 !important;
+}
+
+.cube .sides * {
+    background-color: rgba(255, 255, 255, 0.10);
+}
+
+.loader_on {
+    background-color: #3D8EB9 !important;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    z-index: 99999;
+}
+
+
+body {
+    font-family: Arial;
+    font-weight: normal !important;
+    color: #0d4563;
+}
+/*===============================================*/
+/*CORES PARA SEREM MUDADAS   					 */
+/*===============================================*/
+input, textarea, select, button {
+    text-rendering: auto;
+    color: initial;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    margin: 0em;
+    font-weight: normal !important;
+}
+
+.background-creait {
+    background-color: #3D8EB9 !important
+}
+
+.background-pagamento {
+    background-color: #013243 !important;
+}
+
+
+.border-gold {
+    border-top: 5px solid #013243;
+    border-bottom: 5px solid #013243;
+    margin-bottom: 5px;
+}
+
+.buton-black {
+    font-size: 25px;
+    font-weight: bold;
+    color: #000 !important;
+}
+
+.imagem-background {
+    background-color: #FFF !important;
+}
+
+.background-preto {
+    background-color: #000 !important;
+}
+
+.background-amarelo {
+    background-color: #ffd800;
+}
+
+
+.cor-creait {
+    color: #3D8EB9 !important;
+}
+
+
+.fonte_branca {
+    color: #545454 !important;
+}
+
+.fonte_preta {
+    color: #000 !important;
+}
+
+.fonte_cinza {
+    color: #666 !important;
+}
+
+
+.iconesMenu {
+    max-width: 70% !important
+}
+
+
+.input-delivery {
+    border: 2px solid #3D8EB9 !important;
+    padding-left: 10px !important;
+}
+
+
+    .input-delivery::-webkit-input-placeholder {
+        color: #fff !important;
+        font-weight: 700;
+    }
+
+/*.input-index {
+    border: 2px solid #81CFE0 !important;
+    padding-left: 10px !important;
+    background-color: rgba(0, 0, 0, 0.46) !important;
+    color: #fff !important;
+}
+
+    .input-index::-webkit-input-placeholder {
+        color: #fff !important;
+        font-weight: 700;
+    }*/
+
+
+
+.radioEndereco {
+    border-color: #013243 !important;
+}
+
+    .radioEndereco:after {
+        background-color: #013243 !important;
+    }
+
+
+
+.iconeEndereco i:before {
+    font-size: 30px !important;
+    color: #013243;
+}
+
+.radioMontagem {
+    border-color: transparent !important;
+}
+
+    .radioMontagem:after {
+        background-color: transparent !important;
+    }
+
+
+.iconeAcompanhamento i:before {
+    font-size: 30px !important;
+    color: #fff;
+}
+
+.buton {
+    background-color: #4eaee2 !important;
+    color: #fff !important;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 0px;
+    text-align: center;
+    border-radius: 5px;
+    text-transform: uppercase;
+}
+
+
+.buton-amarelo {
+    background-color: #3D8EB9 !important;
+    color: #FFF !important;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 0px;
+    text-align: center;
+    border-radius: 5px;
+    text-transform: uppercase;
+}
+
+.font-preta {
+    color: black;
+}
+
+.buton-verde {
+    background-color: #885406 !important;
+    color: #fff !important;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px 0px;
+    text-align: center;
+    border-radius: 10px;
+    text-transform: uppercase;
+}
+
+.buton-facebook {
+    background-color: #3b5998 !important;
+    color: #fff !important;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px 0px;
+    text-align: center;
+    border-radius: 10px;
+    text-transform: uppercase;
+}
+
+
+.panel_carrinho {
+    height: 80px;
+    padding-bottom: 100px;
+}
+
+.radio-buton {
+    border-color: #ed0000 !important;
+}
+
+    .radio-buton::after {
+        background-color: #ffd800 !important;
+    }
+
+.icone-voltar {
+    font-size: 30px;
+    font-weight: 900;
+    color: #fff;
+}
+
+
+/*#app-cover{
+    background-color: lightblue;
+}*/
+
+.ta-Adicionar {
+    border-radius: 5px !important;
+    padding-left: 10px !important;
+    background-color: #f3f3f3 !important;
+    color: #000 !important;
+    border: 1px #c3c3c3 solid !important;
+}
+
+    .ta-Adicionar::-webkit-input-placeholder {
+        color: #000 !important;
+        font-weight: 700;
+    }
+
+/*ICONES DO MENU LATERAL*/
+
+.item-title a {
+    font-weight: bolder;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: #000;
+    font-size: 12px;
+}
+
+.item-title {
+    font-size: 13px;
+}
+
+#left-menu {
+    background-color: #e6e6e6 !important;
+}
+
+
+/*trocar cor depois AZULLLLL*/
+#circulo-fechar {
+    color: #e17477 !important;
+}
+
+.titulo-produto {
+    color: #e17477 !important;
+}
+
+#menos {
+    color: wheat !important;
+}
+
+.semana-pedido {
+    color: #000 !important;
+}

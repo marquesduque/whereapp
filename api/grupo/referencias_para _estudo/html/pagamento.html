@@ -1,0 +1,47 @@
+﻿<div class="pages">
+    <div data-page="pagamento" class="page navbar-fixed" style="background-color:var(--textbox-color)">
+
+
+
+        <div class="navbar background-creait">
+            <div class="navbar-inner">
+                <div class="left">
+                    {{#js_if "controller.login.get() != null && controller.login.get().perfil_id == 6"}}
+                    <a href="adicionar.html?id={{js "controller.login.get().produto_id"}}&regiao={{js "controller.filial.get().id"}}" class="link"><i class="f7-icons icone-voltar">angle-left</i></a>
+                    {{else}}
+                    <a href="carrinho.html" class="link"><i class="f7-icons icone-voltar">angle-left</i></a>
+                    {{/js_if}}
+                </div>
+                <div class="right total_carrinho">
+                    <img style="width: 40px" src="icons/animated/{{cor_tema}}/coin.svg" />
+                    <span id="total" formatMoney>{{carrinho.carrinho_total}}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-content contacts-content imagem-background no-searchbar">
+
+            <div class="list-block media-list">
+
+
+                {{#each grupo_do_pagamento}}
+                <ul>
+                    <li class="list-group-title imagem-background fonte_branca fontextra" style="margin-top: 0px;width:100%;text-align: center; font-size:15px">{{this.nome}}</li>
+                    {{#each pagamento}}
+                    <li pagamento_id="{{id}}" external_id="{{external_id}}" transacao="{{transacao}}" style="padding-left: 14px; margin-top:auto;" class="background-pagamento fonte_branca item-link">
+
+                        <div class="item-inner">
+                            <div class="item-title-row fontextra">{{this.nome}}</div>
+
+                        </div>
+                    </li>
+                    {{/each}}
+                </ul>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

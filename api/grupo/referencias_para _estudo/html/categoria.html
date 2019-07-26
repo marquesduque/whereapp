@@ -1,0 +1,473 @@
+﻿s<div class="pages">
+    <div data-page="categoria" class="page" navbartopopen="{{this.navbartop}}">
+
+        <div class="navbartop" style="background-image:url({{js "controller.layout.get().background_image_local"}})">
+            <img src="{{js "controller.layout.get().logo"}}" style="    margin-top: 13vh;
+    max-height: 150px;
+    max-width: 150px;
+    width: 60vw;
+" />
+
+            <div style="font-size:14px">{{js "controller.filial.get().endereco"}}</div>
+            <div style="font-size:20px; font-weight:bold;text-shadow: 0.5px 0.5px 0.5px rgba(0, 0, 0, 0.50);text-transform: uppercase;" class="{{this.aberto}}" >
+                {{this.lblaberto}}
+            </div>
+            <div style="font-size:16px; font-weight:700;    padding: 10px;text-transform: uppercase;">
+                {{this.horario_abertura}}
+            </div>
+            <div style="font-size:16px; font-weight:700; padding:10px; cursor:pointer" >
+                {{js "biblioteca.get('label_cover')"}}
+            </div>
+
+            <div class="cardapio" onclick="$('.navbartop').slideUp('slow', function() { $('[navbartopopen]').attr('navbartopopen', $('.navbartop').is(':visible').toString()) }); controller.categoria.navbartop = true;" style="position:absolute;bottom:0px; text-align:center; width:100%; cursor:pointer">
+                <div class="animated pulse" style="font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 700;">
+                    Ver Cardápio
+                </div>
+
+                <svg class="ldi-ojjhtd" width="60px" height="60px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" style="background: none;">
+                    <!--?xml version="1.0" encoding="utf-8"?--><!--Generator: Adobe Illustrator 21.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)-->
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" style="transform-origin: 50px 50px 0px;" xml:space="preserve" class=""><g class="" style="transform-origin: 50px 50px 0px; transform: scale(0.6);"><g class="ld ld-slide-px-ttb" style="transform-origin: 50px 50px 0px; animation-duration: 1s; animation-delay: -1s;"><style type="text/css" class="" style="transform-origin: 50px 50px 0px; animation-duration: 1s; animation-delay: -1s;">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                    .st0 {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                        fill: var(--font-color);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                    .st1 {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                        fill: var(--font-color);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                    .st2 {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                        fill: var(--font-color);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                    .st3 {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                        fill: var(--font-color);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                    .st4 {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                        fill: var(--font-color);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                    }
+</style><g class="" style="transform-origin: 50px 50px 0px; animation-duration: 1s; animation-delay: -0.928571s;"><polygon class="st1" points="88.05,51.95 77.903,41.803 50,69.707 50,90 " fill="var(--font-color)" style="fill: var(--font-color)"></polygon></g><g class="" style="transform-origin: 50px 50px 0px; animation-duration: 1s; animation-delay: -0.857143s;"><polygon class="st1" points="88.05,20.147 77.903,10 50,37.903 50,58.197 " fill="var(--font-color)" style="fill: var(--font-color)"></polygon></g><g class="" style="transform-origin: 50px 50px 0px; animation-duration: 1s; animation-delay: -0.785714s;"><polygon class="st0" points="11.95,51.95 50,90 50,69.707 22.097,41.803 " fill="var(--font-color)" style="fill: var(--font-color);"></polygon></g><g class="" style="transform-origin: 50px 50px 0px; animation-duration: 1s; animation-delay: -0.714286s;"><polygon class="st0" points="11.95,20.147 50,58.197 50,37.903 22.097,10 " fill="var(--font-color)" style="fill: var(--font-color);"></polygon></g><metadata xmlns:d="https://loading.io/stock/" class="" style="transform-origin: 50px 50px 0px; animation-duration: 1s; animation-delay: -0.642857s;">
+<d:name class="" style="transform-origin: 50px 50px 0px; animation-duration: 1s; animation-delay: -0.571429s;">down</d:name>
+<d:tags class="" style="transform-origin: 50px 50px 0px; animation-duration: 1s; animation-delay: -0.5s;">south,download,bottom,direction,way,dart,boomerage,chevron,continue,down,arrow</d:tags>
+<d:license class="" style="transform-origin: 50px 50px 0px; animation-duration: 1s; animation-delay: -0.428571s;">cc-by</d:license>
+<d:slug class="" style="transform-origin: 50px 50px 0px; animation-duration: 1s; animation-delay: -0.357143s;">ojjhtd</d:slug>
+</metadata></g></g><style type="text/css" class="" style="transform-origin: 50px 50px 0px; animation-duration: 1s; animation-delay: -0.285714s;">
+                       path, ellipse, circle, rect, polygon, polyline, line {
+                           stroke-width: 0;
+                       }
+
+                       @keyframes ld-slide-px-ttb {
+                           0%, 100% {
+                               animation-timing-function: cubic-bezier(0.5, 0, 1, 0.5);
+                           }
+
+                           50% {
+                               animation-timing-function: cubic-bezier(0, 0.5, 0.5, 1);
+                           }
+
+                           0% {
+                               -webkit-transform: translate(0, 0);
+                               transform: translate(0, 0);
+                           }
+
+                           49.9% {
+                               -webkit-transform: translate(0, 100px);
+                               transform: translate(0, 100px);
+                           }
+
+                           50% {
+                               -webkit-transform: translate(0, -100px);
+                               transform: translate(0, -100px);
+                           }
+
+                           100% {
+                               -webkit-transform: translate(0, 0);
+                               transform: translate(0, 0);
+                           }
+                       }
+
+                       @-webkit-keyframes ld-slide-px-ttb {
+                           0%, 100% {
+                               animation-timing-function: cubic-bezier(0.5, 0, 1, 0.5);
+                           }
+
+                           50% {
+                               animation-timing-function: cubic-bezier(0, 0.5, 0.5, 1);
+                           }
+
+                           0% {
+                               -webkit-transform: translate(0, 0);
+                               transform: translate(0, 0);
+                           }
+
+                           49.9% {
+                               -webkit-transform: translate(0, 100px);
+                               transform: translate(0, 100px);
+                           }
+
+                           50% {
+                               -webkit-transform: translate(0, -100px);
+                               transform: translate(0, -100px);
+                           }
+
+                           100% {
+                               -webkit-transform: translate(0, 0);
+                               transform: translate(0, 0);
+                           }
+                       }
+
+                       .ld.ld-slide-px-ttb {
+                           -webkit-animation: ld-slide-px-ttb 1s infinite;
+                           animation: ld-slide-px-ttb 1s infinite;
+                       }
+</style></svg>
+                </svg>
+
+            </div>
+
+            {{#js_if "controller.layout.get().background_image_local != null"}}
+            <style>
+
+                .navbartop {
+                    background-color: var(--light-color) !important;
+                    color: var(--font-color) !important;
+                }
+            </style>
+            {{/js_if}}
+        </div>
+
+
+        {{#js_if "controller.login.get() != null && (controller.login.get().perfil_id == 5 || controller.login.get().perfil_id == 3)"}}
+        <div class="conta">
+            <span class="icon-coin-dollar">
+
+            </span>
+            VER CONTA
+        </div>
+        {{else}}
+        <div class="cover-background row" style="background-image:url({{js "controller.layout.get().logo"}})">
+
+            <div class="categoria-telefone col-33">
+                <a style="
+    line-height: 15px;
+    font-weight: 700;    line-height: 18px;" target="_blank" id="whatsapp" class="link external text_contact"
+                   {{#js_if "this.is_aberto == true"}}
+                   href="{{this.url_phone}}"
+                   {{else}}
+                   onclick="myApp.alert('Estamos fechados no momento', 'Oops')"
+                   {{/js_if}}>
+                    <span class="icon-whatsapp">
+                    </span>
+                    <span class="whatsapp_text">
+                        {{#js_if "this.celular != null && this.celular != ''"}}
+                        <div style="font-size: 18px; margin-top: 13px">WHATSAPP</div>
+                        <div id="categoria-telefone" style="font-weight:100">{{celular}}</div>
+                        {{else}}
+                        <div style="font-size: 17px; margin-top: 12px">TELEFONE</div>
+                        <div id="categoria-telefone" style="font-weight:100">{{telefone}}</div>
+                        {{/js_if}}
+                    </span>
+                </a>
+            </div>
+
+            <div style="height: 60px; width: 100%; cursor: pointer " onclick="$('.navbartop').slideDown('slow', function () { $('[navbartopopen]').attr('navbartopopen', $('.navbartop').is(':visible').toString()); });">
+
+            </div>
+
+            <div class="link open-panel col-33 menususpenso">
+
+                <i class="f7-icons size-50" style="    float: right;
+    font-size: 35px;
+        padding: 5px 5px 0px 0px;
+    margin: 0px;">person_fill</i>
+                <span class="bemvindo">
+                    <div style="font-size: 17.5px;
+    font-weight: 600;">BEM-VINDO</div>
+                    {{#js_if "controller.login.get()==null"}}
+                    <div style="font-size: 8px;">ENTRAR OU CADASTRAR</div>
+                    {{else}}
+                    <div style="font-size: 10px;text-transform: uppercase;letter-spacing: 1px;">{{js "controller.login.get().nome"}}</div>
+                    {{/js_if}}
+                </span>
+            </div>
+        </div>
+        {{/js_if}}
+
+
+
+        <div href="#" class=" background-creait" style="height:45px">
+            {{#js_if "controller.login.get() != null && (controller.login.get().perfil_id == 5 || controller.login.get().perfil_id == 3)"}}
+            <div class="categoria_titulo_mesa" style="padding:9px">
+                <span class="icon-spoon-knife" style="font-size:25px; float:left"></span>
+                <span style="    margin-top: -5px;
+        margin-left: 10px; font-size:25px; float:left"><span class="mesaid"></span></span>
+
+                {{#js_if "controller.login.get() != null && controller.login.get().perfil_id == 5"}}
+
+                <form data-search-list=".categoria_produtos" data-search-in=".titulo_produto" class="searchbar searchbar-init" style="    float: right;
+        width: 50%;
+        border: 0px;
+        color: transparent;
+        margin-top: -9px;
+        height: 45px;
+        margin-right:-14px;">
+                    <div class="searchbar-input">
+                        <input type="search" placeholder="Buscar" style="background-position: right; text-align:right; padding-left:0px">
+                    </div>
+                </form>
+
+                {{/js_if}}
+                {{#js_if "controller.login.get() != null && controller.login.get().perfil_id == 3"}}
+                <div onclick="creait.post('notificacao', { descricao: 'Mesa 1', titulo: 'Chamando Garçom' }, function (a) { myApp.alert('Em instantes um garçom irá lhe atender', 'Aguarde'); creait.loader(false); })" style="padding: 0px 0px 0px 8px; margin-top:-2px;cursor:pointer;
+        float: right;
+    ">
+                    <img src="icons/garcom.svg" class="animated pulse" style="width:30px;" />
+
+                    <span style="float:right; margin-top: 2px;float: right;text-align: right;line-height: 15px;">
+                        <div style="font-size:15px">Chamar</div>
+                        <div style="font-size:12px">Garçom</div>
+                    </span>
+                </div>
+                {{/js_if}}
+
+
+            </div>
+            {{else}}
+
+            {{#js_if "false && controller.layout.get().caracteristicas.length > 0"}}
+
+            <a href="#" class="open-popover" style="margin: 10px; font-size:20px;    width: calc(100% - 15px);
+            line-height: 42px;">
+                <svg style="float: left;
+            height: 45px;
+        " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-heart"><g transform="translate(50 50)"><path d="M40.7-34.3c-9.8-9.8-25.6-9.8-35.4,0L0-29l-5.3-5.3c-9.8-9.8-25.6-9.8-35.4,0l0,0c-9.8,9.8-9.8,25.6,0,35.4l5.3,5.3L-23,18.7l23,23l23-23L35.4,6.3L40.7,1C50.4-8.8,50.4-24.6,40.7-34.3z" fill="#f44336" transform="scale(0.646201 0.646201)"><animateTransform attributeName="transform" type="scale" calcMode="spline" values="0.68;0.8;0.6000000000000001;0.7200000000000001;0.68;0.6400000000000001" keyTimes="0;0.05;0.39;0.45;0.6;1" dur="1s" keySplines="0.215 0.61,0.355 1;0.215 0.61,0.355 1;0.215 0.61,0.355 1;0.215 0.61,0.355 1;0.215 0.61,0.355 1" begin="0s" repeatCount="indefinite"></animateTransform></path></g></svg>
+                <div style="    line-height: 17px;
+            float: left;
+            /* margin-left: 60px; */
+            font-size: 14px;
+            margin-top: 7px;
+            font-weight: 700;">
+                    NÍVEL DO<br />CUIDADO
+                </div>
+            </a>
+
+            <!-- Popover -->
+            <div class="popover demo-popover">
+                <div class="popover-inner">
+                    <div class="list-block" style="    font-size: 14px;">
+                        <ul>
+                            <li>
+                                {{#each caracteristicas}}
+                                <a href="#" filtrar_caracteristica="{{id}}" class="item-content item-link">
+                                    {{nome}}
+
+                                    <span style="margin: 20px;
+            font-size: 22px;
+            float: right; color: #4caf50;" selecionado="{{selecionado}}" class="icon-checkmark"></span>
+                                    <span style="margin: 20px;
+            font-size: 22px;
+            float: right; color: #f44336;" selecionado="{{selecionado}}" class="icon-cross"></span>
+                                </a>
+                                {{/each}}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            {{else}}
+
+            {{#js_if "biblioteca.get('facebook') == true"}}
+            <button onclick="" style="float:left; border: none; background: none; color: white; padding: 0; outline: 0;" linkFb='https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Ffacebook.com/{{js "controller.layout.get().place_id"}}%2F&amp;src=sdkpreparse' id="linkFb" class="fb-xfbml-parse-ignore link external">
+                <span class="icon-facebook2" style="float: left;
+            font-size: 30px;
+                margin: 8px 10px 0px 6px;"></span>
+                <div class="compartilhar">Compartilhar</div>
+                </button>
+                {{/js_if}}
+
+                {{#js_if "biblioteca.get('facebook') != true"}}
+                <span style="float:left; line-height:16px; margin-top:1px">
+                    <span class="icon-phone" style="float: left;
+            margin-right: 10px;
+            font-size: 27px;
+            margin: 8px;"></span>
+                    <a href="tel:{{telefone}}" class="link external" style="float:left">
+                        <div style="font-size: 14px; margin-top: 7px;">TELEFONE</div>
+                        <div id="categoria-telefone" style="font-weight:100; font-size:12px">{{telefone}}</div>
+                    </a>
+                </span>
+                {{/js_if}}
+
+                {{/js_if}}
+
+                {{#if is_aberto}}
+                <span class="left endereco_link">
+                    <div>
+                        <img src="icons/animated/{{cor_tema}}/location.svg" style="    width: 35px;
+            float: right;
+            margin-top: -4px;
+            height:40px;
+            margin: -4px 7px 0px -4px;" />
+
+                        <div style="    line-height: 15px; float:right;
+            font-size: 11px;">
+                            <div style="font-size: 12px;
+            font-weight: 700">{{valor_entrega}}</div>
+                            <div id="endereco" style="font-size:12px"></div>
+                        </div>
+                    </div>
+
+                </span>
+
+                {{else}}
+                <span style="    right: 10px;
+        color: var(--primary-font-color);
+        text-align: right;
+        padding-right: -75px;
+        margin-right: 8px;
+        float: right;
+        margin-top: 6px;
+        line-height: 18px;">
+                    <div style="font-weight:bold; font-size:12px">FECHADO NO MOMENTO</div>
+                    <div>{{horario_abertura}}</div>
+                </span>
+                {{/if}}
+                {{/js_if}}
+</div>
+
+
+
+
+
+
+
+
+
+
+        <div class="toolbar toolbar-bottom panel_carrinho css3-notification">
+            <div class="toolbar-inner">
+                <div onclick="creait.redirect('carrinho')" class="link" style="width:100%">
+                    <div style="height: 65px;">
+                        <img src="icons/animated/{{cor_tema}}/sale.svg" style="width: 45px;
+    margin-top: 10px; float:left" />
+
+
+                        <span class="finalizarcompra" style="float:left">
+                            <span line-height:20px;">{{js "biblioteca.get('label_finalizar_compra')"}}</span><br />
+
+                            {{#js_if "biblioteca.get('quantidade', true)"}}
+                            {{carrinho_quantidade}}
+                            {{/js_if}} 
+                            {{js "biblioteca.get('label_horas_adicionadas')"}}
+                        </span>
+                        <span class="total" formatMoney>
+                            {{carrinho_total}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="searchbar-overlay"></div>
+        <!-- This block will be displayed if nothing found -->
+        <div class="content-block searchbar-not-found">
+            <div class="content-block-inner">:( não encontrado</div>
+        </div>
+
+        <div class="list-block list-block-search searchbar-found ul_categoria {{js "biblioteca.get('categoria', (controller.login.get() != null && controller.login.get().perfil_id == 5 ? '' : 'full'))"}}" quantidade="{{@root.categoria_count}}">
+            <ul style="height:calc(100% - 2px)">
+
+                <li id="novo_tipo" onclick="window.location='/tipos'" style="    width: 100%;
+    border:  var(--textbox-color) dashed 1px;
+    cursor: pointer;
+    background-color:  var(--textbox-font-color);
+    color: var(--textbox-color);
+    text-align: center;
+    height: auto !important;
+    padding: 10px;font-size: 24px;">
+                    <b ><span class="icon-pencil2" style="margin-right:10px"></span>EDITAR CATEGORIAS</b>
+                    <div style=" font-size: 12px">Clique aqui para Incluir, editar ou excluir suas categorias</div>
+                </li>
+                {{#each tipos}}
+                <li class="categoriali swipeout">
+
+                    <div categoria_id="{{id}}" style="margin-bottom: 2px; height:100%" class="swipeout-content">
+                        <div class="restaurant-img" id="bg{{id}}" style="line-height:0px;background-image: url({{background_itype}},{{background}});background-position: center;">
+
+                            <div class="text-white fontextra item-title categoria_item_text" style="display: flex;
+    align-items: center;
+    justify-content: center;">-{{nome}}-</div>
+                        </div>
+                    </div>
+                    <div class="swipeout-actions-right">
+                        <a href="/tipos/edit/{{id}}" class="link external" target="_blank" style="background-color:var(--primary-color)">Editar</a>
+                    </div>
+                </li>
+
+                {{/each}}
+            </ul>
+        </div>
+
+        <div class="list-block list-block-search searchbar-found categoria_produtos categoria_{{js "biblioteca.get('categoria', (controller.login.get() != null && controller.login.get().perfil_id == 5 ? '' : 'full'))"}}" id="categoria_produtos">
+            <ul>
+                {{#each tipos}}
+                {{#each produto}}
+                <!--#js_if "@index <= Math.round((../../../tipos_length > 18) ? 18 : (../../../tipos_length)) / 18"-->
+
+                <li caracteristicas="{{caracteristica_ids}}" class="produtoli {{js "biblioteca.get('css_produto')"}} grid-item-m" link="{{redirect}}" produto_id="{{id}}" destaque="{{destaque}}"
+                    {{#js_if "this.icone == ''"}}
+                    noimage
+                    {{/js_if}}>
+
+                    {{#js_if "this.icone != ''"}}
+                    <div id="bg{{id}}" style="background:url({{icone}})" class="image_cart">
+                    </div>
+                    {{/js_if}}
+
+                    <div class="titulo_produto">
+                        {{nome}}
+                        <div style="display:none">{{id}} {{descricao}}</div>
+                    </div>
+                    <div style="padding: 0px 10px;">
+                        {{descricao}}
+                    </div>
+                    {{#js_if "this.caracteristicas.length > 0"}}
+                    <b style="font-size:8px; color:rgb(244, 67, 54)">
+                        {{../nome}}
+                    </b>
+                    <b style="font-size:8px; color:rgb(244, 67, 54)">
+                        <span class="icon-heart">
+
+                        </span>NÍVEL DE CUIDADOS ACEITOS
+                    </b>
+                    <div style="font-size: 10px">
+                        {{#each caracteristicas}}
+                        {{nome}}
+                        {{/each}}
+                    </div>
+                    {{/js_if}}
+                    <span class="link-deeporange produtoli_valor" formatMoney>{{preco}}</span>
+
+
+                    <div class="content_estrela" style="clear:both">
+                        {{estrela}}
+                    </div>
+
+                </li>
+
+                {{/each}}
+                {{/each}}
+            </ul>
+        </div>
+
+        <script>
+            creait.resize();
+        </script>
+    </div>
+</div>

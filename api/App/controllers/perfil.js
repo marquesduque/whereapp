@@ -1,0 +1,196 @@
+﻿
+controller.perfil = {
+    init: function (events) {
+        events(controller.login.get(), function (content) {
+
+            var picker = myApp.picker({
+                input: '#picker_estados',
+                rotateEffect: true,
+                cols: [
+                    {
+                        values: ['', 'AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MT', 'MS', 'MG', 'PA', 'PB', 'PR', 'PE', 'PI', 'RJ', 'RN', 'RS', 'RO', 'RR', 'SC', 'SP', 'SE', 'TO']
+                    }
+                ],
+                toolbarTemplate:
+                '<div class = "toolbar">' +
+                '<div class = "toolbar-inner">' +
+                '<div class = "left">' +
+                '<a href = "#" class = "link close-picker"></a>' +
+                '</div>' +
+                '<div class = "center"></div>' +
+                '<div class = "">' +
+                '<a href = "#" class = "link close-picker">Done</a>' +
+                '</div>' +
+                '</div>' +
+                '</div>',
+                onClose: function () {
+                },
+                onOpen: function () {
+                }
+            });
+            $('#picker_estados').click(function () {
+                picker.open();
+            });
+
+            $('input[type="file"]').each(function () {
+                this.addEventListener("change", readFile3, false);
+            });
+
+            $('#foto_usuario').click(function () {
+                $('#pega_foto').click();
+            });
+
+            $$("#btn_sign_up").click(function () {
+
+                $('#nome_input').toggleInputError($('#nome_input').val() == '', 'Informe o seu nome');
+                $('#rg_input').toggleInputError($('#rg_input').val() == '', 'Informe o seu RG');
+                $('#celular_input').toggleInputError($('#celular_input').val() == '', 'Informe o seu Celular');
+                $('#dataN_input').toggleInputError($('#dataN_input').val() == '', 'Informe a sua Data de Nascimento');
+
+                $('#email_input').toggleInputError($('#email_input').val() == '' || !creait.isEmail($('#email_input').val()), 'Email inválido');
+                $('#password_input').toggleInputError($('#nome_input').val() == '' || $('#password_input').val().length < 6, 'A senha deve ter no minimo 6 caracteres');
+
+                $('#password_confirmar_input').toggleInputError($('#password_input').val() != $('#password_confirmar_input').val(), 'A confirmação da senha esta errada');
+                $('#cpf_input').toggleInputError(validarCPF($("#cpf_input").val()) == false, 'CPF Inválido');
+
+                $('#cep_input').toggleInputError($("#cep_input").val() == false, 'Informe o seu CEP');
+                $('#pais_input').toggleInputError($("#pais_input").val() == false, 'Informe o pais');
+                $('#picker_estados').toggleInputError($("#picker_estados").val() == false, 'Selecione o estado');
+                $('#cidade').toggleInputError($("#cidade").val() == false, 'Informe a cidade');
+                $('#bairro_input').toggleInputError($("#bairro_input").val() == false, 'Informe o bairro');
+                $('#rua_input').toggleInputError($("#rua_input").val() == false, 'Inform a rua');
+                $('#numero_input').toggleInputError($("#numero_input").val() == false, 'Informe o numero');
+                $('#password_sa').toggleInputError($("#password_sa").val() != controller.login.get().senha, 'Senha Incorreta');
+                $('#password_sn').toggleInputError($("#password_sn").val() != $("#password_csn").val(), 'As senhas não coincidem');
+
+                $('#pushC').val(pushToken);
+                $('#platC').val(plataforma);
+
+                if ($("#senha_antiga").val() != "") {
+                    if ($('#password_sa').val() == controller.login.get().senha) {
+                        if ($("#password_sn").val() == $("#password_sn").val() && $("#password_sn").val() != ""){
+                            $("#senha").val($("#password_sn").val());
+                        }
+                    }
+                }
+
+                if ($('formcadastro .has-error').length == 0) {
+                    $("#complemento_input").val() == "" ? $("#complemento_input").val("nt") : $("#complemento_input").val();
+                    creait.post('pessoas', myApp.formToJSON("formcadastro"), function (data) {
+
+                        if (data.erro == null) {
+                            controller.login.set(data);
+                            creait.redirect("categoria");
+                        }
+                        else {
+                            myApp.alert(data.erro, "Atenção");
+                            creait.loader(false);
+                        }
+                    });
+                }
+            });
+        });
+    }
+};
+
+function validarCPF(cpf) {
+    cpf = cpf.replace(/[^\d]+/g, '');
+    if (cpf == '') return false;
+    // Elimina CPFs invalidos conhecidos	
+    if (cpf.length != 11 ||
+        cpf == "00000000000" ||
+        cpf == "11111111111" ||
+        cpf == "22222222222" ||
+        cpf == "33333333333" ||
+        cpf == "44444444444" ||
+        cpf == "55555555555" ||
+        cpf == "66666666666" ||
+        cpf == "77777777777" ||
+        cpf == "88888888888" ||
+        cpf == "99999999999")
+        return false;
+    // Valida 1o digito	
+    add = 0;
+    for (i = 0; i < 9; i++)
+        add += parseInt(cpf.charAt(i)) * (10 - i);
+    rev = 11 - (add % 11);
+    if (rev == 10 || rev == 11)
+        rev = 0;
+    if (rev != parseInt(cpf.charAt(9)))
+        return false;
+    // Valida 2o digito	
+    add = 0;
+    for (i = 0; i < 10; i++)
+        add += parseInt(cpf.charAt(i)) * (11 - i);
+    rev = 11 - (add % 11);
+    if (rev == 10 || rev == 11)
+        rev = 0;
+    if (rev != parseInt(cpf.charAt(10)))
+        return false;
+    return true;
+}
+
+function readFile3() {
+
+    var control = this;
+    if (this.files && this.files[0]) {
+        var files = this.files[0];
+        var FR = new FileReader();
+        var rABS = true; // true: readAsBinaryString ; false: readAsArrayBuffer
+        FR.onload = function (e) {
+
+            var img = new Image();
+
+            img.src = e.currentTarget.result;
+
+            img.onload = function () {
+                var MAX_WIDTH = img.width;
+                var MAX_HEIGHT = img.height;
+
+                var porcent = ((800 * 100) / img.height);
+                MAX_WIDTH = img.width * (porcent / 100);
+                MAX_HEIGHT = img.height * (porcent / 100);
+
+                var width = img.width;
+                var height = img.height;
+
+                if (width > height) {
+                    if (width > MAX_WIDTH) {
+                        height *= MAX_WIDTH / width;
+                        width = MAX_WIDTH;
+                    }
+                } else {
+                    if (height > MAX_HEIGHT) {
+                        width *= MAX_HEIGHT / height;
+                        height = MAX_HEIGHT;
+                    }
+                }
+
+                var canvas = document.createElement("canvas");
+                canvas.width = width;
+                canvas.height = height;
+                canvas.getContext("2d").drawImage(this, 0, 0, width, height);
+
+
+                var dataUrl = canvas.toDataURL();
+                $("#foto_str").val(dataUrl.split(',')[1]);
+
+                $("#foto_usuario").css('background-image', 'url(' + dataUrl + ')');
+
+            };
+
+        };
+
+        FR.readAsDataURL(this.files[0]);
+    }
+    else {
+        $($(control).attr('source')).val('');
+        alert("O arquivo é muito grande. Favor selecionar um arquivo com no máximo 5 mb");
+    }
+
+    if ((this.files[0].type != "image/jpeg") && (this.files[0].type != "image/png")) {
+        $($(control).attr('source')).val('');
+        alert("O Tipo de arquivo selecionado é inválido, selecione um formato válido (jpeg, png)");
+    }
+}
+

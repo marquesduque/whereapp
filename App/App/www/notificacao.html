@@ -1,0 +1,40 @@
+﻿<div class="pages">
+    <div data-page="meuItem" class="page">
+        <div class="navbar background-creait">
+            <div class="navbar-inner margin-bottom-20">
+                <div class="left"><a class="back link" onclick="creait.redirect('categoria')"> <i class="f7-icons icone-voltar" style="margin-right: 10px;">chevron_left</i></a></div>
+                <div class="center">Notificação</div>
+            </div>
+        </div>
+        <div class="page-content text-center" style="margin-top: 50px;">
+            <!--<form data-search-list=".list-block-search" data-search-in=".item-title" style="position:initial" class="searchbar searchbar-init">
+                <div class="searchbar-input">
+                    <input type="search" placeholder="Buscar">
+                    <a href="#" class="searchbar-clear"></a>
+                </div>
+                <a href="#" class="searchbar-cancel">cancelar</a>
+            </form>-->
+            <div class="list-block list-block-search list searchbar-found" style="height: calc(100% - 50px);">
+                <ul style="height: auto;">
+                    {{#each notificacoes}}
+                    <li class="produtoli grid-item-m swipeout notify" mensagem="{{mensagem}}" notificacao_id="{{id}}" style="position: relative;">
+                        <div class="lido{{lido}}">
+
+                        </div>
+                        <div class="item-title-row swipeout-content">
+
+                            <div class="titulo_produto item-title" style="text-align: right;">
+                                {{data}}
+                            </div>
+                            <div style="padding: 0px 10px; text-align: left;">
+                                {{mensagem_previa}}
+                            </div>
+                        </div>
+                        <div style="clear:both"></div>
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

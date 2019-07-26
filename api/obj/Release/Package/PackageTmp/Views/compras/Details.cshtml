@@ -1,0 +1,216 @@
+﻿@model Site.Models.Find<api.Controllers.comprasController.find>
+
+@{
+    ViewBag.Title = "Details";
+}
+<style>
+    html, body, .wrapper, .content-wrapper {
+        height: 100%;
+    }
+</style>
+<div style="    margin-top: -42px;
+    margin-left: 27px;
+    z-index: 999999; position:absolute">
+    @if (new api.Models.db().filial.Where(c => c.place_id == api.Models.db.place.place_id).Count() > 1)
+    {
+        <div class="form-group col-md-3" style="
+    width: 200px;
+    min-width:200px; float:left">
+            <select class="form-control select2" source="#filial_id" id="sel_filial" data-placeholder="" style="width: 100%;" callback="redirect_filial">
+                <option value="null">Selecione uma filial</option>
+                @foreach (var item in new api.Models.db().filial.Where(c => c.place_id == api.Models.db.place.place_id))
+                {
+                    <option name="cliente" value="@item.id">@(item.nome)</option>
+                }
+            </select>
+            <script>
+        function redirect_filial(id) {
+            if (id != @(Request.QueryString["filial_id"] == null || Request.QueryString["filial_id"] == "" ? "0" : Request.QueryString["filial_id"])) {
+                window.location = '/compras/details?filial_id=' + id;
+            }
+        }
+            </script>
+            <input id="filial_id" name="filial_id" value="@(Request.QueryString["filial_id"])" type="hidden" />
+        </div>
+    }
+    else
+    {
+        <input id="filial_id" name="filial_id" value="@(new api.Models.db().filial.FirstOrDefault(c => c.place_id == api.Models.db.place.place_id).id)" type="hidden" />
+    }
+
+    <div style="z-index: 999999; width:60px; float:left;    margin-left: 15px;">
+
+        <select class="form-control select2" source="#qtd_kds" id="qtd_kds" data-placeholder="" style="width: 100%;" callback="MudarLayout">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3" selected="selected">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+        </select>
+        <input type="hidden" id="qtd_kds" name="qtd_kds" value="3" />
+        <script>
+            function MudarLayout() {
+                if ($('#qtd_kds option:selected').attr('value') == null || $('#qtd_kds option:selected').attr('value') == "null") {
+                    $('#TelaDetails ul li').attr('tamanho', localStorage["qtd_kds"]);
+                }
+                else {
+                    localStorage["qtd_kds"] = $('#qtd_kds').val();
+                    $('#TelaDetails ul li').attr('tamanho', $('#qtd_kds').val());
+                }
+            }
+        </script>
+
+    </div>
+
+    <div style="z-index: 999999; width:60px; float:left; margin-left:5px">
+
+        <select class="form-control select2" source="#row_kds" id="row_kds" data-placeholder="" style="width: 100%;" callback="MudarRow">
+            <option value="1">1</option>
+            <option value="2" selected="selected">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+        <input type="hidden" id="row_kds" name="row_kds" value="2" />
+        <script>
+            function MudarRow() {
+                if ($('#row_kds option:selected').attr('value') == null || $('#row_kds option:selected').attr('value') == "null") {
+                    $('#TelaDetails ul li').attr('row', localStorage["row_kds"]);
+                }
+                else {
+                    localStorage["row_kds"] = $('#row_kds').val();
+                    $('#TelaDetails ul li').attr('row', $('#row_kds').val());
+                }
+            }
+        </script>
+
+    </div>
+</div>
+@if (new api.Models.db().filial.Where(c => c.place_id == api.Models.db.place.place_id).Count() == 1 || (Request.QueryString["filial_id"] != null && Request.QueryString["filial_id"] != ""))
+{
+    if (new api.Models.db().tipo_de_preparo.Count(c => c.place_id == api.Models.db.place.place_id) != 0)
+    {
+        <div id="boxPreparo" style="padding:1px">
+            <div class="row" style="background-color:var(--primary-color)!important;color:var(--primary-font-color)!important; height:80px; padding:5px; margin:5px; margin-bottom:0px ">
+
+                <div class="col-xs-10" style="padding-left:0px;">
+
+                    <span onclick="BuscaCards();" class="glyphicon glyphicon-repeat" style="float:left; cursor:pointer; font-size:30px; margin:5px; margin-top:25px;">
+                        <span class="contagem" style="position: absolute;
+    font-size: 10px;
+    margin-top: -18px;
+    text-align: center;
+    width: 30px;"></span>
+                    </span>
+                    <div style="float:right; width:calc(100% - 45px)">
+                        <label class="control-label" base_library="api.Models.horario.tipo_de_preparo">Lista de KDS</label>
+                        <select class="form-control select2" source="#tipo_de_preparo" id="drop_cliente" data-placeholder="" style="width: 100%;" callback="MudaPreparo">
+                            <option value="null" name="cliente">Todos os KDS</option>
+                            @foreach (var item in new api.Models.db().tipo_de_preparo.Where(c => c.place_id == api.Models.db.place.place_id))
+                            {
+                                <option name="cliente" value="@item.id">@item.nome</option>
+                            }
+                        </select>
+                        <input type="hidden" id="tipo_de_preparo" name="tipo_de_preparo" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    <div id="TelaDetails" class="card-columns" style="display:inline-block;width: 100%; padding:0px">
+        <ul id="card_list_1"></ul>
+        <ul id="card_list_2"></ul>
+        <ul id="card_list_3"></ul>
+
+
+    </div>
+
+    @*SCRIPT DO CARD*@
+    <script id="card_template" type="text/template">
+
+        <li>
+            <div id="loader_card" class="loader" style="left: 230px;
+    top: 50px;"><div class="uil-flickr-css" style="transform:scale(0.6); margin:0 auto;top: 50%; margin-top:-60px;"><div></div><div></div></div></div>
+            <div style="min-height:60px;" id="fundo">
+                <span style="border-radius:2px; background-color: rgba(0, 0, 0, 0.46); float: right; max-width:70px; text-align: center; padding:5px ; color: white; font-weight: bold;line-height: 10px;">
+
+                    <div id="tempoDuracao" style="font-size:12px; line-height:14px;"></div>
+                </span>
+                <div style="width:100%; margin-top: 0px;padding: 10px;color: #fff; height:94px">
+                    <h2 id="id_compra"></h2>
+                    <h2 id="nome_cliente" style="font-size:14px"></h2>
+                    <input type="hidden" id="arr_pedidos" value="[]" />
+                    <h2 id="telefone_cliente"></h2>
+                    <h2 id="retirada"></h2>
+                </div>
+
+            </div>
+            <div class="card-block" style="margin-bottom:0px; height:calc(100% - 135px); overflow:auto">
+
+
+                <div style="clear:both;"></div>
+
+                <div id="pedidos"></div>
+
+                <p id="pago"></p>
+
+                <hr>
+                <div class="pago" style="display:none;">Pago: <input name="pago" min="0" type="text" mask="money" style="width:30%; color:#000;"></div>
+
+                <div class="text-right">
+
+                    <span style="float:left;    font-weight: 700;
+    font-size: 15px;" id="total"></span>
+                </div>
+                <div style="clear:both;"></div>
+            </div>
+            <div>
+                <a id="downgrade" style="float:left;background-color:#fff;color:#fff; font-weight:bold;padding: 10px 0px ;width: 40%;text-align:center; cursor:pointer">Voltar</a>
+                <a id="cancel" style="float:left;background-color:#484343;color:#fff; font-weight:bold;padding: 10px 0px ;width: 40%;text-align:center; cursor:pointer">Cancelar</a>
+                <a id="upgrade" style="float:right;background-color:#fff; color:#fff; font-weight:bold;padding: 10px 0px ;width: 60%;text-align:center; cursor:pointer">Preparar</a>
+            </div>
+        </li>
+    </script>
+
+    <script id="pedidos_template" type="text/template">
+        <div>
+            <div style="float:left;width:100%;">
+                <span id="circle" style="float: left; padding: 6px; border-radius: 10px; margin: 2px; margin-right: 5px;"></span>
+                <h2 id="pedido_principal" style="font-size:14px;float:left;"></h2>
+            </div>
+            <div style="float:left;width:100%;">
+                <div style="font-style: italic;" id="observacao"></div>
+                <p id="complementos" style="font-size:12px;"></p>
+                <div id="progressBar" style="display:none;" class="progressBarDiv"> <div class="bar"></div> </div>
+                <div style="font-style: italic;" id="duracao"></div>
+                <p id="preco_pedido"></p>
+            </div>
+        </div>
+
+
+    </script>
+
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+        <script src="~/Scripts/admin/compra.js"></script>
+
+
+        <script>
+
+            $(document).ready(function () {
+
+                BuscaCards();
+
+            }); //document.ready
+
+
+        </script>
+
+
+
+
+    }
+}
+

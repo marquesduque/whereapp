@@ -1,0 +1,264 @@
+﻿
+@model Site.Models.Find<api.Controllers.enderecosController.find>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        <a href="@Url.Action("Create")" class="btn btn-info" base_library="api.Models.endereco.library_create"><i class="glyphicon glyphicon-plus" style="margin-right:10px"></i>Criar Novo</a>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#" base_library="api.Models.endereco.library_bc_1"><i class="fa fa-newspaper-o"></i>Listar</a></li>
+        <li class="active"><a href="@Url.Action("index")" base_library="api.Models.endereco.library_bc_list">Index</a></li>
+    </ol>
+</section>
+
+<section class="content">
+
+
+
+
+
+     <form ajax="@Url.Action("Find")" table="tbl">
+        <input type="hidden" id="Page" name="Page" value="0" />
+
+		<div class="box box-default">
+			<div class="box-header with-border">
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.endereco.cep" >cep</label>
+            
+									@Html.TextBoxFor(model => model.Filter.cep, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.endereco.street" >street</label>
+            
+									@Html.TextBoxFor(model => model.Filter.street, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.endereco.number" >number</label>
+            
+									@Html.TextBoxFor(model => model.Filter.number, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.endereco.complement" >complement</label>
+            
+									@Html.TextBoxFor(model => model.Filter.complement, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.endereco.city" >city</label>
+            
+									@Html.TextBoxFor(model => model.Filter.city, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.endereco.district" >district</label>
+            
+									@Html.TextBoxFor(model => model.Filter.district, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.endereco.state" >state</label>
+            
+									@Html.TextBoxFor(model => model.Filter.state, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.endereco.country" >country</label>
+            
+									@Html.TextBoxFor(model => model.Filter.country, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.endereco.lat" >lat</label>
+            
+									@Html.TextBoxFor(model => model.Filter.lat, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.endereco.lng" >lng</label>
+            
+									@Html.TextBoxFor(model => model.Filter.lng, new { placeholder = "", @class = "form-control", maxLength = "150", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.endereco.ultimo_pedido" >ultimo_pedido</label>
+            
+									@Html.TextBoxFor(model => model.Filter.ultimo_pedido, "{0:dd/MM/yyyy}", new { placeholder = "", @class = "form-control", mask = "{\"value\":\"99/99/9999\", \"placeholder\":\"dd/mm/yyyy\"}", maxLength = "10", onblur = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" })
+				            
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.endereco.pessoa_id" >pessoa_id</label>
+					<select class="form-control select2" source="#Filter_pessoa_id" data-placeholder="" onchange = "$('.tblrow').remove(); $('#Page').val('0'); $(this).closest('form').submit()" style="width: 100%;">
+						<option value="null">Todos</option>
+						@foreach (var item in new api.Models.db().pessoa)
+						{
+							<option value="@item.id">@(item.nome)</option>
+						}
+					</select>
+					@Html.HiddenFor(model => model.Filter.pessoa_id)
+					@Html.ValidationMessageFor(model => model.Filter.pessoa_id)
+				
+
+   </div>
+
+
+
+                <div class="form-group col-md-6">
+					<label class="control-label" style="width:100%" base_library="api.Models.endereco.active" >active</label>
+            
+									<div style="height: 34px; line-height: 30px;">
+						<label style="min-width: 45px;">
+							<input type="checkbox" value="true" name="item_active" class="minimal-green">
+							Sim
+
+						</label>
+						<label style="min-width: 45px;">
+							<input type="checkbox" value="false" name="item_active" class="minimal">
+							Não
+
+						</label>
+						@Html.HiddenFor(model => model.Filter.active, new { icheck = "item_active" })
+					</div>
+                            
+   </div>
+
+		<div class="box-tools pull-right">
+			<button class="btn btn-box-tool" data-widget="collapse">Pesquisa Avançada<i style="margin-left: 10px" class="fa fa-plus-square fa-minus"></i></button>
+		</div>
+	</div>
+	<div class="box-body" style="display:none">
+	</div>
+	<div class="form-group" style="border-top: 1px solid #f4f4f4; padding: 10px">
+		<button href="#" class="btn btn-warning pull-right" type="button" name="btnProcurar" onclick="$('.tblrow').remove(); $('#Page').val('0'); $('[ajax]').submit();"><i class="glyphicon glyphicon-search" style="margin-right: 10px"></i>Procurar</button>
+		<div style="clear: both"></div>
+	</div>
+</div>
+    <div class="table-default scroll">
+        <div class="filter-table" base_library="api.Models.endereco.library_filter"><i class="glyphicon glyphicon-filter"></i>filtros</div>
+		
+            <div class="filter-table" base_library="api.Models.sample.library_report" onclick="fnExcelReport()" style="margin-left:83px; width:110px">
+                <i class="fa fa-file-excel-o"></i>Relatório
+            </div>
+<table  id="tbl"> 
+    <tr>
+        <td base_library="api.Models.endereco.cep">
+            @Html.DisplayNameFor(model => model.Filter.cep)
+        </td>
+        <td base_library="api.Models.endereco.street">
+            @Html.DisplayNameFor(model => model.Filter.street)
+        </td>
+        <td base_library="api.Models.endereco.number">
+            @Html.DisplayNameFor(model => model.Filter.number)
+        </td>
+        <td base_library="api.Models.endereco.complement">
+            @Html.DisplayNameFor(model => model.Filter.complement)
+        </td>
+        <td base_library="api.Models.endereco.city">
+            @Html.DisplayNameFor(model => model.Filter.city)
+        </td>
+        <td base_library="api.Models.endereco.district">
+            @Html.DisplayNameFor(model => model.Filter.district)
+        </td>
+        <td base_library="api.Models.endereco.state">
+            @Html.DisplayNameFor(model => model.Filter.state)
+        </td>
+        <td base_library="api.Models.endereco.country">
+            @Html.DisplayNameFor(model => model.Filter.country)
+        </td>
+        <td base_library="api.Models.endereco.lat">
+            @Html.DisplayNameFor(model => model.Filter.lat)
+        </td>
+        <td base_library="api.Models.endereco.lng">
+            @Html.DisplayNameFor(model => model.Filter.lng)
+        </td>
+        <td base_library="api.Models.endereco.ultimo_pedido">
+            @Html.DisplayNameFor(model => model.Filter.ultimo_pedido)
+        </td>
+        <td base_library="api.Models.endereco.pessoa_id">
+            @Html.DisplayNameFor(model => model.Filter.pessoa_id)
+        </td>
+        <td base_library="api.Models.endereco.active">
+            @Html.DisplayNameFor(model => model.Filter.active)
+        </td>
+    </tr>
+</table>
+</div>
+</form>
+</section>
+
+		<script template="tbl" type="text/template" redirect="@Url.Action("edit")"> 
+
+    <tr class="tblrow" pk="id">
+        <td column="cep">
+        </td>
+        <td column="street">
+        </td>
+        <td column="number">
+        </td>
+        <td column="complement">
+        </td>
+        <td column="city">
+        </td>
+        <td column="district">
+        </td>
+        <td column="state">
+        </td>
+        <td column="country">
+        </td>
+        <td column="lat">
+        </td>
+        <td column="lng">
+        </td>
+        <td column="ultimo_pedido">
+        </td>
+        <td column="pessoa_id">
+        </td>
+        <td column="active">
+        </td>
+       
+    </tr>
+
+
+</script>

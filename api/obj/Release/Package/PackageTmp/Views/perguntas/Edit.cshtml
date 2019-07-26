@@ -1,0 +1,144 @@
+﻿@model api.Models.pergunta
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<section class="content-header">
+    <h1>
+        <a href="@Url.Action("Index")" class="btn btn-warning"><i class="glyphicon glyphicon-chevron-left" style="margin-right: 10px"></i>Voltar</a>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("index")" base_library="api.Models.pergunta.library_bc_1">Listar</a></li>
+        <li class="active" base_library="api.Models.pergunta.library_bc_edit">Editar</li>
+    </ol>
+</section>
+
+
+
+<section class="content">
+    <div class="col-md-12">
+        <div class="alert alert-info col-md-12" role="alert">
+            <i class="glyphicon glyphicon-pencil" style="margin-right: 10px"></i><b base_library="api.Models.pergunta.library_code">Editando Código:</b> <span class="editid">@Model.id</span>
+        </div>
+    </div>
+    <div style="clear: both"></div>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken();
+    @Html.ValidationSummary(true)
+        <div class="alert alert-danger" role="alert" base_library="api.Models.pergunta.library_error_register">
+            Registro não gravado, verificar erro criticado
+        </div>
+
+
+        <fieldset>
+		
+            <div class="col-md-12 bar">
+                <label class="col-md-6" base_library="api.Models.pergunta.library_title"><i class="glyphicon glyphicon-list-alt" style="margin-right: 10px"></i>Dados Pessoais</label>
+            </div>
+        @Html.HiddenFor(model => model.id)
+
+
+            
+       
+<div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.pergunta.nome" >nome</label>
+				
+				<div style="clear: both"></div>
+									@Html.TextBoxFor(model => model.nome, new { placeholder = "", @class = "form-control", maxLength = "150" })
+				                @Html.ValidationMessageFor(model => model.nome)
+            </div>
+
+         
+  
+
+
+            
+       
+<div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.pergunta.descricao" >descricao</label>
+				
+				<div style="clear: both"></div>
+									@Html.TextBoxFor(model => model.descricao, new { placeholder = "", @class = "form-control", maxLength = "150" })
+				                @Html.ValidationMessageFor(model => model.descricao)
+            </div>
+
+         
+  
+
+
+            
+       
+                <div class="form-group col-md-6">
+					<label class="control-label" base_library="api.Models.pergunta.tipo_id" >tipo_id</label>
+					<select class="form-control select2" source="#tipo_id" data-placeholder="" style="width: 100%;">
+                        <option value="null">Selecione um item</option>
+						@foreach (var item in new api.Models.db().tipo.Where(c => c.place_id == api.Models.db.place.place_id).Select(c => new { id = c.id, nome = c.nome }))
+                        {
+							<option value="@item.id">@item.nome</option>
+						}
+					</select>
+					@Html.HiddenFor(model => model.tipo_id)
+					@Html.ValidationMessageFor(model => model.tipo_id)
+				</div>
+         
+  
+
+
+            
+       
+<div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.pergunta.grupo" >grupo</label>
+				
+				<div style="clear: both"></div>
+									@Html.TextBoxFor(model => model.grupo, new { placeholder = "", @class = "form-control", maxLength = "150" })
+				                @Html.ValidationMessageFor(model => model.grupo)
+            </div>
+
+         
+  
+
+
+            
+       
+<div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.pergunta.ordem" >ordem</label>
+				
+				<div style="clear: both"></div>
+									@Html.TextBoxFor(model => model.ordem, new { placeholder = "", @class = "form-control", maxLength = "150", type="number", min="1" })
+				                @Html.ValidationMessageFor(model => model.ordem)
+            </div>
+
+         
+  
+
+
+            
+       
+<div class="form-group col-md-6">
+									<label class="control-label" base_library="api.Models.pergunta.tipo_controle" >tipo_controle</label>
+				
+				<div style="clear: both"></div>
+									@Html.TextBoxFor(model => model.tipo_controle, new { placeholder = "", @class = "form-control", maxLength = "150", type="number", min="1" })
+				                @Html.ValidationMessageFor(model => model.tipo_controle)
+            </div>
+
+         
+  
+
+        
+		
+            <div class="form-group col-md-12 btn-gallery">
+                <a base_library="api.Models.pergunta.library_delete" onclick="delete_item('@(Url.Action("Delete"))?id=@(Model.id)')" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i>Excluir</a>
+                <a base_library="api.Models.pergunta.library_edit" onclick="$(this).closest('form').submit()" class="btn btn-success pull-right"><i class="glyphicon glyphicon-pencil"></i>Editar</a>
+            </div>
+
+    </fieldset>
+}
+</section>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

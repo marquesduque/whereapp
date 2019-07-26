@@ -1,0 +1,36 @@
+﻿<div class="pages">
+    <div data-page="grupo" class="page">
+        <div class="navbar background-creait">
+            <div class="navbar-inner margin-bottom-20">
+                <div class="left"><a class="back link" onclick="creait.redirect('categoria')"> <i class="f7-icons icone-voltar" style="margin-right: 10px;">chevron_left</i></a></div>
+                <div class="center">Grupo(s)</div>
+            </div>
+        </div>
+        <div class="page-content" id="app-cover" style="margin-top: 50px; height: calc(100% - 50px);">
+            <div class="list-block list-block-search list searchbar-found" style="height: calc(100% - 150px); overflow: auto;">
+                <ul style="height: 100%;">
+                    {{#each grupos}}
+                    <li class="produtoli grid-item-m swipeout">
+                        <div class="item-title-row swipeout-content opt_grupo" grupo_id="{{id}}">
+                            <div class="titulo_produto item-title" style="text-align: left; font-size: 20px;">
+                                {{nome}}
+                            </div>
+                            <div style="padding: 0px 10px; text-align: left; font-size: 15px;">
+                                {{descricao}}
+                            </div>
+                        </div>
+                        <div id="deletar" class="swipeout-actions-right sair_grupo" grupo_id="{{id}}">
+                            <a href="#" class="swipeout-delete">Sair</a>
+                        </div>
+                        <div style="clear:both"></div>
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+
+        <div onclick="creait.redirect('addgrupo');" style="position: absolute; right: 5px; bottom: 5px; width: 60px; height: 60px; background-color: #4800ff; border-radius: 100%; display: flex; align-items: center; justify-content: center; z-index: 999; color: #FFFFFF;">
+            <i class="f7-icons size-32" style="margin: 0 !important;">add</i>
+        </div>
+    </div>
+</div>

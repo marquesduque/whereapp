@@ -1,0 +1,179 @@
+﻿#beer .container {
+    position: relative;
+}
+
+#beer .beer,
+#beer .bubble,
+#beer .small-bubbles,
+#beer .drip {
+    position: absolute;
+}
+
+#beer .bubble,
+#beer .small-bubbles,
+#beer .drip {
+    background: white;
+}
+
+#beer .bubble,
+#beer .small-bubbles {
+    border-radius: 100%;
+}
+
+#beer .mug {
+    position: relative;
+    width: 40vmin;
+    height: 32vmin;
+    background: #EEF5F8;
+    border-radius: 2vmin;
+}
+
+    #beer .mug:before, .mug:after {
+        position: absolute;
+        content: '';
+    }
+
+    #beer .mug:before {
+        z-index: 0;
+        left: 12vmin;
+        top: 6vmin;
+        width: 10vmin;
+        height: 14vmin;
+        border-radius: 19%;
+        /* background: #EEF5F8; */
+        border: 13px solid #eef5f8;
+    }
+
+    /*#beer .mug:after {
+        z-index: -1;
+        width: 12vmin;
+        height: 13vmin;
+        top: 8vmin;
+        left: 13vmin;
+        background: #7DCFB6;
+        border-radius: 19%;
+    }*/
+
+#beer .beer {
+    top: 2vmin;
+    left: 2vmin;
+    width: 16vmin;
+    height: 28vmin;
+    background: #FFD36D;
+    border-radius: 1vmin;
+}
+
+    #beer .beer:before, .beer:after {
+        position: absolute;
+        content: '';
+        background: #ffc849;
+        border-radius: 100%;
+    }
+
+    #beer .beer:before {
+        animation: 4s up infinite;
+        width: 2vmin;
+        height: 2vmin;
+        bottom: 2vmin;
+        left: 5vmin;
+        box-shadow: 7vmin -15vmin 0 #ffc849, 4vmin -10vmin 0 #ffc849, 6vmin -3vmin 0 #ffc849;
+    }
+
+    #beer .beer:after {
+        animation: 4s up infinite;
+        width: 1.5vmin;
+        height: 1.5vmin;
+        bottom: 6vmin;
+        left: 7vmin;
+        box-shadow: -3vmin -8vmin 0 #ffc849, 7vmin -5vmin 0 #ffc849;
+    }
+
+#beer .bubble {
+    width: 10vmin;
+    height: 10vmin;
+    top: -5vmin;
+    left: -3vmin;
+}
+
+    #beer .bubble:before, .bubble:after {
+        position: absolute;
+        content: '';
+        background: white;
+        border-radius: 100%;
+    }
+
+    #beer .bubble:before {
+        width: 12vmin;
+        height: 12vmin;
+        left: 5vmin;
+        top: -2vmin;
+    }
+
+    #beer .bubble:after {
+        width: 10vmin;
+        height: 10vmin;
+        left: 14vmin;
+        top: 0vmin;
+    }
+
+#beer .small-bubbles {
+    width: 5vmin;
+    height: 5vmin;
+    top: -7vmin;
+    left: 11vmin;
+}
+
+    #beer .small-bubbles:before, .small-bubbles:after {
+        position: absolute;
+        content: '';
+        border-radius: 100%;
+        background: white;
+    }
+
+    #beer .small-bubbles:before {
+        width: 3vmin;
+        height: 3vmin;
+        top: -6vmin;
+        left: -3vmin;
+    }
+
+    #beer .small-bubbles:after {
+        width: 3vmin;
+        height: 3vmin;
+        top: -8vmin;
+        left: -8vmin;
+    }
+
+#beer .drip {
+    width: 5vmin;
+    height: 14vmin;
+    top: 1vmin;
+    border-radius: 100px;
+    left: -2vmin;
+    box-shadow: 4vmin -6vmin 0 white;
+    animation: 6s drip infinite;
+}
+
+@keyframes up {
+    0% {
+        transform: translateY(0px);
+    }
+
+    99% {
+        transform: translateY(-70px);
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes drip {
+    0% {
+        transform: translateY(0px);
+    }
+
+    100% {
+        height: 25vmin;
+    }
+}

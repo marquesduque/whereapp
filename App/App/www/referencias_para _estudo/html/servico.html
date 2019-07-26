@@ -1,0 +1,204 @@
+﻿<div class="pages">
+    <div data-page="servico" class="page navbar-fixed">
+        <div class="navbar background-creait">
+            <div class="navbar-inner">
+
+                <div class="left" style="padding-left:10px">Configurações</div>
+                <div class="right">
+                    <!-- Right link contains only icon - additional "icon-only" class-->
+                    <a href="#" class="link icon-only open-panel">
+                        <i class="f7-icons size-50" style="margin-right:0px">person_fill</i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!--  -->
+        <div class="page-content imagem-background" style="height: calc(100% - 52px); padding-top:0px;margin-top: 50px;">
+            <div class="aguardando_liberacao" style="padding:20px; font-size:20px; font-weight:700; display:none; text-align:center">
+                AGUARDANDO LIBERAÇÃO
+                <div>
+                    Estamos validando o seu cadastro, em breve entraremos em contato!
+                </div>
+            </div>
+            <formcalendario>
+
+
+                {{#each tipos}}
+                <div style="padding: 25px 30px 5px 30px;
+    font-size: 20px;
+    font-weight: 700;"><span style="font-size: 12px">ESPECIALIDADE:</span> {{nome}}</div>
+                <input type="hidden" name="tipo_id" value="{{id}}" periodo="{{periodo}}" {{js "this.id == ../produto.tipo_id ? 'selected' : ''"}} />
+                {{/each}}
+
+
+                <input type="hidden" name="administrador_id" value="{{js "controller.login.get().id"}}" />
+                <input type="hidden" name="agenda.administrador_id" value="{{js "controller.login.get().id"}}" />
+                <input type="hidden" name="id" value="{{produto.id}}" />
+                <input type="hidden" name="agenda.id" value="{{js "this.produto.agenda == null ? 0 : this.produto.agenda.id"}}" />
+
+                <div class="list-block row" style="margin:20px">
+
+                    <div class="form_box col-100 tablet-100">
+
+                        <div></div>
+                        <input type="hidden" id="icone" name="icone" value="{{produto.icone}}" />
+                        <input type="hidden" id="icone_itype" name="icone_itype" value="{{produto.icone_itype}},{{produto.icone}}" />
+
+                        <div class="calendario_foto" style="background-image:url('{{produto.icone_itype}},{{produto.icone}}'); background-color:var(--textbox-color-hover)">
+                            <input type="file" name="foto_produto" style="width: 100%;
+    height: 100%;
+    left: 0px; opacity:0" />
+                            {{#js_if "this.produto.icone_itype == null || this.produto.icone_itype == ''"}}
+                            <div style="font-size: 12px; margin-top: -125px;">
+                                ALTERAR IMAGEM
+                            </div>
+                            <i class="f7-icons" style="margin-right: 0px; font-size: 40px;">person_fill</i>
+                            {{/js_if}}
+                        </div>
+
+                        <div class="item-content" style="border-bottom: 1px solid var(--textbox-color-hover);; min-width:200px;margin-top: 16px;">
+                            <div class="item-inner">
+                                <div class="item-input row">
+                                    <div class="col-100">
+                                        <label style="font-size:10px">
+                                            Nome
+                                        </label>
+                                        <input type="text" name="nome" style="height: 20px;" value="{{produto.nome}}" placeholder="Nome">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item-content" style="border-bottom: 1px solid var(--textbox-color-hover);">
+                            <div class="item-inner">
+                                <div class="item-input row">
+                                    <div class="col-100">
+                                        <label style="font-size:10px">
+                                            Valor da consulta R$
+                                        </label>
+                                        <input type="tel" mask="money" inputmode="numeric" pattern="[0-9]*" style="height: 20px;" name="preco" value="{{preco}}" placeholder="R$ 0,00">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="border-bottom: 1px solid var(--textbox-color-hover);">
+                            <a class="item-link smart-select smart-select-init" data-picker-close-text="▼" data-open-in="picker">
+                                <select name="caracteristicas_id" multiple="multiple">
+                                    {{#each caracteristicas}}
+                                    <option value="{{id}}" {{selected}}>{{nome}}</option>
+                                    {{/each}}
+                                </select>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title" style="font-size:10px; line-height: 20px;">Qual nivel de cuidado você deseja atender?</div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <input type="hidden" name="periodo" />
+                        <div style="border-bottom: 1px solid var(--textbox-color-hover);">
+
+                            <a class="item-link smart-select smart-select-init" data-picker-close-text="▼" data-open-in="picker" data-searchbar="false">
+                                <select name="filiais_id" multiple>
+                                    {{#each filiais}}
+                                    <option value="{{id}}" {{selected}}>{{nome}}</option>
+                                    {{/each}}
+                                </select>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title" style="font-size:10px; line-height: 20px;">Locais de atendimento</div>
+                                    </div>
+                                </div>
+                            </a>
+
+                        </div>
+                        <div class="item-content" style="border-bottom: 1px solid var(--textbox-color-hover);">
+                            <div class="item-inner">
+                                <div class="item-input row">
+                                    <div class="col-100">
+                                        <label style="font-size:10px">
+                                            Qual a sua graduação academica?
+                                        </label>
+                                        <input type="text" name="graduacao" style="height: 20px;" value="{{graduacao}}" placeholder="...">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item-content" ">
+                            <div class="item-inner">
+                                <div class="item-input row">
+                                    <div class="col-100">
+                                        <label style="font-size:10px">
+                                            Quais cursos você já fez?
+                                        </label>
+                                        <input type="text" name="especialidade" style="height: 20px;" value="{{especialidade}}" placeholder="...">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="form_box col-100 tablet-100">
+                        <div class="item-content" ">
+                            <div class="item-inner">
+                                <div class="item-input row">
+                                    <div class="col-100">
+                                        <label style="font-size:20px">
+                                            Mini currículo
+                                        </label>
+                                        <textarea type="text" name="minicurriculo" rows="5" maxlength="2000" style="height: 200px;" value="{{minicurriculo}}" placeholder="..."></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="width:100%">
+                        <div class="form_box col-100 tablet-100" id="panel_185" style="padding-bottom: 20px;">
+
+                            <div style="width:100%; margin:20px; text-align:center">
+                                HORÁRIO DE ATENDIMENTO
+                                <div style="font-size:10px">Selecione os dias da semana que deseja trabalhar</div>
+                            </div>
+                            {{#each semanas}}
+                            <div class="item-content content_horario col-100 tablet-33 {{js "(this.inicio == null || this.termino == null) ? '' : 'active'"}}" style="float:left; height:120px">
+                                <div class="item-inner">
+                                    <div class="calendario_titulo" onclick="$(this).closest('.content_horario').toggleClass('active')">
+                                        {{label}}
+                                    </div>
+                                    <div class="item-input row">
+                                        <div class="col-50">
+                                            <div class="calendario_subtitulo">INÍCIO</div>
+                                            <div>
+                                                <input type="time" style="background-color: var(--textbox-color-hover); text-align:center" name="agenda.{{txt}}_inicio" value="{{js "this.inicio == null ? '08:00' : this.inicio"}}" placeholder="Começa">
+                                            </div>
+                                        </div>
+                                        <div class="col-50">
+                                            <div class="calendario_subtitulo">TÉRMINO</div>
+                                            <div>
+                                                <input type="time" style="    background-color: var(--textbox-color-hover);text-align:center" name="agenda.{{txt}}_fim" value="{{js "this.termino == null ? '18:00' : this.termino"}}" class="col-50" placeholder="Termina">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {{/each}}
+
+                        </div>
+                    </div>
+
+                    <div class="item-content col-100">
+                        <div class="item-inner">
+                            <div id="btn_calendario" class="buton" style="margin-bottom:10px">Salvar</div>
+                        </div>
+                    </div>
+                </div>
+
+            </formcalendario>
+        </div>
+        <!--  -->
+
+    </div>
+</div>

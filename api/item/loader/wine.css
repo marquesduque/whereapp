@@ -1,0 +1,704 @@
+﻿
+#wine .circle {
+    position: absolute;
+    left: 50%;
+    top: 50px;
+    margin-left: -150px;
+    overflow: hidden;
+    width: 300px;
+    height: 300px;
+    background-color: #d52744;
+    border-radius: 50%;
+    -webkit-box-shadow: 0 9px 14px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 9px 14px rgba(0, 0, 0, 0.4);
+}
+
+#wine .table {
+    position: absolute;
+    bottom: 0;
+    width: 300px;
+    height: 100px;
+    background-color: #e7505c;
+}
+
+#wine .glass {
+    position: relative;
+    left: 50%;
+    margin-left: -70px;
+    top: 40px;
+    width: 100px;
+    height: 90px;
+    background-color: #CCD6DD;
+    border: 20px solid #8899A6;
+    border-top: 0;
+    border-radius: 0 0 100% 100% / 0 0 250px 250px;
+}
+
+    #wine .glass:after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: -20px;
+        width: 140px;
+        height: 40px;
+        margin-left: -70px;
+        border-radius: 50%;
+        background-color: #CCD6DD;
+    }
+
+    #wine .glass .reflex {
+        position: absolute;
+        top: -35px;
+        left: 50%;
+        z-index: 1;
+        margin-left: -65px;
+        width: 130px;
+        height: 50px;
+        border-bottom: 15px solid white;
+        border-radius: 50%;
+    }
+
+    #wine .glass .base {
+        position: absolute;
+        top: 180px;
+        left: 50%;
+        z-index: 2;
+        margin-left: -40px;
+        width: 0;
+        height: 0;
+        border-left: 40px solid transparent;
+        border-right: 40px solid transparent;
+        border-bottom: 20px solid #8899A6;
+    }
+
+        #wine .glass .base.shadow {
+            z-index: 1;
+            top: 205px;
+            -webkit-transform: scale(1, -1);
+            transform: scale(1, -1);
+            border-bottom-color: #bf3a44;
+        }
+
+            #wine .glass .base.shadow:after, .glass .base.shadow:before {
+                background-color: #bf3a44;
+            }
+
+        #wine .glass .base:before, .glass .base:after {
+            content: "";
+            position: absolute;
+            left: 50%;
+        }
+
+        #wine .glass .base:before {
+            width: 20px;
+            height: 100px;
+            margin-left: -10px;
+            bottom: -15px;
+            background-color: #8899A6;
+        }
+
+        #wine .glass .base:after {
+            margin-left: -40px;
+            bottom: -30px;
+            width: 80px;
+            height: 20px;
+            background-color: #8899A6;
+            border-radius: 50%;
+        }
+
+    #wine .glass .wine {
+        position: absolute;
+        bottom: -5px;
+        left: 50%;
+        margin-left: -45px;
+        width: 90px;
+        height: 50px;
+        background-color: #A0041E;
+        border-radius: 0 0 100% 100%/ 0 0 200% 200%;
+    }
+
+        #wine .glass .wine .wine-line {
+            background: #A0041E;
+            width: 1px;
+            height: 1px;
+            float: left;
+            -webkit-animation: wave 1s infinite ease-in-out alternate;
+            animation: wave 1s infinite ease-in-out alternate;
+            z-index: 1;
+            position: absolute;
+            top: 1px;
+        }
+
+            #wine .glass .wine .wine-line:nth-child(0) {
+                -webkit-animation-delay: 0s;
+                animation-delay: 0s;
+                left: -1px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(1) {
+                -webkit-animation-delay: 0.01s;
+                animation-delay: 0.01s;
+                left: 0px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(2) {
+                -webkit-animation-delay: 0.02s;
+                animation-delay: 0.02s;
+                left: 1px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(3) {
+                -webkit-animation-delay: 0.03s;
+                animation-delay: 0.03s;
+                left: 2px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(4) {
+                -webkit-animation-delay: 0.04s;
+                animation-delay: 0.04s;
+                left: 3px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(5) {
+                -webkit-animation-delay: 0.05s;
+                animation-delay: 0.05s;
+                left: 4px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(6) {
+                -webkit-animation-delay: 0.06s;
+                animation-delay: 0.06s;
+                left: 5px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(7) {
+                -webkit-animation-delay: 0.07s;
+                animation-delay: 0.07s;
+                left: 6px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(8) {
+                -webkit-animation-delay: 0.08s;
+                animation-delay: 0.08s;
+                left: 7px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(9) {
+                -webkit-animation-delay: 0.09s;
+                animation-delay: 0.09s;
+                left: 8px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(10) {
+                -webkit-animation-delay: 0.1s;
+                animation-delay: 0.1s;
+                left: 9px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(11) {
+                -webkit-animation-delay: 0.11s;
+                animation-delay: 0.11s;
+                left: 10px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(12) {
+                -webkit-animation-delay: 0.12s;
+                animation-delay: 0.12s;
+                left: 11px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(13) {
+                -webkit-animation-delay: 0.13s;
+                animation-delay: 0.13s;
+                left: 12px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(14) {
+                -webkit-animation-delay: 0.14s;
+                animation-delay: 0.14s;
+                left: 13px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(15) {
+                -webkit-animation-delay: 0.15s;
+                animation-delay: 0.15s;
+                left: 14px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(16) {
+                -webkit-animation-delay: 0.16s;
+                animation-delay: 0.16s;
+                left: 15px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(17) {
+                -webkit-animation-delay: 0.17s;
+                animation-delay: 0.17s;
+                left: 16px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(18) {
+                -webkit-animation-delay: 0.18s;
+                animation-delay: 0.18s;
+                left: 17px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(19) {
+                -webkit-animation-delay: 0.19s;
+                animation-delay: 0.19s;
+                left: 18px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(20) {
+                -webkit-animation-delay: 0.2s;
+                animation-delay: 0.2s;
+                left: 19px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(21) {
+                -webkit-animation-delay: 0.21s;
+                animation-delay: 0.21s;
+                left: 20px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(22) {
+                -webkit-animation-delay: 0.22s;
+                animation-delay: 0.22s;
+                left: 21px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(23) {
+                -webkit-animation-delay: 0.23s;
+                animation-delay: 0.23s;
+                left: 22px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(24) {
+                -webkit-animation-delay: 0.24s;
+                animation-delay: 0.24s;
+                left: 23px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(25) {
+                -webkit-animation-delay: 0.25s;
+                animation-delay: 0.25s;
+                left: 24px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(26) {
+                -webkit-animation-delay: 0.26s;
+                animation-delay: 0.26s;
+                left: 25px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(27) {
+                -webkit-animation-delay: 0.27s;
+                animation-delay: 0.27s;
+                left: 26px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(28) {
+                -webkit-animation-delay: 0.28s;
+                animation-delay: 0.28s;
+                left: 27px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(29) {
+                -webkit-animation-delay: 0.29s;
+                animation-delay: 0.29s;
+                left: 28px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(30) {
+                -webkit-animation-delay: 0.3s;
+                animation-delay: 0.3s;
+                left: 29px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(31) {
+                -webkit-animation-delay: 0.31s;
+                animation-delay: 0.31s;
+                left: 30px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(32) {
+                -webkit-animation-delay: 0.32s;
+                animation-delay: 0.32s;
+                left: 31px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(33) {
+                -webkit-animation-delay: 0.33s;
+                animation-delay: 0.33s;
+                left: 32px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(34) {
+                -webkit-animation-delay: 0.34s;
+                animation-delay: 0.34s;
+                left: 33px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(35) {
+                -webkit-animation-delay: 0.35s;
+                animation-delay: 0.35s;
+                left: 34px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(36) {
+                -webkit-animation-delay: 0.36s;
+                animation-delay: 0.36s;
+                left: 35px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(37) {
+                -webkit-animation-delay: 0.37s;
+                animation-delay: 0.37s;
+                left: 36px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(38) {
+                -webkit-animation-delay: 0.38s;
+                animation-delay: 0.38s;
+                left: 37px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(39) {
+                -webkit-animation-delay: 0.39s;
+                animation-delay: 0.39s;
+                left: 38px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(40) {
+                -webkit-animation-delay: 0.4s;
+                animation-delay: 0.4s;
+                left: 39px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(41) {
+                -webkit-animation-delay: 0.41s;
+                animation-delay: 0.41s;
+                left: 40px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(42) {
+                -webkit-animation-delay: 0.42s;
+                animation-delay: 0.42s;
+                left: 41px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(43) {
+                -webkit-animation-delay: 0.43s;
+                animation-delay: 0.43s;
+                left: 42px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(44) {
+                -webkit-animation-delay: 0.44s;
+                animation-delay: 0.44s;
+                left: 43px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(45) {
+                -webkit-animation-delay: 0.45s;
+                animation-delay: 0.45s;
+                left: 44px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(46) {
+                -webkit-animation-delay: 0.46s;
+                animation-delay: 0.46s;
+                left: 45px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(47) {
+                -webkit-animation-delay: 0.47s;
+                animation-delay: 0.47s;
+                left: 46px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(48) {
+                -webkit-animation-delay: 0.48s;
+                animation-delay: 0.48s;
+                left: 47px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(49) {
+                -webkit-animation-delay: 0.49s;
+                animation-delay: 0.49s;
+                left: 48px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(50) {
+                -webkit-animation-delay: 0.5s;
+                animation-delay: 0.5s;
+                left: 49px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(51) {
+                -webkit-animation-delay: 0.51s;
+                animation-delay: 0.51s;
+                left: 50px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(52) {
+                -webkit-animation-delay: 0.52s;
+                animation-delay: 0.52s;
+                left: 51px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(53) {
+                -webkit-animation-delay: 0.53s;
+                animation-delay: 0.53s;
+                left: 52px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(54) {
+                -webkit-animation-delay: 0.54s;
+                animation-delay: 0.54s;
+                left: 53px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(55) {
+                -webkit-animation-delay: 0.55s;
+                animation-delay: 0.55s;
+                left: 54px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(56) {
+                -webkit-animation-delay: 0.56s;
+                animation-delay: 0.56s;
+                left: 55px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(57) {
+                -webkit-animation-delay: 0.57s;
+                animation-delay: 0.57s;
+                left: 56px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(58) {
+                -webkit-animation-delay: 0.58s;
+                animation-delay: 0.58s;
+                left: 57px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(59) {
+                -webkit-animation-delay: 0.59s;
+                animation-delay: 0.59s;
+                left: 58px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(60) {
+                -webkit-animation-delay: 0.6s;
+                animation-delay: 0.6s;
+                left: 59px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(61) {
+                -webkit-animation-delay: 0.61s;
+                animation-delay: 0.61s;
+                left: 60px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(62) {
+                -webkit-animation-delay: 0.62s;
+                animation-delay: 0.62s;
+                left: 61px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(63) {
+                -webkit-animation-delay: 0.63s;
+                animation-delay: 0.63s;
+                left: 62px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(64) {
+                -webkit-animation-delay: 0.64s;
+                animation-delay: 0.64s;
+                left: 63px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(65) {
+                -webkit-animation-delay: 0.65s;
+                animation-delay: 0.65s;
+                left: 64px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(66) {
+                -webkit-animation-delay: 0.66s;
+                animation-delay: 0.66s;
+                left: 65px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(67) {
+                -webkit-animation-delay: 0.67s;
+                animation-delay: 0.67s;
+                left: 66px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(68) {
+                -webkit-animation-delay: 0.68s;
+                animation-delay: 0.68s;
+                left: 67px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(69) {
+                -webkit-animation-delay: 0.69s;
+                animation-delay: 0.69s;
+                left: 68px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(70) {
+                -webkit-animation-delay: 0.7s;
+                animation-delay: 0.7s;
+                left: 69px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(71) {
+                -webkit-animation-delay: 0.71s;
+                animation-delay: 0.71s;
+                left: 70px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(72) {
+                -webkit-animation-delay: 0.72s;
+                animation-delay: 0.72s;
+                left: 71px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(73) {
+                -webkit-animation-delay: 0.73s;
+                animation-delay: 0.73s;
+                left: 72px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(74) {
+                -webkit-animation-delay: 0.74s;
+                animation-delay: 0.74s;
+                left: 73px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(75) {
+                -webkit-animation-delay: 0.75s;
+                animation-delay: 0.75s;
+                left: 74px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(76) {
+                -webkit-animation-delay: 0.76s;
+                animation-delay: 0.76s;
+                left: 75px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(77) {
+                -webkit-animation-delay: 0.77s;
+                animation-delay: 0.77s;
+                left: 76px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(78) {
+                -webkit-animation-delay: 0.78s;
+                animation-delay: 0.78s;
+                left: 77px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(79) {
+                -webkit-animation-delay: 0.79s;
+                animation-delay: 0.79s;
+                left: 78px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(80) {
+                -webkit-animation-delay: 0.8s;
+                animation-delay: 0.8s;
+                left: 79px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(81) {
+                -webkit-animation-delay: 0.81s;
+                animation-delay: 0.81s;
+                left: 80px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(82) {
+                -webkit-animation-delay: 0.82s;
+                animation-delay: 0.82s;
+                left: 81px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(83) {
+                -webkit-animation-delay: 0.83s;
+                animation-delay: 0.83s;
+                left: 82px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(84) {
+                -webkit-animation-delay: 0.84s;
+                animation-delay: 0.84s;
+                left: 83px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(85) {
+                -webkit-animation-delay: 0.85s;
+                animation-delay: 0.85s;
+                left: 84px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(86) {
+                -webkit-animation-delay: 0.86s;
+                animation-delay: 0.86s;
+                left: 85px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(87) {
+                -webkit-animation-delay: 0.87s;
+                animation-delay: 0.87s;
+                left: 86px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(88) {
+                -webkit-animation-delay: 0.88s;
+                animation-delay: 0.88s;
+                left: 87px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(89) {
+                -webkit-animation-delay: 0.89s;
+                animation-delay: 0.89s;
+                left: 88px;
+            }
+
+            #wine .glass .wine .wine-line:nth-child(90) {
+                -webkit-animation-delay: 0.9s;
+                animation-delay: 0.9s;
+                left: 89px;
+            }
+
+@-webkit-keyframes wave {
+    0% {
+        -webkit-transform: translateY(0px);
+        transform: translateY(0px);
+        height: 1px;
+    }
+
+    100% {
+        -webkit-transform: translateY(-10px);
+        transform: translateY(-10px);
+        height: 10px;
+    }
+}
+
+@keyframes wave {
+    0% {
+        -webkit-transform: translateY(0px);
+        transform: translateY(0px);
+        height: 1px;
+    }
+
+    100% {
+        -webkit-transform: translateY(-10px);
+        transform: translateY(-10px);
+        height: 10px;
+    }
+}

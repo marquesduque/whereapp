@@ -1,0 +1,669 @@
+﻿<!doctype html>
+<html lang="pt">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Quanto custa um aplicativo? | Calculadora de preços</title>
+    <meta name="description" content="Calcula quanto custa criar seu aplicativo de forma simples e rápida. Saiba como obter um orçamento aproximado do custo do seu aplicativo para celular." />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+    <meta name="theme-color" content="#3d3935" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Quanto custa um aplicativo? | Calculadora de preços" />
+    <meta property="og:description" content="Calcula quanto custa criar seu aplicativo de forma simples e rápida. Saiba como obter um orçamento aproximado do custo do seu aplicativo para celular." />
+    <meta property="og:url" content="index.html" />
+    <meta property="og:site_name" content="Quanto custa um aplicativo? | Calculadora de preços" />
+    <meta property="og:image" content="img/app/share-og-pt.png" />
+
+
+    <link rel="canonical" href="index.html" />
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" sizes="180x180">
+    <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="manifest.json">
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="fonts/icomoon/style.css" rel="stylesheet" />
+    <link href="fonts/food/flaticon.css" rel="stylesheet" />
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="js/jquery-1.10.2.min.js"></script>
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <script src="js/bootstrap.min.js"></script>
+
+
+
+</head>
+<body class="theme-dark" data-theme-color="#3d3935">
+
+    <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <main class="main" role="main">
+
+        <section class="section initial" style="min-height:0px">
+            <img src="img/logo.png" />
+
+            <h1 class="title" style="font-size: 14px;">
+                Crie agora seu aplicativo para delivery é rápido e fácil
+            </h1>
+
+            <div class="answer-group">
+                <div class="col" style="width:50%; float:left" onclick="$('#div_facebook').show(); $('#div_manual').hide();">
+                    <div style="background-color:#3b5998;padding: 10px; font-size: 50px;    border-radius: 10px 0px 0px 10px;" class="icon-facebook">
+                        <div style="font-size:14px; font-family:Arial;    line-height: 20px;
+    margin-top: 10px;">
+                            Importar dados da minha página do facebook
+                        </div>
+                    </div>
+                </div>
+                <div class="col" style="width:50%; float:left" onclick="$('#div_facebook').hide(); $('#div_manual').show();">
+
+                    <div style="    background-color: #f57e29;
+    padding: 10px;
+    font-size: 50px;
+    padding: 20px;    border-radius: 0px 10px 10px 0px;" class="icon-profile">
+                        <div style="font-size:14px; font-family:Arial;    line-height: 20px;
+    margin-top: 10px;">
+                            Configurar manualmente
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div id="div_facebook" style="width:100%; margin-top:20px; margin-bottom:4px; display:none">
+                <div style="width:100%">
+                    <div class="icon-facebook" style="color: #3b5998;
+    position: absolute;
+    margin: 7px 8px;
+    font-size: 25px;"></div>
+                    <input placeholder="Página Do Facebook" type="text" id="txt_pagina" style="color: black;
+    padding: 10px 0px 10px 37px;
+    border-radius: 50px 0px 0px 50px;
+    border: 0px;float:left; width:80%" />
+                    <a class="text-uppercase js--start" style="float:left; width:20%; background-color:#3b5998; color:white; line-height: 40px; border-radius: 0px 50px 50px 0px;">PRÓXIMO</a>
+                </div>
+                <div style="margin-top: 50px;
+    overflow: auto;
+    height: calc(100% - 275px);
+    width: 95%;
+    left: 0px;
+    margin:0 auto">
+                    <div id="paginas" style="margin-top:2px"></div>
+                </div>
+            </div>
+            <div id="div_manual" style="display:none">
+                <div class="text-block">
+                    <input placeholder="Nome do estabelecimento" type="text" />
+                </div>
+                <div class="text-block">
+                    <input placeholder="Email" type="text" />
+                </div>
+                <div class="text-block">
+                    <input placeholder="Telefone" type="text" />
+                </div>
+                <div class="text-block">
+                    <input placeholder="Site" type="text" />
+                </div>
+                <div class="text-block">
+                    <input placeholder="Endereço" type="text" />
+                </div>
+                <button class="button text-uppercase js--start" id="start">Criar Aplicativo</button>
+            </div>
+
+        </section>
+
+
+        <section class="section question especialidade"
+                 data-question-id="1"
+                 data-pph="true"
+                 style="display: none;">
+
+
+            <h2 class="question-title">
+                <img style="margin-bottom: 15px" src="img/logo.png" /><br />
+                Qual a especialidade do seu restaurante?
+            </h2>
+
+            <div class="answer-group">
+                <div class="answer js--answer" 
+                         data-answer-id="1">
+                    Bebidas
+                </div>
+                <div class="answer">
+                    Churrascaria
+                </div>
+                <div class="answer">
+                    Alemã
+                </div>
+                <div class="answer">
+                    Arabe
+                </div>
+                <div class="answer">
+                    Brasileira
+                </div>
+                <div class="answer">
+                    Chinesa
+                </div>
+                <div class="answer">
+                    <div class="glyph-icon flaticon-pasta"></div>
+                    Italiana
+                </div>
+                <div class="answer">
+                    <div class="glyph-icon flaticon-sushi"></div>
+                    Japonesa
+                </div>
+                <div class="answer">
+                    <div class="glyph-icon flaticon-taco"></div>
+                    Mexicana
+                </div>
+                <div class="answer">
+                    Portuguesa
+                </div>
+                <div class="answer">
+                    Saudável
+                </div>
+                <div class="answer">
+                    Tailandesa
+                </div>
+                <div class="answer">
+                    <div class="glyph-icon flaticon-cover"></div>
+                    Variada
+                </div>
+                <div class="answer">
+                    <div class="glyph-icon flaticon-shop"></div>
+                    Doces
+                </div>
+                <div class="answer">
+                    <div class="glyph-icon flaticon-seafood"></div>
+                    Frutos do mar
+                </div>
+                <div class="answer">
+                    <div class="glyph-icon flaticon-hamburger"></div>
+                    Hamburgueria
+                </div>
+                <div class="answer">
+                    <div class="glyph-icon flaticon-pizza"></div>
+                    Pizza
+                </div>
+                <div class="answer">
+                    Sorvetes
+                </div>
+                <div class="answer">
+                    Vegetariano
+                </div>
+            </div>
+
+            <span class="text-bold question-progress">5/10</span>
+            <span class="text-bold price-progress js--price-progress">-</span>
+
+            <span class="link question-previous js--previous">← Anterior</span>
+        </section>
+
+        <section class="section question"
+                 data-question-id="2"
+                 data-pph="true"
+                 style="display: none;">
+            <h2 class="question-title">
+                <img style="margin-bottom: 15px" src="img/logo.png" /><br />
+                Como você quer o seu APP Delivery?
+            </h2>
+
+            <div class="answer-group row-of-2">
+                <div class="col">
+                    <div class="answer js--answer"
+                         data-answer-id="1"
+                         data-answer-weight="40">
+
+                        <img class="answer-image js--answer-image"
+                             src="img/app/intro.png"
+                             data-src="img/app/answer-1-1.png"
+                             alt="Ótima qualidade">
+                        <strong class="answer-text">Totalmente personalizado</strong>
+                        <p>Criaremos icones, imagens, cores, textos, especificos, tudo só para você</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="answer js--answer"
+                         data-answer-id="2"
+                         data-answer-weight="30">
+
+                        <img class="answer-image js--answer-image"
+                             src="img/app/intro.png"
+                             data-src="img/app/answer-1-2.png"
+                             alt="Boa relação de qualidade e preço">
+                        <strong class="answer-text">Pouca personalização</strong>
+                        <p>Usaremos icones e imagens padrões em seu aplicativo</p>
+                    </div>
+                </div>
+            </div>
+            <span class="text-bold question-progress">1/10</span>
+            <span class="text-bold price-progress js--price-progress">-</span>
+
+            <span class="link question-previous js--previous">← Anterior</span>
+        </section>
+
+        <section class="section question"
+                 data-question-id="3"
+                 data-pph="false"
+                 style="display: none;">
+            <h2 class="question-title">
+                <img src="img/logo.png" /><br /><br />
+                Onde você quer seu aplicativo?
+            </h2>
+
+            <div class="answer-group row-of-4">
+                <div class="col">
+                    <div class="answer js--answer"
+                         data-answer-id="1"
+                         data-answer-weight="60">
+
+                        <img class="answer-image js--answer-image"
+                             src="img/app/intro.png"
+                             data-src="img/app/answer-2-1.png"
+                             alt="Aplicativo Android">
+                        <span class="answer-text">Android</span>
+                        <p>Seu aplicativo ira funcionar apenas em celulares Android</p>
+                    </div>
+                </div><div class="col">
+                    <div class="answer js--answer"
+                         data-answer-id="2"
+                         data-answer-weight="60">
+
+                        <img class="answer-image js--answer-image"
+                             src="img/app/intro.png"
+                             data-src="img/app/answer-2-2.png"
+                             alt="Aplicativo iPhone">
+                        <span class="answer-text">iPhone</span>
+                        <p>Seu aplicativo ira funcionar apenas em celulares Iphone</p>
+                    </div>
+                </div><div class="col">
+                    <div class="answer js--answer"
+                         data-answer-id="4"
+                         data-answer-weight="80">
+
+                        <img class="answer-image js--answer-image"
+                             src="img/app/intro.png"
+                             data-src="img/app/answer-2-4.png"
+                             alt="Aplicativo Android &amp; iPhone">
+                        <span class="answer-text">Aplicativo Android &amp; iPhone</span>
+                        <p>Seu aplicativo estara disponivel em WebSite e tambem irá funcionar em celulares Iphone, Android</p>
+                    </div>
+                    <div class="col">
+                        <div class="answer js--answer"
+                             data-answer-id="3"
+                             data-answer-weight="60">
+
+                            <img class="answer-image js--answer-image"
+                                 src="img/app/intro.png"
+                                 data-src="img/app/answer-2-3.png"
+                                 alt="Aplicativo Windows Phone">
+                            <span class="answer-text">Site</span>
+                            <p>Seu delivery irá funcionar apenas como um website</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <span class="text-bold question-progress">2/10</span>
+            <span class="text-bold price-progress js--price-progress">-</span>
+
+            <span class="link question-previous js--previous">← Anterior</span>
+
+        </section>
+
+        <section class="section question"
+                 data-question-id="4"
+                 data-pph="false"
+                 style="display: none;">
+            <h2 class="question-title">
+                <img src="img/logo.png" /><br /><br />
+                Seu aplicativo precisa ser integrado com outro sistema?
+            </h2>
+
+            <div class="answer-group row-of-3">
+                <div class="col">
+                    <div class="answer js--answer"
+                         data-answer-id="1"
+                         data-answer-weight="20">
+
+                        <img class="answer-image js--answer-image"
+                             src="img/app/intro.png"
+                             data-src="img/app/answer-6-1.png"
+                             alt="Sim">
+                        <span class="answer-text">Sim</span>
+                    </div>
+                </div><div class="col">
+                    <div class="answer js--answer"
+                         data-answer-id="2"
+                         data-answer-weight="0">
+
+                        <img class="answer-image js--answer-image"
+                             src="img/app/intro.png"
+                             data-src="img/app/answer-6-2.png"
+                             alt="Não">
+                        <span class="answer-text">Não</span>
+                    </div>
+                </div>
+                <!--<div class="col">
+                    <div class="answer js--answer"
+                         data-answer-id="3"
+                         data-answer-weight="0">
+
+                        <img class="answer-image js--answer-image"
+                             src="img/app/intro.png"
+                             data-src="img/app/answer-6-3.png"
+                             alt="Ainda não sei">
+                        <span class="answer-text">Ainda não sei</span>
+                    </div>
+                </div>-->
+            </div>
+            <span class="text-bold question-progress">3/10</span>
+            <span class="text-bold price-progress js--price-progress">-</span>
+
+            <span class="link question-previous js--previous">← Anterior</span>
+
+        </section>
+
+
+        <section class="section question"
+                 data-question-id="5"
+                 data-pph="false"
+                 style="display: none;">
+            <h2 class="question-title">
+                <img src="img/logo.png" /><br /><br />
+                Você gostaria que o aplicativo enviasse notificações para seus clientes? Por exemplo, promoção do dia!
+            </h2>
+
+            <div class="answer-group row-of-3">
+                <div class="col">
+                    <div class="answer js--answer"
+                         data-answer-id="1"
+                         data-answer-weight="60">
+
+                        <img class="answer-image js--answer-image"
+                             src="img/app/intro.png"
+                             data-src="img/app/answer-8-1.png"
+                             alt="Sim">
+                        <span class="answer-text">Sim</span>
+                    </div>
+                </div><div class="col">
+                    <div class="answer js--answer"
+                         data-answer-id="2"
+                         data-answer-weight="0">
+
+                        <img class="answer-image js--answer-image"
+                             src="img/app/intro.png"
+                             data-src="img/app/answer-8-2.png"
+                             alt="Não">
+                        <span class="answer-text">Não</span>
+                    </div>
+                </div>
+                <!--<div class="col">
+                    <div class="answer js--answer"
+                         data-answer-id="3"
+                         data-answer-weight="0">
+
+                        <img class="answer-image js--answer-image"
+                             src="img/app/intro.png"
+                             data-src="img/app/answer-8-3.png"
+                             alt="Ainda não sei">
+                        <span class="answer-text">Ainda não sei</span>
+                    </div>
+                </div>-->
+            </div>
+            <span class="text-bold question-progress">4/10</span>
+            <span class="text-bold price-progress js--price-progress">-</span>
+
+            <span class="link question-previous js--previous">← Anterior</span>
+
+        </section>
+
+        <section class="section question"
+                 data-question-id="6"
+                 data-pph="false"
+                 style="display: none;">
+            <h2 class="question-title">
+                <img src="img/logo.png" /><br /><br />
+                Quantas línguas você deseja que seu aplicativo tenha?
+            </h2>
+
+            <div class="answer-group row-of-3">
+                <div class="col">
+                    <div class="answer js--answer"
+                         data-answer-id="1"
+                         data-answer-weight="0">
+
+                        <img class="answer-image js--answer-image"
+                             src="img/app/intro.png"
+                             data-src="img/app/answer-9-1.png"
+                             alt="Uma única língua">
+                        <span class="answer-text">Uma única língua</span>
+                    </div>
+                </div><div class="col">
+                    <div class="answer js--answer"
+                         data-answer-id="2"
+                         data-answer-weight="20">
+
+                        <img class="answer-image js--answer-image"
+                             src="img/app/intro.png"
+                             data-src="img/app/answer-9-2.png"
+                             alt="Bilíngüe">
+                        <span class="answer-text">Bilíngüe</span>
+                    </div>
+                </div><div class="col">
+                    <div class="answer js--answer"
+                         data-answer-id="3"
+                         data-answer-weight="40">
+
+                        <img class="answer-image js--answer-image"
+                             src="img/app/intro.png"
+                             data-src="img/app/answer-9-3.png"
+                             alt="Multilíngue">
+                        <span class="answer-text">Multilíngue</span>
+                    </div>
+                </div>
+            </div>
+            <span class="text-bold question-progress">5/10</span>
+            <span class="text-bold price-progress js--price-progress">-</span>
+
+            <span class="link question-previous js--previous">← Anterior</span>
+
+        </section>
+
+
+        <section class="section results" style="display: none;">
+            <div style="text-align:center">
+                <img src="img/logo.png" />
+                <div style="clear:both"></div>
+            </div>
+
+            <br />
+            <h2>
+                <br />
+                <strong style="color:#F89C36">Custo estimado enviado para seu email</strong><br>
+                <span class="js--total-price" style="font-size:50px; display:none">-</span>
+                <div>Para saber mais fale agora por whatsapp com nosso gerente</div><br />
+
+
+                <a style="color: white;background-color: #189D0E; padding:10px 20px; border-radius:5px" href="https://api.whatsapp.com/send?phone=5511968395490&text=Olá%20Marco,%20fiz%20um%20orçamento%20agora%20e%20gostaria%20de%20saber%20o%20valor%20do%20meu%20aplicativo." target="_blank">
+
+                    <i class="fa fa-whatsapp fa-lg" style="margin-right:10px;"></i>WhatsApp
+
+                </a>
+                <!--Mandar algum texto pré definido pelo Whats ---- &text=Eu%20gostaria%20de%20receber%20um%20orçamento%20mais%20detalhado-->
+                <!--<span class="js--total-price" style="font-size:50px">-</span>-->
+                <!--<strong>Orçamento por Email</strong><br>
+                <span class="claim-->
+                <!--<span class="js--total-price" style="font-size:50px">-</span>-->
+                <!--<div style="margin-top:20px" class="col-md-8">
+                        <div class="form-group row col-md-12">
+                            <input class="form-control" type="text" placeholder="Email" onblur="validacaoEmail(this)" id="txtEmail" />
+                            <div class="error">* O email é obrigatório</div>
+                        </div>
+                        <div class="form-group row col-md-12">
+                            <input class="form-control" type="text" placeholder="Nome" id="txtNome" />
+                            <div class="error">* O nome é obrigatório</div>
+                        </div>
+                        <div clal-md-12" style="display:none">
+                            <input class="foxt" id="txtTelefonss="rm-control" type="teform-group row coe" />
+                            <div class="error">* O telefone é obrigatório</div>
+                        </div>
+
+                        <button class="button text-uppercase js--start" id="start">Calcular</button>
+                    </div>
+                </span>-->
+            </h2>
+            <div class="results-container" style="margin-top: 30px;">
+                <!--<p><span class="link js--toggle-results">Editar respostas</span></p>-->
+                <ul class="results-summary js--results-summary" style="display: block;">
+
+                    <li class="result js--result" data-question-id="1">
+                        <img class="result-image js--result-image" src="img/app/answer-1-1.png" alt="">
+                        <div class="result-body">
+                            <span class="result-question">Que nível de qualidade você está procurando?</span>
+                            <span>
+                                <b class="result-answer js--result-answer"></b>&nbsp;
+                                <span class="result-change js--change">Alterar</span>
+                            </span>
+                        </div>
+                    </li>
+
+                    <li class="result js--result" data-question-id="2">
+                        <img class="result-image js--result-image" src="img/app/answer-1-1.png" alt="">
+                        <div class="result-body">
+                            <span class="result-question">Qual tipo de aplicativo você precisa?</span>
+                            <span>
+                                <b class="result-answer js--result-answer"></b>&nbsp;
+                                <span class="result-change js--change">Alterar</span>
+                            </span>
+                        </div>
+                    </li>
+
+                    <li class="result js--result" data-question-id="3">
+                        <img class="result-image js--result-image" src="img/app/answer-1-1.png" alt="">
+                        <div class="result-body">
+                            <span class="result-question">Qual design você deseja que o seu aplicativo tenha?</span>
+                            <span>
+                                <b class="result-answer js--result-answer"></b>&nbsp;
+                                <span class="result-change js--change">Alterar</span>
+                            </span>
+                        </div>
+                    </li>
+
+                    <li class="result js--result" data-question-id="4">
+                        <img class="result-image js--result-image" src="img/app/answer-1-1.png" alt="">
+                        <div class="result-body">
+                            <span class="result-question">Qual retorno financeiro você deseja ter?</span>
+                            <span>
+                                <b class="result-answer js--result-answer"></b>&nbsp;
+                                <span class="result-change js--change">Alterar</span>
+                            </span>
+                        </div>
+                    </li>
+
+                    <li class="result js--result" data-question-id="5">
+                        <img class="result-image js--result-image" src="img/app/answer-1-1.png" alt="">
+                        <div class="result-body">
+                            <span class="result-question">O seu aplicativo precisa de um sistema de login?</span>
+                            <span>
+                                <b class="result-answer js--result-answer"></b>&nbsp;
+                                <span class="result-change js--change">Alterar</span>
+                            </span>
+                        </div>
+                    </li>
+
+                    <li class="result js--result" data-question-id="6">
+                        <img class="result-image js--result-image" src="img/app/answer-1-1.png" alt="">
+                        <div class="result-body">
+                            <span class="result-question">Seu aplicativo deve ser integrado à um website?</span>
+                            <span>
+                                <b class="result-answer js--result-answer"></b>&nbsp;
+                                <span class="result-change js--change">Alterar</span>
+                            </span>
+                        </div>
+                    </li>
+
+                    <li class="result js--result" data-question-id="7">
+                        <img class="result-image js--result-image" src="img/app/answer-1-1.png" alt="">
+                        <div class="result-body">
+                            <span class="result-question">Os usuários devem ter seu perfil próprio?</span>
+                            <span>
+                                <b class="result-answer js--result-answer"></b>&nbsp;
+                                <span class="result-change js--change">Alterar</span>
+                            </span>
+                        </div>
+                    </li>
+
+                    <li class="result js--result" data-question-id="8">
+                        <img class="result-image js--result-image" src="img/app/answer-1-1.png" alt="">
+                        <div class="result-body">
+                            <span class="result-question">Seu aplicativo necessita de um painel administrativo?</span>
+                            <span>
+                                <b class="result-answer js--result-answer"></b>&nbsp;
+                                <span class="result-change js--change">Alterar</span>
+                            </span>
+                        </div>
+                    </li>
+
+                    <li class="result js--result" data-question-id="9">
+                        <img class="result-image js--result-image" src="img/app/answer-1-1.png" alt="">
+                        <div class="result-body">
+                            <span class="result-question">Quantas línguas você deseja que seu aplicativo tenha?</span>
+                            <span>
+                                <b class="result-answer js--result-answer"></b>&nbsp;
+                                <span class="result-change js--change">Alterar</span>
+                            </span>
+                        </div>
+                    </li>
+
+                    <li class="result js--result" data-question-id="10">
+                        <img class="result-image js--result-image" src="img/app/answer-1-1.png" alt="">
+                        <div class="result-body">
+                            <span class="result-question">Em que estágio se encontra o seu projeto?</span>
+                            <span>
+                                <b class="result-answer js--result-answer"></b>&nbsp;
+                                <span class="result-change js--change">Alterar</span>
+                            </span>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+
+            <span class="link results-restart js--restart">← Recomeçar</span>
+        </section>
+    </main>
+    <footer class="footer" role="contentinfo">
+
+        <div class="footer-right about">
+            <div class="made-by">
+
+
+
+                <span>Criado por</span>
+                <a href="http://creait.com.br/" rel="nofollow">CreaIT</a>
+            </div>
+        </div>
+
+
+    </footer>
+
+    <div id="config"
+         data-type="app"
+         data-lang="pt"
+         data-pph="2"
+         data-multi=""
+         data-curr-symbol="R$"
+         data-curr-symbol-before="true"
+         data-curr-thousands="."
+         data-curr-decimal=","
+         data-curr-exchange="2"></div>
+    <script src="js/scripts.js"></script>
+</body>
+</html>
